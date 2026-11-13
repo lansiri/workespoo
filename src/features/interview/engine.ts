@@ -52,7 +52,6 @@ import {
   loadTurns,
   mutateState,
   readState,
-  rowToSignal,
   toTurn,
   type EngineState,
 } from "./store";
@@ -253,7 +252,11 @@ async function finishInterview(db: Db, interviewId: string, stopped: boolean): P
       subjectId: interviewId,
       detail: { status, signals, stopped },
     });
-    if (status !== "completed") return;
+    if (status !== "completed") {
+      // Nothing was noted, so there is no card. The page shows its own localised text.
+      await publishEvent(db, interviewId, { type: "error", message: "No notes were made", retryable: false });
+      return;
+    }
 
     await mutateState(db, interviewId, (s) => ({ ...s, stage: "synthesising" }));
     try {
