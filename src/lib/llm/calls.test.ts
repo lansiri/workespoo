@@ -68,12 +68,13 @@ describe("chatText", () => {
 });
 
 describe("retries and fallback", () => {
-  it("retries a 429 on the same provider honouring Retry-After", async () => {
-    const f = install({ nvidia: [{ error: { status: 429, headers: { "retry-after": "2" } } }, { text: "ok" }] });
+  it("moves to the next listed provider at once on a 429, without waiting", async () => {
+    const f = install({ nvidia: [{ error: { status: 429, headers: { "retry-after": "2" } } }], verda: [{ text: "ok" }] });
     const r = await chatText(base);
-    expect(r.meta).toMatchObject({ provider: "nvidia", attempts: 2 });
-    expect(delays).toEqual([2000]);
-    expect(f.calls.map((c) => c.provider)).toEqual(["nvidia", "nvidia"]);
+    expect(r.meta).toMatchObject({ provider: "verda", attempts: 2 });
+    expect(r.meta.queuedMs).toBeLessThan(50);
+    expect(delays).toEqual([]);
+    expect(f.calls.map((c) => c.provider)).toEqual(["nvidia", "verda"]);
   });
   it("retries twice then falls through after repeated 500s", async () => {
     const f = install({ nvidia: [{ error: { status: 500 } }, { error: { status: 503 } }, { error: { status: 500 } }], verda: [{ text: "from verda" }] });

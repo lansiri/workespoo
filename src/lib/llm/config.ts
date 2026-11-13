@@ -97,6 +97,40 @@ function positiveInt(name: string, fallback: number): number {
 export const nvidiaMaxRpm = () => positiveInt("NVIDIA_MAX_RPM", 30);
 export const maxConcurrency = () => positiveInt("LLM_MAX_CONCURRENCY", 8);
 
+function nonNegativeInt(name: string, fallback: number): number {
+  const raw = process.env[name]?.trim();
+  if (!raw) return fallback;
+  const n = Number.parseInt(raw, 10);
+  return Number.isFinite(n) && n >= 0 ? n : fallback;
+}
+
+/** Slots kept free for `live` calls (default 2). */
+export const liveReserveSlots = () => nonNegativeInt("LLM_LIVE_RESERVE_SLOTS", 2);
+/** Requests per minute kept free for `live` calls (default 6). */
+export const liveReserveRpm = () => nonNegativeInt("LLM_LIVE_RESERVE_RPM", 6);
+
+/** This process's share of the provider's per-minute limit: 0 to 1, default 1. */
+export function rpmShare(): number {
+  const n = Number.parseFloat(process.env.LLM_RPM_SHARE ?? "");
+  return Number.isFinite(n) && n > 0 && n <= 1 ? n : 1;
+}
+
+/** Requests per minute for the whole key; 0 means no per-minute limit. */
+export function providerMaxRpm(provider: string): number {
+  if (provider === "verda") return nonNegativeInt("VERDA_MAX_RPM", 36);
+  if (provider === "nvidia") return nonNegativeInt("NVIDIA_MAX_RPM", 30);
+  return nonNegativeInt("CUSTOM_LLM_MAX_RPM", 0);
+}
+
+/** This process's per-minute budget for a provider, or null for no limit. */
+export function providerRpmBudget(provider: string): number | null {
+  const max = providerMaxRpm(provider);
+  return max === 0 ? null : Math.max(1, Math.floor(max * rpmShare()));
+}
+
+/** Default total budget of one call by role. */
+export const defaultDeadlineMs = (role: LlmRole) => (role === "live" ? 6_000 : role === "analyst" ? 60_000 : 180_000);
+
 export const DEFAULT_MAX_TOKENS = 800;
 export const DEFAULT_TEMPERATURE = 0.2;
 export const defaultTimeoutMs = (role: LlmRole) => (role === "live" ? 15_000 : 30_000);

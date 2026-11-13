@@ -1,7 +1,8 @@
 import { z } from "zod";
 import { llmCall } from "@/db/schema";
 import { getEnv } from "@/lib/env";
-import { llmConfigured as configured } from "./config";
+import { defaultDeadlineMs, llmConfigured as configured } from "./config";
+import { timing } from "./limiter";
 import { buildMeta, newState, redact, runReal } from "./core";
 import { parseLenientJson, retryMessage, summariseZodError } from "./json";
 import {
@@ -108,6 +109,8 @@ export async function logCall(opts: LlmOptions, meta: LlmMeta): Promise<void> {
       ok: meta.ok,
       error: meta.error ? redact(meta.error).slice(0, 500) : null,
       guard: opts.guard ? opts.guard.slice(0, 120) : null,
+      attempts: meta.attempts,
+      queuedMs: meta.queuedMs,
     });
   } catch {
     // swallow: observability must not break the product
@@ -183,6 +186,7 @@ function mergeMeta(a: LlmMeta, b: LlmMeta): LlmMeta {
     tokensIn: add(a.tokensIn, b.tokensIn),
     tokensOut: add(a.tokensOut, b.tokensOut),
     attempts: a.attempts + b.attempts,
+    queuedMs: a.queuedMs + b.queuedMs,
   };
 }
 
@@ -192,7 +196,12 @@ export async function chatJson<T>(
   opts: LlmOptions & { schema: z.ZodType<T>; coerce?: (raw: unknown) => unknown },
 ): Promise<JsonResult<T>> {
   const { schema, coerce, ...base } = opts;
-  const internal: Internal = { stream: false, json: { schema } };
+  // one budget for the first answer and the repair attempt together
+  const internal: Internal = {
+    stream: false,
+    json: { schema },
+    deadlineAt: timing.now() + (base.deadlineMs ?? defaultDeadlineMs(base.role)),
+  };
 
   const validate = (text: string): { ok: true; data: T } | { ok: false; error: string } => {
     let raw: unknown;
