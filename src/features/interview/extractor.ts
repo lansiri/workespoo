@@ -361,7 +361,11 @@ async function extractTurn(db: Db, interviewId: string, turnIndex: number): Prom
           flagCounts,
           lastNote: note,
           lastExtracted: merged.touched,
-          recentFlags: [...(st.recentFlags ?? []), output.flags].slice(-2),
+          // Only the flags the planner situations read are kept; distress and protected_info stay counts.
+          recentFlags: [
+            ...(st.recentFlags ?? []),
+            output.flags.filter((f) => f === "off_topic" || f === "buzzwords"),
+          ].slice(-2),
         };
       },
       output.lang !== "und" ? { lang: output.lang } : undefined,

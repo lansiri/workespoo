@@ -142,4 +142,13 @@ describe("output guard", () => {
       }
     }
   });
+
+  it("drops a held statement when the fallback is used, so the reply stays within 40 words and 2 sentences", async () => {
+    const statement = "Thanks for telling me about the busy warehouse where you worked with many different teams and shifts every single week, and for describing it so clearly.";
+    const long = await run(chunks(`${statement} Do you have children?`), "What did you do on a normal day at work, from start to finish, step by step?");
+    expect(long.result.fallbackUsed).toBe(true);
+    expect(long.sentences).toEqual(["What did you do on a normal day at work, from start to finish, step by step?"]);
+    const two = await run(chunks("Okay. Do you have children?"), "Could you give one example of when you did that? You can also skip this.");
+    expect(two.sentences).toEqual(["Could you give one example of when you did that? You can also skip this."]);
+  });
 });

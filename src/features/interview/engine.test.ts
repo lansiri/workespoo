@@ -4,7 +4,7 @@ import type { InterviewEvent, StartInterviewRequest } from "@/contracts";
 import { escoConcept, interviewEvent, job, jobSkill, llmCall, signal, talent, turn } from "@/db/schema";
 import { listAudit } from "@/lib/audit";
 import { hasConsent } from "@/lib/consent";
-import { INTERVIEW_LINES } from "@/lib/i18n/content/interview-lines";
+import { FALLBACK_QUESTIONS, INTERVIEW_LINES } from "@/lib/i18n/content/interview-lines";
 import { findProtectedQuestion } from "@/lib/lexicon";
 import { resetLlmState, setLlmFake, type LlmOptions } from "@/lib/llm";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
@@ -309,6 +309,7 @@ describe("the pre-check", () => {
     const after = readState((await loadInterview(t.db, interviewId))!);
     expect(after).toMatchObject({ questionsAsked: 2, repairsInRow: 0 });
     expect(after.coverage.recent_work).toBe("thin");
+    expect(after.reasked).not.toContain("recent_work");
     expect(calls.live).toHaveLength(0);
     expect(calls.extract).toHaveLength(0);
   });
@@ -647,5 +648,88 @@ describe("jobs light up", () => {
     const order = events.map((e) => e.type);
     expect(order.indexOf("signal.proposed")).toBeLessThan(order.indexOf("jobs.lit"));
     expect(order).toContain("coverage.updated");
+  });
+});
+
+describe("review fixes", () => {
+  it("a retry after a dropped reply stream gets the reply, with one stored answer", async () => {
+    let release!: () => void;
+    const gate = new Promise<void>((r) => (release = r));
+    let n = 0;
+    installFake({
+      live: async () => {
+        if (++n === 1) await gate;
+        return "Okay. Which tools do you use?";
+      },
+    });
+    const { interviewId } = await startInterview(t.db, request({ mode: "full" }));
+    const ac = new AbortController();
+    const first: InterviewEvent[] = [];
+    const run = (async () => {
+      for await (const e of submitTurn(t.db, interviewId, { text: WORK, inputMode: "text" }, { idempotencyKey: "retry-key-1", signal: ac.signal })) first.push(e);
+    })();
+    await vi.waitFor(async () => expect((await turnsOf(interviewId)).length).toBeGreaterThanOrEqual(2));
+    ac.abort();
+    release();
+    await run;
+    expect(first.filter((e) => e.type === "turn.done")).toHaveLength(0);
+    const retry = await say(interviewId, WORK, { key: "retry-key-1" });
+    expect(doneOf(retry)).toMatchObject({ kind: "question", closing: false });
+    const turns = await turnsOf(interviewId);
+    expect(turns.map((x) => x.role)).toEqual(["interviewer", "participant", "interviewer"]);
+    expect(readState((await loadInterview(t.db, interviewId))!)).toMatchObject({ stage: "awaiting_answer", questionsAsked: 2 });
+    await settleInterview(t.db, interviewId);
+  });
+
+  it("a request's clientTurnId dedupes like the header", async () => {
+    const calls = installFake();
+    const { interviewId } = await startInterview(t.db, request());
+    const body = { text: WORK, inputMode: "text", clientTurnId: "client-turn-1" } as never;
+    for (let i = 0; i < 2; i++) for await (const e of submitTurn(t.db, interviewId, body)) void e;
+    expect((await turnsOf(interviewId)).filter((x) => x.role === "participant")).toHaveLength(1);
+    expect(calls.live).toHaveLength(1);
+    await settleInterview(t.db, interviewId);
+  });
+
+  it("distress and protected_info leave only counts, not per-answer flags", async () => {
+    installFake({
+      extract: () => ({ lang: "en", signals: [], coverage: {}, flags: ["distress", "protected_info", "off_topic"], note: "" }),
+    });
+    const { interviewId } = await startInterview(t.db, request());
+    await say(interviewId, WORK);
+    await settleInterview(t.db, interviewId);
+    const state = readState((await loadInterview(t.db, interviewId))!);
+    expect(JSON.stringify(state.recentFlags)).not.toMatch(/distress|protected_info/);
+    expect(state.recentFlags).toEqual([["off_topic"]]);
+    expect(state.flagCounts).toMatchObject({ distress: 1, protected_info: 1 });
+  });
+
+  it("the fallback question for a language without a bank is English", async () => {
+    installFake({
+      live: () => "",
+      extract: () => ({ lang: "ar", signals: [], coverage: {}, flags: [], note: "" }),
+    });
+    const { interviewId } = await startInterview(t.db, request({ uiLang: "fi" }));
+    await say(interviewId, "أعمل في مستودع كبير وأستلم البضائع كل يوم");
+    await settleInterview(t.db, interviewId);
+    const done = doneOf(await say(interviewId, "أستخدم رافعة شوكية وجهاز مسح ضوئي في العمل"));
+    const english = Object.values(FALLBACK_QUESTIONS.en).flat();
+    expect(english).toContain(done.text);
+    await settleInterview(t.db, interviewId);
+  });
+
+  it("a short answer to a probe is re-asked once", async () => {
+    installFake();
+    const { interviewId } = await startInterview(t.db, request({ mode: "full" }));
+    await say(interviewId, WORK);
+    await settleInterview(t.db, interviewId);
+    const probe = doneOf(await say(interviewId, "A truck came with the wrong pallets and I checked each one by hand."));
+    expect(probe.kind).toBe("probe");
+    await settleInterview(t.db, interviewId);
+    const next = doneOf(await say(interviewId, "Yes, often."));
+    expect(next.kind).toBe("question");
+    const state = readState((await loadInterview(t.db, interviewId))!);
+    expect(state.reasked).toContain("example");
+    await settleInterview(t.db, interviewId);
   });
 });

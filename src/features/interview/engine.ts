@@ -162,7 +162,9 @@ function scriptLang(state: EngineState, turns: readonly TurnRow[], current?: str
 /** The language of bank questions: the detected reply language if we have a bank for it. */
 function bankLang(state: EngineState, interviewLang: string, detected: string): UiLang {
   if (isUiLang(detected)) return detected;
+  if (detected !== "unknown" && detected !== "und") return "en"; // a language without a bank
   if (isUiLang(interviewLang)) return interviewLang;
+  if (interviewLang !== "und" && interviewLang !== "unknown" && interviewLang !== state.uiLang) return "en";
   return state.uiLang;
 }
 
@@ -223,9 +225,33 @@ function* scriptedEvents(text: string, turnIndex: number, kind: TurnKind, closin
   yield { type: "turn.done", turnIndex, text, kind, closing };
 }
 
+/** The closing line on the turn response, and on the events stream so a lost response can be recovered. */
+async function* closingEvents(
+  db: Db,
+  interviewId: string,
+  closing: { index: number; text: string },
+): AsyncGenerator<InterviewEvent, void, void> {
+  await publishEvent(db, interviewId, {
+    type: "turn.done",
+    turnIndex: closing.index,
+    text: closing.text,
+    kind: "closing",
+    closing: true,
+  });
+  yield* scriptedEvents(closing.text, closing.index, "closing", true);
+}
+
+/** True when this retry key was already accepted for the interview (in this process). */
+export function isKnownTurnKey(interviewId: string, key: string | undefined): boolean {
+  return key !== undefined && (runtime().seenKeys.get(interviewId)?.has(key) ?? false);
+}
+
 /* ------------------------------------------------------------------------------------------
  * Ending
  * ---------------------------------------------------------------------------------------- */
+
+/** The per-answer flag history is only needed while the interview runs. */
+const dropFlagHistory = (s: EngineState): EngineState => ({ ...s, recentFlags: undefined });
 
 /** Wait for extraction, settle the status, announce completion and build the card. Never throws. */
 async function finishInterview(db: Db, interviewId: string, stopped: boolean): Promise<void> {
@@ -233,7 +259,7 @@ async function finishInterview(db: Db, interviewId: string, stopped: boolean): P
     const row = await loadInterview(db, interviewId);
     if (!row) return;
     if (!stopped) {
-      await mutateState(db, interviewId, (s) => s, { status: "completed", completedAt: new Date(nowMs()) });
+      await mutateState(db, interviewId, dropFlagHistory, { status: "completed", completedAt: new Date(nowMs()) });
       await publishEvent(db, interviewId, { type: "interview.completed", interviewId, talentId: row.talentId });
       await waitForPending(interviewId, FINISH_EXTRACTION_WAIT_MS);
     } else {
@@ -242,7 +268,7 @@ async function finishInterview(db: Db, interviewId: string, stopped: boolean): P
     const signals = await countLiveSignals(db, interviewId);
     const status = stopped && signals === 0 ? "abandoned" : "completed";
     if (stopped) {
-      await mutateState(db, interviewId, (s) => s, { status, completedAt: new Date(nowMs()) });
+      await mutateState(db, interviewId, dropFlagHistory, { status, completedAt: new Date(nowMs()) });
       await publishEvent(db, interviewId, { type: "interview.completed", interviewId, talentId: row.talentId });
     }
     await audit(db, {
@@ -356,7 +382,7 @@ export async function* submitTurn(
   opts: SubmitTurnOptions = {},
 ): AsyncGenerator<InterviewEvent, void, void> {
   const rt = runtime();
-  const key = opts.idempotencyKey;
+  const key = (request as TurnRequest & { clientTurnId?: string }).clientTurnId ?? opts.idempotencyKey;
   const duplicate = key !== undefined && (rt.seenKeys.get(interviewId)?.has(key) ?? false);
   if (key !== undefined && !duplicate) {
     const keys = rt.seenKeys.get(interviewId) ?? new Map<string, number | null>();
@@ -379,6 +405,7 @@ export async function* submitTurn(
         const turns = await loadTurns(db, interviewId);
         const reply = turns.find((t) => t.index === index + 1 && t.role === "interviewer");
         if (reply) yield* scriptedEvents(reply.text, reply.index, reply.kind, reply.kind === "closing");
+        else yield* resumeReply(db, interviewId, index, turns, request, ac);
         return;
       }
     }
@@ -388,6 +415,43 @@ export async function* submitTurn(
     if (rt.active.get(interviewId) === ac) rt.active.delete(interviewId);
     release();
   }
+}
+
+/**
+ * A retry whose answer is already stored but never got a reply (the first attempt's stream was
+ * dropped or it failed). Plans and streams the reply now; the answer is not stored again.
+ */
+async function* resumeReply(
+  db: Db,
+  interviewId: string,
+  answerIndex: number,
+  turns: TurnRow[],
+  request: TurnRequest,
+  ac: AbortController,
+): AsyncGenerator<InterviewEvent, void, void> {
+  const rt = runtime();
+  const row = await loadInterview(db, interviewId);
+  if (!row || row.status !== "active") return;
+  const state = readState(row);
+  if (state.stage === "closing" || state.stage === "synthesising") return;
+  const answer = turns.find((t) => t.index === answerIndex && t.role === "participant");
+  // Anything stored after the answer means a newer turn took over; this retry is stale.
+  if (!answer || turns.some((t) => t.index > answerIndex)) return;
+  rt.active.set(interviewId, ac); // barge-in works on the retry too
+  const lastQuestion = [...turns]
+    .reverse()
+    .find((t) => t.index < answerIndex && t.role === "interviewer" && (t.kind === "opening" || t.kind === "question" || t.kind === "probe"));
+  const check = preCheck(answer.text);
+  yield* planAndReply(db, row, state, turns, {
+    request,
+    detected: detectLang(answer.text, request.sttLang),
+    answerArea: answer.target ?? null,
+    answerWords: wordCount(answer.text),
+    lastKind: lastQuestion?.kind ?? null,
+    skipped: check === "skip",
+    repairFinal: check === "empty",
+    answerIndex,
+  }, ac);
 }
 
 async function* processTurn(
@@ -477,7 +541,7 @@ async function* processTurn(
 
   if (check === "stop") {
     const closing = await storeClosing(db, interviewId, "stopped", sLang);
-    yield* scriptedEvents(closing.text, closing.index, "closing", true);
+    yield* closingEvents(db, interviewId, closing);
     return;
   }
 
@@ -548,7 +612,7 @@ async function* planAndReply(
     answer: {
       words: ctx.answerWords,
       area: ctx.answerArea,
-      ignoreShort: ctx.skipped || ctx.repairFinal || ctx.lastKind === "probe",
+      ignoreShort: ctx.skipped || ctx.repairFinal,
     },
     latestSignals: (state.lastExtracted ?? [])
       .map((id) => byId.get(id))
@@ -560,7 +624,7 @@ async function* planAndReply(
 
   if (plan.action === "close") {
     const closing = await storeClosing(db, interviewId, plan.reason === "time_cap" ? "time_cap" : "done", sLang);
-    yield* scriptedEvents(closing.text, closing.index, "closing", true);
+    yield* closingEvents(db, interviewId, closing);
     return;
   }
 
@@ -642,7 +706,7 @@ async function* planAndReply(
 
     if (result.stopped) {
       const closing = await storeClosing(db, interviewId, "stopped", sLang);
-      yield* scriptedEvents(closing.text, closing.index, "closing", true);
+      yield* closingEvents(db, interviewId, closing);
       return;
     }
     if (result.aborted && result.emitted.length === 0) return; // never shown: does not count
@@ -666,7 +730,6 @@ async function* planAndReply(
     if (plan.reask && !reasked.includes(plan.target)) reasked.push(plan.target);
     if (ctx.repairFinal && ctx.answerArea) {
       if (coverage[ctx.answerArea] !== "covered") coverage[ctx.answerArea] = "thin";
-      if (!reasked.includes(ctx.answerArea)) reasked.push(ctx.answerArea);
     }
     return {
       ...s,

@@ -112,6 +112,29 @@ export async function* guardStream(
   let words = 0;
   let statements = 0;
   let haveQuestion = false;
+  /** An acceptable statement is held until a question is accepted, so a fallback never makes the reply too long. */
+  let held: string | null = null;
+  const fallbackSentences = (options.fallbackQuestion.match(/[.!?]+(?=\s|$)/g) ?? []).length;
+  const accept = function* (decided: { emit?: string; done?: boolean }): Generator<string> {
+    if (decided.emit === undefined) return;
+    if (!decided.done) {
+      // A statement can be shown at once only if the fallback could still follow it within the limits.
+      const fits =
+        fallbackSentences <= 1 && wordsIn(decided.emit) + wordsIn(options.fallbackQuestion) <= GUARD_MAX_WORDS;
+      if (fits) {
+        result.emitted.push(decided.emit);
+        yield decided.emit;
+      } else held = decided.emit;
+      return;
+    }
+    if (held !== null) {
+      result.emitted.push(held);
+      yield held;
+      held = null;
+    }
+    result.emitted.push(decided.emit);
+    yield decided.emit;
+  };
 
   /** Decide what to do with one sentence. Applies the effect only when `commit` is true. */
   const judge = (sentence: string, commit: boolean): { emit?: string; done?: boolean; action?: string } => {
@@ -185,10 +208,7 @@ export async function* guardStream(
         const sentence = pending.slice(0, boundary);
         pending = pending.slice(boundary).trimStart();
         const decided = consider(sentence);
-        if (decided.emit !== undefined) {
-          result.emitted.push(decided.emit);
-          yield decided.emit;
-        }
+        yield* accept(decided);
         if (decided.done) {
           haveQuestion = true;
           break reading;
@@ -198,10 +218,7 @@ export async function* guardStream(
     if (!haveQuestion && !result.stopped && !result.aborted && !timedOut && pending.trim() !== "") {
       const decided = consider(pending);
       pending = "";
-      if (decided.emit !== undefined) {
-        result.emitted.push(decided.emit);
-        yield decided.emit;
-      }
+      yield* accept(decided);
       if (decided.done) haveQuestion = true;
     }
   } catch {

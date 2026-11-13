@@ -146,4 +146,23 @@ describe("interview routes", () => {
     const again = await stop(post(`/api/interview/${interviewId}/stop`, {}), ctx(interviewId));
     expect(again.status).toBe(200);
   });
+
+  it("a retry of the answer that triggered the closing replays the closing line instead of 409, and the line is on the events stream", async () => {
+    const { interviewId } = await (await start(post("/api/interview", START), undefined as never)).json();
+    const answers = ["I worked at a logistics centre receiving goods.", "I used a scanner and a forklift every day.", "I work with drivers and the warehouse team."];
+    let last: InterviewEvent[] = [];
+    for (const [i, text] of answers.entries()) {
+      const res = await turn(post(`/api/interview/${interviewId}/turn`, { text, inputMode: "text" }, { "idempotency-key": `key-${i}` }), ctx(interviewId));
+      last = frames(await res.text()).map((f) => f.event);
+    }
+    const done = last.find((e) => e.type === "turn.done");
+    expect(done).toMatchObject({ kind: "closing", closing: true });
+    const retry = await turn(post(`/api/interview/${interviewId}/turn`, { text: answers[2], inputMode: "text" }, { "idempotency-key": "key-2" }), ctx(interviewId));
+    expect(retry.status).toBe(200);
+    expect(frames(await retry.text()).map((f) => f.event).find((e) => e.type === "turn.done")).toEqual(done);
+    // A genuinely new answer is still refused.
+    const fresh = await turn(post(`/api/interview/${interviewId}/turn`, { text: "More", inputMode: "text" }, { "idempotency-key": "key-new" }), ctx(interviewId));
+    expect(fresh.status).toBe(409);
+    await settleInterview(t.db, interviewId);
+  });
 });

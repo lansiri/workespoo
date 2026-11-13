@@ -10,13 +10,29 @@ export const FOLLOW_POLL_MS = 1000;
 
 /** Persist an event and wake followers in this process. Returns the event id. */
 export async function publishEvent(db: Db, interviewId: string, event: InterviewEvent): Promise<number> {
-  const [row] = await db
-    .insert(interviewEvent)
-    .values({ interviewId, type: event.type, payload: event })
-    .returning({ id: interviewEvent.id });
-  notify(interviewId);
-  return row?.id ?? 0;
+  // Inserts for one interview run one after another, so ids become visible in order and a
+  // follower that has seen id N never misses a lower id that commits later.
+  const previous = chains.get(interviewId) ?? Promise.resolve();
+  const insert = previous.then(async () => {
+    const [row] = await db
+      .insert(interviewEvent)
+      .values({ interviewId, type: event.type, payload: event })
+      .returning({ id: interviewEvent.id });
+    notify(interviewId);
+    return row?.id ?? 0;
+  });
+  const tail = insert.then(
+    () => undefined,
+    () => undefined,
+  );
+  chains.set(interviewId, tail);
+  void tail.then(() => {
+    if (chains.get(interviewId) === tail) chains.delete(interviewId);
+  });
+  return insert;
 }
+
+const chains = new Map<string, Promise<void>>();
 
 export async function* followEvents(
   db: Db,
