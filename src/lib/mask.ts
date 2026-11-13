@@ -44,7 +44,11 @@ export function employerTerms(...names: Array<string | null | undefined>): strin
 }
 
 /**
- * Replace every case-insensitive occurrence of the employer's name with "the company".
+ * Replace the employer's name with "the company". A term matches only at a word start, may be
+ * followed by a Finnish or Swedish case ending (up to six lower-case letters, optionally after a
+ * colon or apostrophe: "Koneen", "ABB:n", "Acmes") and then needs a word end; the ending is
+ * swallowed. A single-word term matches only when it starts with an upper-case letter, so the
+ * common noun "kone" is left alone; multi-word terms are case-insensitive.
  * `employer` is one name, or the terms from `employerTerms()` when several names apply
  * (the company's real name and the name on the posting).
  */
@@ -55,9 +59,16 @@ export function maskEmployer(
 ): string {
   const terms = typeof employer === "string" ? employerTerms(employer) : employer;
   let out = text;
-  for (const term of terms) {
+  for (const raw of terms) {
+    const term = raw.trim();
     if (!term) continue;
-    out = out.replace(new RegExp(escapeRegExp(term), "gi"), replacement);
+    const singleWord = !/\s/.test(term);
+    const re = new RegExp(`(?<![\\p{L}\\p{N}])${escapeRegExp(term)}(?:[:'\u2019]?(\\p{L}{1,6}))?(?![\\p{L}\\p{N}])`, "giu");
+    out = out.replace(re, (match, ending: string | undefined) => {
+      if (ending !== undefined && ending !== ending.toLowerCase()) return match;
+      if (singleWord && /\p{Ll}/u.test(match.charAt(0))) return match;
+      return replacement;
+    });
   }
   return out;
 }

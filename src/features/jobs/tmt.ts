@@ -2,7 +2,7 @@ import { and, eq, inArray, lt, or, sql, type SQL } from "drizzle-orm";
 import type { Db } from "@/db/client";
 import { job, jobSkill } from "@/db/schema";
 import type { EmployerSector, Lang } from "@/contracts";
-import { REDACTED, redactContacts } from "@/lib/redact";
+import { REDACTED, redactContacts, scrubPostingText, scrubSentenceList } from "@/lib/redact";
 import { splitSentences } from "@/lib/sentences";
 import { createPoliteFetcher, type PoliteOptions, type PoliteFetcher } from "./polite-fetch";
 
@@ -94,17 +94,28 @@ function stripMarkdown(line: string): string {
     .trim();
 }
 
+const NAMED_ENTITIES: Record<string, string> = { nbsp: " ", amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", shy: "" };
+
+/** Decode HTML entities (named basics and numeric) that postings carry in plain text. */
+export function decodeEntities(text: string): string {
+  return text.replace(/&(?:#(\d{1,6})|#x([0-9a-f]{1,5})|([a-z]{2,6}));/gi, (whole, dec?: string, hex?: string, name?: string) => {
+    if (name) return NAMED_ENTITIES[name.toLowerCase()] ?? whole;
+    const code = dec ? Number(dec) : parseInt(hex ?? "", 16);
+    return code > 0 && code <= 0x10ffff ? String.fromCodePoint(code) : whole;
+  });
+}
+
 /** Lines, bullet markers stripped, then sentences per line (docs/specs/need-card.md section 2). */
 export function postingSentences(redactedDescription: string): string[] {
   const out: string[] = [];
-  for (const rawLine of redactedDescription.replace(/\r\n?/g, "\n").split("\n")) {
+  for (const rawLine of decodeEntities(redactedDescription).replace(/\r\n?/g, "\n").split("\n")) {
     const line = stripMarkdown(rawLine.replace(BULLET, ""));
     if (line.length < 3) continue;
     // "puh. [removed]" must not be cut after "puh.": hide the marker's leading bracket while splitting.
     const masked = line.split(REDACTED).join(MARKER_STAND_IN);
     for (const piece of splitSentences(masked)) {
       const sentence = piece.split(MARKER_STAND_IN).join(REDACTED);
-      if (sentence.length >= 3) out.push(sentence);
+      if (sentence.length >= 3 && /[\p{L}\p{N}]/u.test(sentence)) out.push(sentence);
     }
   }
   return out;
@@ -112,7 +123,7 @@ export function postingSentences(redactedDescription: string): string[] {
 
 /** Remove `recruiter` and redact every string in the posting, keeping the rest as it came. */
 export function sanitiseTmtRaw(value: unknown, top = true): unknown {
-  if (typeof value === "string") return redactContacts(value);
+  if (typeof value === "string") return scrubPostingText(value);
   if (Array.isArray(value)) return value.map((v) => sanitiseTmtRaw(v, false));
   if (isRec(value)) {
     const out: Rec = {};
@@ -222,8 +233,11 @@ export function normaliseTmtPosting(detail: unknown, ctx: NormaliseContext = {})
     pickLang(descriptions)?.text ??
     pickLang(marketing)?.text ??
     "";
-  const description = redactContacts(descriptionRaw.replace(/\r\n?/g, "\n")).trim();
-  const sentences = postingSentences(description);
+  const decoded = decodeEntities(descriptionRaw).replace(/\r\n?/g, "\n");
+  // The text drops every contact sentence; the sentence list keeps positions (a removed sentence
+  // becomes `[removed]`) so that anything pointing at a sentence index stays valid.
+  const description = scrubPostingText(decoded).trim();
+  const sentences = scrubSentenceList(postingSentences(redactContacts(decoded)));
 
   const owner = at(detail, "owner");
   const isPerson = str(at(owner, "employerType")) === "Person";
@@ -296,6 +310,38 @@ export function normaliseTmtPosting(detail: unknown, ctx: NormaliseContext = {})
     raw: isPerson ? scrubPrivatePerson(sanitiseTmtRaw(detail)) : sanitiseTmtRaw(detail),
   };
   return { job: row, skillUris: row.escoSkillUris ?? [] };
+}
+
+// ---------- one-time re-scrub of stored postings ----------
+
+/**
+ * Apply the contact-sentence removal to postings already stored: description, raw posting and
+ * sentences. Sentence positions are always kept (a removed sentence becomes `[removed]`), because Need Cards
+ * and job matches cite sentences by index. Safe to run twice.
+ */
+export async function rescrubStoredPostings(db: Db): Promise<{ postings: number; changed: number }> {
+  const rows = await db
+    .select({
+      id: job.id,
+      description: job.description,
+      sentences: job.sentences,
+      raw: job.raw,
+    })
+    .from(job);
+  let changed = 0;
+  for (const row of rows) {
+    const description = scrubPostingText(decodeEntities(row.description)).trim();
+    const sentences = scrubSentenceList(row.sentences);
+    const raw = row.raw === null || row.raw === undefined ? row.raw : sanitiseTmtRaw(row.raw);
+    const same =
+      description === row.description &&
+      JSON.stringify(sentences) === JSON.stringify(row.sentences) &&
+      JSON.stringify(raw) === JSON.stringify(row.raw);
+    if (same) continue;
+    await db.update(job).set({ description, sentences, raw }).where(eq(job.id, row.id));
+    changed++;
+  }
+  return { postings: rows.length, changed };
 }
 
 // ---------- ingestion ----------

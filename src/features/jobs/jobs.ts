@@ -2,7 +2,7 @@ import { z } from "zod";
 import { defineJob, type JobDefinition, type Schedule } from "@/lib/queue";
 import { MUNICIPALITY_CODES } from "@/contracts";
 import { crawlOccupationSkills } from "./esco-occupations";
-import { ingestTmt } from "./tmt";
+import { ingestTmt, rescrubStoredPostings } from "./tmt";
 
 /** Työmarkkinatori ingestion for the given municipality codes (all of Espoo by default). */
 export const ingestTmtJob = defineJob(
@@ -22,7 +22,12 @@ export const crawlOccupationsJob = defineJob(
   },
 );
 
-export const jobs: JobDefinition[] = [ingestTmtJob, crawlOccupationsJob];
+/** One-time removal of contact sentences from postings stored before the rule existed. */
+export const rescrubJob = defineJob("jobs.rescrub", z.object({}), async (_payload, { db }) => {
+  await rescrubStoredPostings(db);
+});
+
+export const jobs: JobDefinition[] = [ingestTmtJob, crawlOccupationsJob, rescrubJob];
 
 export const schedules: Schedule[] = [
   { kind: "jobs.ingest_tmt", everyMinutes: 6 * 60, payload: { municipalities: [MUNICIPALITY_CODES.espoo] } },

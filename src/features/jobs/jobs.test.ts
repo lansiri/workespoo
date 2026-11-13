@@ -10,8 +10,8 @@ beforeAll(async () => {
 afterAll(() => t.close());
 
 describe("jobs queue definitions", () => {
-  it("defines the two kinds the feature API names", () => {
-    expect(jobs.map((j) => j.kind).sort()).toEqual(["jobs.crawl_occupations", "jobs.ingest_tmt"]);
+  it("defines the kinds the feature API names, and the one-time rescrub", () => {
+    expect(jobs.map((j) => j.kind).sort()).toEqual(["jobs.crawl_occupations", "jobs.ingest_tmt", "jobs.rescrub"]);
   });
 
   it("schedules ingestion every 6 hours for Espoo and the occupation crawl every 30 minutes, limit 100", () => {
