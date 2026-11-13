@@ -1,15 +1,16 @@
 import { z } from "zod";
 import { Id } from "./common";
-import { CoverageArea } from "./interview";
+import { CoverageArea, CoverageStatus, TurnKind } from "./interview";
 import { JobTeaser } from "./jobs";
-import { Signal } from "./signal";
+import { SignalPublic } from "./signal";
 
 /**
  * Everything the server streams to the browser during an interview. One JSON object per
  * server-sent event, in the `data:` field. The `type` field discriminates.
  *
  * `turn.delta` and `turn.done` come back on the response to POST /api/interview/{id}/turn.
- * The rest arrive on GET /api/interview/{id}/events as the background extractor finishes.
+ * The rest arrive on GET /api/interview/{id}/events as background work finishes.
+ * Signals are sent without the internal `hasExample` field.
  */
 export const InterviewEvent = z.discriminatedUnion("type", [
   z.object({ type: z.literal("turn.delta"), text: z.string() }),
@@ -17,11 +18,12 @@ export const InterviewEvent = z.discriminatedUnion("type", [
     type: z.literal("turn.done"),
     turnIndex: z.number().int().min(0),
     text: z.string(),
-    /** True when this was the interviewer's closing utterance. */
+    kind: TurnKind,
+    /** True when this was the interviewer's closing line. */
     closing: z.boolean(),
   }),
-  z.object({ type: z.literal("signal.proposed"), signal: Signal }),
-  z.object({ type: z.literal("signal.updated"), signal: Signal }),
+  z.object({ type: z.literal("signal.proposed"), signal: SignalPublic }),
+  z.object({ type: z.literal("signal.updated"), signal: SignalPublic }),
   z.object({
     type: z.literal("jobs.lit"),
     /** Active postings linked to the person's signals so far. */
@@ -30,10 +32,11 @@ export const InterviewEvent = z.discriminatedUnion("type", [
   }),
   z.object({
     type: z.literal("coverage.updated"),
-    covered: z.array(CoverageArea),
-    questionsLeft: z.number().int().min(0),
+    areas: z.partialRecord(CoverageArea, CoverageStatus),
   }),
   z.object({ type: z.literal("interview.completed"), interviewId: Id, talentId: Id }),
+  /** The draft card is ready for review. */
+  z.object({ type: z.literal("card.ready"), talentId: Id }),
   z.object({ type: z.literal("error"), message: z.string(), retryable: z.boolean() }),
 ]);
 export type InterviewEvent = z.infer<typeof InterviewEvent>;

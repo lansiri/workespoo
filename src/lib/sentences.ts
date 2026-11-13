@@ -40,8 +40,9 @@ const ABBREVIATIONS = new Set([
 ]);
 
 /** Longest run of words kept as one sentence when the text has no usable punctuation. */
-export const MAX_WORDS_PER_SENTENCE = 40;
-const TARGET_WORDS_PER_CHUNK = 24;
+export const MAX_WORDS_PER_SENTENCE = 30;
+export const MAX_WORDS_PER_CHUNK = 25;
+const TARGET_WORDS_PER_CHUNK = 18;
 
 const BOUNDARY = /([.!?…]+)(["'”’)\]]*)\s+(?=[\p{Lu}\p{N}"'“‘(\[])/gu;
 
@@ -87,7 +88,7 @@ function chunkLongSentence(sentence: string): string[] {
     const atClauseEnd = /[,;:]$/.test(word);
     if (
       (current.length >= TARGET_WORDS_PER_CHUNK && atClauseEnd) ||
-      current.length >= MAX_WORDS_PER_SENTENCE
+      current.length >= MAX_WORDS_PER_CHUNK
     ) {
       chunks.push(current.join(" "));
       current = [];
@@ -107,8 +108,9 @@ function chunkLongSentence(sentence: string): string[] {
 }
 
 /**
- * Render the text an evidence reference points at. Returns null when the reference does
- * not resolve, in which case the caller drops it.
+ * Render the text an evidence reference points at. Sentence numbers are 1-based, as in
+ * the labels models cite (`T3.S2` is the second sentence of turn 3). Returns null when the
+ * reference does not resolve, in which case the caller drops it.
  */
 export function renderEvidence(
   sentences: readonly string[],
@@ -118,16 +120,16 @@ export function renderEvidence(
   if (
     !Number.isInteger(sentenceFrom) ||
     !Number.isInteger(sentenceTo) ||
-    sentenceFrom < 0 ||
+    sentenceFrom < 1 ||
     sentenceTo < sentenceFrom ||
-    sentenceTo >= sentences.length
+    sentenceTo > sentences.length
   ) {
     return null;
   }
-  return sentences.slice(sentenceFrom, sentenceTo + 1).join(" ");
+  return sentences.slice(sentenceFrom - 1, sentenceTo).join(" ");
 }
 
-/** Label participant sentences the way prompts show them: `[T3.S0] text`. */
+/** Label participant sentences the way prompts show them: `[T3.S1] text`, numbered from 1. */
 export function labelSentences(turnIndex: number, sentences: readonly string[]): string[] {
-  return sentences.map((sentence, i) => `[T${turnIndex}.S${i}] ${sentence}`);
+  return sentences.map((sentence, i) => `[T${turnIndex}.S${i + 1}] ${sentence}`);
 }

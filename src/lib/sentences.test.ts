@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
-  MAX_WORDS_PER_SENTENCE,
+  MAX_WORDS_PER_CHUNK,
   labelSentences,
   renderEvidence,
   splitSentences,
@@ -47,7 +47,7 @@ describe("splitSentences", () => {
     const sentences = splitSentences(text);
     expect(sentences.length).toBeGreaterThan(2);
     for (const s of sentences) {
-      expect(s.split(" ").length).toBeLessThanOrEqual(MAX_WORDS_PER_SENTENCE + 5);
+      expect(s.split(" ").length).toBeLessThanOrEqual(MAX_WORDS_PER_CHUNK + 5);
     }
     expect(sentences.join(" ")).toBe(text);
   });
@@ -59,24 +59,25 @@ describe("splitSentences", () => {
 });
 
 describe("renderEvidence", () => {
-  const sentences = ["Zero.", "One.", "Two."];
+  const sentences = ["One.", "Two.", "Three."];
 
-  it("renders a single sentence and a range", () => {
+  it("renders a single sentence and a range, numbered from 1", () => {
     expect(renderEvidence(sentences, 1, 1)).toBe("One.");
-    expect(renderEvidence(sentences, 0, 2)).toBe("Zero. One. Two.");
+    expect(renderEvidence(sentences, 2, 2)).toBe("Two.");
+    expect(renderEvidence(sentences, 1, 3)).toBe("One. Two. Three.");
   });
 
   it("returns null for references that do not resolve", () => {
-    expect(renderEvidence(sentences, 2, 3)).toBeNull();
-    expect(renderEvidence(sentences, -1, 0)).toBeNull();
-    expect(renderEvidence(sentences, 2, 1)).toBeNull();
-    expect(renderEvidence(sentences, 0.5, 1)).toBeNull();
-    expect(renderEvidence([], 0, 0)).toBeNull();
+    expect(renderEvidence(sentences, 0, 1)).toBeNull();
+    expect(renderEvidence(sentences, 3, 4)).toBeNull();
+    expect(renderEvidence(sentences, 3, 2)).toBeNull();
+    expect(renderEvidence(sentences, 1.5, 2)).toBeNull();
+    expect(renderEvidence([], 1, 1)).toBeNull();
   });
 });
 
 describe("labelSentences", () => {
   it("labels sentences the way prompts show them", () => {
-    expect(labelSentences(3, ["A.", "B."])).toEqual(["[T3.S0] A.", "[T3.S1] B."]);
+    expect(labelSentences(3, ["A.", "B."])).toEqual(["[T3.S1] A.", "[T3.S2] B."]);
   });
 });

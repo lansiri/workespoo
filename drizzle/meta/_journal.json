@@ -8,6 +8,13 @@
       "when": 1794597982116,
       "tag": "0000_tough_texas_twister",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794598816513,
+      "tag": "0001_low_maverick",
+      "breakpoints": true
     }
   ]
 }

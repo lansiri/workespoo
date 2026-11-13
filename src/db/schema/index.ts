@@ -1,8 +1,11 @@
-import { jsonb, pgTable, text, timestamp } from "drizzle-orm/pg-core";
-
-// Placeholder table. The lead replaces this schema.
-export const appMeta = pgTable("app_meta", {
-  key: text("key").primaryKey(),
-  value: jsonb("value"),
-  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
-});
+/**
+ * Database schema. Lead-owned: only the lead edits these files and generates migrations.
+ * Card bodies are stored as jsonb and validated with the Zod contracts on read and write,
+ * so additive contract changes need no migration.
+ */
+export * from "./esco";
+export * from "./jobs";
+export * from "./people";
+export * from "./matching";
+export * from "./trust";
+export * from "./system";
