@@ -137,6 +137,21 @@ export const SPEECH_CUES = [
   "mother tongue", "pronunciation",
 ] as const;
 
+/**
+ * Words that turn a reason into a judgement of a person. A reason states how a card relates
+ * to a posting or a need; it never praises, grades, compares or recommends. Source: the code
+ * checks in docs/specs/prompts/match-reasons.md and picks-draft.md. Reasons are always English.
+ */
+export const REASON_JUDGEMENT = [
+  "strong", "strongly", "excellent", "great", "impressive", "perfect", "perfectly", "ideal",
+  "ideally", "expert", "talented", "skilled", "qualified", "senior", "junior", "fit", "fits",
+  "match", "matches", "matched", "best", "top", "highly", "recommend", "recommends",
+  "recommended", "score", "scores", "percent", "outstanding", "exceptional", "superb",
+] as const;
+
+/** Third-person pronouns. A reason about a person shown to a company must not gender them. */
+export const GENDERED_PRONOUNS = ["he", "she", "him", "her", "his", "hers", "himself", "herself"] as const;
+
 /** Words that grade a skill. They are removed from phrases; a phrase is never a level. */
 export const QUALITY_WORDS = [
   "advanced", "expert", "senior", "junior", "strong", "good", "basic", "excellent", "experienced",
@@ -165,6 +180,9 @@ const CARD_RE = compileList(PROTECTED_CARD, "giu");
 const COUNTRY_RE = compileList(COUNTRIES_AND_DEMONYMS, "gu");
 const QUALITY_RE = compileList(QUALITY_WORDS, "giu");
 const SPEECH_RE = compileList(SPEECH_CUES, "giu");
+const JUDGEMENT_RE = compileList(REASON_JUDGEMENT, "giu");
+const PRONOUN_RE = compileList(GENDERED_PRONOUNS, "giu");
+const NUMBER_CLAIM_RE = /%|\d+\s*\/\s*\d+|\b\d+\s+(?:out\s+)?of\s+\d+\b/giu;
 
 function matches(re: RegExp, text: string): string[] {
   return [...text.matchAll(re)].map((m) => m[0].toLowerCase());
@@ -188,6 +206,18 @@ export function findProtectedCard(text: string): string[] {
     if (m) hits.push(m[0].toLowerCase());
   }
   hits.push(...[...text.matchAll(COUNTRY_RE)].map((m) => m[0]));
+  return hits;
+}
+
+/**
+ * Why a model-written reason may not be shown, as the offending fragments: judgement words,
+ * percentages and "2/5" or "2 of 5" style counts, and (with `pronouns`) gendered pronouns.
+ * An empty list means the reason passes. Use for job-feed reasons and for pick reasons.
+ */
+export function findReasonJudgement(text: string, opts: { pronouns?: boolean } = {}): string[] {
+  const hits = matches(JUDGEMENT_RE, text);
+  hits.push(...[...text.matchAll(NUMBER_CLAIM_RE)].map((m) => m[0].toLowerCase()));
+  if (opts.pronouns) hits.push(...matches(PRONOUN_RE, text));
   return hits;
 }
 

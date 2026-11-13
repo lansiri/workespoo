@@ -3,6 +3,7 @@ import {
   findBannedEvaluative,
   findProtectedCard,
   findProtectedQuestion,
+  findReasonJudgement,
   findSpeechCue,
   stripQualityWords,
 } from "./lexicon";
@@ -136,5 +137,34 @@ describe("findSpeechCue", () => {
   it("leaves ordinary skill wording alone", () => {
     expect(findSpeechCue("They receive goods and check them against orders.")).toEqual([]);
     expect(findSpeechCue("They maintain bespoke reporting tools.")).toEqual([]);
+  });
+});
+
+describe("findReasonJudgement", () => {
+  it("catches praise, recommendation, percentages and counts", () => {
+    expect(findReasonJudgement("Python data pipelines directly match the requirement.")).toEqual(["match"]);
+    expect(findReasonJudgement("A strong, highly recommended candidate.")).toEqual([
+      "strong",
+      "highly",
+      "recommended",
+    ]);
+    expect(findReasonJudgement("Covers 4/5 requirements, about 80% of the role.")).toEqual(["4/5", "%"]);
+    expect(findReasonJudgement("Speaks to 3 of 5 needs.")).toEqual(["3 of 5"]);
+  });
+
+  it("catches gendered pronouns only when asked", () => {
+    const text = "She describes receiving goods, which relates to warehouse intake.";
+    expect(findReasonJudgement(text)).toEqual([]);
+    expect(findReasonJudgement(text, { pronouns: true })).toEqual(["she"]);
+  });
+
+  it("passes a plain relational reason", () => {
+    expect(
+      findReasonJudgement("The card describes Python data pipelines, which relates to building ETL jobs.", {
+        pronouns: true,
+      }),
+    ).toEqual([]);
+    expect(findReasonJudgement("The card describes fitting tiles, which relates to bathroom renovation.")).toEqual([]);
+    expect(findReasonJudgement("The card describes topology design for networks.")).toEqual([]);
   });
 });

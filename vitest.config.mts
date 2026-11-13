@@ -5,7 +5,7 @@ export default defineConfig({
   resolve: { alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) } },
   test: {
     environment: "node",
-    include: ["src/**/*.test.ts", "tests/**/*.test.ts"],
+    include: ["src/**/*.test.{ts,tsx}", "tests/**/*.test.{ts,tsx}"],
     exclude: [".claude/**", "node_modules/**", ".next/**", "e2e/**"],
     env: { NODE_ENV: "test" },
     // Generous timeouts and few workers: several agents run test suites on this machine at

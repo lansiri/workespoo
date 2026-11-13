@@ -90,6 +90,7 @@ export const AUDIT_ACTIONS = [
   "intro.accepted",
   "intro.declined",
   "intro.withdrawn",
+  "intro.cancelled",
   "intro.expired",
   "identity.revealed",
   "agenda.assigned",
