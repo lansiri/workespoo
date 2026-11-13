@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today's review · WorkEspoo organiser</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="signal.css">
+</head>
+<body>
+<div class="rv">
+  <header class="topbar">
+    <a class="logo" href="#" aria-label="WorkEspoo">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 23L20 52L32 33L44 52L55 23" fill="none" stroke="#0E5E55" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="15" r="7.5" fill="#FFB627"/></svg>
+      <b>WorkEspoo</b>
+    </a>
+    <nav class="rv-nav" aria-label="Organiser">
+      <a href="#">Overview</a><a href="#" aria-current="page" data-fi="Päivän tarkistus">Today's review</a><a href="#">Pool</a><a href="#">Unmatched</a><a href="#">Exposure</a><a href="#">Agenda</a><a href="#">Audit log</a>
+    </nav>
+    <span class="spacer"></span>
+    <span class="role-pill"><i>EO</i>Espoo organiser</span>
+  </header>
+
+  <div class="rv-main">
+    <nav class="rv-rail" aria-label="Companies">
+      <h2 data-fi="Päivän tarkistus">Today's review</h2>
+      <p class="date">Monday 16 November · TalentMatch Espoo</p>
+      <button class="co" aria-current="true" type="button"><b>Demo company 03</b><span>Data engineer</span><span class="st" id="railSt"></span></button>
+      <button class="co" type="button"><b>Demo company 07</b><span>Practical nurse, home care</span><span class="st">0 of 3 decided</span></button>
+      <button class="co" type="button"><b>Demo company 11</b><span>Warehouse and device support</span><span class="st pub">Published 08:12</span></button>
+      <button class="co" type="button"><b>Demo company 05</b><span>Junior web developer</span><span class="st">0 of 4 decided</span></button>
+      <button class="co" type="button"><b>Demo company 09</b><span>Kitchen helper</span><span class="st none">Nobody relates to this need yet</span></button>
+      <p class="rail-note">Each suggestion is decided on its own. There is no way to approve several at once, and must-have requirements never filter anyone out.</p>
+    </nav>
+
+    <main class="rv-work" id="work">
+      <div class="need">
+        <div>
+          <p class="co-name">Demo company 03 · based on a real public posting, employer name hidden</p>
+          <h1>Data engineer</h1>
+          <p class="one">Keep the nightly sensor-data pipelines running and the morning reports free of gaps.</p>
+          <div class="reqs">
+            <span class="req"><small>Must</small>Python</span>
+            <span class="req"><small>Must</small>SQL</span>
+            <span class="req"><small>Must</small>Fluent Finnish</span>
+            <span class="req"><small>Nice</small>Azure Data Factory</span>
+            <span class="req"><small>Nice</small>Explaining data to others</span>
+            <span class="req-note">Must-haves are asked as questions to the company. Nobody is filtered out.</span>
+          </div>
+        </div>
+        <div class="pub-box">
+          <p class="left" id="left"></p>
+          <div class="left-bar" id="leftBar" aria-hidden="true"></div>
+          <button class="btn btn-primary" id="publish" type="button" disabled><span data-fi="Julkaise ja lähetä yritykselle">Publish to Demo company 03</span> <kbd>P</kbd></button>
+          <p class="pub-help" id="pubHelp"></p>
+        </div>
+      </div>
+
+      <div class="list-head">
+        <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3l10 10h3M4 17h3l3-3M14 10l3-3h3M18 4l2 3-2 3M18 14l2 3-2 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="listTitle"></span></h2>
+        <span class="legend"><span><i class="mk-card"></i>From the card</span><span><i class="mk-post"></i>From the posting</span></span>
+        <button class="btn btn-quiet" type="button">+ Add a person to this need <kbd>N</kbd></button>
+      </div>
+      <div id="picks"></div>
+    </main>
+  </div>
+
+  <div class="keys" aria-label="Keyboard">
+    <span><kbd>J</kbd><kbd>K</kbd> move</span>
+    <span><kbd>A</kbd> approve</span>
+    <span><kbd>R</kbd> remove, with a reason</span>
+    <span><kbd>E</kbd> edit a reason</span>
+    <span><kbd>U</kbd> undo</span>
+    <span><kbd>P</kbd> publish</span>
+    <span><kbd>?</kbd> all keys</span>
+    <span class="no-all">One person at a time. No approve-all.</span>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(() => {
+  const P = new URLSearchParams(location.search);
+  const FI = P.get("lang") === "fi";
+  if (FI) { document.documentElement.lang = "fi"; document.querySelectorAll("[data-fi]").forEach(el => el.textContent = el.dataset.fi); }
+
+  const REASONS = [
+    "The reasons do not hold up when I read the card",
+    "Already in contact with this company",
+    "Same person already picked for another need of this company",
+    "The person asked not to be suggested here",
+    "Other (write why)"
+  ];
+  // synthetic people, listed alphabetically by handle: the order carries no meaning
+  const picks = [
+    { h: "Alder-58", line: "Builds nightly data loads from sensors into a database",
+      r: [["They build Python pipelines that load sensor data into a database every night.", "You will build and maintain our nightly data pipelines in Python."],
+          ["They write SQL checks so the morning report has no gaps.", "Daily SQL quality checks on the reporting tables."],
+          ["They present the numbers to the operations team every week.", "You will explain the data to colleagues in operations."]],
+      nm: ["Fluent Finnish", "Azure Data Factory"], d: null },
+    { h: "Harbour-90", line: "Plans stock flows and builds reports from warehouse data",
+      r: [["They write SQL queries to pull stock movements for weekly planning.", "Daily SQL quality checks on the reporting tables."],
+          ["They build Power BI reports that store managers use each morning.", "You will explain the data to colleagues in operations."]],
+      nm: ["Python", "Azure Data Factory", "Fluent Finnish"], d: null },
+    { h: "Lantern-63", line: "Lab technician who automates instrument reports",
+      r: [["They wrote Python scripts that read instrument files and fill a results table.", "You will build and maintain our nightly data pipelines in Python."],
+          ["They check each night's results for missing samples before the morning meeting.", "Make sure the morning reports have no gaps."]],
+      nm: ["SQL", "Azure Data Factory"], d: null },
+    { h: "Quartz-14", line: "Self-taught web developer who builds apps and their databases",
+      r: [["They design PostgreSQL tables and write migrations for the apps they build.", "Experience with relational databases such as PostgreSQL."],
+          ["They wrote a Python script that imports supplier price lists from CSV every night.", "You will build and maintain our nightly data pipelines in Python."]],
+      nm: ["Azure Data Factory", "Fluent Finnish"], d: null }
+  ];
+  if (!P.has("fresh")) picks[0].d = { ok: true };
+  let sel = picks.findIndex(p => !p.d); if (sel < 0) sel = 0;
+  let pop = -1, published = false;
+  const history = [];
+  const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const $ = id => document.getElementById(id);
+  const toast = m => { const t = $("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove("show"), 2200); };
+
+  const CHECK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const MINUS = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
+
+  function render() {
+    const decided = picks.filter(p => p.d).length, left = picks.length - decided;
+    $("listTitle").textContent = `${picks.length} suggestions · in no particular order`;
+    $("left").innerHTML = published ? "<b>✓</b>Published" : left ? `<b>${left}</b>left to decide` : "<b>0</b>left · ready to publish";
+    $("leftBar").innerHTML = picks.map(p => `<i class="${p.d ? (p.d.ok ? "ok" : "rm") : ""}"></i>`).join("");
+    $("publish").disabled = left > 0 || published;
+    $("pubHelp").textContent = published ? "Sent to the company's private link." : left ? `Publish turns on when every suggestion has a decision. Next: ${picks.find(p => !p.d).h}.` : "Approved people will appear on the company's private link.";
+    $("railSt").textContent = published ? "Published" : `${decided} of ${picks.length} decided`;
+    $("railSt").classList.toggle("pub", published);
+
+    $("picks").innerHTML = picks.map((p, i) => {
+      const reasons = p.r.map(([c, s]) => `<li class="reason"><span class="c"><i class="mk-card" aria-label="From the card"></i>${esc(c)}</span><span class="post"><i class="mk-post" aria-label="From the posting"></i>“${esc(s)}”</span></li>`).join("");
+      let acts;
+      if (!p.d) acts = `<div class="acts"><button class="btn btn-primary" data-act="a" data-i="${i}" type="button">${CHECK}Approve <kbd>A</kbd></button><button class="btn btn-ghost" data-act="r" data-i="${i}" type="button">Remove… <kbd>R</kbd></button></div>`;
+      else if (p.d.ok) acts = `<div class="decided ok"><span class="lab">${CHECK}Approved</span><span class="why">Will be in today's list for this company.</span><button class="btn btn-quiet" data-act="u" data-i="${i}" type="button">Undo <kbd>U</kbd></button></div>`;
+      else acts = `<div class="decided rm"><span class="lab">${MINUS}Removed</span><span class="why">${esc(REASONS[p.d.code])}</span><button class="btn btn-quiet" data-act="u" data-i="${i}" type="button">Undo <kbd>U</kbd></button></div>`;
+      const popHtml = pop === i ? `<div class="rm-scrim"></div><div class="rm-pop" role="dialog" aria-label="Why remove ${p.h}?">
+          <h3>Why remove ${p.h} from this list?</h3>
+          <p>The reason is logged. It is never shown to the person as a judgement.</p>
+          <ol>${REASONS.map((r, k) => `<li><label><input type="radio" name="why" value="${k}" ${k === 0 ? "checked" : ""}><kbd>${k + 1}</kbd>${esc(r)}</label></li>`).join("")}</ol>
+          <textarea rows="2" placeholder="Note (needed for Other)" aria-label="Note"></textarea>
+          <div class="row"><button class="btn btn-ghost" data-act="esc" type="button">Cancel <kbd>Esc</kbd></button><button class="btn btn-primary" data-act="ok" data-i="${i}" type="button">Remove <kbd>Enter</kbd></button></div>
+        </div>` : "";
+      return `<article class="pick ${i === sel ? "sel" : ""} ${p.d ? "done" : ""} ${p.d && !p.d.ok ? "is-rm" : ""}" data-i="${i}" aria-current="${i === sel}">
+        <div class="hd"><b><i aria-hidden="true"></i>${p.h}</b><p>${esc(p.line)}</p><span class="syn">Synthetic person</span></div>
+        <div><ul class="reasons">${reasons}</ul>
+          <p class="nm"><span class="k">Not mentioned in the card</span>${p.nm.map(n => `<span class="tag">${esc(n)}</span>`).join("")}<span class="fine">Not mentioned does not mean missing.</span></p></div>
+        ${acts}${popHtml}
+      </article>`;
+    }).join("");
+  }
+
+  function nextUndecided(from) { for (let k = 1; k <= picks.length; k++) { const j = (from + k) % picks.length; if (!picks[j].d) return j; } return from; }
+  function decide(i, d) { history.push(i); picks[i].d = d; pop = -1; sel = nextUndecided(i); render(); scroll(); }
+  function scroll() { const el = document.querySelector(`.pick[data-i="${sel}"]`); el && el.scrollIntoView({ block: "nearest" }); }
+
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-act]");
+    if (b) {
+      const i = +b.dataset.i, a = b.dataset.act;
+      if (a === "a") decide(i, { ok: true });
+      if (a === "r") { sel = i; pop = i; render(); }
+      if (a === "u") { picks[i].d = null; sel = i; render(); }
+      if (a === "esc") { pop = -1; render(); }
+      if (a === "ok") decide(i, { ok: false, code: +document.querySelector('.rm-pop input[name="why"]:checked').value });
+      return;
+    }
+    const card = e.target.closest(".pick");
+    if (card && pop < 0) { sel = +card.dataset.i; render(); }
+  });
+  $("publish").onclick = () => { published = true; render(); toast("Published to Demo company 03"); };
+
+  document.addEventListener("keydown", e => {
+    if (e.target.tagName === "TEXTAREA") { if (e.key === "Escape") { pop = -1; render(); } return; }
+    if (pop >= 0) {
+      if (/^[1-5]$/.test(e.key)) { document.querySelectorAll('.rm-pop input[name="why"]')[+e.key - 1].checked = true; }
+      if (e.key === "Enter") { e.preventDefault(); decide(pop, { ok: false, code: +document.querySelector('.rm-pop input[name="why"]:checked').value }); }
+      if (e.key === "Escape") { pop = -1; render(); }
+      return;
+    }
+    const k = e.key.toLowerCase();
+    if (k === "j" || e.key === "ArrowDown") { sel = Math.min(picks.length - 1, sel + 1); render(); scroll(); }
+    else if (k === "k" || e.key === "ArrowUp") { sel = Math.max(0, sel - 1); render(); scroll(); }
+    else if (k === "a" && !picks[sel].d) decide(sel, { ok: true });
+    else if (k === "r" && !picks[sel].d) { pop = sel; render(); }
+    else if (k === "u" && history.length) { const i = history.pop(); picks[i].d = null; sel = i; render(); }
+    else if (k === "p") {
+      const u = picks.find(p => !p.d);
+      if (u) toast(`Decide ${u.h} first. Each suggestion needs its own decision.`);
+      else if (!published) { published = true; render(); toast("Published to Demo company 03"); }
+    }
+  });
+
+  if (P.has("dialog")) pop = sel;
+  render();
+})();
+</script>
+</body>
+</html>

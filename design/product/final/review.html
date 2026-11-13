@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today's review · WorkEspoo organiser</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="workespoo.css">
+</head>
+<body>
+<div class="rv">
+  <header class="topbar">
+    <a class="logo" href="#" aria-label="WorkEspoo" data-testid="site-logo">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 23L20 52L32 33L44 52L55 23" fill="none" stroke="#0E5E55" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="15" r="7.5" fill="#FFB627"/></svg>
+      <b>WorkEspoo</b>
+    </a>
+    <nav class="rv-nav" aria-label="Organiser">
+      <a href="#" data-fi="Yleiskuva" data-sv="Översikt">Overview</a><a href="#" aria-current="page"><span data-fi="Päivän tarkistus" data-sv="Dagens granskning">Today's review</span><span class="badge" id="navBadge"></span></a><a href="#" data-fi="Joukko" data-sv="Pool">Pool</a><a href="#" data-fi="Näkyvyys" data-sv="Synlighet">Exposure</a><a href="#" data-fi="Loki" data-sv="Logg">Audit log</a>
+    </nav>
+    <span class="spacer"></span>
+    <span class="proto-tag" data-fi="Prototyyppi: synteettiset ihmiset, peitetyt yritykset" data-sv="Prototyp: syntetiska personer, maskerade företag">Prototype: synthetic people, masked companies</span>
+    <nav class="langs" aria-label="Language" data-testid="language-switcher"><a href="?lang=en" id="l-en" data-testid="lang-en">EN</a><a href="?lang=fi" id="l-fi" data-testid="lang-fi">FI</a><a href="?lang=sv" id="l-sv" data-testid="lang-sv">SV</a></nav>
+  </header>
+
+  <div class="rv-main">
+    <nav class="rv-rail" aria-label="Companies">
+      <h2 data-fi="Päivän tarkistus" data-sv="Dagens granskning">Today's review</h2>
+      <p class="date">Monday 16 November · TalentMatch Espoo</p>
+      <button class="btn btn-ghost run" type="button" data-testid="run-daily"><span data-fi="Aja päivän ehdotukset nyt" data-sv="Kör dagens förslag nu">Run today's picks now</span></button>
+      <p class="run-status">Last run 07:00 · every step finished</p>
+      <button class="co" aria-current="true" type="button"><b>Demo company 03</b><span>Data engineer</span><span class="st" id="railSt"></span></button>
+      <button class="co" type="button"><b>Demo company 05</b><span>Junior web developer</span><span class="st">0 of 4 decided</span></button>
+      <button class="co" type="button"><b>Demo company 07</b><span>Practical nurse, home care</span><span class="st">0 of 3 decided</span></button>
+      <button class="co" type="button"><b>Demo company 09</b><span>Kitchen helper</span><span class="st none">Nobody relates to this need yet</span></button>
+      <button class="co" type="button"><b>Demo company 11</b><span>Warehouse and device support</span><span class="st pub">Published 08:12</span></button>
+      <p class="rail-note" data-fi="Jokainen ehdotus päätetään erikseen. Useaa ei voi hyväksyä kerralla, eivätkä pakolliset vaatimukset rajaa ketään pois." data-sv="Varje förslag avgörs för sig. Det går inte att godkänna flera på en gång, och skall-krav filtrerar aldrig bort någon.">Each suggestion is decided on its own. There is no way to approve several at once, and must-have requirements never filter anyone out.</p>
+    </nav>
+
+    <main class="rv-work" id="work" data-testid="review-digest" data-digest-id="dg-03">
+      <div class="need">
+        <div>
+          <p class="co-name">Demo company 03 · based on a real public posting, employer name hidden</p>
+          <h1>Data engineer</h1>
+          <p class="one">Keep the nightly sensor-data pipelines running and the morning reports free of gaps.</p>
+          <div class="reqs">
+            <span class="req"><small>Must</small>Python</span>
+            <span class="req"><small>Must</small>SQL</span>
+            <span class="req"><small>Must</small>Fluent Finnish</span>
+            <span class="req"><small>Nice</small>Azure Data Factory</span>
+            <span class="req"><small>Nice</small>Explaining data to others</span>
+          </div>
+          <p class="req-note" data-fi="Pakolliset vaatimukset kysytään yritykseltä kysymyksinä. Ketään ei rajata pois." data-sv="Skall-krav ställs som frågor till företaget. Ingen filtreras bort.">Must-haves are asked as questions to the company. Nobody is filtered out.</p>
+        </div>
+        <div class="pub-box">
+          <p class="left" id="left"></p>
+          <button class="btn btn-primary" id="publish" type="button" disabled data-testid="publish-digest"><span data-fi="Julkaise: Demo company 03" data-sv="Publicera för Demo company 03">Publish to Demo company 03</span> <kbd>P</kbd></button>
+          <p class="pub-help" id="pubHelp"></p>
+        </div>
+      </div>
+
+      <div class="list-head">
+        <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3l10 10h3M4 17h3l3-3M14 10l3-3h3M18 4l2 3-2 3M18 14l2 3-2 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="listTitle" data-testid="order-note"></span></h2>
+        <button class="btn btn-quiet" type="button"><span data-fi="+ Lisää henkilö tähän tarpeeseen" data-sv="+ Lägg till en person i behovet">+ Add a person to this need</span> <kbd>N</kbd></button>
+      </div>
+      <div id="picks"></div>
+    </main>
+  </div>
+
+  <div class="keys" aria-label="Keyboard">
+    <span><kbd>J</kbd><kbd>K</kbd> move</span>
+    <span><kbd>A</kbd> approve</span>
+    <span><kbd>R</kbd> remove, with a reason</span>
+    <span><kbd>U</kbd> undo</span>
+    <span><kbd>P</kbd> publish</span>
+    <span><kbd>?</kbd> all keys</span>
+    <span class="no-all" data-fi="Yksi ihminen kerrallaan. Ei hyväksy kaikki -toimintoa." data-sv="En person i taget. Ingen godkänn alla.">One person at a time. No approve-all.</span>
+  </div>
+</div>
+<div id="layer"></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(() => {
+  const P = new URLSearchParams(location.search);
+  const LANG = ["fi", "sv"].includes(P.get("lang")) ? P.get("lang") : "en";
+  document.documentElement.lang = LANG;
+  document.getElementById("l-" + LANG).setAttribute("aria-current", "true");
+  if (LANG !== "en") document.querySelectorAll(`[data-${LANG}]`).forEach(el => el.textContent = el.dataset[LANG]);
+
+  const T = {
+    en: { list: n => `${n} suggestions · in no particular order · listed A to Z by nickname`, card: "From the card · AI wording", post: "From the posting",
+          nm: "Not mentioned in the conversation", nmFine: "Not mentioned does not mean missing.", approve: "Approve", remove: "Remove", approved: "Approved", removed: "Removed",
+          willShow: "Will be in today's list for this company.", undo: "Undo", left: (l, n) => `${l} of ${n} left to decide`, ready: "Every suggestion has a decision", pub: "Published",
+          blockers: names => `Publish turns on when every suggestion has a decision. Decide <b>${names}</b> first.`, readyHelp: "Approved people appear on the company's private link. Removed people do not, and are never told why.",
+          pubHelp: "Sent to the company's private link.", why: "Why today", syn: "Synthetic person", hint: "Decide this person on their own." },
+    fi: { list: n => `${n} ehdotusta · ei missään erityisessä järjestyksessä · lempinimen mukaan A–Ö`, card: "Kortista · tekoälyn sanoin", post: "Ilmoituksesta",
+          nm: "Ei mainittu keskustelussa", nmFine: "Mainitsematta jääminen ei tarkoita puutetta.", approve: "Hyväksy", remove: "Poista", approved: "Hyväksytty", removed: "Poistettu",
+          willShow: "Tulee yrityksen tämän päivän listalle.", undo: "Kumoa", left: (l, n) => `${l}/${n} päättämättä`, ready: "Jokaisesta ehdotuksesta on päätös", pub: "Julkaistu",
+          blockers: names => `Julkaisu avautuu, kun jokaisesta ehdotuksesta on päätös. Päätä ensin <b>${names}</b>.`, readyHelp: "Hyväksytyt näkyvät yrityksen omassa linkissä. Poistetut eivät, eikä heille kerrota syytä.",
+          pubHelp: "Lähetetty yrityksen omaan linkkiin.", why: "Miksi tänään", syn: "Synteettinen henkilö", hint: "Päätä tästä ihmisestä erikseen." },
+    sv: { list: n => `${n} förslag · i ingen särskild ordning · sorterade A–Ö efter smeknamn`, card: "Från kortet · AI-formulering", post: "Från annonsen",
+          nm: "Nämndes inte i samtalet", nmFine: "Att något inte nämndes betyder inte att det saknas.", approve: "Godkänn", remove: "Ta bort", approved: "Godkänd", removed: "Borttagen",
+          willShow: "Kommer med i dagens lista för företaget.", undo: "Ångra", left: (l, n) => `${l} av ${n} kvar att avgöra`, ready: "Alla förslag har ett beslut", pub: "Publicerad",
+          blockers: names => `Publicera öppnas när alla förslag har ett beslut. Avgör <b>${names}</b> först.`, readyHelp: "Godkända personer visas på företagets privata länk. Borttagna gör det inte och får aldrig veta varför.",
+          pubHelp: "Skickat till företagets privata länk.", why: "Varför i dag", syn: "Syntetisk person", hint: "Avgör den här personen för sig." }
+  }[LANG];
+
+  const REASONS = [
+    "The reasons do not hold up when I read the card",
+    "Already in contact with this company",
+    "Same person already picked for another need of this company",
+    "The person asked not to be suggested here",
+    "Other (write why)"
+  ];
+  // synthetic people, listed A to Z by handle: the order carries no meaning
+  const picks = [
+    { id: "pk1", h: "Alder-58", line: "Builds nightly data loads from sensors into a database", why: "Not suggested to anyone yet",
+      r: [["They build Python pipelines that load sensor data into a database every night.", "You will build and maintain our nightly data pipelines in Python."],
+          ["They write SQL checks so the morning report has no gaps.", "Daily SQL quality checks on the reporting tables."]],
+      nm: ["Fluent Finnish", "Azure Data Factory"], d: null },
+    { id: "pk2", h: "Harbour-90", line: "Plans stock flows and builds reports from warehouse data", why: "Not suggested to anyone for 3 days",
+      r: [["They write SQL queries to pull stock movements for weekly planning.", "Daily SQL quality checks on the reporting tables."],
+          ["They build Power BI reports that store managers use each morning.", "You will explain the data to colleagues in operations."]],
+      nm: ["Python", "Azure Data Factory", "Fluent Finnish"], d: null },
+    { id: "pk3", h: "Lantern-63", line: "Lab technician who automates instrument reports", why: "Suggested once this week",
+      r: [["They wrote Python scripts that read instrument files and fill a results table.", "You will build and maintain our nightly data pipelines in Python."],
+          ["They check each night's results for missing samples before the morning meeting.", "Make sure the morning reports have no gaps."]],
+      nm: ["SQL", "Azure Data Factory"], d: null },
+    { id: "pk4", h: "Quartz-14", line: "Self-taught web developer who builds apps and their databases", why: "Not suggested to anyone for 5 days",
+      r: [["They design PostgreSQL tables and write migrations for the apps they build.", "Experience with relational databases such as PostgreSQL."],
+          ["They wrote a Python script that imports supplier price lists every night.", "You will build and maintain our nightly data pipelines in Python."]],
+      nm: ["Azure Data Factory", "Fluent Finnish"], d: null }
+  ];
+  if (!P.has("fresh")) picks[0].d = { ok: true };
+  if (P.has("all")) { picks[1].d = { ok: false, code: 0 }; picks[2].d = { ok: true }; picks[3].d = { ok: true }; }
+  let sel = picks.findIndex(p => !p.d); if (sel < 0) sel = 0;
+  let pop = -1, keys = P.has("keys"), published = false;
+  const history = [];
+  const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const $ = id => document.getElementById(id);
+  const toast = m => { const t = $("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove("show"), 2400); };
+  const list = a => a.length <= 1 ? a.join("") : a.slice(0, -1).join(", ") + " and " + a[a.length - 1];
+
+  const CHECK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const MINUS = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
+  const DIAM = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l9-9 9 9-9 9z" fill="none" stroke="#1E2B29" stroke-width="2.4" stroke-linejoin="round"/></svg>';
+
+  function render() {
+    const undecided = picks.filter(p => !p.d), left = undecided.length;
+    $("navBadge").textContent = left || "";
+    $("listTitle").textContent = T.list(picks.length);
+    $("left").textContent = published ? T.pub : left ? T.left(left, picks.length) : T.ready;
+    $("publish").disabled = left > 0 || published;
+    $("pubHelp").innerHTML = published ? T.pubHelp : left ? T.blockers(list(undecided.map(p => p.h))) : T.readyHelp;
+    $("railSt").textContent = published ? T.pub : `${picks.length - left} of ${picks.length} decided`;
+    $("railSt").classList.toggle("pub", published);
+
+    $("picks").innerHTML = picks.map((p, i) => {
+      const reasons = p.r.map(([c, s]) => `<li class="qreason" data-testid="pick-reason">
+          <span class="row"><span class="src-l">${T.card}</span><span>${esc(c)}</span></span>
+          <span class="row post"><span class="src-l">${T.post}</span><q>${esc(s)}</q></span></li>`).join("");
+      let acts;
+      if (!p.d) acts = `<div class="acts"><button class="btn btn-ghost" data-act="a" data-i="${i}" type="button" data-testid="pick-approve">${CHECK}${T.approve} <kbd>A</kbd></button><button class="btn btn-ghost" data-act="r" data-i="${i}" type="button" data-testid="pick-remove">${MINUS}${T.remove} <kbd>R</kbd></button><span class="hint">${T.hint}</span></div>`;
+      else if (p.d.ok) acts = `<div class="decided ok" data-testid="pick-status"><span class="lab">${CHECK}${T.approved}</span><span class="why">${T.willShow}</span><button class="btn btn-quiet" data-act="u" data-i="${i}" type="button" data-testid="pick-undo">${T.undo} <kbd>U</kbd></button></div>`;
+      else acts = `<div class="decided rm" data-testid="pick-status"><span class="lab">${MINUS}${T.removed}</span><span class="why">${esc(REASONS[p.d.code])}</span><button class="btn btn-quiet" data-act="u" data-i="${i}" type="button" data-testid="pick-undo">${T.undo} <kbd>U</kbd></button></div>`;
+      return `<article class="pick ${i === sel ? "sel" : ""} ${p.d ? "done" : ""}" data-i="${i}" data-testid="review-pick" data-pick-id="${p.id}" aria-current="${i === sel}">
+        <div class="hd"><span class="handle sm">${DIAM}${p.h}</span><p>${esc(p.line)}</p><span class="why-today">${T.why}: ${esc(p.why)}</span><span class="syn">${T.syn}</span></div>
+        <div><ul class="qreasons">${reasons}</ul>
+          <div class="nm" data-testid="pick-not-mentioned"><span class="label">${T.nm}</span><ul>${p.nm.map(n => `<li>${esc(n)}</li>`).join("")}</ul><p class="fine">${T.nmFine}</p></div></div>
+        ${acts}
+      </article>`;
+    }).join("");
+
+    let layer = "";
+    if (pop >= 0) {
+      const p = picks[pop];
+      layer = `<div class="scrim" data-act="esc"></div><div class="modal" role="dialog" aria-modal="true" aria-labelledby="rmT" data-testid="pick-remove-panel">
+        <h3 id="rmT">Why remove ${p.h} from today's list?</h3>
+        <p>The reason goes to the audit log. It is never shown to the person as a judgement.</p>
+        <ol>${REASONS.map((r, k) => `<li><label class="opt"><input type="radio" name="why" value="${k}" data-testid="pick-remove-reason"><kbd>${k + 1}</kbd>${esc(r)}</label></li>`).join("")}</ol>
+        <textarea class="textarea" rows="2" placeholder="Note (needed for Other)" aria-label="Note" data-testid="pick-remove-note"></textarea>
+        <div class="row"><button class="btn btn-ghost" data-act="esc" type="button">Cancel <kbd>Esc</kbd></button><button class="btn btn-primary" data-act="ok" data-i="${pop}" type="button" id="rmOk" disabled data-testid="pick-remove-confirm">Remove ${p.h} <kbd>Enter</kbd></button></div>
+      </div>`;
+    } else if (keys) {
+      layer = `<div class="scrim" data-act="keys"></div><div class="modal" role="dialog" aria-modal="true" aria-labelledby="kT">
+        <h3 id="kT">Keyboard</h3><p>Every key acts on one person. No key acts on several.</p>
+        <div class="keys-list">
+          <span><kbd>J</kbd> <kbd>↓</kbd></span><span>Next person</span>
+          <span><kbd>K</kbd> <kbd>↑</kbd></span><span>Previous person</span>
+          <span><kbd>A</kbd></span><span>Approve this person, then move to the next undecided one</span>
+          <span><kbd>R</kbd></span><span>Remove this person: choose a reason with <kbd>1</kbd>–<kbd>5</kbd>, then <kbd>Enter</kbd></span>
+          <span><kbd>E</kbd></span><span>Edit the focused reason's wording</span>
+          <span><kbd>O</kbd></span><span>Show this person's own words for 10 minutes (logged)</span>
+          <span><kbd>U</kbd></span><span>Undo the last decision</span>
+          <span><kbd>N</kbd></span><span>Add a person to this need</span>
+          <span><kbd>P</kbd></span><span>Publish this company's list, once every person has a decision</span>
+          <span><kbd>G</kbd> <kbd>C</kbd></span><span>Next company</span>
+        </div>
+        <div class="row"><button class="btn btn-ghost" data-act="keys" type="button">Close <kbd>Esc</kbd></button></div>
+      </div>`;
+    }
+    $("layer").innerHTML = layer;
+    const ok = $("rmOk");
+    if (ok) document.querySelectorAll('.modal input[name="why"]').forEach(r => r.onchange = () => { ok.disabled = false; });
+  }
+
+  function nextUndecided(from) { for (let k = 1; k <= picks.length; k++) { const j = (from + k) % picks.length; if (!picks[j].d) return j; } return from; }
+  function decide(i, d) { history.push(i); picks[i].d = d; pop = -1; sel = nextUndecided(i); render(); scroll(); }
+  function scroll() { const el = document.querySelector(`.pick[data-i="${sel}"]`); el && el.scrollIntoView({ block: "nearest" }); }
+  const chosen = () => { const r = document.querySelector('.modal input[name="why"]:checked'); return r ? +r.value : -1; };
+
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-act]");
+    if (b) {
+      const i = +b.dataset.i, a = b.dataset.act;
+      if (a === "a") decide(i, { ok: true });
+      if (a === "r") { sel = i; pop = i; render(); }
+      if (a === "u") { picks[i].d = null; sel = i; render(); }
+      if (a === "esc") { pop = -1; render(); }
+      if (a === "keys") { keys = false; render(); }
+      if (a === "ok" && chosen() >= 0) decide(i, { ok: false, code: chosen() });
+      return;
+    }
+    const card = e.target.closest(".pick");
+    if (card && pop < 0) { sel = +card.dataset.i; render(); }
+  });
+  $("publish").onclick = () => { published = true; render(); toast("Published to Demo company 03"); };
+
+  document.addEventListener("keydown", e => {
+    if (e.target.tagName === "TEXTAREA") { if (e.key === "Escape") { pop = -1; render(); } return; }
+    if (pop >= 0) {
+      if (/^[1-5]$/.test(e.key)) { const r = document.querySelectorAll('.modal input[name="why"]')[+e.key - 1]; r.checked = true; r.onchange(); }
+      if (e.key === "Enter" && chosen() >= 0) { e.preventDefault(); decide(pop, { ok: false, code: chosen() }); }
+      if (e.key === "Escape") { pop = -1; render(); }
+      return;
+    }
+    if (keys && e.key === "Escape") { keys = false; render(); return; }
+    const k = e.key.toLowerCase();
+    if (e.key === "?") { keys = true; render(); }
+    else if (k === "j" || e.key === "ArrowDown") { sel = Math.min(picks.length - 1, sel + 1); render(); scroll(); }
+    else if (k === "k" || e.key === "ArrowUp") { sel = Math.max(0, sel - 1); render(); scroll(); }
+    else if (k === "a" && !picks[sel].d) decide(sel, { ok: true });
+    else if (k === "r" && !picks[sel].d) { pop = sel; render(); }
+    else if (k === "u" && history.length) { const i = history.pop(); picks[i].d = null; sel = i; render(); }
+    else if (k === "p") {
+      const u = picks.filter(p => !p.d);
+      if (u.length) toast(`Decide ${list(u.map(p => p.h))} first. Each person needs their own decision.`);
+      else if (!published) { published = true; render(); toast("Published to Demo company 03"); }
+    }
+  });
+
+  if (P.has("dialog")) pop = sel;
+  render();
+})();
+</script>
+</body>
+</html>

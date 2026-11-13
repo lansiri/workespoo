@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Interview · WorkEspoo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="signal.css">
+</head>
+<body>
+<div class="iv">
+  <header class="topbar">
+    <a class="logo" href="#" aria-label="WorkEspoo">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 23L20 52L32 33L44 52L55 23" fill="none" stroke="#0E5E55" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="15" r="7.5" fill="#FFB627"/></svg>
+      <b>WorkEspoo</b>
+    </a>
+    <span class="iv-progress" id="progress"></span>
+    <span class="spacer"></span>
+    <nav class="langs d-only" aria-label="Language">
+      <a href="?lang=en" id="l-en">English</a><a href="?lang=fi" id="l-fi">Suomi</a><a href="?lang=sv" id="l-sv">Svenska</a>
+    </nav>
+    <button class="btn btn-ghost" id="stopBtn" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2.5" fill="currentColor"/></svg>
+      <span data-fi="Lopeta">Stop</span>
+    </button>
+  </header>
+
+  <main class="iv-main">
+    <!-- LEFT: the conversation so far -->
+    <section class="iv-convo" aria-labelledby="convoTitle">
+      <div class="panel-head">
+        <h2 id="convoTitle" data-fi="Keskustelu">Conversation</h2>
+        <p data-fi="Vastauksesi ovat sinun. Voit poistaa minkä tahansa.">Your answers are yours. You can remove any of them.</p>
+      </div>
+      <div class="convo-list" id="convo" aria-live="polite"></div>
+    </section>
+
+    <!-- CENTRE: the interviewer -->
+    <section class="iv-stage-col" aria-label="Interviewer">
+      <p class="ai-line"><span class="ai-tag">AI</span><span data-fi="Keskustelet tekoälyn kanssa. Se tekee muistiinpanoja, jotka tarkistat ja hyväksyt lopuksi.">You're talking with an AI. It takes notes; you review and approve them at the end.</span></p>
+
+      <div class="stage" id="stage" data-state="idle">
+        <div class="ring ring-level"></div>
+        <div class="ring ring-base"></div>
+        <svg class="waves" viewBox="-43 -43 326 326" aria-hidden="true">
+          <path class="w1" d="M217 64A112 112 0 0 1 217 176M23 64A112 112 0 0 0 23 176"/>
+          <path class="w2" d="M233 55A130 130 0 0 1 233 185M7 55A130 130 0 0 0 7 185" style="stroke-width:5;opacity:.7"/>
+          <path class="w3" d="M248 46A148 148 0 0 1 248 194M-8 46A148 148 0 0 0 -8 194" style="stroke-width:4;opacity:.45"/>
+        </svg>
+        <svg class="mascot" viewBox="0 0 240 240" aria-hidden="true">
+          <ellipse cx="120" cy="214" rx="62" ry="6" fill="#1E2B29" opacity="0.1"/>
+          <g class="bob">
+            <path d="M58 118L87 190L120 140L153 190L182 118" fill="none" stroke="#0E5E55" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M58 118L87 190L120 140" fill="none" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" transform="translate(-5 -4)"/>
+            <g class="catch">
+              <circle cx="120" cy="76" r="25" fill="#FFB627"/>
+              <circle cx="112" cy="73" r="3.4" fill="#1E2B29"/>
+              <circle cx="128" cy="73" r="3.4" fill="#1E2B29"/>
+              <path d="M113 84q7 4.5 14 0" fill="none" stroke="#1E2B29" stroke-width="3" stroke-linecap="round"/>
+            </g>
+          </g>
+          <g class="think-dots"><g>
+            <circle cx="120" cy="36" r="5.5"/>
+            <circle cx="154.6" cy="96" r="5.5" opacity=".6"/>
+            <circle cx="85.4" cy="96" r="5.5" opacity=".35"/>
+          </g></g>
+        </svg>
+        <span class="state-badge" id="badge" role="status"></span>
+      </div>
+
+      <p class="iv-line" id="line" aria-live="polite"></p>
+      <div class="live-caption" id="caption" hidden></div>
+
+      <div class="iv-controls" id="controls">
+        <div class="talk-row">
+          <button class="talk" id="talk" type="button" aria-describedby="hint1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8.5" y="2.5" width="7" height="12" rx="3.5" fill="currentColor"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span id="talkLabel"></span>
+            <span class="lvl" id="talkLvl" hidden><i></i><i></i><i></i><i></i><i></i></span>
+          </button>
+          <span class="or" data-fi="tai">or</span>
+          <form class="type-box" id="typeForm">
+            <label class="sr-only" for="typeInput">Write your answer</label>
+            <input id="typeInput" autocomplete="off" placeholder="Write your answer" data-fi-ph="Kirjoita vastauksesi">
+            <button class="btn btn-primary" type="submit"><span data-fi="Lähetä">Send</span></button>
+          </form>
+        </div>
+        <div class="iv-hints">
+          <span id="hint1" data-fi="Meluisassa paikassa pidä nappia pohjassa vain puhuessasi.">In a noisy place, hold the button only while you speak.</span>
+          <button type="button" id="skipBtn" data-fi="Ohita kysymys">Skip question</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT: notes and jobs -->
+    <aside class="iv-notes" aria-label="Notes so far">
+      <div class="panel-head">
+        <h2><span data-fi="Muistiinpanot tähän asti">Notes so far</span> <span class="n-count" id="nCount"></span></h2>
+        <p data-fi="Tarkistat ja muokkaat näitä lopuksi.">You'll check and edit these at the end.</p>
+      </div>
+      <div class="chips" id="chips" aria-live="polite"></div>
+
+      <div class="jobs">
+        <span class="sticker d-only" aria-hidden="true" data-fi="Oikeita työpaikkoja">Real open jobs</span>
+        <div class="count-row">
+          <span class="count" id="count">0</span>
+          <span class="delta" id="delta"></span>
+        </div>
+        <p class="count-label" id="countLabel"></p>
+        <p class="count-src" data-fi="Lähde: Työmarkkinatori · Espoo ja lähialueet">Source: Työmarkkinatori · Espoo and nearby</p>
+        <ul class="tiles" id="tiles"></ul>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<dialog id="stopDlg">
+  <h2 data-fi="Lopetetaanko haastattelu?">Stop the interview?</h2>
+  <p data-fi="Voit silti tarkistaa tähänastiset muistiinpanot.">You can still review the notes made so far.</p>
+  <div class="row">
+    <button class="btn btn-ghost" value="cancel" formmethod="dialog" onclick="this.closest('dialog').close()"><span data-fi="Jatka keskustelua">Keep talking</span></button>
+    <button class="btn btn-primary" onclick="this.closest('dialog').close()"><span data-fi="Lopeta ja tarkista muistiinpanot">Stop and review my notes</span></button>
+  </div>
+</dialog>
+
+<nav class="proto" aria-label="Prototype controls">
+  <b>Prototype</b>
+  <button data-st="idle">idle</button><button data-st="listening">listening</button><button data-st="thinking">thinking</button><button data-st="speaking">speaking</button>
+  <button id="pPrev">step −</button><button id="pNext">step +</button><button id="pPlay">play answer</button>
+</nav>
+
+<script>
+(() => {
+  const P = new URLSearchParams(location.search);
+  const LANG = P.get("lang") === "fi" ? "fi" : "en";
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches || P.get("motion") === "off";
+  if (P.get("motion") === "off") document.documentElement.classList.add("no-motion");
+  if (P.has("shot")) document.body.classList.add("shot");
+  document.documentElement.lang = LANG;
+  document.getElementById("l-" + LANG).setAttribute("aria-current", "true");
+
+  const T = {
+    en: { idle: "Your turn", listening: "Listening…", thinking: "Writing a question…", speaking: "Speaking",
+          hold: "Hold to talk", release: "Release to send", q: (n, t) => `Question <b>${n}</b> of ${t}`, done: "All questions done",
+          jobs: n => n === 1 ? "open job mentions these skills" : "open jobs mention these skills",
+          who: "Interviewer · AI", you: "You", live: "You, live", noChips: "Skills you mention will show up here, in your own words.",
+          noJobs: "As you talk, real open jobs that mention the same skills light up here.", rm: "Remove this answer", mentions: "mentions",
+          review: "Check my notes", empty: "Nothing yet. When you answer, your words appear here." },
+    fi: { idle: "Sinun vuorosi", listening: "Kuuntelen…", thinking: "Kirjoitan kysymystä…", speaking: "Puhun",
+          hold: "Pidä pohjassa ja puhu", release: "Päästä irti, niin viesti lähtee", q: (n, t) => `Kysymys <b>${n}</b>/${t}`, done: "Kaikki kysymykset käyty",
+          jobs: () => "avointa työpaikkaa mainitsee nämä taidot",
+          who: "Haastattelija · tekoäly", you: "Sinä", live: "Sinä, nyt", noChips: "Mainitsemasi taidot näkyvät tässä omin sanoin.",
+          noJobs: "Kun puhut, samoja taitoja mainitsevat avoimet työpaikat syttyvät tähän.", rm: "Poista tämä vastaus", mentions: "mainitsee",
+          review: "Tarkista muistiinpanoni", empty: "Ei vielä mitään. Kun vastaat, sanasi näkyvät tässä." }
+  }[LANG];
+
+  if (LANG === "fi") {
+    document.querySelectorAll("[data-fi]").forEach(el => el.textContent = el.dataset.fi);
+    document.querySelectorAll("[data-fi-ph]").forEach(el => el.placeholder = el.dataset.fiPh);
+  }
+
+  /* ---------- synthetic conversation (a warehouse worker who fixes the scanners) ---------- */
+  const Q = [
+    "Hi, I'm an AI interviewer for WorkEspoo. I'll ask a few short questions, about four minutes, and take notes. At the end you'll check the notes, change anything and approve them yourself. To start: what kind of work have you been doing recently?",
+    "When a scanner stops working, what do you usually check first?",
+    "You mentioned a checklist. Have you shown other people how to do things at work?",
+    "Which tools or systems do you use on a normal shift?",
+    "What kind of work would you like to do next?",
+    "Thank you, that's all my questions. Your notes are ready: check them, change or remove anything, and approve only what you're happy with."
+  ];
+  const A = [null,
+    ["I work in a warehouse in Kerava, evening shift, mostly picking and packing orders.", "And when the handheld scanners stop working, people usually come to me."],
+    ["First I check if it's the battery or the wifi.", "If it keeps dropping I pair it to the network again, sometimes I reinstall the app.", "I made a little checklist and taped it in the break room so people can try that first."],
+    ["Yeah, every summer I train the new summer workers on the scanners and on the WMS.", "Maybe two or three people a week in June."],
+    ["Zebra scanners, the WMS, and Excel for the stock counts.", "I also have a forklift card."],
+    ["Something with the devices, like IT support or maintenance.", "Shifts are fine for me.", "English is easiest, but I'm learning Finnish."]
+  ];
+  const SK = [[],
+    [{ t: "Order picking and packing", c: "", s: [0] }, { t: "Fixing handheld scanners", c: "", s: [1] }],
+    [{ t: "Troubleshooting Wi-Fi devices", c: "", s: [0, 1] }, { t: "Writing how-to checklists", c: "", s: [2] }],
+    [{ t: "Training new staff", c: "", s: [0] }, { t: "Warehouse management system", c: "tool", s: [0] }],
+    [{ t: "Microsoft Excel", c: "tool", s: [0] }, { t: "Forklift licence", c: "know", s: [1] }],
+    []
+  ];
+  const JOBS = [0, 38, 61, 97, 126, 126];
+  const TILES = [[],
+    [{ t: "Warehouse worker, evening shift", m: "Logistics company · Espoo, Kera", k: "order picking" },
+     { t: "Device service technician", m: "Electronics service company · Espoo, Lommila", k: "handheld scanners" }],
+    [{ t: "IT support specialist", m: "Facility services company · Espoo, Otaniemi", k: "Wi-Fi troubleshooting" }],
+    [{ t: "Warehouse team leader", m: "Grocery wholesaler · Vantaa, Aviapolis", k: "training staff" },
+     { t: "WMS key user, logistics", m: "Logistics company · Espoo, Juvanmalmi", k: "WMS" }],
+    [{ t: "Trukinkuljettaja (forklift driver)", m: "Building supplies · Espoo, Suomenoja", k: "forklift" },
+     { t: "Inventory controller", m: "Retail chain · Espoo, Kilo", k: "Excel" }],
+    []
+  ];
+  const TOTAL = 5;
+
+  /* ---------- state ---------- */
+  let step = Math.max(0, Math.min(5, parseInt(P.get("step") || "0", 10) || 0));
+  let state = ["idle", "listening", "thinking", "speaking"].includes(P.get("state")) ? P.get("state") : "idle";
+  let shownJobs = 0;
+
+  const $ = id => document.getElementById(id);
+  const stage = $("stage"), line = $("line"), caption = $("caption"), convo = $("convo"), chips = $("chips"),
+        tiles = $("tiles"), count = $("count"), delta = $("delta"), talk = $("talk"), talkLabel = $("talkLabel");
+  const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  const ICON = {
+    idle: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="#0E5E55"/></svg>',
+    listening: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" fill="#0E5E55"/><path d="M6 11a6 6 0 0 0 12 0M12 17v3" fill="none" stroke="#0E5E55" stroke-width="2" stroke-linecap="round"/></svg>',
+    thinking: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18.5V20h1.5L17 8.5 15.5 7z" fill="#1E2B29"/><path d="M14.5 6l1.6-1.6a1.4 1.4 0 0 1 2 0l1.5 1.5a1.4 1.4 0 0 1 0 2L18 9.5z" fill="#1E2B29"/></svg>',
+    speaking: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="#fff"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg>'
+  };
+  const JOB_IC = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="7.5" width="17" height="12" rx="2.5" fill="none" stroke="#0E5E55" stroke-width="2"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5" fill="none" stroke="#0E5E55" stroke-width="2"/></svg>';
+
+  /* ---------- renderers ---------- */
+  function citedSet(i) { const s = new Set(); (SK[i] || []).forEach(k => k.s.forEach(x => s.add(x))); return s; }
+
+  function renderConvo() {
+    if (step === 0) { convo.innerHTML = `<p class="convo-empty">${T.empty}</p>`; return; }
+    let h = "";
+    for (let i = 0; i < step; i++) {
+      h += `<div class="turn ai"><span class="who">${T.who}</span>${esc(Q[i])}</div>`;
+      const cited = citedSet(i + 1);
+      const words = A[i + 1].map((s, j) => cited.has(j) ? `<span class="cited" data-a="${i + 1}" data-s="${j}">${esc(s)}</span>` : esc(s)).join(" ");
+      h += `<div class="turn me"><span class="who">${T.you}</span>${words}<button class="rm" type="button">${T.rm}</button></div>`;
+    }
+    convo.innerHTML = h;
+    const down = () => convo.scrollTop = convo.scrollHeight;
+    down(); requestAnimationFrame(down); document.fonts && document.fonts.ready.then(down);
+  }
+
+  function chipEl(k, i) {
+    const el = document.createElement("button");
+    el.type = "button";
+    el.className = "chip " + k.c;
+    el.textContent = k.t;
+    el.title = "Show where you said this";
+    const hl = on => k.s.forEach(j => { const s = convo.querySelector(`.cited[data-a="${i}"][data-s="${j}"]`); if (s) { s.classList.toggle("hl", on); if (on) s.scrollIntoView({ block: "nearest", behavior: reduce ? "auto" : "smooth" }); } });
+    el.addEventListener("mouseenter", () => hl(true)); el.addEventListener("mouseleave", () => hl(false));
+    el.addEventListener("focus", () => hl(true)); el.addEventListener("blur", () => hl(false));
+    return el;
+  }
+  function renderChips(upto, pendingStep) {
+    chips.innerHTML = "";
+    let any = false;
+    const phone = matchMedia("(max-width: 760px)").matches;   // phone: newest first in a single scrolling row
+    for (let i = 1; i <= upto; i++) SK[i].forEach(k => {
+      const el = chipEl(k, i);
+      if (i === pendingStep) el.classList.add("pending");
+      phone ? chips.prepend(el) : chips.appendChild(el); any = true;
+    });
+    if (!any) chips.innerHTML = `<p class="chips-empty">${T.noChips}</p>`;
+    const n = chips.querySelectorAll(".chip").length; $("nCount").textContent = n ? String(n) : "";
+  }
+
+  function tileEl(j) {
+    const li = document.createElement("li");
+    li.className = "tile";
+    li.innerHTML = `<span class="ic">${JOB_IC}</span><b>${esc(j.t)}</b><span>${esc(j.m)}</span><em>${T.mentions}: ${esc(j.k)}</em>`;
+    return li;
+  }
+  function renderTiles(upto) {
+    tiles.innerHTML = "";
+    const list = [];
+    for (let i = upto; i >= 1; i--) TILES[i].forEach(t => list.push(t));
+    if (!list.length) { tiles.innerHTML = `<li class="jobs-empty">${T.noJobs}</li>`; return; }
+    list.forEach(t => tiles.appendChild(tileEl(t)));
+  }
+  function setCount(n) { shownJobs = n; count.textContent = n.toLocaleString(LANG === "fi" ? "fi-FI" : "en-GB"); $("countLabel").textContent = T.jobs(n); }
+
+  function renderLine() {
+    line.className = "iv-line";
+    const q = Q[step];
+    if (state === "thinking") {
+      line.classList.add("dim");
+      line.innerHTML = `<span class="who">${T.who}</span><span class="text">${T.thinking}</span>`;
+      return;
+    }
+    if (q.length > 160) line.classList.add("long");
+    if (state === "speaking" && !reduce) {
+      const w = q.split(" "); const cut = Math.round(w.length * 0.62);
+      line.innerHTML = `<span class="who">${T.who}</span><span class="spoken">${esc(w.slice(0, cut).join(" "))}</span> <span class="unspoken">${esc(w.slice(cut).join(" "))}</span>`;
+    } else {
+      line.innerHTML = `<span class="who">${T.who}</span>${esc(q)}`;
+    }
+  }
+
+  function renderCaption() {
+    if (state !== "listening" || step >= TOTAL) { caption.hidden = true; return; }
+    const full = A[step + 1].join(" ").split(" ");
+    const part = full.slice(0, Math.max(4, Math.round(full.length * 0.55))).join(" ");
+    caption.hidden = false;
+    caption.innerHTML = `<span class="who">${T.live}</span>${esc(part)}<span class="caret"></span>`;
+  }
+
+  function renderState() {
+    stage.dataset.state = state;
+    $("badge").innerHTML = ICON[state] + `<span>${T[state]}</span>`;
+    const finished = step >= TOTAL;
+    $("progress").innerHTML = (finished ? T.done : T.q(step + 1, TOTAL)) +
+      `<span class="iv-dots" aria-hidden="true">${[0,1,2,3,4].map(i => `<i class="${i < step ? "done" : i === step ? "now" : ""}"></i>`).join("")}</span>`;
+    talk.classList.toggle("held", state === "listening");
+    talk.disabled = state === "thinking";
+    talkLabel.textContent = finished ? T.review : (state === "listening" ? T.release : T.hold);
+    $("talkLvl").hidden = state !== "listening";
+    renderLine();
+    renderCaption();
+  }
+
+  /* ---------- microphone level (simulated here; the app reads an AnalyserNode, nothing is stored) ---------- */
+  let t0 = performance.now();
+  function levelLoop(now) {
+    const t = (now - t0) / 1000;
+    const lvl = state === "listening"
+      ? Math.max(0, Math.min(1, 0.45 + 0.28 * Math.sin(t * 5.1) + 0.18 * Math.sin(t * 11.7 + 1) + 0.12 * Math.sin(t * 2.3)))
+      : 0.35;
+    stage.style.setProperty("--lvl", lvl.toFixed(3));
+    document.querySelectorAll("#talkLvl i").forEach((el, i) => el.style.setProperty("--h", Math.abs(Math.sin(t * (4 + i) + i)).toFixed(2)));
+    if (!reduce) requestAnimationFrame(levelLoop);
+  }
+  requestAnimationFrame(levelLoop);
+
+  /* ---------- the moment: skills orbit in, jobs light up ---------- */
+  function center(el) { const r = el.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2, w: r.width, h: r.height }; }
+
+  function orbitChip(target, delay) {
+    return new Promise(res => {
+      const flyer = target.cloneNode(true);
+      flyer.classList.remove("pending");
+      flyer.classList.add("flyer");
+      document.body.appendChild(flyer);
+      const fr = flyer.getBoundingClientRect();
+      const hw = fr.width / 2, hh = fr.height / 2;
+      const m = center(stage);
+      const head = { x: m.x, y: m.y - m.h * 0.18 };     // the sun dot
+      const R = m.w * 0.62;
+      const to = center(target);
+      const startA = -Math.PI / 2;                        // leave from the top, by the head
+      const endA = Math.atan2(to.y - m.y, to.x - m.x);    // swing round to the side facing the notes
+      let sweep = endA - startA; if (sweep < 0.6) sweep += Math.PI * 2; if (sweep > Math.PI * 1.6) sweep -= Math.PI * 2;
+      const kf = [{ transform: `translate(${head.x - hw}px, ${head.y - hh}px) scale(0.3)`, opacity: 0, offset: 0 }];
+      const N = 7;
+      for (let i = 0; i <= N; i++) {
+        const a = startA + (sweep * i) / N;
+        const r = R * (0.55 + 0.45 * Math.min(1, i / 2));
+        kf.push({ transform: `translate(${m.x + Math.cos(a) * r - hw}px, ${m.y + Math.sin(a) * r - hh}px) scale(${i === 0 ? 0.7 : 1})`, opacity: 1, offset: 0.08 + 0.62 * (i / N) });
+      }
+      kf.push({ transform: `translate(${to.x - hw}px, ${to.y - hh}px) scale(1)`, opacity: 1, offset: 1 });
+      const anim = flyer.animate(kf, { duration: 1700, delay, easing: "cubic-bezier(.45,.05,.35,1)", fill: "both" });
+      setTimeout(() => { stage.classList.remove("caught"); void stage.offsetWidth; stage.classList.add("caught"); }, delay);
+      anim.onfinish = () => {
+        target.classList.remove("pending");
+        target.classList.add("fresh");
+        flyer.remove();
+        setTimeout(() => target.classList.remove("fresh"), 2400);
+        res();
+      };
+    });
+  }
+
+  function tweenCount(from, to, ms) {
+    if (from === to) return;
+    const d = to - from;
+    delta.textContent = "+" + d;
+    delta.classList.add("show");
+    setTimeout(() => delta.classList.remove("show"), 2600);
+    if (reduce) { setCount(to); return; }
+    const s = performance.now();
+    const tick = now => {
+      const p = Math.min(1, (now - s) / ms);
+      setCount(Math.round(from + d * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  function slideTiles(i) {
+    const empty = tiles.querySelector(".jobs-empty"); if (empty) empty.remove();
+    TILES[i].slice().reverse().forEach((t, n) => {
+      const li = tileEl(t);
+      if (!reduce) { li.classList.add("enter"); li.style.animationDelay = n * 140 + "ms"; }
+      tiles.prepend(li);
+    });
+    while (tiles.children.length > 7) tiles.lastChild.remove();
+  }
+
+  async function arrive(i) {
+    const targets = [...chips.querySelectorAll(".chip.pending")];
+    if (reduce) {
+      targets.forEach(t => { t.classList.remove("pending"); t.classList.add("fresh"); setTimeout(() => t.classList.remove("fresh"), 4000); });
+      setCount(JOBS[i]); tweenCount(JOBS[i - 1], JOBS[i], 0); slideTiles(i);
+      return;
+    }
+    const landings = targets.map((t, n) => orbitChip(t, n * 450));
+    await landings[0];
+    tweenCount(JOBS[i - 1], JOBS[i], 1100);
+    slideTiles(i);
+    await Promise.all(landings);
+  }
+
+  /* ---------- full render for a given step ---------- */
+  function render(animateStep) {
+    renderConvo();
+    renderState();
+    const anim = animateStep && step > 0 && SK[step].length;
+    renderChips(step, anim ? step : -1);
+    renderTiles(anim ? step - 1 : step);
+    setCount(anim ? JOBS[step - 1] : JOBS[step]);
+    if (anim) setTimeout(() => arrive(step), 500);
+  }
+
+  /* ---------- live flow: hold, release, the interviewer answers ---------- */
+  let speakTimer = null;
+  function speak() {
+    state = "speaking"; renderState();
+    if (reduce) { speakTimer = setTimeout(() => { state = "idle"; renderState(); }, 2500); return; }
+    const w = Q[step].split(" "); let k = 0;
+    clearInterval(speakTimer);
+    speakTimer = setInterval(() => {
+      k++;
+      line.innerHTML = `<span class="who">${T.who}</span><span class="spoken">${esc(w.slice(0, k).join(" "))}</span> <span class="unspoken">${esc(w.slice(k).join(" "))}</span>`;
+      if (k >= w.length) { clearInterval(speakTimer); setTimeout(() => { state = "idle"; renderState(); }, 600); }
+    }, 230);
+  }
+  function answer() {
+    if (step >= TOTAL) return;
+    clearInterval(speakTimer);
+    state = "thinking"; renderState();
+    step++;
+    renderConvo();
+    renderChips(step, SK[step].length ? step : -1);
+    if (SK[step].length) setTimeout(() => arrive(step), 250);
+    setTimeout(speak, 1500);
+  }
+  talk.addEventListener("pointerdown", e => { if (step >= TOTAL || state === "thinking") return; clearInterval(speakTimer); state = "listening"; renderState(); talk.setPointerCapture(e.pointerId); });
+  talk.addEventListener("pointerup", () => { if (state === "listening") answer(); });
+  talk.addEventListener("keydown", e => { if ((e.key === " " || e.key === "Enter") && !e.repeat && state !== "listening" && step < TOTAL) { e.preventDefault(); state = "listening"; renderState(); } });
+  talk.addEventListener("keyup", e => { if ((e.key === " " || e.key === "Enter") && state === "listening") answer(); });
+  $("typeForm").addEventListener("submit", e => { e.preventDefault(); $("typeInput").value = ""; answer(); });
+  $("skipBtn").addEventListener("click", () => { if (step < TOTAL) { state = "thinking"; renderState(); setTimeout(speak, 900); } });
+  $("stopBtn").addEventListener("click", () => $("stopDlg").showModal());
+
+  /* prototype controls */
+  document.querySelectorAll(".proto [data-st]").forEach(b => {
+    b.setAttribute("aria-pressed", String(b.dataset.st === state));
+    b.onclick = () => { state = b.dataset.st; document.querySelectorAll(".proto [data-st]").forEach(x => x.setAttribute("aria-pressed", String(x === b))); renderState(); };
+  });
+  $("pPrev").onclick = () => { step = Math.max(0, step - 1); render(false); };
+  $("pNext").onclick = () => { step = Math.min(5, step + 1); render(true); };
+  $("pPlay").onclick = () => { state = "listening"; renderState(); setTimeout(answer, 1800); };
+
+  render(P.get("arrive") !== "0");
+})();
+</script>
+</body>
+</html>

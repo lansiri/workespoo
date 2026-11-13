@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "../components/we/we.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -9,7 +10,29 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-display);
+  --font-display: var(--font-brand), "Fredoka", "Arial Rounded MT Bold", ui-rounded, "SF Pro Rounded", "Varela Round", "Nunito", system-ui, sans-serif;
+  --color-pine: var(--pine);
+  --color-pine-700: var(--pine-700);
+  --color-pine-50: var(--pine-50);
+  --color-pine-100: var(--pine-100);
+  --color-sun: var(--sun);
+  --color-sun-soft: var(--sun-soft);
+  --color-cream: var(--cream);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted-ink: var(--muted-ink);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-mint: var(--mint);
+  --color-mint-soft: var(--mint-soft);
+  --color-leaf: var(--leaf);
+  --color-leaf-soft: var(--leaf-soft);
+  --color-amber: var(--amber);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-night: var(--night);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -48,73 +71,93 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* Brand tokens: docs/design/DESIGN.md section 2. Light theme only. The shadcn names below are
+   mapped to the brand so every primitive in src/components/ui picks the palette up. */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --pine: #0e5e55;
+  --pine-700: #0a4a43;
+  --pine-50: #e7f1ef;
+  --pine-100: #c9dfda;
+  --sun: #ffb627;
+  --sun-soft: #fff1d6;
+  --marker: rgba(255, 182, 39, 0.5);
+  --cream: #fbf7f0;
+  --paper: #fffdf8;
+  --ink: #1e2b29;
+  --muted-ink: #4a5754; /* secondary text: 7.07:1 on cream. (--muted is shadcn's tint, so the brand text grey has its own name) */
+  --faint: #6b7673; /* placeholders and disabled text only */
+  --line: #e7dfd1;
+  --line-strong: #cfc5b3;
+  --mint: #5ed1b6;
+  --mint-soft: #e3f5ef;
+  --night: #14211f;
+  --leaf: #2f7a3e;
+  --leaf-soft: #e6f2e8;
+  --amber: #8a5300;
+  --danger: #9b2c14;
+  --danger-soft: #fbeee9;
+
+  --font-display: var(--font-brand), "Fredoka", "Arial Rounded MT Bold", ui-rounded, "SF Pro Rounded", "Varela Round", "Nunito", system-ui, sans-serif;
+  --font-body: var(--font-sans), "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  --shadow-1: 0 1px 2px rgba(30, 43, 41, 0.06), 0 2px 8px rgba(30, 43, 41, 0.05);
+  --shadow-2: 0 2px 4px rgba(30, 43, 41, 0.06), 0 12px 32px rgba(30, 43, 41, 0.09);
+  --shadow-ink: 5px 5px 0 var(--ink);
+  --shadow-ink-sm: 3px 3px 0 var(--ink);
+  --press: 0 5px 0 var(--ink);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --ease-flight: cubic-bezier(0.45, 0.05, 0.35, 1);
+  --t-fast: 150ms;
+  --t-base: 300ms;
+
+  /* shadcn names */
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--pine);
+  --primary-foreground: #ffffff;
+  --secondary: var(--pine-50);
+  --secondary-foreground: var(--ink);
+  --muted: var(--pine-50);
+  --muted-foreground: var(--muted-ink);
+  --accent: var(--pine-50);
+  --accent-foreground: var(--pine);
+  --destructive: var(--danger);
+  --border: var(--line);
+  --input: var(--line-strong);
+  --ring: var(--ink);
+  --chart-1: var(--pine);
+  --chart-2: var(--sun);
+  --chart-3: var(--mint);
+  --chart-4: var(--ink);
+  --chart-5: var(--leaf);
+  --radius: 0.75rem;
+  --sidebar: var(--paper);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--pine);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--pine-50);
+  --sidebar-accent-foreground: var(--pine);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--sun);
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+@theme {
+  --shadow-ink: 5px 5px 0 #1e2b29;
+  --shadow-ink-sm: 3px 3px 0 #1e2b29;
+  --shadow-press: 0 5px 0 #1e2b29;
 }
 
 @layer base {

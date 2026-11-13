@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interview room · WorkEspoo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="paper.css">
+</head>
+<body>
+<div class="iv" id="room" data-state="idle">
+
+  <header class="iv-top">
+    <a class="logo" href="#" aria-label="WorkEspoo">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 23L20 52L32 33L44 52L55 23" fill="none" stroke="#0E5E55" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="15" r="7.5" fill="#FFB627"/></svg>
+      <span>WorkEspoo</span>
+    </a>
+    <p class="disclosure" role="note">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#1E2B29"/><text x="16" y="21" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#FFB627">AI</text></svg>
+      <span data-i18n="disclosure">You're talking with an AI. It takes notes; you review and approve them at the end.</span>
+    </p>
+    <span class="progress" aria-live="polite"><span class="dots" id="dots" aria-hidden="true"></span><span id="qnum"></span></span>
+    <button class="btn btn-stop" type="button"><span class="sq" aria-hidden="true"></span><span data-i18n="stop">Stop</span></button>
+  </header>
+
+  <main class="iv-main" id="main">
+
+    <!-- the interviewer and its current line -->
+    <section class="stage" aria-label="Interviewer">
+      <div class="who">
+        <svg class="mascot" viewBox="0 0 160 140" aria-hidden="true">
+          <ellipse cx="80" cy="134" rx="50" ry="5" fill="#1E2B29" opacity="0.13"/>
+          <g class="st st-listen">
+            <circle class="ring" cx="80" cy="46" r="27" fill="none" stroke="#5ED1B6" stroke-width="3.5"/>
+            <circle class="ring" cx="80" cy="46" r="35" fill="none" stroke="#5ED1B6" stroke-width="3" opacity="0.65"/>
+            <circle class="ring" cx="80" cy="46" r="43" fill="none" stroke="#5ED1B6" stroke-width="2.5" opacity="0.35"/>
+          </g>
+          <g class="st st-think">
+            <circle class="dot" cx="106" cy="18" r="3.5" fill="#1E2B29"/>
+            <circle class="dot" cx="117" cy="11" r="4.5" fill="#1E2B29"/>
+            <circle class="dot" cx="130" cy="5" r="5.5" fill="#1E2B29"/>
+            <path d="M138 104q6-6 10 0t10 0" fill="none" stroke="#1E2B29" stroke-width="2.5" stroke-linecap="round"/>
+          </g>
+          <g class="st st-speak">
+            <path class="arc" d="M105 38q7 8 0 17" fill="none" stroke="#0E5E55" stroke-width="4" stroke-linecap="round"/>
+            <path class="arc" d="M114 31q13 15 0 31" fill="none" stroke="#0E5E55" stroke-width="4" stroke-linecap="round"/>
+          </g>
+          <path d="M30 76L48 124L80 88L112 124L130 76" fill="none" stroke="#0E5E55" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M30 76L48 124L80 88" fill="none" stroke="#fff" stroke-opacity="0.13" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3 -2)"/>
+          <circle cx="80" cy="46" r="18" fill="#FFB627"/>
+          <circle cx="73.5" cy="43" r="2.6" fill="#1E2B29"/>
+          <circle cx="86.5" cy="43" r="2.6" fill="#1E2B29"/>
+          <path class="mouth-smile" d="M74 51.5q6 5 12 0" fill="none" stroke="#1E2B29" stroke-width="2.6" stroke-linecap="round"/>
+          <path class="mouth-open" d="M73.5 50.5h13a6.5 5 0 0 1-13 0z" fill="#1E2B29"/>
+          <!-- the note-taker's pencil -->
+          <g class="pencil">
+            <g transform="translate(132 74) rotate(28)">
+              <rect x="-4" y="-30" width="8" height="24" rx="1.5" fill="#FFB627" stroke="#1E2B29" stroke-width="2"/>
+              <rect x="-4" y="-34" width="8" height="5" rx="1.5" fill="#FBF7F0" stroke="#1E2B29" stroke-width="2"/>
+              <path d="M-4 -6L0 3L4 -6z" fill="#FBF7F0" stroke="#1E2B29" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M-1.2 0.5L0 3L1.2 0.5z" fill="#1E2B29"/>
+            </g>
+          </g>
+        </svg>
+        <span class="state-chip" id="stateChip"></span>
+      </div>
+      <div class="bubble" aria-live="polite">
+        <p class="line" id="line"></p>
+        <p class="sub" id="lineSub"></p>
+        <button class="btn-quiet m-only skip-m" type="button" data-i18n="skip">Skip question</button>
+      </div>
+    </section>
+
+    <!-- the conversation so far -->
+    <section class="talk" aria-label="Conversation so far">
+      <div class="panel-h">
+        <h2 data-i18n="convo">The conversation</h2>
+        <p data-i18n="convoHelp">Marked words became notes</p>
+      </div>
+      <ol class="turns" id="turns"></ol>
+    </section>
+
+    <!-- the card being filled in -->
+    <section class="draft" aria-label="Notes so far">
+      <span class="tape l" aria-hidden="true"></span><span class="tape r" aria-hidden="true"></span>
+      <svg class="strings" id="strings" aria-hidden="true"></svg>
+      <div class="draft-h">
+        <h2><span data-i18n="notes">Notes so far</span> <span class="handle" title="How companies will see you">Birch-27</span></h2>
+        <p class="sub" data-i18n="notesHelp">You'll check and edit these at the end.</p>
+      </div>
+      <div class="zones" id="zones">
+        <p class="empty-m m-only" id="emptyM">Your skills land here as stickers while you talk.</p>
+        <div class="zone skill"><h3 data-i18n="g.skill">What I do</h3><ul data-kind="skill"></ul></div>
+        <div class="zone"><h3 data-i18n="g.tool">Tools</h3><ul data-kind="tool"></ul></div>
+        <div class="zone"><h3 data-i18n="g.knowledge">Know-how</h3><ul data-kind="knowledge"></ul></div>
+        <div class="zone"><h3 data-i18n="g.domain">Fields</h3><ul data-kind="domain"></ul></div>
+      </div>
+      <div class="looking" id="looking"></div>
+    </section>
+
+    <!-- real open jobs, on a pinboard -->
+    <aside class="board" aria-label="Open jobs">
+      <div class="count-card">
+        <span class="tape" aria-hidden="true"></span>
+        <div class="count-row">
+          <span class="count" id="count">0</span>
+          <span class="what" data-i18n="jobsLit">open jobs mention what you've told so far</span>
+        </div>
+        <p class="src">In the Espoo region · Source: Työmarkkinatori</p>
+      </div>
+      <ul class="notices" id="notices"></ul>
+      <p class="board-foot d-only" data-i18n="boardFoot">After you approve your card you'll see each job with the reason it relates to you.</p>
+    </aside>
+
+    <!-- hold to talk, or type -->
+    <div class="dock">
+      <button class="hold" type="button" id="hold">
+        <span class="mic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="8" y="2.5" width="8" height="12.5" rx="4" fill="#1E2B29"/><path d="M5 11.5a7 7 0 0 0 14 0M12 18.5v3" fill="none" stroke="#1E2B29" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+        <span class="lbl"><span id="holdLbl">Hold to talk</span><small id="holdSub">or press and hold the space bar</small></span>
+      </button>
+      <span class="or" aria-hidden="true" data-i18n="or">or</span>
+      <form class="type" onsubmit="return false">
+        <label><span data-i18n="typeLbl">Type instead</span><input type="text" placeholder="Write your answer" data-i18n-ph="ph"></label>
+        <button type="submit" data-i18n="send">Send</button>
+      </form>
+      <div class="dock-foot">
+        <span class="hint" data-i18n="hint">You can press the button to interrupt at any time.</span>
+        <button class="btn-quiet" type="button" data-i18n="skip">Skip question</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<nav class="proto" aria-label="Prototype controls" id="proto"></nav>
+
+<script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  const STATES = ["idle", "listening", "thinking", "speaking"];
+  const state = STATES.includes(params.get("state")) ? params.get("state") : "idle";
+  const step = Math.max(0, Math.min(5, parseInt(params.get("step") || "0", 10) || 0));
+  const lang = params.get("lang") === "fi" ? "fi" : "en";
+  const animate = params.get("anim") !== "0" && !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (params.get("shot")) document.body.classList.add("shot");
+  const room = document.getElementById("room");
+  room.dataset.state = state;
+  document.documentElement.lang = lang;
+
+  const TOTAL = 6;
+  const Q = [
+    "Hi, I'm an AI interviewer for WorkEspoo. I'll ask a few short questions, about four minutes, and take notes. At the end you'll check the notes, change anything and approve them yourself. To start: what kind of work have you been doing recently?",
+    "Could you tell me about one specific task you handled yourself?",
+    "What tools, software or methods do you use in that work?",
+    "Who did you work with or for, and what was your part?",
+    "What kind of work are you looking for next?",
+    "Is there anything else about your work you'd like in your notes?"
+  ];
+  const Q_FI = [
+    "Hei, olen WorkEspoon tekoälyhaastattelija. Kysyn muutaman lyhyen kysymyksen, noin neljä minuuttia, ja teen muistiinpanoja. Lopuksi tarkistat ne, muutat mitä haluat ja hyväksyt ne itse. Aluksi: millaista työtä olet tehnyt viime aikoina?",
+    "Voisitko kertoa yhdestä tehtävästä, jonka hoidit itse?",
+    "Mitä työkaluja, ohjelmia tai menetelmiä käytät siinä työssä?",
+    "Kenen kanssa tai kenelle teit työtä, ja mikä oli sinun osuutesi?",
+    "Millaista työtä etsit seuraavaksi?",
+    "Onko työstäsi vielä jotain, minkä haluat muistiinpanoihin?"
+  ];
+  // The person's answers. [[id|words]] marks the words a note points at.
+  const A = [
+    "[[s8|I work in a warehouse]], mostly [[s1|picking and packing orders]] for shops. When the handheld scanners stop working, people usually come to me, so [[s2|I fix them or reset them]].",
+    "Last winter the scanners kept losing the wifi in the cold store. [[s3|I tested where the signal dropped]] and moved two access points with the IT guy, and after that it was fine.",
+    "We use [[s4|Zebra scanners]] and the warehouse system is [[s5|SAP EWM]]. I also [[s6|drive the reach truck]], I have the licence for it.",
+    "When new people start [[s7|I show them the scanners and the picking routes]] for the first week. I made a one-page guide with photos because people kept asking the same things.",
+    "Something with more of the technical side, like [[lf1|device support]] or [[lf2|warehouse systems]]. Day shifts if possible."
+  ];
+  const PARTIAL = [
+    "I work in a warehouse, mostly picking and",
+    "Last winter the scanners kept losing the",
+    "We use Zebra scanners and the warehouse",
+    "When new people start I show them",
+    "Something with more of the technical",
+    "Hmm, I also do the stock counts at the end of"
+  ];
+  const SIG = {
+    s8: { kind: "domain", phrase: "Warehouse logistics", step: 1 },
+    s1: { kind: "skill", phrase: "Picking and packing orders", step: 1 },
+    s2: { kind: "skill", phrase: "Fixing handheld scanners", step: 1 },
+    s3: { kind: "knowledge", phrase: "Testing Wi‑Fi coverage", step: 2 },
+    s4: { kind: "tool", phrase: "Zebra scanners", step: 3 },
+    s5: { kind: "tool", phrase: "SAP EWM", step: 3 },
+    s6: { kind: "skill", phrase: "Driving a reach truck", step: 3 },
+    s7: { kind: "skill", phrase: "Training new staff", step: 4 }
+  };
+  const LF = { lf1: "Device support", lf2: "Warehouse systems" };
+  const ORDER = ["s1", "s2", "s6", "s7", "s4", "s5", "s3", "s8"];
+  const ROT = { s1: -2.5, s2: 1.8, s6: -1.2, s7: 2.4, s4: 1.5, s5: -2.2, s3: -1.5, s8: 2 };
+  const JOBS = [
+    { fi: "Varasto&shy;työntekijä, keräily", en: "Warehouse worker, order picking", where: "Kilo, Espoo", via: "s1", step: 1, rot: -1.5 },
+    { fi: "Laite&shy;huoltaja, käsi&shy;päätteet", en: "Device technician, handheld terminals", where: "Juvanmalmi, Espoo", via: "s2", step: 1, rot: 1.2 },
+    { fi: "IT-tuki&shy;henkilö, logistiikka&shy;keskus", en: "IT support, logistics centre", where: "Kauklahti, Espoo", via: "s3", step: 2, rot: 1 },
+    { fi: "SAP EWM -pää&shy;käyttäjä", en: "SAP EWM key user", where: "Keilaniemi, Espoo", via: "s5", step: 3, rot: -1.2 },
+    { fi: "Trukin&shy;kuljettaja, kylmä&shy;varasto", en: "Reach truck driver, cold store", where: "Suomenoja, Espoo", via: "s6", step: 3, rot: -0.8 },
+    { fi: "Perehdyttäjä, varasto&shy;työ", en: "Onboarding trainer, warehouse", where: "Leppävaara, Espoo", via: "s7", step: 4, rot: 1.6 }
+  ];
+  const COUNTS = [0, 38, 44, 61, 66, 72];
+
+  const T = {
+    en: {
+      disclosure: "You're talking with an AI. It takes notes; you review and approve them at the end.",
+      stop: "Stop", convo: "The conversation", convoHelp: "Marked words became notes",
+      notes: "Notes so far", notesHelp: "You'll check and edit these at the end.",
+      "g.skill": "What I do", "g.tool": "Tools", "g.knowledge": "Know-how", "g.domain": "Fields",
+      jobsLit: "open jobs mention what you've told so far",
+      jobsWait: "Real open jobs light up here as you talk.",
+      boardFoot: "After you approve your card you'll see each job with the reason it relates to you.",
+      or: "or", typeLbl: "Type instead", ph: "Write your answer", send: "Send",
+      hint: "You can press the button to interrupt at any time.", skip: "Skip question",
+      hold: "Hold to talk", holdSub: "or hold the space bar", release: "Release to send", releaseSub: "Listening… take your time",
+      q: (n) => `Question ${n} of ${TOTAL}`,
+      st: { idle: "Your turn", listening: "Listening…", thinking: "Writing a question…", speaking: "Speaking" },
+      sub: { idle: "Hold the button or type. There are no wrong answers.", listening: "Your words appear in the conversation as you speak.", thinking: "Your answer is in the notes.", speaking: "" },
+      thinkingLine: "Writing a question", you: "You", ai: "AI interviewer", inProgress: "You, speaking",
+      lookingFor: "Looking for", lookingEmpty: "What you're looking for comes later in the conversation.",
+      slotHint: { skill: "Things you do at work land here.", tool: "Tools and software.", knowledge: "Things you know about.", domain: "Fields you work in." },
+      emptyM: "Your skills land here as stickers while you talk.", newTag: "New"
+    },
+    fi: {
+      disclosure: "Keskustelet tekoälyn kanssa. Se tekee muistiinpanoja, jotka tarkistat ja hyväksyt lopuksi.",
+      stop: "Lopeta", convo: "Keskustelu", convoHelp: "Merkityistä sanoista tuli muistiinpanoja",
+      notes: "Muistiinpanot tähän asti", notesHelp: "Tarkistat ja muokkaat näitä lopuksi.",
+      "g.skill": "Mitä teen", "g.tool": "Työkalut", "g.knowledge": "Osaaminen", "g.domain": "Alat",
+      jobsLit: "avointa työpaikkaa mainitsee sen, mitä olet kertonut",
+      jobsWait: "Oikeat avoimet työpaikat syttyvät tähän, kun puhut.",
+      boardFoot: "Kun hyväksyt korttisi, näet jokaisen työpaikan ja syyn, miksi se liittyy sinuun.",
+      or: "tai", typeLbl: "Kirjoita mieluummin", ph: "Kirjoita vastauksesi", send: "Lähetä",
+      hint: "Voit keskeyttää painamalla nappia milloin tahansa.", skip: "Ohita kysymys",
+      hold: "Pidä pohjassa ja puhu", holdSub: "tai pidä välilyöntiä pohjassa", release: "Päästä irti, niin viesti lähtee", releaseSub: "Kuuntelen… ei kiirettä",
+      q: (n) => `Kysymys ${n}/${TOTAL}`,
+      st: { idle: "Sinun vuorosi", listening: "Kuuntelen…", thinking: "Kirjoitan kysymystä…", speaking: "Puhun" },
+      sub: { idle: "Pidä nappia pohjassa tai kirjoita. Vääriä vastauksia ei ole.", listening: "Sanasi näkyvät keskustelussa sitä mukaa kuin puhut.", thinking: "Vastauksesi on muistiinpanoissa.", speaking: "" },
+      thinkingLine: "Kirjoitan kysymystä", you: "Sinä", ai: "Tekoälyhaastattelija", inProgress: "Sinä puhut",
+      lookingFor: "Etsit", lookingEmpty: "Siitä, mitä etsit, puhutaan myöhemmin.",
+      slotHint: { skill: "Työssä tekemäsi asiat tulevat tähän.", tool: "Työkalut ja ohjelmat.", knowledge: "Asiat, joista tiedät.", domain: "Alat, joilla työskentelet." },
+      emptyM: "Taitosi ilmestyvät tähän tarroina, kun puhut.", newTag: "Uusi"
+    }
+  }[lang];
+  const QQ = lang === "fi" ? Q_FI : Q;
+
+  document.querySelectorAll("[data-i18n]").forEach((el) => { if (T[el.dataset.i18n]) el.textContent = T[el.dataset.i18n]; });
+  document.querySelectorAll("[data-i18n-ph]").forEach((el) => { el.placeholder = T[el.dataset.i18nPh]; });
+  document.getElementById("emptyM").textContent = T.emptyM;
+
+  // header progress: the question being asked now
+  const qIndex = Math.min(step, TOTAL - 1);
+  document.getElementById("qnum").textContent = T.q(qIndex + 1);
+  document.getElementById("dots").innerHTML = Array.from({ length: TOTAL }, (_, i) =>
+    `<i class="${i < qIndex ? "done" : i === qIndex ? "now" : ""}"></i>`).join("");
+
+  // state chip and line
+  const icons = {
+    idle: '<svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
+    listening: '<svg viewBox="0 0 16 16"><path d="M3 6v4M6 4v8M9 2v12M12 5v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    thinking: '<svg viewBox="0 0 16 16"><path d="M3 13l1-3 7-7 2 2-7 7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+    speaking: '<svg viewBox="0 0 16 16"><path d="M2 6h3l4-3v10l-4-3H2z" fill="currentColor"/><path d="M11.5 5.5q2 2.5 0 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
+  };
+  document.getElementById("stateChip").innerHTML = icons[state] + `<span>${T.st[state]}</span>`;
+  const line = document.getElementById("line");
+  const sub = document.getElementById("lineSub");
+  if (state === "thinking" && step > 0) {
+    line.innerHTML = `${T.thinkingLine}<span class="think-dots" aria-hidden="true"><i></i><i></i><i></i></span>`;
+  } else {
+    line.textContent = QQ[qIndex];
+    if (QQ[qIndex].length > 140) line.classList.add("long");
+  }
+  sub.textContent = T.sub[state];
+  if (!sub.textContent) sub.remove();
+  if (state === "listening") {
+    document.getElementById("holdLbl").textContent = T.release;
+    document.getElementById("holdSub").textContent = T.releaseSub;
+  } else {
+    document.getElementById("holdLbl").textContent = T.hold;
+    document.getElementById("holdSub").textContent = T.holdSub;
+  }
+
+  // transcript
+  const kindOf = (id) => (SIG[id] ? SIG[id].kind : "skill");
+  const mark = (text, fresh) => text.replace(/\[\[(\w+)\|([^\]]+)\]\]/g, (_, id, words) =>
+    `<mark class="hl${fresh ? " fresh" : ""}" id="hl-${id}" data-kind="${kindOf(id)}">${words}</mark>`);
+  const bot = '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 23L20 52L32 33L44 52L55 23" fill="none" stroke="#0E5E55" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="15" r="7.5" fill="#FFB627"/></svg>';
+  let html = "";
+  const askedUpTo = state === "thinking" ? step - 1 : step; // while thinking, the next question is not written yet
+  for (let i = 0; i <= Math.min(askedUpTo, TOTAL - 1); i++) {
+    if (i === qIndex && state !== "thinking" && i < A.length + 1) {
+      // the current question is shown large in the bubble; keep a short copy in the log
+    }
+    html += `<li class="turn ai"><span class="who">${bot}${T.ai}</span><p>${QQ[i]}</p></li>`;
+    if (i < step) html += `<li class="turn me"><span class="who">${T.you}</span><p>${mark(A[i], i === step - 1)}</p></li>`;
+  }
+  if (state === "listening") {
+    html += `<li class="turn me partial"><span class="who">${T.inProgress}</span><p>${PARTIAL[step]}…</p></li>`;
+  }
+  const turns = document.getElementById("turns");
+  turns.innerHTML = html;
+  turns.scrollTop = turns.scrollHeight;
+
+  // stickers on the card
+  const fresh = (id) => SIG[id].step === step && step > 0;
+  const freshIds = ORDER.filter((id) => SIG[id].step <= step && fresh(id))
+    .sort((a, b) => A[step - 1].indexOf(a) - A[step - 1].indexOf(b));
+  const STAG = 0.55;
+  ORDER.forEach((id) => {
+    const s = SIG[id];
+    if (s.step > step) return;
+    const li = document.createElement("li");
+    const isFresh = fresh(id);
+    const k = freshIds.indexOf(id);
+    li.innerHTML = `<span class="sticker${isFresh ? " fresh" : ""}" id="st-${id}" data-kind="${s.kind}" style="--rot:${ROT[id]}deg;--d:${(0.45 + k * STAG).toFixed(2)}s">${s.phrase}${isFresh ? `<span class="new">${T.newTag}</span>` : ""}</span>`;
+    document.querySelector(`.zone ul[data-kind="${s.kind}"]`).appendChild(li);
+  });
+  document.querySelectorAll(".zone ul").forEach((ul) => {
+    if (!ul.children.length) {
+      const p = document.createElement("p");
+      p.className = "slot-hint";
+      p.textContent = T.slotHint[ul.dataset.kind];
+      ul.after(p);
+    }
+  });
+  if (step > 0) document.getElementById("emptyM").remove();
+  const looking = document.getElementById("looking");
+  if (step < 5) looking.classList.add("empty");
+  looking.innerHTML = step >= 5
+    ? `<strong>${T.lookingFor}</strong><span class="slip">${LF.lf1}</span><span class="slip">${LF.lf2}</span>`
+    : `<strong>${T.lookingFor}</strong><span>${T.lookingEmpty}</span>`;
+
+  // the pinboard
+  const notices = document.getElementById("notices");
+  const tAfterStickers = 0.45 + freshIds.length * STAG + 0.35;
+  let fk = 0;
+  JOBS.forEach((j) => {
+    const lit = j.step <= step;
+    const isFresh = lit && j.step === step;
+    const li = document.createElement("li");
+    li.className = `notice${lit ? " lit" : ""}${isFresh ? " fresh" : ""}`;
+    li.style.setProperty("--rot", j.rot + "deg");
+    li.style.setProperty("--d", (tAfterStickers + (isFresh ? fk++ * 0.25 : 0)).toFixed(2) + "s");
+    const s = SIG[j.via];
+    li.innerHTML = `<span class="pin" aria-hidden="true"></span>
+      <div class="face back" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="face front"${lit ? "" : ' aria-hidden="true"'}>
+        ${isFresh ? `<span class="new">${T.newTag}</span>` : ""}
+        <span class="fi" lang="fi">${j.fi}</span>
+        <span class="en">${j.en}</span>
+        <span class="where">${j.where}</span>
+        <span class="via"><b class="${s.kind}" aria-hidden="true"></b>${s.phrase}</span>
+      </div>`;
+    notices.appendChild(li);
+  });
+
+  // the count
+  const countEl = document.getElementById("count");
+  const to = COUNTS[step], from = step > 0 ? COUNTS[step - 1] : 0;
+  countEl.textContent = to;
+  if (step === 0) {
+    countEl.parentElement.classList.add("waiting");
+    countEl.textContent = "";
+    countEl.parentElement.querySelector(".what").textContent = T.jobsWait;
+  }
+  if (step > 0 && to > from) {
+    const d = document.createElement("span");
+    d.className = "delta";
+    d.textContent = "+" + (to - from);
+    countEl.parentElement.querySelector(".what").appendChild(d);
+  }
+
+  // strings from your words to the stickers
+  const main = document.getElementById("main");
+  const svg = document.getElementById("strings");
+  const draftEl = document.querySelector(".draft");
+  // measure stickers where they will rest, not where they are mid-flight
+  const measuring = (fn) => { document.body.classList.add("measure"); try { return fn(); } finally { document.body.classList.remove("measure"); } };
+  function drawStrings() { measuring(drawStringsNow); }
+  function drawStringsNow() {
+    if (getComputedStyle(svg).display === "none") return;
+    const box = draftEl.getBoundingClientRect();
+    const tBox = turns.getBoundingClientRect();
+    const edge = document.querySelector(".talk").getBoundingClientRect().right - box.left;
+    let out = "";
+    ORDER.forEach((id) => {
+      const hl = document.getElementById("hl-" + id);
+      const st = document.getElementById("st-" + id);
+      if (!hl || !st) return;
+      const rects = hl.getClientRects();
+      const h = rects[rects.length - 1];
+      if (h.bottom < tBox.top + 4 || h.top > tBox.bottom - 4) return;
+      const s = st.getBoundingClientRect();
+      const isF = freshIds.includes(id);
+      const k = freshIds.indexOf(id);
+      // wire routing: out of the transcript, down the card's left margin,
+      // along the gap above the sticker's row, then into the sticker's top
+      const lane = 9 + (isF ? k : 0) * 4;
+      const x0 = edge - 1, y0 = h.top + h.height / 2 - box.top;
+      const yg = s.top - box.top - 7 - (isF ? k : 0) * 2;
+      const xs = s.left - box.left + Math.min(28, s.width / 4), ys = s.top - box.top + 3;
+      const r = 9, dir = yg > y0 ? 1 : -1;
+      const d = Math.abs(yg - y0) < 2 * r
+        ? `M${x0} ${y0} C${lane + 30} ${y0}, ${xs - 40} ${yg}, ${xs} ${ys}`
+        : `M${x0.toFixed(1)} ${y0.toFixed(1)} H${lane + r} Q${lane} ${y0.toFixed(1)} ${lane} ${(y0 + dir * r).toFixed(1)} V${(yg - dir * r).toFixed(1)} Q${lane} ${yg.toFixed(1)} ${lane + r} ${yg.toFixed(1)} H${(xs - r).toFixed(1)} Q${xs.toFixed(1)} ${yg.toFixed(1)} ${xs.toFixed(1)} ${(yg + r).toFixed(1)} V${ys.toFixed(1)}`;
+      const len = Math.abs(x0 - lane) + Math.abs(yg - y0) + Math.abs(xs - lane) + Math.abs(ys - yg) + 20;
+      const delay = (0.45 + k * STAG + 0.55).toFixed(2);
+      const cls = isF ? "fresh" : "old";
+      const x1 = x0, y1 = y0;
+      out += `<g class="${cls}" data-for="${id}"><path class="${cls === "fresh" ? "fresh" : ""}" d="${d}" style="--len:${len.toFixed(0)};--d:${delay}s"/>` +
+        `<circle class="${isF ? "fresh" : ""}" cx="${x1.toFixed(1)}" cy="${y1.toFixed(1)}" r="4" style="--d:${delay}s"/></g>`;
+    });
+    svg.setAttribute("viewBox", `0 0 ${box.width} ${box.height}`);
+    svg.style.width = box.width + "px";
+    svg.style.height = box.height + "px";
+    svg.innerHTML = out;
+  }
+  // older strings show when you point at a sticker or at your words
+  const showOld = (id, on) => { const g = svg.querySelector(`.old[data-for="${id}"]`); if (g) g.classList.toggle("show", on); };
+  document.addEventListener("pointerover", (e) => {
+    const t = e.target.closest(".sticker, mark.hl");
+    svg.querySelectorAll(".old.show").forEach((g) => g.classList.remove("show"));
+    if (t) showOld(t.id.replace(/^(st|hl)-/, ""), true);
+  });
+
+  // the flight path: each fresh sticker starts at the words that earned it
+  function aimStickers() { measuring(aimNow); }
+  function aimNow() {
+    freshIds.forEach((id) => {
+      const hl = document.getElementById("hl-" + id), st = document.getElementById("st-" + id);
+      if (!hl || !st) return;
+      const h = hl.getBoundingClientRect(), s = st.getBoundingClientRect();
+      if (!h.width) return;
+      st.style.setProperty("--fx", (h.left + h.width / 2 - (s.left + s.width / 2)).toFixed(0) + "px");
+      st.style.setProperty("--fy", (h.top + h.height / 2 - (s.top + s.height / 2)).toFixed(0) + "px");
+    });
+  }
+
+  function rollCount() {
+    if (!animate || to === from) return;
+    countEl.classList.add("bump");
+    countEl.textContent = from;
+    const start = performance.now() + tAfterStickers * 1000;
+    const dur = 900;
+    const tick = (now) => {
+      const p = Math.min(1, Math.max(0, (now - start) / dur));
+      countEl.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  const go = () => {
+    turns.scrollTop = turns.scrollHeight;
+    drawStrings();
+    if (animate) {
+      aimStickers();
+      // tiny delay so the browser paints the start frame first
+      requestAnimationFrame(() => requestAnimationFrame(() => { room.classList.add("arriving"); rollCount(); }));
+    } else {
+      document.querySelectorAll(".fresh").forEach((el) => el.classList.remove("fresh"));
+      drawStrings();
+    }
+  };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => setTimeout(go, 60));
+  addEventListener("resize", drawStrings);
+  turns.addEventListener("scroll", () => requestAnimationFrame(drawStrings));
+
+  // hold-to-talk demo: press shows the listening state
+  const hold = document.getElementById("hold");
+  const setLive = (on) => { room.dataset.state = on ? "listening" : state; };
+  hold.addEventListener("pointerdown", () => setLive(true));
+  ["pointerup", "pointerleave", "pointercancel"].forEach((e) => hold.addEventListener(e, () => setLive(false)));
+
+  // prototype controls
+  const proto = document.getElementById("proto");
+  const link = (k, v, label) => {
+    const p = new URLSearchParams(location.search);
+    p.set(k, v);
+    const cur = (params.get(k) || (k === "state" ? "idle" : k === "step" ? "0" : "en")) === String(v);
+    return `<a href="?${p}" aria-current="${cur}">${label}</a>`;
+  };
+  proto.innerHTML = "state " + STATES.map((s) => link("state", s, s)).join("") +
+    " &nbsp;step " + [0, 1, 2, 3, 4, 5].map((n) => link("step", n, n)).join("") +
+    " &nbsp;" + link("lang", "en", "EN") + link("lang", "fi", "FI");
+})();
+</script>
+</body>
+</html>

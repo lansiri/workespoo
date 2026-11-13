@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your Signal Card · WorkEspoo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="workespoo.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="logo" href="#" aria-label="WorkEspoo" data-testid="site-logo">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 23L20 52L32 33L44 52L55 23" fill="none" stroke="#0E5E55" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="15" r="7.5" fill="#FFB627"/></svg>
+    <b>WorkEspoo</b>
+  </a>
+  <nav class="mainnav" aria-label="Main">
+    <a href="interview.html" data-fi="Haastattelu" data-sv="Intervju">Interview</a><a href="card.html" aria-current="page" data-fi="Korttini" data-sv="Mitt kort">My card</a><a href="matches.html" data-fi="Työpaikkani" data-sv="Mina jobb">My matches</a><a href="#" data-fi="Näin tämä toimii" data-sv="Så fungerar det">How this works</a>
+  </nav>
+  <span class="spacer"></span>
+  <nav class="langs" aria-label="Language" data-testid="language-switcher">
+    <a href="?lang=en" id="l-en" data-testid="lang-en">English</a><a href="?lang=fi" id="l-fi" data-testid="lang-fi">Suomi</a><a href="?lang=sv" id="l-sv" data-testid="lang-sv">Svenska</a>
+  </nav>
+  <button class="menu-btn" type="button" aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+</header>
+
+<div class="cd-wrap">
+  <div class="cd-intro">
+    <div>
+      <h1 data-fi="Signal Card -korttisi" data-sv="Ditt Signal Card">Your Signal Card</h1>
+      <p data-fi="Nämä ovat muistiinpanot keskustelustasi. Tarkista ne, muuta mitä haluat ja hyväksy vain se, mihin olet tyytyväinen." data-sv="Det här är anteckningar från ditt samtal. Granska dem, ändra vad du vill och godkänn bara det du är nöjd med.">These are notes from your conversation. Check them, change anything, and approve only what you're happy with.</p>
+    </div>
+    <div class="seg" role="group" aria-label="Whose view">
+      <button type="button" id="vMine" aria-pressed="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span data-fi="Oma näkymä" data-sv="Min vy">My view</span>
+      </button>
+      <button type="button" id="vCo" aria-pressed="false" data-testid="company-preview-toggle">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V8l6-3v15M10 20V10l10 3v7M3 20h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <span data-fi="Mitä yritykset näkevät" data-sv="Vad företag ser">What companies see</span>
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <div class="banner banner-info company-banner" role="note" data-testid="company-preview">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="#0E5E55" stroke-width="2"/><path d="M12 11v6M12 7.5v.5" stroke="#0E5E55" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <span><b data-fi="Juuri näin yritys näkee korttisi." data-sv="Precis så här ser ett företag ditt kort.">This is exactly what a company sees.</b> <span data-fi="Alkuperäiset sanasi, kielesi ja se, puhuitko vai kirjoititko, jäävät sinulle, kunnes molemmat sanotte kyllä." data-sv="Dina egna ord, ditt språk och om du pratade eller skrev stannar hos dig tills ni båda säger ja.">Your own words, your language and whether you spoke or typed stay with you until you both say yes.</span></span>
+    </div>
+
+    <article class="sig-card" aria-label="Signal Card">
+      <span class="tape" aria-hidden="true"></span>
+      <header class="sig-head" id="sigHead">
+        <div class="row1">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 23L20 52L32 33L44 52L55 23" fill="none" stroke="#5ED1B6" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="15" r="7.5" fill="#FFB627"/></svg>
+          <span class="kicker">Signal Card</span>
+          <span class="handle" aria-label="Nickname Birch-27"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l9-9 9 9-9 9z" fill="none" stroke="#1E2B29" stroke-width="2.4" stroke-linejoin="round"/></svg>Birch-27</span>
+        </div>
+        <p class="ai-label-dark"><span class="ai-tag">AI</span><span class="mine-only" data-fi="Tekoälyn kirjoittama tiivistelmä omista sanoistasi" data-sv="Sammanfattning skriven av AI utifrån dina egna ord">Summary written by AI from your own words</span><span class="co-only" hidden>Summary written by AI from this person's own words</span></p>
+        <h2 data-testid="card-headline">Keeps warehouse orders, scanners and new colleagues moving</h2>
+        <p class="summary">They pick and pack orders in a warehouse and are the person colleagues turn to when handheld scanners fail. Each summer they train new workers on the scanners and the warehouse system.</p>
+        <button class="summary-toggle" type="button" id="sumBtn" data-fi="Lue tiivistelmä" data-sv="Läs sammanfattningen">Read the summary</button>
+        <span class="stamp" id="stamp" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-fi="Sinä hyväksyit" data-sv="Godkänt av dig">Approved by you</span></span>
+      </header>
+
+      <div class="sig-body">
+        <p class="order-note"><span class="mine-only" data-fi="Muistiinpanot ovat keskustelun järjestyksessä. Mitään ei ole pisteytetty." data-sv="Anteckningarna står i samtalets ordning. Inget är poängsatt.">Notes are in the order you talked about them. Nothing here is scored.</span><span class="co-only" hidden>Written by AI from this person's own words and approved by them. Not a quote, not a verified fact.</span></p>
+        <div id="body"></div>
+      </div>
+
+      <div class="sig-body" style="padding-top:0">
+        <section class="looking" aria-labelledby="lfTitle">
+          <div class="group-title" id="lfTitle" data-fi="Mitä etsit" data-sv="Vad du söker">What you're looking for</div>
+          <p class="mine-only" style="font-size:14px;color:var(--muted)" data-fi="Kaikki vapaaehtoista. Yritykset näkevät nämä." data-sv="Allt är frivilligt. Företag kan se det här.">All optional. Companies can see this.</p>
+          <dl>
+            <div><dt data-fi="Millaista työtä" data-sv="Typ av arbete">Kinds of work</dt><dd><span class="tag">IT support</span><span class="tag">Device maintenance</span><span class="tag">Warehouse work</span></dd></div>
+            <div><dt data-fi="Missä haluaisit työskennellä" data-sv="Var du vill arbeta">Where you'd like to work</dt><dd><span class="tag" data-fi="Työpaikalla" data-sv="På plats">On site</span></dd></div>
+            <div><dt data-fi="Milloin voisit aloittaa" data-sv="När du kan börja">When you could start</dt><dd><span class="tag" data-fi="Kuukauden sisällä" data-sv="Inom en månad">Within a month</span></dd></div>
+            <div><dt data-fi="Kielet, joilla haluaisit työskennellä" data-sv="Språk du vill arbeta på">Languages you'd like to work in</dt><dd><span class="tag">English</span><span class="tag">Finnish</span></dd></div>
+          </dl>
+          <button class="btn btn-quiet mine-only" type="button" style="margin-top:10px;margin-left:-10px"><span data-fi="Muokkaa" data-sv="Ändra">Edit</span></button>
+        </section>
+      </div>
+
+      <footer class="sig-foot">
+        <span data-fi="Synteettinen demoprofiili" data-sv="Syntetisk demoprofil">Synthetic demo profile</span>
+        <span class="mine-only" id="draftNote" data-fi="Luonnos · kukaan ei näe tätä ennen kuin hyväksyt sen" data-sv="Utkast · ingen ser det här innan du godkänner det">Draft · nobody sees this until you approve it</span>
+        <span>Skill labels: ESCO, European Commission</span>
+      </footer>
+    </article>
+
+    <details class="transcript-box">
+      <summary><b data-fi="Vastauksesi" data-sv="Dina svar">Your answers</b><span data-fi="Puheentunnistus tekee virheitä, varsinkin aksenttien kanssa. Napauta lausetta korjataksesi sen." data-sv="Taligenkänning gör fel, särskilt med brytning. Tryck på en mening för att rätta den.">Speech recognition makes mistakes, especially with accents. Tap a sentence to fix it.</span></summary>
+      <div id="answers"></div>
+    </details>
+  </main>
+
+  <aside class="cd-side" aria-label="Approve and settings">
+    <section class="box approve-box mine-only">
+      <span class="sticker" aria-hidden="true" data-fi="Sinä päätät" data-sv="Du bestämmer">Yours to approve</span>
+      <h3><span class="step-no">1</span><span data-fi="Hyväksy korttisi" data-sv="Godkänn ditt kort">Approve your card</span></h3>
+      <p data-fi="Vain hyväksytty kortti on käytössä. Voit muuttaa sitä milloin tahansa." data-sv="Bara ett godkänt kort används. Du kan ändra det när som helst.">Only an approved card is used. You can change it at any time.</p>
+      <p class="tally" id="tally"></p>
+      <button class="btn btn-primary btn-lg" type="button" id="approve" data-testid="approve-card"><span data-fi="Hyväksy korttini" data-sv="Godkänn mitt kort">Approve my card</span></button>
+      <div id="approvedBox" hidden>
+        <p class="approved-line" data-testid="card-approved"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-fi="Hyväksytty. Voit muuttaa korttiasi milloin tahansa." data-sv="Godkänt. Du kan ändra ditt kort när som helst.">Approved. You can change your card at any time.</span></p>
+        <a class="btn btn-ghost" href="matches.html" data-testid="go-to-matches"><span data-fi="Katso sopivat työpaikat" data-sv="Se jobb som passar">See jobs that fit your card</span> →</a>
+      </div>
+    </section>
+
+    <section class="box mine-only" id="poolBox">
+      <h3><span class="step-no">2</span><span data-fi="Saako Espoo ehdottaa sinua yrityksille?" data-sv="Får Esbo föreslå dig för företag?">Can Espoo suggest you to companies?</span></h3>
+      <p data-fi="Jos vastaat kyllä, hyväksyttyä korttiasi (ilman nimeäsi) voidaan ehdottaa tapahtuman yrityksille. Espoon järjestäjä tarkistaa jokaisen ehdotuksen. Nimesi kerrotaan vain, jos yritys pyytää tapaamista ja suostut siihen." data-sv="Om du säger ja kan ditt godkända kort (utan ditt namn) föreslås för företag på evenemanget. En arrangör i Esbo granskar varje förslag. Ditt namn delas bara om ett företag vill träffa dig och du säger ja.">If you say yes, your approved card (without your name) can be suggested to companies at this event. An Espoo organiser checks every suggestion. Your name is shared only if a company asks to meet you and you agree.</p>
+      <label class="choice"><input type="radio" name="pool" value="yes" disabled data-testid="pool-opt-in"><span><b data-fi="Kyllä, saa ehdottaa" data-sv="Ja, föreslå mig">Yes, suggest me</b><span data-fi="Voit poistua joukosta milloin tahansa." data-sv="Du kan lämna poolen när som helst.">You can leave the pool at any time.</span></span></label>
+      <label class="choice"><input type="radio" name="pool" value="no" disabled><span><b data-fi="Ei nyt" data-sv="Inte nu">Not now</b><span data-fi="Näet silti korttiisi sopivat avoimet työpaikat." data-sv="Du ser ändå lediga jobb som passar ditt kort.">You'll still see open jobs that match your card.</span></span></label>
+      <p class="locked-note" id="poolLock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg><span data-fi="Hyväksy korttisi ensin. Mitään ei ole valittu valmiiksi." data-sv="Godkänn ditt kort först. Inget är förvalt.">Approve your card first. Nothing is chosen for you.</span></p>
+    </section>
+
+    <section class="box mine-only">
+      <h3 data-fi="Tietosi" data-sv="Dina uppgifter">Your data</h3>
+      <div class="data-row">
+        <button class="btn btn-ghost" type="button" data-testid="export-data">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-fi="Lataa tietoni" data-sv="Ladda ner mina uppgifter">Download my data</span>
+        </button>
+        <button class="btn btn-danger" type="button" data-testid="delete-data">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12.5h8L17 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-fi="Poista kaikki" data-sv="Radera allt">Delete everything</span>
+        </button>
+      </div>
+      <p class="purge">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span data-fi="Tämä on livedemo. Kaikki poistetaan huomenna klo 14.20." data-sv="Det här är en livedemo. Allt raderas i morgon kl. 14.20.">This is a live demo session. Everything is deleted tomorrow at 14:20.</span>
+      </p>
+    </section>
+
+    <section class="box co-only" hidden>
+      <h3>Nothing here is a score</h3>
+      <p>Companies see what you did, not who you are: no name, no photo, no age, no language, no levels. The notes are in the order of the conversation.</p>
+    </section>
+  </aside>
+</div>
+
+<div class="cd-mbar mine-only" id="mbar">
+  <p class="tally" id="tallyM"></p>
+  <button class="btn btn-primary btn-lg" type="button" id="approveM"><span data-fi="Hyväksy korttini" data-sv="Godkänn mitt kort">Approve my card</span></button>
+</div>
+
+<script>
+(() => {
+  const P = new URLSearchParams(location.search);
+  const LANG = ["fi", "sv"].includes(P.get("lang")) ? P.get("lang") : "en";
+  document.documentElement.lang = LANG;
+  document.getElementById("l-" + LANG).setAttribute("aria-current", "true");
+
+  const T = {
+    en: { yourWords: "Your words", shownAs: "Shown to companies as", edit: "Edit", remove: "Remove", removed: "Removed.", undo: "Undo", add: "Add your own", answer: n => `Answer ${n}`, groups: ["What I do", "Tools", "Know-how", "Fields"], esco: "ESCO",
+          tally: (k, r) => `${k} notes kept` + (r ? ` · ${r} removed` : ""), approved: "Approved" },
+    fi: { yourWords: "Omat sanasi", shownAs: "Yritykset näkevät tämän näin", edit: "Muokkaa", remove: "Poista", removed: "Poistettu.", undo: "Kumoa", add: "Lisää oma", answer: n => `Vastaus ${n}`, groups: ["Mitä teen", "Työkalut", "Osaaminen", "Alat"], esco: "ESCO",
+          tally: (k, r) => `${k} muistiinpanoa jää` + (r ? ` · ${r} poistettu` : ""), approved: "Hyväksytty" },
+    sv: { yourWords: "Dina ord", shownAs: "Visas för företag som", edit: "Ändra", remove: "Ta bort", removed: "Borttagen.", undo: "Ångra", add: "Lägg till egen", answer: n => `Svar ${n}`, groups: ["Vad jag gör", "Verktyg", "Kunnande", "Branscher"], esco: "ESCO",
+          tally: (k, r) => `${k} anteckningar kvar` + (r ? ` · ${r} borttagen` : ""), approved: "Godkänt" }
+  }[LANG];
+  if (LANG !== "en") document.querySelectorAll(`[data-${LANG}]`).forEach(el => el.textContent = el.dataset[LANG]);
+
+  /* sentences are rendered by code from the stored transcript; notes cite them by [answer, sentence] */
+  const A = {
+    1: ["I work in a warehouse in Kerava, evening shift, mostly picking and packing orders.", "And when the handheld scanners stop working, people usually come to me."],
+    2: ["First I check if it's the battery or the wifi.", "If it keeps dropping I pair it to the network again, sometimes I reinstall the app.", "I made a little checklist and taped it in the break room so people can try that first."],
+    3: ["Yeah, every summer I train the new summer workers on the scanners and on the WMS.", "Maybe two or three people a week in June."],
+    4: ["Zebra scanners, the WMS, and Excel for the stock counts.", "I also have a forklift card."],
+    5: ["Something with the devices, like IT support or maintenance.", "Shifts are fine for me.", "English is easiest, but I'm learning Finnish."]
+  };
+  const S = [
+    { id: "s1", g: 0, t: "Order picking and packing", c: "", ev: [[1, 0]], r: "They pick and pack customer orders in a warehouse on the evening shift.", en: "pick orders for dispatching", fi: "kerätä tilauksia lähetettäviksi" },
+    { id: "s2", g: 0, t: "Fixing handheld scanners", c: "", ev: [[1, 1]], r: "Colleagues come to them when handheld scanners stop working.", en: "repair ICT devices", fi: "korjata tieto- ja viestintätekniikan laitteita" },
+    { id: "s3", g: 0, t: "Troubleshooting Wi-Fi devices", c: "", ev: [[2, 0], [2, 1]], r: "They check batteries and network settings, pair scanners to the network again and reinstall the app.", en: "perform ICT troubleshooting", fi: "tehdä tieto- ja viestintätekniikan vianmääritystä" },
+    { id: "s4", g: 0, t: "Writing how-to checklists", c: "", ev: [[2, 2]], r: "They wrote a troubleshooting checklist so colleagues can try the first steps themselves.", en: "provide technical documentation", fi: "laatia teknisiä dokumentteja" },
+    { id: "s5", g: 0, t: "Training new staff", c: "", ev: [[3, 0]], r: "Each summer they train new seasonal workers on the scanners and the warehouse system.", en: "train employees", fi: "kouluttaa työntekijöitä" },
+    { id: "s6", g: 1, t: "Warehouse management system", c: "tool", ev: [[3, 0], [4, 0]], r: "They use a warehouse management system daily and teach others to use it.", en: "use warehouse management systems", fi: "käyttää varastonhallintajärjestelmiä" },
+    { id: "s7", g: 1, t: "Microsoft Excel", c: "tool", ev: [[4, 0]], r: "They use Excel for stock counts.", en: "use spreadsheets software", fi: "käyttää taulukkolaskentaohjelmistoja" },
+    { id: "s8", g: 2, t: "Forklift licence", c: "know", ev: [[4, 1]], r: "They hold a forklift licence.", en: "operate forklift", fi: "käyttää trukkia" }
+  ];
+  const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const IC = {
+    edit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',
+    rm: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    ai: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z" fill="currentColor"/></svg>'
+  };
+
+  const body = document.getElementById("body");
+  let h = "";
+  T.groups.forEach((gt, g) => {
+    const items = S.filter(s => s.g === g);
+    if (!items.length) return;
+    h += `<section class="group"><div class="group-title">${gt}</div>`;
+    items.forEach(s => {
+      // one quote per answer: sentences from different answers are never glued into one quote
+      const byAns = {}; s.ev.forEach(([a, j]) => (byAns[a] = byAns[a] || []).push(A[a][j]));
+      const quotes = Object.entries(byAns).map(([a, ss]) => `<q data-testid="signal-quote">${esc(ss.join(" "))}</q><span class="ref">${T.answer(a)}</span>`).join("");
+      h += `<div class="signal" data-testid="card-signal" data-signal-id="${s.id}">
+        <div class="sig-top">
+          <div><span class="chip ${s.c}"><i class="gm" aria-hidden="true"></i><span class="t" data-testid="signal-phrase">${esc(s.t)}</span></span>
+            <p class="esco" data-testid="signal-esco"><span class="lbl">${T.esco}</span><b>${esc(s.en)}</b> · <span lang="fi">${esc(s.fi)}</span></p></div>
+          <div class="sig-actions">
+            <button class="btn btn-quiet" type="button" data-testid="signal-edit">${IC.edit}${T.edit}</button>
+            <button class="btn btn-quiet js-rm" type="button" data-testid="signal-remove">${IC.rm}${T.remove}</button>
+          </div>
+        </div>
+        <div class="evidence">
+          <figure class="quote"><span class="label">${T.yourWords}</span>${quotes}</figure>
+          <div class="rendering"><span class="label mine-only">${IC.ai}${T.shownAs} <span class="ai-mini">AI</span></span><span data-testid="signal-rendering">${esc(s.r)}</span></div>
+        </div>
+      </div>`;
+    });
+    if (g === 2) h += `<button class="btn btn-ghost add-own" type="button" style="margin-top:6px">+ ${T.add}</button>`;
+    h += `</section>`;
+  });
+  body.innerHTML = h;
+
+  const $ = id => document.getElementById(id);
+  let approved = false;
+  function tally() {
+    const kept = body.querySelectorAll(".signal:not(.removed)").length, rm = body.querySelectorAll(".signal.removed").length;
+    $("tally").textContent = $("tallyM").textContent = T.tally(kept, rm);
+  }
+
+  body.addEventListener("click", e => {
+    const b = e.target.closest(".js-rm, .js-undo");
+    if (!b) return;
+    const row = b.closest(".signal");
+    if (b.classList.contains("js-rm")) {
+      row.dataset.html = row.innerHTML;
+      const name = row.querySelector(".chip").outerHTML;
+      row.classList.add("removed");
+      row.setAttribute("data-testid", "removed-signal");
+      row.innerHTML = `<div class="sig-top">${name}<span class="removed-note">${T.removed}</span><div class="sig-actions"><button class="btn btn-quiet js-undo" type="button" data-testid="signal-undo">${T.undo}</button></div></div>`;
+    } else {
+      row.classList.remove("removed");
+      row.setAttribute("data-testid", "card-signal");
+      row.innerHTML = row.dataset.html;
+    }
+    tally();
+  });
+
+  $("answers").innerHTML = Object.entries(A).map(([n, ss]) =>
+    `<div class="ans"><span class="label">${T.answer(n)}</span><div>${ss.map(s => `<button type="button">${esc(s)}</button>`).join(" ")}</div></div>`).join("");
+
+  function approve() {
+    approved = true;
+    $("approve").hidden = true; $("approvedBox").hidden = false; $("stamp").hidden = false;
+    document.querySelectorAll('input[name="pool"]').forEach(i => i.disabled = false);
+    $("poolLock").hidden = true; $("draftNote").hidden = true;
+    $("mbar").innerHTML = `<a class="btn btn-ghost btn-lg" href="matches.html">${document.querySelector('[data-testid="go-to-matches"]').innerHTML}</a>`;
+  }
+  $("approve").onclick = approve; $("approveM").onclick = approve;
+  $("sumBtn").onclick = () => $("sigHead").classList.toggle("open");
+
+  const mine = $("vMine"), co = $("vCo");
+  function view(asCo) {
+    document.body.classList.toggle("as-company", asCo);
+    mine.setAttribute("aria-pressed", String(!asCo));
+    co.setAttribute("aria-pressed", String(asCo));
+    document.querySelectorAll(".co-only").forEach(e => e.hidden = !asCo);
+  }
+  mine.onclick = () => view(false);
+  co.onclick = () => view(true);
+  if (P.has("removed") || !P.has("approved")) body.querySelector('.signal[data-signal-id="s4"] .js-rm') && P.has("removed") && body.querySelector('.signal[data-signal-id="s4"] .js-rm').click();
+  tally();
+  if (P.has("approved")) approve();
+  view(P.get("view") === "company");
+})();
+</script>
+</body>
+</html>
