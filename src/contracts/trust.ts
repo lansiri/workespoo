@@ -134,6 +134,10 @@ export const LlmCall = z.object({
   error: z.string().nullable(),
   /** What an output guard did to this call's output, if anything (for example `dropped_praise`). */
   guard: z.string().max(120).nullable(),
+  /** Requests it took, counting provider retries and the one validation retry. */
+  attempts: z.number().int().min(1).nullable().optional(),
+  /** Time spent waiting for a rate-limit slot before the first request went out. */
+  queuedMs: z.number().int().min(0).nullable().optional(),
 });
 export type LlmCall = z.infer<typeof LlmCall>;
 

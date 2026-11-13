@@ -52,6 +52,10 @@ export const llmCall = pgTable(
     error: text("error"),
     /** What an output guard did to this call's output, if anything. */
     guard: text("guard"),
+    /** Requests it took, counting provider retries and the one validation retry. */
+    attempts: integer("attempts"),
+    /** Time spent waiting for a rate-limit slot before the first request went out. */
+    queuedMs: integer("queued_ms"),
   },
   (t) => [index("llm_call_at_idx").on(t.at)],
 );

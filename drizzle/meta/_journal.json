@@ -15,6 +15,13 @@
       "when": 1794598816513,
       "tag": "0001_low_maverick",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794605134156,
+      "tag": "0002_lame_carnage",
+      "breakpoints": true
     }
   ]
 }
