@@ -5,6 +5,7 @@ import { company, digest, eligibility, intro, needCard, pick, signalCard, talent
 import { audit } from "@/lib/audit";
 import { newId } from "@/lib/ids";
 import { DECLINE_COOLDOWN_DAYS, MODEL_CONCURRENCY, NO_EVENT_ID } from "./constants";
+import { isOutOfDate, outOfDateFlags } from "./freshness";
 import { sha256Hex } from "./hash";
 import { computeAllowedPairs, notMentionedIds, writeReasons } from "./reasons";
 import { chooseHandful, type Candidate } from "./selection";
@@ -42,8 +43,8 @@ async function loadNeeds(db: Db): Promise<NeedRow[]> {
   return needs;
 }
 
-/** A digest is locked once published or once any pick has a decision. */
-async function isLocked(db: Db, d: DigestRow): Promise<boolean> {
+/** A digest is published, or has a decision (the organiser is reviewing it). Neither is re-selected. */
+async function isFrozen(db: Db, d: DigestRow): Promise<boolean> {
   if (d.status === "published") return true;
   const decided = await db
     .select({ id: pick.id })
@@ -56,7 +57,13 @@ async function isLocked(db: Db, d: DigestRow): Promise<boolean> {
 /** Takes the digest row lock and answers whether the digest is now published or has a decision. Call inside a transaction. */
 export async function lockedNow(tx: Db, digestId: string): Promise<boolean> {
   const [row] = await tx.select().from(digest).where(eq(digest.id, digestId)).for("update");
-  return !row || (await isLocked(tx, row));
+  return !row || (await isFrozen(tx, row));
+}
+
+/** Takes the digest row lock and answers whether the digest is published (or gone). Call inside a transaction. */
+async function publishedNow(tx: Db, digestId: string): Promise<boolean> {
+  const [row] = await tx.select().from(digest).where(eq(digest.id, digestId)).for("update");
+  return !row || row.status === "published";
 }
 
 async function ensureDigest(
@@ -190,6 +197,60 @@ async function loadHistory(
   return result;
 }
 
+/**
+ * Refreshes the undecided, out-of-date picks of one need in a digest that already has
+ * decisions. The person stays; the reasons are written again from the current need and card.
+ * A pick whose person has no eligibility row for the current versions is left as it is.
+ */
+async function refreshOutOfDate(db: Db, digestId: string, n: NeedRow, date: string, now: Date): Promise<void> {
+  const undecided = await db
+    .select({ id: pick.id, talentId: pick.talentId, needCardId: pick.needCardId, needCardVersion: pick.needCardVersion, cardVersion: pick.cardVersion })
+    .from(pick)
+    .where(and(eq(pick.digestId, digestId), eq(pick.needCardId, n.rowId), eq(pick.status, "suggested")))
+    .orderBy(pick.id);
+  if (undecided.length === 0) return;
+  const flags = await outOfDateFlags(db, undecided);
+  const stale = undecided.filter((p) => isOutOfDate(flags.get(p.id)));
+  if (stale.length === 0) return;
+
+  const eligible = new Map((await loadEligible(db, n, date, now)).map((e) => [e.talentId, e]));
+  const drafted = await mapPool(
+    stale.filter((p) => eligible.has(p.talentId)),
+    MODEL_CONCURRENCY,
+    async (p) => {
+      const e = eligible.get(p.talentId)!;
+      const touched = new Set(e.touched);
+      const pairs = await computeAllowedPairs(db, n.need, touched, e.card);
+      const { reasons } = await writeReasons(db, n.need, e.card, pairs);
+      return { p, e, reasons, notMentioned: notMentionedIds(n.need, touched) };
+    },
+  );
+
+  await db.transaction(async (tx) => {
+    if (await publishedNow(tx as unknown as Db, digestId)) return;
+    for (const item of drafted) {
+      // The organiser may have decided this pick while the model was writing: only a still undecided pick changes.
+      const updated = await tx
+        .update(pick)
+        .set({
+          needCardVersion: n.version,
+          cardVersion: item.e.cardVersion,
+          body: { reasons: item.reasons as PickReason[], notMentioned: item.notMentioned },
+        })
+        .where(and(eq(pick.id, item.p.id), eq(pick.status, "suggested")))
+        .returning({ id: pick.id });
+      if (updated.length === 0) continue;
+      await audit(tx as unknown as Db, {
+        actor: "agent:analyst",
+        action: "pick.drafted",
+        subjectType: "pick",
+        subjectId: item.p.id,
+        detail: { pickId: item.p.id, digestId, needCardId: n.rowId, origin: "agent", refreshed: true },
+      });
+    }
+  });
+}
+
 async function mapPool<T, R>(items: readonly T[], size: number, fn: (item: T) => Promise<R>): Promise<R[]> {
   const out: R[] = new Array(items.length);
   let next = 0;
@@ -205,8 +266,9 @@ async function mapPool<T, R>(items: readonly T[], size: number, fn: (item: T) =>
 
 /**
  * Drafts today's digests for every participating company. One draft digest per company and
- * day; running it again changes nothing unless a pick has gone out of date. A digest with
- * any decision, or a published one, is never touched.
+ * day; running it again changes nothing unless a pick has gone out of date. A published
+ * digest is never touched. A digest with decisions keeps its people and its decided picks;
+ * only its undecided, out-of-date picks are refreshed (new reasons, new versions).
  */
 export async function draftDailyDigests(db: Db, date: string, now: Date = new Date()): Promise<{ digests: number; picks: number }> {
   if (!DATE_RE.test(date)) throw new Error(`draftDailyDigests: invalid date "${date}"`);
@@ -217,7 +279,7 @@ export async function draftDailyDigests(db: Db, date: string, now: Date = new Da
   const needs = await loadNeeds(db);
   const companyIds = [...new Set(needs.map((n) => n.companyId))].sort();
 
-  const digests = new Map<string, { row: DigestRow; locked: boolean }>();
+  const digests = new Map<string, { row: DigestRow; locked: boolean; published: boolean }>();
   for (const companyId of companyIds) {
     const { row, created } = await ensureDigest(db, { eventId, date, companyId });
     if (created) {
@@ -229,7 +291,7 @@ export async function draftDailyDigests(db: Db, date: string, now: Date = new Da
         detail: { digestId: row.id, seed: row.seed },
       });
     }
-    digests.set(companyId, { row, locked: await isLocked(db, row) });
+    digests.set(companyId, { row, locked: await isFrozen(db, row), published: row.status === "published" });
   }
 
   const emptyByDigest = new Map<string, string[]>();
@@ -237,7 +299,12 @@ export async function draftDailyDigests(db: Db, date: string, now: Date = new Da
 
   for (const n of needs) {
     const d = digests.get(n.companyId)!;
-    if (d.locked) continue;
+    if (d.published) continue;
+    if (d.locked) {
+      // Under review: nobody is added or removed, but undecided picks whose card or need moved on get new reasons.
+      await refreshOutOfDate(db, d.row.id, n, date, now);
+      continue;
+    }
     keptNeedIds.set(d.row.id, (keptNeedIds.get(d.row.id) ?? new Set()).add(n.rowId));
 
     const eligible = await loadEligible(db, n, date, now);

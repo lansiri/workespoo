@@ -6,6 +6,9 @@ export const TOUCH_SIMILARITY = 0.6;
 /** Longest reason text we store (the `PickReason` contract allows 200). */
 export const REASON_MAX_CHARS = 200;
 
+/** A reasons call that takes longer than this is dropped and the code-written reasons are used. */
+export const REASONS_DEADLINE_MS = 20_000;
+
 /** Reasons per pick (picks-draft.md). */
 export const MAX_REASONS = 3;
 

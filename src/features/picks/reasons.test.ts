@@ -174,6 +174,20 @@ describe("writeReasons", () => {
     expect(await llmCalls(t.db)).toEqual([{ role: "analyst", purpose: "picks.reasons" }]);
   });
 
+  it("asks for at most 130 characters per reason and passes a 20 second deadline", async () => {
+    const { need, card, pairs } = await setup();
+    let seen: { deadlineMs?: number; signal?: AbortSignal; system: string } | null = null;
+    setLlmFake((opts) => {
+      seen = { deadlineMs: opts.deadlineMs, signal: opts.signal, system: String(opts.messages[0].content) };
+      return { reasons: [{ req: "R1", signal: "S1", text: "The card describes nightly Python pipelines, which relates to Python programming." }] };
+    });
+    await writeReasons(t.db, need, card, pairs);
+    expect(seen!.deadlineMs).toBe(20000);
+    expect(seen!.signal).toBeInstanceOf(AbortSignal);
+    expect(seen!.system).toContain("at most 130 characters");
+    expect(seen!.system).not.toContain("160 characters");
+  });
+
   it("falls back to code-rendered reasons when nothing survives", async () => {
     const { need, card, pairs } = await setup();
     setLlmFake(() => ({ reasons: [{ req: "R1", signal: "S1", text: "She is a perfect fit." }] }));
