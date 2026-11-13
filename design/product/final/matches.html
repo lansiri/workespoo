@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My matches · WorkEspoo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="workespoo.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="logo" href="#" aria-label="WorkEspoo" data-testid="site-logo">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 23L20 52L32 33L44 52L55 23" fill="none" stroke="#0E5E55" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="15" r="7.5" fill="#FFB627"/></svg>
+    <b>WorkEspoo</b>
+  </a>
+  <nav class="mainnav" aria-label="Main">
+    <a href="interview.html" data-fi="Haastattelu" data-sv="Intervju">Interview</a><a href="card.html" data-fi="Korttini" data-sv="Mitt kort">My card</a><a href="matches.html" aria-current="page" data-fi="Työpaikkani" data-sv="Mina jobb">My matches</a><a href="#" data-fi="Näin tämä toimii" data-sv="Så fungerar det">How this works</a>
+  </nav>
+  <span class="spacer"></span>
+  <nav class="langs" aria-label="Language" data-testid="language-switcher">
+    <a href="?lang=en" id="l-en" data-testid="lang-en">English</a><a href="?lang=fi" id="l-fi" data-testid="lang-fi">Suomi</a><a href="?lang=sv" id="l-sv" data-testid="lang-sv">Svenska</a>
+  </nav>
+  <button class="menu-btn" type="button" aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+</header>
+
+<div class="page">
+  <div class="page-head">
+    <h1 data-fi="Työpaikkasi" data-sv="Dina jobb">My matches</h1>
+    <p data-fi="Oikeita avoimia työpaikkoja, joiden ilmoitus mainitsee jotain korttisi muistiinpanoista. Mitään ei pisteytetä." data-sv="Riktiga lediga jobb vars annons nämner något från anteckningarna på ditt kort. Inget poängsätts.">Real open jobs whose posting mentions something from the notes on your card. Nothing here is scored.</p>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <!-- request from a company to meet -->
+      <section class="intro" id="intro" data-testid="intro-request" data-intro-id="in-11" aria-labelledby="introT"></section>
+
+      <div class="section-head">
+        <h2 data-fi="Sopivat avoimet työpaikat" data-sv="Lediga jobb som passar">Open jobs that fit your card</h2>
+        <p data-fi="Näytetään 4 / 126 · Espoo ja lähialueet" data-sv="Visar 4 av 126 · Esbo med omnejd">Showing 4 of 126 · Espoo and nearby</p>
+      </div>
+      <ul class="feed" id="feed"></ul>
+      <p class="proto-foot" style="text-align:left;padding-left:0">Prototype note: employer names here are invented. The app shows the real employer and links to the real posting.</p>
+    </main>
+
+    <aside class="rail">
+      <section class="box">
+        <span class="handle sm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l9-9 9 9-9 9z" fill="none" stroke="#1E2B29" stroke-width="2.4" stroke-linejoin="round"/></svg>Birch-27</span>
+        <h3 style="margin-top:14px" data-fi="Korttisi on hyväksytty" data-sv="Ditt kort är godkänt">Your card is approved</h3>
+        <p data-fi="8 muistiinpanoa · hyväksytty tänään klo 14.02" data-sv="8 anteckningar · godkänt i dag kl. 14.02">8 notes · approved today at 14:02</p>
+        <p data-fi="Olet mukana ehdotettavien joukossa." data-sv="Du är med i poolen." style="color:var(--ink);font-weight:500">You're in the pool.</p>
+        <a class="btn btn-ghost" href="card.html"><span data-fi="Muokkaa korttiani" data-sv="Ändra mitt kort">Edit my card</span></a>
+      </section>
+      <section class="box">
+        <h3 data-fi="Miten ehdotukset toimivat" data-sv="Så fungerar förslagen">How suggestions work</h3>
+        <p data-fi="Espoon järjestäjä tarkistaa jokaisen ehdotuksen ennen kuin yritys näkee sen. Yritys näkee kortin lempinimelläsi, ei nimeäsi. Nimesi jaetaan vain, jos sinä hyväksyt tapaamisen." data-sv="En arrangör i Esbo granskar varje förslag innan ett företag ser det. Företaget ser kortet under ditt smeknamn, inte ditt namn. Ditt namn delas bara om du säger ja till ett möte.">An Espoo organiser checks every suggestion before a company sees it. The company sees your card under your nickname, not your name. Your name is shared only if you say yes to a meeting.</p>
+      </section>
+    </aside>
+  </div>
+</div>
+
+<script>
+(() => {
+  const P = new URLSearchParams(location.search);
+  const LANG = ["fi", "sv"].includes(P.get("lang")) ? P.get("lang") : "en";
+  if (P.has("shot")) document.body.classList.add("shot");
+  document.documentElement.lang = LANG;
+  document.getElementById("l-" + LANG).setAttribute("aria-current", "true");
+  if (LANG !== "en") document.querySelectorAll(`[data-${LANG}]`).forEach(el => el.textContent = el.dataset[LANG]);
+
+  const T = {
+    en: { yourCard: "From your card", posting: "From the posting", theirNeed: "From their need", seeWords: "See your own words", hideWords: "Hide your words", wordsLbl: n => `Your words · answer ${n}`,
+          nm: "Not mentioned in your conversation", nmFine: "Not mentioned does not mean missing. You can still apply.", atHiring: "checked by the employer at hiring",
+          open: "Open the posting", source: "Source: Työmarkkinatori", closes: "Closes", sticker: "A company would like to meet you",
+          introH: "Demo company 11 would like to meet you about Warehouse and device support.", introLead: "Your name stays hidden unless you accept.",
+          need: "Keep handheld scanners, label printers and the warehouse Wi-Fi working across two sites.", why: "Why they were shown your card", by: "Please answer by Thursday 19 November.",
+          accept: "Accept", decline: "Decline", waiting: "Waiting for your answer",
+          nameL: "Your name for this company", nameH: "Shown only to Demo company 11, for this meeting.", contactL: "How they can reach you", contactH: "An email address or a phone number.",
+          share: "Share and accept", cancel: "Cancel", both: "You both said yes.", slot: "Thu 26 Nov, 13:00 · Table 11", agenda: "Open your agenda", sharedWith: "Demo company 11 now sees your name and your own words on your card.",
+          declined: "You declined. The company sees a neutral message, with no reason." },
+    fi: { yourCard: "Kortistasi", posting: "Ilmoituksesta", theirNeed: "Heidän tarpeestaan", seeWords: "Näytä omat sanasi", hideWords: "Piilota sanasi", wordsLbl: n => `Omat sanasi · vastaus ${n}`,
+          nm: "Ei mainittu keskustelussasi", nmFine: "Mainitsematta jääminen ei tarkoita puutetta. Voit silti hakea.", atHiring: "työnantaja tarkistaa palkatessa",
+          open: "Avaa ilmoitus", source: "Lähde: Työmarkkinatori", closes: "Haku päättyy", sticker: "Yritys haluaisi tavata sinut",
+          introH: "Demo company 11 haluaisi tavata sinut tehtävästä Varasto- ja laitetuki.", introLead: "Nimesi pysyy piilossa, ellet hyväksy.",
+          need: "Pitää käsiskannerit, tarratulostimet ja varaston wifin toiminnassa kahdessa toimipisteessä.", why: "Miksi heille näytettiin korttisi", by: "Vastaathan torstaihin 19.11. mennessä.",
+          accept: "Hyväksy", decline: "Kieltäydy", waiting: "Odottaa vastaustasi",
+          nameL: "Nimesi tälle yritykselle", nameH: "Näkyy vain Demo company 11:lle tätä tapaamista varten.", contactL: "Miten he tavoittavat sinut", contactH: "Sähköpostiosoite tai puhelinnumero.",
+          share: "Jaa ja hyväksy", cancel: "Peruuta", both: "Sanoitte molemmat kyllä.", slot: "To 26.11. klo 13.00 · Pöytä 11", agenda: "Avaa aikataulusi", sharedWith: "Demo company 11 näkee nyt nimesi ja omat sanasi kortillasi.",
+          declined: "Kieltäydyit. Yritys näkee neutraalin viestin ilman syytä." },
+    sv: { yourCard: "Från ditt kort", posting: "Från annonsen", theirNeed: "Från deras behov", seeWords: "Visa dina egna ord", hideWords: "Dölj dina ord", wordsLbl: n => `Dina ord · svar ${n}`,
+          nm: "Nämndes inte i ditt samtal", nmFine: "Att något inte nämndes betyder inte att det saknas. Du kan ändå söka.", atHiring: "arbetsgivaren kontrollerar vid anställning",
+          open: "Öppna annonsen", source: "Källa: Jobbmarknaden", closes: "Sista dag", sticker: "Ett företag vill träffa dig",
+          introH: "Demo company 11 vill träffa dig om Lager- och enhetssupport.", introLead: "Ditt namn förblir dolt om du inte säger ja.",
+          need: "Hålla handskannrar, etikettskrivare och lagrets wifi igång på två platser.", why: "Varför de fick se ditt kort", by: "Svara senast torsdag 19 november.",
+          accept: "Säg ja", decline: "Tacka nej", waiting: "Väntar på ditt svar",
+          nameL: "Ditt namn för det här företaget", nameH: "Visas bara för Demo company 11, för det här mötet.", contactL: "Hur de når dig", contactH: "En e-postadress eller ett telefonnummer.",
+          share: "Dela och säg ja", cancel: "Avbryt", both: "Ni har båda sagt ja.", slot: "Tors 26 nov, 13.00 · Bord 11", agenda: "Öppna ditt schema", sharedWith: "Demo company 11 ser nu ditt namn och dina egna ord på kortet.",
+          declined: "Du tackade nej. Företaget ser ett neutralt meddelande, utan skäl." }
+  }[LANG];
+  const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const $ = id => document.getElementById(id);
+  const IC = {
+    pin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.3" fill="currentColor"/></svg>',
+    cal: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 10h16M9 3.5v4M15 3.5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    job: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="7.5" width="17" height="12" rx="2.5" fill="none" stroke="#0E5E55" stroke-width="2"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5" fill="none" stroke="#0E5E55" stroke-width="2"/></svg>',
+    ext: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    x: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>',
+    clock: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+  };
+
+  // job feed: real postings in the app; employer names here are invented for the prototype
+  const JOBS = [
+    { id: "j1", t: "Device service technician", e: "Lommila Device Service Oy", place: "Espoo, Lommila", closes: "30 Nov",
+      r: [["Fixing handheld scanners", "You diagnose and repair handheld terminals and barcode scanners for our logistics customers.", 1, "And when the handheld scanners stop working, people usually come to me."],
+          ["Troubleshooting Wi-Fi devices", "Basic understanding of wireless networks is an advantage.", 2, "If it keeps dropping I pair it to the network again, sometimes I reinstall the app."]],
+      nm: [["Driving licence (B)", true], ["Customer service in Finnish", false]] },
+    { id: "j2", t: "IT support specialist", e: "Otaranta Facility Services Oy", place: "Espoo, Otaniemi", closes: "4 Dec",
+      r: [["Troubleshooting Wi-Fi devices", "First-line support for laptops, phones and the office Wi-Fi.", 2, "First I check if it's the battery or the wifi."],
+          ["Writing how-to checklists", "You keep our support instructions up to date.", 2, "I made a little checklist and taped it in the break room so people can try that first."]],
+      nm: [["Microsoft 365 administration", false]] },
+    { id: "j3", t: "WMS key user, logistics", e: "Juvan Logistics Oy", place: "Espoo, Juvanmalmi", closes: "12 Dec",
+      r: [["Warehouse management system", "You act as the key user of our warehouse management system.", 3, "Yeah, every summer I train the new summer workers on the scanners and on the WMS."],
+          ["Training new staff", "You train new employees to use the system.", 3, "Yeah, every summer I train the new summer workers on the scanners and on the WMS."]],
+      nm: [["SAP EWM", false], ["Finnish in daily work", false]] },
+    { id: "j4", t: "Warehouse worker, evening shift", e: "Kilonportti Logistics Oy", place: "Espoo, Kera", closes: "27 Nov",
+      r: [["Order picking and packing", "Tasks include picking, packing and loading customer orders.", 1, "I work in a warehouse in Kerava, evening shift, mostly picking and packing orders."],
+          ["Forklift licence", "A valid forklift card is required.", 4, "I also have a forklift card."]],
+      nm: [["Occupational safety card", true]] }
+  ];
+
+  function reasonHtml([card, post, ans, words], k) {
+    return `<li class="reason" data-testid="match-reason">
+      <div class="r-card"><span class="label">${T.yourCard}</span><b style="font-weight:600">${esc(card)}</b>
+        <span class="own"><button type="button" data-testid="see-own-words" aria-expanded="false" data-k="${k}">${T.seeWords}</button></span></div>
+      <div class="r-post"><span class="label">${T.posting}</span><q>${esc(post)}</q></div>
+      <template><q data-testid="own-words">${esc(words)}</q><small>${T.wordsLbl(ans)}</small></template>
+    </li>`;
+  }
+  $("feed").innerHTML = JOBS.map((j, n) => `<li class="posting" data-testid="job-match" data-job-id="${j.id}">
+      <div class="posting-top"><span class="ic">${IC.job}</span><div style="min-width:0">
+        <h3>${esc(j.t)}</h3>
+        <p class="emp"><b>${esc(j.e)}</b></p>
+        <p class="meta"><span>${IC.pin}${esc(j.place)}</span><span>${IC.cal}${T.closes} ${esc(j.closes)}</span></p>
+      </div></div>
+      <ul class="reasons">${j.r.map((r, k) => reasonHtml(r, `${n}-${k}`)).join("")}</ul>
+      <div class="nm" data-testid="not-mentioned"><span class="label">${T.nm}</span><ul>${j.nm.map(([x, stat]) => `<li>${esc(x)}${stat ? ` <small>(${T.atHiring})</small>` : ""}</li>`).join("")}</ul><p class="fine">${T.nmFine}</p></div>
+      <div class="posting-foot"><span class="src" data-testid="source-attribution">${T.source}</span><a class="btn btn-ghost" href="#" data-testid="job-link">${T.open} ${IC.ext}</a></div>
+    </li>`).join("");
+  $("feed").addEventListener("click", e => {
+    const b = e.target.closest("[data-testid=see-own-words]");
+    if (!b) return;
+    const li = b.closest(".reason"), open = b.getAttribute("aria-expanded") === "true";
+    const box = b.parentElement;
+    if (open) { box.querySelectorAll("q, small").forEach(x => x.remove()); b.textContent = T.seeWords; }
+    else { box.insertAdjacentHTML("beforeend", li.querySelector("template").innerHTML); b.textContent = T.hideWords; }
+    b.setAttribute("aria-expanded", String(!open));
+  });
+  if (!P.has("intro")) { const b = document.querySelector("[data-testid=see-own-words]"); b && b.click(); }
+
+  // the request to meet: pending -> form -> accepted, or declined
+  const DIAM = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l9-9 9 9-9 9z" fill="none" stroke="#1E2B29" stroke-width="2.4" stroke-linejoin="round"/></svg>';
+  function intro(state) {
+    const head = `<span class="sticker">${T.sticker}</span>
+      <h2 id="introT">${T.introH}</h2>
+      <p class="lead"><b>${T.introLead}</b> ${T.need}</p>`;
+    const why = `<div class="intro-why"><span class="label">${T.why}</span>
+      <ul class="reasons" style="margin-top:8px">
+        <li class="reason"><div class="r-card"><span class="label">${T.yourCard}</span><b style="font-weight:600">Fixing handheld scanners</b></div><div class="r-post"><span class="label">${T.theirNeed}</span><q>Repair and maintain handheld terminals at both sites.</q></div></li>
+      </ul></div>`;
+    let body = "";
+    if (state === "pending") body = `${why}
+      <p class="status-line wait" data-testid="intro-status">${IC.clock}<span>${T.waiting}. ${T.by}</span></p>
+      <div class="intro-actions"><button class="btn btn-ghost btn-lg" type="button" data-go="form" data-testid="intro-accept">${IC.check}${T.accept}</button><button class="btn btn-ghost btn-lg" type="button" data-go="declined" data-testid="intro-decline">${IC.x}${T.decline}</button></div>`;
+    else if (state === "form") body = `<form class="intro-form" onsubmit="return false">
+        <div class="field"><label for="nm">${T.nameL}</label><input class="input" id="nm" autocomplete="name" data-testid="intro-name" value="Sami Example"><span class="hint">${T.nameH}</span></div>
+        <div class="field"><label for="ct">${T.contactL}</label><input class="input" id="ct" data-testid="intro-contact" value="sami.example@example.invalid"><span class="hint">${T.contactH}</span></div>
+        <div class="row"><button class="btn btn-primary btn-lg" type="button" data-go="accepted" data-testid="intro-confirm">${T.share}</button><button class="btn btn-ghost btn-lg" type="button" data-go="pending">${T.cancel}</button></div>
+      </form>`;
+    else if (state === "accepted") body = `<p class="status-line ok" data-testid="intro-status">${IC.check}<span>${T.both}</span></p>
+      <div class="slot">${IC.cal}<span>${T.slot}</span></div>
+      <p style="margin-top:12px;font-size:15px;color:var(--muted)">${T.sharedWith}</p>
+      <div class="intro-actions"><a class="btn btn-ghost" href="#">${T.agenda}</a></div>`;
+    else body = `<p class="status-line wait" data-testid="intro-status">${T.declined}</p>`;
+    $("intro").innerHTML = head + body;
+  }
+  $("intro").addEventListener("click", e => { const b = e.target.closest("[data-go]"); if (b) intro(b.dataset.go); });
+  intro(["form", "accepted", "declined"].includes(P.get("intro")) ? P.get("intro") : "pending");
+})();
+</script>
+</body>
+</html>

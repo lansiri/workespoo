@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your Signal Card · WorkEspoo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="night.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="logo" href="#" aria-label="WorkEspoo">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><path class="w-path" d="M9 23L20 52L32 33L44 52L55 23" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="15" r="7.5" fill="#FFB627"/></svg>
+    <span>WorkEspoo</span>
+  </a>
+  <nav aria-label="Main">
+    <a href="interview.html" data-i18n="navInterview">Interview</a>
+    <a href="#" aria-current="page" data-i18n="navCard">My card</a>
+    <a href="#" data-i18n="navMatches">My matches</a>
+  </nav>
+  <div class="right">
+    <div class="langs" role="group" aria-label="Language">
+      <button data-lang="en" aria-pressed="true">EN</button><button data-lang="fi" aria-pressed="false">FI</button><button data-lang="sv" aria-pressed="false">SV</button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-wrap" id="wrap">
+  <main>
+    <div class="cd-intro">
+      <h1 data-i18n="title">Your Signal Card</h1>
+      <p data-i18n="intro">These are notes from your conversation. Check them, change anything, and approve only what you're happy with.</p>
+      <span class="purge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i18n="purge">This is a live demo session. Everything is deleted tomorrow at 10:42.</span></span>
+    </div>
+
+    <article class="sc" aria-label="Signal Card">
+      <div class="sc-sky">
+        <div>
+          <div class="sc-kicker">
+            <span class="handle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L14.4 9.6 L22 12 L14.4 14.4 L12 22 L9.6 14.4 L2 12 L9.6 9.6 Z" fill="#FFB627"/></svg>Comet-41</span>
+            <span class="only-me" data-i18n="handleNote">Companies see you only as Comet-41.</span>
+            <span class="syn" data-i18n="synthetic">Synthetic demo profile</span>
+          </div>
+          <h2 class="sc-headline" data-testid="card-headline">Builds nightly sensor-data pipelines and checks the morning reports</h2>
+          <p class="sc-summary"><span class="ai-mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg><span data-i18n="aiSummary">AI summary</span></span>They build Python pipelines that load sensor data into a database each night. They write SQL checks for a daily report and present the figures to an operations team.</p>
+        </div>
+        <svg class="mini" id="mini" viewBox="0 0 100 60" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+      </div>
+
+      <p class="company-banner only-company" data-i18n-html="companyBanner"><b>This is exactly what a company sees.</b> Written by AI from this person's own words and approved by them. Not a quote, not a verified fact. No name, no original words, no language or voice details.</p>
+
+      <div class="sc-body" id="signals"></div>
+      <div class="sc-body only-me" style="padding-top:0">
+        <button class="add-own" type="button">+ <span data-i18n="addOwn">Add your own</span></button>
+      </div>
+    </article>
+
+    <details class="panel only-me" style="margin-top:20px">
+      <summary style="cursor:pointer;font:500 19px/1.2 var(--brand)"><span data-i18n="answers">Your answers</span> <span style="font:400 14px var(--sans);color:var(--muted)">(5)</span></summary>
+      <p class="help" style="margin-top:8px" data-i18n="answersHelp">Speech recognition makes mistakes, especially with accents. Tap a sentence to fix it.</p>
+    </details>
+  </main>
+
+  <aside class="cd-aside">
+    <section class="panel">
+      <h2 data-i18n="viewAs">Look at your card as</h2>
+      <div class="seg" role="group" aria-label="View as">
+        <button type="button" id="asMe" aria-pressed="true" data-i18n="asMe">You see it</button>
+        <button type="button" id="asCo" aria-pressed="false" data-i18n="asCo">A company sees it</button>
+      </div>
+      <p class="seg-note" id="segNote" data-i18n="segNoteMe">Your own words are only for you. Companies see the AI wording, the skill names and what you're looking for.</p>
+    </section>
+
+    <section class="panel">
+      <h2 data-i18n="lookingFor">What you're looking for</h2>
+      <p class="help" data-i18n="lookingForHelp">All optional. Companies can see this.</p>
+      <dl class="kv">
+        <div><dt data-i18n="roles">Kinds of work</dt><dd><span class="pill on">Data engineering</span><span class="pill on">Analytics engineering</span><span class="pill add only-me">+ <span data-i18n="add">Add</span></span></dd></div>
+        <div><dt data-i18n="workMode">Where you'd like to work</dt><dd><span class="pill">On site</span><span class="pill on">Hybrid</span><span class="pill">Remote</span><span class="pill">Any</span></dd></div>
+        <div><dt data-i18n="start">When you could start</dt><dd><span class="pill">Now</span><span class="pill on">Within a month</span><span class="pill">Within three months</span><span class="pill">Later</span></dd></div>
+      </dl>
+    </section>
+
+    <section class="panel approve-panel">
+      <h2 data-i18n="readyTitle">Happy with it?</h2>
+      <p class="help" data-i18n="readyHelp">Nothing is used before you approve. You can change your card at any time after.</p>
+      <button class="btn btn-primary" id="approve" data-testid="approve-card"><span data-i18n="approve">Approve my card</span></button>
+      <p class="approved-msg" data-testid="card-approved"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span data-i18n="approved">Approved. You can change your card at any time.</span></p>
+      <p class="count" id="count">8 notes will be on your card.</p>
+    </section>
+
+    <section class="panel">
+      <div class="switch-row">
+        <h2 data-i18n="poolTitle">Can Espoo suggest you to companies?</h2>
+        <button class="switch" id="pool" role="switch" aria-checked="false" aria-label="Yes, suggest me" disabled data-testid="pool-opt-in"></button>
+      </div>
+      <p class="help" style="margin-top:8px" data-i18n="poolBody">If you say yes, your approved card (without your name) can be suggested to companies at this event. An Espoo organiser checks every suggestion. Your name is shared only if a company asks to meet you and you agree.</p>
+      <p class="locked-note" data-i18n="poolLocked">You can choose this after you approve your card. It is off until you turn it on.</p>
+    </section>
+
+    <section class="panel">
+      <h2 data-i18n="dataTitle">Your data</h2>
+      <p class="help" data-i18n="dataHelp">A file with your answers, your card and your consents.</p>
+      <div class="data-row">
+        <button class="btn btn-quiet btn-sm" data-testid="export-data"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span data-i18n="export">Download my data</span></button>
+        <button class="btn btn-danger btn-sm" id="delBtn" data-testid="delete-data"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg><span data-i18n="delete">Delete everything</span></button>
+      </div>
+    </section>
+  </aside>
+</div>
+
+<div class="m-approve">
+  <button class="seg-mini" id="mSwitch" type="button" data-i18n="mCompany">See as a company</button>
+  <button class="btn btn-primary" id="mApprove" data-i18n="approve">Approve my card</button>
+</div>
+
+<dialog id="delDlg">
+  <h3 data-i18n="delete">Delete everything</h3>
+  <p data-i18n="deleteConfirm">Delete your answers, your card and everything linked to them? This can't be undone.</p>
+  <div class="row">
+    <button class="btn btn-quiet" id="delNo" data-i18n="cancel">Cancel</button>
+    <button class="btn btn-primary" style="background:var(--stamp)" data-testid="delete-data-confirm" data-i18n="deleteYes">Yes, delete everything</button>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  const P = new URLSearchParams(location.search);
+  let lang = P.get("lang") || "en";
+  if (P.get("view") === "company") document.body.classList.add("as-company");
+  if (P.get("approved") === "1") document.body.classList.add("is-approved");
+
+  const SIG = [
+    { g: "skill", id: "s2", ph: "Building data pipelines", esco: ["develop data processing applications", "kehittää tietojenkäsittelysovelluksia"], q: "I build data pipelines in Python that load sensor data into a database every night.", a: 1, r: "They build Python pipelines that load sensor data into a database every night." },
+    { g: "skill", id: "s4", ph: "Writing data quality checks", esco: ["data quality assessment", "tiedon laadun arviointi"], q: "Yeah so every morning there's a report, and I write SQL checks so it has no gaps.", a: 2, r: "They write SQL checks so that a daily report has no missing data." },
+    { g: "skill", id: "s5", ph: "Presenting figures to a team", esco: ["present reports", "esittää raportteja"], q: "And I present the numbers to the operations team every week.", a: 2, r: "They present figures to an operations team every week." },
+    { g: "skill", id: "s8", ph: "Training new colleagues", esco: ["train employees", "kouluttaa työntekijöitä"], q: "At my last job I trained two summer workers so they could run the reports by themselves.", a: 4, r: "They trained two seasonal workers to run reports on their own." },
+    { g: "tool", id: "s1", ph: "Python", esco: ["Python (computer programming)", "Python (tietokoneohjelmointi)"], q: "Mostly Python and Postgres.", a: 3, r: "They use Python for data loading and processing." },
+    { g: "tool", id: "s3", ph: "SQL", esco: ["SQL", "SQL"], q: "Yeah so every morning there's a report, and I write SQL checks so it has no gaps.", a: 2, r: "They write checks in SQL." },
+    { g: "tool", id: "s6", ph: "PostgreSQL", esco: ["PostgreSQL", "PostgreSQL"], q: "Mostly Python and Postgres.", a: 3, r: "They use the PostgreSQL database." },
+    { g: "tool", id: "s7", ph: "Apache Airflow", esco: null, q: "And Airflow for the scheduling, so the jobs run in the right order.", a: 3, r: "They schedule data jobs with Apache Airflow." }
+  ];
+  const STR = {
+    en: { skill: "What I do", tool: "Tools", yourWords: "Your words", answer: "Answer {n}", companySees: "Shown to companies as", aiWording: "AI wording", edit: "Edit", remove: "Remove", undo: "Undo", removed: "Removed.", noEsco: "No ESCO match. That's fine; it stays on your card.", groupHelpSkill: "Activities, in the order you mentioned them", groupHelpTool: "Software and tools", count: "{n} notes will be on your card.", segMe: "Your own words are only for you. Companies see the AI wording, the skill names and what you're looking for.", segCo: "This is the company view. Switch back to edit.", mCompany: "See as a company", mMe: "Back to my view" },
+    fi: { skill: "Mitä teen", tool: "Työkalut", yourWords: "Omat sanasi", answer: "Vastaus {n}", companySees: "Yritykset näkevät tämän näin", aiWording: "Tekoälyn sanoin", edit: "Muokkaa", remove: "Poista", undo: "Kumoa", removed: "Poistettu.", noEsco: "Ei ESCO-vastinetta. Se ei haittaa, tämä pysyy kortillasi.", groupHelpSkill: "Tehtävät siinä järjestyksessä kuin kerroit ne", groupHelpTool: "Ohjelmat ja työkalut", count: "Kortillesi tulee {n} muistiinpanoa.", segMe: "Omat sanasi näet vain sinä. Yritykset näkevät tekoälyn muotoilun, taitojen nimet ja sen, mitä etsit.", segCo: "Tämä on yritysnäkymä. Palaa muokkaamaan omaan näkymään.", mCompany: "Katso yrityksenä", mMe: "Oma näkymä" },
+    sv: { skill: "Det här gör jag", tool: "Verktyg", yourWords: "Dina ord", answer: "Svar {n}", companySees: "Visas för företag som", aiWording: "AI:ns formulering", edit: "Ändra", remove: "Ta bort", undo: "Ångra", removed: "Borttagen.", noEsco: "Ingen ESCO-motsvarighet. Det gör inget, den stannar på ditt kort.", groupHelpSkill: "Uppgifter i den ordning du nämnde dem", groupHelpTool: "Program och verktyg", count: "{n} anteckningar kommer att finnas på ditt kort.", segMe: "Dina egna ord ser bara du. Företag ser AI:ns formulering, färdigheternas namn och vad du söker.", segCo: "Det här är företagsvyn. Byt tillbaka för att ändra.", mCompany: "Visa som företag", mMe: "Min vy" }
+  };
+  const I18N = {
+    fi: { navInterview: "Haastattelu", navCard: "Korttini", navMatches: "Työpaikkani", title: "Signal Card -korttisi", intro: "Nämä ovat muistiinpanot keskustelustasi. Tarkista ne, muuta mitä haluat ja hyväksy vain se, mihin olet tyytyväinen.", purge: "Tämä on livedemo. Kaikki poistetaan huomenna klo 10.42.", handleNote: "Yritykset näkevät sinut vain nimellä Comet-41.", synthetic: "Synteettinen demoprofiili", aiSummary: "Tekoälyn tiivistelmä", addOwn: "Lisää oma", answers: "Vastauksesi", answersHelp: "Puheentunnistus tekee virheitä, varsinkin aksenttien kanssa. Napauta lausetta korjataksesi sen.", viewAs: "Katso korttiasi", asMe: "Omana näkymänä", asCo: "Yrityksen silmin", lookingFor: "Mitä etsit", lookingForHelp: "Kaikki vapaaehtoista. Yritykset näkevät nämä.", roles: "Millaista työtä", add: "Lisää", workMode: "Missä haluaisit työskennellä", start: "Milloin voisit aloittaa", readyTitle: "Oletko tyytyväinen?", readyHelp: "Mitään ei käytetä ennen kuin hyväksyt. Voit muuttaa korttiasi milloin tahansa.", approve: "Hyväksy korttini", approved: "Hyväksytty. Voit muuttaa korttiasi milloin tahansa.", poolTitle: "Saako Espoo ehdottaa sinua yrityksille?", poolBody: "Jos vastaat kyllä, hyväksyttyä korttiasi (ilman nimeäsi) voidaan ehdottaa tapahtuman yrityksille. Espoon järjestäjä tarkistaa jokaisen ehdotuksen. Nimesi kerrotaan vain, jos yritys pyytää tapaamista ja suostut siihen.", poolLocked: "Voit valita tämän, kun olet hyväksynyt korttisi. Se on pois päältä, kunnes laitat sen päälle.", dataTitle: "Tietosi", dataHelp: "Tiedosto, jossa ovat vastauksesi, korttisi ja suostumuksesi.", export: "Lataa tietoni", delete: "Poista kaikki", deleteConfirm: "Poistetaanko vastauksesi, korttisi ja kaikki niihin liittyvä? Tätä ei voi perua.", cancel: "Peruuta", deleteYes: "Kyllä, poista kaikki", mCompany: "Katso yrityksenä", companyBanner: "<b>Juuri tämän yritys näkee.</b> Tekoäly kirjoitti tämän henkilön omien sanojen pohjalta, ja hän on hyväksynyt sen. Ei lainaus eikä tarkistettu tosiasia. Ei nimeä, alkuperäisiä sanoja, kieltä eikä tietoa puheesta." },
+    sv: { navInterview: "Intervju", navCard: "Mitt kort", navMatches: "Mina jobb", title: "Ditt Signal Card", intro: "Det här är anteckningar från ditt samtal. Granska dem, ändra det du vill och godkänn bara det du är nöjd med.", purge: "Det här är en livedemo. Allt raderas i morgon kl. 10.42.", handleNote: "Företag ser dig bara som Comet-41.", synthetic: "Syntetisk demoprofil", aiSummary: "AI-sammanfattning", addOwn: "Lägg till egen", answers: "Dina svar", answersHelp: "Taligenkänning gör fel, särskilt med brytning. Tryck på en mening för att rätta den.", viewAs: "Titta på ditt kort", asMe: "Som du ser det", asCo: "Som ett företag ser det", lookingFor: "Vad du söker", lookingForHelp: "Allt är frivilligt. Företag kan se det här.", roles: "Typ av arbete", add: "Lägg till", workMode: "Var du vill arbeta", start: "När du kan börja", readyTitle: "Nöjd?", readyHelp: "Inget används innan du godkänner. Du kan ändra ditt kort när som helst.", approve: "Godkänn mitt kort", approved: "Godkänt. Du kan ändra ditt kort när som helst.", poolTitle: "Får Esbo föreslå dig för företag?", poolBody: "Om du säger ja kan ditt godkända kort (utan ditt namn) föreslås för företag på evenemanget. En arrangör från Esbo kontrollerar varje förslag. Ditt namn delas bara om ett företag vill träffa dig och du går med på det.", poolLocked: "Du kan välja det här när du har godkänt ditt kort. Det är avstängt tills du slår på det.", dataTitle: "Dina uppgifter", dataHelp: "En fil med dina svar, ditt kort och dina samtycken.", export: "Ladda ner mina uppgifter", delete: "Radera allt", deleteConfirm: "Radera dina svar, ditt kort och allt som hör till dem? Det går inte att ångra.", cancel: "Avbryt", deleteYes: "Ja, radera allt", mCompany: "Visa som företag", companyBanner: "<b>Exakt det här ser ett företag.</b> Skrivet av AI utifrån personens egna ord och godkänt av personen. Inte ett citat, inte ett kontrollerat faktum. Inget namn, inga ursprungliga ord, inget språk eller röstuppgifter." }
+  };
+  const EN = {};
+  document.querySelectorAll("[data-i18n]").forEach(el => EN[el.dataset.i18n] = el.textContent);
+  document.querySelectorAll("[data-i18n-html]").forEach(el => EN[el.dataset.i18nHtml] = el.innerHTML);
+  const removed = new Set();
+  const s = k => (STR[lang] || STR.en)[k];
+
+  const star = '<svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L14.4 9.6 L22 12 L14.4 14.4 L12 22 L9.6 14.4 L2 12 L9.6 9.6 Z" fill="#0E5E55"/></svg>';
+  const ico = {
+    edit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16v4z"/></svg>',
+    rm: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+    ai: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg>'
+  };
+
+  function render() {
+    const out = ["skill", "tool"].map(g => {
+      const items = SIG.filter(x => x.g === g).map(x => {
+        const isRm = removed.has(x.id);
+        return `<div class="sig ${isRm ? "is-removed" : ""}" data-testid="card-signal" data-signal-id="${x.id}">
+          <div class="sig-head">
+            <h4 class="sig-phrase">${star}<span>${x.ph}</span>${isRm ? `<span class="removed-note">${s("removed")}</span>` : ""}</h4>
+            <p class="esco">${x.esco ? `ESCO <b>${x.esco[0]}</b><span class="sep">·</span><span class="fi" lang="fi">${x.esco[1]}</span>` : s("noEsco")}</p>
+          </div>
+          <div class="sig-actions only-me">
+            ${isRm ? `<button class="icon-btn" data-undo="${x.id}">${s("undo")}</button>` : `<button class="icon-btn">${ico.edit}${s("edit")}</button><button class="icon-btn" data-rm="${x.id}" data-testid="signal-remove">${ico.rm}${s("remove")}</button>`}
+          </div>
+          <div class="sig-ev">
+            <figure class="quote only-me" data-testid="signal-quote"><div class="lab">${s("yourWords")}</div><q>${x.q}</q><cite>${s("answer").replace("{n}", x.a)}</cite></figure>
+            <div class="render" data-testid="signal-rendering"><div class="lab">${s("companySees")} <span class="ai-mark">${ico.ai}${s("aiWording")}</span></div>${x.r}</div>
+          </div>
+        </div>`;
+      }).join("");
+      return `<section class="grp grp-${g}s"><h3 class="grp-h">${s(g)} <small>${g === "skill" ? s("groupHelpSkill") : s("groupHelpTool")}</small></h3><div class="grp-list">${items}</div></section>`;
+    }).join("");
+    document.getElementById("signals").innerHTML = out;
+    const n = SIG.length - removed.size;
+    document.getElementById("count").textContent = s("count").replace("{n}", n);
+    const co = document.body.classList.contains("as-company");
+    document.getElementById("asMe").setAttribute("aria-pressed", !co);
+    document.getElementById("asCo").setAttribute("aria-pressed", co);
+    document.getElementById("segNote").textContent = co ? s("segCo") : s("segMe");
+    document.getElementById("mSwitch").textContent = co ? s("mMe") : s("mCompany");
+    document.querySelectorAll(".langs [data-lang]").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === lang));
+    document.documentElement.lang = lang;
+  }
+  function applyLang() {
+    document.querySelectorAll("[data-i18n]").forEach(el => { const k = el.dataset.i18n; el.textContent = (I18N[lang] && I18N[lang][k]) || EN[k]; });
+    document.querySelectorAll("[data-i18n-html]").forEach(el => { const k = el.dataset.i18nHtml; el.innerHTML = (I18N[lang] && I18N[lang][k]) || EN[k]; });
+  }
+
+  // mini constellation: the interview's stars, folded into the card
+  (function mini() {
+    const pts = { s1: [5, 8], s2: [12, 70], s3: [40, 16], s4: [42, 86], s5: [62, 38], s6: [95, 62], s7: [93, 6], s8: [32, 44], n1: [95, 86] };
+    const E = [["s1","s2"],["s1","s3"],["s3","s5"],["s2","s4"],["s4","s5"],["s5","s7"],["s4","s6"],["s6","s7"],["s1","s8"],["s8","s2"],["s4","n1"],["s6","n1"]];
+    const m = ([x, y]) => [x * 0.92 + 4, y * 0.5 + 6];
+    let h = "";
+    for (let i = 0; i < 40; i++) { const x = (i * 37.3) % 100, y = (i * 23.7) % 60; h += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="0.35" fill="#A8BFB9" opacity="0.5"/>`; }
+    h += E.map(([a, b]) => { const [x1, y1] = m(pts[a]), [x2, y2] = m(pts[b]); return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#A8BFB9" stroke-width="0.35" stroke-dasharray="1 1.2" opacity="0.8"/>`; }).join("");
+    h += Object.entries(pts).map(([k, p]) => { const [x, y] = m(p); const sun = k === "n1"; const r = sun ? 2.4 : 1.8;
+      return `<circle cx="${x}" cy="${y}" r="${r * 2.2}" fill="${sun ? "#FFB627" : "#5ED1B6"}" opacity="0.16"/><path d="M${x} ${y - r * 1.6} L${x + r * 0.4} ${y - r * 0.4} L${x + r * 1.6} ${y} L${x + r * 0.4} ${y + r * 0.4} L${x} ${y + r * 1.6} L${x - r * 0.4} ${y + r * 0.4} L${x - r * 1.6} ${y} L${x - r * 0.4} ${y - r * 0.4} Z" fill="${sun ? "#FFB627" : "#FBF7F0"}"/>`; }).join("");
+    document.getElementById("mini").innerHTML = h;
+  })();
+
+  document.getElementById("signals").addEventListener("click", e => {
+    const rm = e.target.closest("[data-rm]"), un = e.target.closest("[data-undo]");
+    if (rm) { removed.add(rm.dataset.rm); render(); }
+    if (un) { removed.delete(un.dataset.undo); render(); }
+  });
+  const setView = co => { document.body.classList.toggle("as-company", co); render(); };
+  document.getElementById("asMe").onclick = () => setView(false);
+  document.getElementById("asCo").onclick = () => setView(true);
+  document.getElementById("mSwitch").onclick = () => setView(!document.body.classList.contains("as-company"));
+  const approve = () => { document.body.classList.add("is-approved"); const p = document.getElementById("pool"); p.disabled = false; };
+  document.getElementById("approve").onclick = approve;
+  document.getElementById("mApprove").onclick = approve;
+  document.getElementById("pool").onclick = e => { const b = e.currentTarget; b.setAttribute("aria-checked", b.getAttribute("aria-checked") !== "true"); };
+  const dlg = document.getElementById("delDlg");
+  document.getElementById("delBtn").onclick = () => dlg.showModal();
+  document.getElementById("delNo").onclick = () => dlg.close();
+  document.querySelectorAll(".langs [data-lang]").forEach(b => b.onclick = () => { lang = b.dataset.lang; applyLang(); render(); });
+  if (document.body.classList.contains("is-approved")) document.getElementById("pool").disabled = false;
+  applyLang();
+  render();
+})();
+</script>
+</body>
+</html>

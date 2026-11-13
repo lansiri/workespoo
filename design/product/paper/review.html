@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review queue · WorkEspoo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="paper.css">
+</head>
+<body class="org">
+<header class="site-top">
+  <a class="logo" href="#" aria-label="WorkEspoo">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 23L20 52L32 33L44 52L55 23" fill="none" stroke="#0E5E55" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="15" r="7.5" fill="#FFB627"/></svg>
+    <span>WorkEspoo</span>
+  </a>
+  <nav aria-label="Organiser">
+    <a href="#">Overview</a>
+    <a href="#" aria-current="page" data-t="navReview">Today's review</a>
+    <a href="#">Pool</a>
+    <a href="#">Unmatched</a>
+    <a href="#">Exposure</a>
+    <a href="#">Agenda</a>
+    <a href="#">Audit log</a>
+  </nav>
+  <span class="who-me">Organiser · Fri 13 Nov</span>
+  <div class="langs" id="langs" style="margin-left:14px"></div>
+</header>
+
+<main class="rq">
+  <!-- companies with drafts today -->
+  <aside class="rq-rail" aria-label="Companies">
+    <h2 data-t="railTitle">Today's drafts</h2>
+    <ul class="co-list">
+      <li><a href="#"><span class="nm">Demo company 03</span><span class="st pub" data-t="published">Published</span><span class="need">Data engineer</span></a></li>
+      <li><a href="#" aria-current="true"><span class="nm">Demo company 07</span><span class="st todo" id="railLeft">2 left</span><span class="need">Device support specialist, warehouse</span></a></li>
+      <li><a href="#"><span class="nm">Demo company 11</span><span class="st todo">4 left</span><span class="need">Practical nurse, home care</span></a></li>
+      <li><a href="#"><span class="nm">Demo company 14</span><span class="st todo">3 left</span><span class="need">Junior web developer</span></a></li>
+      <li><a href="#"><span class="nm">Demo company 19</span><span class="st">0</span><span class="need">Nobody relates to Night-shift baker yet. See the pool view.</span></a></li>
+    </ul>
+    <p class="rail-note" data-t="railNote">Drafts are written by the agent each morning. Nothing reaches a company until you approve each pick and publish.</p>
+  </aside>
+
+  <!-- the company's need and its picks -->
+  <section aria-labelledby="need-h">
+    <div class="rq-head">
+      <span class="tape" aria-hidden="true"></span>
+      <div class="row1">
+        <span class="co">Demo company 07</span>
+        <span class="tag tag-synthetic">Based on a real public posting</span>
+      </div>
+      <h1 id="need-h">Device support specialist: keeps 40 handheld terminals and the label printers running in a Juvanmalmi warehouse, day shifts.</h1>
+      <div class="reqs" aria-label="Requirements from the posting">
+        <span class="req"><em>Must</em> Troubleshooting handheld devices</span>
+        <span class="req"><em>Must</em> <span lang="fi">Sujuva suomen kielen taito</span> (fluent Finnish)</span>
+        <span class="req"><em>Nice</em> SAP EWM or another warehouse system</span>
+        <span class="req"><em>Nice</em> Showing colleagues how to use devices</span>
+        <span class="req"><em>Nice</em> Forklift card</span>
+      </div>
+    </div>
+
+    <p class="order-note"><span><b data-t="noOrder">In no particular order.</b> <span data-t="noOrderWhy">Picked by rotation among people whose cards relate to this need.</span></span><span class="add"><button class="btn-quiet" type="button" data-t="addPerson">Add a person to this need</button> <kbd>n</kbd></span></p>
+
+    <ol class="picks" id="picks"></ol>
+  </section>
+
+  <!-- decide and publish -->
+  <aside class="rq-side" aria-label="Publish">
+    <div class="tally" aria-live="polite">
+      <div class="left" id="left"></div>
+      <div class="marks" id="marks" aria-hidden="true"></div>
+      <p class="sum" id="sum"></p>
+      <button class="btn btn-primary" type="button" id="publish" aria-disabled="true"><span data-t="publish">Publish to Demo company 07</span> <kbd style="border-color:currentColor;background:transparent;color:inherit">p</kbd></button>
+      <p class="why-off" id="whyOff"></p>
+    </div>
+    <div class="keys">
+      <h2 class="small" data-t="keysTitle">Keyboard</h2>
+      <dl>
+        <dt><kbd>j</kbd> <kbd>k</kbd></dt><dd data-t="kNav">Next / previous pick</dd>
+        <dt><kbd>a</kbd></dt><dd data-t="kA">Approve this pick</dd>
+        <dt><kbd>r</kbd></dt><dd data-t="kR">Remove, with a reason</dd><dt><kbd>1</kbd>–<kbd>5</kbd></dt><dd data-t="kR2">Choose the reason, then Enter</dd>
+        <dt><kbd>e</kbd></dt><dd data-t="kE">Edit a reason's wording</dd>
+        <dt><kbd>o</kbd></dt><dd data-t="kO">Show original words (logged)</dd>
+        <dt><kbd>u</kbd></dt><dd data-t="kU">Undo last decision</dd>
+        <dt><kbd>p</kbd></dt><dd data-t="kP">Publish when all are decided</dd>
+      </dl>
+      <p class="rule" data-t="rule">There is no approve-all. Every pick is decided on its own, and a must-have never filters anyone out.</p>
+    </div>
+  </aside>
+</main>
+
+<!-- removal reason -->
+<div class="dlg-back" id="dlgBack">
+  <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="dlg-h">
+    <h2 id="dlg-h"><span data-t="dlgTitle">Remove</span> <span id="dlgHandle"></span>?</h2>
+    <p data-t="dlgHelp">Pick a reason. It goes into the audit log, not to the person or the company.</p>
+    <fieldset id="reasons">
+      <legend class="sr-only">Reason</legend>
+      <label class="opt"><input type="radio" name="r" value="evidence_thin"><kbd>1</kbd> The reasons do not hold up when I read the card</label>
+      <label class="opt"><input type="radio" name="r" value="already_in_contact"><kbd>2</kbd> Already in contact with this company</label>
+      <label class="opt"><input type="radio" name="r" value="duplicate"><kbd>3</kbd> Same person already picked for another need of this company</label>
+      <label class="opt"><input type="radio" name="r" value="person_asked"><kbd>4</kbd> The person asked not to be suggested here</label>
+      <label class="opt"><input type="radio" name="r" value="other"><kbd>5</kbd> Other (write why)</label>
+    </fieldset>
+    <textarea id="note" placeholder="Note (needed for Other)" aria-label="Note"></textarea>
+    <div class="row">
+      <button class="btn" type="button" id="cancel"><span data-t="cancel">Cancel</span> <kbd>Esc</kbd></button>
+      <button class="btn btn-primary" type="button" id="confirm"><span data-t="confirm">Remove this pick</span> <kbd style="background:transparent;color:inherit;border-color:currentColor">Enter</kbd></button>
+    </div>
+  </div>
+</div>
+
+<nav class="proto" aria-label="Prototype controls" id="proto"></nav>
+
+<script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  const lang = params.get("lang") === "fi" ? "fi" : "en";
+  if (params.get("shot")) document.body.classList.add("shot");
+  document.documentElement.lang = lang;
+
+  const REASONS = {
+    evidence_thin: "The reasons do not hold up when I read the card",
+    already_in_contact: "Already in contact with this company",
+    duplicate: "Same person already picked for another need of this company",
+    person_asked: "The person asked not to be suggested here",
+    other: "Other"
+  };
+  const P = [
+    { handle: "Harbour-14", headline: "Practical nurse who trains new staff and looks after the ward's tablets",
+      reasons: [
+        ["Must", "Troubleshooting handheld devices", "They set up the ward's tablets and fix them when they stop syncing with the patient system.", "When a terminal stops working you find the fault and fix it on the spot."],
+        ["Nice", "Showing colleagues how to use devices", "They train new staff on the ward and run a two-day induction with a checklist.", "You help colleagues get started with new devices."]
+      ],
+      notMentioned: [["Must", "Fluent Finnish"], ["Nice", "SAP EWM or another warehouse system"], ["Nice", "Forklift card"]],
+      basis: "Not drafted to anyone for 6 days · rotation seed 3f9a1c2e" },
+    { handle: "Birch-27", headline: "Warehouse worker who keeps the handheld scanners running",
+      reasons: [
+        ["Must", "Troubleshooting handheld devices", "They fix and reset handheld scanners when the devices stop working.", "When a terminal stops working you find the fault and fix it on the spot."],
+        ["Nice", "SAP EWM or another warehouse system", "They work with SAP EWM as the warehouse management system.", "Our warehouse runs on SAP EWM."],
+        ["Nice", "Showing colleagues how to use devices", "They show new staff the scanners and picking routes, and made a one-page photo guide for them.", "You help colleagues get started with new devices."]
+      ],
+      notMentioned: [["Must", "Fluent Finnish"], ["Nice", "Forklift card"]],
+      basis: "Never drafted before · rotation seed 3f9a1c2e" },
+    { handle: "Comet-58", headline: "IT support worker for shops and small offices",
+      reasons: [
+        ["Must", "Troubleshooting handheld devices", "They replace and set up laptops, phones and card readers for shop staff.", "When a terminal stops working you find the fault and fix it on the spot."],
+        ["Nice", "Showing colleagues how to use devices", "They write short how-to notes for staff after each repair.", "You help colleagues get started with new devices."]
+      ],
+      notMentioned: [["Must", "Fluent Finnish"], ["Nice", "SAP EWM or another warehouse system"], ["Nice", "Forklift card"]],
+      basis: "Not drafted to anyone for 3 days · rotation seed 3f9a1c2e" },
+    { handle: "Lantern-63", headline: "Packing-line worker who clears printer jams and drives a forklift",
+      reasons: [
+        ["Must", "Troubleshooting handheld devices", "They clear jams and change the print heads on the label printers on the packing line.", "You also look after our label printers."],
+        ["Nice", "Forklift card", "They drive a counterbalance forklift and hold a forklift card.", "A forklift card is a plus."]
+      ],
+      notMentioned: [["Must", "Fluent Finnish"], ["Nice", "SAP EWM or another warehouse system"], ["Nice", "Showing colleagues how to use devices"]],
+      basis: "Not drafted to anyone for 2 days · rotation seed 3f9a1c2e" }
+  ];
+
+  // starting state for the prototype: one approved, one removed, the rest open
+  const state = P.map(() => ({ s: "open" }));
+  if (params.get("fresh") !== "1") {
+    state[0] = { s: "approved" };
+    state[3] = { s: "removed", reason: "already_in_contact" };
+  }
+  let sel = state.findIndex((x) => x.s === "open");
+  if (sel < 0) sel = 0;
+  const history = [];
+
+  const L = lang === "fi"
+    ? { approve: "Hyväksy", remove: "Poista", approved: "Hyväksytty", removed: "Poistettu", undo: "Kumoa", fromCard: "Kortilta, tekoälyn sanoin", fromPost: "Ilmoituksesta",
+        nm: "Ei mainittu kortilla:", nmAside: "Mainitsematta ei tarkoita puuttuvaa.", left: (n) => n === 0 ? "Kaikki päätetty" : `<b>${n}</b> / ${P.length} päättämättä`,
+        sum: (a, r) => `${a} hyväksytty · ${r} poistettu`, why: (h) => `Päätä ensin ${h}.`, publish: "Hyväksy ja lähetä yritykselle Demo company 07", synthetic: "Synteettinen henkilö", relates: "Liittyy:" }
+    : { approve: "Approve", remove: "Remove", approved: "Approved", removed: "Removed", undo: "Undo", fromCard: "From the card, in AI wording", fromPost: "From the posting",
+        nm: "Not mentioned on the card:", nmAside: "Not mentioned does not mean missing.", left: (n) => n === 0 ? "All decided" : `<b>${n}</b> of ${P.length} left to decide`,
+        sum: (a, r) => `${a} approved · ${r} removed`, why: (h) => `Decide ${h} first.`, publish: "Publish to Demo company 07", synthetic: "Synthetic person", relates: "Relates to:" };
+  if (lang === "fi") {
+    const F = { navReview: "Päivän tarkistus", railTitle: "Päivän luonnokset", published: "Julkaistu", noOrder: "Ei missään tietyssä järjestyksessä.",
+      noOrderWhy: "Valittu vuorotellen niistä, joiden kortti liittyy tarpeeseen.", addPerson: "Lisää henkilö tähän tarpeeseen", keysTitle: "Näppäimet",
+      kNav: "Seuraava / edellinen", kA: "Hyväksy tämä", kE: "Muokkaa perustelun sanamuotoa", kO: "Näytä alkuperäiset sanat (kirjataan)", kU: "Kumoa viimeisin", kR: "Poista ja anna syy", kR2: "Valitse syy, sitten Enter", kP: "Julkaise, kun kaikki on päätetty",
+      rule: "Kaikkia ei voi hyväksyä kerralla. Jokainen ehdotus päätetään erikseen, eikä pakollinen vaatimus rajaa ketään pois.",
+      railNote: "Agentti kirjoittaa luonnokset joka aamu. Mitään ei lähetetä yritykselle ennen kuin hyväksyt jokaisen ehdotuksen ja julkaiset.",
+      dlgTitle: "Poistetaanko", dlgHelp: "Valitse syy. Se tallentuu lokiin, eikä sitä näytetä henkilölle tai yritykselle.", cancel: "Peru", confirm: "Poista ehdotus" };
+    document.querySelectorAll("[data-t]").forEach((el) => { if (F[el.dataset.t]) el.textContent = F[el.dataset.t]; });
+  }
+  document.querySelector('#publish [data-t="publish"]').textContent = L.publish;
+
+  const picks = document.getElementById("picks");
+  function render() {
+    picks.innerHTML = P.map((p, i) => {
+      const st = state[i];
+      const touched = [...new Set(p.reasons.map((r) => r[1]))];
+      return `<li class="pick${i === sel ? " sel" : ""}${st.s === "approved" ? " is-approved" : ""}${st.s === "removed" ? " is-removed" : ""}" tabindex="-1" data-i="${i}" aria-label="${p.handle}">
+        <div class="pick-top">
+          <span class="handle">${p.handle}</span>
+          <span class="headline">${p.headline}</span>
+          <span class="meta"><span class="tag tag-synthetic">${L.synthetic}</span></span>
+        </div>
+        <ul class="reasons">${p.reasons.map((r) => `<li class="reason">
+            <span class="req touched"><em>${r[0]}</em> ${r[1]}</span>
+            <div class="from-card"><span class="src-lbl">${L.fromCard}</span><p>${r[2]}</p></div>
+            <div class="from-post"><span class="src-lbl">${L.fromPost}</span><p>${r[3]}</p></div>
+          </li>`).join("")}</ul>
+        <div class="notmention"><b>${L.nm}</b>${p.notMentioned.map((n) => `<span class="req outline"><em>${n[0]}</em> ${n[1]}</span>`).join("")}<span class="aside">${L.nmAside}</span></div>
+        <div class="pick-foot">
+          <span class="basis">${p.basis} · Drafted by the agent</span>
+          <span class="decided ok"><span class="badge"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>${L.approved}</span><button class="btn-quiet" type="button" data-act="undo">${L.undo}</button></span>
+          <span class="decided rm"><span class="badge">${L.removed}</span><span class="why">${st.reason ? REASONS[st.reason] : ""}</span><button class="btn-quiet" type="button" data-act="undo">${L.undo}</button></span>
+          <button class="btn act" type="button" data-act="remove">${L.remove} <kbd>r</kbd></button>
+          <button class="btn btn-approve act" type="button" data-act="approve">${L.approve} <kbd>a</kbd></button>
+        </div>
+      </li>`;
+    }).join("");
+    const open = state.filter((x) => x.s === "open").length;
+    const a = state.filter((x) => x.s === "approved").length, r = state.filter((x) => x.s === "removed").length;
+    document.getElementById("left").innerHTML = L.left(open);
+    document.getElementById("marks").innerHTML = state.map((x) => `<i class="${x.s === "approved" ? "ok" : x.s === "removed" ? "rm" : ""}"></i>`).join("");
+    document.getElementById("sum").textContent = L.sum(a, r);
+    document.getElementById("railLeft").textContent = open ? (lang === "fi" ? `${open} jäljellä` : `${open} left`) : (lang === "fi" ? "Valmis" : "Ready");
+    const pub = document.getElementById("publish");
+    pub.setAttribute("aria-disabled", String(open > 0));
+    pub.disabled = open > 0;
+    const firstOpen = P.filter((_, i) => state[i].s === "open").map((p) => p.handle);
+    document.getElementById("whyOff").textContent = open ? L.why(firstOpen.join(lang === "fi" ? " ja " : " and ")) : "";
+  }
+  render();
+
+  const decide = (i, s, reason) => { history.push([i, { ...state[i] }]); state[i] = { s, reason }; };
+  const nextOpen = (from) => { for (let k = 1; k <= P.length; k++) { const j = (from + k) % P.length; if (state[j].s === "open") return j; } return from; };
+
+  // removal dialog
+  const back = document.getElementById("dlgBack");
+  const openDlg = () => {
+    document.getElementById("dlgHandle").textContent = P[sel].handle;
+    back.classList.add("open");
+    const first = back.querySelector("input");
+    first.focus();
+  };
+  const closeDlg = () => back.classList.remove("open");
+  const confirm = () => {
+    const c = back.querySelector("input:checked");
+    if (!c) return;
+    if (c.value === "other" && !document.getElementById("note").value.trim()) { document.getElementById("note").focus(); return; }
+    decide(sel, "removed", c.value);
+    closeDlg();
+    sel = nextOpen(sel);
+    render();
+  };
+  document.getElementById("cancel").onclick = closeDlg;
+  document.getElementById("confirm").onclick = confirm;
+
+  picks.addEventListener("click", (e) => {
+    const li = e.target.closest(".pick");
+    if (!li) return;
+    sel = +li.dataset.i;
+    const b = e.target.closest("button[data-act]");
+    if (b && b.dataset.act === "approve") { decide(sel, "approved"); sel = nextOpen(sel); }
+    if (b && b.dataset.act === "remove") { render(); openDlg(); return; }
+    if (b && b.dataset.act === "undo") { history.push([sel, { ...state[sel] }]); state[sel] = { s: "open" }; }
+    render();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.target.matches("textarea, input[type=text]")) { if (e.key === "Escape") closeDlg(); if (e.key === "Enter" && !e.shiftKey && back.classList.contains("open")) { e.preventDefault(); confirm(); } return; }
+    if (back.classList.contains("open")) {
+      if (/^[1-5]$/.test(e.key)) { const inp = back.querySelectorAll("input")[+e.key - 1]; inp.checked = true; inp.focus(); }
+      if (e.key === "Enter") { e.preventDefault(); confirm(); }
+      if (e.key === "Escape") closeDlg();
+      return;
+    }
+    if (e.key === "j" || e.key === "ArrowDown") { sel = Math.min(P.length - 1, sel + 1); render(); }
+    if (e.key === "k" || e.key === "ArrowUp") { sel = Math.max(0, sel - 1); render(); }
+    if (e.key === "a" && state[sel].s === "open") { decide(sel, "approved"); sel = nextOpen(sel); render(); }
+    if (e.key === "r" && state[sel].s === "open") { e.preventDefault(); openDlg(); }
+    if (e.key === "u" && history.length) { const [i, prev] = history.pop(); state[i] = prev; sel = i; render(); }
+    if (e.key === "p") { if (!state.some((x) => x.s === "open")) document.getElementById("left").textContent = lang === "fi" ? "Julkaistu" : "Published"; }
+    const cur = picks.querySelector(".pick.sel");
+    if (cur && /^(j|k|a|ArrowDown|ArrowUp)$/.test(e.key)) cur.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  });
+
+  if (params.get("dialog") === "1") { sel = 2; render(); back.querySelector("input").checked = true; openDlg(); }
+
+  const mk = (k, v) => { const p = new URLSearchParams(location.search); if (v === null) p.delete(k); else p.set(k, v); return "?" + p; };
+  document.getElementById("langs").innerHTML = `<a href="${mk("lang", null)}" aria-current="${lang === "en"}">EN</a><a href="${mk("lang", "fi")}" aria-current="${lang === "fi"}">FI</a><a href="#">SV</a>`;
+  document.getElementById("proto").innerHTML = `<a href="${mk("fresh", "1")}">fresh queue</a><a href="${mk("dialog", "1")}">removal dialog</a><a href="${mk("fresh", null)}">mid-way</a>`;
+})();
+</script>
+</body>
+</html>

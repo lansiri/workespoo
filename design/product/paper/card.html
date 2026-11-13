@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Signal Card · WorkEspoo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="paper.css">
+</head>
+<body>
+<header class="site-top">
+  <a class="logo" href="#" aria-label="WorkEspoo">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 23L20 52L32 33L44 52L55 23" fill="none" stroke="#0E5E55" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="15" r="7.5" fill="#FFB627"/></svg>
+    <span>WorkEspoo</span>
+  </a>
+  <nav aria-label="Main">
+    <a href="interview.html" data-t="navInterview">Interview</a>
+    <a href="#" aria-current="page" data-t="navCard">My card</a>
+    <a href="#" data-t="navMatches">My matches</a>
+  </nav>
+  <div class="langs" id="langs"></div>
+</header>
+
+<div class="cv-wrap">
+  <div class="cv-intro">
+    <div>
+      <h1 data-t="title">Your Signal Card</h1>
+      <p data-t="intro">These are notes from your conversation. Check them, change anything, and approve only what you're happy with.</p>
+    </div>
+    <p class="purge" role="note">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 7v5.5l3.5 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <span data-t="purge">This is a live demo session. Everything is deleted in 23 hours.</span>
+    </p>
+  </div>
+
+  <div class="cv-grid">
+    <div class="sc-scene">
+      <article class="sc" id="card" aria-labelledby="headline">
+        <span class="tape l" aria-hidden="true"></span><span class="tape r" aria-hidden="true"></span>
+        <div class="stamp-ok" aria-hidden="true"><span data-t="stamp">Approved by you</span><small data-t="stampDate">13 Nov 2026 · version 1</small></div>
+        <div class="sc-band">
+          <svg class="mk" viewBox="0 0 64 64" aria-hidden="true"><path d="M9 23L20 52L32 33L44 52L55 23" fill="none" stroke="#5ED1B6" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="15" r="7.5" fill="#FFB627"/></svg>
+          <span class="ttl">Signal Card</span>
+          <span class="tag tag-synthetic" data-t="synthetic">Synthetic demo profile</span>
+          <span class="handle" title="Your handle">Birch-27</span>
+        </div>
+        <div class="sc-body">
+          <p class="co-banner co-only">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" fill="none" stroke="#1E2B29" stroke-width="2"/><circle cx="12" cy="12" r="3.2" fill="#1E2B29"/></svg>
+            <span data-t="coBanner">This is exactly what a company sees. No name, no original words, no language and nothing about how you answered. Your words stay with you until you both agree to meet.</span>
+          </p>
+          <p class="mine-only" style="margin:0 0 6px;font-size:14px;color:var(--muted)" data-t="handleLine">Companies will see you as Birch-27.</p>
+          <h2 class="sc-headline" id="headline">Warehouse worker who keeps the handheld scanners running</h2>
+          <div class="ai-note">
+            <span class="lbl"><span class="tag tag-ai">AI</span><span class="mine-only" data-t="summaryLbl">Summary, written by AI from your words</span><span class="co-only" data-t="summaryCo">Summary, written by AI from their words</span></span>
+            <p>They pick and pack shop orders in a warehouse and fix the handheld scanners when they stop working. They also show new staff the devices and picking routes.</p>
+          </div>
+          <p class="co-only ai-note" style="margin-top:12px;font-size:14px;border-style:solid" data-t="coLabel">Written by AI from this person's own words and approved by them. Not a quote, not a verified fact.</p>
+
+          <div id="groups"></div>
+
+          <button class="add-own mine-only" type="button">+ <span data-t="add">Add your own</span></button>
+
+          <section class="lf" aria-labelledby="lf-h">
+            <h2 id="lf-h" data-t="lfTitle">What you're looking for</h2>
+            <p class="help mine-only" data-t="lfHelp">All optional. Companies can see this.</p>
+            <dl>
+              <dt data-t="lfRoles">Kinds of work</dt><dd><span class="chip">Device support</span><span class="chip">Warehouse systems</span></dd>
+              <dt data-t="lfMode">Where you'd like to work</dt><dd><span class="chip" data-t="onsite">On site</span></dd>
+              <dt data-t="lfStart">When you could start</dt><dd><span class="chip" data-t="month">Within a month</span></dd>
+              <dt data-t="lfLang">Languages you'd like to work in</dt><dd><span class="chip">English</span><span class="chip">Finnish</span></dd>
+            </dl>
+          </section>
+        </div>
+        <div class="sc-foot">
+          <span data-t="foot1">Each note points at something you said. Nothing here is a score or a level.</span>
+          <span class="mine-only" data-t="foot2">Version 1 · draft</span>
+        </div>
+      </article>
+    </div>
+
+    <aside class="side" aria-label="Your choices">
+      <div class="box">
+        <h2 data-t="viewTitle">See it as a company would</h2>
+        <p data-t="viewHelp">Flip the card to check exactly what companies get.</p>
+        <div class="seg" role="group" aria-label="Card view" id="seg1">
+          <button type="button" data-view="mine" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c1-4.5 4.4-6.5 8-6.5s7 2 8 6.5" fill="none" stroke="currentColor" stroke-width="2"/></svg><span data-t="viewMine">My view</span></button>
+          <button type="button" data-view="company" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 8h3M13 8h3M8 12h3M13 12h3M10 21v-4h4v4" stroke="currentColor" stroke-width="2"/></svg><span data-t="viewCo">What companies see</span></button>
+        </div>
+      </div>
+
+      <div class="box approve-box" id="approveBox">
+        <h2 data-t="approveTitle">Happy with it?</h2>
+        <p data-t="approveHelp">Nothing is used before you approve. You can change your card at any time after.</p>
+        <div class="kept"><span><b id="keptN">8</b> <span data-t="kept">notes kept</span></span><span><b id="remN">0</b> <span data-t="removedN">removed</span></span></div>
+        <button class="btn btn-primary" type="button" id="approve" data-t="approve">Approve my card</button>
+        <p class="ok-line" id="okLine" hidden><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-t="approved">Approved. You can change your card at any time.</span></p>
+      </div>
+
+      <div class="box pool locked" id="pool">
+        <h2 data-t="poolTitle">Can Espoo suggest you to companies?</h2>
+        <p data-t="poolBody">If you say yes, your approved card (without your name) can be suggested to companies at this event. An Espoo organiser checks every suggestion. Your name is shared only if a company asks to meet you and you agree.</p>
+        <div class="pool-btns">
+          <button class="btn btn-sun" type="button" data-t="poolYes" disabled>Yes, suggest me</button>
+          <button class="btn" type="button" data-t="poolNo" disabled>Not now</button>
+        </div>
+        <p id="poolLock" style="font-size:13px" data-t="poolLock">You can answer this after you approve your card.</p>
+      </div>
+
+      <div class="box">
+        <h2 data-t="dataTitle">Your data</h2>
+        <div class="data-btns">
+          <button class="icon-btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-t="dl">Download my data</span></button>
+          <button class="icon-btn danger" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg><span data-t="del">Delete everything</span></button>
+        </div>
+        <p data-t="dlHelp">The download has your answers, your card and your consents.</p>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div class="mbar" aria-label="Card actions">
+  <div class="seg" role="group" aria-label="Card view" id="seg2">
+    <button type="button" data-view="mine" aria-pressed="true" data-t="viewMine">My view</button>
+    <button type="button" data-view="company" aria-pressed="false" data-t="viewCo">What companies see</button>
+  </div>
+  <button class="btn btn-primary" type="button" id="approveM" data-t="approve">Approve my card</button>
+</div>
+
+<nav class="proto" aria-label="Prototype controls" id="proto"></nav>
+
+<script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  const lang = params.get("lang") === "fi" ? "fi" : "en";
+  if (params.get("shot")) document.body.classList.add("shot");
+  document.documentElement.lang = lang;
+
+  const G = [
+    { kind: "skill", en: "What I do", fi: "Mitä teen" },
+    { kind: "tool", en: "Tools", fi: "Työkalut" },
+    { kind: "knowledge", en: "Know-how", fi: "Osaaminen" },
+    { kind: "domain", en: "Fields", fi: "Alat" }
+  ];
+  const S = [
+    { id: "s1", kind: "skill", phrase: "Picking and packing orders", esco: ["pick orders for dispatching", "kerätä tilauksia lähetettäviksi"],
+      words: [["I work in a warehouse, mostly picking and packing orders for shops.", 1]],
+      co: "They pick and pack shop orders in a warehouse." },
+    { id: "s2", kind: "skill", phrase: "Fixing handheld scanners", esco: ["repair ICT devices", "korjata tieto- ja viestintätekniikan laitteita"],
+      words: [["When the handheld scanners stop working, people usually come to me, so I fix them or reset them.", 1]],
+      co: "They fix and reset handheld scanners when the devices stop working." },
+    { id: "s6", kind: "skill", phrase: "Driving a reach truck", esco: ["operate forklift", "käyttää trukkia"],
+      words: [["I also drive the reach truck, I have the licence for it.", 3]],
+      co: "They drive a reach truck and hold the licence for it." },
+    { id: "s7", kind: "skill", phrase: "Training new staff", esco: ["train employees", "kouluttaa työntekijöitä"],
+      words: [["When new people start I show them the scanners and the picking routes for the first week.", 4], ["I made a one-page guide with photos because people kept asking the same things.", 4]],
+      co: "They show new staff the scanners and picking routes, and made a one-page photo guide for them." },
+    { id: "s4", kind: "tool", phrase: "Zebra scanners", esco: ["use barcode scanning equipment", "käyttää viivakoodinlukulaitteita"],
+      words: [["We use Zebra scanners and the warehouse system is SAP EWM.", 3]],
+      co: "They use Zebra handheld scanners at work." },
+    { id: "s5", kind: "tool", phrase: "SAP EWM", esco: ["use warehouse management systems", "käyttää varastonhallintajärjestelmiä"],
+      words: [["We use Zebra scanners and the warehouse system is SAP EWM.", 3]],
+      co: "They work with SAP EWM as the warehouse management system." },
+    { id: "s3", kind: "knowledge", phrase: "Testing Wi‑Fi coverage", esco: null,
+      words: [["Last winter the scanners kept losing the wifi in the cold store.", 2], ["I tested where the signal dropped and moved two access points with the IT guy, and after that it was fine.", 2]],
+      co: "They tested where a wireless signal dropped in a cold store and helped move two access points to fix it." },
+    { id: "s8", kind: "domain", phrase: "Warehouse logistics", esco: ["warehouse operations", "varastotoiminnot"],
+      words: [["I work in a warehouse, mostly picking and packing orders for shops.", 1]],
+      co: "They work in warehouse logistics." }
+  ];
+  const ROT = { s1: -1.5, s2: 1.2, s6: -1, s7: 1.4, s4: 1, s5: -1.3, s3: -0.8, s8: 1.1 };
+
+  const T = {
+    en: {
+      yourWords: "Your words", answer: (n) => `From your answer ${n}`, coSees: "Shown to companies as",
+      noEsco: "No ESCO match. That's fine; it stays on your card.", edit: "Edit", remove: "Remove", undo: "Undo", removed: "Removed.",
+      escoLbl: "ESCO"
+    },
+    fi: {
+      yourWords: "Omat sanasi", answer: (n) => `Vastauksestasi ${n}`, coSees: "Yritykset näkevät tämän näin",
+      noEsco: "Ei ESCO-vastinetta. Se ei haittaa, tämä pysyy kortillasi.", edit: "Muokkaa", remove: "Poista", undo: "Kumoa", removed: "Poistettu.",
+      escoLbl: "ESCO",
+      navInterview: "Haastattelu", navCard: "Korttini", navMatches: "Osumani",
+      title: "Signal Card -korttisi",
+      intro: "Nämä ovat muistiinpanot keskustelustasi. Tarkista ne, muuta mitä haluat ja hyväksy vain se, mihin olet tyytyväinen.",
+      purge: "Tämä on livedemo. Kaikki poistetaan 23 tunnin kuluttua.",
+      stamp: "Hyväksyit itse", stampDate: "13.11.2026 · versio 1", synthetic: "Synteettinen demoprofiili",
+      coBanner: "Juuri tämän yritys näkee. Ei nimeä, ei alkuperäisiä sanojasi, ei kieltä eikä tietoa siitä, miten vastasit. Sanasi pysyvät sinulla, kunnes molemmat suostutte tapaamiseen.",
+      handleLine: "Yritykset näkevät sinut nimellä Birch-27.", summaryLbl: "Yhteenveto, tekoäly kirjoitti sanojesi pohjalta", summaryCo: "Yhteenveto, tekoäly kirjoitti henkilön sanojen pohjalta",
+      coLabel: "Tekoäly kirjoitti tämän henkilön omien sanojen pohjalta, ja hän hyväksyi sen. Ei lainaus, ei varmistettu tieto.",
+      add: "Lisää oma", lfTitle: "Mitä etsit", lfHelp: "Kaikki vapaaehtoista. Yritykset näkevät nämä.",
+      lfRoles: "Millaista työtä", lfMode: "Missä haluaisit työskennellä", lfStart: "Milloin voisit aloittaa", lfLang: "Kielet, joilla haluaisit työskennellä",
+      onsite: "Työpaikalla", month: "Kuukauden sisällä",
+      foot1: "Jokainen muistiinpano viittaa johonkin, mitä sanoit. Mikään tässä ei ole pisteytys tai taso.", foot2: "Versio 1 · luonnos",
+      viewTitle: "Katso yrityksen silmin", viewHelp: "Käännä kortti ja tarkista, mitä yritykset tarkalleen saavat.",
+      viewMine: "Oma näkymä", viewCo: "Mitä yritykset näkevät",
+      approveTitle: "Oletko tyytyväinen?", approveHelp: "Mitään ei käytetä ennen hyväksyntääsi. Voit muuttaa korttia milloin tahansa.",
+      kept: "muistiinpanoa jäljellä", removedN: "poistettu", approve: "Hyväksy korttini", approved: "Hyväksytty. Voit muuttaa korttiasi milloin tahansa.",
+      poolTitle: "Saako Espoo ehdottaa sinua yrityksille?",
+      poolBody: "Jos vastaat kyllä, hyväksyttyä korttiasi (ilman nimeäsi) voidaan ehdottaa tapahtuman yrityksille. Espoon järjestäjä tarkistaa jokaisen ehdotuksen. Nimesi kerrotaan vain, jos yritys pyytää tapaamista ja suostut siihen.",
+      poolYes: "Kyllä, saa ehdottaa", poolNo: "Ei nyt", poolLock: "Voit vastata tähän, kun olet hyväksynyt korttisi.",
+      dataTitle: "Tietosi", dl: "Lataa tietoni", del: "Poista kaikki", dlHelp: "Tiedosto, jossa ovat vastauksesi, korttisi ja suostumuksesi."
+    }
+  }[lang];
+  const TE = { yourWords: "Your words", answer: (n) => `From your answer ${n}`, coSees: "Shown to companies as", noEsco: "No ESCO match. That's fine; it stays on your card.", edit: "Edit", remove: "Remove", undo: "Undo", removed: "Removed." };
+  const t = (k) => T[k] ?? TE[k];
+  if (lang === "fi") document.querySelectorAll("[data-t]").forEach((el) => { if (T[el.dataset.t]) el.textContent = T[el.dataset.t]; });
+
+  const removed = new Set((params.get("removed") || "").split(",").filter(Boolean));
+  const icons = {
+    edit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.2-4.6L16 4.6l3.4 3.4L8.6 18.8z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>',
+    remove: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>'
+  };
+  function render() {
+    const root = document.getElementById("groups");
+    root.innerHTML = G.map((g) => {
+      const items = S.filter((s) => s.kind === g.kind);
+      if (!items.length) return "";
+      return `<section class="sc-group"><h2>${lang === "fi" ? g.fi : g.en} <span class="fi" lang="${lang === "fi" ? "en" : "fi"}">${lang === "fi" ? g.en : g.fi}</span></h2><ul class="sig">` +
+        items.map((s) => {
+          const isRm = removed.has(s.id);
+          const esco = s.esco
+            ? `<span class="esco"><b>${t("escoLbl")}</b> ${s.esco[0]}<span class="sep">·</span><span lang="fi">${s.esco[1]}</span></span>`
+            : `<span class="esco none">${t("noEsco")}</span>`;
+          const quote = `<blockquote class="quote mine-only"><span class="lbl">${t("yourWords")}</span>${s.words.map((w) => `<p>${w[0]}</p>`).join("")}<cite>${t("answer")(s.words[0][1])}</cite></blockquote>`;
+          const rend = `<div class="rendering"><span class="lbl"><span class="tag tag-ai">AI</span>${t("coSees")}</span><p>${s.co}</p></div>`;
+          return `<li class="${isRm ? "removed" : ""}" data-id="${s.id}">
+            <div class="sig-head"><span class="sticker" data-kind="${s.kind}" style="--rot:${ROT[s.id]}deg">${s.phrase}</span>${esco}</div>
+            <div class="sig-actions mine-only">${isRm
+              ? `<button class="icon-btn" type="button" data-act="undo">${t("undo")}</button>`
+              : `<button class="icon-btn" type="button" data-act="edit">${icons.edit}${t("edit")}</button><button class="icon-btn" type="button" data-act="remove" aria-label="${t("remove")}: ${s.phrase}">${icons.remove}${t("remove")}</button>`}</div>
+            ${isRm ? `<p class="removed-note mine-only" role="status">${t("removed")}</p>` : `<div class="sig-ev">${quote}${rend}</div>`}
+          </li>`;
+        }).join("") + "</ul></section>";
+    }).join("");
+    document.getElementById("keptN").textContent = S.length - removed.size;
+    document.getElementById("remN").textContent = removed.size;
+  }
+  render();
+  document.getElementById("groups").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-act]");
+    if (!b) return;
+    const id = b.closest("li").dataset.id;
+    if (b.dataset.act === "remove") removed.add(id);
+    if (b.dataset.act === "undo") removed.delete(id);
+    render();
+  });
+
+  // company view: the card flips over
+  const card = document.getElementById("card");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function setView(v, animate) {
+    document.querySelectorAll("[data-view]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.view === v)));
+    const apply = () => card.classList.toggle("company", v === "company");
+    if (animate && !reduce) {
+      card.classList.remove("flipping"); void card.offsetWidth; card.classList.add("flipping");
+      setTimeout(apply, 300);
+    } else apply();
+  }
+  document.querySelectorAll("[data-view]").forEach((b) => b.addEventListener("click", () => setView(b.dataset.view, true)));
+  if (params.get("view") === "company") setView("company", false);
+
+  // approval: the person stamps their own card
+  function approve(animate) {
+    card.classList.add("approved");
+    if (animate) card.classList.add("just");
+    document.getElementById("approve").hidden = true;
+    document.getElementById("okLine").hidden = false;
+    const pool = document.getElementById("pool");
+    pool.classList.remove("locked");
+    pool.querySelectorAll("button").forEach((b) => (b.disabled = false));
+    document.getElementById("poolLock").hidden = true;
+    const m = document.getElementById("approveM");
+    m.textContent = lang === "fi" ? "Hyväksytty · muokkaa korttiani" : "Approved · edit my card";
+    m.classList.remove("btn-primary");
+  }
+  document.getElementById("approve").addEventListener("click", () => approve(true));
+  document.getElementById("approveM").addEventListener("click", () => approve(true));
+  if (params.get("approved") === "1") approve(false);
+
+  // language links and prototype controls
+  const mk = (k, v) => { const p = new URLSearchParams(location.search); if (v === null) p.delete(k); else p.set(k, v); return "?" + p; };
+  document.getElementById("langs").innerHTML =
+    `<a href="${mk("lang", null)}" aria-current="${lang === "en"}">English</a><a href="${mk("lang", "fi")}" aria-current="${lang === "fi"}" lang="fi">Suomi</a><a href="#" lang="sv">Svenska</a>`;
+  document.getElementById("proto").innerHTML =
+    `<a href="${mk("view", null)}">my view</a><a href="${mk("view", "company")}">company view</a><a href="${mk("approved", "1")}">approved</a><a href="${mk("removed", "s6")}">one removed</a>`;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review queue · WorkEspoo organiser</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="night.css">
+</head>
+<body class="rv">
+
+<header class="top">
+  <a class="logo" href="#" aria-label="WorkEspoo organiser">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><path class="w-path" d="M9 23L20 52L32 33L44 52L55 23" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="15" r="7.5" fill="#FFB627"/></svg>
+    <span>WorkEspoo</span>
+  </a>
+  <nav aria-label="Organiser">
+    <a href="#" data-i18n="navOverview">Overview</a>
+    <a href="#" aria-current="page" data-i18n="navReview">Review</a>
+    <a href="#" data-i18n="navPool">Pool</a>
+    <a href="#" data-i18n="navExposure">Exposure</a>
+    <a href="#" data-i18n="navAudit">Audit log</a>
+  </nav>
+  <div class="right">
+    <div class="langs" role="group" aria-label="Language">
+      <button data-lang="en" aria-pressed="true">EN</button><button data-lang="fi" aria-pressed="false">FI</button><button data-lang="sv" aria-pressed="false">SV</button>
+    </div>
+    <span class="hide-m" data-i18n="who">Organiser · Espoo TalentMatch, 26 Nov</span>
+  </div>
+</header>
+
+<div class="rv-grid">
+  <aside class="rv-rail" aria-label="Today's digests">
+    <h2 data-i18n="today">Today's picks</h2>
+    <p class="date">Sat 14 Nov · <span data-i18n="drafted">drafted 07:00</span></p>
+    <button class="co" aria-current="true" data-testid="review-digest" data-digest-id="d03"><span class="n">Demo company 03</span><span class="s" id="railS">4 people · 3 to decide</span></button>
+    <button class="co"><span class="n">Demo company 07</span><span class="s">3 people · 3 to decide</span></button>
+    <button class="co"><span class="n">Demo company 05</span><span class="s">2 people · 2 to decide</span></button>
+    <button class="co"><span class="n">Demo company 11</span><span class="s done" data-i18n="published">Published</span></button>
+    <p class="rail-sep" data-i18n="requests">Requests from people</p>
+    <button class="co"><span class="n">Lichen-33 → Demo company 07</span><span class="s" data-i18n="reqWaiting">Asks to meet · waiting</span></button>
+    <p class="rail-sep" data-i18n="tools">Tools</p>
+    <button class="btn btn-quiet btn-sm" style="width:100%;justify-content:flex-start" data-testid="run-daily"><span data-i18n="runNow">Run today's picks now</span></button>
+  </aside>
+
+  <main class="rv-main">
+    <div class="need">
+      <div>
+        <p class="eyebrow"><span data-i18n="needFor">Need card</span> · Demo company 03 · <span data-i18n="masked">employer's name hidden, based on a real public posting</span></p>
+        <h1>Data engineer</h1>
+        <p class="one">Keep the nightly Python and SQL data pipelines running and the daily reports complete.</p>
+      </div>
+      <div class="left-count" aria-live="polite">
+        <span class="big" id="leftBig">3 of 4</span>
+        <span class="sm" data-i18n="leftToDecide">left to decide</span>
+        <div class="ticks" id="ticks" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <p class="order-note"><b data-i18n="noOrder">In no particular order.</b> <span data-i18n="noOrderHelp">The list is shuffled by rotation, not by quality. Decide each one on its own.</span></p>
+
+    <div id="picks"></div>
+  </main>
+
+  <aside class="rv-aside">
+    <section>
+      <h2 data-i18n="reqs">What the company listed</h2>
+      <div class="req">
+        <span class="pill"><span class="kind" data-i18n="must">Must</span> Python</span>
+        <span class="pill"><span class="kind" data-i18n="must">Must</span> SQL</span>
+        <span class="pill"><span class="kind" data-i18n="must">Must</span> Data pipelines (ETL)</span>
+        <span class="pill"><span class="kind" data-i18n="must">Must</span> Fluent Finnish</span>
+        <span class="pill"><span class="kind" data-i18n="nice">Nice</span> Azure</span>
+        <span class="pill"><span class="kind" data-i18n="nice">Nice</span> Power BI</span>
+      </div>
+      <p class="aside-note" data-i18n="mustNote">Must-haves never filter anyone out. The company has been asked whether Finnish is needed from day one.</p>
+    </section>
+
+    <section class="pub">
+      <h2 data-i18n="pubTitle">Publish to Demo company 03</h2>
+      <dl>
+        <dt data-i18n="approvedL">Approved</dt><dd id="nA">1</dd>
+        <dt data-i18n="removedL">Removed</dt><dd id="nR">0</dd>
+        <dt data-i18n="undecidedL">Not decided yet</dt><dd id="nU">3</dd>
+      </dl>
+      <button class="btn btn-primary" id="publish" disabled data-testid="publish-digest"><span data-i18n="publish">Approve and send to the company</span><span class="kbd">p</span></button>
+      <p class="why" id="pubWhy">Decide 3 more first.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="sees">What the company will see</h2>
+      <p class="aside-note" style="margin-top:0" data-i18n="seesBody">Handles, the AI wording of each card and these reasons. No names, no original words, no language or voice details. Nothing is sent until you publish.</p>
+    </section>
+  </aside>
+</div>
+
+<div class="keys" aria-label="Keyboard">
+  <span><span class="kbd">j</span><span class="kbd">k</span> <span data-i18n="kNext">next / previous</span></span>
+  <span><span class="kbd">a</span> <span data-i18n="kApprove">approve</span></span>
+  <span><span class="kbd">r</span> <span data-i18n="kRemove">remove, with a reason</span></span>
+  <span><span class="kbd">u</span> <span data-i18n="kUndo">undo</span></span>
+  <span><span class="kbd">p</span> <span data-i18n="kPublish">publish</span></span>
+  <span><span class="kbd">?</span> <span data-i18n="kAll">all keys</span></span>
+  <span class="no-bulk" data-i18n="noBulk">One person at a time. There is no approve-all.</span>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(() => {
+  const P = new URLSearchParams(location.search);
+  let lang = P.get("lang") || "en";
+  const glyph = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 L13.9 10.1 L21 12 L13.9 13.9 L12 21 L10.1 13.9 L3 12 L10.1 10.1 Z" fill="#FFB627"/></svg>';
+  const REASONS = [
+    ["evidence_thin", "The reasons do not hold up when I read the card"],
+    ["already_in_contact", "Already in contact with this company"],
+    ["duplicate", "Same person already picked for another need of this company"],
+    ["person_asked", "The person asked not to be suggested here"],
+    ["other", "Other (write why)"]
+  ];
+  const PICKS = [
+    { id: "p1", h: "Lantern-58", head: "Builds small booking websites with a Python back end", status: "approved",
+      rs: [["They built a booking site with a Python back end and a PostgreSQL database.", "You will develop and maintain data pipelines in Python."],
+           ["They write SQL queries for a monthly sales summary.", "Good SQL skills are needed for reporting."]],
+      nm: ["Data pipelines (ETL)", "Fluent Finnish", "Azure", "Power BI"], basis: "Not suggested to anyone for 6 days" },
+    { id: "p2", h: "Basalt-12", head: "Laboratory technician who automates measurement logs", status: "undecided",
+      rs: [["They wrote Python scripts that move instrument readings into a shared database.", "You will develop and maintain data pipelines in Python."],
+           ["They check the readings each morning and flag gaps to the team.", "You make sure the daily reports are complete and correct."]],
+      nm: ["SQL", "Fluent Finnish", "Azure", "Power BI"], basis: "Not suggested to anyone for 3 days" },
+    { id: "p3", h: "Comet-41", head: "Builds nightly sensor-data pipelines and checks the morning reports", status: "undecided",
+      rs: [["They build Python pipelines that load sensor data into a database every night.", "You will develop and maintain data pipelines in Python."],
+           ["They write SQL checks so that a daily report has no missing data.", "You make sure the daily reports are complete and correct."]],
+      nm: ["Fluent Finnish", "Azure", "Power BI"], basis: "Never suggested before" },
+    { id: "p4", h: "Harbour-73", head: "Warehouse worker who also keeps the handheld scanners running", status: "undecided",
+      rs: [["They export daily stock counts from the warehouse system and fix mismatches.", "You make sure the daily reports are complete and correct."],
+           ["They set up and troubleshoot handheld barcode scanners for the shift.", "You support the operations team with data tools."]],
+      nm: ["Python", "SQL", "Data pipelines (ETL)", "Fluent Finnish", "Azure", "Power BI"], basis: "Not suggested to anyone for 9 days" }
+  ];
+  let sel = parseInt(P.get("sel") || "2", 10) - 1;
+  let removing = P.get("removing") ? parseInt(P.get("removing"), 10) - 1 : -1;
+  let removeChoice = parseInt(P.get("reason") || "0", 10) - 1;
+  const history = [];
+  if (P.get("all") === "decided") PICKS.forEach(p => { if (p.status === "undecided") p.status = "approved"; });
+
+  const STR = {
+    en: { synthetic: "Synthetic person", fromCard: "From the card", fromPosting: "From the posting", nm: "Not mentioned:", nmHint: "Not mentioned does not mean missing.", approve: "Approve", remove: "Remove", editReason: "Edit reason text", openCard: "Open card", approved: "Approved", removed: "Removed", undo: "Undo", whyRemove: "Why remove {h} from today's list?", note: "Note (required for Other)", confirm: "Remove", cancel: "Cancel", left: "{n} of {t}", decideMore: "Decide {n} more first. Next: {h}.", ready: "Every person is decided. Publishing sends this list to the company.", rotation: "Why today: {b}" },
+    fi: { synthetic: "Synteettinen henkilö", fromCard: "Kortilta", fromPosting: "Ilmoituksesta", nm: "Ei mainittu:", nmHint: "Mainitsematta ei tarkoita puuttuvaa.", approve: "Hyväksy", remove: "Poista", editReason: "Muokkaa perustelua", openCard: "Avaa kortti", approved: "Hyväksytty", removed: "Poistettu", undo: "Kumoa", whyRemove: "Miksi poistat henkilön {h} tämän päivän listalta?", note: "Huomautus (pakollinen, jos Muu)", confirm: "Poista", cancel: "Peruuta", left: "{n}/{t}", decideMore: "Päätä vielä {n}. Seuraava: {h}.", ready: "Jokaisesta on päätetty. Julkaisu lähettää listan yritykselle.", rotation: "Miksi tänään: {b}" },
+    sv: { synthetic: "Syntetisk person", fromCard: "Från kortet", fromPosting: "Från annonsen", nm: "Inte nämnt:", nmHint: "Inte nämnt betyder inte att det saknas.", approve: "Godkänn", remove: "Ta bort", editReason: "Ändra motiveringen", openCard: "Öppna kortet", approved: "Godkänd", removed: "Borttagen", undo: "Ångra", whyRemove: "Varför tar du bort {h} från dagens lista?", note: "Anteckning (krävs för Annat)", confirm: "Ta bort", cancel: "Avbryt", left: "{n} av {t}", decideMore: "Besluta om {n} till först. Nästa: {h}.", ready: "Alla har ett beslut. Publicering skickar listan till företaget.", rotation: "Varför i dag: {b}" }
+  };
+  const I18N = {
+    fi: { navOverview: "Yleiskuva", navReview: "Tarkistus", navPool: "Joukko", navExposure: "Näkyvyys", navAudit: "Lokikirja", who: "Järjestäjä · Espoo TalentMatch, 26.11.", today: "Päivän ehdotukset", drafted: "luonnos klo 7.00", published: "Julkaistu", requests: "Henkilöiden pyynnöt", reqWaiting: "Pyytää tapaamista · odottaa", tools: "Työkalut", runNow: "Aja päivän ehdotukset nyt", needFor: "Tarvekortti", masked: "työnantajan nimi piilotettu, perustuu julkiseen ilmoitukseen", leftToDecide: "päättämättä", noOrder: "Ei missään erityisessä järjestyksessä.", noOrderHelp: "Järjestys tulee vuorottelusta, ei paremmuudesta. Päätä jokaisesta erikseen.", reqs: "Mitä yritys listasi", must: "Pakollinen", nice: "Toivottu", mustNote: "Pakolliset vaatimukset eivät koskaan rajaa ketään pois. Yritykseltä on kysytty, tarvitaanko suomea heti ensimmäisestä päivästä.", pubTitle: "Julkaise: Demo company 03", approvedL: "Hyväksytty", removedL: "Poistettu", undecidedL: "Päättämättä", publish: "Hyväksy ja lähetä yritykselle", sees: "Mitä yritys näkee", seesBody: "Nimimerkit, kunkin kortin tekoälymuotoilun ja nämä perustelut. Ei nimiä, alkuperäisiä sanoja, kieltä eikä puhetietoja. Mitään ei lähetetä ennen julkaisua.", kNext: "seuraava / edellinen", kApprove: "hyväksy", kRemove: "poista, syyn kanssa", kUndo: "kumoa", kPublish: "julkaise", kAll: "kaikki näppäimet", noBulk: "Yksi henkilö kerrallaan. Kaikkien hyväksyntää ei ole." },
+    sv: { navOverview: "Översikt", navReview: "Granskning", navPool: "Poolen", navExposure: "Synlighet", navAudit: "Logg", who: "Arrangör · Espoo TalentMatch, 26 nov", today: "Dagens förslag", drafted: "utkast 07.00", published: "Publicerad", requests: "Förfrågningar från personer", reqWaiting: "Vill träffas · väntar", tools: "Verktyg", runNow: "Kör dagens förslag nu", needFor: "Behovskort", masked: "arbetsgivarens namn dolt, bygger på en verklig offentlig annons", leftToDecide: "kvar att besluta", noOrder: "I ingen särskild ordning.", noOrderHelp: "Ordningen kommer från rotation, inte kvalitet. Besluta om var och en för sig.", reqs: "Vad företaget listade", must: "Krav", nice: "Önskat", mustNote: "Krav filtrerar aldrig bort någon. Företaget har tillfrågats om finska behövs från första dagen.", pubTitle: "Publicera till Demo company 03", approvedL: "Godkända", removedL: "Borttagna", undecidedL: "Inte beslutade", publish: "Godkänn och skicka till företaget", sees: "Vad företaget ser", seesBody: "Signaturer, AI:ns formulering av varje kort och de här motiveringarna. Inga namn, inga ursprungliga ord, inget språk eller röstuppgifter. Inget skickas innan du publicerar.", kNext: "nästa / föregående", kApprove: "godkänn", kRemove: "ta bort, med orsak", kUndo: "ångra", kPublish: "publicera", kAll: "alla tangenter", noBulk: "En person i taget. Det finns ingen godkänn-alla." }
+  };
+  const REASONS_FI = ["Perustelut eivät kestä, kun luen kortin", "Yritykseen ollaan jo yhteydessä", "Sama henkilö on jo ehdotettu yrityksen toiseen tarpeeseen", "Henkilö pyysi, ettei häntä ehdoteta tänne", "Muu (kirjoita syy)"];
+  const EN = {};
+  document.querySelectorAll("[data-i18n]").forEach(el => EN[el.dataset.i18n] = el.textContent);
+  const s = k => (STR[lang] || STR.en)[k];
+  const ico = {
+    ok: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>',
+    rm: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>'
+  };
+
+  function render() {
+    const el = document.getElementById("picks");
+    el.innerHTML = PICKS.map((p, i) => {
+      const reasonLabel = p.reasonCode != null ? (lang === "fi" ? REASONS_FI[p.reasonCode] : REASONS[p.reasonCode][1]) : "";
+      return `<article class="pk ${i === sel ? "is-sel" : ""} ${i === removing ? "is-removing" : ""}" data-status="${p.status}" data-i="${i}" data-testid="review-pick" data-pick-id="${p.id}" tabindex="-1">
+        <div class="pk-body">
+          <div class="pk-id"><span class="pk-handle"><span class="glyph">${glyph}</span>${p.h}</span><span class="tag">${s("synthetic")}</span></div>
+          <p class="pk-head">${p.head}</p>
+          <div class="pk-detail">
+          <div class="rs-head" aria-hidden="true"><span>${s("fromCard")}</span><span>${s("fromPosting")}</span></div>
+          <ul class="reasons">${p.rs.map(r => `<li data-testid="pick-reason"><div class="from"><span class="sr-only">${s("fromCard")}: </span>${r[0]}</div><div class="from"><span class="sr-only">${s("fromPosting")}: </span>${r[1]}</div></li>`).join("")}</ul>
+          <p class="nm" data-testid="pick-not-mentioned"><span class="k">${s("nm")}</span>${p.nm.map(n => `<span class="item">${n}</span>`).join("")}</p>
+          <p class="meta"><span>${s("nmHint")}</span><span>${s("rotation").replace("{b}", p.basis)}</span></p>
+          </div>
+        </div>
+        <div class="pk-dec" data-wait="${lang === "fi" ? "Valitse syy alta." : lang === "sv" ? "Välj en orsak nedan." : "Choose a reason below."}">
+          <div class="undecided" style="display:${p.status === "undecided" ? "flex" : "none"};flex-direction:column;gap:8px">
+            <button class="btn btn-primary" data-act="a" data-testid="pick-approve">${s("approve")}<span class="kbd">a</span></button>
+            <button class="btn btn-quiet" data-act="r" data-testid="pick-remove">${s("remove")}<span class="kbd">r</span></button>
+            <span class="links"><button class="more">${s("editReason")}</button><button class="more">${s("openCard")}</button></span>
+          </div>
+          <div class="decided">
+            <span class="st">${p.status === "approved" ? ico.ok + s("approved") : ico.rm + s("removed")}</span>
+            ${p.status === "removed" ? `<span class="why">${reasonLabel}</span>` : ""}
+            <button class="btn btn-quiet btn-sm" data-act="u" style="align-self:flex-start">${s("undo")} <span class="kbd">u</span></button>
+          </div>
+        </div>
+        <div class="rm-pop" role="dialog" aria-label="${s("whyRemove").replace("{h}", p.h)}">
+          <h3>${s("whyRemove").replace("{h}", p.h)}</h3>
+          <fieldset class="rm-list" data-testid="pick-remove-reason">${REASONS.map((r, k) => `<label><input type="radio" name="rr-${p.id}" value="${r[0]}" ${k === removeChoice && i === removing ? "checked" : ""}><span class="kbd">${k + 1}</span>${lang === "fi" ? REASONS_FI[k] : r[1]}</label>`).join("")}</fieldset>
+          <div class="rm-foot"><input placeholder="${s("note")}" aria-label="${s("note")}"><button class="btn btn-quiet" data-act="esc">${s("cancel")} <span class="kbd">Esc</span></button><button class="btn btn-primary" data-act="confirm" ${removeChoice < 0 ? "disabled" : ""}>${s("confirm")} <span class="kbd">Enter</span></button></div>
+        </div>
+      </article>`;
+    }).join("");
+    const nA = PICKS.filter(p => p.status === "approved").length, nR = PICKS.filter(p => p.status === "removed").length, nU = PICKS.length - nA - nR;
+    document.getElementById("nA").textContent = nA;
+    document.getElementById("nR").textContent = nR;
+    document.getElementById("nU").textContent = nU;
+    document.getElementById("leftBig").textContent = s("left").replace("{n}", nU).replace("{t}", PICKS.length);
+    document.getElementById("ticks").innerHTML = PICKS.map(p => `<i class="${p.status === "approved" ? "ok" : p.status === "removed" ? "rm" : ""}"></i>`).join("");
+    document.getElementById("railS").textContent = `4 people · ${nU} to decide`;
+    const pub = document.getElementById("publish");
+    pub.disabled = nU > 0;
+    const next = PICKS.find(p => p.status === "undecided");
+    document.getElementById("pubWhy").textContent = nU > 0 ? s("decideMore").replace("{n}", nU).replace("{h}", next.h) : s("ready");
+    document.querySelectorAll(".langs [data-lang]").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === lang));
+    document.documentElement.lang = lang;
+  }
+  function applyLang() {
+    document.querySelectorAll("[data-i18n]").forEach(el => { const k = el.dataset.i18n; el.textContent = (I18N[lang] && I18N[lang][k]) || EN[k]; });
+  }
+  const toast = msg => { const t = document.getElementById("toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2200); };
+  const nextUndecided = from => { for (let k = 1; k <= PICKS.length; k++) { const j = (from + k) % PICKS.length; if (PICKS[j].status === "undecided") return j; } return from; };
+
+  function act(a, i = sel) {
+    const p = PICKS[i];
+    if (a === "a" && p.status === "undecided") { history.push([i, p.status]); p.status = "approved"; sel = nextUndecided(i); }
+    if (a === "r" && p.status === "undecided") { removing = i; removeChoice = -1; sel = i; }
+    if (a === "esc") { removing = -1; }
+    if (a === "confirm" && removing >= 0 && removeChoice >= 0) { const q = PICKS[removing]; history.push([removing, q.status]); q.status = "removed"; q.reasonCode = removeChoice; const r = removing; removing = -1; sel = nextUndecided(r); }
+    if (a === "u") { const h = history.pop(); if (h) { PICKS[h[0]].status = h[1]; sel = h[0]; } else if (p.status !== "undecided") { p.status = "undecided"; } }
+    render();
+  }
+  document.getElementById("picks").addEventListener("click", e => {
+    const card = e.target.closest(".pk"); if (!card) return;
+    const i = +card.dataset.i;
+    const b = e.target.closest("[data-act]");
+    if (b) { act(b.dataset.act, i); return; }
+    const radio = e.target.closest("input[type=radio]");
+    if (radio) { removeChoice = REASONS.findIndex(r => r[0] === radio.value); render(); return; }
+    if (sel !== i) { sel = i; render(); }
+  });
+  document.addEventListener("keydown", e => {
+    if (e.target.tagName === "INPUT" && e.target.type !== "radio") { if (e.key === "Escape") act("esc"); if (e.key === "Enter") act("confirm"); return; }
+    if (removing >= 0) {
+      if (/^[1-5]$/.test(e.key)) { removeChoice = +e.key - 1; render(); }
+      if (e.key === "Enter") act("confirm");
+      if (e.key === "Escape") act("esc");
+      return;
+    }
+    if (e.key === "j" || e.key === "ArrowDown") { sel = Math.min(PICKS.length - 1, sel + 1); render(); }
+    if (e.key === "k" || e.key === "ArrowUp") { sel = Math.max(0, sel - 1); render(); }
+    if (e.key === "a") act("a");
+    if (e.key === "r") act("r");
+    if (e.key === "u") act("u");
+    if (e.key === "p") { const nU = PICKS.filter(p => p.status === "undecided").length; toast(nU ? s("decideMore").replace("{n}", nU).replace("{h}", PICKS.find(p => p.status === "undecided").h) : "Published to Demo company 03."); }
+  });
+  document.querySelectorAll(".langs [data-lang]").forEach(b => b.onclick = () => { lang = b.dataset.lang; applyLang(); render(); });
+  applyLang();
+  render();
+})();
+</script>
+</body>
+</html>
