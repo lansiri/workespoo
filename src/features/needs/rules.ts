@@ -1,5 +1,5 @@
 import type { Job, QuestionType, RequirementCategory, RequirementKind, RequirementQuestion, Statutory } from "@/contracts";
-import { findProtectedCard } from "@/lib/lexicon";
+import { COUNTRIES_AND_DEMONYMS, findProtectedCard, findProtectedRequirement } from "@/lib/lexicon";
 import { QUESTION_TEXT_MAX, WHY_MAX, YEARS_QUESTION_MIN_YEARS } from "./constants";
 
 // ---------- statutory class (need-card.md 4.3) ----------
@@ -68,10 +68,37 @@ const OTHER_LAW_GLOBAL = new RegExp(OTHER_LAW.source, "gi");
 
 const NATIVE_ORIGIN = /(?<![\p{L}])(?:native|äidinkiel\p{L}*|modersmål\p{L}*)(?![\p{L}])/iu;
 
-/** Protected terms in a requirement text or a cited posting sentence. Language names are not hits. */
+/**
+ * Health words that name a field of work, not a person's health ("health care", "health
+ * centre", "terveyskeskus"). Removed before the lint reads a text (needcard-F9).
+ */
+const HEALTH_SECTOR = new RegExp(
+  [
+    String.raw`health[\s-]?(?:care|centre|center|sector|services?|clinics?|system|and safety|technology)`,
+    String.raw`terveyskeskus\p{L}*|terveydenhuolto\p{L}*|terveyspalvelu\p{L}*|terveysasema\p{L}*|terveysala\p{L}*|terveysteknologia\p{L}*`,
+  ].join("|"),
+  "giu",
+);
+
+const PLACE_TERMS: ReadonlySet<string> = new Set(COUNTRIES_AND_DEMONYMS.map((c) => c.toLowerCase()));
+
+/** The text with language names, work permits and health-sector phrases taken out. */
+function forLint(text: string): string {
+  return text.replace(LANGUAGE_NAMES, " ").replace(OTHER_LAW_GLOBAL, " ").replace(HEALTH_SECTOR, " ");
+}
+
+/**
+ * Protected terms in a requirement text or a cited posting sentence. Language names, place
+ * names and nationality adjectives used for a market ("the Norwegian market") are not hits:
+ * only asks about the person themselves are (needcard-F4, F9).
+ */
 export function protectedHits(text: string): string[] {
+  const clean = forLint(text);
   // A work permit is a legal requirement (recorded as other_law), not a personal characteristic.
-  const hits = findProtectedCard(text.replace(LANGUAGE_NAMES, " ").replace(OTHER_LAW_GLOBAL, " "));
+  const hits = [
+    ...findProtectedCard(clean).filter((h) => !PLACE_TERMS.has(h.toLowerCase())),
+    ...findProtectedRequirement(clean),
+  ];
   // "Native Finnish" is a proxy for origin; the work needs a language level, not a birthplace.
   const native = NATIVE_ORIGIN.exec(text);
   if (native) hits.push(native[0].toLowerCase());
@@ -87,7 +114,7 @@ export const NATIVE_HINT = "Try 'fluent working Finnish'.";
 
 /** Company-written text that describes a person rather than the work (need-card.md 6, rule 3). */
 export function textDescribesPerson(text: string): boolean {
-  return COMPANY_TEXT_PROTECTED.test(text) || protectedHits(text).length > 0;
+  return COMPANY_TEXT_PROTECTED.test(forLint(text)) || protectedHits(text).length > 0;
 }
 
 export function companyTextProblem(text: string): { hint: string | null } | null {

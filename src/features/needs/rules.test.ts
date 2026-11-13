@@ -242,3 +242,103 @@ describe("which questions are shown", () => {
     expect([...shown].sort()).toEqual(["a", "b", "c", "z"]);
   });
 });
+
+describe("lint for Need Card text (needcard-F4, F9)", () => {
+  it("lets language names, places and health-sector phrases through", () => {
+    for (const text of [
+      "Fluent Swedish",
+      "Experience of the Norwegian market",
+      "Work at a health centre",
+      "Health care experience",
+      "Experience in health services",
+      "Work in Norway",
+      "Chinese market sales",
+      "Health and safety",
+    ]) {
+      expect(protectedHits(text), text).toEqual([]);
+      expect(companyTextProblem(text), text).toBeNull();
+    }
+  });
+
+  it("still catches asks about the person", () => {
+    for (const text of ["Native speaker of Finnish", "Mother tongue Finnish", "Good health required", "Aged 25-35", "Nationality: Finnish", "terveys"]) {
+      expect(companyTextProblem(text), text).not.toBeNull();
+    }
+    expect(protectedHits("Native-level Finnish")).not.toEqual([]);
+    expect(protectedHits("Mother tongue Swedish")).not.toEqual([]);
+  });
+});
+
+describe("statutory: the keyword rules count as well as the model (needcard-F6)", () => {
+  it("is statutory when only the keywords say so, and when only the model says so", () => {
+    expect(stat({ category: "authorisation", text: "Hygiene passport", sentence: "Hygieniapassi vaaditaan", modelLaw: false })).toBe("licence");
+    expect(stat({ category: "language", text: "Finnish", sentence: "Kielitaitovaatimus: suomi", modelLaw: false })).toBe("language_act");
+    expect(stat({ category: "language", text: "Finnish", sentence: "Suomen kieli", modelLaw: false, job: { ...privateJob, source: "kuntarekry" } })).toBe("language_act");
+    expect(stat({ category: "skill", text: "Something regulated", sentence: "x", modelLaw: true })).toBe("other_law");
+    expect(stat({ category: "skill", text: "Python", sentence: "x", modelLaw: false })).toBe("none");
+  });
+
+  it("a statutory requirement carries no question, whatever the model returned", () => {
+    const years = "Would someone who has done nursing, with fewer than 5 years, be worth a conversation?";
+    const cases: Array<[QuestionInput["category"], string, string, string | null]> = [
+      ["language", "language", "Is Finnish needed from day one, or could someone start in English and build up Finnish on the job?", "fi"],
+      ["experience", "years", years, null],
+      ["education", "degree", "Would hands-on experience in nursing work instead of the degree?", null],
+      ["skill", "tool", "Would experience with a comparable tool be enough, if the person learns Jira on the job?", null],
+      ["other", "vague", "What does 'x' look like in this job? One concrete example helps us find people who have done it.", null],
+    ];
+    for (const statutory of ["language_act", "licence", "clearance", "other_law"] as const) {
+      for (const [category, type, question, languageCode] of cases) {
+        expect(
+          decideQuestion({
+            category,
+            kind: "must",
+            statutory,
+            text: "5 years of nursing",
+            sentence: "x",
+            languageCode,
+            jobLang: "fi",
+            model: { years: 5, questionType: type as never, question, why: "Because." },
+          }),
+          `${statutory} ${type}`,
+        ).toBeNull();
+      }
+    }
+  });
+});
+
+describe("trigger rules apply to every question type (needcard-F8)", () => {
+  const vagueQ = "What does 'x' look like in this job? One concrete example helps us find people who have done it.";
+  it("a vague question on anything but category other is dropped, a nice vague one on other stays", () => {
+    for (const category of ["skill", "language", "education", "experience", "authorisation"] as const) {
+      expect(
+        decideQuestion({
+          category,
+          kind: "must",
+          statutory: "none",
+          text: "Something",
+          sentence: "x",
+          languageCode: category === "language" ? "fi" : null,
+          jobLang: "fi",
+          model: { years: null, questionType: "vague", question: vagueQ, why: null },
+        }),
+        category,
+      ).toBeNull();
+    }
+    const kept = decideQuestion({
+      category: "other", kind: "nice", statutory: "none", text: "x", sentence: "x", languageCode: null, jobLang: "en",
+      model: { years: null, questionType: "vague", question: vagueQ, why: null },
+    });
+    expect(kept?.type).toBe("vague");
+  });
+
+  it("language, years, degree and tool never fire on a nice requirement", () => {
+    const base = { statutory: "none" as const, text: "5 years of Java", sentence: "x", languageCode: "fi", jobLang: "fi" };
+    const mk = (category: QuestionInput["category"], type: string, question: string) =>
+      decideQuestion({ ...base, category, kind: "nice", model: { years: 5, questionType: type as never, question, why: null } });
+    expect(mk("language", "language", "x")).toBeNull();
+    expect(mk("experience", "years", "x")).toBeNull();
+    expect(mk("education", "degree", "Would hands-on experience in Java work instead of the degree?")).toBeNull();
+    expect(mk("skill", "tool", "Would experience with a comparable tool be enough, if the person learns Java on the job?")).toBeNull();
+  });
+});

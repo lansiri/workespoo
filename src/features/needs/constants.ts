@@ -35,6 +35,3 @@ export const QUESTION_TEXT_MAX = 240;
 export const WHY_MAX = 140;
 export const REQUIREMENT_TEXT_MAX = 80;
 export const TITLE_MAX = 60;
-
-/** Employer replacement in anything shown to a masked company. */
-export const MASKED_EMPLOYER_WORD = "the company";

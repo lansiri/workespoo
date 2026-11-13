@@ -9,7 +9,7 @@ import { setLlmFake } from "@/lib/llm";
 import { runReadyJobs } from "@/lib/queue";
 import { getJob } from "@/features/jobs";
 import { draftNeedCard, getNeedCard, getNeedCardForJob, listNeedCards } from "./index";
-import { validateDraft } from "./draft";
+import { coerceDraftOutput, validateDraft } from "./draft";
 import { jobs as needJobs } from "./jobs";
 import {
   addCompany,
@@ -407,5 +407,152 @@ describe("queue definitions and retries", () => {
     const rows = await t.db.select().from(jobSkill).where(eq(jobSkill.jobId, jobId));
     // the candidate came from phrase matching on the short sentence
     expect(rows.map((r) => [r.skillUri, r.origin])).toEqual([["http://esco/golang", "needcard"]]);
+  });
+});
+
+describe("second pass: what the real model needs", () => {
+  it("states rule 14, the F4, F5 and F7 wording, and asks for 4000 tokens and a 90 s budget", async () => {
+    const jobId = await addJobRow(t.db, { sentences: ["Python"] });
+    const { id: companyId } = await addCompany(t.db);
+    let seen: { maxTokens?: number; deadlineMs?: number; system?: string } = {};
+    setLlmFake((opts) => {
+      seen = { maxTokens: opts.maxTokens, deadlineMs: opts.deadlineMs, system: opts.messages[0]?.content };
+      return draftOutput("Dev", [{ text: "Python", sentence: 0 }]);
+    });
+    await draftNeedCard(t.db, jobId, companyId);
+    expect(seen.maxTokens).toBe(4000);
+    expect(seen.deadlineMs).toBe(90000);
+    expect(seen.system).toContain("14. Every requirement has all of these keys: text, kind, category, sentence, esco, language, years, statutory, questionType, question, why.");
+    expect(seen.system).toContain('"Native speaker", "mother tongue" and "experience in Finland" count as nationality');
+    expect(seen.system).toContain("Never for English when the posting is written in English.");
+    expect(seen.system).toContain('If there are more, keep every "must" first, then "nice" in posting order.');
+  });
+
+  it("uses role bulk and the same budget for a card with no company", async () => {
+    const jobId = await addJobRow(t.db, { sentences: ["Python"] });
+    let seen: { role?: string; deadlineMs?: number } = {};
+    setLlmFake((opts) => {
+      seen = { role: opts.role, deadlineMs: opts.deadlineMs };
+      return draftOutput("Dev", [{ text: "Python", sentence: 0 }]);
+    });
+    await draftNeedCard(t.db, jobId, null);
+    expect(seen).toEqual({ role: "bulk", deadlineMs: 90000 });
+  });
+
+  it("coerces a bad language code or year count to null instead of failing the card", async () => {
+    const jobId = await addJobRow(t.db, { sentences: ["Edellytämme suomea.", "Python"] });
+    const { id: companyId } = await addCompany(t.db);
+    setLlmFake(() => {
+      const out = draftOutput("Dev", [
+        { text: "Finnish", sentence: 0, category: "language", language: "fi" },
+        { text: "Python", sentence: 1 },
+      ]) as { requirements: Array<Record<string, unknown>> };
+      out.requirements[0]!.language = "Finnish";
+      out.requirements[0]!.years = 2.5;
+      out.requirements[1]!.language = "";
+      out.requirements[1]!.years = "3";
+      return out;
+    });
+    const card = await draftNeedCard(t.db, jobId, companyId);
+    expect(card.requirements).toHaveLength(2);
+    expect(card.requirements[0]!.languageCode).toBeNull();
+    const keep = coerceDraftOutput({ requirements: [{ language: "sv", years: 4 }, { language: "Sv", years: null }] }) as {
+      requirements: Array<{ language: unknown; years: unknown }>;
+    };
+    expect(keep.requirements).toEqual([{ language: "sv", years: 4 }, { language: null, years: null }]);
+    expect(coerceDraftOutput("junk")).toBe("junk");
+  });
+
+  it("drops a requirement whose text asks for a protected trait and counts it in the audit detail", async () => {
+    const jobId = await addJobRow(t.db, { sentences: ["Native Finnish speaker wanted.", "Work at a health centre.", "Fluent Swedish.", "Python"] });
+    const { id: companyId } = await addCompany(t.db);
+    setLlmFake(() =>
+      draftOutput("Dev", [
+        { text: "Native Finnish speaker", sentence: 0, category: "language", language: "fi" },
+        { text: "Work at a health centre", sentence: 1, category: "other" },
+        { text: "Fluent Swedish", sentence: 2, category: "language", language: "sv" },
+        { text: "Python", sentence: 3 },
+      ]),
+    );
+    const card = await draftNeedCard(t.db, jobId, companyId);
+    expect(card.requirements.map((r) => r.text)).toEqual(["Work at a health centre", "Fluent Swedish", "Python"]);
+    expect(card.droppedSentences).toEqual([0]);
+    const [event] = await listAudit(t.db, { subjectType: "need_card", subjectId: card.id, action: "needcard.drafted" });
+    expect(event!.detail).toMatchObject({ droppedProtected: 1 });
+  });
+
+  it("masks the employer in question text and reason as well", async () => {
+    const jobId = await addJobRow(t.db, { employerName: "Nordic Pixel Studio Oy", sentences: ["Hyvä tiimityöskentely"] });
+    const job = (await getJob(t.db, jobId))!;
+    const out = NeedCardDraftOutput.parse(
+      draftOutput("Dev", [
+        {
+          text: "Team work",
+          sentence: 0,
+          category: "other",
+          questionType: "vague",
+          question: "What does 'Team work' look like in this job? One concrete example helps us find people who have done it.",
+          why: "Nordic Pixel does not say what this means.",
+        },
+      ]),
+    );
+    const v = await validateDraft(t.db, job, out, []);
+    expect(v.requirements[0]!.question?.why.toLowerCase()).not.toContain("nordic");
+  });
+
+  it("a failed draft leaves no card behind and the queue job fails so it is retried", async () => {
+    const jobId = await addJobRow(t.db, { sentences: ["Python"] });
+    const { id: companyId } = await addCompany(t.db);
+    setLlmFake(() => "broken");
+    const { enqueue } = await import("@/lib/queue");
+    const { jobQueue } = await import("@/db/schema");
+    await enqueue(t.db, "needs.draft", { jobId, companyId });
+    await runReadyJobs(t.db, needJobs);
+    expect(await getNeedCardForJob(t.db, jobId)).toBeNull();
+    const rows = (await t.db.select().from(jobQueue)).filter((r) => r.kind === "needs.draft" && (r.payload as { jobId: string }).jobId === jobId);
+    expect(rows).toHaveLength(1);
+    expect(rows[0]!.doneAt).toBeNull();
+    expect(rows[0]!.attempts).toBe(1);
+  });
+});
+
+describe("re-drafting while the company acts on its card", () => {
+  it("keeps the company's version and drops the draft when an answer lands during the model call", async () => {
+    const { answerQuestion } = await import("./actions");
+    const { makeCard } = await import("./test-helpers");
+    const jobId = await addJobRow(t.db, { sentences: ["Edellytämme tiimipelaajaa.", "Python"] });
+    const { id: companyId } = await addCompany(t.db);
+    const question = {
+      type: "vague" as const,
+      text: "What does 'Team player' look like in this job? One concrete example helps us find people who have done it.",
+      why: "The posting does not say what this means in practice.",
+      answer: null,
+    };
+    const pool = { scope: "relevant", relevant: 10, speakTo: 6, hardFilterWouldExclude: 4, selfDeclaredOnly: null, computedAt: "2026-11-14T06:02:11Z" } as const;
+    const card = await makeCard(t.db, {
+      jobId,
+      companyId,
+      requirements: [{ text: "Team player", category: "other", postingSentence: 0, question, pool }],
+    });
+    setLlmFake(async () => {
+      // the company answers after the first check, while the model is still working
+      await answerQuestion(t.db, card.id, companyId, { requirementId: card.requirements[0]!.id, choice: "make_nice" });
+      return draftOutput("Dev", [{ text: "Python", sentence: 1 }]);
+    });
+    await expect(draftNeedCard(t.db, jobId, companyId)).rejects.toMatchObject({ status: 409, code: "has_company_answers" });
+    const stored = (await getNeedCardForJob(t.db, jobId))!;
+    expect(stored.version).toBe(2);
+    expect(stored.requirements.map((r) => [r.text, r.kind])).toEqual([["Team player", "nice"]]);
+    expect(stored.requirements[0]!.question?.answer?.choice).toBe("make_nice");
+  });
+
+  it("a write that finds another version fails with a conflict and changes nothing", async () => {
+    const { makeCard } = await import("./test-helpers");
+    const { saveNeedCard } = await import("./store");
+    const jobId = await addJobRow(t.db, { sentences: ["Python"] });
+    const { id: companyId } = await addCompany(t.db);
+    const card = await makeCard(t.db, { jobId, companyId, requirements: [{ text: "Python", category: "skill", postingSentence: 0 }] });
+    await expect(saveNeedCard(t.db, { ...card, version: 2 }, new Date(), 7)).rejects.toMatchObject({ code: "conflict" });
+    expect((await getNeedCardForJob(t.db, jobId))!.version).toBe(1);
   });
 });

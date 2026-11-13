@@ -13,7 +13,7 @@ import type { Db } from "@/db/client";
 import { company as companyTable, job as jobTable } from "@/db/schema";
 import { fmt } from "@/lib/i18n";
 import { MAX_QUESTIONS_SHOWN, QUESTION_MIN_RELEVANT } from "./constants";
-import { employerTerms, maskEmployer } from "./mask";
+import { employerTerms, maskEmployer } from "@/lib/mask";
 import type { NeedMessagesText } from "./messages";
 import { needCardCreatedAt } from "./store";
 
