@@ -27,10 +27,17 @@ export interface PlaybackOptions {
   /** Called once per burst of sentences: milliseconds from the first request to the first sound. */
   onFirstAudio?: (ms: number) => void;
   now?: () => number;
+  /**
+   * How many clips may be fetched at once (default: all of them). Our own speech server
+   * synthesises one sentence at a time per language and turns a third request away, so the
+   * browser adapter keeps this at two: the clip playing and the next one.
+   */
+  maxConcurrentFetches?: number;
 }
 
 // A header-only 8 kHz mono WAV. Playing it inside a tap unlocks the element on iOS.
-const SILENT_WAV = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=";
+const SILENT_WAV =
+  "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=";
 
 interface Item {
   generation: number;
@@ -52,6 +59,9 @@ export class PlaybackQueue {
   private readonly createMeter?: (audio: AudioLike) => OutputMeter | null;
   private readonly onFirstAudio?: (ms: number) => void;
   private readonly now: () => number;
+  private readonly maxFetches: number;
+  private fetching = 0;
+  private fetchWaiting: Array<{ start: () => void; drop: (e: unknown) => void }> = [];
 
   private audio: AudioLike | null = null;
   private meter: OutputMeter | null = null;
@@ -73,6 +83,7 @@ export class PlaybackQueue {
     this.createMeter = options.createMeter ?? defaultMeter;
     this.onFirstAudio = options.onFirstAudio;
     this.now = options.now ?? (() => performance.now());
+    this.maxFetches = options.maxConcurrentFetches ?? Infinity;
   }
 
   private getAudio(): AudioLike {
@@ -111,16 +122,19 @@ export class PlaybackQueue {
     }
     this.pending += 1;
     const generation = this.generation;
+    const signal = this.abort.signal;
     const item: Item = {
       generation,
       requestedAt: this.now(),
-      clip: this.fetchClip(text, lang, this.abort.signal),
+      clip: this.limitFetch(() => this.fetchClip(text, lang, signal)),
     };
     item.clip.catch(() => {}); // surfaced through the returned promise below
 
-    const run = this.tail.then(() => this.playItem(item)).finally(() => {
-      if (generation === this.generation) this.pending = Math.max(0, this.pending - 1);
-    });
+    const run = this.tail
+      .then(() => this.playItem(item))
+      .finally(() => {
+        if (generation === this.generation) this.pending = Math.max(0, this.pending - 1);
+      });
     this.tail = run.catch(() => {});
     return run;
   }
@@ -130,6 +144,8 @@ export class PlaybackQueue {
     this.generation += 1;
     this.abort.abort();
     this.abort = new AbortController();
+    for (const waiter of this.fetchWaiting.splice(0))
+      waiter.drop(new DOMException("Cancelled", "AbortError"));
     this.tail = Promise.resolve();
     this.pending = 0;
     this.playing = false;
@@ -153,6 +169,21 @@ export class PlaybackQueue {
     this.meter = null;
   }
 
+  /** Runs `task` now, or once fewer than `maxFetches` clips are being fetched. */
+  private limitFetch<T>(task: () => Promise<T>): Promise<T> {
+    const run = (): Promise<T> => {
+      this.fetching += 1;
+      return task().finally(() => {
+        this.fetching -= 1;
+        this.fetchWaiting.shift()?.start();
+      });
+    };
+    if (this.fetching < this.maxFetches) return run();
+    return new Promise<T>((resolve, reject) => {
+      this.fetchWaiting.push({ start: () => run().then(resolve, reject), drop: reject });
+    });
+  }
+
   private async fetchClip(text: string, lang: string, signal: AbortSignal): Promise<Blob> {
     let res: Response;
     try {
@@ -166,7 +197,11 @@ export class PlaybackQueue {
       if (signal.aborted) throw error;
       throw new VoiceError("unavailable", "Speech request failed", { cause: error });
     }
-    if (!res.ok) throw new VoiceError("unavailable", `Speech service returned ${res.status}`);
+    if (!res.ok) {
+      throw new VoiceError("unavailable", `Speech service returned ${res.status}`, {
+        status: res.status,
+      });
+    }
     return res.blob();
   }
 
@@ -217,9 +252,7 @@ export class PlaybackQueue {
             if (done) return;
             done = true;
             if (this.current?.finish === finish) this.current = null;
-            reject(
-              new VoiceError("failed", "Audio playback was blocked", { cause: error }),
-            );
+            reject(new VoiceError("failed", "Audio playback was blocked", { cause: error }));
           },
         );
       });

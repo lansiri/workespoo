@@ -2,14 +2,14 @@
 
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { VoiceConfig } from "@/contracts/voice";
-import { createBrowserAdapter } from "./adapters/browser";
+import { createBrowserAdapter, type SpeechEngine } from "./adapters/browser";
 import { useElevenLabsAdapter } from "./adapters/elevenlabs";
 import { Latest } from "./latest";
 import { VoiceController, type VoiceState } from "./controller";
 import { selectAdapterId, type AdapterOverride } from "./select";
 
 export interface UseVoiceOptions {
-  /** Interview language, "en" or "fi". Used for recognition and speech. */
+  /** Interview language: "en", "fi" or "sv". Used for recognition and speech. */
   lang?: string;
   /** Initial manual override (the test page changes it with `setOverride`). */
   override?: AdapterOverride;
@@ -24,7 +24,10 @@ const OFF: VoiceState = {
   timings: { releaseToFinalMs: null, requestToFirstAudioMs: null },
 };
 
-const RECOGNITION_TAGS: Record<string, string> = { en: "en-US", fi: "fi-FI" };
+const RECOGNITION_TAGS: Record<string, string> = { en: "en-US", fi: "fi-FI", sv: "sv-SE" };
+
+/** Who speaks the interviewer's replies: ElevenLabs, our server (Piper) or the browser. */
+export type SpeakingEngine = "elevenlabs" | SpeechEngine;
 
 /**
  * Owns the adapter choice and the voice state machine for one page.
@@ -37,12 +40,14 @@ export function useVoice(options: UseVoiceOptions = {}) {
   const [config, setConfig] = useState<VoiceConfig | null>(null);
   const [configError, setConfigError] = useState<string | null>(null);
   const [configLoaded, setConfigLoaded] = useState(false);
+  const [lastEngine, setLastEngine] = useState<SpeechEngine | null>(null);
 
-  
   const [liveLang] = useState(() => new Latest(lang));
+  const [liveConfig] = useState(() => new Latest<VoiceConfig | null>(null));
   const [liveController] = useState(() => new Latest<VoiceController | null>(null));
   useEffect(() => {
     liveLang.set(lang);
+    liveConfig.set(config);
   });
 
   const onFirstAudio = useCallback(
@@ -54,6 +59,8 @@ export function useVoice(options: UseVoiceOptions = {}) {
     createBrowserAdapter({
       recognitionLang: () => RECOGNITION_TAGS[liveLang.get()] ?? liveLang.get(),
       onFirstAudio,
+      speech: () => (liveConfig.get()?.tts === "server" ? "server" : "browser"),
+      onSpeechEngine: setLastEngine,
     }),
   );
 
@@ -74,11 +81,20 @@ export function useVoice(options: UseVoiceOptions = {}) {
   }, []);
 
   const adapterId = selectAdapterId(config, override);
+  // The browser adapter starts on our server when the config says so and moves to
+  // speechSynthesis for good if the server answers 503; `lastEngine` shows which one spoke.
+  const speakingEngine: SpeakingEngine | null =
+    adapterId === "elevenlabs"
+      ? "elevenlabs"
+      : adapterId === "browser"
+        ? (lastEngine ?? (config?.tts === "server" ? "server" : "browser"))
+        : null;
 
   const [controller, setController] = useState<VoiceController | null>(null);
   useEffect(() => {
     if (!configLoaded) return;
-    const adapter = adapterId === "elevenlabs" ? elevenlabs : adapterId === "browser" ? browser : null;
+    const adapter =
+      adapterId === "elevenlabs" ? elevenlabs : adapterId === "browser" ? browser : null;
     const next = new VoiceController({ adapter });
     liveController.set(next);
     // eslint-disable-next-line react-hooks/set-state-in-effect -- the controller is created from loaded config
@@ -117,9 +133,13 @@ export function useVoice(options: UseVoiceOptions = {}) {
     await controller?.prepare().catch(() => {});
   }, [controller]);
   const pressTalk = useCallback(() => controller?.pressTalk() ?? Promise.resolve(), [controller]);
-  const releaseTalk = useCallback(() => controller?.releaseTalk() ?? Promise.resolve(""), [controller]);
+  const releaseTalk = useCallback(
+    () => controller?.releaseTalk() ?? Promise.resolve(""),
+    [controller],
+  );
   const speakSentences = useCallback(
-    (texts: string[], speakLang?: string) => controller?.speakSentences(texts, speakLang ?? lang) ?? Promise.resolve(),
+    (texts: string[], speakLang?: string) =>
+      controller?.speakSentences(texts, speakLang ?? lang) ?? Promise.resolve(),
     [controller, lang],
   );
   const cancelSpeech = useCallback(() => controller?.cancelSpeech(), [controller]);
@@ -129,6 +149,7 @@ export function useVoice(options: UseVoiceOptions = {}) {
     config,
     configError,
     adapterId,
+    speakingEngine,
     override,
     setOverride,
     status: state.status,

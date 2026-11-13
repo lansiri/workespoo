@@ -11,11 +11,14 @@ export type VoiceErrorCode =
 
 export class VoiceError extends Error {
   readonly code: VoiceErrorCode;
+  /** The HTTP status of our own voice endpoint, when that is what failed. */
+  readonly status?: number;
 
-  constructor(code: VoiceErrorCode, message?: string, options?: { cause?: unknown }) {
+  constructor(code: VoiceErrorCode, message?: string, options?: { cause?: unknown; status?: number }) {
     super(message ?? code, options);
     this.name = "VoiceError";
     this.code = code;
+    this.status = options?.status;
   }
 }
 

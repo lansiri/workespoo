@@ -2,8 +2,14 @@
 
 import { useState } from "react";
 import { PushToTalkButton } from "@/features/voice/PushToTalkButton";
-import { useVoice } from "@/features/voice/useVoice";
+import { useVoice, type SpeakingEngine } from "@/features/voice/useVoice";
 import type { AdapterOverride } from "@/features/voice/select";
+
+const ENGINE_LABEL: Record<SpeakingEngine, string> = {
+  elevenlabs: "ElevenLabs",
+  server: "our server (Piper)",
+  browser: "the browser (speechSynthesis)",
+};
 
 export default function VoiceDevPage() {
   const [lang, setLang] = useState("en");
@@ -16,10 +22,13 @@ export default function VoiceDevPage() {
   return (
     <main style={{ padding: 16, maxWidth: 640, fontFamily: "sans-serif" }}>
       <h1>Voice test</h1>
-
       <h2>Config</h2>
       <pre data-testid="voice-config">
-        {JSON.stringify({ config: voice.config, configError: voice.configError, using: voice.adapterId }, null, 2)}
+        {JSON.stringify(
+          { config: voice.config, configError: voice.configError, using: voice.adapterId },
+          null,
+          2,
+        )}
       </pre>
       <label>
         Force adapter:{" "}
@@ -37,9 +46,15 @@ export default function VoiceDevPage() {
         <select value={lang} onChange={(e) => setLang(e.target.value)}>
           <option value="en">en</option>
           <option value="fi">fi</option>
+          <option value="sv">sv</option>
         </select>
       </label>
-
+      <p>
+        Speaks with:{" "}
+        <b data-testid="voice-engine">
+          {voice.speakingEngine ? ENGINE_LABEL[voice.speakingEngine] : "nothing (voice off)"}
+        </b>
+      </p>
       <h2>Talk</h2>
       <p>
         Status: <b data-testid="voice-status">{voice.status}</b>
@@ -63,7 +78,6 @@ export default function VoiceDevPage() {
       <p>
         Final: <b data-testid="voice-final">{lastFinal}</b>
       </p>
-
       <h2>Speak</h2>
       <textarea
         rows={3}
@@ -89,7 +103,6 @@ export default function VoiceDevPage() {
       <p>
         Output level: <meter min={0} max={1} value={voice.outputLevel} />
       </p>
-
       {voice.error && (
         <p role="alert">
           Error ({voice.error.code}): {voice.error.message}{" "}
@@ -98,11 +111,14 @@ export default function VoiceDevPage() {
           </button>
         </p>
       )}
-
       <h2>Timings</h2>
       <ul>
         <li>Release to final transcript: {fmt(voice.timings.releaseToFinalMs)}</li>
-        <li>Request to first audio: {fmt(voice.timings.requestToFirstAudioMs)}</li>
+        <li>
+          Request to first sound
+          {voice.speakingEngine ? ` (${ENGINE_LABEL[voice.speakingEngine]})` : ""}:{" "}
+          <b data-testid="voice-first-sound">{fmt(voice.timings.requestToFirstAudioMs)}</b>
+        </li>
       </ul>
     </main>
   );
