@@ -4,7 +4,20 @@ import { z } from "zod";
 const optional = <T extends z.ZodType>(schema: T) =>
   z.preprocess((v) => (v === "" ? undefined : v), schema.optional());
 
-const modelRef = optional(z.string().regex(/^[^:\s]+:\S+$/, "expected provider:model"));
+// One or more `provider:model` entries, comma-separated, in fallback order. The model id may
+// itself contain `/` and `:`. Spaces around commas are allowed.
+const modelRef = optional(
+  z.string().refine(
+    (value) => {
+      const entries = value
+        .split(",")
+        .map((entry) => entry.trim())
+        .filter(Boolean);
+      return entries.length > 0 && entries.every((entry) => /^[^:\s]+:\S+$/.test(entry));
+    },
+    { message: "expected provider:model, optionally a comma-separated list" },
+  ),
+);
 
 const schema = z.object({
   DATABASE_URL: optional(z.string()),
