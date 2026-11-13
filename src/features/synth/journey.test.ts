@@ -42,7 +42,7 @@ import { settleInterview, startInterview, submitTurn } from "@/features/intervie
 import { computeEligibility, feedForTalent } from "@/features/matching";
 import { getNeedCard, draftNeedCard } from "@/features/needs";
 import { draftDailyDigests } from "@/features/picks";
-import { buildCompanyPage } from "@/features/picks/company-view";
+import { buildCompanyPage } from "@/features/picks";
 import { GET as matchesRoute } from "@/app/api/matches/route";
 import { GET as queueRoute } from "@/app/api/picks/queue/route";
 import { POST as decisionRoute } from "@/app/api/picks/decision/route";
@@ -175,6 +175,8 @@ describe("one person through the whole product", () => {
     }
     expect(quoted).toBeGreaterThanOrEqual(3);
     expect(card.headline).not.toMatch(/\b38\b|husband|Porto|Portugal/i);
+    // The stand-in model repeated the planted sentence in a signal's rendering; the card feature's guard removed it.
+    expect(await actions("card.protected_dropped")).toBeGreaterThan(0);
     expect(await actions("card.synthesised")).toBe(1);
   });
 

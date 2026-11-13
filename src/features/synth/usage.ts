@@ -3,7 +3,7 @@
  * rows (`attempts`, `queued_ms`). The lead runs these scripts against the real model with one
  * process and needs to see what each interview cost, in calls and in waiting.
  */
-import { and, gte, lte } from "drizzle-orm";
+import { and, gte, lt, lte } from "drizzle-orm";
 import type { Db } from "@/db/client";
 import { llmCall } from "@/db/schema";
 
@@ -56,11 +56,11 @@ export function summariseCalls(rows: readonly CallRow[]): Usage {
   return usage;
 }
 
-async function callsBetween(db: Db, from: Date, to: Date): Promise<CallRow[]> {
+async function callsBetween(db: Db, from: Date, to: Date, toInclusive = true): Promise<CallRow[]> {
   return db
     .select({ purpose: llmCall.purpose, ok: llmCall.ok, error: llmCall.error, attempts: llmCall.attempts, queuedMs: llmCall.queuedMs })
     .from(llmCall)
-    .where(and(gte(llmCall.at, from), lte(llmCall.at, to)));
+    .where(and(gte(llmCall.at, from), toInclusive ? lte(llmCall.at, to) : lt(llmCall.at, to)));
 }
 
 /** Margin for a clock that differs a little between this process and the database. */
@@ -73,8 +73,14 @@ const MARGIN_MS = 2_000;
  */
 export async function buildUsageReport(db: Db, windows: readonly UsageWindow[], total: { startedAt: Date; endedAt: Date }): Promise<UsageReport> {
   const interviews: UsageEntry[] = [];
-  for (const w of windows) {
-    const rows = await callsBetween(db, new Date(w.startedAt.getTime() - MARGIN_MS), new Date(w.endedAt.getTime() + MARGIN_MS));
+  // Windows are disjoint: interviews run back to back, so the next start is the boundary
+  // (the margin applies only at the outer edges, where it cannot reach a neighbour).
+  for (const [i, w] of windows.entries()) {
+    const next = windows[i + 1];
+    const from = i === 0 ? new Date(w.startedAt.getTime() - MARGIN_MS) : w.startedAt;
+    const closed = new Date(w.endedAt.getTime() + MARGIN_MS);
+    const upper = next ? new Date(Math.min(closed.getTime(), next.startedAt.getTime())) : closed;
+    const rows = await callsBetween(db, from, upper, !next || upper.getTime() < next.startedAt.getTime());
     interviews.push({ label: w.label, wallMs: w.endedAt.getTime() - w.startedAt.getTime(), usage: summariseCalls(rows) });
   }
   const all = await callsBetween(db, new Date(total.startedAt.getTime() - MARGIN_MS), new Date(total.endedAt.getTime() + MARGIN_MS));

@@ -8,7 +8,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { eq } from "drizzle-orm";
-import { company, digest, llmCall, pick, talent } from "@/db/schema";
+import { appMeta, auditLog, company, consent, digest, llmCall, pick, talent } from "@/db/schema";
 import { resetLlmState, setLlmFake } from "@/lib/llm";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
 import { loadJobFixtures } from "../../../fixtures/load";
@@ -57,12 +57,17 @@ describe("resetDemoFromSnapshot", () => {
 
   it("restores the people and companies and drafts today's picks even when the model fails", async () => {
     await t.db.insert(talent).values({ id: "tal_rehearsal", handle: "Rehearse-01", synthetic: false, liveDemo: true, inPool: true });
+    await t.db.insert(consent).values({ id: "con_rehearsal", subjectType: "talent", subjectId: "tal_rehearsal", kind: "live_demo", textVersion: "v1" });
     setLlmFake(() => {
       throw new Error("the model is away");
     });
     const result = await resetDemoFromSnapshot(t.db);
     expect(result).toEqual({ restored: true, people: 15, companies: 8 });
     expect(await t.db.select().from(talent).where(eq(talent.id, "tal_rehearsal"))).toHaveLength(0);
+    expect(await t.db.select().from(consent).where(eq(consent.subjectId, "tal_rehearsal"))).toHaveLength(0);
+    const purged = await t.db.select().from(auditLog).where(eq(auditLog.action, "talent.purged"));
+    expect(purged).toHaveLength(1);
+    expect(purged[0]!.detail).toEqual({ count: 1, reason: "demo reset" });
 
     const [pitch] = await t.db.select().from(company).where(eq(company.id, "co_demo03"));
     expect(pitch.participating).toBe(true);
@@ -77,4 +82,16 @@ describe("resetDemoFromSnapshot", () => {
     const calls = await t.db.select({ purpose: llmCall.purpose }).from(llmCall);
     expect(calls.every((c) => c.purpose === "picks.reasons")).toBe(true);
   }, 180_000);
+
+  it("refuses a second reset while one runs and releases the claim afterwards", async () => {
+    setLlmFake(() => {
+      throw new Error("the model is away");
+    });
+    const results = await Promise.allSettled([resetDemoFromSnapshot(t.db), resetDemoFromSnapshot(t.db)]);
+    expect(results.filter((r) => r.status === "fulfilled")).toHaveLength(1);
+    const rejected = results.find((r) => r.status === "rejected") as PromiseRejectedResult;
+    expect(String(rejected.reason)).toMatch(/already running/);
+    expect(await t.db.select().from(appMeta).where(eq(appMeta.key, "demo:reset_running"))).toHaveLength(0);
+    expect((await resetDemoFromSnapshot(t.db)).restored).toBe(true);
+  }, 240_000);
 });

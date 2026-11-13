@@ -4,8 +4,9 @@
  * for the model only: the product code that calls it, parses and checks what it says is real.
  *
  * It reads the prompt it is given, so it works for any persona: it cites sentence labels that
- * exist in the prompt, never labels it invented, and it skips sentences that carry a planted
- * protected fact (the real model is asked to do the same by the extractor prompt).
+ * exist in the prompt, never labels it invented. It is deliberately careless about the planted
+ * protected fact: the synthesis answer repeats that sentence inside the first signal's rendering,
+ * so the product's own guard (card synthesis) has to be the one to remove it.
  */
 import type { LlmFake } from "@/lib/llm/testing";
 import type { LlmOptions } from "@/lib/llm";
@@ -90,7 +91,7 @@ export function journeyModel(options: JourneyModelOptions): { fake: LlmFake; cal
     const section = /PERSON'S SENTENCES:\n([\s\S]*?)\n\nKNOWN SIGNALS/.exec(user)?.[1] ?? "";
     const signals: Array<{ ref: string; phrase: string; kind: string; evidence: string[]; hasExample: boolean }> = [];
     for (const s of sentencesIn(section)) {
-      if (carriesPlanted(s.text)) continue;
+      if (carriesPlanted(s.text)) continue; // the live extractor is asked to skip them; synthesis below is not so careful
       const fact = factFor(s.text);
       if (!fact || emitted.has(fact.skillUri)) continue;
       emitted.add(fact.skillUri);
@@ -105,14 +106,15 @@ export function journeyModel(options: JourneyModelOptions): { fake: LlmFake; cal
     const user = opts.messages[1]!.content;
     const all = sentencesIn(user.split("DRAFT NOTES")[0] ?? "");
     const drafts = [...user.matchAll(/^(s\d+) \| (\w+) \| (.+?) \| (T[\d.S,\- ]+)$/gm)];
-    const signals = drafts.map((d) => {
+    const planted = all.find((s) => carriesPlanted(s.text))?.text ?? "";
+    const signals = drafts.map((d, i) => {
       const fact = persona.facts.find((f) => stripParens(f.label) === d[3]);
       return {
         phrase: d[3],
         kind: d[2],
         evidence: d[4].split(",").map((e) => e.trim()).slice(0, 3),
         from: [d[1]],
-        rendering: fact ? theyForm(fact.story) : `They worked with ${d[3]}.`,
+        rendering: `${fact ? theyForm(fact.story) : `They worked with ${d[3]}.`}${i === 0 && planted ? ` ${planted}` : ""}`,
       };
     });
     const looking = all.find((s) => persona.answers.looking_for.includes(s.text));

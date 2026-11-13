@@ -63,4 +63,31 @@ describe("buildUsageReport", () => {
     expect(text).toContain("failures by reason: provider_error 1");
     expect(text).toContain("total: wall 41.0 s, 4 calls (6 requests)");
   });
+
+  it("counts a call in one interview only when interviews run back to back", async () => {
+    const base = Date.now() + 1_000_000;
+    const at = (offset: number) => new Date(base + offset);
+    const row = (purpose: string, offset: number) => ({
+      at: at(offset), role: "analyst" as const, provider: "p", model: "m", purpose, latencyMs: 10, ok: true, attempts: 1, queuedMs: 0,
+    });
+    await t.db.insert(llmCall).values([
+      row("interview.live", 1_000),
+      row("card.synthesis", 29_950),
+      row("interview.live", 31_000),
+      row("card.synthesis", 59_950),
+    ]);
+    const report = await buildUsageReport(
+      t.db,
+      [
+        { label: "a", startedAt: at(0), endedAt: at(30_000) },
+        { label: "b", startedAt: at(30_050), endedAt: at(60_000) },
+      ],
+      { startedAt: at(0), endedAt: at(60_000) },
+    );
+    expect(report.interviews.map((i) => i.usage.byPurpose)).toEqual([
+      { "interview.live": expect.objectContaining({ calls: 1 }), "card.synthesis": expect.objectContaining({ calls: 1 }) },
+      { "interview.live": expect.objectContaining({ calls: 1 }), "card.synthesis": expect.objectContaining({ calls: 1 }) },
+    ]);
+    expect(report.interviews.reduce((n, i) => n + i.usage.calls, 0)).toBeLessThanOrEqual(report.total.usage.calls);
+  });
 });

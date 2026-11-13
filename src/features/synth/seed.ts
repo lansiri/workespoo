@@ -7,10 +7,10 @@
  * Nothing here calls a model; the features it calls may, but the harness never depends on a key
  * to produce the data (the interview is answered by the scripted candidate).
  */
-import { and, eq, like, or } from "drizzle-orm";
+import { and, eq, inArray, like, or } from "drizzle-orm";
 import type { InterviewMode } from "@/contracts";
 import type { Db } from "@/db/client";
-import { appMeta, company, digest, eligibility, matchEvent, eventCompany, needCard, pick, talent } from "@/db/schema";
+import { appMeta, company, consent, digest, eligibility, matchEvent, eventCompany, needCard, pick, talent } from "@/db/schema";
 import { audit } from "@/lib/audit";
 import { newId, newToken } from "@/lib/ids";
 import { loadDemoCandidates, selectDemoPostings, type DemoPick } from "./demo-postings";
@@ -74,7 +74,26 @@ type StoredCompany = { number: number; companyId: string; jobId: string; title: 
  */
 export async function resetDemo(db: Db): Promise<void> {
   await db.transaction(async (tx) => {
-    await tx.delete(talent).where(or(eq(talent.synthetic, true), eq(talent.liveDemo, true)));
+    const doomed = await tx
+      .select({ id: talent.id, synthetic: talent.synthetic })
+      .from(talent)
+      .where(or(eq(talent.synthetic, true), eq(talent.liveDemo, true)));
+    const ids = doomed.map((d) => d.id);
+    if (ids.length > 0) {
+      // consent has no foreign key to talent, so the cascade does not reach it.
+      await tx.delete(consent).where(and(eq(consent.subjectType, "talent"), inArray(consent.subjectId, ids)));
+      await tx.delete(talent).where(inArray(talent.id, ids));
+    }
+    const real = doomed.filter((d) => !d.synthetic).length;
+    if (real > 0) {
+      await audit(tx, {
+        actor: "system",
+        action: "talent.purged",
+        subjectType: "system",
+        subjectId: "live_sessions",
+        detail: { count: real, reason: "demo reset" },
+      });
+    }
     await tx.delete(company).where(like(company.id, "co_demo%"));
     await tx.delete(matchEvent).where(eq(matchEvent.id, DEMO_EVENT_ID));
     await tx.delete(appMeta).where(eq(appMeta.key, DEMO_COMPANIES_KEY));
