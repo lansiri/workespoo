@@ -8,10 +8,11 @@ const PUBLIC_EMPLOYER_NAME =
   /kaupunki|kunta\b|kuntayhtymä|hyvinvointialue|virasto|ministeriö|valtion|city of|municipality|wellbeing services/i;
 const LANGUAGE_ACT_SENTENCE =
   /kielitaitolaki|424\/2003|kielitaitovaatimus|julkisyhteisö|virkaan|tehtävään vaadittava kielitaito/i;
+// Finnish entries are stems, so that inflected forms match ("turvallisuusselvitykseen").
 const LICENCE =
-  /laillistettu|valvira|terhikki|ammattioikeus|kelpoisuus|pätevyys|ajokortti|ammattipätevyys|hygieniapassi|työturvallisuuskortti|tulityökortti|sähköpätevyys|anniskelupassi|registered nurse|licen[cs]ed?|driving licen[cs]e|qualification required/i;
-const CLEARANCE = /turvallisuusselvitys|security clearance|rikostaustaote|criminal record/i;
-const OTHER_LAW = /työlupa|oleskelulupa|work permit|right to work|residence permit/i;
+  /laillistet|valvira|terhikki|ammattioikeu|kelpoisuu|pätevyy|ajokort|ammattipätevyy|hygieniapass|työturvallisuuskort|tulityökort|sähköpätevyy|anniskelupass|registered nurse|licen[cs]ed?|driving licen[cs]e|qualification required/i;
+const CLEARANCE = /turvallisuusselvit|security clearance|rikostaustaot|criminal record/i;
+const OTHER_LAW = /työlup|oleskelulup|work permit|right to work|residence permit/i;
 
 /** A work-permit or right-to-work requirement: never questioned and never counted. */
 export function isWorkPermitText(text: string): boolean {
@@ -61,9 +62,15 @@ export function classifyStatutory(input: StatutoryInput): Statutory {
 const LANGUAGE_NAMES =
   /(?<![\p{L}])(?:English|Swedish|Danish|Norwegian|German|French|Spanish|Italian|Russian|Estonian|Dutch|Polish|Portuguese|Chinese|Japanese|Korean|Arabic|Persian|Turkish|Greek|Hungarian|Czech|Ukrainian|Somali|Thai|Vietnamese)(?![\p{L}])/giu;
 
+const NATIVE_ORIGIN = /(?<![\p{L}])(?:native|äidinkiel\p{L}*|modersmål\p{L}*)(?![\p{L}])/iu;
+
 /** Protected terms in a requirement text or a cited posting sentence. Language names are not hits. */
 export function protectedHits(text: string): string[] {
-  return findProtectedCard(text.replace(LANGUAGE_NAMES, " "));
+  const hits = findProtectedCard(text.replace(LANGUAGE_NAMES, " "));
+  // "Native Finnish" is a proxy for origin; the work needs a language level, not a birthplace.
+  const native = NATIVE_ORIGIN.exec(text);
+  if (native) hits.push(native[0].toLowerCase());
+  return hits;
 }
 
 const COMPANY_TEXT_PROTECTED =
