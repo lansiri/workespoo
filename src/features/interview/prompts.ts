@@ -42,7 +42,9 @@ export const SITUATION_INSTRUCTIONS: Record<Situation, string> = {
 export type LiveTarget =
   | { kind: "area"; area: CoverageArea }
   | { kind: "probe"; signalPhrase: string }
-  | { kind: "reask"; area: CoverageArea };
+  | { kind: "reask"; area: CoverageArea }
+  /** A question suggested by the person's CV, for the area it replaces. */
+  | { kind: "seed"; area: CoverageArea; question: string };
 
 export function targetInstruction(target: LiveTarget): string {
   switch (target.kind) {
@@ -50,6 +52,8 @@ export function targetInstruction(target: LiveTarget): string {
       return TARGET_INSTRUCTIONS[target.area];
     case "probe":
       return `Ask once, gently, for one concrete example of this: "${target.signalPhrase.replace(/"/g, "")}". Say they can skip it.`;
+    case "seed":
+      return `${TARGET_INSTRUCTIONS[target.area]} Base your question on this suggestion, in the reply language: "${target.question.replace(/"/g, "")}". It comes from their CV, not from what they said, so do not state it as a fact about them.`;
     case "reask":
       return `Their earlier answer about this was brief. Ask about the same topic in a simpler, more concrete way: ${TARGET_INSTRUCTIONS[target.area]}`;
   }

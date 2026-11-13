@@ -25,6 +25,7 @@ vi.mock("@/features/card", () => ({
 import { POST as start } from "./route";
 import { POST as turn } from "./[id]/turn/route";
 import { GET as events } from "./[id]/events/route";
+import { POST as remove } from "./[id]/remove/route";
 import { POST as stop } from "./[id]/stop/route";
 
 let t: TestDb;
@@ -137,6 +138,25 @@ describe("interview routes", () => {
     h.talentId = mine;
     expect((await turn(post("/api/interview/int_missing/turn", { text: "hi", inputMode: "text" }), ctx("int_missing"))).status).toBe(404);
     expect((await turn(post(`/api/interview/${interviewId}/turn`, { text: "", inputMode: "text" }), ctx(interviewId))).status).toBe(400);
+  });
+
+  it("POST remove redacts one of the person's answers and replies with the confirmation and the same question again", async () => {
+    const { interviewId } = await (await start(post("/api/interview", START), undefined as never)).json();
+    await (await turn(post(`/api/interview/${interviewId}/turn`, { text: "I worked at a logistics centre receiving goods.", inputMode: "text" }), ctx(interviewId))).text();
+    await settleInterview(t.db, interviewId);
+    const res = await remove(post(`/api/interview/${interviewId}/remove`, { turnIndex: 1 }), ctx(interviewId));
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body.text.startsWith("Done, I've removed your last answer.")).toBe(true);
+    expect((await remove(post(`/api/interview/${interviewId}/remove`, { turnIndex: 1 }), ctx(interviewId))).status).toBe(404);
+    expect((await remove(post(`/api/interview/${interviewId}/remove`, { turnIndex: "x" }), ctx(interviewId))).status).toBe(400);
+    const mine = h.talentId;
+    h.talentId = "tal_someoneelse";
+    expect((await remove(post(`/api/interview/${interviewId}/remove`, { turnIndex: 1 }), ctx(interviewId))).status).toBe(403);
+    h.talentId = undefined;
+    expect((await remove(post(`/api/interview/${interviewId}/remove`, { turnIndex: 1 }), ctx(interviewId))).status).toBe(401);
+    h.talentId = mine;
+    await settleInterview(t.db, interviewId);
   });
 
   it("stop ends the interview, and a turn after it is refused with 409", async () => {

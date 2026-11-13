@@ -107,6 +107,20 @@ describe("interview pages (server render)", () => {
     expect(html).not.toContain('data-testid="interview-done"');
   });
 
+  it("12. each of the person's own answers has a turn-remove control while the interview runs, interviewer lines and ended interviews have none", () => {
+    const transcript = [
+      { index: 0, role: "interviewer" as const, text: "What kind of work have you done?" },
+      { index: 1, role: "participant" as const, text: "Warehouse work." },
+      { index: 3, role: "participant" as const, text: "Receiving goods." },
+    ];
+    const open = render(createElement(InterviewRoom, { mode: "full", voiceConsented: false, initial: { interviewId: "int_x", ended: false, transcript, signals: [], coverage: {} } }));
+    expect(open.match(/data-testid="turn-remove"/g)).toHaveLength(2);
+    expect(open).toContain('data-turn-index="1"');
+    expect(open).toContain("Remove this answer");
+    const ended = render(createElement(InterviewRoom, { mode: "full", voiceConsented: false, initial: { interviewId: "int_x", ended: true, transcript, signals: [], coverage: {} } }));
+    expect(ended).not.toContain('data-testid="turn-remove"');
+  });
+
   it("an ended interview shows the done state instead of the answer box", () => {
     const html = render(
       createElement(InterviewRoom, {
@@ -149,6 +163,20 @@ describe("useInterview reducer", () => {
     expect(twice).toEqual(once);
     expect(once.signals).toHaveLength(1);
     expect(once.jobsLit.count).toBe(4);
+  });
+
+  it("12. numbers the answer just sent from the reply's index, and removes an answer by index or by the spoken command", () => {
+    let s = reduce(initial, { type: "participant", text: "Warehouse work." });
+    s = reduce(s, { type: "event", event: { type: "turn.done", turnIndex: 2, text: "Which tools?", kind: "question", closing: false } });
+    s = reduce(s, { type: "participant", text: "A scanner." });
+    s = reduce(s, { type: "event", event: { type: "turn.done", turnIndex: 4, text: "Who with?", kind: "question", closing: false } });
+    expect(s.transcript.filter((l) => l.role === "participant").map((l) => l.index)).toEqual([1, 3]);
+    const byIndex = reduce(s, { type: "redacted", index: 1 });
+    expect(byIndex.transcript.filter((l) => l.role === "participant").map((l) => l.text)).toEqual(["A scanner."]);
+    let spoken = reduce(s, { type: "participant", text: "delete this" });
+    spoken = reduce(spoken, { type: "event", event: { type: "turn.done", turnIndex: 6, text: "Done. Who with?", kind: "question", closing: false } });
+    spoken = reduce(spoken, { type: "redactedPrevious" });
+    expect(spoken.transcript.filter((l) => l.role === "participant").map((l) => l.text)).toEqual(["Warehouse work.", "delete this"]);
   });
 
   it("drops a removed signal, marks the end, and shows card problems only after the end", () => {

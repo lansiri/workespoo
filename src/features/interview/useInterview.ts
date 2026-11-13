@@ -9,6 +9,7 @@
 import { useCallback, useEffect, useReducer, useRef } from "react";
 import type { CoverageArea, CoverageStatus, InterviewEvent, JobTeaser, SignalPublic } from "@/contracts";
 import { readSse } from "@/lib/sse-client";
+import { preCheck } from "./commands";
 import type { InterviewView, TranscriptLine } from "./views";
 
 export type InterviewInitial = Pick<InterviewView, "interviewId" | "ended" | "transcript" | "signals" | "coverage">;
@@ -36,7 +37,11 @@ type Action =
   | { type: "sending"; value: boolean }
   | { type: "sendFailed"; value: boolean }
   | { type: "reconnecting"; value: boolean }
-  | { type: "interrupt" };
+  | { type: "interrupt" }
+  /** The answer at this turn index was removed (by the control or by the spoken command). */
+  | { type: "redacted"; index: number }
+  /** The previous answer before the latest one was removed by the spoken command. */
+  | { type: "redactedPrevious" };
 
 export function initialUiState(initial: InterviewInitial): InterviewUiState {
   return {
@@ -67,6 +72,13 @@ export function reduce(state: InterviewUiState, action: Action): InterviewUiStat
       return { ...state, reconnecting: action.value };
     case "interrupt":
       return { ...state, streaming: null };
+    case "redacted":
+      return { ...state, transcript: state.transcript.filter((l) => !(l.role === "participant" && l.index === action.index)) };
+    case "redactedPrevious": {
+      const answers = state.transcript.filter((l) => l.role === "participant");
+      const previous = answers.at(-2);
+      return previous ? { ...state, transcript: state.transcript.filter((l) => l !== previous) } : state;
+    }
     case "event":
       return applyEvent(state, action.event);
   }
@@ -78,13 +90,19 @@ function applyEvent(state: InterviewUiState, event: InterviewEvent): InterviewUi
       return { ...state, streaming: state.streaming ? `${state.streaming} ${event.text}` : event.text };
     case "turn.done": {
       const known = state.transcript.some((l) => l.role === "interviewer" && l.index === event.turnIndex);
+      // The reply is stored right after the answer, so the answer just sent is the turn before it.
+      const unnumbered = state.transcript.findLastIndex((l) => l.role === "participant" && l.index < 0);
+      const numbered =
+        unnumbered >= 0 && !known
+          ? state.transcript.map((l, i) => (i === unnumbered ? { ...l, index: event.turnIndex - 1 } : l))
+          : state.transcript;
       return {
         ...state,
         streaming: null,
         ended: state.ended || event.closing,
         transcript: known
-          ? state.transcript
-          : [...state.transcript, { index: event.turnIndex, role: "interviewer", text: event.text }],
+          ? numbered
+          : [...numbered, { index: event.turnIndex, role: "interviewer", text: event.text }],
       };
     }
     case "signal.proposed":
@@ -191,6 +209,10 @@ export function useInterview({ initial, onSentence }: UseInterviewOptions) {
               if (event.type === "turn.delta") onSentenceRef.current?.(event.text);
               if (event.type === "turn.done") delivered = true;
               dispatch({ type: "event", event });
+              // A spoken or typed "delete this" ends with the confirmation and the same question again.
+              if (event.type === "turn.done" && event.kind === "question" && preCheck(trimmed) === "delete") {
+                dispatch({ type: "redactedPrevious" });
+              }
             },
             abort.signal,
           );
@@ -207,6 +229,29 @@ export function useInterview({ initial, onSentence }: UseInterviewOptions) {
     [interviewId],
   );
 
+  /** The remove control on one of the person's own answers. */
+  const removeTurn = useCallback(
+    async (index: number) => {
+      try {
+        const res = await fetch(`/api/interview/${interviewId}/remove`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ turnIndex: index }),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        const reply = (await res.json()) as { turnIndex: number; text: string };
+        dispatch({ type: "redacted", index });
+        dispatch({
+          type: "event",
+          event: { type: "turn.done", turnIndex: reply.turnIndex, text: reply.text, kind: "question", closing: false },
+        });
+      } catch {
+        dispatch({ type: "sendFailed", value: true });
+      }
+    },
+    [interviewId],
+  );
+
   /** The Stop button. The closing line arrives on the events stream. */
   const stop = useCallback(async () => {
     try {
@@ -219,5 +264,5 @@ export function useInterview({ initial, onSentence }: UseInterviewOptions) {
   const interviewerLine =
     state.streaming ?? [...state.transcript].reverse().find((l) => l.role === "interviewer")?.text ?? "";
 
-  return { ...state, interviewerLine, send, stop };
+  return { ...state, interviewerLine, send, stop, removeTurn };
 }
