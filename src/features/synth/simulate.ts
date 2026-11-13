@@ -8,6 +8,7 @@ import { computeMetrics } from "./metrics";
 import type { Persona } from "./persona";
 import { buildReport, type Report } from "./report";
 import { runSimulatedInterview, type SimulatedRun } from "./run";
+import { buildUsageReport, type UsageReport } from "./usage";
 
 export type SimulationOptions = {
   mode?: InterviewMode;
@@ -17,9 +18,10 @@ export type SimulationOptions = {
   log?: (line: string) => void;
 };
 
-export async function runSimulation(db: Db, personas: Persona[], options: SimulationOptions): Promise<{ runs: SimulatedRun[]; report: Report }> {
+export async function runSimulation(db: Db, personas: Persona[], options: SimulationOptions): Promise<{ runs: SimulatedRun[]; report: Report; usage: UsageReport }> {
   const now = options.now ?? (() => new Date());
   const since = now();
+  const wallStart = new Date(); // real time, for attributing `llm_call` rows (`now` may be a test clock)
   const runs: SimulatedRun[] = [];
   for (const persona of personas) {
     runs.push(await runSimulatedInterview(db, persona, options.mode ?? persona.interviewMode, { deps: options.deps, log: options.log }));
@@ -33,5 +35,10 @@ export async function runSimulation(db: Db, personas: Persona[], options: Simula
     mode: options.mode ?? "persona",
     personas: personas.length,
   });
-  return { runs, report };
+  const usage = await buildUsageReport(
+    db,
+    runs.flatMap((r) => (r.timing ? [{ label: `${r.persona.id} (${r.mode})`, ...r.timing }] : [])),
+    { startedAt: wallStart, endedAt: new Date() },
+  );
+  return { runs, report, usage };
 }

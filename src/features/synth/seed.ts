@@ -7,17 +7,18 @@
  * Nothing here calls a model; the features it calls may, but the harness never depends on a key
  * to produce the data (the interview is answered by the scripted candidate).
  */
-import { and, eq, like, or } from "drizzle-orm";
+import { and, eq, inArray, like, or } from "drizzle-orm";
 import type { InterviewMode } from "@/contracts";
 import type { Db } from "@/db/client";
-import { appMeta, company, digest, eligibility, matchEvent, eventCompany, needCard, pick, talent } from "@/db/schema";
+import { appMeta, company, consent, digest, eligibility, matchEvent, eventCompany, needCard, pick, talent } from "@/db/schema";
 import { audit } from "@/lib/audit";
 import { newId, newToken } from "@/lib/ids";
 import { loadDemoCandidates, selectDemoPostings, type DemoPick } from "./demo-postings";
-import type { SeedDeps } from "./deps";
+import { realSeedDeps, type SeedDeps } from "./deps";
 import type { Persona } from "./persona";
 import { seededHash } from "./prng";
-import { runSimulatedInterview } from "./run";
+import { runSimulatedInterview, type SimulatedRun } from "./run";
+import { buildUsageReport, type UsageReport } from "./usage";
 
 export const DEMO_EVENT_ID = "ev_demo2026";
 export const DEMO_EVENT_DATE = "2026-11-26";
@@ -35,7 +36,8 @@ export function helsinkiDay(date: Date): string {
 }
 
 export type SeedOptions = {
-  deps: SeedDeps;
+  /** The features the seed calls. Defaults to the real ones; `--fake` passes the stand-in. */
+  deps?: SeedDeps;
   personas: Persona[];
   /** Number of masked demo companies: 8 (default) or 12. */
   companies?: number;
@@ -58,6 +60,8 @@ export type SeedSummary = {
   yesterday: { date: string; digests: number; picks: number };
   today: { date: string; digests: number; picks: number; pitchLeftUndrafted: boolean };
   queueJobsRun: number;
+  /** Model calls, failures and waiting per interview and in total, read from `llm_call`. */
+  usage: UsageReport;
   warnings: string[];
 };
 
@@ -70,7 +74,26 @@ type StoredCompany = { number: number; companyId: string; jobId: string; title: 
  */
 export async function resetDemo(db: Db): Promise<void> {
   await db.transaction(async (tx) => {
-    await tx.delete(talent).where(or(eq(talent.synthetic, true), eq(talent.liveDemo, true)));
+    const doomed = await tx
+      .select({ id: talent.id, synthetic: talent.synthetic })
+      .from(talent)
+      .where(or(eq(talent.synthetic, true), eq(talent.liveDemo, true)));
+    const ids = doomed.map((d) => d.id);
+    if (ids.length > 0) {
+      // consent has no foreign key to talent, so the cascade does not reach it.
+      await tx.delete(consent).where(and(eq(consent.subjectType, "talent"), inArray(consent.subjectId, ids)));
+      await tx.delete(talent).where(inArray(talent.id, ids));
+    }
+    const real = doomed.filter((d) => !d.synthetic).length;
+    if (real > 0) {
+      await audit(tx, {
+        actor: "system",
+        action: "talent.purged",
+        subjectType: "system",
+        subjectId: "live_sessions",
+        detail: { count: real, reason: "demo reset" },
+      });
+    }
     await tx.delete(company).where(like(company.id, "co_demo%"));
     await tx.delete(matchEvent).where(eq(matchEvent.id, DEMO_EVENT_ID));
     await tx.delete(appMeta).where(eq(appMeta.key, DEMO_COMPANIES_KEY));
@@ -78,11 +101,14 @@ export async function resetDemo(db: Db): Promise<void> {
 }
 
 export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummary> {
-  const { deps, personas } = options;
+  const { personas } = options;
+  const deps = options.deps ?? realSeedDeps();
   const log = options.log ?? (() => {});
   const now = options.now ?? (() => new Date());
   const count = options.companies ?? 8;
   const warnings: string[] = [];
+  const startedAt = new Date();
+  const interviewRuns: SimulatedRun[] = [];
 
   if (options.reset) {
     log("reset: removing the existing demo state");
@@ -147,7 +173,7 @@ export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummar
       continue;
     }
     for (const stale of taken.filter((t) => t.personaKey === persona.id)) await db.delete(talent).where(eq(talent.id, stale.id));
-    await runSimulatedInterview(db, persona, options.mode ?? persona.interviewMode, { deps, log });
+    interviewRuns.push(await runSimulatedInterview(db, persona, options.mode ?? persona.interviewMode, { deps, log }));
     created++;
   }
 
@@ -196,8 +222,9 @@ export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummar
     yDigests++;
     const rows = await db.select().from(eligibility).where(and(eq(eligibility.needCardId, needId), eq(eligibility.eligible, true)));
     for (const row of rows.filter((r) => people.some((p) => p.id === r.talentId)).sort((a, b) => a.talentId.localeCompare(b.talentId))) {
+      const pickId = newId("pick");
       await db.insert(pick).values({
-        id: newId("pick"),
+        id: pickId,
         digestId,
         companyId: c.companyId,
         needCardId: needId,
@@ -213,6 +240,8 @@ export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummar
         createdAt: yesterdayAt,
       });
       yPicks++;
+      // Seeded history is the system's, and says so: it is never recorded as an organiser's decision.
+      await audit(db, { actor: "system", action: "pick.approved", subjectType: "pick", subjectId: pickId, detail: { pickId, digestId, needCardId: needId, seeded: true } });
     }
     await audit(db, { actor: "system", action: "digest.published", subjectType: "digest", subjectId: digestId, detail: { companyId: c.companyId, date: yesterday, seeded: true } });
   }
@@ -260,6 +289,11 @@ export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummar
     yesterday: { date: yesterday, digests: yDigests, picks: yPicks },
     today: { date: today, digests: tDigests, picks: tPicks, pitchLeftUndrafted },
     queueJobsRun,
+    usage: await buildUsageReport(
+      db,
+      interviewRuns.flatMap((r) => (r.timing ? [{ label: `${r.persona.id} (${r.mode})`, ...r.timing }] : [])),
+      { startedAt, endedAt: new Date() },
+    ),
     warnings,
   };
 }

@@ -1,6 +1,8 @@
 /**
- * `npm run sim -- --n 15 [--mode express|full] [--fake] [--pglite] [--db] [--out evals]`
+ * `npm run sim -- --n 15 [--mode express|full] [--fake] [--pglite] [--db] [--out evals] [--report usage.txt]`
  *
+ * `--report <path>` also writes the model-call usage per interview and in total (calls by purpose,
+ * failures by reason, time waited for a rate-limit slot, wall time); `.json` writes it as JSON.
  * Runs the synthetic personas through the interview engine, computes the evaluation rubric of
  * docs/specs/interview.md section 10 and writes `evals/report.md` and `evals/report.json`.
  * `--fake` uses a built-in stand-in for the features that are not merged yet and an in-memory
@@ -20,6 +22,7 @@ import { realSimDeps } from "../src/features/synth/deps";
 import { DEMO_EVENT_ID } from "../src/features/synth/seed";
 import { renderMarkdown } from "../src/features/synth/report";
 import { assertNoDemoEvent, openDb, simUsesMemory } from "../src/features/synth/script-db";
+import { renderUsage } from "../src/features/synth/usage";
 import { runSimulation } from "../src/features/synth/simulate";
 
 async function main() {
@@ -31,6 +34,7 @@ async function main() {
       pglite: { type: "boolean", default: false },
       db: { type: "boolean", default: false },
       out: { type: "string", default: "evals" },
+      report: { type: "string" },
     },
   });
   const personas = loadPersonas();
@@ -44,7 +48,7 @@ async function main() {
     const deps = values.fake ? createFakeEngine(opened.db, { personas }) : realSimDeps();
     const log = (line: string) => console.error(`  ${line}`);
     console.error(`Simulating ${n} interviews (${values.fake ? "fake engine" : "real features"}${opened.memory ? ", in-memory database" : ""})`);
-    const { report } = await runSimulation(opened.db, personas.slice(0, n), { mode, deps, engine: values.fake ? "fake" : "real", log });
+    const { report, usage } = await runSimulation(opened.db, personas.slice(0, n), { mode, deps, engine: values.fake ? "fake" : "real", log });
 
     const dir = path.resolve(process.cwd(), values.out ?? "evals");
     mkdirSync(dir, { recursive: true });
@@ -56,6 +60,13 @@ async function main() {
       console.log(`${m.status.toUpperCase().padEnd(4)} ${m.id.padEnd(3)} ${m.name}: ${value} (${m.threshold}${m.enforced ? "" : ", report only"})`);
     }
     console.log(`\nOverall: ${report.verdict.toUpperCase()}. Wrote ${path.join(dir, "report.md")} and report.json`);
+    console.log(`\nModel calls and waiting (from llm_call):\n${renderUsage(usage)}`);
+    if (values.report) {
+      const file = path.resolve(process.cwd(), values.report);
+      mkdirSync(path.dirname(file), { recursive: true });
+      writeFileSync(file, file.endsWith(".json") ? `${JSON.stringify(usage, null, 2)}\n` : `${renderUsage(usage)}\n`);
+      console.log(`Wrote ${file}`);
+    }
     process.exitCode = report.verdict === "pass" ? 0 : 1;
   } finally {
     await opened.close();

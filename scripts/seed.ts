@@ -15,6 +15,7 @@ import { realSeedDeps } from "../src/features/synth/deps";
 import { describeError } from "../src/features/synth/errors";
 import { createFakeEngine } from "../src/features/synth/fake-engine";
 import { loadPersonas } from "../src/features/synth/persona";
+import { renderUsage } from "../src/features/synth/usage";
 import { openDb } from "../src/features/synth/script-db";
 import { seedDemo } from "../src/features/synth/seed";
 import { hasSnapshot, restoreDemoSnapshot, snapshotDemo } from "../src/features/synth/snapshot";
@@ -54,6 +55,7 @@ async function main() {
       console.log(`Snapshot written to seed/snapshot: ${Object.entries(counts).map(([k, v]) => `${k} ${v}`).join(", ")}`);
     }
 
+    console.log(`\nModel calls and waiting (from llm_call):\n${renderUsage(summary.usage)}`);
     console.log(`\nEvent ${summary.event.id}: Thursday 26 November 2026, 13:00-16:00, 9 slots per company`);
     console.log(`People: ${summary.personas.created} interviewed now, ${summary.personas.kept} kept from an earlier run (all synthetic)`);
     console.log(`Eligibility rows: ${summary.eligibilityRows}; queue jobs run: ${summary.queueJobsRun}`);

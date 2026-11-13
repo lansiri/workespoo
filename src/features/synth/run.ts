@@ -5,7 +5,7 @@
 import { and, eq } from "drizzle-orm";
 import type { CardForCompany, CardForPerson, CoverageArea, InterviewMode, TurnKind } from "@/contracts";
 import type { Db } from "@/db/client";
-import { talent, talentIdentity, turn } from "@/db/schema";
+import { interview, talent, talentIdentity, turn } from "@/db/schema";
 import { ScriptedCandidate } from "./candidate";
 import { realSimDeps, type SimDeps } from "./deps";
 import type { Persona } from "./persona";
@@ -34,9 +34,33 @@ export type SimulatedRun = {
   /** The approved card as the person sees it, and as a company sees it. */
   person: CardForPerson;
   company: CardForCompany | null;
+  /** Wall-clock span of this run, to attribute model calls to it (`usage.ts`). */
+  timing?: { startedAt: Date; endedAt: Date };
 };
 
 export const SIMULATED_TRANSCRIPT_LINE = "Simulated interview for the WorkEspoo demo";
+
+/**
+ * Start the interview the way the public start page does, as a live demo session: the engine then
+ * gives the person a `purgeAfter` (LEAD-DECISIONS, 14 Nov). Until `labelSynthetic` runs, a person
+ * the simulator created is therefore an ordinary session that the purge job removes after 24
+ * hours, never a person nobody will clean up.
+ */
+export async function beginSimulated(db: Db, persona: Persona, mode: InterviewMode, deps: SimDeps = realSimDeps()) {
+  return deps.startInterview(db, {
+    mode,
+    uiLang: persona.interviewLang,
+    consent: { interview: true, voiceVendor: false, liveDemo: true },
+  });
+}
+
+/**
+ * Mark a simulated person as synthetic. One update sets the flag and the persona key and clears
+ * `purgeAfter` and `liveDemo`, so the person is never due for purging and never a "live demo".
+ */
+export async function labelSynthetic(db: Db, talentId: string, persona: Persona): Promise<void> {
+  await db.update(talent).set({ synthetic: true, personaKey: persona.id, purgeAfter: null, liveDemo: false }).where(eq(talent.id, talentId));
+}
 
 /** Safety stop: the longest interview plans 7 questions plus repairs and probes. */
 const MAX_ANSWERS = 16;
@@ -55,6 +79,19 @@ export async function readTurns(db: Db, interviewId: string): Promise<RunTurn[]>
       lang: r.lang ?? null,
       redacted: r.redactedAt !== null,
     }));
+}
+
+/**
+ * The transcript as a view receives it: the turns, and for a synthetic person the line that says
+ * the interview was simulated (synthetic-world.md 7.5). A real person's transcript has no such line.
+ */
+export async function readTranscript(db: Db, interviewId: string): Promise<{ systemLine: string | null; turns: RunTurn[] }> {
+  const [row] = await db
+    .select({ synthetic: talent.synthetic })
+    .from(interview)
+    .innerJoin(talent, eq(talent.id, interview.talentId))
+    .where(eq(interview.id, interviewId));
+  return { systemLine: row?.synthetic ? SIMULATED_TRANSCRIPT_LINE : null, turns: await readTurns(db, interviewId) };
 }
 
 async function readTurn(db: Db, interviewId: string, index: number) {
@@ -82,17 +119,14 @@ export async function runSimulatedInterview(
   options: RunOptions = {},
 ): Promise<SimulatedRun> {
   const deps = options.deps ?? realSimDeps();
+  const startedAt = new Date();
   const log = options.log ?? (() => {});
 
-  const started = await deps.startInterview(db, {
-    mode,
-    uiLang: persona.interviewLang,
-    consent: { interview: true, voiceVendor: false, liveDemo: false },
-  });
+  const started = await beginSimulated(db, persona, mode, deps);
   const { interviewId, talentId } = started;
-
-  // Label first, so a crash half-way never leaves an unlabelled synthetic person behind.
-  await db.update(talent).set({ synthetic: true, personaKey: persona.id }).where(eq(talent.id, talentId));
+  // Label at once, so a crash half-way never leaves an unlabelled person behind (and one that
+  // slips through is still due for purging: see `beginSimulated`).
+  await labelSynthetic(db, talentId, persona);
   await setHandle(db, talentId, persona.handle);
 
   const candidate = new ScriptedCandidate(persona);
@@ -126,7 +160,7 @@ export async function runSimulatedInterview(
   const person = await deps.cardForPerson(db, talentId);
   if (!person) throw new Error(`${persona.id}: the approved card cannot be read`);
   const company = await deps.cardForCompany(db, talentId);
-  const turns = await readTurns(db, interviewId);
+  const { systemLine, turns } = await readTranscript(db, interviewId);
   log(`${persona.id} ${mode}: ${turns.filter((t) => t.role === "participant").length} answers, ${person.signals.length} signals`);
 
   return {
@@ -135,10 +169,11 @@ export async function runSimulatedInterview(
     interviewId,
     talentId,
     handle: person.handle,
-    systemLine: SIMULATED_TRANSCRIPT_LINE,
+    systemLine: systemLine ?? SIMULATED_TRANSCRIPT_LINE,
     turns,
     person,
     company,
+    timing: { startedAt, endedAt: new Date() },
   };
 }
 
