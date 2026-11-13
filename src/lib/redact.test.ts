@@ -209,4 +209,27 @@ describe("review fixes", () => {
     expect(containsContactCue("Ota yhteyttä heti.")).toBe(true);
     expect(containsContactCue("Interview with Kukka Roine, Manager")).toBe(true);
   });
+
+  it("does not take a place, a product or a customer for a person", () => {
+    for (const s of [
+      "Toimit yhteyshenkilönä Espoon kaupungin ja urakoitsijoiden välillä.",
+      "You will be the contact person for Nordic customers.",
+      "Hoidat asiakkaiden yhteydenotot Teamsissa ja puhelimessa.",
+      "Otat yhteyttä asiakkaisiin Teamsin kautta ja sovit tapaamisia.",
+      "The process includes an interview with Senior Management in Espoo.",
+    ]) {
+      expect(containsContactCue(s), s).toBe(false);
+      expect(scrubPostingText(`Työ.\n${s}\nHae.`), s).toBe(`Työ.\n${s}\nHae.`);
+    }
+  });
+
+  it("still removes a weak-cue sentence that names someone by title or after a linking verb", () => {
+    for (const s of [
+      "Tiedustelut tehtävästä ja hakemisesta ottaa vastaan rehtori Virtanen koulun kansliassa.",
+      "Yhteydenotot tässä asiassa hoitaa rekrytointikoordinaattori Mäkinen arkisin toimistolla.",
+      "The contact person for applicants during the summer weeks is Anna from our office.",
+    ]) {
+      expect(containsContactCue(s), s).toBe(true);
+    }
+  });
 });

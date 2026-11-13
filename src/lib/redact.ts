@@ -90,8 +90,8 @@ const STRONG_CUES: RegExp[] = [
   /(?<![\p{L}\p{N}])upplysningar/iu,
   /(?<![\p{L}\p{N}])frågor\s+besvaras/iu,
   /(?<![\p{L}\p{N}])ta\s+kontakt/iu,
-  // "Teams interview with Kukka Roine, Manager": names the staff member.
-  /(?<![\p{L}\p{N}])(?:[Ii]nterview|[Hh]aastattelu\p{L}*|[Ii]ntervju\p{L}*)\s+(?:with|med|:)\s+\p{Lu}\p{Ll}+\s+\p{Lu}\p{Ll}+/u,
+  // "Teams interview with Kukka Roine, Manager": names the staff member. Not "interview with Senior Management".
+  /(?<![\p{L}\p{N}])(?:[Ii]nterview|[Hh]aastattelu\p{L}*|[Ii]ntervju\p{L}*)\s+(?:with|med|:)\s+(?!(?:Senior|Junior|Lead|Head|Chief|Team|Our|The|Hiring|Talent|Human)\s)\p{Lu}\p{Ll}+\s+\p{Lu}\p{Ll}+/u,
 ];
 
 /**
@@ -123,15 +123,24 @@ const METHOD_CUES: RegExp[] = [
   /(?<![\p{L}\p{N}])vastaa(?![\p{L}\p{N}])/iu,
 ];
 
-const CAP_AFTER = /(?<![\p{L}\p{N}])\p{Lu}\p{Ll}+/u;
 const ROLE_VERB_AFTER = /^\p{L}*\s+(?:toimii|on|is|är|will be)(?![\p{L}\p{N}])/iu;
+/**
+ * A job title directly followed by a capitalised word names a person ("rehtori Virtanen",
+ * "HR Manager Lindqvist"). A capitalised word alone does not: it is as often a place, a
+ * product or a customer ("yhteyshenkilönä Espoon kaupungin ja urakoitsijoiden välillä").
+ */
+const TITLE_THEN_NAME =
+  /(?<![\p{L}\p{N}])[\p{L}-]*(?:päällikkö|johtaja|rehtori|esihenkilö|esimies|koordinaattori|sihteeri|rekrytoija|konsultti|manager|director|recruiter|coordinator|supervisor|officer|partner|chef|ledare|rektor|samordnare)\s+\p{Lu}\p{Ll}+/u;
+
+/** "... is Anna from our recruiting team": a linking verb, then within a few words a capitalised one. */
+const VERB_THEN_NAME = /(?<![\p{L}\p{N}])(?:toimii|on|is|är|will be)\s+(?:\p{Ll}[\p{L}-]*\s+){0,3}\p{Lu}\p{Ll}+/u;
 
 function weakCueNamesSomeone(text: string): boolean {
   for (const re of WEAK_CUES) {
     const m = re.exec(text);
     if (!m) continue;
     const rest = text.slice(m.index + m[0].length);
-    if (ROLE_VERB_AFTER.test(rest) || CAP_AFTER.test(rest)) return true;
+    if (ROLE_VERB_AFTER.test(rest) || TITLE_THEN_NAME.test(rest) || VERB_THEN_NAME.test(rest)) return true;
   }
   return false;
 }
