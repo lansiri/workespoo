@@ -6,6 +6,7 @@ import {
   checkPlanted,
   computeMetrics,
   containsToken,
+  keywordHit,
   detectLang,
   metricBannedEvaluative,
   metricEscoGrounding,
@@ -311,5 +312,29 @@ describe("rubric metrics on hand-built interviews", () => {
     expect(overallVerdict(metrics)).toBe("pass");
     const leaked = computeMetrics([run("full", cardFor({ headline: "Engineer, 38" }))], calls);
     expect(overallVerdict(leaked)).toBe("fail");
+  });
+});
+
+describe("keywordHit (metric 13b)", () => {
+  it("does not fire on ordinary words that merely contain the keyword", () => {
+    expect(keywordHit("they run the latest release", "test")).toBe(false);
+    expect(keywordHit("they write javascript for the browser", "java")).toBe(false);
+    expect(keywordHit("a private elevated platform", "vat")).toBe(false);
+    expect(keywordHit("a textile mill", "tile")).toBe(false);
+    expect(keywordHit("they attend contests", "test")).toBe(false);
+  });
+
+  it("fires on the word, its plural and common endings, and on stems at a word start", () => {
+    expect(keywordHit("they write unit tests", "test")).toBe(true);
+    expect(keywordHit("writing java services", "java")).toBe(true);
+    expect(keywordHit("handles vat returns", "vat")).toBe(true);
+    expect(keywordHit("computer simulation of fluids", "simulat")).toBe(true);
+    expect(keywordHit("tiling bathrooms", "tiling")).toBe(true);
+    expect(keywordHit("sql checks", "sql")).toBe(true);
+  });
+
+  it("the persona files no longer use the single ordinary words the review found too generic", () => {
+    const tooGeneric = new Set(["test", "pick", "prep", "return", "floor"]);
+    for (const p of personas) for (const f of p.planted) for (const k of f.skillKeywords) expect(tooGeneric.has(k), `${p.id}: "${k}"`).toBe(false);
   });
 });

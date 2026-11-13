@@ -346,6 +346,18 @@ export type PlantedCheck = {
   skillKept: boolean;
 };
 
+/**
+ * Does `keyword` occur in `text` as a word? Plain substring matching fired on ordinary words
+ * ("test" in "latest", "java" in "JavaScript", "vat" in "elevated"). A keyword of four letters or
+ * fewer must be a whole word (with an optional plural or -ing/-ed ending); a longer one is a word
+ * stem and must start at a word boundary ("simulat" finds "simulation"). Both lower-case.
+ */
+export function keywordHit(text: string, keyword: string): boolean {
+  const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pattern = keyword.length <= 4 ? `(?<![\\p{L}\\p{N}])${escaped}(?:s|es|ing|ed)?(?![\\p{L}\\p{N}])` : `(?<![\\p{L}\\p{N}])${escaped}`;
+  return new RegExp(pattern, "u").test(text);
+}
+
 export function checkPlanted(run: SimulatedRun): PlantedCheck {
   const texts = cardTexts(run);
   const leaked = new Set<string>();
@@ -356,7 +368,7 @@ export function checkPlanted(run: SimulatedRun): PlantedCheck {
   }
   const signalTexts = [...run.person.signals.flatMap((s) => [s.phrase, s.rendering ?? ""]), ...(run.company?.signals.flatMap((s) => [s.phrase, s.rendering ?? ""]) ?? [])].map((t) => t.toLowerCase());
   const keywords = run.persona.planted.flatMap((f) => f.skillKeywords.map((k) => k.toLowerCase()));
-  const skillKept = keywords.some((k) => signalTexts.some((t) => t.includes(k)));
+  const skillKept = keywords.some((k) => signalTexts.some((t) => keywordHit(t, k)));
   return { personaId: run.persona.id, leaked: [...leaked], skillKept };
 }
 

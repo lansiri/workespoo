@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { loadJobFixtures } from "../../../fixtures/load";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
-import { company, digest, eventCompany, matchEvent, needCard, pick, talent } from "@/db/schema";
+import { auditLog, company, digest, eventCompany, matchEvent, needCard, pick, talent } from "@/db/schema";
 import { createFakeEngine } from "./fake-engine";
 import { loadPersonas } from "./persona";
 import { mkdtempSync, rmSync } from "node:fs";
@@ -81,6 +81,28 @@ describe("seedDemo (against the fake engine)", () => {
     // The pitch company takes part again afterwards.
     const [row] = await t.db.select().from(company).where(eq(company.id, pitchCompany.companyId));
     expect(row.participating).toBe(true);
+  });
+
+  it("writes the seeded history as the system, labelled as seeded, and never as an organiser's decision", async () => {
+    const yesterday = await t.db.select().from(pick).where(eq(pick.decidedBy, "system"));
+    expect(yesterday.length).toBeGreaterThan(0);
+    const rows = await t.db.select().from(auditLog);
+    const seededApprovals = rows.filter((r) => r.action === "pick.approved" && (r.detail as { seeded?: boolean }).seeded === true);
+    expect(seededApprovals).toHaveLength(yesterday.length);
+    expect(seededApprovals.every((r) => r.actor === "system")).toBe(true);
+    const published = rows.filter((r) => r.action === "digest.published");
+    expect(published).toHaveLength(8);
+    expect(published.every((r) => r.actor === "system" && (r.detail as { seeded?: boolean }).seeded === true)).toBe(true);
+    // Nothing in the seeded history is an organiser's.
+    expect(rows.filter((r) => r.actor === "organiser")).toHaveLength(0);
+    expect(await t.db.select().from(pick).where(eq(pick.decidedBy, "organiser"))).toHaveLength(0);
+  });
+
+  it("reports model calls and waiting per interview and in total", () => {
+    expect(first.usage.interviews).toHaveLength(15);
+    expect(first.usage.total.wallMs).toBeGreaterThan(0);
+    // The fake engine makes no model call, so the counts are zero here; the shape is what matters.
+    expect(first.usage.interviews.every((i) => i.label.match(/^p\d{2}b? \((express|full)\)$/) && i.usage.calls === 0)).toBe(true);
   });
 
   it("reports coverage as warnings and never throws on them", () => {

@@ -78,7 +78,7 @@
       "alsoCheck": [
         "dyslexic"
       ],
-      "skillKeywords": ["test", "debug"]
+      "skillKeywords": ["unit test", "debug"]
     }
   ],
   "twinOf": null
