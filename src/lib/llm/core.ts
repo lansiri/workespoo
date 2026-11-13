@@ -70,7 +70,7 @@ function parseRetryAfter(v: string | null): number | undefined {
   if (!v) return undefined;
   const secs = Number(v);
   const ms = Number.isFinite(secs) ? secs * 1000 : Date.parse(v) - timing.now();
-  return Number.isFinite(ms) && ms >= 0 ? ms : undefined;
+  return Number.isFinite(ms) && ms > 0 ? ms : undefined; // 0 or past: treat as missing
 }
 
 export function redact(text: string): string {
@@ -314,13 +314,14 @@ export async function* runReal(opts: LlmOptions, internal: Internal, state: Call
             gateFor(entry.provider).pause(c.retryAfterMs);
             if (otherProvider) break; // another provider is listed: move on at once
             if (opts.role === "live") {
-              if (liveRetried) break; // one more try after the short pause, then the caller's fallback
+              if (liveRetried) throw fail(`All LLM providers failed for role "live". Last error: ${lastError}`, "rate_limited"); // one retry after the short pause, then the caller's fallback
               liveRetried = true;
             }
             continue; // analyst and bulk wait out the pause at the gate; not counted in MAX_RETRIES
           }
           if (c.kind === "retry" && retry < MAX_RETRIES) {
             const wait = backoffMs(retry, c);
+            if (otherProvider && timing.now() + wait >= deadlineAt) break; // would sleep out the budget: try the next provider
             retry++;
             try {
               await timing.sleep(wait, callAc.signal);

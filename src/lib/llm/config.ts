@@ -112,7 +112,7 @@ export const liveReserveRpm = () => nonNegativeInt("LLM_LIVE_RESERVE_RPM", 6);
 /** This process's share of the provider's per-minute limit: 0 to 1, default 1. */
 export function rpmShare(): number {
   const n = Number.parseFloat(process.env.LLM_RPM_SHARE ?? "");
-  return Number.isFinite(n) && n > 0 && n <= 1 ? n : 1;
+  return Number.isFinite(n) && n >= 0 && n <= 1 ? n : 1;
 }
 
 /** Requests per minute for the whole key; 0 means no per-minute limit. */

@@ -112,6 +112,33 @@ describe("HTTP 429 by role", () => {
     expect(gateFor("verda").waiting).toBe(0);
   });
 
+  it("a live call with two entries on the same provider fails after one retry", async () => {
+    configure({ LLM_LIVE: "verda:a,verda:b" });
+    const f = install({ verda: [tooMany(30), tooMany(30), tooMany(30), tooMany(30), { text: "no" }] });
+    const err = await clock.settle(failure(chatText(live)));
+    expect(err!.reason).toBe("rate_limited");
+    expect(f.calls).toHaveLength(2);
+  });
+
+  it("Retry-After 0 still pauses background calls", async () => {
+    configure({ VERDA_MAX_RPM: "0" });
+    const f = install({ verda: Array.from({ length: 50 }, () => tooMany(0)) });
+    const err = await clock.settle(failure(chatText({ ...bulk, deadlineMs: 5_000 })));
+    expect(err!.reason).toBe("deadline");
+    expect(f.calls.length).toBeLessThanOrEqual(2);
+  });
+
+  it("a 5xx with a long Retry-After moves to the next provider instead of sleeping past the deadline", async () => {
+    configure({ LLM_LIVE: "verda:vmodel,nvidia:n1", NVIDIA_API_KEY: "nvapi-SECRETKEY-1234567890" });
+    const f = install({
+      verda: [{ error: { status: 503, headers: { "retry-after": "30" } } }],
+      nvidia: [{ text: "ok" }],
+    });
+    const r = await clock.settle(chatText(live));
+    expect(r.meta.provider).toBe("nvidia");
+    expect(f.calls.map((c) => c.provider)).toEqual(["verda", "nvidia"]);
+  });
+
   it("uses 10 s when Retry-After is missing", async () => {
     install({ verda: [tooMany(), { text: "ok" }] });
     const t0 = clock.now();
@@ -263,6 +290,21 @@ describe("queuedMs and attempts", () => {
     expect(row).toMatchObject({ attempts: 1, queuedMs: 0, ok: false });
     expect(row.error).not.toContain("SECRET");
   });
+});
+
+describe("llm_call attempts", () => {
+  it("stores null, not 0, when no request was admitted", async () => {
+    const t = await createTestDb();
+    try {
+      configure({ LLM_LIVE: "" });
+      const err = await failure(chatText({ ...live, purpose: "gw.none", db: t.db }));
+      expect(err).toBeInstanceOf(LlmError);
+      const [row] = await t.db.select().from(llmCall).where(eq(llmCall.purpose, "gw.none"));
+      expect(row.attempts).toBeNull();
+    } finally {
+      await t.close();
+    }
+  }, 60_000);
 });
 
 describe("a live call never waits behind background calls", () => {

@@ -132,6 +132,17 @@ describe("Gate requests per minute", () => {
     expect(clock.now() - start).toBeGreaterThanOrEqual(60_000);
   });
 
+  it("LLM_RPM_SHARE=0 gives a budget of 1 per minute", async () => {
+    setup({ VERDA_MAX_RPM: "10", LLM_RPM_SHARE: "0", LLM_LIVE_RESERVE_RPM: "0" });
+    const log: string[] = [];
+    (await ask("live", "a", log))!.release();
+    void ask("live", "b", log);
+    await clock.advance(30_000);
+    expect(log).toEqual(["a"]);
+    await clock.advance(30_001);
+    expect(log).toEqual(["a", "b"]);
+  });
+
   it("slides one request at a time as old ones leave the window", async () => {
     setup({ VERDA_MAX_RPM: "2", LLM_LIVE_RESERVE_RPM: "0" });
     const log: string[] = [];

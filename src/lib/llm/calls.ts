@@ -109,7 +109,7 @@ export async function logCall(opts: LlmOptions, meta: LlmMeta): Promise<void> {
       ok: meta.ok,
       error: meta.error ? redact(meta.error).slice(0, 500) : null,
       guard: opts.guard ? opts.guard.slice(0, 120) : null,
-      attempts: meta.attempts,
+      attempts: meta.attempts > 0 ? meta.attempts : null, // the contract's minimum is 1
       queuedMs: meta.queuedMs,
     });
   } catch {
