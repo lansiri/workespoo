@@ -9,6 +9,11 @@ import { needMessages } from "@/features/needs/messages";
 
 export const dynamic = "force-dynamic";
 
+function statusLabel(m: { statusDraft: string; statusConfirmed: string; statusStale: string }, status: string): string {
+  if (status === "confirmed") return m.statusConfirmed.replace("{date}", "").trim();
+  return status === "stale" ? m.statusStale : m.statusDraft;
+}
+
 export default async function DevS2Page() {
   const m = pick(needMessages, await getUiLang());
   const { organiser } = await getSession();
@@ -42,7 +47,7 @@ export default async function DevS2Page() {
               <p>
                 {p.card ? (
                   <>
-                    {m.devStatus}: {p.card.status} · {m.devVersion}: {p.card.version} ·{" "}
+                    {m.devStatus}: {statusLabel(m, p.card.status)} · {m.devVersion}: {p.card.version} ·{" "}
                     <Link data-testid="dev-card-link" href={`/api/needs/${p.card.id}`}>
                       {m.devOpenCard}
                     </Link>

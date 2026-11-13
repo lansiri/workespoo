@@ -107,7 +107,7 @@ describe("drafting from an English posting (fixture)", () => {
     expect(call?.role).toBe("analyst");
   });
 
-  it("re-drafting keeps the card, bumps the version, rewrites job_skill and keeps answered questions", async () => {
+  it("re-drafting keeps the card, bumps the version and rewrites job_skill; a card with company answers is refused", async () => {
     const jobId = await jobIdByTitle(t.db, EN);
     const existing = (await getNeedCardForJob(t.db, jobId))!;
     // The company answered the vague question in version 1.
@@ -118,6 +118,9 @@ describe("drafting from an English posting (fixture)", () => {
       ),
     };
     await t.db.update(needCard).set({ body: answered }).where(eq(needCard.id, existing.id));
+    setLlmFake(() => draftOutput("x", [{ text: "Python", sentence: 9 }]));
+    await expect(draftNeedCard(t.db, jobId, null)).rejects.toMatchObject({ status: 409, code: "has_company_answers" });
+    await t.db.update(needCard).set({ body: existing }).where(eq(needCard.id, existing.id));
 
     setLlmFake(() => draftOutput("Full-stack developer", [
       { text: "Self-motivated, open-minded", sentence: 11, category: "other", questionType: "vague" },
@@ -129,7 +132,6 @@ describe("drafting from an English posting (fixture)", () => {
     expect(card.companyId).toBe(existing.companyId); // a feed re-draft does not detach the company
     expect(card.status).toBe("draft");
     expect(card.requirements).toHaveLength(2);
-    expect(card.requirements.find((r) => r.text.startsWith("Self-motivated"))?.question?.answer?.choice).toBe("keep");
     const rows = await t.db.select().from(needCard).where(eq(needCard.jobId, jobId));
     expect(rows).toHaveLength(1);
     expect(rows[0]!.version).toBe(2);

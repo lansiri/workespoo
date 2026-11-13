@@ -20,6 +20,7 @@ export const POST = route(async (request: Request) => {
   try {
     return Response.json(await draftNeedCard(db, jobId, companyId ?? null));
   } catch (error) {
+    if (error instanceof HttpError) throw error;
     console.error("needs.draft failed", error instanceof Error ? error.message : error);
     throw new HttpError(502, "draft_failed", "The draft could not be made. Try again.");
   }

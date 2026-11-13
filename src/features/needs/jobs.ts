@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { HttpError } from "@/lib/http";
 import { defineJob, type JobDefinition, type Schedule } from "@/lib/queue";
 import { draftNeedCard, isDraftCurrent } from "./draft";
 import { recomputePoolEvidence } from "./pool";
@@ -12,7 +13,13 @@ export const draftJob = defineJob(
   z.object({ jobId: z.string().min(1), companyId: z.string().nullable() }),
   async ({ jobId, companyId }, { db }) => {
     if (await isDraftCurrent(db, jobId)) return;
-    await draftNeedCard(db, jobId, companyId);
+    try {
+      await draftNeedCard(db, jobId, companyId);
+    } catch (error) {
+      // The company has answered the card, or another draft just landed: nothing to redo.
+      if (error instanceof HttpError && error.status === 409) return;
+      throw error;
+    }
   },
 );
 

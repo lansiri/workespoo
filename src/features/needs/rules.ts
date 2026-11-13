@@ -44,8 +44,10 @@ const SENTENCE_CHECKED: ReadonlySet<RequirementCategory> = new Set(["authorisati
  */
 export function classifyStatutory(input: StatutoryInput): Statutory {
   const haystack = [input.text, SENTENCE_CHECKED.has(input.category) ? (input.sentence ?? "") : ""].join("\n");
-  if (OTHER_LAW.test(haystack)) return "other_law";
-  if (CLEARANCE.test(haystack)) return "clearance";
+  // Clearances and work permits are unambiguous: the cited sentence counts for every category.
+  const unambiguous = `${input.text}\n${input.sentence ?? ""}`;
+  if (OTHER_LAW.test(unambiguous)) return "other_law";
+  if (CLEARANCE.test(unambiguous)) return "clearance";
   if (
     input.category === "language" &&
     (isPublicEmployer(input.job) || LANGUAGE_ACT_SENTENCE.test(input.sentence ?? ""))
@@ -62,11 +64,14 @@ export function classifyStatutory(input: StatutoryInput): Statutory {
 const LANGUAGE_NAMES =
   /(?<![\p{L}])(?:English|Swedish|Danish|Norwegian|German|French|Spanish|Italian|Russian|Estonian|Dutch|Polish|Portuguese|Chinese|Japanese|Korean|Arabic|Persian|Turkish|Greek|Hungarian|Czech|Ukrainian|Somali|Thai|Vietnamese)(?![\p{L}])/giu;
 
+const OTHER_LAW_GLOBAL = new RegExp(OTHER_LAW.source, "gi");
+
 const NATIVE_ORIGIN = /(?<![\p{L}])(?:native|äidinkiel\p{L}*|modersmål\p{L}*)(?![\p{L}])/iu;
 
 /** Protected terms in a requirement text or a cited posting sentence. Language names are not hits. */
 export function protectedHits(text: string): string[] {
-  const hits = findProtectedCard(text.replace(LANGUAGE_NAMES, " "));
+  // A work permit is a legal requirement (recorded as other_law), not a personal characteristic.
+  const hits = findProtectedCard(text.replace(LANGUAGE_NAMES, " ").replace(OTHER_LAW_GLOBAL, " "));
   // "Native Finnish" is a proxy for origin; the work needs a language level, not a birthplace.
   const native = NATIVE_ORIGIN.exec(text);
   if (native) hits.push(native[0].toLowerCase());
@@ -74,15 +79,19 @@ export function protectedHits(text: string): string[] {
 }
 
 const COMPANY_TEXT_PROTECTED =
-  /(?<![\p{L}\p{N}])(?:age|years old|young|nuori|ikä|gender|male|female|mies|nainen|nationality|kansalai\p{L}*|native|äidinkieli|syntyperä|religio\p{L}*|uskonto|health|terveys|pregnan\p{L}*|raskau\p{L}*|family|perhe|photo|kuva)(?![\p{L}\p{N}])/iu;
+  /(?<![\p{L}\p{N}])(?:age|aged|years old|young|nuori|nuorta|nuoren|nuoret|nuorekas|ikä|ikävuo\p{L}*|gender|sukupuol\p{L}*|male|female|mies|miehen|miestä|nainen|naisen|naista|nationality|kansalai\p{L}*|native|äidinkieli|syntyperä|religio\p{L}*|uskonto|health|terveys|terveydentila\p{L}*|pregnan\p{L}*|raskau\p{L}*|family|perhe|perhetilann\p{L}*|photo|kuva)(?![\p{L}\p{N}])/iu;
 
 export const PROTECTED_TEXT_MESSAGE =
   "This describes a personal characteristic, not the work. Describe the skill or language level the work needs instead.";
 export const NATIVE_HINT = "Try 'fluent working Finnish'.";
 
 /** Company-written text that describes a person rather than the work (need-card.md 6, rule 3). */
+export function textDescribesPerson(text: string): boolean {
+  return COMPANY_TEXT_PROTECTED.test(text) || protectedHits(text).length > 0;
+}
+
 export function companyTextProblem(text: string): { hint: string | null } | null {
-  if (!COMPANY_TEXT_PROTECTED.test(text) && protectedHits(text).length === 0) return null;
+  if (!textDescribesPerson(text)) return null;
   return { hint: /native/i.test(text) ? NATIVE_HINT : null };
 }
 

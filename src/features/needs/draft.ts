@@ -10,7 +10,8 @@ import {
 } from "@/contracts";
 import type { Db } from "@/db/client";
 import { appMeta, company, escoConcept, escoOccupationSkill, jobSkill, needCard } from "@/db/schema";
-import { audit } from "@/lib/audit";
+import { audit, listAudit } from "@/lib/audit";
+import { HttpError } from "@/lib/http";
 import { escoByUris, escoCandidates } from "@/lib/esco";
 import { newId } from "@/lib/ids";
 import { chatJson } from "@/lib/llm";
@@ -32,7 +33,7 @@ import {
 import { employerTerms, maskEmployer } from "./mask";
 import { recomputePoolEvidence } from "./pool";
 import { buildDraftMessages, type EscoPromptCandidate } from "./prompt";
-import { classifyStatutory, decideQuestion, protectedHits } from "./rules";
+import { classifyStatutory, decideQuestion, isWorkPermitText, textDescribesPerson } from "./rules";
 import { getNeedCardForJob, saveNeedCard } from "./store";
 
 // ---------- ESCO candidates for the prompt ----------
@@ -142,7 +143,7 @@ export async function validateDraft(
     if (r.sentence < 0 || r.sentence >= usable) return;
     const sentence = job.sentences[r.sentence]!;
     // 3. protected characteristics never become requirements
-    const hits = protectedHits(r.text).length > 0 || protectedHits(sentence).length > 0;
+    const hits = textDescribesPerson(r.text) || textDescribesPerson(sentence);
     if (hits) {
       dropped.add(r.sentence);
       return;
@@ -185,20 +186,22 @@ export async function validateDraft(
   for (const { out } of kept) {
     const sentence = job.sentences[out.sentence]!;
     const text = clip(maskEmployer(out.text, terms), REQUIREMENT_TEXT_MAX);
-    let uris = resolveUris(out);
-    if (uris.length === 0 && (out.category === "skill" || out.category === "experience")) {
+    // A work-permit requirement is recorded as authorisation, whatever category the model chose.
+    const category = isWorkPermitText(text) ? "authorisation" : out.category;
+    let uris = category === out.category ? resolveUris(out) : [];
+    if (uris.length === 0 && (category === "skill" || category === "experience")) {
       uris = await fallbackEsco(db, text);
     }
-    const languageCode = out.category === "language" ? out.language : null;
+    const languageCode = category === "language" ? out.language : null;
     const statutory = classifyStatutory({
-      category: out.category,
+      category,
       text,
       sentence,
       modelLaw: out.statutory === "law",
       job,
     });
     const question = decideQuestion({
-      category: out.category,
+      category,
       kind: out.kind,
       statutory,
       text,
@@ -211,7 +214,7 @@ export async function validateDraft(
       id: newId("req"),
       text,
       kind: out.kind,
-      category: out.category,
+      category,
       escoSkillUris: uris,
       postingSentence: out.sentence,
       source: "agent",
@@ -263,6 +266,19 @@ function carryAnswers(next: Requirement[], previous: NeedCard | null): void {
   }
 }
 
+/** True when the company answered a question, removed or reworded something, or confirmed the card. */
+export async function hasCompanyActivity(db: Db, card: NeedCard): Promise<boolean> {
+  if (card.status !== "draft") return true;
+  if (card.requirements.some((r) => r.question?.answer)) return true;
+  const answered = await listAudit(db, {
+    subjectType: "need_card",
+    subjectId: card.id,
+    action: "needcard.question_answered",
+    limit: 1,
+  });
+  return answered.length > 0;
+}
+
 /**
  * Drafts (or re-drafts) the Need Card for a posting with the analyst model and stores it.
  * `companyId` is null for a card that only explains a posting in a person's feed (role `bulk`).
@@ -274,6 +290,12 @@ export async function draftNeedCard(db: Db, jobId: string, companyId: string | n
   if (companyId) {
     const [c] = await db.select({ id: company.id }).from(company).where(eq(company.id, companyId));
     if (!c) throw new Error(`draftNeedCard: unknown company ${companyId}`);
+  }
+
+  // A card the company has answered or confirmed is not drafted over: that would undo its answers.
+  const existing = await getNeedCardForJob(db, jobId);
+  if (existing && (await hasCompanyActivity(db, existing))) {
+    throw new HttpError(409, "has_company_answers", "The company has already answered this card");
   }
 
   const candidates = await buildEscoCandidates(db, job);
@@ -306,55 +328,69 @@ export async function draftNeedCard(db: Db, jobId: string, companyId: string | n
     confirmedAt: null,
   });
 
-  if (previous) {
-    await saveNeedCard(db, card);
-  } else {
-    await db.insert(needCard).values({
-      id: card.id,
-      jobId: card.jobId,
-      companyId: card.companyId,
-      version: card.version,
-      body: card,
-      status: card.status,
+  await db.transaction(async (tx) => {
+    if (previous) {
+      await saveNeedCard(tx, card);
+    } else {
+      const inserted = await tx
+        .insert(needCard)
+        .values({
+          id: card.id,
+          jobId: card.jobId,
+          companyId: card.companyId,
+          version: card.version,
+          body: card,
+          status: card.status,
+        })
+        .onConflictDoNothing({ target: needCard.jobId })
+        .returning({ id: needCard.id });
+      // Another request drafted this posting first: keep its card, do not fail with a database error.
+      if (inserted.length === 0) throw new HttpError(409, "draft_in_progress", "A card for this posting was just drafted");
+    }
+
+    // job_skill rows with origin `needcard`
+    await tx.delete(jobSkill).where(and(eq(jobSkill.jobId, jobId), eq(jobSkill.origin, "needcard")));
+    const uris = [...new Set(card.requirements.flatMap((r) => r.escoSkillUris))];
+    if (uris.length > 0) {
+      await tx
+        .insert(jobSkill)
+        .values(uris.map((skillUri) => ({ jobId, skillUri, origin: "needcard" as const })))
+        .onConflictDoNothing();
+    }
+
+    await audit(tx, {
+      actor: `agent:${role}`,
+      action: "needcard.drafted",
+      subjectType: "need_card",
+      subjectId: card.id,
+      detail: {
+        jobId,
+        version: card.version,
+        requirements: card.requirements.length,
+        questions: card.requirements.filter((r) => r.question).length,
+        droppedSentences: card.droppedSentences.length,
+      },
     });
-  }
 
-  await db
-    .insert(appMeta)
-    .values({ key: fingerprintKey(jobId), value: postingFingerprint(job) })
-    .onConflictDoUpdate({ target: appMeta.key, set: { value: postingFingerprint(job), updatedAt: new Date() } });
-
-  // job_skill rows with origin `needcard`
-  await db.delete(jobSkill).where(and(eq(jobSkill.jobId, jobId), eq(jobSkill.origin, "needcard")));
-  const uris = [...new Set(card.requirements.flatMap((r) => r.escoSkillUris))];
-  if (uris.length > 0) {
-    await db
-      .insert(jobSkill)
-      .values(uris.map((skillUri) => ({ jobId, skillUri, origin: "needcard" as const })))
-      .onConflictDoNothing();
-  }
-
-  await audit(db, {
-    actor: `agent:${role}`,
-    action: "needcard.drafted",
-    subjectType: "need_card",
-    subjectId: card.id,
-    detail: {
-      jobId,
-      version: card.version,
-      requirements: card.requirements.length,
-      questions: card.requirements.filter((r) => r.question).length,
-      droppedSentences: card.droppedSentences.length,
-    },
+    // Written last: a card counts as current for this posting only once everything above is stored.
+    await tx
+      .insert(appMeta)
+      .values({ key: fingerprintKey(jobId), value: postingFingerprint(job) })
+      .onConflictDoUpdate({ target: appMeta.key, set: { value: postingFingerprint(job), updatedAt: new Date() } });
   });
 
-  // Counts over the whole pool until matching has written eligibility rows for this version.
-  await recomputePoolEvidence(db, card.id);
   await enqueue(
     db,
     "matching.need_changed",
     { needCardId: card.id, version: card.version },
     { dedupeKey: `matching.need_changed:${card.id}:${card.version}` },
   );
+  // Counts over the whole pool until matching has written eligibility rows for this version.
+  // A failure only leaves the old numbers; matching schedules needs.recompute_pool later.
+  try {
+    await recomputePoolEvidence(db, card.id);
+  } catch (error) {
+    console.error("needs.draft: pool evidence not computed", error instanceof Error ? error.message : error);
+  }
   return (await getNeedCardForJob(db, jobId)) ?? card;
 }

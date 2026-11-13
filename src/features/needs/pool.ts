@@ -1,3 +1,4 @@
+import { HttpError } from "@/lib/http";
 import { eq, sql, type SQL } from "drizzle-orm";
 import type { NeedCard, PoolEvidence, Requirement } from "@/contracts";
 import type { Db } from "@/db/client";
@@ -75,7 +76,7 @@ export async function countTouching(
         SELECT EXISTS (
           SELECT 1 FROM signal g
           WHERE g.talent_id = s.id AND g.status = 'approved'
-            AND (${byUri} word_similarity(lower(${r.text}::text), lower(g.phrase)) >= ${TOUCH_MIN_WORD_SIMILARITY})
+            AND (${byUri} word_similarity(lower(g.phrase), lower(${r.text}::text)) >= ${TOUCH_MIN_WORD_SIMILARITY})
         ) AS touched
         FROM (${set}) s
       ) x`),
@@ -140,10 +141,18 @@ export async function recomputePoolEvidence(
   const evidence = await computePoolEvidence(db, card, now, jobRow?.sentences ?? []);
 
   // Re-read before writing: a company edit may have landed while the counts were computed.
-  const latest = await getNeedCard(db, needCardId);
-  if (!latest) return;
-  const requirements = latest.requirements.map((r) =>
-    evidence.has(r.id) ? { ...r, pool: evidence.get(r.id) ?? null } : r,
-  );
-  await saveNeedCard(db, { ...latest, requirements }, now);
+  // Edits bump the version, so a write that finds a different version re-reads and tries again.
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const latest = await getNeedCard(db, needCardId);
+    if (!latest) return;
+    const requirements = latest.requirements.map((r) =>
+      evidence.has(r.id) ? { ...r, pool: evidence.get(r.id) ?? null } : r,
+    );
+    try {
+      await saveNeedCard(db, { ...latest, requirements }, now, latest.version);
+      return;
+    } catch (error) {
+      if (!(error instanceof HttpError && error.code === "conflict")) throw error;
+    }
+  }
 }

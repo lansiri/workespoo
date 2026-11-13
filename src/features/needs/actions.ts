@@ -1,11 +1,10 @@
 import { z } from "zod";
-import { eq } from "drizzle-orm";
 import type { NeedCard, Requirement } from "@/contracts";
 import type { Db } from "@/db/client";
-import { company as companyTable } from "@/db/schema";
 import { audit } from "@/lib/audit";
 import { HttpError } from "@/lib/http";
 import { enqueue } from "@/lib/queue";
+import { companyFromToken } from "@/lib/session";
 import { REQUIREMENT_TEXT_MAX } from "./constants";
 import { escoFallbackForRequirement } from "./draft";
 import { PROTECTED_TEXT_MESSAGE, companyTextProblem } from "./rules";
@@ -34,10 +33,7 @@ export async function resolveNeedAccess(
     if (!card) throw new HttpError(404, "not_found", "Need Card not found");
     return { access: { kind: "organiser" }, card };
   }
-  const [row] = await db
-    .select({ id: companyTable.id })
-    .from(companyTable)
-    .where(eq(companyTable.digestToken, who.token));
+  const row = await companyFromToken(db, who.token);
   if (!row) throw new HttpError(401, "unauthenticated", "A company link or organiser sign-in is required");
   if (!card || card.companyId !== row.id) throw new HttpError(404, "not_found", "Need Card not found");
   const company = await loadCompany(db, row.id);
@@ -135,7 +131,7 @@ export async function answerQuestion(
     }
   }
 
-  const saved = await saveNeedCard(db, { ...card, version: card.version + 1, requirements }, now);
+  const saved = await saveNeedCard(db, { ...card, version: card.version + 1, requirements }, now, card.version);
   const actor = `company:${companyId}` as const;
   await audit(db, {
     actor,
@@ -174,6 +170,7 @@ export async function confirmNeedCard(
     db,
     { ...card, status: "confirmed", confirmedAt: now.toISOString(), version: card.version + 1 },
     now,
+    card.version,
   );
   await audit(db, {
     actor: `company:${companyId}`,

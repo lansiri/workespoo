@@ -2,6 +2,7 @@ import { desc, eq, and } from "drizzle-orm";
 import { NeedCard, type NeedCardStatus } from "@/contracts";
 import type { Db } from "@/db/client";
 import { needCard } from "@/db/schema";
+import { HttpError } from "@/lib/http";
 
 type Row = typeof needCard.$inferSelect;
 
@@ -46,9 +47,15 @@ export async function needCardCreatedAt(db: Db, needCardId: string): Promise<Dat
  * Write a card back: validates the body and keeps the row's own columns (`version`, `status`,
  * `confirmedAt`) in step with it. The row must exist.
  */
-export async function saveNeedCard(db: Db, card: NeedCard, now: Date = new Date()): Promise<NeedCard> {
+export async function saveNeedCard(
+  db: Db,
+  card: NeedCard,
+  now: Date = new Date(),
+  /** The version the caller read: when given, the write only lands if the row still has it. */
+  expectedVersion?: number,
+): Promise<NeedCard> {
   const body = NeedCard.parse(card);
-  await db
+  const written = await db
     .update(needCard)
     .set({
       body,
@@ -58,6 +65,12 @@ export async function saveNeedCard(db: Db, card: NeedCard, now: Date = new Date(
       confirmedAt: body.confirmedAt ? new Date(body.confirmedAt) : null,
       updatedAt: now,
     })
-    .where(eq(needCard.id, body.id));
+    .where(
+      and(eq(needCard.id, body.id), expectedVersion === undefined ? undefined : eq(needCard.version, expectedVersion)),
+    )
+    .returning({ id: needCard.id });
+  if (expectedVersion !== undefined && written.length === 0) {
+    throw new HttpError(409, "conflict", "The card changed while you were editing it. Reload and try again.");
+  }
   return body;
 }
