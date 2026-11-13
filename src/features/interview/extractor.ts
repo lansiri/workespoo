@@ -366,10 +366,14 @@ async function extractTurn(db: Db, interviewId: string, turnIndex: number): Prom
           lastNote: note,
           lastExtracted: merged.touched,
           // Only the flags the planner situations read are kept; distress and protected_info stay counts.
-          recentFlags: [
-            ...(st.recentFlags ?? []),
-            output.flags.filter((f) => f === "off_topic" || f === "buzzwords"),
-          ].slice(-2),
+          // Once the interview is closing nobody reads them, so a late extraction leaves them cleared.
+          recentFlags:
+            st.stage === "closing" || st.stage === "synthesising"
+              ? st.recentFlags
+              : [
+                  ...(st.recentFlags ?? []),
+                  output.flags.filter((f): f is "off_topic" | "buzzwords" => f === "off_topic" || f === "buzzwords"),
+                ].slice(-2),
         };
       },
       output.lang !== "und" ? { lang: output.lang } : undefined,

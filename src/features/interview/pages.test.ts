@@ -4,7 +4,10 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { I18nProvider } from "@/lib/i18n/client";
 import type { UiLang } from "@/contracts";
-import { ConsentForm } from "./ConsentForm";
+import { ConsentForm, canStartInterview, voiceServiceName } from "./ConsentForm";
+import { interviewMessages } from "./messages";
+import { consentCopy } from "@/lib/i18n/content";
+import { fmt } from "@/lib/i18n";
 import { InterviewRoom } from "./InterviewRoom";
 import { initialUiState, reduce } from "./useInterview";
 
@@ -27,6 +30,47 @@ describe("interview pages (server render)", () => {
     }
     expect(html).not.toMatch(/type="text"|name="name"|type="email"/);
     expect(html).toContain("Before we start");
+  });
+
+  it("7. start stays disabled until both consent boxes are ticked; the live-demo box has its test id", () => {
+    const html = render(createElement(ConsentForm));
+    expect(html).toContain('data-testid="consent-live-demo"');
+    expect(html).toMatch(/<button[^>]*data-testid="start-interview"[^>]*disabled|<button[^>]*disabled[^>]*data-testid="start-interview"/);
+    expect(canStartInterview({ interview: true, liveDemo: false, busy: false })).toBe(false);
+    expect(canStartInterview({ interview: false, liveDemo: true, busy: false })).toBe(false);
+    expect(canStartInterview({ interview: true, liveDemo: true, busy: true })).toBe(false);
+    expect(canStartInterview({ interview: true, liveDemo: true, busy: false })).toBe(true);
+  });
+
+  it("9. the model line says what runs, in all three languages", () => {
+    expect(render(createElement(ConsentForm), "en")).toContain("an open-weight AI model (Kimi K3.1) run by Verda on servers in Finland");
+    expect(render(createElement(ConsentForm), "fi")).toContain("Kimi K3.1");
+    expect(render(createElement(ConsentForm), "sv")).toContain("Kimi K3.1");
+    for (const lang of ["en", "fi", "sv"] as const) {
+      const html = render(createElement(ConsentForm), lang);
+      expect(html).not.toMatch(/NVIDIA|DeepSeek/);
+    }
+  });
+
+  it("9. the voice line names the service in the page's language, with no English fragment", () => {
+    const browser = { adapter: "browser", processor: "your browser's speech service" } as const;
+    for (const lang of ["fi", "sv"] as const) {
+      const name = voiceServiceName(browser, interviewMessages[lang].voiceProcessorBrowser);
+      expect(name).not.toMatch(/your browser|speech service/i);
+      expect(fmt(consentCopy[lang].checkVoice, { processor: name })).not.toMatch(/your browser|speech service/i);
+    }
+    expect(voiceServiceName(browser, interviewMessages.en.voiceProcessorBrowser)).toBe("your browser's speech service");
+    expect(voiceServiceName({ adapter: "elevenlabs", processor: "ElevenLabs" }, "x")).toBe("ElevenLabs");
+    expect(voiceServiceName(null, "x")).toBe("");
+  });
+
+  it("11. the start page has the CV text area with its note, in three languages", () => {
+    const en = render(createElement(ConsentForm), "en");
+    expect(en).toContain('data-testid="cv-text"');
+    expect(en).toContain("Paste your CV if you like.");
+    expect(en).toContain("It is only used to choose questions and is not kept.");
+    expect(render(createElement(ConsentForm), "fi")).toContain("Liitä CV tähän");
+    expect(render(createElement(ConsentForm), "sv")).toContain("Klistra in ditt CV");
   });
 
   it.each([

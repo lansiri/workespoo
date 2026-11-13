@@ -13,7 +13,7 @@ type Runtime = {
   active: Map<string, AbortController>;
   /** Background work (extraction, finishing) per interview. */
   pending: Map<string, Map<Promise<void>, WorkKind>>;
-  /** Idempotency keys already accepted per interview, mapped to the participant turn index. */
+  /** Client turn ids already accepted per interview, mapped to the participant turn index. */
   seenKeys: Map<string, Map<string, number | null>>;
   now: () => number;
 };

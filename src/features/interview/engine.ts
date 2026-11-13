@@ -8,6 +8,7 @@ import {
   initialInterviewState,
   type CoverageArea,
   type InterviewEvent,
+  type InterviewState,
   type StartInterviewRequest,
   type StartInterviewResponse,
   type TurnKind,
@@ -53,7 +54,6 @@ import {
   mutateState,
   readState,
   toTurn,
-  type EngineState,
 } from "./store";
 
 /** How long a turn waits for the previous answer's extraction before planning without it. */
@@ -85,7 +85,7 @@ export async function startInterview(db: Db, request: StartInterviewRequest): Pr
   const lines = INTERVIEW_LINES[request.uiLang];
   const text = request.mode === "express" ? lines.openingExpress : lines.openingFull;
 
-  const state = initialInterviewState(request.uiLang, now.toISOString()) as EngineState;
+  const state = initialInterviewState(request.uiLang, now.toISOString());
   state.stage = "awaiting_answer";
   state.questionsAsked = 1;
   state.coverage.recent_work = "asked";
@@ -96,9 +96,8 @@ export async function startInterview(db: Db, request: StartInterviewRequest): Pr
       id: talentId,
       handle,
       liveDemo: request.consent.liveDemo,
-      purgeAfter: request.consent.liveDemo
-        ? new Date(now.getTime() + getEnv().LIVE_SESSION_TTL_HOURS * 3_600_000)
-        : null,
+      // Everyone who starts is a live demo session; the simulator clears this for synthetic people.
+      purgeAfter: new Date(now.getTime() + getEnv().LIVE_SESSION_TTL_HOURS * 3_600_000),
     });
     await tx.insert(interviewTable).values({
       id: interviewId,
@@ -150,19 +149,19 @@ export async function startInterview(db: Db, request: StartInterviewRequest): Pr
  * Helpers
  * ---------------------------------------------------------------------------------------- */
 
-function elapsedSeconds(state: EngineState): number {
+function elapsedSeconds(state: InterviewState): number {
   return Math.max(0, (nowMs() - Date.parse(state.startedAt)) / 1000);
 }
 
 /** The language for scripted lines: the last detected participant language if known, else the UI language. */
-function scriptLang(state: EngineState, turns: readonly TurnRow[], current?: string | null): UiLang {
+function scriptLang(state: InterviewState, turns: readonly TurnRow[], current?: string | null): UiLang {
   if (isUiLang(current)) return current;
   const last = [...turns].reverse().find((t) => t.role === "participant" && isUiLang(t.lang));
   return last && isUiLang(last.lang) ? last.lang : state.uiLang;
 }
 
 /** The language of bank questions: the detected reply language if we have a bank for it. */
-function bankLang(state: EngineState, interviewLang: string, detected: string): UiLang {
+function bankLang(state: InterviewState, interviewLang: string, detected: string): UiLang {
   if (isUiLang(detected)) return detected;
   if (detected !== "unknown" && detected !== "und") return "en"; // a language without a bank
   if (isUiLang(interviewLang)) return interviewLang;
@@ -253,7 +252,7 @@ export function isKnownTurnKey(interviewId: string, key: string | undefined): bo
  * ---------------------------------------------------------------------------------------- */
 
 /** The per-answer flag history is only needed while the interview runs. */
-const dropFlagHistory = (s: EngineState): EngineState => ({ ...s, recentFlags: undefined });
+const dropFlagHistory = (s: InterviewState): InterviewState => ({ ...s, recentFlags: undefined });
 
 /** Wait for extraction, settle the status, announce completion and build the card. Never throws. */
 async function finishInterview(db: Db, interviewId: string, stopped: boolean): Promise<void> {
@@ -261,12 +260,12 @@ async function finishInterview(db: Db, interviewId: string, stopped: boolean): P
     const row = await loadInterview(db, interviewId);
     if (!row) return;
     if (!stopped) {
-      await mutateState(db, interviewId, dropFlagHistory, { status: "completed", completedAt: new Date(nowMs()) });
+      await mutateState(db, interviewId, (s) => s, { status: "completed", completedAt: new Date(nowMs()) });
       await publishEvent(db, interviewId, { type: "interview.completed", interviewId, talentId: row.talentId });
-      await waitForPending(interviewId, FINISH_EXTRACTION_WAIT_MS);
-    } else {
-      await waitForPending(interviewId, FINISH_EXTRACTION_WAIT_MS);
     }
+    await waitForPending(interviewId, FINISH_EXTRACTION_WAIT_MS);
+    // A late extraction may have written flags while we waited: clear them once it has settled.
+    await mutateState(db, interviewId, dropFlagHistory);
     const signals = await countLiveSignals(db, interviewId);
     const status = stopped && signals === 0 ? "abandoned" : "completed";
     if (stopped) {
@@ -363,11 +362,9 @@ export async function settleInterview(
 
 export type SubmitTurnOptions = {
   signal?: AbortSignal;
-  /** Client-supplied id, reused on a retry, so one answer is never stored twice. */
-  idempotencyKey?: string;
 };
 
-function situationFor(state: EngineState, plan: Extract<Plan, { action: "ask" }>, skipped: boolean): Situation | null {
+function situationFor(state: InterviewState, plan: Extract<Plan, { action: "ask" }>, skipped: boolean): Situation | null {
   if (skipped) return "skipped";
   if ((state.flagCounts.distress ?? 0) > 0) return "distress_seen";
   const recent = state.recentFlags ?? [];
@@ -384,7 +381,7 @@ export async function* submitTurn(
   opts: SubmitTurnOptions = {},
 ): AsyncGenerator<InterviewEvent, void, void> {
   const rt = runtime();
-  const key = (request as TurnRequest & { clientTurnId?: string }).clientTurnId ?? opts.idempotencyKey;
+  const key = request.clientTurnId;
   const duplicate = key !== undefined && (rt.seenKeys.get(interviewId)?.has(key) ?? false);
   if (key !== undefined && !duplicate) {
     const keys = rt.seenKeys.get(interviewId) ?? new Map<string, number | null>();
@@ -590,7 +587,7 @@ type ReplyContext = {
 async function* planAndReply(
   db: Db,
   row: InterviewRow,
-  state: EngineState,
+  state: InterviewState,
   turns: TurnRow[],
   ctx: ReplyContext,
   ac: AbortController,

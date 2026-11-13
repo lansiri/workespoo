@@ -82,7 +82,7 @@ afterEach(() => {
 
 async function say(interviewId: string, text: string, opts: { key?: string; sttLang?: string } = {}): Promise<InterviewEvent[]> {
   const events: InterviewEvent[] = [];
-  for await (const e of submitTurn(t.db, interviewId, { text, inputMode: "text", sttLang: opts.sttLang }, { idempotencyKey: opts.key })) events.push(e);
+  for await (const e of submitTurn(t.db, interviewId, { text, inputMode: "text", sttLang: opts.sttLang, clientTurnId: opts.key }, {})) events.push(e);
   return events;
 }
 const doneOf = (events: InterviewEvent[]) => events.find((e) => e.type === "turn.done") as Extract<InterviewEvent, { type: "turn.done" }>;
@@ -114,13 +114,15 @@ describe("startInterview", () => {
     expect(JSON.stringify(log[0]!.detail)).not.toContain("logistics");
   });
 
-  it("uses the full-mode opening, in Finnish and Swedish when chosen, and no purge time without live demo", async () => {
+  it("uses the full-mode opening, in Finnish and Swedish when chosen, and a purge time even with liveDemo false", async () => {
     const fi = await startInterview(t.db, request({ mode: "full", uiLang: "fi" }));
     expect(fi.opening.text).toBe(INTERVIEW_LINES.fi.openingFull);
     const sv = await startInterview(t.db, request({ uiLang: "sv" }));
     expect(sv.opening.text).toBe(INTERVIEW_LINES.sv.openingExpress);
     const [person] = await t.db.select().from(talent).where(eq(talent.id, fi.talentId));
-    expect(person).toMatchObject({ liveDemo: false, purgeAfter: null });
+    expect(person).toMatchObject({ liveDemo: false });
+    // every person made here is a demo session due for purging, whatever the flag says
+    expect(person!.purgeAfter!.getTime() - Date.now()).toBeGreaterThan(23 * 3_600_000);
     expect(await hasConsent(t.db, { subjectType: "talent", subjectId: fi.talentId, kind: "live_demo" })).toBe(false);
   });
 
@@ -666,7 +668,7 @@ describe("review fixes", () => {
     const ac = new AbortController();
     const first: InterviewEvent[] = [];
     const run = (async () => {
-      for await (const e of submitTurn(t.db, interviewId, { text: WORK, inputMode: "text" }, { idempotencyKey: "retry-key-1", signal: ac.signal })) first.push(e);
+      for await (const e of submitTurn(t.db, interviewId, { text: WORK, inputMode: "text", clientTurnId: "retry-key-1" }, { signal: ac.signal })) first.push(e);
     })();
     await vi.waitFor(async () => expect((await turnsOf(interviewId)).length).toBeGreaterThanOrEqual(2));
     ac.abort();
@@ -681,7 +683,7 @@ describe("review fixes", () => {
     await settleInterview(t.db, interviewId);
   });
 
-  it("a request's clientTurnId dedupes like the header", async () => {
+  it("a request's clientTurnId is the retry id and dedupes the answer", async () => {
     const calls = installFake();
     const { interviewId } = await startInterview(t.db, request());
     const body = { text: WORK, inputMode: "text", clientTurnId: "client-turn-1" } as never;
@@ -816,5 +818,35 @@ describe("second pass, block A: what the real model needs", () => {
     expect(second).toMatchObject({ kind: "closing", closing: true, text: INTERVIEW_LINES.en.closingStopped });
     await settleInterview(t.db, interviewId);
     expect((await loadInterview(t.db, interviewId))!.status).toBe("abandoned");
+  });
+});
+
+describe("second pass, block B: decisions and contract alignment", () => {
+  it("10. a late extraction after a normal ending leaves no recentFlags behind", async () => {
+    installFake({
+      extract: async () => {
+        await new Promise((r) => setTimeout(r, 120));
+        return { lang: "en", signals: [], coverage: {}, flags: ["off_topic"], note: "" };
+      },
+    });
+    const { interviewId } = await startInterview(t.db, request());
+    await say(interviewId, WORK);
+    await say(interviewId, "A truck came with the wrong pallets and I checked every one against the note.");
+    const last = doneOf(await say(interviewId, "Something in warehouse logistics near Espoo would suit me."));
+    expect(last.kind).toBe("closing");
+    await settleInterview(t.db, interviewId);
+    const state = readState((await loadInterview(t.db, interviewId))!);
+    expect(state.recentFlags).toBeUndefined();
+    expect(state.flagCounts.off_topic).toBe(3);
+  });
+
+  it("8. the retry id is the body field only; a header-style option no longer exists", async () => {
+    const calls = installFake();
+    const { interviewId } = await startInterview(t.db, request());
+    const a = { text: WORK, inputMode: "text" as const, clientTurnId: "turn-aaaaaaaa" };
+    for (let i = 0; i < 2; i++) for await (const e of submitTurn(t.db, interviewId, a)) void e;
+    expect((await turnsOf(interviewId)).filter((x) => x.role === "participant")).toHaveLength(1);
+    expect(calls.live).toHaveLength(1);
+    await settleInterview(t.db, interviewId);
   });
 });

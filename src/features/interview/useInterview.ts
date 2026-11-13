@@ -176,7 +176,7 @@ export function useInterview({ initial, onSentence }: UseInterviewOptions) {
         try {
           const res = await fetch(`/api/interview/${interviewId}/turn`, {
             method: "POST",
-            headers: { "content-type": "application/json", "idempotency-key": key },
+            headers: { "content-type": "application/json" },
             body: JSON.stringify({ text: trimmed, inputMode, clientTurnId: key }),
             signal: abort.signal,
           });
