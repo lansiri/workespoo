@@ -1,7 +1,8 @@
+import type { SignalCard } from "@/contracts";
 import { findBannedEvaluative, findProtectedCard, findSpeechCue } from "@/lib/lexicon";
 
 /** Rendering used when a model rendering fails a code check. Still labelled as an AI rendering. */
-export const fallbackRendering = (phrase: string): string => `They list ${phrase} as a skill.`;
+export const fallbackRendering = (phrase: string): string => `They list ${lowerFirst(phrase)} as a skill.`;
 
 /** Rendering written by code for a phrase the person wrote or edited themselves. */
 export const personDescribes = (phrase: string): string => `The person describes ${phrase}.`;
@@ -42,7 +43,7 @@ export function textProblem(text: string, sources: readonly string[], maxWords: 
 }
 
 /** Lower-case the first letter unless the word is an acronym or a proper-looking token (SAP, iPad). */
-function lowerFirst(phrase: string): string {
+export function lowerFirst(phrase: string): string {
   const first = phrase.split(/\s+/)[0] ?? "";
   if (/[A-Z].*[A-Z]/.test(first)) return phrase;
   return phrase.charAt(0).toLowerCase() + phrase.slice(1);
@@ -64,4 +65,19 @@ export function codeSummary(phrases: readonly string[]): string {
   if (phrases.length === 0) return "";
   const text = `They talked about ${joinList(phrases.slice(0, 3).map(lowerFirst))}.`;
   return text.length > 300 ? text.slice(0, 297).trimEnd() + "..." : text;
+}
+
+/**
+ * After a signal is removed, restored or reworded, text written earlier by a model may still
+ * mention it. The summary is rebuilt by code, and so is the headline. Only signals that have a
+ * company-view item count: a signal still waiting for its first rendering is not in the company view.
+ */
+export function refreshAggregates(card: SignalCard): SignalCard {
+  const shown = new Set(card.companyView.items.map((i) => i.signalId));
+  const phrases = card.signals.filter((s) => s.status !== "removed" && shown.has(s.id)).map((s) => s.phrase);
+  return {
+    ...card,
+    headline: codeHeadline(phrases),
+    companyView: { ...card.companyView, summary: codeSummary(phrases) },
+  };
 }

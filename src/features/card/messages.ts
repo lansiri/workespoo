@@ -17,6 +17,9 @@ export const cardMessages = {
     staleError: "Some company descriptions are still being prepared. Try again in a moment.",
     approveFailed: "We couldn't approve your card. Please try again.",
     saved: "Saved.",
+    shownAs: "Shown to companies as:",
+    notShownYet: "Not shown to companies yet.",
+    rewriting: "Your new wording is being rewritten for companies. They see the earlier text until it is ready.",
     seeMatches: "See jobs that fit your card",
     draftNotice: "You have changes that aren't approved yet.",
     noEscoShort: "No ESCO match",
@@ -36,6 +39,9 @@ export const cardMessages = {
     staleError: "Joidenkin yritysnäkymän kuvausten valmistelu on vielä kesken. Yritä hetken kuluttua uudelleen.",
     approveFailed: "Korttiasi ei saatu hyväksyttyä. Yritä uudelleen.",
     saved: "Tallennettu.",
+    shownAs: "Yrityksille näytetään:",
+    notShownYet: "Ei vielä näkyvissä yrityksille.",
+    rewriting: "Uutta sanamuotoasi kirjoitetaan yrityksille sopivaksi. Siihen asti ne näkevät aiemman tekstin.",
     seeMatches: "Katso korttiisi sopivat työpaikat",
     draftNotice: "Sinulla on muutoksia, joita ei ole vielä hyväksytty.",
     noEscoShort: "Ei ESCO-vastinetta",
@@ -55,6 +61,9 @@ export const cardMessages = {
     staleError: "Några av företagsbeskrivningarna förbereds fortfarande. Försök igen om en stund.",
     approveFailed: "Vi kunde inte godkänna ditt kort. Försök igen.",
     saved: "Sparat.",
+    shownAs: "Visas för företag som:",
+    notShownYet: "Visas inte för företag än.",
+    rewriting: "Din nya formulering skrivs om för företag. Tills den är klar ser de den tidigare texten.",
     seeMatches: "Se jobb som passar ditt kort",
     draftNotice: "Du har ändringar som inte är godkända än.",
     noEscoShort: "Ingen ESCO-motsvarighet",
@@ -75,6 +84,9 @@ export const cardMessages = {
   approveFailed: string;
   saved: string;
   seeMatches: string;
+  shownAs: string;
+  notShownYet: string;
+  rewriting: string;
   draftNotice: string;
   noEscoShort: string;
 }>;

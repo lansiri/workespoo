@@ -34,7 +34,9 @@ function activeSignals(card: SignalCard) {
 
 /** Built field by field: nothing is copied wholesale from the stored card. */
 function companySignals(card: SignalCard): CardSignalView[] {
-  return activeSignals(card).map((s) => ({
+  // A signal with no company-view text yet (waiting for its first rewrite) stays out of the view.
+  const shown = new Set(card.companyView.items.map((i) => i.signalId));
+  return activeSignals(card).filter((s) => shown.has(s.id)).map((s) => ({
     id: s.id,
     phrase: s.phrase,
     kind: s.kind,

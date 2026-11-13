@@ -1,0 +1,138 @@
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { eq } from "drizzle-orm";
+import { auditLog, jobQueue, signal as signalTable, talent } from "@/db/schema";
+import type { LlmOptions } from "@/lib/llm";
+import { resetLlmState, setLlmFake } from "@/lib/llm/testing";
+import { runReadyJobs } from "@/lib/queue";
+import { createTestDb, type TestDb } from "../../../tests/helpers/db";
+import { jobs } from "./jobs";
+import { cardForCompany, cardForOrganiser } from "./projections";
+import { renderSignal } from "./render";
+import { editCard } from "./review";
+import { approveCard } from "./approval";
+import { loadCard, saveCard } from "./store";
+import { seedCard, seedEsco, seedInterview, signal } from "./test-helpers";
+
+let t: TestDb;
+const TALENT = "tal_test00000001";
+beforeAll(async () => {
+  t = await createTestDb();
+  await seedEsco(t.db);
+}, 120_000);
+afterAll(() => t.close());
+afterEach(() => resetLlmState());
+beforeEach(async () => {
+  await t.db.delete(talent);
+  await t.db.delete(auditLog);
+  await t.db.delete(jobQueue);
+  await seedInterview(t.db);
+  await seedCard(t.db, TALENT, {
+    status: "draft",
+    signals: [
+      signal({ id: "s1", phrase: "Receiving goods", evidence: [{ turnIndex: 1, sentenceFrom: 1, sentenceTo: 1 }] }),
+      signal({ id: "s2", phrase: "Filing supplier claims", evidence: [{ turnIndex: 3, sentenceFrom: 1, sentenceTo: 2 }] }),
+      signal({ id: "s3", phrase: "Welding", addedBy: "person", evidence: [] }),
+    ],
+  });
+});
+
+const OWN = "Toimittajareklamaatioiden hoito";
+const good = { items: [{ i: 0, phrase: "Handling supplier claims", text: "They documented a short delivery and filed a claim with the supplier." }], };
+const edit = (signalId = "s2", phrase = OWN) => editCard(t.db, TALENT, { op: "phrase", signalId, phrase });
+const rendered = async (id = "s2") => {
+  const card = (await loadCard(t.db, TALENT, "draft")) ?? (await loadCard(t.db, TALENT, "approved"))!;
+  return { signal: card.signals.find((s) => s.id === id)!, item: card.companyView.items.find((i) => i.signalId === id), card };
+};
+
+describe("renderSignal (prompt B)", () => {
+  it("rewrites phrase and company text from the person's wording and evidence, as an analyst call with a 15 s deadline", async () => {
+    await edit();
+    let seen: LlmOptions | undefined;
+    setLlmFake((o) => {
+      seen = o;
+      return good;
+    });
+    expect(await renderSignal(t.db, { talentId: TALENT, signalId: "s2", cardVersion: 1 })).toBe("applied");
+    expect(seen).toMatchObject({ role: "analyst", purpose: "card.render", deadlineMs: 15_000 });
+    expect(seen?.messages[1].content).toContain(`phrase: ${OWN}`);
+    expect(seen?.messages[1].content).toContain("- Once a truck came with the wrong pallets");
+    const { signal: s, item, card } = await rendered();
+    expect(s).toMatchObject({ phrase: "Handling supplier claims", phraseOwn: OWN });
+    expect(s.esco?.labelEn).toBe("manage supplier claims");
+    expect(item).toEqual({ signalId: "s2", text: good.items[0].text, stale: false });
+    expect(card.companyView.summary).toContain("handling supplier claims");
+  });
+
+  it("is a queue job: the edit returns at once and the worker applies the rewrite", async () => {
+    await edit();
+    expect((await rendered()).item?.stale).toBe(true);
+    setLlmFake(() => good);
+    expect(await runReadyJobs(t.db, jobs)).toBe(1);
+    expect((await rendered()).item?.stale).toBe(false);
+  });
+
+  it.each([
+    ["the model call fails", () => { throw new Error("429"); }],
+    ["the phrase is not translated", () => ({ items: [{ i: 0, phrase: "Reklamaatioiden käsittely", text: "They handled claims for a supplier." }] })],
+    ["the phrase has an evaluative word", () => ({ items: [{ i: 0, phrase: "Junior claims handling", text: "They handled claims for a supplier." }] })],
+    ["the text quotes the person", () => ({ items: [{ i: 0, phrase: "Handling claims", text: "I checked every pallet against the delivery note, took photos and filed the claim in SAP before the driver left." }] })],
+    ["the text mentions speaking", () => ({ items: [{ i: 0, phrase: "Handling claims", text: "They spoke about claims in the interview." }] })],
+    ["the text praises", () => ({ items: [{ i: 0, phrase: "Handling claims", text: "They are an excellent claims handler." }] })],
+  ])("keeps the previous text when %s", async (_n, answer) => {
+    const before = await rendered();
+    await edit();
+    setLlmFake(answer);
+    expect(await renderSignal(t.db, { talentId: TALENT, signalId: "s2", cardVersion: 1 })).toBe("kept");
+    const after = await rendered();
+    expect(after.signal.phrase).toBe(before.signal.phrase);
+    expect(after.item).toEqual({ ...before.item, stale: true });
+  });
+
+  it("a stale job for an older version changes nothing", async () => {
+    await edit();
+    let called = false;
+    setLlmFake(() => { called = true; return good; });
+    expect(await renderSignal(t.db, { talentId: TALENT, signalId: "s2", cardVersion: 0 + 7 })).toBe("kept");
+    expect(called).toBe(false);
+    expect((await rendered()).signal.phrase).toBe("Filing supplier claims");
+  });
+
+  it("discards an answer when the person changed the wording while the model was working", async () => {
+    await edit();
+    setLlmFake(async () => {
+      await edit("s2", "Reklamaatioiden käsittely");
+      return good;
+    });
+    expect(await renderSignal(t.db, { talentId: TALENT, signalId: "s2", cardVersion: 1 })).toBe("kept");
+    expect((await rendered()).signal).toMatchObject({ phrase: "Filing supplier claims", phraseOwn: "Reklamaatioiden käsittely" });
+  });
+
+  it("a signal with no previous text stays out of the company view until the rewrite succeeds; code writes the fixed sentence when there is no evidence", async () => {
+    const draft0 = (await loadCard(t.db, TALENT, "draft"))!;
+    await saveCard(t.db, TALENT, { ...draft0, companyView: { ...draft0.companyView, items: draft0.companyView.items.filter((i) => i.signalId !== "s3") } });
+    await approveCard(t.db, TALENT); // s3 has no text yet
+    expect((await cardForCompany(t.db, TALENT))!.signals.map((s) => s.id)).toEqual(["s1", "s2"]);
+    expect((await cardForOrganiser(t.db, TALENT))!.signals.map((s) => s.id)).toEqual(["s1", "s2"]);
+    await edit("s3", "Hitsaus");
+    const row = await t.db.select().from(signalTable).where(eq(signalTable.id, "s3"));
+    expect(row).toHaveLength(1);
+    // approved card: the edit made a draft at version 2
+    setLlmFake(() => ({ items: [{ i: 0, phrase: "Welding", text: "They are an excellent welder." }] }));
+    expect(await renderSignal(t.db, { talentId: TALENT, signalId: "s3", cardVersion: 2 })).toBe("applied");
+    const draft = (await loadCard(t.db, TALENT, "draft"))!;
+    expect(draft.companyView.items.find((i) => i.signalId === "s3")?.text).toBe("They list welding as a skill.");
+    expect((await cardForCompany(t.db, TALENT))!.signals.map((s) => s.id)).toEqual(["s1", "s2"]); // approved v1 unchanged
+  });
+
+  it("approval never waits: a pending rewrite is approved with the previous text and applies later to the approved card", async () => {
+    await edit();
+    await approveCard(t.db, TALENT);
+    expect(JSON.stringify(await cardForCompany(t.db, TALENT))).not.toContain("Toimittaja");
+    setLlmFake(() => good);
+    expect(await renderSignal(t.db, { talentId: TALENT, signalId: "s2", cardVersion: 1 })).toBe("applied");
+    const company = (await cardForCompany(t.db, TALENT))!;
+    expect(company.signals.find((s) => s.id === "s2")).toMatchObject({ phrase: "Handling supplier claims", rendering: good.items[0].text });
+    expect((await t.db.select().from(signalTable).where(eq(signalTable.id, "s2")))[0].phrase).toBe("Handling supplier claims");
+    expect(JSON.stringify(company)).not.toContain("Toimittaja");
+  });
+});

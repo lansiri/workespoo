@@ -4,10 +4,10 @@ import { LookingFor, SignalId, type SignalCard } from "@/contracts";
 import type { Db } from "@/db/client";
 import { talent } from "@/db/schema";
 import { audit } from "@/lib/audit";
-import { escoTopMatch } from "@/lib/esco";
 import { HttpError } from "@/lib/http";
 import { findProtectedCard, stripQualityWords } from "@/lib/lexicon";
-import { codeHeadline, codeSummary, personDescribes } from "./checks";
+import { refreshAggregates } from "./checks";
+import { enqueueRender } from "./render";
 import { loadCard, saveCard } from "./store";
 
 /** The edits a person can make while reviewing (PATCH /api/card). */
@@ -34,19 +34,6 @@ async function draftForEdit(db: Db, talentId: string): Promise<SignalCard> {
     status: "draft",
     approvedAt: null,
     signals: approved.signals.map((s) => ({ ...s, status: "proposed" as const })),
-  };
-}
-
-/**
- * After a signal is removed, restored or reworded, text written earlier by a model may still
- * mention it. The summary is rebuilt by code, and so is the headline when it names the phrase.
- */
-function refreshAggregates(card: SignalCard): SignalCard {
-  const active = card.signals.filter((s) => s.status !== "removed").map((s) => s.phrase);
-  return {
-    ...card,
-    headline: codeHeadline(active),
-    companyView: { ...card.companyView, summary: codeSummary(active) },
   };
 }
 
@@ -118,19 +105,17 @@ async function applyEdit(db: Db, talentId: string, edit: CardEdit): Promise<{ se
   sensitive = findProtectedCard(own).length > 0;
   const phrase = stripQualityWords(own).slice(0, 60).trim();
   if (phrase.length < 2) throw new HttpError(400, "invalid_phrase", "Write a few words about what you can do");
-  let esco = null;
-  try {
-    esco = await escoTopMatch(db, phrase);
-  } catch {
-    esco = null;
-  }
-  const item = { signalId: target.id, text: personDescribes(phrase), stale: false };
+  // The person's wording is stored and shown to them. `phrase` and the company-view item keep
+  // their previous text until the re-render (prompt B) has answered and passed the code checks.
+  const previous = card.companyView.items.find((i) => i.signalId === target.id);
   card = {
     ...card,
-    signals: card.signals.map((s) => (s.id === target.id ? { ...s, phrase, phraseOwn: own.slice(0, 80), esco } : s)),
+    signals: card.signals.map((s) => (s.id === target.id ? { ...s, phraseOwn: own.slice(0, 80) } : s)),
     companyView: {
       ...card.companyView,
-      items: [...card.companyView.items.filter((i) => i.signalId !== target.id), item],
+      items: previous
+        ? card.companyView.items.map((i) => (i.signalId === target.id ? { ...i, stale: true } : i))
+        : card.companyView.items,
     },
   };
   card = refreshAggregates(card);
@@ -142,5 +127,6 @@ async function applyEdit(db: Db, talentId: string, edit: CardEdit): Promise<{ se
     subjectId: talentId,
     detail: { signalId: target.id, version: card.version },
   });
+  await enqueueRender(db, { talentId, signalId: target.id, cardVersion: card.version });
   return { sensitive };
 }

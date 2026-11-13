@@ -10,7 +10,8 @@ import { languageCodes } from "./languages";
 import { latestInterview, loadCard } from "./store";
 
 /**
- * Approves the draft: validates it, replaces the approved row, rebuilds the person's `signal`
+ * Approves the draft with whatever company-view text is current: a rewrite still waiting for the
+ * model never delays approval (a signal with no text yet stays out of the company view). Validates it, replaces the approved row, rebuilds the person's `signal`
  * rows (status `approved`) and `talent_language`, writes `card.approved` to the audit log, and
  * enqueues `matching.card_approved`.
  */
@@ -27,10 +28,6 @@ async function approveLocked(db: Db, talentId: string): Promise<{ version: numbe
   if (!draft) throw new HttpError(409, "no_draft", "There is no draft card to approve");
   const active = draft.signals.filter((s) => s.status !== "removed");
   if (active.length === 0) throw new HttpError(409, "approve_empty", "Keep at least one note to approve");
-  const itemFor = new Map(draft.companyView.items.map((i) => [i.signalId, i]));
-  if (active.some((s) => !itemFor.get(s.id) || itemFor.get(s.id)!.stale)) {
-    throw new HttpError(409, "stale_rendering", "Some company descriptions are not ready yet");
-  }
   if (active.some((s) => !signalEvidenceIsValid(s))) {
     throw new HttpError(409, "evidence_invalid", "A note has no words behind it");
   }

@@ -53,8 +53,8 @@ export function CardReview() {
   const card = state.card;
   const active = card.signals.filter((s) => s.status !== "removed");
   const removed = card.signals.filter((s) => s.status === "removed");
-  const preparing = active.some((s) => s.stale || s.rendering === null);
-  const canApprove = active.length > 0 && !preparing && !busy;
+  // Approval never waits for a rewrite: it uses the company text that is current.
+  const canApprove = active.length > 0 && !busy;
   const errorText =
     actionError === null ? null : actionError === "stale_rendering" ? m.staleError : actionError === "approve_empty" ? a.approveEmpty : m.saveFailed;
 
@@ -121,7 +121,7 @@ export function CardReview() {
       {card.status === "draft" ? (
         <section className="space-y-2">
           <Button type="button" data-testid="approve-card" disabled={!canApprove} onClick={() => void approve()}>
-            {preparing ? a.approvePreparing : a.approve}
+            {a.approve}
           </Button>
         </section>
       ) : (
@@ -183,8 +183,11 @@ function SignalItem(props: {
           <Button type="button" size="sm" variant="ghost" onClick={() => setEditing(false)}>{core.cancel}</Button>
         </div>
       ) : (
-        <p className="font-medium" data-testid="signal-phrase">{s.phrase}</p>
+        <p className="font-medium" data-testid="signal-phrase">{s.phraseOwn ?? s.phrase}</p>
       )}
+      {s.phraseOwn && s.phraseOwn !== s.phrase ? (
+        <p className="text-sm" data-testid="signal-shown-as">{m.shownAs} {s.phrase}</p>
+      ) : null}
       {props.sensitive ? <p role="status" data-testid="signal-sensitive-warning">{c.sensitiveWarning}</p> : null}
       {s.addedBy === "person" ? <p className="text-sm">{c.addedByYou}</p> : null}
       <p className="text-sm" data-testid="signal-esco">
@@ -202,7 +205,8 @@ function SignalItem(props: {
       ) : null}
       <div>
         <h3 className="text-sm font-medium">{c.companySees}</h3>
-        <p data-testid="signal-rendering">{s.rendering}</p>
+        <p data-testid="signal-rendering">{s.rendering ?? m.notShownYet}</p>
+        {s.stale ? <p className="text-sm" data-testid="signal-rewriting">{m.rewriting}</p> : null}
       </div>
       <div className="flex gap-2">
         <Button type="button" size="sm" variant="outline" data-testid="signal-edit" disabled={props.busy} onClick={() => setEditing(true)}>{c.edit}</Button>

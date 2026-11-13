@@ -18,27 +18,29 @@ const NOW = new Date("2026-11-26T12:00:00Z");
 const remaining = async () => (await t.db.select({ id: talent.id }).from(talent)).map((r) => r.id).sort();
 
 describe("purge", () => {
-  it("deletes live demo talents past purgeAfter, cascades, and audits a count", async () => {
+  it("deletes every non-synthetic person past purgeAfter whatever liveDemo says, cascades, and audits a count", async () => {
     await seedInterview(t.db, { talentId: "tal_past0000001", interviewId: "int_past0000001", handle: "Moss-10" });
     await seedInterview(t.db, { talentId: "tal_future00001", interviewId: "int_future00001", handle: "Moss-11" });
     await seedInterview(t.db, { talentId: "tal_notlive0001", interviewId: "int_notlive0001", handle: "Moss-12" });
     await seedInterview(t.db, { talentId: "tal_nodate00001", interviewId: "int_nodate00001", handle: "Moss-13" });
     await t.db.update(talent).set({ liveDemo: true, purgeAfter: new Date(NOW.getTime() - 1000) }).where(eq(talent.id, "tal_past0000001"));
     await t.db.update(talent).set({ liveDemo: true, purgeAfter: new Date(NOW.getTime() + 1000) }).where(eq(talent.id, "tal_future00001"));
-    await t.db.update(talent).set({ liveDemo: false, purgeAfter: new Date(NOW.getTime() - 1000) }).where(eq(talent.id, "tal_notlive0001"));
+    await t.db.update(talent).set({ liveDemo: false, purgeAfter: new Date(NOW.getTime() - 1000), synthetic: true }).where(eq(talent.id, "tal_notlive0001"));
     await t.db.update(talent).set({ liveDemo: true }).where(eq(talent.id, "tal_nodate00001"));
+    await seedInterview(t.db, { talentId: "tal_flagoff0001", interviewId: "int_flagoff0001", handle: "Moss-14" });
+    await t.db.update(talent).set({ liveDemo: false, synthetic: false, purgeAfter: new Date(NOW.getTime() - 1000) }).where(eq(talent.id, "tal_flagoff0001"));
 
     for (const id of ["tal_past0000001", "tal_future00001"]) {
       await recordConsent(t.db, { subjectType: "talent", subjectId: id, kind: "pool" });
     }
-    expect(await purgeLiveSessions(t.db, NOW)).toBe(1);
+    expect(await purgeLiveSessions(t.db, NOW)).toBe(2); // liveDemo is irrelevant; synthetic people stay
     const consents = (await t.db.select().from(consent)).map((c) => c.subjectId);
     expect(consents).not.toContain("tal_past0000001");
     expect(consents).toContain("tal_future00001");
     expect(await remaining()).toEqual(["tal_future00001", "tal_nodate00001", "tal_notlive0001"]);
     expect(await t.db.select().from(interview).where(eq(interview.id, "int_past0000001"))).toHaveLength(0);
     const [ev] = await listAudit(t.db, { action: "talent.purged" });
-    expect(ev.detail).toEqual({ count: 1 });
+    expect(ev.detail).toEqual({ count: 2 });
 
     // later: the clock moves on and the future one goes too
     expect(await purgeLiveSessions(t.db, new Date(NOW.getTime() + 2000))).toBe(1);
