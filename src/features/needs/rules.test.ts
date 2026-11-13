@@ -274,6 +274,59 @@ describe("lint for Need Card text (needcard-F4, F9)", () => {
     }
   });
 
+  it("treats a country as a place only for work that happens there or in front of a business word", () => {
+    for (const text of [
+      "Customers in Sweden and Norway",
+      "Travel to Germany every month",
+      "Knowledge of German accounting standards",
+      "Experience with the Chinese and Japanese markets",
+      "Based in Estonia or Latvia",
+    ]) {
+      expect(protectedHits(text), text).toEqual([]);
+      expect(companyTextProblem(text), text).toBeNull();
+    }
+    for (const text of [
+      "Suitable for Indian applicants",
+      "Ideal for Syrian newcomers",
+      "Open to Somali applicants",
+      "Born in India",
+      "Grew up in Somalia",
+      "Raised in Turkey",
+      "Studied in Pakistan",
+      "Indian or Pakistani preferred",
+    ]) {
+      expect(protectedHits(text), text).not.toEqual([]);
+      expect(companyTextProblem(text), text).not.toBeNull();
+    }
+  });
+
+  it("catches asks about being from somewhere, Finland included, and leaves the labour market alone", () => {
+    for (const text of [
+      "Must be Finnish",
+      "Should be a Finnish citizen",
+      "Must be German",
+      "Finnish background preferred",
+      "Nordic applicants only",
+      "European passport holders",
+      "Finns preferred",
+      "Haemme kantasuomalaista tekijää",
+    ]) {
+      expect(protectedHits(text), text).not.toEqual([]);
+      expect(companyTextProblem(text), text).not.toBeNull();
+    }
+    for (const text of [
+      "Knowledge of Finnish labour law",
+      "Sales experience in the Nordic market",
+      "Fluent Finnish",
+      "Finnish and English, written and spoken",
+      "Must be able to work in Finnish",
+      "Suomalaisen työlainsäädännön tuntemus",
+    ]) {
+      expect(protectedHits(text), text).toEqual([]);
+      expect(companyTextProblem(text), text).toBeNull();
+    }
+  });
+
   it("still catches asks about the person", () => {
     for (const text of ["Native speaker of Finnish", "Mother tongue Finnish", "Good health required", "Aged 25-35", "Nationality: Finnish", "terveys"]) {
       expect(companyTextProblem(text), text).not.toBeNull();

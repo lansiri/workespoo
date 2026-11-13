@@ -87,10 +87,35 @@ const PLACE_ALTERNATION = [...COUNTRIES_AND_DEMONYMS]
   .sort((a, b) => b.length - a.length)
   .map((c) => c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
   .join("|");
-/** A place used as a place: "in Norway", "the Norwegian market". A demonym for people ("Indian background") is not. */
+/**
+ * A place used as a place, and nothing looser. Two shapes only:
+ *  - work that happens somewhere: "work in Norway", "travel to Germany", "customers in Sweden and Norway";
+ *  - a country or its adjective in front of a business word: "the Norwegian market", "German accounting standards".
+ * Everything else that names a country or a nationality stays a hit, because it is usually about
+ * where a person comes from: "born in India", "suitable for Indian applicants", "raised in Turkey".
+ */
+const PLACE = `(?:${PLACE_ALTERNATION})`;
+const PLACE_LIST = String.raw`${PLACE}(?:\s*(?:,|/|&|and|or)\s*(?:the\s+)?${PLACE})*`;
+const WORK_SOMEWHERE = String.raw`(?:work(?:ing|s)?|travel(?:ling|ing|s)?|trips?|relocat(?:e|ion|ing)|based|located|operat(?:e|es|ing|ions?)|projects?|customers?|clients?|sales|deliveries|assignments?|sites?|offices?|markets?|business|presence)`;
+const BUSINESS_WORD = String.raw`(?:markets?|marketplace|regions?|customers?|clients?|legislation|laws?|regulations?|standards?|accounting|taxation|tax|business|operations?|subsidiar(?:y|ies)|suppliers?|partners?|projects?|sales|offices?|branch(?:es)?|units?|sites?|plants?|factor(?:y|ies))`;
 const PLACE_USE = new RegExp(
-  String.raw`(?<![\p{L}])(?:(?:in|to|for)\s+(?:${PLACE_ALTERNATION})|(?:${PLACE_ALTERNATION})\s+(?:markets?|regions?|marketplace))(?![\p{L}])`,
+  String.raw`(?<![\p{L}])(?:${WORK_SOMEWHERE}\s+(?:in|to|across|within|throughout)\s+(?:the\s+)?${PLACE_LIST}|${PLACE_LIST}\s+${BUSINESS_WORD})(?![\p{L}])`,
   "giu",
+);
+
+/**
+ * Asks about where a person is from, written with words the shared lists leave alone on purpose
+ * ("Finnish" and "Nordic" are fine in "Finnish labour law" or "the Nordic market"). Checked on
+ * the text as written, before anything is stripped.
+ */
+const ORIGIN_WORD = String.raw`(?:${PLACE_ALTERNATION}|Finnish|Finn|Nordic|Scandinavian|European)`;
+const ORIGIN_ASK = new RegExp(
+  [
+    String.raw`(?<![\p{L}])(?:must|should|has to|have to|needs? to)\s+be\s+(?:an?\s+)?${ORIGIN_WORD}(?![\p{L}])`,
+    String.raw`(?<![\p{L}])${ORIGIN_WORD}[\s-]+(?:citizens?|nationals?|born|origin|background|descent|heritage|applicants?|candidates?|people|persons?|workers?|men|women|passport)(?![\p{L}])`,
+    String.raw`(?<![\p{L}])(?:Finns?|kantasuomalai\p{L}*|syntyperäi\p{L}*)(?![\p{L}])`,
+  ].join("|"),
+  "iu",
 );
 
 /** The text with language names, work permits, health-sector phrases and places-as-places taken out. */
@@ -117,6 +142,8 @@ export function protectedHits(text: string): string[] {
   // "Native Finnish" is a proxy for origin; the work needs a language level, not a birthplace.
   const native = NATIVE_ORIGIN.exec(text);
   if (native) hits.push(native[0].toLowerCase());
+  const origin = ORIGIN_ASK.exec(text);
+  if (origin) hits.push(origin[0].toLowerCase());
   return hits;
 }
 
