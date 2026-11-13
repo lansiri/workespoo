@@ -57,7 +57,7 @@
     ]
   },
   "answers": {
-    "recent_work": "Jag är bokförare på ett fastighetsbolag i Esbo, och har jobbat med bokföring i över tjugo år. Jag sköter huvudboken, leverantörsreskontran och momsdeklarationerna för ett femtiotal bostadsbolag. Jag är 56 och kom tillbaka efter ett års sjukledighet för cancer, och jobbar nu heltid igen.",
+    "recent_work": "Jag är bokförare på ett fastighetsbolag i Esbo, och har jobbat med bokföring i över tjugo år. Jag sköter leverantörsreskontran och momsdeklarationerna för ett femtiotal bostadsbolag. Jag är 56 och kom tillbaka efter ett års sjukledighet för cancer, och sköter sedan dess huvudboken heltid igen.",
     "example": "I våras hittade jag i bokslutet att ett bostadsbolag hade bokfört en stor faktura för fönsterbyte som underhåll, fast det var en grundförbättring som borde aktiveras. Jag räknade om avskrivningarna, pratade med revisorn och rättade bokföringen innan bokslutet lades fram för bolagsstämman. Då blev både resultatet och skatten rätt.",
     "tools": "Jag arbetar i ett ekonomisystem för fastighetsbolag och använder Excel för avstämningar. Fakturorna kommer som e-fakturor och jag godkänner dem i inköpsflödet. Moms- och skattedeklarationerna lämnar jag in via skatteförvaltningens tjänst, och bokslutet gör jag i samarbete med revisorn.",
     "people": "Jag jobbar i ett team på fyra personer, och styrelseordförandena i bolagen ringer mig ofta med frågor. Aktieägarna får fråga om sin egen avgift och jag förklarar utan jargong. Revisorn träffar jag två gånger per år, och jag förbereder alla underlag åt honom.",
@@ -81,13 +81,7 @@
         "sick leave",
         "illness"
       ],
-      "skillKeywords": [
-        "ledger",
-        "bookkeep",
-        "account",
-        "vat",
-        "invoice"
-      ]
+      "skillKeywords": ["ledger", "bookkeep", "vat", "accounts payable"]
     }
   ],
   "twinOf": null

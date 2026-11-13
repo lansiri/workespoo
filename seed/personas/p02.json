@@ -78,15 +78,7 @@
       "alsoCheck": [
         "dyslexic"
       ],
-      "skillKeywords": [
-        "react",
-        "front-end",
-        "frontend",
-        "typescript",
-        "javascript",
-        "interface",
-        "component"
-      ]
+      "skillKeywords": ["test", "debug"]
     }
   ],
   "twinOf": null

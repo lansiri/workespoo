@@ -55,7 +55,7 @@
     ]
   },
   "answers": {
-    "recent_work": "For the last three years I've been a developer at a company that runs electricity metering. Mostly Python and PostgreSQL: I maintain the nightly jobs that pull sensor readings in and load them into the database, and I look after the checks on top of that. I'm 38, and we moved here from Porto in Portugal when my husband got a job at a research institute, so this is my first job in Finland.",
+    "recent_work": "For the last three years I've been a developer at a company that runs electricity metering. Mostly Python and PostgreSQL: I maintain the nightly jobs that pull sensor readings in and load them into the database, and I look after the checks on top of that. I'm 38, and we moved here from Porto in Portugal when my husband got a job at a research institute, so the Python and SQL checks I write are my first work in Finland.",
     "example": "Last winter the morning report kept showing holes for some meters. I went through the loader logs and found that one supplier's files arrived twice with different timestamps, and my job was dropping the second batch. I changed the load to compare the batches properly, and I added a check that raises an alert when a meter has no readings for six hours. After that the holes were gone.",
     "tools": "Python every day, with pandas for the cleaning, and PostgreSQL for storage. SQL for the checks. Git and a CI pipeline, so every change gets tested before it goes live. I read logs a lot, honestly. Cloud-wise I only know the basics, we run on a few virtual machines.",
     "people": "I work in a team of five. The operations team are the ones who read my data every morning, so I meet them weekly and show what changed. Their questions usually decide what I fix next. The data owner at the supplier I only deal with by email, mostly when files are late.",
@@ -80,12 +80,7 @@
       "alsoCheck": [
         "Portuguese"
       ],
-      "skillKeywords": [
-        "python",
-        "pipeline",
-        "sql",
-        "data"
-      ]
+      "skillKeywords": ["python", "postgres", "sql"]
     }
   ],
   "twinOf": null

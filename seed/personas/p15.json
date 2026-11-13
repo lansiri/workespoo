@@ -56,7 +56,7 @@
     ]
   },
   "answers": {
-    "recent_work": "I work in the customer service team of an online electronics shop, on chat and email, and I answer calls on busy days. I handle returns, refunds, delivery problems and warranty questions. I'm 23, I grew up in Vantaa and my parents come from Vietnam. I did my business studies at a university of applied sciences and started here on an internship.",
+    "recent_work": "I work in the customer service team of an online electronics shop, on chat and email, and I answer calls on busy days. I handle delivery problems and warranty questions. I'm 23, I grew up in Vantaa and my parents come from Vietnam, and on chat I deal with returns and refunds on my own. I did my business studies at a university of applied sciences and started here on an internship.",
     "example": "A customer wrote three times that his laptop had not arrived, and he was very angry. I checked the tracking and found the parcel had gone to a wrong pick-up point. I phoned the point, found the parcel, and arranged a courier to bring it the same evening. Then I wrote him a short message explaining what happened, and I added a note in the system so the next agent would know.",
     "tools": "A ticket system, chat, phone, the order system and the courier's tracking pages. I have macros for common answers but I always change them to fit the case. Excel for the monthly report of the return reasons.",
     "people": "We are a team of twelve with two team leads. I talk with the warehouse about missing parcels and with the finance team about refunds. The customers are everyone from students to companies. I am the person who answers the first message and decides whether to solve it or pass it on.",
@@ -79,14 +79,7 @@
       "alsoCheck": [
         "Vietnamese"
       ],
-      "skillKeywords": [
-        "customer",
-        "service",
-        "refund",
-        "return",
-        "support",
-        "ticket"
-      ]
+      "skillKeywords": ["refund", "return"]
     }
   ],
   "twinOf": null

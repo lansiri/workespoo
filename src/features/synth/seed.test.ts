@@ -5,6 +5,12 @@ import { createTestDb, type TestDb } from "../../../tests/helpers/db";
 import { company, digest, eventCompany, matchEvent, needCard, pick, talent } from "@/db/schema";
 import { createFakeEngine } from "./fake-engine";
 import { loadPersonas } from "./persona";
+import { mkdtempSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import path from "node:path";
+import { setLlmFake } from "@/lib/llm";
+import { hasSnapshot, restoreDemoSnapshot, snapshotDemo } from "./snapshot";
+import { assertNoDemoEvent } from "./script-db";
 import { DEMO_EVENT_ID, helsinkiDay, resetDemo, seedDemo, type SeedSummary } from "./seed";
 
 const personas = loadPersonas();
@@ -111,13 +117,80 @@ describe("seedDemo (against the fake engine)", () => {
     expect(idsAfter.some((id) => idsBefore.includes(id))).toBe(false);
   });
 
-  it("resetDemo leaves real people alone", async () => {
-    await t.db.insert(talent).values({ id: "tal_real", handle: "Real-01", synthetic: false, liveDemo: true });
+  it("resetDemo removes rehearsal live-demo people and leaves real people alone", async () => {
+    await t.db.insert(talent).values([
+      { id: "tal_live", handle: "Live-01", synthetic: false, liveDemo: true },
+      { id: "tal_real", handle: "Real-01", synthetic: false, liveDemo: false },
+    ]);
     await resetDemo(t.db);
     expect((await t.db.select().from(talent)).map((p) => p.id)).toEqual(["tal_real"]);
     expect(await t.db.select().from(company)).toHaveLength(0);
     expect(await t.db.select().from(matchEvent)).toHaveLength(0);
   });
+});
+
+describe("snapshot and restore", () => {
+  it("restores the generated state without any model or interview call, and rebuilds the digests", async () => {
+    await resetDemo(t.db);
+    await seedDemo(t.db, { deps: createFakeEngine(t.db, { personas }), personas, now: () => NOW, appUrl: "https://example.test" });
+    const dir = mkdtempSync(path.join(tmpdir(), "snap-"));
+    try {
+      expect(hasSnapshot(dir)).toBe(false);
+      const counts = await snapshotDemo(t.db, dir);
+      expect(hasSnapshot(dir)).toBe(true);
+      expect(counts.talent).toBe(15);
+      expect(counts.company).toBe(8);
+      const before = {
+        talents: (await t.db.select().from(talent)).map((p) => [p.id, p.handle, p.createdAt.toISOString()]).sort(),
+        tokens: (await t.db.select().from(company)).map((c) => c.digestToken).sort(),
+        needs: (await t.db.select().from(needCard)).map((n) => n.id).sort(),
+      };
+      // A rehearsal presenter is in the pool too.
+      await t.db.insert(talent).values({ id: "tal_rehearsal", handle: "Rehearse-01", synthetic: false, liveDemo: true, inPool: true });
+
+      const real = createFakeEngine(t.db, { personas });
+      const forbidden = () => {
+        throw new Error("a model-backed feature was called during restore");
+      };
+      setLlmFake(forbidden);
+      try {
+        const summary = await restoreDemoSnapshot(t.db, {
+          deps: { ...real, startInterview: forbidden, submitTurn: forbidden, settleInterview: forbidden, draftNeedCard: forbidden, computeEligibility: forbidden, runQueue: forbidden } as never,
+          personas,
+          now: () => NOW,
+          appUrl: "https://example.test",
+          dir,
+        });
+        expect(summary.personas).toEqual({ created: 0, kept: 15 });
+        expect(summary.yesterday.digests).toBe(8);
+        expect(summary.today.pitchLeftUndrafted).toBe(true);
+        expect(summary.eligibilityRows).toBeGreaterThan(0);
+      } finally {
+        setLlmFake(null);
+      }
+      const after = {
+        talents: (await t.db.select().from(talent)).map((p) => [p.id, p.handle, p.createdAt.toISOString()]).sort(),
+        tokens: (await t.db.select().from(company)).map((c) => c.digestToken).sort(),
+        needs: (await t.db.select().from(needCard)).map((n) => n.id).sort(),
+      };
+      expect(after).toEqual(before); // same people, same company links, same Need Cards; the rehearsal presenter is gone
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  }, 180_000);
+
+  it("refuses to restore when there is no snapshot", async () => {
+    await expect(restoreDemoSnapshot(t.db, { deps: createFakeEngine(t.db, { personas }), personas, dir: path.join(tmpdir(), "no-such-snapshot") })).rejects.toThrow(/No snapshot/);
+  });
+});
+
+describe("assertNoDemoEvent", () => {
+  it("refuses once the demo event exists", async () => {
+    await resetDemo(t.db);
+    await expect(assertNoDemoEvent(t.db, DEMO_EVENT_ID)).resolves.toBeUndefined();
+    await seedDemo(t.db, { deps: createFakeEngine(t.db, { personas }), personas, now: () => NOW, appUrl: "https://example.test" });
+    await expect(assertNoDemoEvent(t.db, DEMO_EVENT_ID)).rejects.toThrow(/demo event/);
+  }, 120_000);
 });
 
 describe("helsinkiDay", () => {

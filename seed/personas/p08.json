@@ -54,7 +54,7 @@
     ]
   },
   "answers": {
-    "recent_work": "I work on a surgical ward at a hospital, as a registered nurse. I take care of patients before and after operations: I check vital signs, manage pain medication, change dressings and watch for complications. I trained and worked in Kyiv in Ukraine for ten years in a city hospital, and I have worked here for two years after validating my qualification.",
+    "recent_work": "I work on a surgical ward at a hospital, as a registered nurse. I take care of patients before and after operations: I check vital signs, manage pain medication, change dressings and watch for complications. I trained and worked ten years in Kyiv in Ukraine, on a city hospital's surgical ward, managing pain medication and changing dressings, and I have worked here for two years after validating my qualification.",
     "example": "One night a patient after surgery had low blood pressure and was getting confused. I saw the numbers were changing, called the doctor right away and started fluids, as the protocol says. Bleeding was found and he went back to the operating room. I wrote down the times and what I saw, so the team had the full picture.",
     "tools": "We use the hospital patient system for notes and medication, infusion pumps, monitors for blood pressure and oxygen, and wound dressings of different types. I do cannulation and take blood samples. I use the early warning chart to decide when to call a doctor.",
     "people": "A ward team of about twenty nurses and assistants, and doctors on rounds. I work closely with the physiotherapist for patients who need to move early after surgery. I also talk with patients' families when they come to visit and explain what is happening, in simple words. My part is the care for my six patients in each shift.",
@@ -77,14 +77,7 @@
       "alsoCheck": [
         "Ukrainian"
       ],
-      "skillKeywords": [
-        "surg",
-        "wound",
-        "medication",
-        "nurs",
-        "patient",
-        "post-operative"
-      ]
+      "skillKeywords": ["surg", "medication", "dressing", "wound", "professional care in nursing"]
     }
   ],
   "twinOf": null

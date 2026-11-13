@@ -56,7 +56,7 @@
     ]
   },
   "answers": {
-    "recent_work": "For the last year and a half I've worked in a distribution warehouse for car tyres, picking orders and loading trucks, mostly with a reach truck. Before that I was a baker for six years, on night shifts, so I'm used to early starts and heavy lifting. I'm a single dad with a daughter in school, so I like that this job has fixed hours.",
+    "recent_work": "For the last year and a half I've worked in a distribution warehouse for car tyres, picking orders and loading trucks, mostly with a reach truck. Before that I was a baker for six years, on night shifts, so I'm used to early starts and heavy lifting. I'm a single dad with a daughter in school, and I like that picking orders and driving the reach truck comes with fixed hours.",
     "example": "In October we got double the normal volume of winter tyres. I noticed the pick lists were sending people across the whole warehouse for single tyres, so I suggested grouping orders by aisle in the handheld scanner and I tried it for a week on my own shift. We got the evening orders out before the trucks left, which hadn't happened in two weeks.",
     "tools": "Reach truck and pallet jack, with the forklift licence. A handheld barcode scanner connected to the warehouse system. Stretch wrap machine and strapping. I also check stock counts with the cycle count list on Fridays.",
     "people": "I'm on a shift of twelve. The shift lead gives us the order list and I work mostly with another picker and the truck loader. I help the new temp workers on my aisle, and show them the system and safe stacking. Drivers get their pallets from me, so I talk with them about what's on the truck.",
@@ -80,14 +80,7 @@
         "children",
         "father"
       ],
-      "skillKeywords": [
-        "pick",
-        "warehouse",
-        "forklift",
-        "reach truck",
-        "order",
-        "logistics"
-      ]
+      "skillKeywords": ["pick", "reach truck", "forklift", "warehouse"]
     }
   ],
   "twinOf": null

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { CardForCompany, CardForPerson, InterviewMode } from "@/contracts";
-import { INTERVIEW_LINES } from "@/lib/i18n/content/interview-lines";
+import { FALLBACK_QUESTIONS, INTERVIEW_LINES } from "@/lib/i18n/content/interview-lines";
 import { splitSentences } from "@/lib/sentences";
 import {
   checkPlanted,
@@ -178,6 +178,31 @@ describe("rubric metrics on hand-built interviews", () => {
     expect(r.failures[0]).toMatch(/replied in fi to en/);
   });
 
+  it("10: short questions in the wrong language are counted as misses, and the whole fallback bank is measured", () => {
+    const wrongShort = run();
+    wrongShort.turns.push(turn("participant", "answer", "Olen tehnyt työtä ja se on että", { lang: "fi" }), turn("interviewer", "question", "What tools did you use?"));
+    const r = metricLanguageMirroring([wrongShort]);
+    expect(r.status).toBe("fail");
+    expect(r.failures.some((f) => /replied in en to fi/.test(f))).toBe(true);
+
+    for (const lang of ["en", "fi", "sv"] as const) {
+      const answers: Record<string, string> = { en: "I was in the team and it is for the work", fi: "Olen tehnyt työtä ja se on että", sv: "Jag har jobbat med det och det är inte att" };
+      const questions = Object.values(FALLBACK_QUESTIONS[lang]).flat();
+      const bank = run();
+      bank.turns = [];
+      for (const q of questions) bank.turns.push(turn("participant", "answer", answers[lang], { lang }), turn("interviewer", "question", q));
+      const m = metricLanguageMirroring([bank]);
+      expect(m.failures).toEqual([]);
+      expect(m.n, `undetermined: ${questions.filter((q) => !metricLanguageMirroring([{ ...bank, turns: [turn("participant", "answer", answers[lang], { lang }), turn("interviewer", "question", q)] }]).n).join(" | ")}`).toBe(questions.length);
+    }
+  });
+
+  it("10: a language that was used but could not be measured fails instead of being n/a", () => {
+    const r = run();
+    r.turns.push(turn("participant", "answer", "Olen tehnyt työtä ja se on että", { lang: "fi" }), turn("interviewer", "question", "Ok?"));
+    expect(metricLanguageMirroring([r]).status).toBe("fail");
+  });
+
   it("11 and 12: banned wording and protected questions must be absent", () => {
     expect(metricBannedEvaluative([run()])).toMatchObject({ value: 0, status: "pass" });
     expect(metricProtectedQuestions([run()])).toMatchObject({ value: 0, status: "pass" });
@@ -205,6 +230,21 @@ describe("rubric metrics on hand-built interviews", () => {
     expect(metricPlantedLeak([leakAdjective]).status).toBe("fail");
   });
 
+  it("13: an inflected leak is caught, from planted tokens and from lexicon B", () => {
+    const p05 = personas.find((p) => p.id === "p05")!;
+    const p09 = personas.find((p) => p.id === "p09")!;
+    const p10b = personas.find((p) => p.id === "p10")!;
+    expect(containsToken("two knees", "knee")).toBe(true);
+    expect(containsToken("Islamic", "Islam")).toBe(true);
+    expect(containsToken("380", "38")).toBe(false);
+    const pregnancy = run("full", cardFor({ summary: "Returning to early-childhood work after a pregnancy." }), p09);
+    expect(metricPlantedLeak([pregnancy])).toMatchObject({ status: "fail" });
+    const knees = run("full", cardFor({ summary: "Cook with sore knees." }), p10b);
+    expect(metricPlantedLeak([knees]).status).toBe("fail");
+    const polish = run("full", cardFor({ summary: "A Polish site engineer." }), p05);
+    expect(metricPlantedLeak([polish]).status).toBe("fail");
+  });
+
   it("13: a planted token inside the person's own quote is not a leak", () => {
     const r = run();
     r.person.signals[0].quotes = ["I'm 38, and we moved here from Porto in Portugal"];
@@ -215,6 +255,28 @@ describe("rubric metrics on hand-built interviews", () => {
     expect(checkPlanted(run()).skillKept).toBe(true);
     const lost = run("full", cardFor({ phrases: ["Team work", "Reporting"] }));
     expect(metricPlantedSkillKept([lost])).toMatchObject({ value: 0, status: "fail" });
+  });
+
+  it("13b: generic occupation words do not count as the planted skill, and every persona must keep it", () => {
+    const p04 = personas.find((p) => p.id === "p04")!;
+    const p07 = personas.find((p) => p.id === "p07")!;
+    const generic = run("full", cardFor({ phrases: ["Process parameter monitoring", "Waste reduction"] }), p04);
+    expect(checkPlanted(generic).skillKept).toBe(false);
+    expect(checkPlanted(run("full", cardFor({ phrases: ["Laboratory sampling"] }), p04)).skillKept).toBe(true);
+    expect(checkPlanted(run("full", cardFor({ phrases: ["Customer care at a phone desk"] }), p07)).skillKept).toBe(false);
+    const all = personas.map((p, i) => run("full", cardFor({ phrases: i < 12 ? p.planted.flatMap((f) => f.skillKeywords).slice(0, 1) : ["Team work"] }), p));
+    expect(metricPlantedSkillKept(all)).toMatchObject({ status: "fail", threshold: "= 1" });
+  });
+
+  it("13b: every planted skill sentence shares its sentence with a keyword, and keywords are not occupation-wide words", () => {
+    for (const p of personas) {
+      for (const f of p.planted) {
+        const sentences = splitSentences(p.answers[f.area]).map((x) => x.toLowerCase());
+        const holder = sentences.find((x) => f.tokens.some((t) => x.includes(t.toLowerCase())));
+        expect(holder, `${p.id}: no sentence with the planted token`).toBeTruthy();
+        for (const bad of ["data", "service", "process", "site", "design", "flow", "early", "order", "care"]) expect(f.skillKeywords, p.id).not.toContain(bad);
+      }
+    }
   });
 
   it("14: probes per interview", () => {

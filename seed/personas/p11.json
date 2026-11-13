@@ -54,7 +54,7 @@
     ]
   },
   "answers": {
-    "recent_work": "Olen siivonnut toimistoja ja kouluja yli kolmekymmentä vuotta, nyt viimeiset kuusi vuotta isossa koulussa Espoossa. Teen iltavuoroa, ja minulla on oma alue: luokkahuoneet, käytävät ja ruokala. Olen 61 ja minulla on ollut selkävaivoja, joten olen oppinut työtavat, joilla raskaita nostoja ei tule.",
+    "recent_work": "Olen siivonnut toimistoja ja kouluja yli kolmekymmentä vuotta, nyt viimeiset kuusi vuotta isossa koulussa Espoossa. Teen iltavuoroa, ja minulla on oma alue: luokkahuoneet, käytävät ja ruokala. Olen 61 ja minulla on ollut selkävaivoja, joten olen oppinut siivoamaan niin, ettei raskaita nostoja tule.",
     "example": "Viime keväänä ruokalan lattia oli liukas joka aamu, vaikka se pestiin illalla. Huomasin, että pesuaineen annostus oli liian suuri eikä sitä huuhdeltu pois. Pienensin annostusta ohjeen mukaan ja lisäsin huuhtelukierroksen, ja lattia oli kuiva ja siisti aamulla. Kerroin muutoksesta myös muille vuoroille.",
     "tools": "Käytän ajettavaa lattianpesukonetta, kiillotuskonetta, moppeja ja mikrokuituliinoja. Pesuaineet annostelen annostelijalla, ja tunnen käyttöturvallisuustiedotteet ja merkinnät. Jätteet lajittelen ja tilaan tarvikkeet omalle alueelleni listan mukaan.",
     "people": "Meillä on neljän hengen tiimi, ja esimies käy kerran viikossa. Opettajat ja keittiön väki kertovat minulle suoraan, jos jokin pitää tehdä. Olen myös perehdyttänyt kaksi uutta siivoojaa: näytän koneet ja kemikaalit ja kuljen ensimmäisen viikon mukana kierroksella.",
@@ -78,12 +78,7 @@
         "back pain",
         "back problems"
       ],
-      "skillKeywords": [
-        "clean",
-        "floor",
-        "chemical",
-        "school"
-      ]
+      "skillKeywords": ["clean", "floor"]
     }
   ],
   "twinOf": null

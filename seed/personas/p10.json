@@ -79,13 +79,7 @@
       "alsoCheck": [
         "operation"
       ],
-      "skillKeywords": [
-        "cook",
-        "kitchen",
-        "menu",
-        "food",
-        "chef"
-      ]
+      "skillKeywords": ["prep", "cooking", "cook"]
     }
   ],
   "twinOf": null

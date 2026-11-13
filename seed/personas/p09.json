@@ -61,7 +61,7 @@
     "people": "I vårt arbetslag är vi tre vuxna, och jag har ansvaret för planeringen. Jag har utvecklingssamtal med föräldrarna två gånger per år och pratar med dem vid hämtningen nästan varje dag. Ibland samarbetar jag med speciallärare och talterapeut när ett barn behöver stöd.",
     "beyond": "Under studierna gjorde jag praktik i en förskola med många flerspråkiga barn, och jag har varit scoutledare i fyra år. Med scouterna ordnar jag läger för barn i åldern sju till tio.",
     "open_floor": "Jag vill gärna att det syns att jag trivs ute med barnen. Vi går ut varje dag, oavsett väder, och jag har gjort en liten skogsplan för hela året.",
-    "looking_for": "Jag söker jobb som barnträdgårdslärare eller förskollärare, gärna på svenska, men finska går också bra. Jag är gravid och väntar mig i maj, så jag skulle gärna börja efter föräldraledigheten, eller ta en vikarietjänst fram till våren."
+    "looking_for": "Jag söker jobb som barnträdgårdslärare eller förskollärare, gärna på svenska, men finska går också bra. Jag är gravid och väntar barn i maj, så jag skulle gärna ta en vikarietjänst som barnträdgårdslärare fram till våren och börja på riktigt efter föräldraledigheten."
   },
   "probes": [
     "Bildkartan hade fem bilder: ankomst, samling, utelek, mat och vila. Jag satte fast dem med kardborreband så att han själv fick flytta en bild när vi var klara med något. Det gav honom en känsla av att veta vad som skulle hända härnäst.",
@@ -80,13 +80,7 @@
         "parental",
         "maternity"
       ],
-      "skillKeywords": [
-        "child",
-        "kindergarten",
-        "early",
-        "pedagog",
-        "teach"
-      ]
+      "skillKeywords": ["kindergarten", "pedagog", "teacher", "early childhood"]
     }
   ],
   "twinOf": null

@@ -7,7 +7,7 @@
  * Nothing here calls a model; the features it calls may, but the harness never depends on a key
  * to produce the data (the interview is answered by the scripted candidate).
  */
-import { and, eq, like } from "drizzle-orm";
+import { and, eq, like, or } from "drizzle-orm";
 import type { InterviewMode } from "@/contracts";
 import type { Db } from "@/db/client";
 import { appMeta, company, digest, eligibility, matchEvent, eventCompany, needCard, pick, talent } from "@/db/schema";
@@ -43,6 +43,8 @@ export type SeedOptions = {
   mode?: InterviewMode;
   /** Remove existing demo state first. */
   reset?: boolean;
+  /** The generated rows were just restored from the snapshot: do not run the queue or eligibility again. */
+  restored?: boolean;
   now?: () => Date;
   appUrl?: string;
   log?: (line: string) => void;
@@ -61,12 +63,18 @@ export type SeedSummary = {
 
 type StoredCompany = { number: number; companyId: string; jobId: string; title: string; tags: string[] };
 
-/** Remove everything the seed creates. Synthetic people take their interviews, cards and picks with them. */
+/**
+ * Remove everything the seed creates, and the live-demo people of rehearsals, so that the next
+ * person to approve a card on stage is the only never-drafted eligible person. People and their
+ * interviews, cards and picks go with them. Real people (neither synthetic nor live demo) stay.
+ */
 export async function resetDemo(db: Db): Promise<void> {
-  await db.delete(talent).where(eq(talent.synthetic, true));
-  await db.delete(company).where(like(company.id, "co_demo%"));
-  await db.delete(matchEvent).where(eq(matchEvent.id, DEMO_EVENT_ID));
-  await db.delete(appMeta).where(eq(appMeta.key, DEMO_COMPANIES_KEY));
+  await db.transaction(async (tx) => {
+    await tx.delete(talent).where(or(eq(talent.synthetic, true), eq(talent.liveDemo, true)));
+    await tx.delete(company).where(like(company.id, "co_demo%"));
+    await tx.delete(matchEvent).where(eq(matchEvent.id, DEMO_EVENT_ID));
+    await tx.delete(appMeta).where(eq(appMeta.key, DEMO_COMPANIES_KEY));
+  });
 }
 
 export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummary> {
@@ -144,11 +152,13 @@ export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummar
   }
 
   // 5. Background work the approvals queued, then eligibility for every demo need.
-  const queueJobsRun = await deps.runQueue(db);
+  const queueJobsRun = options.restored ? 0 : await deps.runQueue(db);
   let eligibilityRows = 0;
   for (const c of chosen) {
     const id = needCardIds.get(c.companyId);
-    if (id) eligibilityRows += (await deps.computeEligibility(db, { needCardId: id })).rows;
+    if (!id) continue;
+    if (options.restored) eligibilityRows += (await db.select().from(eligibility).where(eq(eligibility.needCardId, id))).length;
+    else eligibilityRows += (await deps.computeEligibility(db, { needCardId: id })).rows;
   }
 
   // The coverage check (synthetic-world.md 2.4): reported, never fatal.

@@ -56,7 +56,7 @@
     ]
   },
   "answers": {
-    "recent_work": "I've been tiling bathrooms and kitchens for twenty-two years, the last nineteen in Finland, mostly renovations in apartment buildings around Espoo. I do the whole job: remove the old tiles, check the floor, waterproofing, then laying, grouting and silicone. I'm 49, I came from Bulgaria in 2007, and I run my own small company with one employee.",
+    "recent_work": "I've been tiling bathrooms and kitchens for twenty-two years, the last nineteen in Finland, mostly renovations in apartment buildings around Espoo. I do the whole job: remove the old tiles, check the floor, waterproofing, then laying, grouting and silicone. I'm 49, I came from Bulgaria in 2007 as a tiler, and I run my own small tiling company with one employee.",
     "example": "A bathroom in a 1970s building had a floor that sloped away from the drain in one corner, and the old tiles were cracking. I took everything up, measured the slope with a long level, and levelled the screed to give a proper fall to the drain. Then I put in a waterproofing membrane, tested it with water for twenty-four hours, and tiled over it. The customer called a year later to say it was still dry.",
     "tools": "Tile cutter, wet saw, notched trowels, a levelling system and a laser level. For waterproofing I use the membrane system and I hold the wet room certificate, so the work gets documented properly. The adhesive depends on the tile size and the floor: flexible adhesive on old floors, and big tiles need back-buttering.",
     "people": "Most of my customers are housing companies and private owners, and I work with the plumber and the electrician in the same bathroom, so we agree the order of work. My employee is in his second year and I teach him how to measure and plan the layout before cutting. The customer decides the tile, I decide how it's installed.",
@@ -79,13 +79,7 @@
       "alsoCheck": [
         "Bulgarian"
       ],
-      "skillKeywords": [
-        "tile",
-        "tiling",
-        "waterproof",
-        "bathroom",
-        "grout"
-      ]
+      "skillKeywords": ["tile", "tiling", "entrepreneur", "self-employ"]
     }
   ],
   "twinOf": null

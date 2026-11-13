@@ -80,12 +80,7 @@
         "parental leave",
         "äitiysloma"
       ],
-      "skillKeywords": [
-        "sampl",
-        "laboratory",
-        "process",
-        "chemical"
-      ]
+      "skillKeywords": ["sampl", "laborator", "näyte"]
     }
   ],
   "twinOf": null

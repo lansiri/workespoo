@@ -46,3 +46,14 @@ describe("runSimulation with the fake engine", () => {
     expect(runs.every((r) => r.mode === "express")).toBe(true);
   });
 });
+
+describe("sim database choice", () => {
+  it("uses memory unless --db is given, and never mixes --fake with --db", async () => {
+    const { simUsesMemory } = await import("./script-db");
+    expect(simUsesMemory({})).toBe(true);
+    expect(simUsesMemory({ pglite: true })).toBe(true);
+    expect(simUsesMemory({ fake: true })).toBe(true);
+    expect(simUsesMemory({ db: true })).toBe(false);
+    expect(() => simUsesMemory({ fake: true, db: true })).toThrow(/--fake/);
+  });
+});

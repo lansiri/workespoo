@@ -55,13 +55,13 @@
     ]
   },
   "answers": {
-    "recent_work": "Olen työskennellyt kotihoidon sairaanhoitajana seitsemän vuotta. Käyn asiakkaiden luona antamassa lääkkeitä, hoidan haavoja ja seuraan vointia, ja kirjaan kaiken asiakastietojärjestelmään. Minulla on astma, joten olen oppinut tarkistamaan työpäivän ensimmäiseksi ne kotikäynnit, joissa on paljon pölyä tai tupakansavua.",
+    "recent_work": "Olen työskennellyt kotihoidon sairaanhoitajana seitsemän vuotta. Käyn asiakkaiden luona antamassa lääkkeitä, hoidan haavoja ja seuraan vointia, ja kirjaan kaiken asiakastietojärjestelmään. Minulla on astma, mutta lääkkeiden antaminen ja haavanhoito sujuvat minulta pölyisissäkin kodeissa, kun tarkistan ne kotikäynnit työpäivän ensimmäiseksi.",
     "example": "Yksi vanhus oli kaatunut kahdesti viikossa, eikä kukaan ollut yhdistänyt asiaa. Kävin läpi hänen lääkelistansa ja huomasin, että verenpainelääke ja unilääke yhdessä saivat hänet huteraksi iltaisin. Soitin lääkärille, lääkitystä muutettiin, ja kaatuilu loppui. Kirjasin asian ja kerroin siitä omaisille ja kollegoille seuraavassa vuoronvaihdossa.",
     "tools": "Käytän asiakastietojärjestelmää, mobiilisovellusta kotikäynneillä ja lääkkeenjako-ohjelmaa. Mittareista verenpainemittari, verensokerimittari ja happisaturaatiomittari ovat jokapäiväisiä. Haavanhoidossa tunnen eri sidostyypit ja osaan valita niistä sopivan. Annan myös pistoksia ja otan laboratorionäytteitä.",
     "people": "Meillä on kotihoidon tiimi, jossa on kuusi hoitajaa ja lähihoitajaa, ja toimin usein ensimmäisenä arvioijana, kun jonkun asiakkaan vointi huononee. Teen yhteistyötä lääkärin, fysioterapeutin ja omaisten kanssa. Lähihoitajat kysyvät minulta neuvoa haavoista ja lääkkeistä.",
     "beyond": "Olen käynyt muistisairaan kohtaamisen koulutuksen, ja olen vapaaehtoisena ensiapuopettajana paikallisessa yhdistyksessä. Vedän kerran kuussa ensiapukurssin yhdistyksen jäsenille.",
     "open_floor": "Haluaisin, että mukaan tulee se, että kirjaan huolellisesti. Kollegat sanovat, että minun kirjauksistani näkee heti, mitä on tehty ja mitä pitää seurata.",
-    "looking_for": "Etsin sairaanhoitajan työtä, mielellään kotihoidosta tai kotisairaanhoidosta tai terveysasemalta. Työkieli on suomi. Iltavuorot sopivat huonosti, koska olen kolmen lapsen äiti, joten päivävuoro olisi hyvä. Voin aloittaa kuukauden päästä."
+    "looking_for": "Etsin sairaanhoitajan työtä, mielellään kotihoidosta tai kotisairaanhoidosta tai terveysasemalta. Työkieli on suomi. Haluan jatkaa lääkehoidon ja haavanhoidon parissa, mutta iltavuorot sopivat huonosti, koska olen kolmen lapsen äiti, joten päivävuoro olisi hyvä. Voin aloittaa kuukauden päästä."
   },
   "probes": [
     "Lääkelistan läpikäynnissä katsoin jokaisen lääkkeen vaikutukset ja haittavaikutukset ja kysyin asiakkaalta, mitä hän oikeasti ottaa. Puolet lääkkeistä oli muuttunut viime vuoden aikana ilman että lista oli päivittynyt. Korjasin listan ja vein sen lääkärille.",
@@ -77,13 +77,7 @@
       "alsoCheck": [
         "asthma"
       ],
-      "skillKeywords": [
-        "medication",
-        "wound",
-        "nurs",
-        "home care",
-        "care"
-      ]
+      "skillKeywords": ["medic", "wound", "nursing care", "healthcare user", "person-centred"]
     },
     {
       "area": "looking_for",
@@ -96,13 +90,7 @@
         "kids",
         "mother"
       ],
-      "skillKeywords": [
-        "medication",
-        "wound",
-        "nurs",
-        "home care",
-        "care"
-      ]
+      "skillKeywords": ["medic", "wound", "nursing care", "healthcare user", "person-centred"]
     }
   ],
   "twinOf": null

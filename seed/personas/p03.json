@@ -55,7 +55,7 @@
     ]
   },
   "answers": {
-    "recent_work": "For about four years I've worked as a back-end developer, building Java services with Spring for a company that sells subscription software to small shops. Before that I spent twenty years in a print shop, so this is my second career. I'm 45 and I've got two kids, which is part of why I wanted something steadier than shift work.",
+    "recent_work": "Before that I spent twenty years in a print shop, so this is my second career. For about four years I've worked as a back-end developer for a company that sells subscription software to small shops. I'm 45 with two kids, which is part of why I wanted to build Java services with Spring instead of doing shift work.",
     "example": "We had an invoice service that sometimes charged shops twice. I reproduced it on my laptop by sending the same request twice, quickly, and saw that two threads were creating the invoice at the same moment. I added a unique key in the database and made the service handle a duplicate calmly. In the three months since, there's been no double charge.",
     "tools": "Java and Spring Boot, PostgreSQL, and Maven for builds. IntelliJ every day. Docker for running things locally, and Jenkins for the pipeline that runs our tests. I write the tests with JUnit. I'm okay with JavaScript but I don't do much front-end.",
     "people": "I'm in a team of four developers and I work with a product owner who talks to the shop owners. Support sends me the odd hard bug directly, and I'm usually the one who explains to them in plain words what went wrong. I also help the newest developer, who joined in the spring, find their way around the codebase.",
@@ -78,13 +78,7 @@
       "alsoCheck": [
         "children"
       ],
-      "skillKeywords": [
-        "java",
-        "spring",
-        "back-end",
-        "backend",
-        "service"
-      ]
+      "skillKeywords": ["java", "spring", "back-end", "backend"]
     }
   ],
   "twinOf": null

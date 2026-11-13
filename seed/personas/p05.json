@@ -56,7 +56,7 @@
     ]
   },
   "answers": {
-    "recent_work": "For the last eleven years I've been a site engineer and later site manager on concrete-frame housing and office projects around Espoo and Helsinki. Day to day I plan the pours and the formwork with the foremen, check the drawings against what's built, and keep the quality documents in order. I'm 53, and I came from Poland in 2008 for a bridge project, and then I stayed.",
+    "recent_work": "For the last eleven years I've been a site engineer and later site manager on concrete-frame housing and office projects around Espoo and Helsinki. Day to day I plan the pours and the formwork with the foremen, check the drawings against what's built, and keep the quality documents in order. I'm 53, and I came from Poland in 2008 to supervise the concrete on a bridge project, and then I stayed.",
     "example": "On one housing block the drawings for the stairwell did not match the structural drawings, so the openings were in different places. I found it when I overlaid the two sets before the formwork went up, called the designers the same day, and we agreed a corrected opening. Because we caught it before pouring, nobody had to break out concrete.",
     "tools": "Revit and AutoCAD for reading the models and drawings, a tablet on site for the drawings and photos, and Excel for the pour schedules. I know the Finnish building code well and I fill in the inspection documents myself. Total station, level and laser for checking positions.",
     "people": "I lead a crew of about twenty-five on site: the foremen, formwork carpenters and rebar fitters, plus subcontractors for electrical and ventilation. I report to the project manager and talk with the client's supervisor every week. My part is the schedule and the quality, not the budget.",
@@ -79,13 +79,7 @@
       "alsoCheck": [
         "Polish"
       ],
-      "skillKeywords": [
-        "construction",
-        "site",
-        "building",
-        "supervis",
-        "concrete"
-      ]
+      "skillKeywords": ["construction project", "concrete", "bridge", "supervis", "oversee"]
     }
   ],
   "twinOf": null
