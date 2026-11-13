@@ -5,7 +5,7 @@ import { digest, intro, job, needCard, pick } from "@/db/schema";
 import { cardForCompany, cardForCompanyRevealed } from "@/features/card";
 import { companyFromToken } from "@/lib/session";
 import { inDisplayOrder } from "./hash";
-import { maskEmployer } from "./mask";
+import { maskEmployer } from "@/lib/mask";
 import { mustFirst } from "./reasons";
 
 /**

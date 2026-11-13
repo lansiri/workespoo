@@ -6,7 +6,7 @@ import { cardForOrganiser } from "@/features/card";
 import { mustFirst } from "./reasons";
 import { inDisplayOrder } from "./hash";
 import { isOutOfDate, outOfDateFlags } from "./freshness";
-import { maskEmployer } from "./mask";
+import { maskEmployer } from "@/lib/mask";
 import { helsinkiDate } from "./time";
 
 /**

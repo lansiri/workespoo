@@ -4,7 +4,7 @@ import type { Db } from "@/db/client";
 import { chatJson, llmConfigured } from "@/lib/llm";
 import { findBannedEvaluative } from "@/lib/lexicon";
 import { rowsOf } from "@/lib/sql";
-import { MAX_REASONS, REASON_MAX_CHARS, TOUCH_SIMILARITY } from "./constants";
+import { MAX_REASONS, REASONS_DEADLINE_MS, REASON_MAX_CHARS, TOUCH_SIMILARITY } from "./constants";
 
 /** One (requirement, signal) pair the model may cite. Computed by code, never by the model. */
 export type AllowedPair = { requirementId: string; signalId: string };
@@ -17,7 +17,7 @@ export const PICKS_SYSTEM_PROMPT = `You explain to an employer why one anonymous
 Rules:
 1. Write plain English. Short sentences. Refer to the person only as "the card" or "this person". Never use he, she, him or her.
 2. You may ONLY use the pairs listed under "Allowed pairs". Each reason uses one pair: one requirement id (like "R3") and one signal id (like "S2").
-3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:
+3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 130 characters, in this shape:
    "The card describes <what the signal says>, which relates to <the requirement>."
 4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.
 5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.
@@ -228,6 +228,7 @@ export async function writeReasons(
         messages: prompt.messages,
         temperature: 0.2,
         schema: PicksDraftOutput,
+        deadlineMs: REASONS_DEADLINE_MS,
         db,
       });
       if (result.data) {

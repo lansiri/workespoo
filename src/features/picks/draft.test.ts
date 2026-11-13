@@ -271,17 +271,69 @@ describe("draftDailyDigests", () => {
     expect((await t.db.select().from(pick)).map((p) => `${p.needCardId}:${p.talentId}`).sort()).toEqual(before);
   });
 
-  it("leaves a digest alone once any pick has a decision (P2)", async () => {
-    await world(["tal_a", "tal_b"]);
-    await draftDailyDigests(t.db, DATE);
-    const [first] = await t.db.select().from(pick);
-    await t.db.update(pick).set({ status: "approved", decidedBy: "organiser", decidedAt: new Date() }).where(eq(pick.id, first.id));
-    const before = (await t.db.select().from(pick)).map((p) => `${p.id}:${p.status}`).sort();
-    // A new person becomes eligible, but the digest is under review now.
-    await addTalent(t.db, { id: "tal_new", signals: SIGNALS });
-    await addEligibility(t.db, { needCardId: "nc_1", talentId: "tal_new", touched: ["req_1", "req_2"] });
-    await draftDailyDigests(t.db, DATE);
-    expect((await t.db.select().from(pick)).map((p) => `${p.id}:${p.status}`).sort()).toEqual(before);
+  describe("a digest with decisions (P2)", () => {
+    const decide = async (id: string, status: "approved" | "removed") =>
+      t.db.update(pick).set({ status, decidedBy: "organiser", decidedAt: new Date() }).where(eq(pick.id, id));
+
+    it("adds and removes nobody, and leaves decided picks alone", async () => {
+      await world(["tal_a", "tal_b"]);
+      await draftDailyDigests(t.db, DATE);
+      const [first] = await t.db.select().from(pick);
+      await decide(first.id, "approved");
+      const before = (await t.db.select().from(pick)).map((p) => `${p.id}:${p.status}`).sort();
+      // A new person becomes eligible, but the digest is under review now.
+      await addTalent(t.db, { id: "tal_new", signals: SIGNALS });
+      await addEligibility(t.db, { needCardId: "nc_1", talentId: "tal_new", touched: ["req_1", "req_2"] });
+      await draftDailyDigests(t.db, DATE);
+      expect((await t.db.select().from(pick)).map((p) => `${p.id}:${p.status}`).sort()).toEqual(before);
+    });
+
+    it("refreshes an undecided out-of-date pick while another pick is decided, keeping the person and the id", async () => {
+      await world(["tal_a", "tal_b"]);
+      await draftDailyDigests(t.db, DATE);
+      const picks = await t.db.select().from(pick).orderBy(pick.talentId);
+      const [a, b] = picks;
+      await decide(a.id, "approved");
+      await bumpCard(b.talentId, 2);
+      await draftDailyDigests(t.db, DATE);
+      const after = await t.db.select().from(pick).orderBy(pick.talentId);
+      expect(after.map((p) => p.id)).toEqual([a.id, b.id]);
+      expect(after[0]).toMatchObject({ status: "approved", cardVersion: 1 });
+      expect(after[1]).toMatchObject({ status: "suggested", cardVersion: 2 });
+      expect(after[1].body.reasons.length).toBeGreaterThan(0);
+    });
+
+    it("does not touch a decided pick that is out of date", async () => {
+      await world(["tal_a", "tal_b"]);
+      await draftDailyDigests(t.db, DATE);
+      const [a] = await t.db.select().from(pick).orderBy(pick.talentId);
+      await decide(a.id, "approved");
+      await bumpCard(a.talentId, 2);
+      await draftDailyDigests(t.db, DATE);
+      const [now] = await t.db.select().from(pick).where(eq(pick.id, a.id));
+      expect(now).toMatchObject({ status: "approved", cardVersion: 1 });
+    });
+
+    it("leaves an undecided pick that is still current as it is", async () => {
+      await world(["tal_a", "tal_b"]);
+      await draftDailyDigests(t.db, DATE);
+      const [a, b] = await t.db.select().from(pick).orderBy(pick.talentId);
+      await decide(a.id, "removed");
+      const before = await t.db.select().from(pick).where(eq(pick.id, b.id));
+      await draftDailyDigests(t.db, DATE);
+      expect(await t.db.select().from(pick).where(eq(pick.id, b.id))).toEqual(before);
+    });
+
+    it("keeps an out-of-date pick as it is when the person has no eligibility for the new card yet", async () => {
+      await world(["tal_a", "tal_b"]);
+      await draftDailyDigests(t.db, DATE);
+      const [a, b] = await t.db.select().from(pick).orderBy(pick.talentId);
+      await decide(a.id, "approved");
+      await t.db.update(signalCard).set({ version: 2 }).where(eq(signalCard.talentId, b.talentId));
+      await draftDailyDigests(t.db, DATE);
+      const [now] = await t.db.select().from(pick).where(eq(pick.id, b.id));
+      expect(now.cardVersion).toBe(1);
+    });
   });
 
   it("never changes a published digest", async () => {
