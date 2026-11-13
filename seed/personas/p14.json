@@ -1,0 +1,86 @@
+{
+  "id": "p14",
+  "synthetic": true,
+  "handle": "Anchor-29",
+  "name": "Georgi Petrov (synthetic)",
+  "email": "georgi.petrov@example.invalid",
+  "interviewLang": "en",
+  "interviewMode": "full",
+  "inputMode": "text",
+  "occupationUri": "http://data.europa.eu/esco/occupation/02447817-ea01-4d8b-b09c-8bc128e447e6",
+  "occupationLabel": "tile fitter",
+  "isco2": "71",
+  "stage": "long",
+  "route": "moved_for_work",
+  "facts": [
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/504d99c7-395b-479c-815b-2f77ef769e75",
+      "label": "lay tiles",
+      "story": "Tiles bathrooms and kitchens in renovations of apartment buildings, from removing the old tiles to silicone."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/f32a00ba-39af-4914-8504-434ed2a2fa6c",
+      "label": "plan tiling",
+      "story": "Plans the layout before cutting and teaches his employee to measure first."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/dd7875ef-e4cf-47d5-81ce-228b2de90d5a",
+      "label": "apply tile adhesive",
+      "story": "Chooses flexible adhesive for old floors and back-butters large-format tiles."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/5bfdfb74-91dd-408b-a013-670d6961efc1",
+      "label": "fill tile joints",
+      "story": "Grouts and seals joints and expansion joints as part of the whole job."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/b9e08c07-4a52-4448-84dc-8a2df0601239",
+      "label": "cut tiles",
+      "story": "Cuts with a wet saw and tile cutter to fit around drains and corners."
+    }
+  ],
+  "omit": [
+    "http://data.europa.eu/esco/skill/ee075bc7-ac7f-4d75-a8c1-da502e0954fb",
+    "http://data.europa.eu/esco/skill/0ab24557-4912-45e5-981e-c350804440e0"
+  ],
+  "lookingFor": {
+    "roles": [
+      "tile fitter",
+      "tiler"
+    ],
+    "workMode": "onsite",
+    "startFrom": "within_1_month",
+    "workLanguages": [
+      "en",
+      "fi"
+    ]
+  },
+  "answers": {
+    "recent_work": "I've been tiling bathrooms and kitchens for twenty-two years, the last nineteen in Finland, mostly renovations in apartment buildings around Espoo. I do the whole job: remove the old tiles, check the floor, waterproofing, then laying, grouting and silicone. I'm 49, I came from Bulgaria in 2007 as a tiler, and I run my own small tiling company with one employee.",
+    "example": "A bathroom in a 1970s building had a floor that sloped away from the drain in one corner, and the old tiles were cracking. I took everything up, measured the slope with a long level, and levelled the screed to give a proper fall to the drain. Then I put in a waterproofing membrane, tested it with water for twenty-four hours, and tiled over it. The customer called a year later to say it was still dry.",
+    "tools": "Tile cutter, wet saw, notched trowels, a levelling system and a laser level. For waterproofing I use the membrane system and I hold the wet room certificate, so the work gets documented properly. The adhesive depends on the tile size and the floor: flexible adhesive on old floors, and big tiles need back-buttering.",
+    "people": "Most of my customers are housing companies and private owners, and I work with the plumber and the electrician in the same bathroom, so we agree the order of work. My employee is in his second year and I teach him how to measure and plan the layout before cutting. The customer decides the tile, I decide how it's installed.",
+    "beyond": "I went to a vocational school for construction in my home country. Here I took the wet room course and the occupational safety card. I also fix small things in the housing company where I live, like cracked tiles in the stairwell, for free.",
+    "open_floor": "I take photos of every stage of the waterproofing for the customer and the housing company. It saves trouble later if there is a leak.",
+    "looking_for": "I want steady renovation work from a bigger contractor, or subcontracting for several, because it's hard to find customers all year round. English or Finnish for work, and Finnish is fine with customers. On site. I can start after my current job, in about three weeks."
+  },
+  "probes": [
+    "For the levelling I set the laser to the drain height and marked the walls, mixed a self-levelling compound for the low corner and checked the fall with the long level every ten centimetres. It took one day to dry before the waterproofing.",
+    "For the water test I closed the drain with a plug and filled the floor with two centimetres of water. I marked the water line on the wall with tape and checked it the next day, and it hadn't dropped."
+  ],
+  "planted": [
+    {
+      "area": "recent_work",
+      "kind": "age and origin",
+      "tokens": [
+        "49",
+        "Bulgaria"
+      ],
+      "alsoCheck": [
+        "Bulgarian"
+      ],
+      "skillKeywords": ["tile", "tiling", "entrepreneur", "self-employ"]
+    }
+  ],
+  "twinOf": null
+}

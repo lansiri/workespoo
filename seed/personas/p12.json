@@ -1,0 +1,87 @@
+{
+  "id": "p12",
+  "synthetic": true,
+  "handle": "Ridge-65",
+  "name": "Mehdi Karimi (synthetic)",
+  "email": "mehdi.karimi@example.invalid",
+  "interviewLang": "en",
+  "interviewMode": "full",
+  "inputMode": "text",
+  "occupationUri": "http://data.europa.eu/esco/occupation/bea705fe-06ac-4147-b8e0-6e8ac1208d8f",
+  "occupationLabel": "warehouse worker",
+  "isco2": "93",
+  "stage": "early",
+  "route": "career_changer",
+  "facts": [
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/ee5e2297-39cc-4ed6-89e5-d58016118a7f",
+      "label": "pick orders for dispatching",
+      "story": "Picks tyre orders in a distribution warehouse and suggested grouping the pick lists by aisle during the winter peak."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/fd9c8437-6e20-47b5-8508-f23f442446c2",
+      "label": "pallets loading",
+      "story": "Loads trucks and pallets with a reach truck and checks with the drivers what is on the truck."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/3d086228-d7fc-4c23-972a-22b7d44a6173",
+      "label": "stack goods",
+      "story": "Stacks and wraps pallets safely and shows new temporary workers how it is done."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
+      "label": "monitor stock level",
+      "story": "Counts his aisle on Fridays from the cycle count list and reports differences to the shift lead before changing anything."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/fd79b3c4-e264-41b5-bada-49ba5f317588",
+      "label": "use barcode scanning equipment",
+      "story": "Works with a handheld scanner connected to the warehouse system."
+    }
+  ],
+  "omit": [
+    "http://data.europa.eu/esco/skill/bb127774-3166-4541-ad4c-cc3070fd93c5",
+    "http://data.europa.eu/esco/skill/77176c98-a246-4b3c-8777-dcb32e54e955"
+  ],
+  "lookingFor": {
+    "roles": [
+      "warehouse worker",
+      "team lead"
+    ],
+    "workMode": "onsite",
+    "startFrom": "within_1_month",
+    "workLanguages": [
+      "en",
+      "fi"
+    ]
+  },
+  "answers": {
+    "recent_work": "For the last year and a half I've worked in a distribution warehouse for car tyres, picking orders and loading trucks, mostly with a reach truck. Before that I was a baker for six years, on night shifts, so I'm used to early starts and heavy lifting. I'm a single dad with a daughter in school, and I like that picking orders and driving the reach truck comes with fixed hours.",
+    "example": "In October we got double the normal volume of winter tyres. I noticed the pick lists were sending people across the whole warehouse for single tyres, so I suggested grouping orders by aisle in the handheld scanner and I tried it for a week on my own shift. We got the evening orders out before the trucks left, which hadn't happened in two weeks.",
+    "tools": "Reach truck and pallet jack, with the forklift licence. A handheld barcode scanner connected to the warehouse system. Stretch wrap machine and strapping. I also check stock counts with the cycle count list on Fridays.",
+    "people": "I'm on a shift of twelve. The shift lead gives us the order list and I work mostly with another picker and the truck loader. I help the new temp workers on my aisle, and show them the system and safe stacking. Drivers get their pallets from me, so I talk with them about what's on the truck.",
+    "beyond": "The bakery taught me time planning and hygiene rules. I also have a driving licence for vans and I did a safety course on working at heights last year.",
+    "open_floor": "I take a few minutes each shift to tidy my aisle so the next shift starts clean. People notice and copy it.",
+    "looking_for": "More hours in logistics, maybe team lead later, or a warehouse job with a bigger system to learn. English at work; I can manage everyday Finnish, so I would list both. Day shift is better. I can start after one month's notice."
+  },
+  "probes": [
+    "The grouping idea: I took the evening's list and sorted it by aisle on a sheet first to test it, and saw we'd save about a third of the walking. Then the shift lead asked IT to switch it on for the scanners.",
+    "For cycle counts I go to my assigned aisle, scan each location, count the pallets, and enter the number. If it differs from the system, I count again and tell the shift lead before changing anything."
+  ],
+  "planted": [
+    {
+      "area": "recent_work",
+      "kind": "family",
+      "tokens": [
+        "single dad",
+        "daughter"
+      ],
+      "alsoCheck": [
+        "children",
+        "father"
+      ],
+      "skillKeywords": ["pick", "reach truck", "forklift", "warehouse"]
+    }
+  ],
+  "twinOf": null
+}

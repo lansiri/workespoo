@@ -1,0 +1,84 @@
+{
+  "id": "p08",
+  "synthetic": true,
+  "handle": "Orbit-22",
+  "name": "Anna Petrenko (synthetic)",
+  "email": "anna.petrenko@example.invalid",
+  "interviewLang": "en",
+  "interviewMode": "full",
+  "inputMode": "text",
+  "occupationUri": "http://data.europa.eu/esco/occupation/8d3e8aaa-791b-4c75-a465-f3f827028f50",
+  "occupationLabel": "nurse responsible for general care",
+  "isco2": "22",
+  "stage": "mid",
+  "route": "moved_for_work",
+  "facts": [
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/1023ac61-250f-4eef-b7a9-238cf071685f",
+      "label": "provide professional care in nursing",
+      "story": "Cares for surgical patients before and after operations: vital signs, pain medication, dressings and watching for complications."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/51e79cb4-fab3-404c-88f3-cd4a1bd5879e",
+      "label": "deal with emergency care situations",
+      "story": "Recognised falling blood pressure and confusion in a patient after surgery, called the doctor at once and started fluids per protocol."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/ce0d6a42-59c1-433e-ab62-adfc969c46bb",
+      "label": "ensure safety of healthcare users",
+      "story": "Uses the early warning chart to decide when to call a doctor and writes down times and observations for the team."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+      "label": "coordinate care",
+      "story": "Works with the physiotherapist so that patients move early after surgery."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/5e13af88-67d3-46ed-af58-8a7b8ebe7b1f",
+      "label": "perform venous cannulation",
+      "story": "Places cannulas and takes blood samples on the surgical ward."
+    }
+  ],
+  "omit": [
+    "http://data.europa.eu/esco/skill/b469a01e-2d3c-4143-8af8-687630fb4ee5",
+    "http://data.europa.eu/esco/skill/8eab4e4f-03f8-4a66-a830-ec4e5db43253"
+  ],
+  "lookingFor": {
+    "roles": [
+      "registered nurse"
+    ],
+    "workMode": "onsite",
+    "startFrom": "within_3_months",
+    "workLanguages": [
+      "en"
+    ]
+  },
+  "answers": {
+    "recent_work": "I work on a surgical ward at a hospital, as a registered nurse. I take care of patients before and after operations: I check vital signs, manage pain medication, change dressings and watch for complications. I trained and worked ten years in Kyiv in Ukraine, on a city hospital's surgical ward, managing pain medication and changing dressings, and I have worked here for two years after validating my qualification.",
+    "example": "One night a patient after surgery had low blood pressure and was getting confused. I saw the numbers were changing, called the doctor right away and started fluids, as the protocol says. Bleeding was found and he went back to the operating room. I wrote down the times and what I saw, so the team had the full picture.",
+    "tools": "We use the hospital patient system for notes and medication, infusion pumps, monitors for blood pressure and oxygen, and wound dressings of different types. I do cannulation and take blood samples. I use the early warning chart to decide when to call a doctor.",
+    "people": "A ward team of about twenty nurses and assistants, and doctors on rounds. I work closely with the physiotherapist for patients who need to move early after surgery. I also talk with patients' families when they come to visit and explain what is happening, in simple words. My part is the care for my six patients in each shift.",
+    "beyond": "I also did a course in wound care here in Finland. And in my old hospital I worked one year in emergency, so I stay calm in urgent situations. I have taught new nurses on our ward how to use the infusion pumps.",
+    "open_floor": "Patients like it when I explain things slowly. I check that they understood by asking them to say it back in their own words.",
+    "looking_for": "I'd like to stay in surgical or acute care nursing. English is my work language now and I'm learning Finnish, so I can manage simple conversations with patients. Full time, shift work is okay. I can start in two months."
+  },
+  "probes": [
+    "For pain medication I ask the patient to tell me the pain on the ten-point scale every few hours, give the prescribed dose and ask again after forty minutes. If it is still high, I call the doctor, and I write the numbers so the next shift can see how the night went.",
+    "For a dressing change I clean my hands, open the dressing, look at the wound edges and drainage, clean with saline, and apply the correct dressing. I note the size and colour in the system, so the next nurse can compare."
+  ],
+  "planted": [
+    {
+      "area": "recent_work",
+      "kind": "origin",
+      "tokens": [
+        "Kyiv",
+        "Ukraine"
+      ],
+      "alsoCheck": [
+        "Ukrainian"
+      ],
+      "skillKeywords": ["surg", "medication", "dressing", "wound", "professional care in nursing"]
+    }
+  ],
+  "twinOf": null
+}

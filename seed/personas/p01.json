@@ -1,0 +1,87 @@
+{
+  "id": "p01",
+  "synthetic": true,
+  "handle": "Birch-27",
+  "name": "Tomás Ribeiro (synthetic)",
+  "email": "tomas.ribeiro@example.invalid",
+  "interviewLang": "en",
+  "interviewMode": "full",
+  "inputMode": "text",
+  "occupationUri": "http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1",
+  "occupationLabel": "software developer",
+  "isco2": "25",
+  "stage": "mid",
+  "route": "moved_for_work",
+  "facts": [
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97",
+      "label": "computer programming",
+      "story": "Writes Python jobs that load sensor readings from the electricity grid into PostgreSQL every night."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/2522a6ce-3202-4ac8-9f5b-b9cb5a3a83a1",
+      "label": "debug software",
+      "story": "Traces missing-reading problems back through the loader and fixes the cause instead of patching the report."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/598de5b0-5b58-4ea7-8058-a4bc4d18c742",
+      "label": "SQL",
+      "story": "Writes SQL checks that flag gaps in the readings before the morning report goes out."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/f84a433f-34f1-4083-b0a3-24802623509c",
+      "label": "web services",
+      "story": "Built a small REST service that gives the operations team access to the cleaned readings."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/9d2e926f-53d9-41f5-98f3-19dfaa687f3f",
+      "label": "tools for software configuration management",
+      "story": "Keeps every change in Git and runs tests in a CI pipeline before it goes live."
+    }
+  ],
+  "omit": [
+    "http://data.europa.eu/esco/skill/d31fab87-2a7d-485c-b699-2901ca294b15",
+    "http://data.europa.eu/esco/skill/6f8a40d6-f9ce-43ec-a72f-d4213a53f3ed"
+  ],
+  "lookingFor": {
+    "roles": [
+      "data engineer",
+      "backend developer"
+    ],
+    "workMode": "hybrid",
+    "startFrom": "within_1_month",
+    "workLanguages": [
+      "en"
+    ]
+  },
+  "answers": {
+    "recent_work": "For the last three years I've been a developer at a company that runs electricity metering. Mostly Python and PostgreSQL: I maintain the nightly jobs that pull sensor readings in and load them into the database, and I look after the checks on top of that. I'm 38, and we moved here from Porto in Portugal when my husband got a job at a research institute, so the Python and SQL checks I write are my first work in Finland.",
+    "example": "Last winter the morning report kept showing holes for some meters. I went through the loader logs and found that one supplier's files arrived twice with different timestamps, and my job was dropping the second batch. I changed the load to compare the batches properly, and I added a check that raises an alert when a meter has no readings for six hours. After that the holes were gone.",
+    "tools": "Python every day, with pandas for the cleaning, and PostgreSQL for storage. SQL for the checks. Git and a CI pipeline, so every change gets tested before it goes live. I read logs a lot, honestly. Cloud-wise I only know the basics, we run on a few virtual machines.",
+    "people": "I work in a team of five. The operations team are the ones who read my data every morning, so I meet them weekly and show what changed. Their questions usually decide what I fix next. The data owner at the supplier I only deal with by email, mostly when files are late.",
+    "beyond": "Before this I studied physics and did my master's thesis on sensor calibration, so I'm comfortable with measurement data. I also volunteer as a mentor on a beginners' coding course on Saturdays, where I help people with their first Python scripts.",
+    "open_floor": "Only that I like work where the data actually matters to someone, so I check what the people downstream need instead of just delivering a table.",
+    "looking_for": "Data engineering, or backend work close to data. English at work, I'm learning Finnish but I can't work in it yet. Hybrid would be best, and I could start within a month or two."
+  },
+  "probes": [
+    "On a typical night the job pulls around forty files from the supplier's server, validates the columns, and loads them in one transaction. I wrote the validation myself: it checks that the timestamps are in order, that the units are the expected ones, and that no meter appears twice in the same file.",
+    "One example of the SQL checks: I wrote a query that lists every meter with fewer readings than its neighbours in the same area, and the operations team used it each morning to decide which sites to call about."
+  ],
+  "planted": [
+    {
+      "area": "recent_work",
+      "kind": "age, origin and family",
+      "tokens": [
+        "38",
+        "Porto",
+        "Portugal",
+        "husband"
+      ],
+      "alsoCheck": [
+        "Portuguese"
+      ],
+      "skillKeywords": ["python", "postgres", "sql"]
+    }
+  ],
+  "twinOf": null
+}
