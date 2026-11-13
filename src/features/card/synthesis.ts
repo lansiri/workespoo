@@ -14,7 +14,6 @@ import { EMPTY_LOOKING_FOR } from "@/contracts";
 import type { Db } from "@/db/client";
 import { interview, signal as signalTable, talent } from "@/db/schema";
 import { audit } from "@/lib/audit";
-import { escoTopMatch } from "@/lib/esco";
 import { chatJson } from "@/lib/llm";
 import { findProtectedCard, stripQualityWords } from "@/lib/lexicon";
 import { labelSentences } from "@/lib/sentences";
@@ -28,6 +27,7 @@ import {
   textProblem,
   MAX_HEADLINE_WORDS,
 } from "./checks";
+import { pickEscoLabels } from "./esco-pick";
 import { loadCard, loadTranscript, resolvable, saveCard, type Transcript } from "./store";
 
 /** R1 to R8, identical in prompt A and prompt B (signal-card.md section 5; PATCHES CS-1, CS-2, CR-1, CR-2). */
@@ -269,27 +269,43 @@ export async function synthesiseCard(
   const kept: Array<Candidate & { phrase: string }> = [];
   let droppedNoEvidence = 0;
   let droppedProtectedCount = 0;
+  let salvaged = 0;
   for (const c of candidates) {
     if (c.refs.length === 0) {
       droppedNoEvidence++;
       continue;
     }
     const sources = c.refs.map((r) => transcript.get(r.turnIndex)?.sentences.slice(r.sentenceFrom - 1, r.sentenceTo).join(" ") ?? "");
-    const hits = findProtectedCard(c.phrase).length + findProtectedCard(c.rendering).length;
-    if (hits > 0) {
-      droppedProtectedCount++;
-      await droppedProtected("signal");
-      continue;
+    // A word-list hit in the model's wording never deletes the person's evidence: the signal keeps
+    // its evidence with a clean phrase and the code-built sentence. Only a signal with no clean
+    // phrase to fall back on is dropped.
+    let phraseText = c.phrase;
+    let salvagedHere = false;
+    if (findProtectedCard(c.phrase).length > 0) {
+      const clean = c.from
+        .map((f) => liveById.get(f)?.phrase)
+        .filter((p): p is string => !!p && findProtectedCard(p).length === 0 && stripQualityWords(p).length > 0)
+        .sort((a, b) => b.length - a.length)[0];
+      if (!clean) {
+        droppedProtectedCount++;
+        await droppedProtected("signal");
+        continue;
+      }
+      phraseText = clean;
+      salvagedHere = true;
+    } else if (findProtectedCard(c.rendering).length > 0) {
+      salvagedHere = true;
     }
-    const phrase = stripQualityWords(c.phrase);
+    const phrase = stripQualityWords(phraseText);
     if (!phrase) {
       droppedNoEvidence++;
       continue;
     }
+    if (salvagedHere) salvaged++;
     // A named skill with nothing the person did behind it always gets the code-written sentence.
     const named = c.from.length > 0 && c.from.every((f) => liveById.has(f) && !liveById.get(f)!.hasExample);
     const rendering =
-      named || textProblem(c.rendering, sources, MAX_RENDERING_WORDS) || LIST_SENTENCE.test(c.rendering)
+      salvagedHere || named || textProblem(c.rendering, sources, MAX_RENDERING_WORDS) || LIST_SENTENCE.test(c.rendering)
         ? fallbackRendering(phrase)
         : c.rendering;
     kept.push({ ...c, phrase, rendering });
@@ -313,15 +329,14 @@ export async function synthesiseCard(
   });
   const truncated = assigned.slice(0, maxSignals);
 
-  // 4. ESCO grounding (trigram top match; prompt C is a later refinement).
+  // 4. ESCO grounding: prompt C, one call for the whole card (falls back to the strict text match).
+  const picked = await pickEscoLabels(
+    db,
+    truncated.map(({ c, id }) => ({ key: id, phrase: c.phrase, kind: c.kind })),
+  );
   const signals: Signal[] = [];
   for (const { c, id, hasExample } of truncated) {
-    let esco: EscoRef | null = null;
-    try {
-      esco = await escoTopMatch(db, c.phrase);
-    } catch {
-      esco = null;
-    }
+    let esco: EscoRef | null = picked.get(id) ?? null;
     if (!esco && fallback) {
       esco = c.from.length === 1 ? (liveById.get(c.from[0])?.esco ?? null) : null;
     }
@@ -393,6 +408,7 @@ export async function synthesiseCard(
     signals: signals.length,
     droppedNoEvidence,
     droppedProtected: droppedProtectedCount,
+    salvaged,
     truncated: assigned.length - truncated.length,
   };
   if (fallback) {

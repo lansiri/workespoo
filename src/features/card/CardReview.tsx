@@ -65,6 +65,7 @@ export function CardReview() {
         <p>{c.intro}</p>
         <p>{fmt(c.handle, { handle: card.handle })}</p>
         {card.status === "draft" && card.hasApprovedVersion ? <p>{m.draftNotice} {a.editAgainHelp}</p> : null}
+        {card.reworded.length > 0 ? <p role="status" data-testid="card-reworded">{m.reworded}</p> : null}
       </header>
 
       <section aria-labelledby="preview-title" className="space-y-1 rounded-md border p-4" data-testid="company-preview">
@@ -89,6 +90,7 @@ export function CardReview() {
                   signal={s}
                   busy={busy}
                   sensitive={sensitiveSignalId === s.id}
+                  reworded={card.reworded.includes(s.id)}
                   onRemove={() => void edit({ op: "remove", signalId: s.id })}
                   onPhrase={(phrase) => edit({ op: "phrase", signalId: s.id, phrase })}
                 />
@@ -186,6 +188,7 @@ function SignalItem(props: {
   signal: PersonSignal;
   busy: boolean;
   sensitive: boolean;
+  reworded: boolean;
   onRemove: () => void;
   onPhrase: (phrase: string) => Promise<boolean>;
 }) {
@@ -234,6 +237,7 @@ function SignalItem(props: {
         <h3 className="text-sm font-medium">{c.companySees}</h3>
         <p data-testid="signal-rendering">{s.rendering ?? m.notShownYet}</p>
         {s.stale ? <p className="text-sm" data-testid="signal-rewriting">{m.rewriting}</p> : null}
+        {props.reworded ? <p className="text-sm" data-testid="signal-reworded">{m.reworded}</p> : null}
       </div>
       <div className="flex gap-2">
         <Button type="button" size="sm" variant="outline" data-testid="signal-edit" disabled={props.busy} onClick={() => setEditing(true)}>{c.edit}</Button>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { CardForPerson } from "@/contracts";
+import type { CardPageView } from "./projections";
 import type { CardEdit } from "./review";
 
 export type CardState =
@@ -9,7 +9,7 @@ export type CardState =
   | { phase: "pending"; waitedLong: boolean }
   | { phase: "signed_out" }
   | { phase: "error" }
-  | { phase: "ready"; card: CardForPerson };
+  | { phase: "ready"; card: CardPageView };
 
 export const POLL_MS = 2000;
 export const POLL_LONG_AFTER = 30;
@@ -36,7 +36,7 @@ export function useCard() {
   const attempts = useRef(0);
 
   const load = useCallback(async () => {
-    const r = await call<CardForPerson>("/api/card");
+    const r = await call<CardPageView>("/api/card");
     if (r.ok) {
       attempts.current = 0;
       setState({ phase: "ready", card: r.data });
@@ -86,7 +86,7 @@ export function useCard() {
   const edit = useCallback(async (e: CardEdit) => {
     setBusy(true);
     setActionError(null);
-    const r = await call<{ card: CardForPerson; sensitive: boolean }>("/api/card", { method: "PATCH", body: JSON.stringify(e) });
+    const r = await call<{ card: CardPageView; sensitive: boolean }>("/api/card", { method: "PATCH", body: JSON.stringify(e) });
     setBusy(false);
     if (!r.ok) {
       setActionError(r.error.code);
