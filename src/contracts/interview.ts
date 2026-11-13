@@ -82,6 +82,10 @@ export const InterviewState = z.object({
   cvSeeds: z.array(CvSeed).max(2),
   uiLang: UiLang,
   startedAt: IsoDateTime,
+  /** Ids of the signals the latest extraction created or updated. The planner reads these. */
+  lastExtracted: z.array(z.string()).optional(),
+  /** Flags from the last two extractions, oldest first. Flag names only, never the text behind them. */
+  recentFlags: z.array(z.array(InterviewFlag)).max(2).optional(),
 });
 export type InterviewState = z.infer<typeof InterviewState>;
 
@@ -223,6 +227,11 @@ export const TurnRequest = z.object({
   inputMode: InputMode,
   /** Language code reported by the voice adapter, when it has one. */
   sttLang: z.string().max(8).optional(),
+  /**
+   * An id the browser makes up for this answer. Sending the same id again (a retry after a
+   * network error) must not store a second answer.
+   */
+  clientTurnId: z.string().min(8).max(64).optional(),
 });
 export type TurnRequest = z.infer<typeof TurnRequest>;
 
