@@ -83,7 +83,8 @@
         "front-end",
         "frontend",
         "typescript",
-        "test",
+        "javascript",
+        "interface",
         "component"
       ]
     }

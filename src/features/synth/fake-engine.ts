@@ -18,6 +18,7 @@ import {
 } from "@/contracts";
 import type { Db } from "@/db/client";
 import {
+  company,
   digest,
   eligibility,
   escoOccupationSkill,
@@ -235,7 +236,8 @@ export function createFakeEngine(db: Db, options: FakeEngineOptions = {}): SeedD
     },
 
     async draftDailyDigests(_db, date) {
-      const companies = (await db.select().from(needCard)).filter((n) => n.companyId);
+      const participating = new Set((await db.select().from(company)).filter((c) => c.participating).map((c) => c.id));
+      const companies = (await db.select().from(needCard)).filter((n) => n.companyId && participating.has(n.companyId));
       let digests = 0;
       let picks = 0;
       for (const n of companies) {
