@@ -9,6 +9,7 @@ import { setLlmFake } from "@/lib/llm";
 import { runReadyJobs } from "@/lib/queue";
 import { getJob } from "@/features/jobs";
 import { draftNeedCard, getNeedCard, getNeedCardForJob, listNeedCards } from "./index";
+import { RequirementQuestion } from "@/contracts";
 import { coerceDraftOutput, validateDraft } from "./draft";
 import { jobs as needJobs } from "./jobs";
 import {
@@ -498,6 +499,21 @@ describe("second pass: what the real model needs", () => {
     );
     const v = await validateDraft(t.db, job, out, []);
     expect(v.requirements[0]!.question?.why.toLowerCase()).not.toContain("nordic");
+  });
+
+  it("drops a question that masking would push past the contract maximum", async () => {
+    const jobId = await addJobRow(t.db, { employerName: "Vala Group Oy", sentences: ["Jira"] });
+    const job = (await getJob(t.db, jobId))!;
+    const tail = "Would experience with a comparable tool be enough, if the person learns ";
+    const text = `${tail}${"Vala ".repeat(21)}on the job?`;
+    expect(text.length).toBeLessThanOrEqual(240);
+    const out = NeedCardDraftOutput.parse(
+      draftOutput("Dev", [{ text: "Jira", sentence: 0, category: "skill", questionType: "tool", question: text, why: "Vala is not specific." }]),
+    );
+    const v = await validateDraft(t.db, job, out, []);
+    for (const r of v.requirements) {
+      if (r.question) expect(() => RequirementQuestion.parse(r.question)).not.toThrow();
+    }
   });
 
   it("a failed draft leaves no card behind and the queue job fails so it is retried", async () => {

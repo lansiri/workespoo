@@ -25,15 +25,17 @@ import {
   MAX_ESCO_CANDIDATES,
   MAX_PROMPT_SENTENCES,
   MAX_REQUIREMENTS,
+  QUESTION_TEXT_MAX,
   REQUIREMENT_TEXT_MAX,
   SALIENT_PHRASE_MAX_CHARS,
   SALIENT_PHRASE_MAX_SENTENCES,
   TITLE_MAX,
   TRIGRAM_CANDIDATE_RESERVE,
+  WHY_MAX,
 } from "./constants";
 import { recomputePoolEvidence } from "./pool";
 import { buildDraftMessages, type EscoPromptCandidate } from "./prompt";
-import { classifyStatutory, decideQuestion, isWorkPermitText, textDescribesPerson } from "./rules";
+import { classifyStatutory, decideQuestion, DEFAULT_WHY, isWorkPermitText, textDescribesPerson } from "./rules";
 import { getNeedCardForJob, saveNeedCard } from "./store";
 
 // ---------- ESCO candidates for the prompt ----------
@@ -243,6 +245,8 @@ export async function validateDraft(
     if (question) {
       question.text = maskEmployer(question.text, terms);
       question.why = maskEmployer(question.why, terms);
+      // Masking can lengthen a text ("Vala" becomes "the company"); re-apply the limits.
+      if (question.why.length > WHY_MAX) question.why = DEFAULT_WHY[question.type];
     }
     requirements.push({
       id: newId("req"),
@@ -254,7 +258,7 @@ export async function validateDraft(
       source: "agent",
       languageCode,
       statutory,
-      question,
+      question: question && question.text.length > QUESTION_TEXT_MAX ? null : question,
       pool: null,
     });
   }

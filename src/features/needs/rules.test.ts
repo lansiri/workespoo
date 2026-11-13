@@ -260,6 +260,20 @@ describe("lint for Need Card text (needcard-F4, F9)", () => {
     }
   });
 
+  it("still catches origin and ethnicity asks", () => {
+    for (const text of [
+      "Applicants of Asian origin preferred",
+      "Indian background",
+      "Arab applicants preferred",
+      "African applicants only",
+      "Somali applicants preferred",
+      "Latin American heritage",
+    ]) {
+      expect(protectedHits(text), text).not.toEqual([]);
+      expect(companyTextProblem(text), text).not.toBeNull();
+    }
+  });
+
   it("still catches asks about the person", () => {
     for (const text of ["Native speaker of Finnish", "Mother tongue Finnish", "Good health required", "Aged 25-35", "Nationality: Finnish", "terveys"]) {
       expect(companyTextProblem(text), text).not.toBeNull();

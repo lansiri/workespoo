@@ -62,7 +62,7 @@ export function classifyStatutory(input: StatutoryInput): Statutory {
 
 /** Language names also appear in the lexicon's country list; asking for a language is work-related. */
 const LANGUAGE_NAMES =
-  /(?<![\p{L}])(?:English|Swedish|Danish|Norwegian|German|French|Spanish|Italian|Russian|Estonian|Dutch|Polish|Portuguese|Chinese|Japanese|Korean|Arabic|Persian|Turkish|Greek|Hungarian|Czech|Ukrainian|Somali|Thai|Vietnamese)(?![\p{L}])/giu;
+  /(?<![\p{L}])(?:English|Swedish|Danish|Norwegian|German|French|Spanish|Italian|Russian|Estonian|Dutch|Polish|Portuguese|Chinese|Japanese|Korean|Arabic|Persian|Turkish|Greek|Hungarian|Czech|Ukrainian|Somali|Thai|Vietnamese)(?![\p{L}])(?!\s+(?:applicants?|candidates?|people|persons?|workers?|background|origin|descent|heritage|citizens?|nationals?))/giu;
 
 const OTHER_LAW_GLOBAL = new RegExp(OTHER_LAW.source, "gi");
 
@@ -80,11 +80,26 @@ const HEALTH_SECTOR = new RegExp(
   "giu",
 );
 
-const PLACE_TERMS: ReadonlySet<string> = new Set(COUNTRIES_AND_DEMONYMS.map((c) => c.toLowerCase()));
+// Ethnicity terms are never a place: "Asian origin" stays a hit even though the list holds "Asian".
+const ETHNICITY_TERMS: ReadonlySet<string> = new Set(["arab", "african", "asian", "latin american"]);
+const PLACE_ALTERNATION = [...COUNTRIES_AND_DEMONYMS]
+  .filter((c) => !ETHNICITY_TERMS.has(c.toLowerCase()))
+  .sort((a, b) => b.length - a.length)
+  .map((c) => c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+  .join("|");
+/** A place used as a place: "in Norway", "the Norwegian market". A demonym for people ("Indian background") is not. */
+const PLACE_USE = new RegExp(
+  String.raw`(?<![\p{L}])(?:(?:in|to|for)\s+(?:${PLACE_ALTERNATION})|(?:${PLACE_ALTERNATION})\s+(?:markets?|regions?|marketplace))(?![\p{L}])`,
+  "giu",
+);
 
-/** The text with language names, work permits and health-sector phrases taken out. */
+/** The text with language names, work permits, health-sector phrases and places-as-places taken out. */
 function forLint(text: string): string {
-  return text.replace(LANGUAGE_NAMES, " ").replace(OTHER_LAW_GLOBAL, " ").replace(HEALTH_SECTOR, " ");
+  return text
+    .replace(LANGUAGE_NAMES, " ")
+    .replace(OTHER_LAW_GLOBAL, " ")
+    .replace(HEALTH_SECTOR, " ")
+    .replace(PLACE_USE, " ");
 }
 
 /**
@@ -96,7 +111,7 @@ export function protectedHits(text: string): string[] {
   const clean = forLint(text);
   // A work permit is a legal requirement (recorded as other_law), not a personal characteristic.
   const hits = [
-    ...findProtectedCard(clean).filter((h) => !PLACE_TERMS.has(h.toLowerCase())),
+    ...findProtectedCard(clean),
     ...findProtectedRequirement(clean),
   ];
   // "Native Finnish" is a proxy for origin; the work needs a language level, not a birthplace.
