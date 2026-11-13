@@ -1,0 +1,30 @@
+# dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# secrets: never commit real env files
+.env
+.env.*
+!.env.example
+
+# test artefacts
+playwright-report/
+test-results/
+blob-report/
+.playwright/
+
+# local tooling
+.claude/worktrees/
+.claude/settings.local.json
+*.log
+.DS_Store
+.idea/
+.vscode/
+
+# data snapshots that are too large for git (small fixtures live in fixtures/)
+/data/

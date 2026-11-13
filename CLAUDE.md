@@ -1,0 +1,73 @@
+# WorkEspoo
+
+Hackathon build for Junction 2026, City of Espoo challenge "Rethinking Recruitment". An AI interviewer turns a short conversation into a **Signal Card** (skills backed by the person's own words), shows matched real open jobs, and drafts **Daily Picks** for companies that an Espoo organiser approves before anything is sent.
+
+- Plan: `docs/PLAN.md`. Amendments that override it: `docs/PLAN-AMENDMENTS.md`
+- Data model sketch: `docs/DATA-MODEL.md`
+- Verified facts about external APIs: `docs/research/` (read the relevant file before calling any external API)
+- Feature specs and acceptance tests: `docs/specs/`
+- Code patterns for this stack: `docs/PATTERNS.md`
+- Live progress board: `docs/STATUS.md`
+
+Live site: https://workespoo.aichat.fi (VPS 2.29.206.251). The app is built and run on the VPS; locally we only edit, lint, type-check and test.
+
+## Rules that are never negotiable
+
+1. **No Anthropic SDK or Anthropic API in app code.** Every model call goes through the gateway in `src/lib/llm` (OpenAI-compatible endpoints: NVIDIA Nemotron, DeepSeek or Kimi on Verda).
+2. **No secrets in the repo.** Keys live in `/opt/workespoo/env/.env` on the VPS and in an untracked `.env.local`. Never print a key in logs or reports.
+3. **People data is synthetic.** A live demo session needs explicit consent and is purged after 24 hours.
+4. **Nothing about a person is scored, ranked or levelled.** No match percentages, no strength levels on skills, no ordering of picks by quality. The interviewer elicits and takes notes; it never evaluates or comments on emotion.
+5. **Evidence is cited by reference.** The model points at a turn and sentence index; code renders the text from the stored transcript. Model-written text is never presented as a quote.
+6. **Protected attributes and their proxies are never stored or shown**: age, gender, nationality, ethnicity, religion, health, family status, photo. Names stay off cards. Original quotes, interview language and input mode are hidden from companies until both sides opt in.
+7. **A human approves every pick individually** before a digest is published. There is no "approve all". Must-have requirements never filter anyone out of the pool.
+8. **Job ingestion drops personal data**: recruiter names, emails and phone numbers, including those inside description text.
+9. **No voice, tone or emotion analysis.** Audio is never stored.
+
+## Stack
+
+Next.js 16 (App Router) + React 19 + TypeScript strict, Tailwind 4, shadcn/ui, Zod 4, Drizzle with Postgres 17 (`pg_trgm`), PGlite for tests, Vitest, Playwright. One package, npm. Docker Compose on the VPS: `caddy`, `web`, `worker`, `db`.
+
+Your training data is probably older than these versions. Check `docs/PATTERNS.md` and the installed package before writing against an API from memory.
+
+## Commands
+
+| Command | What it does |
+|---|---|
+| `npm run check` | type check + lint + unit tests. Must pass before you finish. |
+| `npm test` | unit tests (Vitest, PGlite) |
+| `npm run dev` | local dev server (needs `.env.local`) |
+| `npm run db:generate` | generate a migration from the schema. Lead only. |
+| `npm run e2e` | Playwright against `E2E_BASE_URL` (defaults to the live site) |
+
+## Layout and ownership
+
+| Path | Owner |
+|---|---|
+| `src/contracts/`, `src/db/`, `drizzle/`, `src/lib/`, `src/components/ui/`, `src/app/layout.tsx`, `src/worker/index.ts`, `fixtures/`, `e2e/`, root config, `package.json`, lockfile, `infra/`, `docs/` | Lead only |
+| `src/features/interview/`, `src/app/api/interview/`, `src/app/(talent)/interview/`, `src/app/(talent)/card/` | Stream S1 |
+| `src/features/jobs/`, `src/features/needs/`, `src/app/api/jobs/`, `src/app/api/needs/`, `src/app/(company)/` | Stream S2 |
+| `src/features/matching/`, `src/features/picks/`, `src/app/api/matches/`, `src/app/api/picks/`, `src/app/(organiser)/`, `src/app/(talent)/matches/` | Stream S3 |
+| `src/features/voice/`, `src/app/api/voice/`, `src/features/synth/`, `seed/`, `evals/` | Stream S4 |
+
+## Conventions
+
+- `src/contracts` is the source of truth for every shape that crosses a boundary (API, DB json, SSE, LLM output). Import types from there; do not redefine them.
+- Card bodies are stored as Zod-validated `jsonb`. Parse on read and on write.
+- Feature code lives in `src/features/<name>/` and must not import from another feature's internals. Share through `src/lib` or `src/contracts`.
+- Route handlers stay thin: parse input with Zod, call a feature function, return.
+- Every model call states its role (`live`, `analyst` or `bulk`) and, for JSON, a Zod schema. Use the gateway's replay mode in tests; tests never hit a live model.
+- Every state change that matters to a person writes an audit event through `src/lib/audit`.
+- Tests sit next to the code as `*.test.ts`. DB tests use the PGlite helper in `tests/helpers/db.ts`.
+- User-facing text is plain and non-judgemental. English first; Finnish strings come later.
+
+## Working as a subagent
+
+- You are in your own git worktree on your own branch. Commit there. Do not push, do not merge, do not deploy, do not touch `main`.
+- Stay inside the paths your brief gives you. If you need a change in a lead-only path (a contract, a table, a dependency), do not make it. List it under "Requests for the lead" in your final report.
+- Do not add npm dependencies unless your brief names them.
+- Run `npm run check` before you finish and paste its summary into your report.
+- Final report: what you built, what you verified and how, what is not done, requests for the lead, and the branch name with `git log --oneline -5`.
+
+## Build orchestration (lead)
+
+Sonnet subagents write code; Opus subagents write specs, explore design and set up infra. The lead owns contracts, schema, merges, deploys and verification. Deploy is `git push vps main`, lead only. Merge streams often, at least every two hours.
