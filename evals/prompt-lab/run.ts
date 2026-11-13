@@ -105,7 +105,7 @@ async function main() {
           try {
             if (schema) {
               const r = await chatJson({ ...base, schema });
-              if (r.data !== null) {
+              if (!("error" in r)) {
                 result = { item: spec.item, caseId: c.id, run, role: spec.role, kind: "json", ok: true, data: r.data, meta: r.meta };
               } else {
                 // One extra plain call so the failure can be diagnosed from the raw output.
