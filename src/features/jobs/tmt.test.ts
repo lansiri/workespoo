@@ -104,13 +104,14 @@ describe("normaliseTmtPosting rules", () => {
     });
     const n = normaliseTmtPosting(detail)!;
     expect(n.job.url).toBe("https://tyomarkkinatori.fi/henkiloasiakkaat/avoimet-tyopaikat/11111111-2222-3333-4444-555555555555");
-    expect(n.job.description).toContain("[removed]");
+    expect(n.job.description).not.toContain("Maija");
+    expect(n.job.description).not.toContain("Lisätietoja");
     expect(n.job.description).toContain("30.11.2026");
     expect(n.job.sentences).toEqual([
       "Kokin tehtävät.",
       "Ruoanvalmistus",
       "Siisteys",
-      "Lisätietoja: Maija, puh. [removed], [removed].",
+      "[removed]",
       "Hae 30.11.2026 mennessä.",
     ]);
     const raw = JSON.stringify(n.job.raw);

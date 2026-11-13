@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { containsContact, redactContacts } from "./redact";
+import { blankContactSentences, containsContact, containsContactCue, redactContacts, scrubPostingText, scrubSentenceList } from "./redact";
 
 const R = "[removed]";
 
@@ -80,5 +80,133 @@ describe("containsContact", () => {
     const once = redactContacts("a@b.fi, 040 123 4567, name(at)x.fi");
     expect(redactContacts(once)).toBe(once);
     expect(containsContact(once)).toBe(false);
+  });
+});
+
+describe("contact cues and scrubPostingText", () => {
+  const CUES = [
+    "Lisätietoja antaa Maija",
+    "Lisätiedot hakemuksesta",
+    "Tiedustelut: rekrytointi",
+    "Yhteyshenkilö: Maija Meikäläinen",
+    "Yhteydenotot [removed]",
+    "Ota yhteyttä rekrytoijaan",
+    "Kysy lisää meiltä",
+    "For more information, ask us",
+    "Further information is given by HR",
+    "For questions please write",
+    "Contact person: Anna Virtanen",
+    "Please contact the recruiter",
+    "Mer information ger HR",
+    "Ytterligare information lämnas av chefen",
+    "Upplysningar lämnas av chefen",
+    "Kontaktperson: Anna Virtanen",
+    "Frågor besvaras av chefen",
+    "Teams interview with Kukka Roine, Manager",
+  ];
+
+  it.each(CUES)("sees a cue in %s", (text) => {
+    expect(containsContactCue(text)).toBe(true);
+    expect(scrubPostingText(`Työ on kiva.\n${text}\nPalkka sovitaan.`)).toBe("Työ on kiva.\nPalkka sovitaan.");
+  });
+
+  it("sees inflected stems", () => {
+    expect(containsContactCue("Lisätiedoista kertoo esihenkilö.")).toBe(true);
+    expect(containsContactCue("Tiedusteluihin vastaa HR.")).toBe(true);
+  });
+
+  it("keeps job sentences that only share a word with a cue", () => {
+    for (const s of [
+      "Toimit yhteyshenkilönä asiakkaiden ja urakoitsijoiden välillä.",
+      "Vastaat asiakaspalvelun yhteydenottoihin ja sähköposteihin.",
+      "Hoidat tuotteita Nokia Oyj:n ja Kone Oyj:n tehtailla Espoossa.",
+      "Työskentelet Python-, AWS- ja Kubernetes-ympäristössä Helsingissä.",
+    ]) {
+      expect(containsContactCue(s)).toBe(false);
+      expect(scrubPostingText(s)).toBe(s);
+    }
+  });
+
+  it("removes a sentence with a marker, and the recruiter name in it", () => {
+    const out = scrubPostingText("Kehität sovelluksia. Soita Maija Meikäläiselle p. 040 123 4567. Haku päättyy pian.");
+    expect(out).toBe("Kehität sovelluksia. Haku päättyy pian.");
+  });
+
+  it("removes a three-line contact block with names", () => {
+    const text = [
+      "Haemme kehittäjää.",
+      "",
+      "Lisätietoja antaa:",
+      "Maija Meikäläinen, palvelupäällikkö",
+      "Toimitusjohtaja Mika Suominen",
+      "",
+      "Hae 30.11. mennessä.",
+    ].join("\n");
+    expect(scrubPostingText(text)).toBe("Haemme kehittäjää.\n\n\nHae 30.11. mennessä.");
+  });
+
+  it("removes list lines with a cue but not other list lines or name-like lines elsewhere", () => {
+    expect(scrubPostingText("- Python\n- Lisätietoja: [removed]\n- React")).toBe("- Python\n- React");
+    expect(scrubPostingText("Tiimi\nMaija Meikäläinen\nTyö on kiva.")).toBe("Tiimi\nMaija Meikäläinen\nTyö on kiva.");
+  });
+
+  it("is idempotent", () => {
+    const text = "Työ.\nLisätietoja antaa Maija Meikäläinen, puh. 040 123 4567.\nMaija Meikäläinen\nHae pian.";
+    const once = scrubPostingText(text);
+    expect(scrubPostingText(once)).toBe(once);
+    expect(once).not.toContain("Maija");
+  });
+
+  it("scrubSentenceList keeps positions", () => {
+    expect(scrubSentenceList(["Työ on kiva.", "Lisätietoja antaa Maija Meikäläinen.", "Maija Meikäläinen", "Hae pian."])).toEqual([
+      "Työ on kiva.",
+      "[removed]",
+      "[removed]",
+      "Hae pian.",
+    ]);
+  });
+
+  it("blankContactSentences leaves a [removed] line per sentence", () => {
+    expect(blankContactSentences("Työ. Lisätietoja antaa Maija. Hae pian.")).toBe("Työ.\n[removed]\nHae pian.");
+  });
+});
+
+describe("review fixes", () => {
+  it("removes a recruiter line with a contact method and a name, and the fixture string", () => {
+    expect(scrubPostingText("[removed]\n\nKuldip Kumar puhelimitse arkisin klo 9-16")).not.toContain("Kuldip");
+    for (const s of [
+      "Soita Maija Meikäläiselle.",
+      "Kysymyksiin vastaa Maija Meikäläinen.",
+      "Contact: John Smith, HR Manager",
+      "Rekrytoija: Anna Virtanen",
+      "Kontakta Anna Svensson.",
+    ]) {
+      expect(scrubPostingText(`Työ.\n${s}\nHae.`), s).toBe("Työ.\nHae.");
+    }
+  });
+
+  it("removes weak-cue sentences naming one person", () => {
+    expect(containsContactCue("Contact person for this role is Anna from our recruiting team.")).toBe(true);
+    expect(containsContactCue("Yhteyshenkilönä toimii rekrytointipäällikkö virtanen talon sisällä.")).toBe(true);
+    expect(containsContactCue("Toimia tärkeänä yhteyshenkilönä asiakkaiden ja tiimin välillä päivittäin.")).toBe(false);
+    expect(containsContactCue("Varmistat, että yhteydenotot dokumentoidaan huolellisesti asiakasjärjestelmään.")).toBe(false);
+  });
+
+  it("removes name lines with markdown, a trailing period or a suffix", () => {
+    for (const n of ["**Maija Meikäläinen**", "Maija Meikäläinen.", "Maija Meikäläinen (HR)", "- **Maija Meikäläinen**"]) {
+      expect(scrubPostingText(`Työ.\nLisätietoja antaa:\n${n}\nHae.`), n).toBe("Työ.\nHae.");
+    }
+  });
+
+  it("keeps job sentences that look like contact cues", () => {
+    for (const s of [
+      "Vastaat asiakkaiden tiedusteluihin puhelimitse ja sähköpostilla päivittäin.",
+      "Otat yhteyttä asiakkaisiin ja sovit tapaamisia heidän kanssaan.",
+      "You will interview with customers and gather their needs every week.",
+    ]) {
+      expect(containsContactCue(s), s).toBe(false);
+    }
+    expect(containsContactCue("Ota yhteyttä heti.")).toBe(true);
+    expect(containsContactCue("Interview with Kukka Roine, Manager")).toBe(true);
   });
 });

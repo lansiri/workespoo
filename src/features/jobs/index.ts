@@ -4,7 +4,7 @@ import { job } from "@/db/schema";
 import { Job } from "@/contracts";
 
 export { importEsco, type EscoImportResult } from "./esco-import";
-export { ingestTmt, normaliseTmtPosting, type TmtIngestOptions, type TmtIngestResult } from "./tmt";
+export { ingestTmt, normaliseTmtPosting, rescrubStoredPostings, type TmtIngestOptions, type TmtIngestResult } from "./tmt";
 export { crawlOccupationSkills, type OccupationCrawlResult } from "./esco-occupations";
 
 type JobRow = typeof job.$inferSelect;
