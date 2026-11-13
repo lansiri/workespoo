@@ -1,0 +1,92 @@
+{
+  "id": "p05",
+  "synthetic": true,
+  "handle": "Granite-52",
+  "name": "Marek Nowicki (synthetic)",
+  "email": "marek.nowicki@example.invalid",
+  "interviewLang": "en",
+  "interviewMode": "full",
+  "inputMode": "text",
+  "occupationUri": "http://data.europa.eu/esco/occupation/2a914d26-42aa-46b5-acf3-097d51ba4617",
+  "occupationLabel": "construction engineer",
+  "isco2": "21",
+  "stage": "long",
+  "route": "moved_for_work",
+  "facts": [
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/1de548e0-9535-4d2e-9d20-d4474c1ea813",
+      "label": "oversee construction project",
+      "story": "Plans pours and formwork with the foremen on concrete-frame housing and office projects."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/fc1a75bb-70e3-4005-881f-7709bf7b0ed4",
+      "label": "monitor construction site",
+      "story": "Checks the drawings against what has been built and keeps the quality documents in order."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/615cfc39-797f-4229-8e92-159fcf8f3030",
+      "label": "building codes",
+      "story": "Knows the Finnish building code and fills in the inspection documents himself."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/59ea80e1-463a-4dba-82c6-d0b6d577d532",
+      "label": "technical drawings",
+      "story": "Overlaid the structural and architectural drawings and found that the stairwell openings did not match."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/32abc65b-333e-4af8-88df-ae2938018fb9",
+      "label": "communicate with construction crews",
+      "story": "Leads a crew of about twenty-five and makes sure everyone has understood the plan, with a quick drawing on the wall if needed."
+    }
+  ],
+  "omit": [
+    "http://data.europa.eu/esco/skill/d74df140-eb69-43e2-bac9-1cafc824d702",
+    "http://data.europa.eu/esco/skill/9be758b6-a45d-403c-8943-68390ee2c961"
+  ],
+  "lookingFor": {
+    "roles": [
+      "site manager",
+      "construction supervisor"
+    ],
+    "workMode": "onsite",
+    "startFrom": "within_3_months",
+    "workLanguages": [
+      "en",
+      "fi"
+    ]
+  },
+  "answers": {
+    "recent_work": "For the last eleven years I've been a site engineer and later site manager on concrete-frame housing and office projects around Espoo and Helsinki. Day to day I plan the pours and the formwork with the foremen, check the drawings against what's built, and keep the quality documents in order. I'm 53, and I came from Poland in 2008 for a bridge project, and then I stayed.",
+    "example": "On one housing block the drawings for the stairwell did not match the structural drawings, so the openings were in different places. I found it when I overlaid the two sets before the formwork went up, called the designers the same day, and we agreed a corrected opening. Because we caught it before pouring, nobody had to break out concrete.",
+    "tools": "Revit and AutoCAD for reading the models and drawings, a tablet on site for the drawings and photos, and Excel for the pour schedules. I know the Finnish building code well and I fill in the inspection documents myself. Total station, level and laser for checking positions.",
+    "people": "I lead a crew of about twenty-five on site: the foremen, formwork carpenters and rebar fitters, plus subcontractors for electrical and ventilation. I report to the project manager and talk with the client's supervisor every week. My part is the schedule and the quality, not the budget.",
+    "beyond": "I started as a carpenter in my twenties, so I can read what the crew is doing. I also hold the site safety qualification and I run the safety walk every Monday. I've trained two young engineers to become supervisors.",
+    "open_floor": "I've worked with crews in four languages on one site, so I'm used to making sure that everyone understood the plan.",
+    "looking_for": "Site manager or construction supervisor job on larger projects. English and Finnish both work for me. On site, naturally. I could start in January."
+  },
+  "probes": [
+    "The overlay was done in the model viewer: I laid the structural model over the architect's one and flicked between them level by level. The stairwell openings were about ten centimetres out. I took screenshots, sent them with the drawing numbers to both designers, and asked them to confirm which one was right.",
+    "For the Monday safety walk I go around with the foremen and we list what we see on a sheet, like missing edge protection or loose material. Each item gets a person and a day, and I check on Friday that they are closed."
+  ],
+  "planted": [
+    {
+      "area": "recent_work",
+      "kind": "age and origin",
+      "tokens": [
+        "53",
+        "Poland"
+      ],
+      "alsoCheck": [
+        "Polish"
+      ],
+      "skillKeywords": [
+        "construction",
+        "site",
+        "building",
+        "supervis",
+        "concrete"
+      ]
+    }
+  ],
+  "twinOf": null
+}

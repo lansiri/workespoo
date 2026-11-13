@@ -1,0 +1,109 @@
+{
+  "id": "p07",
+  "synthetic": true,
+  "handle": "Pine-39",
+  "name": "Sari Koskinen (synthetic)",
+  "email": "sari.koskinen@example.invalid",
+  "interviewLang": "fi",
+  "interviewMode": "full",
+  "inputMode": "text",
+  "occupationUri": "http://data.europa.eu/esco/occupation/8d3e8aaa-791b-4c75-a465-f3f827028f50",
+  "occupationLabel": "nurse responsible for general care",
+  "isco2": "22",
+  "stage": "mid",
+  "route": "grew_up_in_finland",
+  "facts": [
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/7a63f944-6948-4ae4-9c1f-d08e492535c9",
+      "label": "apply person-centred care",
+      "story": "Visits home-care clients and plans the visit around what the client can and wants to do."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/f735e153-1f57-4841-afe9-4712cc740054",
+      "label": "manage multiple patients simultaneously",
+      "story": "Does the first assessment when a client's condition worsens and sets the order of the day's visits accordingly."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/e98a5096-de98-46d2-88c8-951f4029c038",
+      "label": "evaluate nursing care",
+      "story": "Reviewed an elderly client's medication list after repeated falls and found two drugs that together made him unsteady."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/c65aa043-98da-4136-9877-494e72d9e4cf",
+      "label": "interact with healthcare users",
+      "story": "Explains medication and wound care to clients and their relatives in plain words."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/51e79cb4-fab3-404c-88f3-cd4a1bd5879e",
+      "label": "deal with emergency care situations",
+      "story": "Keeps her first aid up to date and teaches first aid courses as a volunteer."
+    }
+  ],
+  "omit": [
+    "http://data.europa.eu/esco/skill/b469a01e-2d3c-4143-8af8-687630fb4ee5",
+    "http://data.europa.eu/esco/skill/5e13af88-67d3-46ed-af58-8a7b8ebe7b1f"
+  ],
+  "lookingFor": {
+    "roles": [
+      "registered nurse",
+      "home care nurse"
+    ],
+    "workMode": "onsite",
+    "startFrom": "within_1_month",
+    "workLanguages": [
+      "fi"
+    ]
+  },
+  "answers": {
+    "recent_work": "Olen työskennellyt kotihoidon sairaanhoitajana seitsemän vuotta. Käyn asiakkaiden luona antamassa lääkkeitä, hoidan haavoja ja seuraan vointia, ja kirjaan kaiken asiakastietojärjestelmään. Minulla on astma, joten olen oppinut tarkistamaan työpäivän ensimmäiseksi ne kotikäynnit, joissa on paljon pölyä tai tupakansavua.",
+    "example": "Yksi vanhus oli kaatunut kahdesti viikossa, eikä kukaan ollut yhdistänyt asiaa. Kävin läpi hänen lääkelistansa ja huomasin, että verenpainelääke ja unilääke yhdessä saivat hänet huteraksi iltaisin. Soitin lääkärille, lääkitystä muutettiin, ja kaatuilu loppui. Kirjasin asian ja kerroin siitä omaisille ja kollegoille seuraavassa vuoronvaihdossa.",
+    "tools": "Käytän asiakastietojärjestelmää, mobiilisovellusta kotikäynneillä ja lääkkeenjako-ohjelmaa. Mittareista verenpainemittari, verensokerimittari ja happisaturaatiomittari ovat jokapäiväisiä. Haavanhoidossa tunnen eri sidostyypit ja osaan valita niistä sopivan. Annan myös pistoksia ja otan laboratorionäytteitä.",
+    "people": "Meillä on kotihoidon tiimi, jossa on kuusi hoitajaa ja lähihoitajaa, ja toimin usein ensimmäisenä arvioijana, kun jonkun asiakkaan vointi huononee. Teen yhteistyötä lääkärin, fysioterapeutin ja omaisten kanssa. Lähihoitajat kysyvät minulta neuvoa haavoista ja lääkkeistä.",
+    "beyond": "Olen käynyt muistisairaan kohtaamisen koulutuksen, ja olen vapaaehtoisena ensiapuopettajana paikallisessa yhdistyksessä. Vedän kerran kuussa ensiapukurssin yhdistyksen jäsenille.",
+    "open_floor": "Haluaisin, että mukaan tulee se, että kirjaan huolellisesti. Kollegat sanovat, että minun kirjauksistani näkee heti, mitä on tehty ja mitä pitää seurata.",
+    "looking_for": "Etsin sairaanhoitajan työtä, mielellään kotihoidosta tai kotisairaanhoidosta tai terveysasemalta. Työkieli on suomi. Iltavuorot sopivat huonosti, koska olen kolmen lapsen äiti, joten päivävuoro olisi hyvä. Voin aloittaa kuukauden päästä."
+  },
+  "probes": [
+    "Lääkelistan läpikäynnissä katsoin jokaisen lääkkeen vaikutukset ja haittavaikutukset ja kysyin asiakkaalta, mitä hän oikeasti ottaa. Puolet lääkkeistä oli muuttunut viime vuoden aikana ilman että lista oli päivittynyt. Korjasin listan ja vein sen lääkärille.",
+    "Haavanhoidosta esimerkki: säärihaava ei ollut parantunut kuukausiin. Mittasin haavan ja valokuvasin sen viikoittain, vaihdoin sidoksen kosteaa pitävään ja sain kompressiohoidon aloitettua lääkärin luvalla. Kahdessa kuukaudessa haava oli umpeutunut."
+  ],
+  "planted": [
+    {
+      "area": "recent_work",
+      "kind": "health",
+      "tokens": [
+        "astma"
+      ],
+      "alsoCheck": [
+        "asthma"
+      ],
+      "skillKeywords": [
+        "medication",
+        "wound",
+        "nurs",
+        "home care",
+        "care"
+      ]
+    },
+    {
+      "area": "looking_for",
+      "kind": "family",
+      "tokens": [
+        "kolmen lapsen"
+      ],
+      "alsoCheck": [
+        "children",
+        "kids",
+        "mother"
+      ],
+      "skillKeywords": [
+        "medication",
+        "wound",
+        "nurs",
+        "home care",
+        "care"
+      ]
+    }
+  ],
+  "twinOf": null
+}

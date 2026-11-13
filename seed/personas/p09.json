@@ -1,0 +1,93 @@
+{
+  "id": "p09",
+  "synthetic": true,
+  "handle": "Moss-18",
+  "name": "Elin Söderström (synthetic)",
+  "email": "elin.soderstrom@example.invalid",
+  "interviewLang": "sv",
+  "interviewMode": "full",
+  "inputMode": "text",
+  "occupationUri": "http://data.europa.eu/esco/occupation/55d60ead-0343-4008-b9e4-fb4b5a179c83",
+  "occupationLabel": "early years teacher",
+  "isco2": "23",
+  "stage": "early",
+  "route": "studied_in_finland",
+  "facts": [
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/a65fb963-6faf-47b2-a3d9-c4e5e4d833c5",
+      "label": "support children's wellbeing",
+      "story": "Made a picture schedule for a boy who struggled with changes of activity, and the conflicts in the group became fewer."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/a8c5e58f-1f0f-40bc-8860-aaab0f64f105",
+      "label": "teach kindergarten class content",
+      "story": "Plans the weekly programme for a group of twenty children with songs, outdoor play and simple experiments."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/3ff9d956-3e26-40d1-ae0e-f5f247943042",
+      "label": "monitor children's physical development",
+      "story": "Follows each child's development with photos and short notes and prepares the parent discussions from them."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/efe801a5-8704-4def-8a96-c32f7a6cb9fb",
+      "label": "maintain relations with children's parents",
+      "story": "Holds two development discussions a year and talks with parents at pick-up almost every day."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/a5b0cd5c-e13a-4ab3-8d93-4d242adcfb01",
+      "label": "teamwork principles",
+      "story": "Leads the planning in a team of three adults and works with the special education teacher and speech therapist when a child needs support."
+    }
+  ],
+  "omit": [
+    "http://data.europa.eu/esco/skill/ef1e63c9-f8c1-46ad-8c74-3cea311c9377",
+    "http://data.europa.eu/esco/skill/77eda69d-ddf6-40ca-b66f-870ea996734d"
+  ],
+  "lookingFor": {
+    "roles": [
+      "early childhood teacher"
+    ],
+    "workMode": "onsite",
+    "startFrom": "later",
+    "workLanguages": [
+      "sv",
+      "fi"
+    ]
+  },
+  "answers": {
+    "recent_work": "Jag har jobbat som barnträdgårdslärare på ett svenskspråkigt daghem i Esbo i två år, sedan jag blev klar med utbildningen. Jag leder en grupp på tjugo barn tillsammans med två barnskötare. Vi planerar veckans program, jag följer med barnens utveckling och skriver ner det inför samtalen med föräldrarna.",
+    "example": "En pojke i gruppen ville aldrig delta i samlingen, utan satt för sig själv och bråkade ibland med de andra. Jag började lägga märke till när det hände och såg att det alltid var när vi bytte aktivitet. Så jag gjorde en bildkarta för dagen och gick igenom den med honom på morgonen. Efter några veckor kunde han vara med i samlingen, och bråken blev färre.",
+    "tools": "Jag använder pedagogisk dokumentation, alltså foton och korta anteckningar om vad barnen gör, och en digital plattform där föräldrarna kan se dem. Dessutom använder jag bilder och tecken som stöd i kommunikationen, sagoböcker, sånger och enkla experiment med vatten och färg. Mitt första hjälpen-kort är också uppdaterat.",
+    "people": "I vårt arbetslag är vi tre vuxna, och jag har ansvaret för planeringen. Jag har utvecklingssamtal med föräldrarna två gånger per år och pratar med dem vid hämtningen nästan varje dag. Ibland samarbetar jag med speciallärare och talterapeut när ett barn behöver stöd.",
+    "beyond": "Under studierna gjorde jag praktik i en förskola med många flerspråkiga barn, och jag har varit scoutledare i fyra år. Med scouterna ordnar jag läger för barn i åldern sju till tio.",
+    "open_floor": "Jag vill gärna att det syns att jag trivs ute med barnen. Vi går ut varje dag, oavsett väder, och jag har gjort en liten skogsplan för hela året.",
+    "looking_for": "Jag söker jobb som barnträdgårdslärare eller förskollärare, gärna på svenska, men finska går också bra. Jag är gravid och väntar mig i maj, så jag skulle gärna börja efter föräldraledigheten, eller ta en vikarietjänst fram till våren."
+  },
+  "probes": [
+    "Bildkartan hade fem bilder: ankomst, samling, utelek, mat och vila. Jag satte fast dem med kardborreband så att han själv fick flytta en bild när vi var klara med något. Det gav honom en känsla av att veta vad som skulle hända härnäst.",
+    "Inför utvecklingssamtalet samlar jag tre exempel från veckorna innan, som ett foto av något barnet har byggt och en anteckning om vad barnet sa. Jag börjar med det som barnet tycker om att göra och frågar sedan föräldrarna vad de ser hemma."
+  ],
+  "planted": [
+    {
+      "area": "looking_for",
+      "kind": "pregnancy",
+      "tokens": [
+        "gravid",
+        "föräldraledigheten"
+      ],
+      "alsoCheck": [
+        "pregnant",
+        "parental",
+        "maternity"
+      ],
+      "skillKeywords": [
+        "child",
+        "kindergarten",
+        "early",
+        "pedagog",
+        "teach"
+      ]
+    }
+  ],
+  "twinOf": null
+}

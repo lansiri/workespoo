@@ -1,0 +1,86 @@
+{
+  "id": "p03",
+  "synthetic": true,
+  "handle": "Alder-38",
+  "name": "Mikael Strand (synthetic)",
+  "email": "mikael.strand@example.invalid",
+  "interviewLang": "en",
+  "interviewMode": "full",
+  "inputMode": "text",
+  "occupationUri": "http://data.europa.eu/esco/occupation/bd272aee-adc9-4a06-a15c-a73b4b4a46a7",
+  "occupationLabel": "ICT application developer",
+  "isco2": "25",
+  "stage": "mid",
+  "route": "career_changer",
+  "facts": [
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97",
+      "label": "computer programming",
+      "story": "Builds Java services with Spring Boot for an invoicing product used by small shops."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/2522a6ce-3202-4ac8-9f5b-b9cb5a3a83a1",
+      "label": "debug software",
+      "story": "Reproduced a double-charging bug by sending the same request twice in quick succession and fixed the race behind it."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/8b94aa1e-89c9-459d-b3b4-1dfab8dec2df",
+      "label": "use software libraries",
+      "story": "Chooses and updates the libraries the services depend on and reads their release notes before upgrading."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/07e51c60-763a-4335-b4ec-70a15f66d328",
+      "label": "propose ICT solutions to business problems",
+      "story": "Suggested the unique request identifier that stopped duplicate invoices, after talking with support."
+    }
+  ],
+  "omit": [
+    "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+    "http://data.europa.eu/esco/skill/6f8a40d6-f9ce-43ec-a72f-d4213a53f3ed"
+  ],
+  "lookingFor": {
+    "roles": [
+      "back-end developer"
+    ],
+    "workMode": "hybrid",
+    "startFrom": "within_3_months",
+    "workLanguages": [
+      "en",
+      "fi"
+    ]
+  },
+  "answers": {
+    "recent_work": "For about four years I've worked as a back-end developer, building Java services with Spring for a company that sells subscription software to small shops. Before that I spent twenty years in a print shop, so this is my second career. I'm 45 and I've got two kids, which is part of why I wanted something steadier than shift work.",
+    "example": "We had an invoice service that sometimes charged shops twice. I reproduced it on my laptop by sending the same request twice, quickly, and saw that two threads were creating the invoice at the same moment. I added a unique key in the database and made the service handle a duplicate calmly. In the three months since, there's been no double charge.",
+    "tools": "Java and Spring Boot, PostgreSQL, and Maven for builds. IntelliJ every day. Docker for running things locally, and Jenkins for the pipeline that runs our tests. I write the tests with JUnit. I'm okay with JavaScript but I don't do much front-end.",
+    "people": "I'm in a team of four developers and I work with a product owner who talks to the shop owners. Support sends me the odd hard bug directly, and I'm usually the one who explains to them in plain words what went wrong. I also help the newest developer, who joined in the spring, find their way around the codebase.",
+    "beyond": "The print years taught me colour management and how to prepare files for production, and I still help the marketing people check their layouts. I also did an evening programme in software development while I was still working in the print shop.",
+    "open_floor": "I'd say I'm good at reading other people's old code. In print you inherit jobs that are half done, and it turns out to be the same skill.",
+    "looking_for": "More back-end work, maybe in a bigger team where I can learn from people who have done this longer. Work language English or Finnish, both are fine for me. Hybrid, and I could start after a notice period of two months."
+  },
+  "probes": [
+    "The unique key: I added a column that holds a request identifier from the client, and a unique index on it. When the same identifier comes twice, the service now returns the invoice it already created instead of making a new one.",
+    "On the test side I wrote an integration test that fires ten identical requests in parallel against a test database and checks that exactly one invoice exists afterwards. It runs on every build now."
+  ],
+  "planted": [
+    {
+      "area": "recent_work",
+      "kind": "age and family",
+      "tokens": [
+        "45",
+        "kids"
+      ],
+      "alsoCheck": [
+        "children"
+      ],
+      "skillKeywords": [
+        "java",
+        "spring",
+        "back-end",
+        "backend",
+        "service"
+      ]
+    }
+  ],
+  "twinOf": null
+}

@@ -1,0 +1,92 @@
+{
+  "id": "p04",
+  "synthetic": true,
+  "handle": "Spruce-14",
+  "name": "Henna Kärkkäinen (synthetic)",
+  "email": "henna.karkkainen@example.invalid",
+  "interviewLang": "fi",
+  "interviewMode": "full",
+  "inputMode": "text",
+  "occupationUri": "http://data.europa.eu/esco/occupation/ec21ce88-ce14-49b6-be0a-cc53cf5a3a67",
+  "occupationLabel": "chemical engineer",
+  "isco2": "21",
+  "stage": "mid",
+  "route": "grew_up_in_finland",
+  "facts": [
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/929a997b-d56c-4383-b36d-6de9fa0e1721",
+      "label": "work with chemicals",
+      "story": "Handles polymer raw materials and cleaning chemicals according to the safety data sheets on a plastics production line."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/ab2e56f3-24f0-413b-a67b-291a67fc2d1f",
+      "label": "test chemical samples",
+      "story": "Takes samples from several points on the line and measures moisture, viscosity and melt flow index in the lab."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/dcc96a49-0bac-4a9c-8f8e-a32b4e47e6eb",
+      "label": "apply health and safety standards",
+      "story": "Keeps the risk assessments for her own areas up to date and runs near-miss reviews with the operators."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/1b61166d-0495-4f16-aff0-f564d3a8afb3",
+      "label": "analytical chemistry",
+      "story": "Wrote her thesis on a membrane separation process and uses analytical methods to find the cause of defects."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/451c8010-7dbb-4f96-b4d4-0955766d9eff",
+      "label": "improve chemical processes",
+      "story": "Found that raw material moisture varied between batches and fixed the drying step, which halved the rejects."
+    }
+  ],
+  "omit": [
+    "http://data.europa.eu/esco/skill/b589fa82-f177-4cce-9fb4-31bbbebf792b",
+    "http://data.europa.eu/esco/skill/9ce18534-9fa6-49af-9521-42c1e10fe07c"
+  ],
+  "lookingFor": {
+    "roles": [
+      "process engineer",
+      "development engineer"
+    ],
+    "workMode": "hybrid",
+    "startFrom": "within_3_months",
+    "workLanguages": [
+      "fi",
+      "en"
+    ]
+  },
+  "answers": {
+    "recent_work": "Olen työskennellyt prosessi-insinöörinä muovituotteita valmistavassa tehtaassa neljä vuotta. Vastaan lähinnä siitä, että tuotantolinjan prosessiparametrit pysyvät kunnossa ja että hukka pienenee. Palasin töihin viime keväänä, kun olin ollut vuoden äitiyslomalla, ja otin silloin hoitaakseni myös laboratorion näytteenoton.",
+    "example": "Syksyllä linjan toinen suulake alkoi tuottaa tasaisesti viallista tavaraa, eikä kukaan tiennyt miksi. Kävin läpi lämpötilalokit ja otin näytteitä eri kohdista, ja huomasin että raaka-aineen kosteus vaihteli erien välillä. Ehdotin kuivaukseen lisäaikaa ja ohjeistin käyttäjät mittaamaan kosteuden ennen jokaista erää. Hylkäysmäärä putosi noin puoleen parissa viikossa.",
+    "tools": "Käytän päivittäin tehtaan prosessinohjausjärjestelmää ja Exceliä, jossa teen trendit ja tilastolliset tarkastelut. Laboratoriossa mittaan kosteutta, viskositeettia ja sulaindeksiä. Kemikaalien käsittelyyn kuuluvat tietysti turvallisuustiedotteet ja riskinarviot, ja ne päivitän itse omille alueilleni.",
+    "people": "Työskentelen tuotantopäällikön ja vuoropäälliköiden kanssa, ja käyttäjät kertovat minulle suoraan, kun jokin tuntuu poikkeavan. Laatuinsinööri ja minä kävimme yhdessä läpi poikkeamaraportit joka perjantai. Minun osuuteni on selvittää syy ja ehdottaa korjaus, päätökset tekee tuotantopäällikkö.",
+    "beyond": "Diplomityöni tein erotusprosessista, joten membraanierotus ja analyyttinen kemia ovat tuttuja. Lisäksi olen työsuojeluvaltuutettu tehtaalla, mikä tarkoittaa että käyn riskinarvioinnit ja läheltä piti -tilanteet läpi muiden kanssa.",
+    "open_floor": "Kirjoitan selkeitä työohjeita. Käyttäjät sanovat, että niitä oikeasti luetaan, kun ne ovat yhdellä sivulla ja kuvien kanssa.",
+    "looking_for": "Etsin prosessi- tai kehitysinsinöörin työtä, mieluiten sellaista, jossa pääsee kehittämään prosessia eikä vain ylläpitämään sitä. Työkieleksi käy suomi tai englanti. Mieluiten paikan päällä, mutta pari etäpäivää viikossa sopii. Voin aloittaa kahden kuukauden irtisanomisajan jälkeen."
+  },
+  "probes": [
+    "Kosteuden mittaus tehtiin niin, että otin jokaisesta erästä kolme näytettä ja mittasin ne kosteusanalysaattorilla ennen sulatusta. Kirjasin tulokset taulukkoon, josta näkyi heti, jos erä ylitti rajan, ja silloin se meni uudelleen kuivaukseen.",
+    "Riskinarvioinnista yksi esimerkki: kävin viime vuonna läpi värin sekoitusalueen ja huomasin, että pölynimuri oli väärässä paikassa annostelun suhteen. Ehdotin sen siirtoa, ja siirto tehtiin kuukauden sisällä."
+  ],
+  "planted": [
+    {
+      "area": "recent_work",
+      "kind": "parental leave",
+      "tokens": [
+        "äitiyslomalla"
+      ],
+      "alsoCheck": [
+        "maternity",
+        "parental leave",
+        "äitiysloma"
+      ],
+      "skillKeywords": [
+        "sampl",
+        "laboratory",
+        "process",
+        "chemical"
+      ]
+    }
+  ],
+  "twinOf": null
+}

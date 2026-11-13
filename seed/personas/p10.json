@@ -1,0 +1,92 @@
+{
+  "id": "p10",
+  "synthetic": true,
+  "handle": "Kettle-47",
+  "name": "Daniel Okoye (synthetic)",
+  "email": "daniel.okoye@example.invalid",
+  "interviewLang": "en",
+  "interviewMode": "express",
+  "inputMode": "text",
+  "occupationUri": "http://data.europa.eu/esco/occupation/90f75f67-495d-49fa-ab57-2f320e251d7e",
+  "occupationLabel": "cook",
+  "isco2": "51",
+  "stage": "long",
+  "route": "moved_for_work",
+  "facts": [
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+      "label": "use cooking techniques",
+      "story": "Cooks around two hundred lunch portions a day in a canteen kitchen, from braises to tray bakes."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/0ff99f51-40d9-42f1-a1ec-377b2bb5e15f",
+      "label": "comply with food safety and hygiene",
+      "story": "Logs core temperatures for every cooked dish and fridge temperatures twice a day under the HACCP plan."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/210827e3-3129-45a2-8683-70399f3f561f",
+      "label": "order supplies",
+      "story": "Orders from the suppliers' webshop and keeps the stock list in a spreadsheet."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/29b326ea-a9c8-4963-b35a-8541d0cdff77",
+      "label": "store raw food materials",
+      "story": "Chills and stores leftovers within the time limits and labels allergen and special-diet dishes."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/e1f5c539-7c93-49ee-917d-a24e0d887686",
+      "label": "control of expenses",
+      "story": "Stays within the portion cost set by the canteen manager and uses trimmings for soups and stocks."
+    }
+  ],
+  "omit": [
+    "http://data.europa.eu/esco/skill/fd728a62-6be0-4874-9d68-5946b87f29da",
+    "http://data.europa.eu/esco/skill/efd806d5-8390-4591-9c52-14d8f74bfa43"
+  ],
+  "lookingFor": {
+    "roles": [
+      "cook",
+      "head cook"
+    ],
+    "workMode": "onsite",
+    "startFrom": "now",
+    "workLanguages": [
+      "en",
+      "fi"
+    ]
+  },
+  "answers": {
+    "recent_work": "I've cooked in restaurants for thirty years, the last six as the lunch cook in a canteen kitchen in Espoo, around two hundred portions a day. I plan the lunch menu a week ahead, cook, and order from the suppliers. I'm 58 and had a knee operation last year, so I keep a chair nearby for the long prep, but I'm back to full days.",
+    "example": "Last month the fish supplier delivered late on the day we had salmon on the menu. I had two hours, so I switched to a chicken dish I could prepare fast, changed the sign, told the servers and cooked a double batch of rice. We served on time, and the salmon went on the next day's menu with a different sauce, so nothing was thrown away.",
+    "tools": "Convection ovens, tilting pans, a blast chiller and a good set of knives. I follow the HACCP plan: temperatures are logged for every dish, and fridge temperatures twice a day. I order from the supplier's webshop and keep the stock list in a spreadsheet.",
+    "people": "A kitchen team of six, two of them trainees. I'm the one who makes the plan for the day and shows the trainees how to cut and cook properly. The canteen manager decides the budget and I stay within the portion cost.",
+    "beyond": "Early in my career I worked as a baker for two years, so I make the bread and the desserts for the canteen. I also did a course on special diets, and I cook gluten-free and lactose-free dishes separately and label them.",
+    "open_floor": "I waste very little. I use trimmings for soups and stocks, and I track what comes back from the dining room, so I know what people don't eat.",
+    "looking_for": "I want to keep cooking, lunch or à la carte, or head cook in a smaller place. English is my kitchen language, and I can manage basic Finnish with suppliers and the team. Daytime hours suit me best. I can start whenever the right place comes up."
+  },
+  "probes": [
+    "On the menu switch: I looked at what was in the fridge, chicken thighs, rice and vegetables, and made a lemon-herb chicken tray bake that takes forty minutes. I told the servers about the allergens before the doors opened.",
+    "For the temperature logs, I measure the core temperature of each cooked dish with a probe, write it in the log, and chill anything that's left from sixty degrees to under six within the time limit."
+  ],
+  "planted": [
+    {
+      "area": "recent_work",
+      "kind": "age and health",
+      "tokens": [
+        "58",
+        "knee"
+      ],
+      "alsoCheck": [
+        "operation"
+      ],
+      "skillKeywords": [
+        "cook",
+        "kitchen",
+        "menu",
+        "food",
+        "chef"
+      ]
+    }
+  ],
+  "twinOf": null
+}
