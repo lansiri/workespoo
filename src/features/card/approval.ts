@@ -14,7 +14,15 @@ import { latestInterview, loadCard } from "./store";
  * rows (status `approved`) and `talent_language`, writes `card.approved` to the audit log, and
  * enqueues `matching.card_approved`.
  */
-export async function approveCard(db: Db, talentId: string): Promise<{ version: number }> {
+export function approveCard(db: Db, talentId: string): Promise<{ version: number }> {
+  return db.transaction(async (tx) => {
+    // Serialise with review edits: the draft read below must be the draft that gets approved.
+    await tx.select({ id: talent.id }).from(talent).where(eq(talent.id, talentId)).for("update");
+    return approveLocked(tx, talentId);
+  });
+}
+
+async function approveLocked(db: Db, talentId: string): Promise<{ version: number }> {
   const draft = await loadCard(db, talentId, "draft");
   if (!draft) throw new HttpError(409, "no_draft", "There is no draft card to approve");
   const active = draft.signals.filter((s) => s.status !== "removed");
@@ -42,7 +50,8 @@ export async function approveCard(db: Db, talentId: string): Promise<{ version: 
   const iv = await latestInterview(db, talentId);
   const codes = languageCodes(draft.lookingFor.workLanguages);
 
-  await db.transaction(async (tx) => {
+  {
+    const tx = db;
     await tx.delete(signalCard).where(eq(signalCard.talentId, talentId));
     await tx.insert(signalCard).values({
       talentId,
@@ -75,7 +84,7 @@ export async function approveCard(db: Db, talentId: string): Promise<{ version: 
     if (codes.length > 0) {
       await tx.insert(talentLanguage).values(codes.map((code) => ({ talentId, code, basis: "declared" as const })));
     }
-  });
+  }
 
   await audit(db, {
     actor: `talent:${talentId}`,
@@ -93,6 +102,10 @@ export async function approveCard(db: Db, talentId: string): Promise<{ version: 
   return { version: approved.version };
 }
 
+/** Pool membership changed: ask matching to recompute this person's eligibility. */
+const enqueueEligibility = (db: Db, talentId: string, version: number) =>
+  enqueue(db, "matching.card_approved", { talentId, cardVersion: version }, { dedupeKey: `matching.card_approved:${talentId}:${version}` });
+
 /**
  * Opt in to (or out of) being suggested to companies. Opting in needs an approved card.
  * Withdrawing pending suggestions and introductions is the matching feature's job.
@@ -108,10 +121,13 @@ export async function setPoolOptIn(db: Db, talentId: string, inPool: boolean): P
     if (person.inPool) return;
     await db.update(talent).set({ inPool: true }).where(eq(talent.id, talentId));
     await audit(db, { actor: `talent:${talentId}`, action: "pool.opted_in", subjectType: "pool", subjectId: talentId });
+    await enqueueEligibility(db, talentId, approved.version);
   } else {
     await withdrawConsent(db, ref);
     if (!person.inPool) return;
     await db.update(talent).set({ inPool: false }).where(eq(talent.id, talentId));
     await audit(db, { actor: `talent:${talentId}`, action: "pool.opted_out", subjectType: "pool", subjectId: talentId });
+    const approved = await loadCard(db, talentId, "approved");
+    if (approved) await enqueueEligibility(db, talentId, approved.version);
   }
 }

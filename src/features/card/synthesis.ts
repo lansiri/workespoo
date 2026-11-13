@@ -327,13 +327,15 @@ export async function synthesiseCard(
 
   // 5. Headline and summary: the model's, unless they trip a check; then code-built.
   const phrases = signals.map((s) => s.phrase);
+  // Model text may not copy the person's sentences, so every readable sentence is a quote source.
+  const allSources = [...transcript.values()].filter((t) => !t.redacted).flatMap((t) => t.sentences);
   let headline = modelHeadline;
   let summary = modelSummary;
-  if (headline !== null && (findProtectedCard(headline).length > 0 || textProblem(headline, [], MAX_HEADLINE_WORDS + 4))) {
+  if (headline !== null && (findProtectedCard(headline).length > 0 || textProblem(headline, allSources, MAX_HEADLINE_WORDS))) {
     if (findProtectedCard(headline).length > 0) await droppedProtected("headline");
     headline = null;
   }
-  if (summary !== null && (findProtectedCard(summary).length > 0 || textProblem(summary, [], MAX_SUMMARY_WORDS))) {
+  if (summary !== null && (findProtectedCard(summary).length > 0 || textProblem(summary, allSources, MAX_SUMMARY_WORDS))) {
     if (findProtectedCard(summary).length > 0) await droppedProtected("summary");
     summary = null;
   }

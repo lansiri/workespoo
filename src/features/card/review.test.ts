@@ -46,13 +46,23 @@ describe("editCard", () => {
     expect((await loadCard(t.db, TALENT, "draft"))!.signals.find((s) => s.id === "s2")!.status).toBe("proposed");
   });
 
-  it("rebuilds the headline only when it names the removed phrase", async () => {
+  it("rebuilds the headline after any remove, even when it only paraphrases the phrase", async () => {
     await seedCard(t.db, TALENT, base());
-    // seeded headline is "Goods receiving and SAP"
-    await editCard(t.db, TALENT, { op: "remove", signalId: "s2" });
-    expect((await loadCard(t.db, TALENT, "draft"))!.headline).toBe("Goods receiving and SAP");
-    await editCard(t.db, TALENT, { op: "remove", signalId: "s3" });
-    expect((await loadCard(t.db, TALENT, "draft"))!.headline).toBe("Receiving goods");
+    // seeded headline is "Goods receiving and SAP": a paraphrase of "Receiving goods"
+    await editCard(t.db, TALENT, { op: "remove", signalId: "s1" });
+    const card = (await loadCard(t.db, TALENT, "draft"))!;
+    expect(card.headline).toBe("Filing supplier claims, SAP");
+    expect(card.headline.toLowerCase()).not.toContain("receiving");
+  });
+
+  it("serialises concurrent edits so none is lost", async () => {
+    await seedCard(t.db, TALENT, base());
+    await Promise.all([
+      editCard(t.db, TALENT, { op: "remove", signalId: "s2" }),
+      editCard(t.db, TALENT, { op: "remove", signalId: "s3" }),
+    ]);
+    const card = (await loadCard(t.db, TALENT, "draft"))!;
+    expect(card.signals.map((s) => `${s.id}:${s.status}`)).toEqual(["s1:proposed", "s2:removed", "s3:removed"]);
   });
 
   it("edits a phrase: keeps the person's text, strips quality words, sets the code-built rendering, re-picks ESCO", async () => {
@@ -69,7 +79,7 @@ describe("editCard", () => {
       stale: false,
     });
     const [ev] = await listAudit(t.db, { action: "card.signal_edited" });
-    expect(ev.detail).toEqual({ signalId: "s2", version: 1, sensitive: false });
+    expect(ev.detail).toEqual({ signalId: "s2", version: 1 });
     expect(JSON.stringify(ev.detail)).not.toContain("supplier claims");
   });
 

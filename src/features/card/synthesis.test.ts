@@ -137,6 +137,24 @@ describe("synthesiseCard", () => {
     expect(await listAudit(t.db, { action: "card.protected_dropped" })).toHaveLength(2);
   });
 
+  it("keeps a 10-word headline, replaces an 11-word one and a verbatim summary", async () => {
+    await seedInterview(t.db);
+    const ten = "Goods receiving, supplier claims, SAP, scanners, pallets and training daily";
+    const eleven = ten + " too";
+    const run = async (headline: string, summary: string) => {
+      const out = good();
+      out.headline = headline;
+      out.summary = summary;
+      setLlmFake(() => out);
+      await synthesiseCard(t.db, INTERVIEW);
+      return (await loadCard(t.db, TALENT, "draft"))!;
+    };
+    expect((await run(ten, "They handled goods.")).headline).toBe(ten);
+    const card = await run(eleven, "I worked at a logistics centre, mainly receiving goods.");
+    expect(card.headline).toBe("Receiving and checking goods, Filing supplier claims, SAP");
+    expect(card.companyView.summary).toMatch(/^They talked about/);
+  });
+
   it("strips quality words from phrases and drops a phrase that is only a quality word", async () => {
     await seedInterview(t.db);
     const out = good();

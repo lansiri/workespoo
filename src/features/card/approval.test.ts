@@ -103,6 +103,19 @@ describe("approveCard", () => {
   });
 });
 
+describe("approveCard concurrency", () => {
+  it("does not approve a signal removed at the same moment", async () => {
+    await seedCard(t.db, TALENT, { status: "draft", signals: [signal({ id: "s1", phrase: "Abc" }), signal({ id: "s2", phrase: "Def" })] });
+    const { editCard } = await import("./review");
+    await Promise.allSettled([approveCard(t.db, TALENT), editCard(t.db, TALENT, { op: "remove", signalId: "s2" })]);
+    const approved = (await loadCard(t.db, TALENT, "approved"))!;
+    const draft = await loadCard(t.db, TALENT, "draft");
+    // either the removal landed first (s2 not approved) or it became a new draft on top of the approval
+    if (draft) expect(draft.signals.find((s) => s.id === "s2")!.status).toBe("removed");
+    else expect(approved.signals.map((s) => s.id)).toEqual(["s1"]);
+  });
+});
+
 describe("setPoolOptIn", () => {
   it("requires an approved card", async () => {
     await seedCard(t.db, TALENT, { status: "draft", signals: [signal({ id: "s1", phrase: "Abc" })] });
@@ -130,6 +143,17 @@ describe("setPoolOptIn", () => {
 
     await setPoolOptIn(t.db, TALENT, true);
     expect((await grants()).length).toBe(2);
+  });
+
+  it("enqueues an eligibility recompute on opt-in and on opt-out", async () => {
+    await seedCard(t.db, TALENT, { status: "approved", signals: [signal({ id: "s1", phrase: "Abc" })] });
+    await t.db.delete(jobQueue);
+    await setPoolOptIn(t.db, TALENT, true);
+    const open = async () => (await t.db.select().from(jobQueue)).filter((j) => j.kind === "matching.card_approved");
+    expect(await open()).toHaveLength(1);
+    await t.db.update(jobQueue).set({ doneAt: new Date() });
+    await setPoolOptIn(t.db, TALENT, false);
+    expect((await open()).filter((j) => j.doneAt === null)).toHaveLength(1);
   });
 
   it("opting out never needs an approved card", async () => {

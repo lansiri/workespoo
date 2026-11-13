@@ -1,7 +1,8 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { eq } from "drizzle-orm";
-import { jobQueue, talent, interview } from "@/db/schema";
+import { consent, jobQueue, talent, interview } from "@/db/schema";
 import { listAudit } from "@/lib/audit";
+import { recordConsent } from "@/lib/consent";
 import { enqueue, runReadyJobs } from "@/lib/queue";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
 import { jobs, purgeLiveSessions, PURGE_KIND, schedules } from "./jobs";
@@ -27,7 +28,13 @@ describe("purge", () => {
     await t.db.update(talent).set({ liveDemo: false, purgeAfter: new Date(NOW.getTime() - 1000) }).where(eq(talent.id, "tal_notlive0001"));
     await t.db.update(talent).set({ liveDemo: true }).where(eq(talent.id, "tal_nodate00001"));
 
+    for (const id of ["tal_past0000001", "tal_future00001"]) {
+      await recordConsent(t.db, { subjectType: "talent", subjectId: id, kind: "pool" });
+    }
     expect(await purgeLiveSessions(t.db, NOW)).toBe(1);
+    const consents = (await t.db.select().from(consent)).map((c) => c.subjectId);
+    expect(consents).not.toContain("tal_past0000001");
+    expect(consents).toContain("tal_future00001");
     expect(await remaining()).toEqual(["tal_future00001", "tal_nodate00001", "tal_notlive0001"]);
     expect(await t.db.select().from(interview).where(eq(interview.id, "int_past0000001"))).toHaveLength(0);
     const [ev] = await listAudit(t.db, { action: "talent.purged" });

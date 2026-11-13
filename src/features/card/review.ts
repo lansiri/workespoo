@@ -1,6 +1,8 @@
+import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { LookingFor, SignalId, type SignalCard } from "@/contracts";
 import type { Db } from "@/db/client";
+import { talent } from "@/db/schema";
 import { audit } from "@/lib/audit";
 import { escoTopMatch } from "@/lib/esco";
 import { HttpError } from "@/lib/http";
@@ -39,13 +41,11 @@ async function draftForEdit(db: Db, talentId: string): Promise<SignalCard> {
  * After a signal is removed, restored or reworded, text written earlier by a model may still
  * mention it. The summary is rebuilt by code, and so is the headline when it names the phrase.
  */
-function refreshAggregates(card: SignalCard, touched: string[]): SignalCard {
+function refreshAggregates(card: SignalCard): SignalCard {
   const active = card.signals.filter((s) => s.status !== "removed").map((s) => s.phrase);
-  const headline = card.headline.toLowerCase();
-  const namesTouched = touched.some((p) => p.length > 0 && headline.includes(p.toLowerCase()));
   return {
     ...card,
-    headline: namesTouched ? codeHeadline(active) : card.headline,
+    headline: codeHeadline(active),
     companyView: { ...card.companyView, summary: codeSummary(active) },
   };
 }
@@ -57,7 +57,15 @@ const cleanList = (items: readonly string[], max: number) =>
  * Applies one review edit to the draft and audits it (ids and counts only). Returns whether
  * the person's new wording trips the card lexicon: they are warned, not blocked.
  */
-export async function editCard(db: Db, talentId: string, edit: CardEdit): Promise<{ sensitive: boolean }> {
+export function editCard(db: Db, talentId: string, edit: CardEdit): Promise<{ sensitive: boolean }> {
+  return db.transaction(async (tx) => {
+    // One edit at a time per person: the read-modify-write below must not interleave.
+    await tx.select({ id: talent.id }).from(talent).where(eq(talent.id, talentId)).for("update");
+    return applyEdit(tx, talentId, edit);
+  });
+}
+
+async function applyEdit(db: Db, talentId: string, edit: CardEdit): Promise<{ sensitive: boolean }> {
   let card = await draftForEdit(db, talentId);
   const actor = `talent:${talentId}` as const;
   let sensitive = false;
@@ -93,7 +101,7 @@ export async function editCard(db: Db, talentId: string, edit: CardEdit): Promis
       ...card,
       signals: card.signals.map((s) => (s.id === target.id ? { ...s, status: removing ? "removed" : "proposed" } : s)),
     };
-    card = refreshAggregates(card, [target.phrase]);
+    card = refreshAggregates(card);
     await saveCard(db, talentId, card);
     await audit(db, {
       actor,
@@ -125,14 +133,14 @@ export async function editCard(db: Db, talentId: string, edit: CardEdit): Promis
       items: [...card.companyView.items.filter((i) => i.signalId !== target.id), item],
     },
   };
-  card = refreshAggregates(card, [target.phrase]);
+  card = refreshAggregates(card);
   await saveCard(db, talentId, card);
   await audit(db, {
     actor,
     action: "card.signal_edited",
     subjectType: "signal_card",
     subjectId: talentId,
-    detail: { signalId: target.id, version: card.version, sensitive },
+    detail: { signalId: target.id, version: card.version },
   });
   return { sensitive };
 }
