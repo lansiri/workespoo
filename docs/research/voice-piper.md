@@ -51,6 +51,16 @@ Laptop: Intel i7-12700H (14 cores, 20 threads), 31 GB. **The laptop was heavily 
 | fi_FI-harri-medium | 1.7 s | 4.0 to 5.3 s | 6.1 s | 22 050 Hz | 95 MB | 200 MB | -16.2 to -16.8 dBFS |
 | sv_SE-nst-medium | 5.3 s | 2.9 to 4.5 s | 4.4 to 4.8 s | 22 050 Hz | 95 MB | 178 MB | -17.0 dBFS |
 
+A second round half an hour later, with the load average at 31 to 37:
+
+| Voice | Load (wall) | Synthesis per sentence (wall) | Audio length | Peak RSS | Loudness (RMS) |
+|---|---|---|---|---|---|
+| en_GB-cori-medium (12 words) | 2.8 s | 1.5 to 1.8 s | 3.9 to 4.3 s | 174 MB | -14.2 to -15.7 dBFS |
+| fi_FI-harri-medium (12 words) | 1.0 s | 1.9 to 2.6 s | 6.0 to 6.2 s | 201 MB | -15.3 to -16.9 dBFS |
+| sv_SE-nst-medium (11 words) | 1.1 s | 1.4 to 1.7 s | 4.2 to 4.5 s | 171 MB | -17.1 to -17.8 dBFS |
+
+Halving the machine's load roughly halved the synthesis time, which is what contention, not Piper itself, would do. The app's own pool (`src/features/voice/server/piper.ts`) driven against the real binary at that load: five requests at once in en, en, fi, sv and de (de falls back to the English voice) all came back as complete WAVs with correct sizes and RMS between -13 and -19 dBFS; a warm English sentence of seven words then took 0.97 s from request to complete WAV.
+
 Sentences: "Thank you for telling me about that job, it sounds really interesting." / "Kiitos kun kerroit siitä työstä, se kuulostaa minusta todella mielenkiintoiselta ja hyvältä." / "Tack för att du berättade om det jobbet, det låter verkligen intressant för mig."
 
 **The audio is not silent**: RMS about -15 to -17 dBFS for every run, peak at full scale (Piper normalises its output).
@@ -59,7 +69,7 @@ CPU time could not be measured meaningfully: onnxruntime 1.14 starts one spinnin
 
 ## Verdict
 
-**Not settled here.** On this machine, under a load three times its thread count, a 12-word sentence took 2.6 to 5.3 s, which is above the one-second target. The measurement is dominated by contention and does not show what Piper does on an idle CPU. Two facts point the right way: Piper's medium voices are built to run in real time on a Raspberry Pi 4, and the playback queue fetches every sentence of a reply as soon as it is queued, so only the first sentence's synthesis is on the critical path.
+**Not settled here.** On this machine, under a load of two to three times its thread count, a 12-word sentence took 1.4 to 5.3 s, above the one-second target; a warm seven-word sentence took 0.97 s. The measurement is dominated by contention and does not show what Piper does on an idle CPU. Two facts point the right way: Piper's medium voices are built to run in real time on a Raspberry Pi 4, and the playback queue fetches every sentence of a reply as soon as it is queued, so only the first sentence's synthesis is on the critical path.
 
 What the lead should check after deploy, on `/dev/voice` with the server idle: "Request to first sound" for one short sentence, once warm (the first request per language also pays the 2 to 6 s model load). If it is well over a second, set `PIPER_DIR` to a path that does not exist in the runtime env: the app then reports `tts: "browser"` and speaks with `speechSynthesis` again, with no code change.
 

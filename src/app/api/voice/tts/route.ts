@@ -3,12 +3,18 @@ import { TtsRequest } from "@/contracts/voice";
 import { createElevenLabsClient } from "@/features/voice/server/client";
 import { FALLBACK_VOICE_ID, getVoiceServerConfig, json } from "@/features/voice/server/config";
 import { ttsLimiter } from "@/features/voice/server/limiter";
+import { PiperBusyError, piperAvailable, synthesise } from "@/features/voice/server/piper";
 
 export const dynamic = "force-dynamic";
 
+/**
+ * One sentence of speech. ElevenLabs when its key is set, otherwise Piper on this server when
+ * its binary and voices are present, otherwise 503 (the browser then speaks for itself).
+ */
 export async function POST(req: Request) {
-  const { apiKey, voiceId, ttsModel } = getVoiceServerConfig();
-  if (!apiKey) return json({ error: "voice_unavailable" }, 503);
+  const { apiKey, adapterSetting } = getVoiceServerConfig();
+  const usePiper = !apiKey && adapterSetting !== "none" && piperAvailable();
+  if (!apiKey && !usePiper) return json({ error: "voice_unavailable" }, 503);
 
   let body: unknown;
   try {
@@ -19,6 +25,32 @@ export async function POST(req: Request) {
   const parsed = TtsRequest.safeParse(body);
   if (!parsed.success) return json({ error: "invalid_request" }, 400);
 
+  if (apiKey) return elevenlabs(apiKey, parsed.data.text, req.signal);
+  return piper(parsed.data.text, parsed.data.lang, req.signal);
+}
+
+/** The text is never logged here; the audio goes to the browser and is not kept. */
+async function piper(text: string, lang: string, signal: AbortSignal): Promise<Response> {
+  try {
+    const wav = await synthesise(text, lang, signal);
+    return new Response(new Uint8Array(wav), {
+      status: 200,
+      headers: {
+        "Content-Type": "audio/wav",
+        "Content-Length": String(wav.length),
+        "Cache-Control": "no-store",
+      },
+    });
+  } catch (e) {
+    if (e instanceof PiperBusyError) return json({ error: "voice_busy" }, 429);
+    if (signal.aborted) return json({ error: "aborted" }, 499);
+    return json({ error: "voice_upstream_failed" }, 502);
+  }
+}
+
+async function elevenlabs(apiKey: string, text: string, signal: AbortSignal): Promise<Response> {
+  const { voiceId, ttsModel } = getVoiceServerConfig();
+
   const release = ttsLimiter.tryAcquire();
   if (!release) return json({ error: "voice_busy" }, 429);
 
@@ -26,11 +58,11 @@ export async function POST(req: Request) {
     const audio = await createElevenLabsClient(apiKey).textToSpeech.stream(
       voiceId ?? FALLBACK_VOICE_ID,
       {
-        text: parsed.data.text,
+        text,
         modelId: ttsModel,
         outputFormat: "mp3_44100_64",
       },
-      { abortSignal: req.signal },
+      { abortSignal: signal },
     );
 
     // Hold the concurrency slot until the audio has been fully relayed (or the client left).
@@ -65,7 +97,7 @@ export async function POST(req: Request) {
     });
   } catch (e) {
     release();
-    if (req.signal.aborted) return json({ error: "aborted" }, 499);
+    if (signal.aborted) return json({ error: "aborted" }, 499);
     return upstreamError(e);
   }
 }

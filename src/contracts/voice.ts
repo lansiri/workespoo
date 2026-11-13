@@ -42,6 +42,11 @@ export const VoiceConfig = z.object({
   adapter: VoiceAdapterId.or(z.literal("none")),
   /** Shown in the consent text: who processes the audio. */
   processor: z.string(),
+  /**
+   * Who speaks the interviewer's replies when the adapter is `browser`: the browser's own
+   * speechSynthesis, or our server (`POST /api/voice/tts`). Absent means `browser`.
+   */
+  tts: z.enum(["browser", "server"]).optional(),
 });
 export type VoiceConfig = z.infer<typeof VoiceConfig>;
 
