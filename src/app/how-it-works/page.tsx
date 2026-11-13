@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getEnv } from "@/lib/env";
 import { getUiLang } from "@/lib/i18n/server";
-import { getVoiceServerConfig } from "@/features/voice/server/config";
 import { HowItWorksView } from "./HowItWorksView";
 import { howTexts, pageContent, type VoiceProcessor } from "./messages";
 import { getCachedStats } from "./stats";
@@ -13,13 +12,12 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: pageContent(lang, "none").title, description: howTexts[lang].metaDescription };
 }
 
-/** Same decision as `/api/voice/config`: which service turns speech into text. */
+/** Mirrors the decision as `/api/voice/config`: which service turns speech into text. */
 function voiceProcessor(): VoiceProcessor {
   try {
-    getEnv();
-    const { apiKey, adapterSetting } = getVoiceServerConfig();
-    if (adapterSetting === "none") return "none";
-    if (apiKey && adapterSetting !== "browser") return "elevenlabs";
+    const env = getEnv();
+    if (env.VOICE_ADAPTER === "none") return "none";
+    if (env.ELEVENLABS_API_KEY && env.VOICE_ADAPTER !== "browser") return "elevenlabs";
     return "browser";
   } catch {
     return "browser";

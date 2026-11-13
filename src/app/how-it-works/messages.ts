@@ -7,6 +7,8 @@ import { howItWorks, type HowItWorksSection } from "@/lib/i18n/content/how-it-wo
  * because the shared text claims things the product does not do yet:
  *  - "Your data": the shared text says people can download or delete their data at any time.
  *    There is no such function in the code, so the sentence is left out.
+ *  - "Your words are the evidence" and "You decide": the shared text promises correcting any
+ *    sentence and adding your own note; the code supports neither.
  *  - "Limits we know about": the shared text says the team tests the same answers with different
  *    names and languages. Nothing in the code does that, so the clause is left out.
  */
@@ -22,6 +24,8 @@ interface PageTexts {
   /** Model line, placed after "Your text is processed by". */
   modelLine: string;
   dataBody: string;
+  evidenceBody: string;
+  decideBody: string;
   limitsBody: string;
   numbersHeading: string;
   numbersIntro: string;
@@ -47,7 +51,11 @@ const texts: Record<UiLang, PageTexts> = {
     voiceNone: "Voice is switched off in this deployment, so you type your answers.",
     modelLine: "an open-weight AI model (Kimi K3.1) run by Verda on servers in Finland",
     dataBody:
-      "We do not store audio. {voice} Your text is processed by {model}. A CV, if you add one, is only used to suggest up to two questions and is not stored. Live demo sessions are deleted after 24 hours.",
+      "We do not store audio. {voice} Your text is processed by {model}. Live demo sessions are deleted after 24 hours.",
+    evidenceBody:
+      "Each note on your Signal Card points to sentences you said. The computer shows your sentences exactly as they were transcribed; the AI cannot invent a quote. Speech recognition makes mistakes, especially with accents, so you can type instead of speaking.",
+    decideBody:
+      "You can reword any note or remove it, and approve the card only when you are happy with it. Nothing is used before you approve it.",
     limitsBody:
       "Speech recognition is less accurate for some accents. AI models can miss things or describe them differently for different people; that is why you review everything. Some skills have no match in the European ESCO skills list; they stay on your card anyway.",
     numbersHeading: "What this system has done so far",
@@ -72,9 +80,13 @@ const texts: Record<UiLang, PageTexts> = {
     voiceElevenlabs:
       "Puheesi muuttaa tekstiksi ElevenLabs, joka voi säilyttää sen omien ehtojensa mukaan. Voit myös kirjoittaa.",
     voiceNone: "Puhe on tässä palvelussa pois käytöstä, joten kirjoitat vastauksesi.",
-    modelLine: "avoimen painotuksen tekoälymalli (Kimi K3.1), jota Verda ajaa palvelimilla Suomessa",
+    modelLine: "avoimin painoin julkaistu tekoälymalli (Kimi K3.1), jota Verda ajaa palvelimilla Suomessa",
     dataBody:
-      "Emme tallenna ääntä. {voice} Tekstiäsi käsittelee {model}. Jos lisäät CV:n, sitä käytetään vain enintään kahden kysymyksen ehdottamiseen, eikä sitä tallenneta. Livedemon istunnot poistetaan 24 tunnin kuluttua.",
+      "Emme tallenna ääntä. {voice} Tekstiäsi käsittelee {model}. Livedemon istunnot poistetaan 24 tunnin kuluttua.",
+    evidenceBody:
+      "Jokainen Signal Card -korttisi muistiinpano viittaa lauseisiin, jotka sanoit. Lauseesi näytetään täsmälleen niin kuin ne litteroitiin, eikä tekoäly voi keksiä lainausta. Puheentunnistus tekee virheitä, varsinkin aksenttien kanssa, joten voit kirjoittaa puhumisen sijaan.",
+    decideBody:
+      "Voit muotoilla minkä tahansa muistiinpanon uudelleen tai poistaa sen. Hyväksyt kortin vasta, kun olet siihen tyytyväinen. Mitään ei käytetä ennen kuin hyväksyt sen.",
     limitsBody:
       "Puheentunnistus toimii joillakin aksenteilla huonommin. Tekoälymallit voivat jättää asioita huomaamatta tai kuvata niitä eri ihmisille eri tavoin. Siksi tarkistat kaiken itse. Kaikille taidoille ei löydy vastinetta eurooppalaisesta ESCO-luokituksesta. Ne pysyvät silti kortillasi.",
     numbersHeading: "Mitä järjestelmä on tehnyt tähän mennessä",
@@ -101,7 +113,11 @@ const texts: Record<UiLang, PageTexts> = {
     voiceNone: "Tal är avstängt i den här tjänsten, så du skriver dina svar.",
     modelLine: "en AI-modell med öppna vikter (Kimi K3.1) som Verda kör på servrar i Finland",
     dataBody:
-      "Vi sparar inte ljud. {voice} Din text behandlas av {model}. Om du lägger till ett CV används det bara för att föreslå högst två frågor, och det sparas inte. Sessioner i livedemon raderas efter 24 timmar.",
+      "Vi sparar inte ljud. {voice} Din text behandlas av {model}. Sessioner i livedemon raderas efter 24 timmar.",
+    evidenceBody:
+      "Varje anteckning på ditt Signal Card hänvisar till meningar som du sa. Dina meningar visas exakt som de skrevs ut, och AI:n kan inte hitta på ett citat. Taligenkänningen gör misstag, särskilt när man har brytning, så du kan skriva i stället för att tala.",
+    decideBody:
+      "Du kan formulera om vilken anteckning som helst eller ta bort den. Du godkänner kortet först när du är nöjd med det. Ingenting används innan du har godkänt det.",
     limitsBody:
       "Taligenkänningen fungerar sämre med vissa brytningar. AI-modeller kan missa saker eller beskriva dem olika för olika personer. Därför går du själv igenom allt. Vissa färdigheter saknar motsvarighet i den europeiska ESCO-klassificeringen. De står ändå kvar på ditt kort.",
     numbersHeading: "Vad systemet har gjort hittills",
@@ -125,6 +141,8 @@ export const howTexts = texts;
 /** Index of the shared sections that this page replaces. Checked by the test by heading. */
 const DATA_INDEX = 6;
 const LIMITS_INDEX = 7;
+const EVIDENCE_INDEX = 2;
+const DECIDE_INDEX = 3;
 
 export function voiceSentence(lang: UiLang, voice: VoiceProcessor): string {
   const t = texts[lang];
@@ -142,6 +160,8 @@ export function pageContent(lang: UiLang, voice: VoiceProcessor) {
         body: t.dataBody.replace("{voice}", voiceSentence(lang, voice)).replace("{model}", t.modelLine),
       };
     }
+    if (i === EVIDENCE_INDEX) return { heading: s.heading, body: t.evidenceBody };
+    if (i === DECIDE_INDEX) return { heading: s.heading, body: t.decideBody };
     if (i === LIMITS_INDEX) return { heading: s.heading, body: t.limitsBody };
     return s;
   });

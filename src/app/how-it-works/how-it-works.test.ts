@@ -56,9 +56,12 @@ describe("How this works: text", () => {
       const body = c.sections.map((s) => s.body).join(" ");
       expect(c.sections[6].body).toContain("24");
       expect(c.sections[6].body).not.toContain("{");
-      expect(body).not.toMatch(/download|delete everything|ladata tietosi|ladda ner|different names|eri nimillä|olika namn/i);
+      expect(body).not.toMatch(/download|delete everything|ladata tietosi|ladda ner|different names|eri nimillä|olika namn|two questions|kahden kysymyksen|högst två frågor|correct any sentence|add your own|voit korjata|lisätä omasi|rätta vilken|lägga till egna/i);
     }
     expect(pageContent("en", "browser").sections[6].heading).toBe("Your data");
+    expect(pageContent("en", "browser").sections[2].heading).toBe("Your words are the evidence");
+    expect(pageContent("en", "browser").sections[3].heading).toBe("You decide");
+    expect(pageContent("fi", "browser").sections[6].body).toContain("avoimin painoin");
     expect(pageContent("en", "browser").sections[7].heading).toBe("Limits we know about");
   });
 
@@ -118,7 +121,7 @@ describe("How this works: totals from the database", () => {
     role,
     provider: "verda",
     model: "m",
-    purpose: "test",
+    purpose: "interview.live",
     latencyMs: 100,
     firstTokenMs,
     ok,
@@ -148,6 +151,7 @@ describe("How this works: totals from the database", () => {
       call("live", 99999, hoursAgo(30)), // too old for the median
       call("live", 88888, hoursAgo(1), false), // failed
       call("bulk", 5, hoursAgo(1)), // wrong role
+      { ...call("live", 70000, hoursAgo(1)), purpose: "interview.extract" }, // not a streamed reply
     ]);
     for (const [action, n] of [["pick.approved", 3], ["pick.removed", 2], ["intro.accepted", 1]] as const) {
       for (let i = 0; i < n; i++) {
@@ -163,7 +167,7 @@ describe("How this works: totals from the database", () => {
     const s = await loadStats(t.db, NOW);
     expect(s).toEqual({
       openPostings: 3,
-      modelCalls: 6,
+      modelCalls: 7,
       firstWordMedianMs: 2000,
       picksApproved: 3,
       picksRemoved: 2,

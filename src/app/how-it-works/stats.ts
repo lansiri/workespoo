@@ -28,7 +28,7 @@ export async function loadStats(db: Db, now: Date = new Date()): Promise<HowStat
       .select({ ms: sql<number | null>`percentile_cont(0.5) within group (order by ${llmCall.firstTokenMs})` })
       .from(llmCall)
       .where(
-        and(eq(llmCall.role, "live"), eq(llmCall.ok, true), isNotNull(llmCall.firstTokenMs), gte(llmCall.at, since)),
+        and(eq(llmCall.role, "live"), eq(llmCall.purpose, "interview.live"), eq(llmCall.ok, true), isNotNull(llmCall.firstTokenMs), gte(llmCall.at, since)),
       );
     const audits = await db
       .select({ action: auditLog.action, n: count() })
