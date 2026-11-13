@@ -29,7 +29,7 @@ export function TypeAnswer({ value, onChange, onSend, sending, error, retryLabel
     if (value.trim() && !sending) onSend();
   }
   return (
-    <div className={className}>
+    <div className={cx("we-type-answer", className)}>
       <form className={cx("we-type-box")} onSubmit={submit}>
         <label className="we-sr-only" htmlFor={id}>
           {placeholder}

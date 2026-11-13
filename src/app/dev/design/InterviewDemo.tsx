@@ -150,7 +150,7 @@ export function InterviewDemo({ presenter }: { presenter?: boolean }) {
       >
         <InterviewLayout
           presenter={presenter}
-          height="720px"
+          height="860px"
           stageLabel="Interviewer"
           convo={
             <Transcript

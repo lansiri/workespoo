@@ -1016,3 +1016,9 @@ button.we-chip { cursor: pointer; }
 .we-error-state { background: var(--paper); border-left: 2px solid var(--danger); padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; border-radius: 0 12px 12px 0; }
 .we-error-state p { font-size: 15px; flex: 1 1 240px; }
 .we-cp-banner { margin: 0 0 22px; }
+.we-type-answer { min-width: 0; }
+@media (max-width: 760px) {
+  .we-talk-row .we-type-answer { display: none; }
+  .we-talk-row.we-typing .we-type-answer { display: block; grid-column: 1 / -1; order: -1; }
+  .we-talk-row.we-typing .we-type-box { display: flex; }
+}
