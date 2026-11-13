@@ -27,6 +27,7 @@ import {
   GATE_TEXT_SIGNALS_ALONE,
   REASON_CONCURRENCY,
   REASON_SENTENCE_MAX_CHARS,
+  NEED_DRAFT_DELAY_MS,
   NEED_DRAFT_POSTINGS,
   REASON_DEADLINE_MS,
   REASON_TEMPERATURE,
@@ -393,7 +394,14 @@ export async function computeFeed(
     const needCard = await needCardOrNull(db, c.jobId);
     if (!needCard && drafts < NEED_DRAFT_POSTINGS) {
       drafts += 1;
-      await enqueue(db, "needs.draft", { jobId: c.jobId, companyId: null }, { dedupeKey: `needs.draft:${c.jobId}` });
+      // Later than step two, which the card_approved handler queues right after the feed: the
+      // worker is one serial loop, and the drafts must not hold step two back.
+      await enqueue(
+        db,
+        "needs.draft",
+        { jobId: c.jobId, companyId: null },
+        { dedupeKey: `needs.draft:${c.jobId}`, runAfter: new Date(Date.now() + NEED_DRAFT_DELAY_MS) },
+      );
     }
     const pairs = await allowedPairsFor(
       db,
@@ -464,13 +472,27 @@ export async function refineFeed(db: Db, talentId: string): Promise<{ refined: n
     );
     const reasons = await modelReasons(db, row.title, row.sentences, pairs, signals);
     if (reasons.length === 0) return false;
+    // "Not mentioned" is stored with the reasons, from the Need Card as it is now.
+    const notMentioned = needCard
+      ? notMentionedItems(needCard.requirements, new Set(await touchedRequirementIds(db, talentId, needCard.requirements)))
+      : m.body.notMentioned;
     await db
       .update(jobMatch)
-      .set({ body: { ...m.body, reasonsSource: "model", reasons } })
+      .set({ body: { ...m.body, reasonsSource: "model", reasons, notMentioned } })
       .where(and(eq(jobMatch.talentId, talentId), eq(jobMatch.jobId, m.jobId), eq(jobMatch.cardVersion, card.version)));
     return true;
   });
   return { refined: results.filter(Boolean).length };
+}
+
+/**
+ * "Not mentioned" for one person and posting from the Need Card as it is now, or null while the
+ * posting has no Need Card. No model call.
+ */
+export async function currentNotMentioned(db: Db, talentId: string, jobId: string): Promise<string[] | null> {
+  const needCard = await needCardOrNull(db, jobId);
+  if (!needCard) return null;
+  return notMentionedItems(needCard.requirements, new Set(await touchedRequirementIds(db, talentId, needCard.requirements)));
 }
 
 /**

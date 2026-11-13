@@ -37,6 +37,8 @@ export const TEXT_TERM_MAX = 60;
 export const REASON_TOP_POSTINGS = 5;
 /** Need Card drafts requested per feed, for the first postings without one. */
 export const NEED_DRAFT_POSTINGS = 3;
+/** The Need Card drafts start this long after the feed is stored, so step two is claimed first. */
+export const NEED_DRAFT_DELAY_MS = 5000;
 /** Deadline of one reason call; a late call keeps the code-written reasons. */
 export const REASON_DEADLINE_MS = 20_000;
 /** A signal label shorter than this is never matched against posting text as a phrase. */

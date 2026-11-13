@@ -5,7 +5,7 @@ import { jobQueue, needCard, signal, turn } from "@/db/schema";
 import { getApprovedCard } from "@/features/card";
 import { introsForTalent } from "@/features/intros";
 import { renderEvidence } from "@/lib/sentences";
-import { feedForTalent } from "./feed";
+import { currentNotMentioned, feedForTalent } from "./feed";
 import { splitNotMentioned } from "./reasons";
 
 /** What the person's `/matches` page needs. Their own data only: no order numbers, no counts. */
@@ -152,6 +152,15 @@ export async function matchesPayload(db: Db, talentId: string): Promise<MatchesP
         ).map((r) => r.jobId),
   );
 
+  // For a posting that has a Need Card, "not mentioned" comes from the card as it is now, not
+  // from the stored body, which may predate the card until `matching.need_changed` has run.
+  const live = new Map<string, string[]>();
+  for (const { job } of feed) {
+    if (!readIds.has(job.id)) continue;
+    const items = await currentNotMentioned(db, talentId, job.id);
+    if (items) live.set(job.id, items);
+  }
+
   const matches: MatchItem[] = feed.map(({ match, job }) => ({
     jobId: job.id,
     title: job.title,
@@ -171,7 +180,7 @@ export async function matchesPayload(db: Db, talentId: string): Promise<MatchesP
         : null,
       postingSentence: r.postingSentence === null ? null : (job.sentences[r.postingSentence] ?? null),
     })),
-    notMentioned: readIds.has(job.id) ? match.notMentioned.map(splitNotMentioned) : null,
+    notMentioned: readIds.has(job.id) ? (live.get(job.id) ?? match.notMentioned).map(splitNotMentioned) : null,
   }));
 
   let intros: TalentIntro[] = [];

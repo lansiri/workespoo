@@ -186,6 +186,22 @@ describe("reasons", () => {
     expect(calls.every((c) => c.role === "analyst" && c.purpose === "matching.feed_reasons" && c.db)).toBe(true);
   });
 
+  it("refineFeed stores 'not mentioned' from the Need Card as it is now", async () => {
+    const { skills, jobId } = await setup();
+    setLlmFake((opts) => {
+      calls.push(opts);
+      return goodReply(skills[0].label);
+    });
+    const card = needCards.get(jobId)!;
+    needCards.delete(jobId);
+    await computeFeed(t.db, "tal_sw", { now: NOW });
+    needCards.set(jobId, card);
+    await refineFeed(t.db, "tal_sw");
+    const row = (await t.db.select().from(jobMatch).where(eq(jobMatch.talentId, "tal_sw"))).find((r) => r.jobId === jobId)!;
+    expect(row.body.reasonsSource).toBe("model");
+    expect(row.body.notMentioned).toEqual(["Kubernetes in production", `Valid driving licence${STATUTORY_SUFFIX}`, "Fluent Finnish"]);
+  });
+
   it("M12: the prompt holds only title, signal phrases and renderings, posting sentences and pairs", async () => {
     await setup();
     // A transcript line, a handle and a mode that must never reach the model.
@@ -287,6 +303,15 @@ describe("reasons", () => {
     expect(ids).not.toContain(jobId);
     expect(ids.length).toBeGreaterThan(0);
     expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("queues the drafts to run later than now, so step two is claimed first", async () => {
+    await setup();
+    const before = Date.now();
+    await computeFeed(t.db, "tal_sw", { now: NOW });
+    const drafts = (await t.db.select().from(jobQueue)).filter((j) => j.kind === "needs.draft");
+    expect(drafts.length).toBeGreaterThan(0);
+    for (const d of drafts) expect(d.runAfter.getTime()).toBeGreaterThanOrEqual(before + 4000);
   });
 });
 
@@ -568,6 +593,8 @@ describe("requirements not read yet", () => {
     needCards.set(jobId, need);
     // Card is there but feeds were stored before it: refresh without a model call.
     const callsBefore = calls.length;
+    // Before need_changed has run, the payload already reads the card: not null, and not a stale [].
+    expect((await find()).notMentioned).toEqual([{ text: "Kubernetes in production", statutory: false }]);
     expect(await refreshNotMentioned(t.db, jobId)).toEqual({ updated: 1 });
     expect(calls.length).toBe(callsBefore);
     expect((await find()).notMentioned).toEqual([{ text: "Kubernetes in production", statutory: false }]);

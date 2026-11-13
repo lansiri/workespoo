@@ -193,7 +193,7 @@ function IntroRow({ intro, m, locale, onAnswered }: { intro: TalentIntro; m: M; 
 export function MatchesView() {
   const m = useMessages(matchesMessages);
   const locale = UI_LANG_LOCALES[useUiLang()];
-  const { state, reload } = useMatches();
+  const { state, reload, gaveUp } = useMatches();
 
   if (state.status === "loading") return <p>{m.loading}</p>;
   if (state.status === "error") return <p role="alert">{m.loadFailed}</p>;
@@ -211,7 +211,7 @@ export function MatchesView() {
       <p className="mb-2">{m.intro}</p>
       {/* Always takes its line, so the postings below do not move when the wording is done. */}
       <p role="status" data-testid="refining" className="mb-4 min-h-5 text-sm">
-        {refining ? m.refining : ""}
+        {refining && !gaveUp ? m.refining : ""}
       </p>
       {matches.length === 0 ? (
         <section data-testid="matches-empty" className="mb-8">
