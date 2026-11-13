@@ -153,7 +153,11 @@ export function chatStream(opts: LlmOptions): AsyncIterable<string> & { meta: Pr
   const finish = async (error: string | null) => {
     if (done) return;
     done = true;
-    const m = state.meta ?? buildMeta(state, error === null, error);
+    // A caller that stops reading after text arrived got what it wanted: the interviewer's guard
+    // cuts every reply after its question. That is a completed call, not a failure, and it must
+    // not count as one in the run reports.
+    const cutShort = (error === "aborted" || error === "stream closed before completion") && state.firstTokenMs !== null;
+    const m = cutShort ? buildMeta(state, true, null) : (state.meta ?? buildMeta(state, error === null, error));
     resolveMeta(m);
     await logCall(opts, m);
   };

@@ -206,7 +206,7 @@ describe("deadlines", () => {
     await clock.flush();
     expect(settled).toBe(false);
     ac.abort();
-    expect((await s.meta).error).toBe("aborted");
+    expect(await s.meta).toMatchObject({ ok: true, error: null });
   });
 
   it("a stream that has no text by the deadline fails as deadline", async () => {

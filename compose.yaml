@@ -69,6 +69,10 @@ services:
       # Docker sets HOSTNAME to the container id; Next.js binds to it if left alone.
       HOSTNAME: 0.0.0.0
       PORT: "3000"
+      # The model key allows 40 requests a minute for everything. Web and worker each pace
+      # their own requests, so they split the budget: most of it goes to the process that
+      # talks to people. Override in the env file with LLM_RPM_SHARE_WEB / _WORKER.
+      LLM_RPM_SHARE: ${LLM_RPM_SHARE_WEB:-0.7}
     expose:
       - "3000"
     healthcheck:
@@ -83,6 +87,11 @@ services:
   worker:
     <<: *app
     command: ["npm", "run", "worker"]
+    environment:
+      LLM_RPM_SHARE: ${LLM_RPM_SHARE_WORKER:-0.3}
+      # No live calls are made from the worker, so nothing is held back for them.
+      LLM_LIVE_RESERVE_RPM: "0"
+      LLM_LIVE_RESERVE_SLOTS: "0"
     mem_limit: 768m
 
   caddy:

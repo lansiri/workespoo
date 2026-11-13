@@ -58,3 +58,6 @@ npm-debug.log*
 
 # vitest cache
 .vitest/
+
+# local world dumps for page work (link tokens, local passcode)
+.dev/

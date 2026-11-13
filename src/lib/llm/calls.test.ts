@@ -138,7 +138,7 @@ describe("chatStream", () => {
     expect(f.calls.map((c) => c.provider)).toEqual(["nvidia"]);
     expect(await s2.meta).toMatchObject({ ok: false, provider: "nvidia" });
   });
-  it("aborting stops the upstream stream and resolves meta with ok false", async () => {
+  it("aborting after text arrived stops the upstream stream and counts as a completed call", async () => {
     const f = install({ nvidia: [{ pieces: ["first"], hang: true }] });
     const ac = new AbortController();
     const s = chatStream({ ...base, signal: ac.signal });
@@ -149,7 +149,9 @@ describe("chatStream", () => {
     }
     expect(got).toEqual(["first"]);
     const meta = await s.meta;
-    expect(meta).toMatchObject({ ok: false, error: "aborted" });
+    // The interviewer's guard does exactly this after the question: not a failure.
+    expect(meta).toMatchObject({ ok: true, error: null });
+    expect(meta.firstTokenMs).not.toBeNull();
     await new Promise((r) => setTimeout(r, 10));
     expect(f.closed).toBe(1);
   });
@@ -160,7 +162,18 @@ describe("chatStream", () => {
     const it = s[Symbol.asyncIterator]();
     await it.next();
     ac.abort();
-    expect((await s.meta).ok).toBe(false);
+    expect(await s.meta).toMatchObject({ ok: true, error: null });
+  });
+  it("an abort before any text arrived is recorded as aborted, not as a completed call", async () => {
+    install({ nvidia: [{ pieces: [], hang: true }] });
+    const ac = new AbortController();
+    const s = chatStream({ ...base, signal: ac.signal });
+    const it = s[Symbol.asyncIterator]();
+    const pending = it.next();
+    await new Promise((r) => setTimeout(r, 10));
+    ac.abort();
+    await pending.catch(() => {});
+    expect(await s.meta).toMatchObject({ ok: false, error: "aborted", firstTokenMs: null });
   });
 });
 

@@ -97,6 +97,7 @@ export const AUDIT_ACTIONS = [
   "agenda.manual_assigned",
   "organiser.quotes_viewed",
   "settings.changed",
+  "demo.reset",
 ] as const;
 export type AuditAction = (typeof AUDIT_ACTIONS)[number];
 
@@ -136,7 +137,7 @@ export const LlmCall = z.object({
   guard: z.string().max(120).nullable(),
   /** Requests it took, counting provider retries and the one validation retry. */
   attempts: z.number().int().min(1).nullable().optional(),
-  /** Time spent waiting for a rate-limit slot before the first request went out. */
+  /** Time spent waiting for a rate-limit slot, summed over every attempt of the call. */
   queuedMs: z.number().int().min(0).nullable().optional(),
 });
 export type LlmCall = z.infer<typeof LlmCall>;
