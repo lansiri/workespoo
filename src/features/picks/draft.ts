@@ -4,7 +4,7 @@ import type { Db } from "@/db/client";
 import { company, digest, eligibility, intro, needCard, pick, signalCard, talent } from "@/db/schema";
 import { audit } from "@/lib/audit";
 import { newId } from "@/lib/ids";
-import { DECLINE_COOLDOWN_DAYS, MODEL_CONCURRENCY } from "./constants";
+import { DECLINE_COOLDOWN_DAYS, MODEL_CONCURRENCY, NO_EVENT_ID } from "./constants";
 import { sha256Hex } from "./hash";
 import { computeAllowedPairs, notMentionedIds, writeReasons } from "./reasons";
 import { chooseHandful, type Candidate } from "./selection";
@@ -72,7 +72,7 @@ async function ensureDigest(
     .values({
       id: newId("dig"),
       companyId: args.companyId,
-      eventId: args.eventId === "no-event" ? null : args.eventId,
+      eventId: args.eventId === NO_EVENT_ID ? null : args.eventId,
       date: args.date,
       status: "draft",
       seed: digestSeed(args.eventId, args.date, args.companyId),
