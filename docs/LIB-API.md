@@ -139,7 +139,8 @@ export type LlmOptions = {
   messages: ChatMessage[];
   maxTokens?: number;
   temperature?: number;
-  timeoutMs?: number;
+  timeoutMs?: number;       // idle timeout for one attempt
+  deadlineMs?: number;      // total budget incl. rate-limit waits and retries; to first text for chatStream. Defaults: live 6 s, analyst 60 s, bulk 180 s
   signal?: AbortSignal;
   db?: Db;                  // when given, one `llm_call` row is written
   guard?: string | null;    // caller-supplied note about what an output guard did, stored on the row
@@ -174,6 +175,18 @@ export function setLlmFake(responder: ((opts: LlmOptions) => string | object | P
 ```
 
 `LLM_MODE=replay` serves recorded responses from `fixtures/llm/<purpose>/<hash>.json`; `LLM_MODE=record` writes them. In `NODE_ENV=test` the default is `replay`, so a test that reaches a model without a fake or a recording fails with a clear message. Tests never call a live model.
+
+## `src/lib/mask.ts`
+
+```ts
+export const MASKED_EMPLOYER_WORD = "the company";
+/** Whole names, names without their legal form, and long first words, longest first. */
+export function employerTerms(...names: Array<string | null | undefined>): string[];
+/** Replace the employer's name in posting-derived text. `employer` is one name or the terms from `employerTerms()`. */
+export function maskEmployer(text: string, employer: string | readonly string[], replacement?: string): string;
+```
+
+Every feature that shows posting-derived text for a masked company uses this; no feature keeps its own copy.
 
 ## `src/lib/esco.ts`
 

@@ -47,3 +47,14 @@ Your brief lists blocks in order. Finish block 1 completely (code, tests, page, 
 ## Report
 
 Short and factual: what works end to end and how you verified it; what is built but unverified; what is not done; deviations from specs or the API documents, with reasons; requests for the lead; `git log --oneline -8`.
+
+## Second pass (from 14 Nov)
+
+All six streams are merged on `main`. The second-pass briefs are the `p2-*.md` files in this folder. Everything above still applies, with these additions:
+
+- Your worktree starts from `main` with every stream merged, so the other features are real now, not stubs. Keep mocking them in unit tests where that keeps a test small, but nothing may depend on a "not implemented" error any more.
+- `docs/specs/prompts/PATCHES.md` overrides the prompt specs. Where your brief names a patch (IL-1, NC-2 and so on), apply its text exactly as written there. `docs/LEAD-DECISIONS.md` has new sections at the end; read them. Do not edit anything under `docs/`.
+- **No real model calls.** Do not run `npm run lab`, and do not run `npm run sim` or `npm run seed` against a model. The key allows 40 requests a minute for everything; the lead runs the real-model pass alone after merging.
+- Pass `deadlineMs` on model calls where your brief says so. It is declared in `LlmOptions` today and enforced once the gateway pass is merged. On a failed or late call, use the coded fallback your spec defines; never add your own retry loop or sleep around a model call.
+- Work through the numbered items in order and commit after each block with `npm run check` passing. If an item turns out much bigger than it looks, finish the earlier ones, say so and stop.
+- In your report, list every numbered item as done, not done, or changed (with the reason).

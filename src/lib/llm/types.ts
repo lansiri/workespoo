@@ -22,7 +22,15 @@ export type LlmOptions = {
   messages: ChatMessage[];
   maxTokens?: number;
   temperature?: number;
+  /** Idle timeout for one attempt: the longest wait for the next piece of the answer. */
   timeoutMs?: number;
+  /**
+   * Total budget for the call, from the moment it is made: waiting for a rate-limit slot,
+   * retries and backoff included. For `chatStream` it ends when the first text arrives; for
+   * `chatText` and `chatJson` it covers the whole answer. Defaults: live 6 s, analyst 60 s,
+   * bulk 180 s. When it passes the call fails like any other model failure.
+   */
+  deadlineMs?: number;
   signal?: AbortSignal;
   db?: Db;
   guard?: string | null;

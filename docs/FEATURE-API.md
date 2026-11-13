@@ -41,6 +41,8 @@ export function stopInterview(db: Db, interviewId: string): Promise<void>;
 export function settleInterview(db: Db, interviewId: string, timeoutMs?: number): Promise<void>;
 ```
 
+`isKnownTurnKey(interviewId, key)` is also exported, for the stream's own turn route only.
+
 ## `@/features/card` (S1b)
 
 ```ts
@@ -117,7 +119,19 @@ Client-side: `useVoice`, `PushToTalkButton`. The interview page imports these.
 
 ## `@/features/synth` (S4)
 
-Scripts only (`npm run seed`, `npm run sim`); nothing imports it.
+Scripts (`npm run seed`, `npm run sim`), plus one function for the organiser's "Reset demo" button:
+
+```ts
+/**
+ * Puts the demo world back to the snapshot taken after seeding (`npm run seed -- --snapshot`).
+ * Interviews, cards and Need Cards come from the snapshot with no model call; today's picks are
+ * drafted again, and their reasons fall back to code-written ones when the model is slow or away.
+ * `restored` is false when no snapshot exists; nothing is changed in that case.
+ */
+export function resetDemoFromSnapshot(db: Db): Promise<{ restored: boolean; people: number; companies: number }>;
+```
+
+Exported from `src/features/synth/index.ts` (S4). The route `POST /api/organiser/reset-demo` (S3b, organiser session) calls it.
 
 ## Queue jobs that connect features
 
