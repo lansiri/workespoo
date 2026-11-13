@@ -1,6 +1,6 @@
 export { chatText, chatStream, chatJson, llmConfigured } from "./calls";
 export { LlmError } from "./types";
-export type { ChatMessage, LlmMeta, LlmOptions } from "./types";
+export type { ChatMessage, LlmFailReason, LlmMeta, LlmOptions } from "./types";
 export {
   setLlmFake,
   setLlmFixturesDir,

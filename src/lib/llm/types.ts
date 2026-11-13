@@ -14,6 +14,8 @@ export type LlmMeta = {
   ok: boolean;
   error: string | null;
   attempts: number;
+  /** Total time spent waiting at the rate-limit gate, over all attempts. */
+  queuedMs: number;
 };
 
 export type LlmOptions = {
@@ -36,11 +38,15 @@ export type LlmOptions = {
   guard?: string | null;
 };
 
+/** Why a call failed, for callers that choose a fallback. */
+export type LlmFailReason = "rate_limited" | "deadline" | "timeout" | "provider_error" | "not_configured";
+
 /** Thrown by `chatText` and `chatStream` when every provider failed. The message is safe to log. */
 export class LlmError extends Error {
   constructor(
     message: string,
     readonly meta: LlmMeta,
+    readonly reason: LlmFailReason = "provider_error",
   ) {
     super(message);
     this.name = "LlmError";
@@ -50,6 +56,8 @@ export class LlmError extends Error {
 /** What the core needs beyond the public options. */
 export type Internal = {
   stream: boolean;
+  /** Absolute time (timing.now) at which the call's total budget ends; set by the caller of runReal. */
+  deadlineAt?: number;
   /** JSON mode request for this call (chatJson only). */
   json?: { schema: z.ZodType };
   /** Replaces the configured extra body (probe). */
@@ -62,8 +70,10 @@ export type CallState = {
   provider: string;
   model: string;
   attempts: number;
+  queuedMs: number;
   firstTokenMs: number | null;
   tokensIn: number | null;
   tokensOut: number | null;
   meta?: LlmMeta;
+  reason?: LlmFailReason;
 };

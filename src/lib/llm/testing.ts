@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { resetLimiters, timing } from "./limiter";
+import { resetLimiters, resetTiming, timing } from "./limiter";
 import { resetJsonRejections } from "./core";
 import { setClientFactory, type ClientFactory } from "./client";
 import type { LlmMeta, LlmOptions } from "./types";
@@ -48,6 +48,7 @@ export function resetLlmState(): void {
   setClientFactory(null);
   setLlmSleep(null);
   resetLimiters();
+  resetTiming();
   resetJsonRejections();
 }
 
