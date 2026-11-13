@@ -20,7 +20,7 @@ export function ComingSoon({ lang }: { lang: UiLang }) {
   const tickerItems = [m.ticker1, m.ticker2];
 
   return (
-    <div className="cs-page">
+    <main className="cs-page">
       <section className="cs-hero">
         <div className="cs-heroGrid" style={{ "--n": tryChars } as CSSProperties}>
           <span className="cs-badge">
@@ -29,7 +29,7 @@ export function ComingSoon({ lang }: { lang: UiLang }) {
           </span>
           <p className="cs-lul">{m.lul}</p>
           <h1 className="cs-h1" data-testid="coming-soon-headline">
-            <span className="cs-lead">{m.headlineLead}</span>
+            <span className="cs-lead">{m.headlineLead}</span>{" "}
             <span className="cs-try">
               {m.tryPre}
               <span className="cs-brand">
@@ -134,6 +134,6 @@ export function ComingSoon({ lang }: { lang: UiLang }) {
         <p className="cs-kind">{m.realKind}</p>
         <p className="cs-smallprint">{m.smallprint}</p>
       </section>
-    </div>
+    </main>
   );
 }

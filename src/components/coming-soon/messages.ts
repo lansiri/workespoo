@@ -75,7 +75,7 @@ const fi: Strings = {
   tryBrand: "WORKESPOOTA",
   tryPost: ".",
   lul: "LUL",
-  kicker: "Julkaisu tulee nopeammin kuin vastaus viimeiseen hakemukseesi. (Matala rima, tiedämme.)",
+  kicker: "Julkaisu tulee nopeammin kuin vastaus viimeisimpään hakemukseesi. (Rima on matalalla, tiedetään.)",
   quote: "WorkEspoo oikeasti kuuntelee. Pidempään kuin kuusi sekuntia.",
   peek: "Kurkkaa prototyyppiä",
   sceneAlt:
@@ -89,7 +89,7 @@ const fi: Strings = {
   botSticker: "TEKOÄLY*",
   botFine: "*se on if-lause",
   stamp: "HYLÄTTY",
-  cvFile: "CV_lopullinen_OIKEESTI.pdf",
+  cvFile: "CV_lopullinen_v7.pdf",
   cvFileLabel: "Rutistunut CV",
   mascotBubble: "Moi! Mitä sä\noikeesti osaat?",
   lulBurst: "LUL",
@@ -125,7 +125,7 @@ const fi: Strings = {
   glowAlt: "WorkEspoo-maskotti hohtaa mintunvihreänä ja on valmis kuuntelemaan",
   realKind: "Vika ei ole sinussa. Vika on rituaalissa.",
   smallprint:
-    "Sivuvaikutuksia voivat olla tulla kuulluksi, lievä itsevarmuus ja 47 työnhakusivuston välilehden sulkeminen.",
+    "Sivuvaikutuksina voi esiintyä kuulluksi tulemista, lievää itsevarmuutta ja 47 työnhakusivuston välilehden sulkemista.",
 };
 
 const sv: Strings = {
@@ -152,7 +152,7 @@ const sv: Strings = {
   botSticker: "AI-DRIVEN*",
   botFine: "*det är en if-sats",
   stamp: "AVSLAG",
-  cvFile: "CV_slutgiltig_VERKLIGEN.pdf",
+  cvFile: "CV_slutgiltig_v7.pdf",
   cvFileLabel: "Ett skrynkligt CV",
   mascotBubble: "Hej! Så... vad kan\ndu faktiskt?",
   lulBurst: "LUL",

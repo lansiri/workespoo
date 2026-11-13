@@ -70,7 +70,7 @@ export function CvRobot({ m }: { m: ComingSoonStrings }) {
         <rect x="70" y="196" width="260" height="140" rx="26" fill={PINE} stroke={INK} strokeWidth="6" />
         <g transform="rotate(-4 160 220)">
           <rect x="86" y="206" width="160" height="34" rx="9" fill={SUN} stroke={INK} strokeWidth="3.5" />
-          <text x="166" y="230" textAnchor="middle" className="cs-brandText" fontSize="21" fill={INK}>
+          <text x="166" y="230" textAnchor="middle" className="cs-brandText" fontSize="21" fill={INK} letterSpacing="1.5">
             {m.botSticker}
           </text>
         </g>
@@ -202,7 +202,7 @@ export function FilingCabinet({ m }: { m: ComingSoonStrings }) {
         </g>
       ))}
       <rect x="72" y="188" width="156" height="30" rx="5" fill={PAPER} stroke={INK} strokeWidth="3" />
-      <text x="150" y="210" textAnchor="middle" className="cs-brandText" fontSize="21" fill={INK}>
+      <text x="150" y="210" textAnchor="middle" className="cs-brandText" fontSize="21" fill={INK} letterSpacing="1.5">
         {m.onFile}
       </text>
       <path d="M92 258h110M92 324h86" stroke={INK} strokeWidth="3" strokeLinecap="round" strokeDasharray="2 8" opacity="0.5" />
