@@ -17,6 +17,8 @@ const eslintConfig = defineConfig([
     "coverage/**",
     "playwright-report/**",
     "test-results/**",
+    // Working scripts and outputs written by prompt-lab agents; evidence, not product code.
+    "evals/prompt-lab/*/**",
   ]),
   {
     rules: {
