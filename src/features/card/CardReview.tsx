@@ -24,7 +24,7 @@ export function CardReview() {
   const c = useMessages(cardCopy);
   const a = useMessages(approvalCopy);
   const core = useMessages(coreCopy);
-  const { state, busy, actionError, sensitiveSignalId, retry, edit, approve, setPool } = useCard();
+  const { state, busy, actionError, sensitiveSignalId, retry, edit, approve, setPool, deleteMyData } = useCard();
 
   if (state.phase === "loading") return <main className="mx-auto max-w-2xl p-6"><p>{core.loading}</p></main>;
   if (state.phase === "signed_out") return <main className="mx-auto max-w-2xl p-6"><p data-testid="card-signed-out">{m.signedOut}</p></main>;
@@ -56,7 +56,7 @@ export function CardReview() {
   // Approval never waits for a rewrite: it uses the company text that is current.
   const canApprove = active.length > 0 && !busy;
   const errorText =
-    actionError === null ? null : actionError === "stale_rendering" ? m.staleError : actionError === "approve_empty" ? a.approveEmpty : m.saveFailed;
+    actionError === null ? null : actionError === "stale_rendering" ? m.staleError : actionError === "approve_empty" ? a.approveEmpty : actionError === "delete_failed" ? m.deleteFailed : m.saveFailed;
 
   return (
     <main className="mx-auto max-w-2xl space-y-6 p-6">
@@ -136,7 +136,34 @@ export function CardReview() {
           </p>
         </section>
       ) : null}
+
+      <MyData busy={busy} onDelete={() => void deleteMyData()} />
     </main>
+  );
+}
+
+function MyData({ busy, onDelete }: { busy: boolean; onDelete: () => void }) {
+  const m = useMessages(cardMessages);
+  const [confirming, setConfirming] = useState(false);
+  return (
+    <section aria-labelledby="my-data-title" className="space-y-2 rounded-md border p-4">
+      <h2 id="my-data-title" className="font-medium">{m.myDataTitle}</h2>
+      <p>{m.myDataHelp}</p>
+      <p>
+        <a href="/api/me/export" download data-testid="export-data" className="underline">{m.exportData}</a>
+      </p>
+      {confirming ? (
+        <div className="space-y-2">
+          <p role="alert">{m.deleteWarning}</p>
+          <div className="flex gap-2">
+            <Button type="button" variant="outline" data-testid="delete-data-confirm" disabled={busy} onClick={onDelete}>{m.deleteConfirm}</Button>
+            <Button type="button" variant="ghost" disabled={busy} onClick={() => setConfirming(false)}>{m.deleteCancel}</Button>
+          </div>
+        </div>
+      ) : (
+        <Button type="button" variant="outline" data-testid="delete-data" disabled={busy} onClick={() => setConfirming(true)}>{m.deleteData}</Button>
+      )}
+    </section>
   );
 }
 

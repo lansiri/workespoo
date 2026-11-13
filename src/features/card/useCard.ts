@@ -62,6 +62,14 @@ export function useCard() {
     return () => clearTimeout(id);
   }, [state, load]);
 
+  // While a rewritten phrase is waiting for the model, check again shortly.
+  const rewriting = state.phase === "ready" && state.card.signals.some((x) => x.status !== "removed" && x.stale);
+  useEffect(() => {
+    if (!rewriting) return;
+    const id = setTimeout(() => void load(), POLL_MS);
+    return () => clearTimeout(id);
+  }, [rewriting, state, load]);
+
   const retry = useCallback(() => {
     attempts.current = 0;
     setState({ phase: "loading" });
@@ -108,5 +116,19 @@ export function useCard() {
     [load],
   );
 
-  return { state, busy, actionError, sensitiveSignalId, retry, edit, approve, setPool };
+  /** Deletes the person and everything stored about them; the page then shows the signed-out state. */
+  const deleteMyData = useCallback(async () => {
+    setBusy(true);
+    setActionError(null);
+    const r = await call<{ deleted: boolean }>("/api/me", { method: "DELETE" });
+    setBusy(false);
+    if (!r.ok) {
+      setActionError("delete_failed");
+      return false;
+    }
+    setState({ phase: "signed_out" });
+    return true;
+  }, []);
+
+  return { state, busy, actionError, sensitiveSignalId, retry, edit, approve, setPool, deleteMyData };
 }

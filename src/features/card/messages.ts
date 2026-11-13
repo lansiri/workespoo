@@ -20,6 +20,14 @@ export const cardMessages = {
     shownAs: "Shown to companies as:",
     notShownYet: "Not shown to companies yet.",
     rewriting: "Your new wording is being rewritten for companies. They see the earlier text until it is ready.",
+    myDataTitle: "Your data",
+    myDataHelp: "Download everything we have stored about you, or delete it all.",
+    exportData: "Download my data",
+    deleteData: "Delete my data and card",
+    deleteWarning: "This deletes your interview, your card, your choices and your introductions. It cannot be undone.",
+    deleteConfirm: "Yes, delete everything",
+    deleteCancel: "Keep my data",
+    deleteFailed: "We couldn't delete your data. Please try again.",
     seeMatches: "See jobs that fit your card",
     draftNotice: "You have changes that aren't approved yet.",
     noEscoShort: "No ESCO match",
@@ -42,6 +50,14 @@ export const cardMessages = {
     shownAs: "Yrityksille näytetään:",
     notShownYet: "Ei vielä näkyvissä yrityksille.",
     rewriting: "Uutta sanamuotoasi kirjoitetaan yrityksille sopivaksi. Siihen asti ne näkevät aiemman tekstin.",
+    myDataTitle: "Tietosi",
+    myDataHelp: "Lataa kaikki sinusta tallennettu tai poista ne kaikki.",
+    exportData: "Lataa tietoni",
+    deleteData: "Poista tietoni ja korttini",
+    deleteWarning: "Tämä poistaa haastattelusi, korttisi, valintasi ja esittelysi. Tätä ei voi perua.",
+    deleteConfirm: "Kyllä, poista kaikki",
+    deleteCancel: "Säilytä tietoni",
+    deleteFailed: "Tietojen poistaminen ei onnistunut. Yritä uudelleen.",
     seeMatches: "Katso korttiisi sopivat työpaikat",
     draftNotice: "Sinulla on muutoksia, joita ei ole vielä hyväksytty.",
     noEscoShort: "Ei ESCO-vastinetta",
@@ -64,6 +80,14 @@ export const cardMessages = {
     shownAs: "Visas för företag som:",
     notShownYet: "Visas inte för företag än.",
     rewriting: "Din nya formulering skrivs om för företag. Tills den är klar ser de den tidigare texten.",
+    myDataTitle: "Dina uppgifter",
+    myDataHelp: "Ladda ner allt vi har sparat om dig, eller radera allt.",
+    exportData: "Ladda ner mina uppgifter",
+    deleteData: "Radera mina uppgifter och mitt kort",
+    deleteWarning: "Detta raderar din intervju, ditt kort, dina val och dina presentationer. Det går inte att ångra.",
+    deleteConfirm: "Ja, radera allt",
+    deleteCancel: "Behåll mina uppgifter",
+    deleteFailed: "Vi kunde inte radera dina uppgifter. Försök igen.",
     seeMatches: "Se jobb som passar ditt kort",
     draftNotice: "Du har ändringar som inte är godkända än.",
     noEscoShort: "Ingen ESCO-motsvarighet",
@@ -84,6 +108,14 @@ export const cardMessages = {
   approveFailed: string;
   saved: string;
   seeMatches: string;
+  myDataTitle: string;
+  myDataHelp: string;
+  exportData: string;
+  deleteData: string;
+  deleteWarning: string;
+  deleteConfirm: string;
+  deleteCancel: string;
+  deleteFailed: string;
   shownAs: string;
   notShownYet: string;
   rewriting: string;
