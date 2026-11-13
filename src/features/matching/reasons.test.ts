@@ -57,3 +57,12 @@ describe("messages", () => {
     }
   });
 });
+
+describe("statutory marker on long requirements", () => {
+  it("keeps the marker when the requirement text is near the 200 character limit", async () => {
+    const { notMentionedItems, splitNotMentioned } = await import("./reasons");
+    const items = notMentionedItems([{ id: "r1", text: "x".repeat(180), kind: "must", statutory: "hygiene_passport" }], new Set());
+    expect(items[0].length).toBeLessThanOrEqual(200);
+    expect(splitNotMentioned(items[0]).statutory).toBe(true);
+  });
+});

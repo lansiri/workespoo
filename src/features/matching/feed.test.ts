@@ -9,7 +9,7 @@ import { computeFeed, feedForTalent } from "./feed";
 import { matchesPayload } from "./payload";
 import { STATUTORY_SUFFIX } from "./constants";
 import { checkModelReasons, type AllowedPair, type SignalForReason } from "./reasons";
-import { addMaskedCompany, addNeed, addPerson, jobIdByTitle, occupationSkillsOf, req } from "./testkit";
+import { uriByLabel, addMaskedCompany, addNeed, addPerson, jobIdByTitle, occupationSkillsOf, req } from "./testkit";
 
 const cards = new Map<string, SignalCard>();
 const needCards = new Map<string, NeedCard | null>();
@@ -91,6 +91,17 @@ describe("retrieval", () => {
     await t.db.update(job).set({ expiresAt }).where(eq(job.id, mobileId));
     await computeFeed(t.db, "tal_sw", { now: new Date("2027-03-01T00:00:00Z") });
     expect(await feedTitles("tal_sw")).toEqual([]);
+  });
+
+  it("a person with only Python, Java and SQL, optional skills of software occupations, still gets software postings", async () => {
+    const signals = [];
+    for (const [i, label] of ["Python (computer programming)", "Java (computer programming)", "SQL"].entries()) {
+      signals.push({ id: `s${i + 1}`, phrase: label, escoUri: await uriByLabel(t.db, label) });
+    }
+    cards.set("tal_py", await addPerson(t.db, { id: "tal_py", signals }));
+    await computeFeed(t.db, "tal_py", { now: NOW });
+    const titles = await feedTitles("tal_py");
+    expect(titles.some((x) => /developer|kehittäjä/i.test(x))).toBe(true);
   });
 
   it("a person with care skills gets care postings and no software postings", async () => {
@@ -352,7 +363,28 @@ describe("the payload for /matches", () => {
     expect(item.reasons[0].rendering).toContain(skills[0].label);
     expect(item.reasons[0].quote).toBe("I build apps.");
     expect(item.reasons[0].postingSentence).toBeTruthy();
-    expect(payload.intros).toEqual(intros);
+    expect(payload.intros.map((i) => i.id)).toEqual(["intro_1"]);
+  });
+
+  it("sends the person only what they may see of an introduction, never the organiser's note", async () => {
+    intros = [
+      {
+        id: "intro_9", talentId: "tal_x", companyId: "co_secret", needCardId: "nc_1", pickId: "pick_1", initiatedBy: "talent",
+        status: "not_approved", requestPairs: [], requestNote: "my private request note",
+        organiserDecision: { by: "organiser:o1" as never, at: "2026-11-10T00:00:00.000Z", reasonCode: "other", note: "Profile looks thin" },
+        requestedAt: "2026-11-09T00:00:00.000Z", respondedAt: null, acceptedAt: null, revealedAt: null, expiresAt: null,
+        companyName: "Masked Co", needTitle: "Cook",
+      } as unknown as Intro,
+    ];
+    const payload = await matchesPayload(t.db, "tal_none");
+    const json = JSON.stringify(payload);
+    for (const secret of ["Profile looks thin", "organiser:o1", "my private request note", "co_secret", "pick_1", "organiserDecision"]) {
+      expect(json).not.toContain(secret);
+    }
+    expect(Object.keys(payload.intros[0]).sort()).toEqual(
+      ["acceptedAt", "companyName", "expiresAt", "id", "initiatedBy", "needTitle", "notApprovedReason", "requestedAt", "status"],
+    );
+    expect(payload.intros[0].companyName).toBe("Masked Co");
   });
 
   it("degrades to empty introductions when that feature fails", async () => {

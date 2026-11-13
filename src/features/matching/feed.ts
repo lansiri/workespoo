@@ -24,7 +24,8 @@ import {
   FEED_MUNICIPALITY_CODES,
   FEED_REGION_CODE,
   FEED_SIZE,
-  GATE_OCC_ESSENTIAL_ALONE,
+  GATE_OCC_LINKS_ALONE,
+  GATE_TEXT_SIGNALS_ALONE,
   REASON_CONCURRENCY,
   REASON_SENTENCE_MAX_CHARS,
   REASON_TEMPERATURE,
@@ -92,6 +93,10 @@ export async function retrieveCandidates(
         );
   const terms = textTerms([...labelRows.flatMap((l) => [l.label_en, l.label_fi ?? ""]), ...roles]);
   const tsquery = terms.join(" | ");
+  // One query per signal, so the gate can ask for text hits of two different signals.
+  const signalQueries = labelRows
+    .map((l) => textTerms([l.label_en, l.label_fi ?? ""]).join(" | "))
+    .filter((q) => q.length > 0);
   const cleanRoles = roles.map((r) => r.trim()).filter((r) => r.length > 0);
   if (uris.length === 0 && cleanRoles.length === 0) return [];
 
@@ -100,6 +105,10 @@ export async function retrieveCandidates(
   const textHit = tsquery
     ? sql`(j.search @@ to_tsquery('simple', ${tsquery}))`
     : sql`false`;
+  const textSignals =
+    signalQueries.length > 0
+      ? sql`(SELECT count(*) FROM unnest(${textArray(signalQueries)}) q WHERE j.search @@ to_tsquery('simple', q))`
+      : sql`0`;
   const roleHit =
     cleanRoles.length > 0
       ? sql`EXISTS (SELECT 1 FROM unnest(${textArray(cleanRoles)}) r WHERE word_similarity(lower(r), lower(j.title)) >= ${ROLE_TITLE_HIT_SIMILARITY})`
@@ -134,14 +143,15 @@ export async function retrieveCandidates(
     scored AS (
       SELECT j.id, j.municipality_code, j.posted_at,
              coalesce(d.n, 0) AS n_direct, coalesce(o.ess, 0) AS ess, coalesce(o.opt, 0) AS opt,
-             ${textHit} AS text_hit, ${roleHit} AS role_hit
+             ${textHit} AS text_hit, ${textSignals} AS text_signals, ${roleHit} AS role_hit
       FROM ej j
       LEFT JOIN direct d ON d.job_id = j.id
       LEFT JOIN occ o ON o.job_id = j.id
     )
     SELECT id, n_direct, ess, opt, text_hit, role_hit
     FROM scored
-    WHERE n_direct >= 1 OR ess >= ${GATE_OCC_ESSENTIAL_ALONE} OR (ess >= 1 AND text_hit) OR role_hit
+    WHERE n_direct >= 1 OR ess + opt >= ${GATE_OCC_LINKS_ALONE} OR (ess + opt >= 1 AND text_hit)
+       OR text_signals >= ${GATE_TEXT_SIGNALS_ALONE} OR role_hit
     ORDER BY 3 * n_direct + 2 * ess + opt + (text_hit)::int + (role_hit)::int DESC,
              (municipality_code = ${ESPOO_CODE}) DESC, posted_at DESC NULLS LAST, id
     LIMIT ${FEED_CANDIDATES}

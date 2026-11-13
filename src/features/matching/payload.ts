@@ -1,6 +1,6 @@
 import { and, eq, inArray } from "drizzle-orm";
 import type { Db } from "@/db/client";
-import { JOB_SOURCE_ATTRIBUTION, type EvidenceRef, type Intro, type JobSource } from "@/contracts";
+import { JOB_SOURCE_ATTRIBUTION, type EvidenceRef, type IntroForTalent, type IntroStatus, type JobSource } from "@/contracts";
 import { signal, turn } from "@/db/schema";
 import { getApprovedCard } from "@/features/card";
 import { introsForTalent } from "@/features/intros";
@@ -33,7 +33,40 @@ export type MatchItem = {
   notMentioned: Array<{ text: string; statutory: boolean }>;
 };
 
-export type MatchesPayload = { matches: MatchItem[]; intros: Intro[] };
+/**
+ * An introduction as the person's browser receives it. Only what picks-and-intros.md section 6
+ * lets the person see: who asks, about what, and the state. The organiser's note and name,
+ * the request note, the company id and the pick id are not sent.
+ */
+export type TalentIntro = {
+  id: string;
+  initiatedBy: "company" | "talent";
+  status: IntroStatus;
+  companyName: string;
+  needTitle: string | null;
+  requestedAt: string;
+  expiresAt: string | null;
+  acceptedAt: string | null;
+  /** The label code of a request that was not approved; never the organiser's free-text note. */
+  notApprovedReason: string | null;
+};
+
+export type MatchesPayload = { matches: MatchItem[]; intros: TalentIntro[] };
+
+export function toTalentIntro(i: IntroForTalent): TalentIntro {
+  const reason = i.status === "not_approved" ? (i.organiserDecision?.reasonCode ?? null) : null;
+  return {
+    id: i.id,
+    initiatedBy: i.initiatedBy,
+    status: i.status,
+    companyName: i.companyName,
+    needTitle: i.needTitle,
+    requestedAt: i.requestedAt,
+    expiresAt: i.expiresAt,
+    acceptedAt: i.acceptedAt,
+    notApprovedReason: reason && reason !== "other" ? reason : null,
+  };
+}
 
 async function quotesFor(
   db: Db,
@@ -99,9 +132,9 @@ export async function matchesPayload(db: Db, talentId: string): Promise<MatchesP
     notMentioned: match.notMentioned.map(splitNotMentioned),
   }));
 
-  let intros: Intro[] = [];
+  let intros: TalentIntro[] = [];
   try {
-    intros = await introsForTalent(db, talentId);
+    intros = (await introsForTalent(db, talentId)).map(toTalentIntro);
   } catch {
     // The introductions feature is not available yet: an empty list.
   }

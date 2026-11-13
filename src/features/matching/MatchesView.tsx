@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import type { Intro } from "@/contracts";
+import type { IntroStatus } from "@/contracts";
 import { Button } from "@/components/ui/button";
 import { fmt } from "@/lib/i18n";
 import { useMessages, useUiLang } from "@/lib/i18n/client";
 import { UI_LANG_LOCALES } from "@/lib/i18n/types";
 import { matchesMessages } from "./messages";
-import type { MatchItem } from "./payload";
-import { respondToIntro, useMatches } from "./useMatches";
+import type { MatchItem, TalentIntro } from "./payload";
+import { checkAnswer, respondToIntro, useMatches } from "./useMatches";
 
 type M = (typeof matchesMessages)["en"];
 
@@ -20,7 +20,7 @@ const FOUND_KEYS = {
   role: "foundRole",
 } as const;
 
-const STATUS_KEYS: Record<Intro["status"], keyof M> = {
+const STATUS_KEYS: Record<IntroStatus, keyof M> = {
   pending_review: "statusPendingReview",
   awaiting_talent: "statusAwaitingTalent",
   awaiting_company: "statusAwaitingCompany",
@@ -103,7 +103,7 @@ function JobCard({ item, m, locale }: { item: MatchItem; m: M; locale: string })
   );
 }
 
-function IntroRow({ intro, m, locale, onAnswered }: { intro: Intro; m: M; locale: string; onAnswered: () => void }) {
+function IntroRow({ intro, m, locale, onAnswered }: { intro: TalentIntro; m: M; locale: string; onAnswered: () => void }) {
   const [accepting, setAccepting] = useState(false);
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
@@ -120,13 +120,18 @@ function IntroRow({ intro, m, locale, onAnswered }: { intro: Intro; m: M; locale
   }
 
   function confirmAccept() {
-    if (name.trim().length === 0 || contact.trim().length === 0) return setError(m.nameRequired);
-    void send({ decision: "accept", displayName: name.trim(), contact: contact.trim() });
+    const answer = { decision: "accept", displayName: name.trim(), contact: contact.trim() } as const;
+    const problem = checkAnswer(answer);
+    if (problem === "name") return setError(m.nameRequired);
+    if (problem === "nameLong") return setError(m.nameTooLong);
+    if (problem === "contact") return setError(contact.trim().length === 0 ? m.nameRequired : m.contactInvalid);
+    void send(answer);
   }
 
   return (
     <li data-testid="intro-request" data-intro-id={intro.id} className="mb-4 border-b pb-3">
-      <p>{m.introFrom}</p>
+      <p>{fmt(m.introFrom, { company: intro.companyName })}</p>
+      {intro.needTitle ? <p>{fmt(m.introAbout, { title: intro.needTitle })}</p> : null}
       <p className="text-sm">{fmt(m.introAsked, { date: formatDate(intro.requestedAt, locale) })}</p>
       <p data-testid="intro-status">
         {m.introStatusLabel}: {m[STATUS_KEYS[intro.status]]}

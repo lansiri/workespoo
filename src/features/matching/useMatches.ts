@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { IntroResponseRequest } from "@/contracts";
 import type { MatchesPayload } from "./payload";
 
 /** While the feed is empty (just after approval) poll this often, this many times. */
@@ -51,10 +52,17 @@ export function useMatches(): { state: MatchesState; reload: () => void } {
   return { state, reload };
 }
 
-export type IntroAnswer = { decision: "accept"; displayName: string; contact: string } | { decision: "decline" };
+/** Which field of an accept answer fails the contract, if any. Values are trimmed first. */
+export function checkAnswer(answer: IntroResponseRequest): "name" | "nameLong" | "contact" | null {
+  const parsed = IntroResponseRequest.safeParse(answer);
+  if (parsed.success) return null;
+  const path = parsed.error.issues[0]?.path[0];
+  if (path === "displayName") return answer.decision === "accept" && answer.displayName.length > 80 ? "nameLong" : "name";
+  return "contact";
+}
 
 /** Calls S3b's `POST /api/intros/[id]/respond`. Returns true when the answer was saved. */
-export async function respondToIntro(introId: string, answer: IntroAnswer): Promise<boolean> {
+export async function respondToIntro(introId: string, answer: IntroResponseRequest): Promise<boolean> {
   try {
     const res = await fetch(`/api/intros/${encodeURIComponent(introId)}/respond`, {
       method: "POST",

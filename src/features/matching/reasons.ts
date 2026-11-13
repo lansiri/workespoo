@@ -199,7 +199,9 @@ export function notMentionedItems(
   const ordered = [...rest.filter((r) => r.kind === "must"), ...rest.filter((r) => r.kind === "nice")];
   return ordered
     .slice(0, NOT_MENTIONED_MAX)
-    .map((r) => (r.statutory !== "none" ? `${r.text}${STATUTORY_SUFFIX}` : r.text).slice(0, 200));
+    .map((r) =>
+      r.statutory !== "none" ? `${r.text.slice(0, 200 - STATUTORY_SUFFIX.length)}${STATUTORY_SUFFIX}` : r.text.slice(0, 200),
+    );
 }
 
 /** Split a stored not-mentioned item into its text and whether it was statutory. */

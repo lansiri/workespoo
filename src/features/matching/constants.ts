@@ -22,8 +22,10 @@ export const FEED_FRESH_DAYS = 60;
 export const FEED_MUNICIPALITY_CODES = ["049", "091", "092", "235"] as const;
 export const FEED_REGION_CODE = "01";
 export const ESPOO_CODE = "049";
-/** A posting passes the gate with this many essential occupation skills on their own. */
-export const GATE_OCC_ESSENTIAL_ALONE = 2;
+/** A posting passes the gate with this many occupation-linked skills (essential or optional) on their own. */
+export const GATE_OCC_LINKS_ALONE = 2;
+/** Text hits for this many different signals let a posting in without any link. */
+export const GATE_TEXT_SIGNALS_ALONE = 2;
 /** `lookingFor.roles` against a posting title. */
 export const ROLE_TITLE_HIT_SIMILARITY = 0.5;
 /** Words shorter than this are left out of the text search. */
@@ -60,4 +62,5 @@ export const TEXT_STOPWORDS = new Set([
   "tasks", "task", "types", "type", "such", "their", "into", "over", "under", "between",
   "and", "the", "for", "ja", "tai", "sekä", "jotka", "joka", "kanssa", "työ", "taito",
   "taidot", "tieto", "och", "eller", "med",
+  "solution", "solutions", "ratkaisu", "ratkaisuja", "kehittää", "kehittäminen",
 ]);
