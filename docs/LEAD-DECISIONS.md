@@ -36,6 +36,13 @@ Numbering, fixed for everyone:
 8. **Demo event date**: Thursday 26 November 2026.
 9. **Other languages**: scripted lines and bank questions exist in English and Finnish; anything else falls back to English.
 
+## Changes to the demo flow in `docs/specs/demo-script.md`
+
+- No name is asked for at consent (step 1). The person types their name and a contact when they accept an introduction (step 8). That is the moment identity is collected.
+- The pool opt-in is a checkbox on the card page at approval (step 3), not at consent.
+- Audit action names in step 10 follow `AUDIT_ACTIONS`: `pick.drafted`, `pick.approved`, `digest.published`, `needcard.question_answered`, `intro.requested`, `intro.accepted`, `identity.revealed`.
+- The agenda slot in step 8 is a second-pass item. The first cut shows "You both said yes" without a slot.
+
 ## Three languages: English, Finnish, Swedish
 
 The owner requires the site and the interviewer to work in Finnish, English and Swedish. Wherever a spec says "English and Finnish", read "English, Finnish and Swedish" (`UiLang` is `en | fi | sv`).

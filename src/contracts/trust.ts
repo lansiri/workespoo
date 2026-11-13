@@ -77,6 +77,7 @@ export const AUDIT_ACTIONS = [
   "eligibility.computed",
   "digest.drafted",
   "digest.published",
+  "pick.drafted",
   "pick.approved",
   "pick.removed",
   "pick.added_manual",
