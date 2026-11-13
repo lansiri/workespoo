@@ -53,6 +53,12 @@ async function isLocked(db: Db, d: DigestRow): Promise<boolean> {
   return decided.length > 0;
 }
 
+/** Takes the digest row lock and answers whether the digest is now published or has a decision. Call inside a transaction. */
+export async function lockedNow(tx: Db, digestId: string): Promise<boolean> {
+  const [row] = await tx.select().from(digest).where(eq(digest.id, digestId)).for("update");
+  return !row || (await isLocked(tx, row));
+}
+
 async function ensureDigest(
   db: Db,
   args: { eventId: string; date: string; companyId: string },
@@ -86,7 +92,9 @@ async function ensureDigest(
 
 type EligibleRow = { talentId: string; cardVersion: number; touched: string[]; card: SignalCard };
 
-async function loadEligible(db: Db, n: NeedRow, date: string): Promise<EligibleRow[]> {
+async function loadEligible(db: Db, n: NeedRow, date: string, now: Date): Promise<EligibleRow[]> {
+  // Past purge_after means before the moment of the run, not before the start of the digest day.
+  const cutoff = now.getTime() > dayStart(date).getTime() ? now : dayStart(date);
   const rows = await db
     .select({
       talentId: eligibility.talentId,
@@ -111,7 +119,7 @@ async function loadEligible(db: Db, n: NeedRow, date: string): Promise<EligibleR
         eq(eligibility.eligible, true),
         isNull(eligibility.exclusion),
         eq(talent.inPool, true),
-        or(isNull(talent.purgeAfter), gt(talent.purgeAfter, dayStart(date))),
+        or(isNull(talent.purgeAfter), gt(talent.purgeAfter, cutoff)),
       ),
     )
     .orderBy(eligibility.talentId);
@@ -147,7 +155,7 @@ async function excludedByIntros(db: Db, companyId: string, talentIds: string[], 
  */
 async function loadHistory(
   db: Db,
-  args: { talentIds: string[]; companyId: string; needCardId: string; date: string; rotationDays: number },
+  args: { talentIds: string[]; companyId: string; needCardId: string; date: string; rotationDays: number; lockedDigestIds: string[] },
 ): Promise<Map<string, { lastDrafted: Date | null; recent: boolean; today: number }>> {
   const result = new Map<string, { lastDrafted: Date | null; recent: boolean; today: number }>();
   for (const id of args.talentIds) result.set(id, { lastDrafted: null, recent: false, today: 0 });
@@ -159,7 +167,17 @@ async function loadHistory(
     .where(
       and(
         inArray(pick.talentId, args.talentIds),
-        or(lt(digest.date, args.date), and(eq(digest.date, args.date), lt(pick.needCardId, args.needCardId))),
+        or(
+          lt(digest.date, args.date),
+          and(
+            eq(digest.date, args.date),
+            // Picks of locked digests are final for today whatever their need id; the rest keep a first run reproducible.
+            or(
+              lt(pick.needCardId, args.needCardId),
+              args.lockedDigestIds.length ? inArray(pick.digestId, args.lockedDigestIds) : undefined,
+            ),
+          ),
+        ),
       ),
     );
   const windowStart = daysBefore(args.date, args.rotationDays);
@@ -190,7 +208,7 @@ async function mapPool<T, R>(items: readonly T[], size: number, fn: (item: T) =>
  * day; running it again changes nothing unless a pick has gone out of date. A digest with
  * any decision, or a published one, is never touched.
  */
-export async function draftDailyDigests(db: Db, date: string): Promise<{ digests: number; picks: number }> {
+export async function draftDailyDigests(db: Db, date: string, now: Date = new Date()): Promise<{ digests: number; picks: number }> {
   if (!DATE_RE.test(date)) throw new Error(`draftDailyDigests: invalid date "${date}"`);
   const event = await getCurrentEvent(db);
   const eventId = eventIdOf(event);
@@ -222,7 +240,7 @@ export async function draftDailyDigests(db: Db, date: string): Promise<{ digests
     if (d.locked) continue;
     keptNeedIds.set(d.row.id, (keptNeedIds.get(d.row.id) ?? new Set()).add(n.rowId));
 
-    const eligible = await loadEligible(db, n, date);
+    const eligible = await loadEligible(db, n, date, now);
     const excluded = await excludedByIntros(db, n.companyId, eligible.map((e) => e.talentId), date);
     const pool = eligible.filter((e) => !excluded.has(e.talentId));
     if (pool.length === 0) {
@@ -235,6 +253,7 @@ export async function draftDailyDigests(db: Db, date: string): Promise<{ digests
       needCardId: n.rowId,
       date,
       rotationDays: settings.rotationDays,
+      lockedDigestIds: [...digests.values()].filter((x) => x.locked).map((x) => x.row.id),
     });
     const candidates: Candidate[] = pool.map((e) => {
       const h = history.get(e.talentId)!;
@@ -271,42 +290,46 @@ export async function draftDailyDigests(db: Db, date: string): Promise<{ digests
       return { c, e, reasons, notMentioned: notMentionedIds(n.need, touched) };
     });
 
-    if (existing.length > 0) {
-      await db.delete(pick).where(and(eq(pick.digestId, d.row.id), eq(pick.needCardId, n.rowId)));
-    }
-    for (const item of drafted) {
-      const id = newId("pick");
-      const reasons: PickReason[] = item.reasons;
-      const inserted = await db
-        .insert(pick)
-        .values({
-          id,
-          digestId: d.row.id,
-          companyId: n.companyId,
-          needCardId: n.rowId,
-          needCardVersion: n.version,
-          talentId: item.c.talentId,
-          cardVersion: item.e.cardVersion,
-          origin: "agent",
-          body: { reasons, notMentioned: item.notMentioned },
-          status: "suggested",
-          selection: {
-            seed,
-            lastDraftedBefore: item.c.lastDraftedBefore ? item.c.lastDraftedBefore.toISOString() : null,
-            pass: item.c.pass,
-          },
-        })
-        .onConflictDoNothing()
-        .returning({ id: pick.id });
-      if (inserted.length === 0) continue;
-      await audit(db, {
-        actor: "agent:analyst",
-        action: "pick.drafted",
-        subjectType: "pick",
-        subjectId: id,
-        detail: { pickId: id, digestId: d.row.id, needCardId: n.rowId, origin: "agent", pass: item.c.pass },
-      });
-    }
+    await db.transaction(async (tx) => {
+      // The organiser may have decided or published while the model was writing: look again under the digest lock.
+      if (await lockedNow(tx as unknown as Db, d.row.id)) return;
+      if (existing.length > 0) {
+        await tx.delete(pick).where(and(eq(pick.digestId, d.row.id), eq(pick.needCardId, n.rowId), eq(pick.status, "suggested")));
+      }
+      for (const item of drafted) {
+        const id = newId("pick");
+        const reasons: PickReason[] = item.reasons;
+        const inserted = await tx
+          .insert(pick)
+          .values({
+            id,
+            digestId: d.row.id,
+            companyId: n.companyId,
+            needCardId: n.rowId,
+            needCardVersion: n.version,
+            talentId: item.c.talentId,
+            cardVersion: item.e.cardVersion,
+            origin: "agent",
+            body: { reasons, notMentioned: item.notMentioned },
+            status: "suggested",
+            selection: {
+              seed,
+              lastDraftedBefore: item.c.lastDraftedBefore ? item.c.lastDraftedBefore.toISOString() : null,
+              pass: item.c.pass,
+            },
+          })
+          .onConflictDoNothing()
+          .returning({ id: pick.id });
+        if (inserted.length === 0) continue;
+        await audit(tx as unknown as Db, {
+          actor: "agent:analyst",
+          action: "pick.drafted",
+          subjectType: "pick",
+          subjectId: id,
+          detail: { pickId: id, digestId: d.row.id, needCardId: n.rowId, origin: "agent", pass: item.c.pass },
+        });
+      }
+    });
   }
 
   // Picks for needs that are no longer current (stale or removed) leave an undecided digest.
@@ -315,9 +338,12 @@ export async function draftDailyDigests(db: Db, date: string): Promise<{ digests
     const kept = keptNeedIds.get(row.id) ?? new Set<string>();
     const rows = await db.select({ id: pick.id, needCardId: pick.needCardId }).from(pick).where(eq(pick.digestId, row.id));
     const orphans = rows.filter((r) => !kept.has(r.needCardId)).map((r) => r.id);
-    if (orphans.length > 0) await db.delete(pick).where(inArray(pick.id, orphans));
     const empty = (emptyByDigest.get(row.id) ?? []).sort();
-    await db.update(digest).set({ emptyNeeds: empty }).where(eq(digest.id, row.id));
+    await db.transaction(async (tx) => {
+      if (await lockedNow(tx as unknown as Db, row.id)) return;
+      if (orphans.length > 0) await tx.delete(pick).where(and(inArray(pick.id, orphans), eq(pick.status, "suggested")));
+      await tx.update(digest).set({ emptyNeeds: empty }).where(eq(digest.id, row.id));
+    });
   }
 
   const digestIds = [...digests.values()].map((d) => d.row.id);

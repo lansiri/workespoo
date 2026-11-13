@@ -70,7 +70,7 @@ export function notMentionedIds(need: NeedCard, touched: ReadonlySet<string>): s
 }
 
 /** Must-haves first, then nice-to-haves, each in posting order. Stable. */
-function mustFirst(requirements: readonly Requirement[]): Requirement[] {
+export function mustFirst(requirements: readonly Requirement[]): Requirement[] {
   return [...requirements.filter((r) => r.kind === "must"), ...requirements.filter((r) => r.kind !== "must")];
 }
 
@@ -112,7 +112,7 @@ export function codeReasons(need: NeedCard, card: SignalCard, pairs: readonly Al
 
 /** Wording the lexicon does not cover: pronouns, grading and recommending words, percentages and ratios. */
 const JUDGEMENT_RE =
-  /\b(he|she|him|her|his|hers|fit|match(?:es|ed)?|best|top|highly|recommend(?:ed)?|percent)\b|%|\d+\s*\/\s*\d+/i;
+  /\b(he|she|him|her|his|hers|ideal|qualified|fit|match(?:es|ed)?|best|top|highly|recommend(?:ed)?|percent)\b|%|\d+\s*\/\s*\d+/i;
 
 /** True when a model-written reason is acceptable to show an employer (picks-draft.md check 2). */
 export function reasonTextAllowed(text: string): boolean {

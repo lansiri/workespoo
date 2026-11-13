@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { fmt } from "@/lib/i18n";
 import { useMessages } from "@/lib/i18n/client";
-import { companyMessages } from "./messages";
+import { companyErrorLine, companyMessages } from "./messages";
 
 /** Asks to meet one person from one approved pick. Confirms first; one request per click. */
 export function AskToMeetButton(props: { token: string; pickId: string; needTitle: string }) {
@@ -28,8 +28,8 @@ export function AskToMeetButton(props: { token: string; pickId: string; needTitl
         setConfirming(false);
         router.refresh();
       } else {
-        const body = (await res.json().catch(() => null)) as { error?: { message?: string } } | null;
-        setError(body?.error?.message ?? `HTTP ${res.status}`);
+        const body = (await res.json().catch(() => null)) as { error?: { code?: string } } | null;
+        setError(companyErrorLine(m, body?.error?.code ?? null));
       }
     } finally {
       setBusy(false);

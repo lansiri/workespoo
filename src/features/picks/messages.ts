@@ -68,6 +68,14 @@ const organiserEn = {
   reasonOther: "Other (write why)",
   loadFailed: "The queue could not be loaded.",
   actionFailed: "That did not work: {message}",
+  errUndecided: "Decide every pick first.",
+  errOutOfDate: "The card or the need changed since this pick was drafted. Run the picks again.",
+  errAlreadyDecided: "This pick already has a decision. Undo it first.",
+  errNotDecided: "This pick has no decision to undo.",
+  errUndoClosed: "A decision can be undone for ten minutes only.",
+  errDigestPublished: "This digest is already published.",
+  errProtectedNote: "Decisions must not rest on personal characteristics. Change the note, or press Confirm again to remove with this note.",
+  errGeneric: "Something went wrong, try again.",
   loading: "Loading…",
 };
 
@@ -140,6 +148,14 @@ export const organiserMessages = {
     reasonOther: "Muu (kirjoita syy)",
     loadFailed: "Jonoa ei voitu ladata.",
     actionFailed: "Toiminto ei onnistunut: {message}",
+    errUndecided: "Päätä ensin jokaisesta ehdotuksesta.",
+    errOutOfDate: "Kortti tai tarve on muuttunut ehdotuksen laatimisen jälkeen. Aja päivän ehdotukset uudelleen.",
+    errAlreadyDecided: "Tästä ehdotuksesta on jo päätös. Peru se ensin.",
+    errNotDecided: "Tästä ehdotuksesta ei ole peruttavaa päätöstä.",
+    errUndoClosed: "Päätöksen voi perua vain kymmenen minuutin ajan.",
+    errDigestPublished: "Tämä koonti on jo julkaistu.",
+    errProtectedNote: "Päätökset eivät saa perustua henkilökohtaisiin ominaisuuksiin. Muuta muistiinpanoa tai paina Vahvista uudelleen poistaaksesi tällä muistiinpanolla.",
+    errGeneric: "Jokin meni pieleen, yritä uudelleen.",
     loading: "Ladataan…",
   },
   sv: {
@@ -209,6 +225,14 @@ export const organiserMessages = {
     reasonOther: "Annat (skriv varför)",
     loadFailed: "Kön kunde inte laddas.",
     actionFailed: "Det gick inte: {message}",
+    errUndecided: "Besluta om varje förslag först.",
+    errOutOfDate: "Kortet eller behovet ändrades efter att förslaget skrevs. Ta fram dagens förslag på nytt.",
+    errAlreadyDecided: "Förslaget har redan ett beslut. Ångra det först.",
+    errNotDecided: "Förslaget har inget beslut att ångra.",
+    errUndoClosed: "Ett beslut kan ångras i tio minuter.",
+    errDigestPublished: "Den här sammanställningen är redan publicerad.",
+    errProtectedNote: "Beslut får inte bygga på personliga egenskaper. Ändra anteckningen, eller tryck Bekräfta igen för att ta bort med den här anteckningen.",
+    errGeneric: "Något gick fel, försök igen.",
     loading: "Laddar…",
   },
 } satisfies Messages<typeof organiserEn>;
@@ -251,6 +275,10 @@ const companyEn = {
   askSend: "Send request",
   askCancel: "Cancel",
   askFailed: "The request could not be sent: {message}",
+  errAlreadyRequested: "There is already a request for this person.",
+  errNotAvailable: "You can only ask to meet someone from your approved picks.",
+  errUnknownLink: "This link has expired.",
+  errGeneric: "Something went wrong, try again.",
   revealedTitle: "You both agreed to meet.",
   revealedLabel: "Shown to you after you both agreed",
   revealedName: "Name",
@@ -297,6 +325,10 @@ export const companyMessages = {
     askSend: "Lähetä pyyntö",
     askCancel: "Peruuta",
     askFailed: "Pyyntöä ei voitu lähettää: {message}",
+    errAlreadyRequested: "Tästä henkilöstä on jo pyyntö.",
+    errNotAvailable: "Voitte pyytää tapaamista vain hyväksytyistä ehdotuksistanne.",
+    errUnknownLink: "Tämä linkki on vanhentunut.",
+    errGeneric: "Jokin meni pieleen, yritä uudelleen.",
     revealedTitle: "Molemmat suostuitte tapaamiseen.",
     revealedLabel: "Näytetään teille, kun molemmat ovat suostuneet",
     revealedName: "Nimi",
@@ -340,6 +372,10 @@ export const companyMessages = {
     askSend: "Skicka förfrågan",
     askCancel: "Avbryt",
     askFailed: "Förfrågan kunde inte skickas: {message}",
+    errAlreadyRequested: "Det finns redan en förfrågan om den här personen.",
+    errNotAvailable: "Ni kan bara be om ett möte med någon från era godkända förslag.",
+    errUnknownLink: "Den här länken har gått ut.",
+    errGeneric: "Något gick fel, försök igen.",
     revealedTitle: "Ni kom överens om att ses.",
     revealedLabel: "Visas för er efter att båda har tackat ja",
     revealedName: "Namn",
@@ -347,3 +383,33 @@ export const companyMessages = {
     inTheirWords: "Med egna ord:",
   },
 } satisfies Messages<typeof companyEn>;
+
+/** Maps a server error code to a translated line. Unknown codes and non-JSON replies get the generic line. */
+export function errorLine(lines: Record<string, string>, generic: string, code: string | null): string {
+  return (code && lines[code]) || generic;
+}
+
+export function organiserErrorLine(m: (typeof organiserMessages)["en"], code: string | null): string {
+  return errorLine(
+    {
+      undecided: m.errUndecided,
+      out_of_date: m.errOutOfDate,
+      already_decided: m.errAlreadyDecided,
+      not_decided: m.errNotDecided,
+      undo_window_closed: m.errUndoClosed,
+      digest_published: m.errDigestPublished,
+      already_published: m.errDigestPublished,
+      protected_note: m.errProtectedNote,
+    },
+    m.errGeneric,
+    code,
+  );
+}
+
+export function companyErrorLine(m: (typeof companyMessages)["en"], code: string | null): string {
+  return errorLine(
+    { already_requested: m.errAlreadyRequested, not_available: m.errNotAvailable, unknown_link: m.errUnknownLink },
+    m.errGeneric,
+    code,
+  );
+}

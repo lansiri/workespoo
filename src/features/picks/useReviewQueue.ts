@@ -4,16 +4,24 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { QueueDigest, QueuePick, ReviewQueue } from "./queue-view";
 import type { RemoveReasonCode } from "./constants";
 import { keyAction } from "./keys";
+import { organiserErrorLine, type organiserMessages } from "./messages";
 
-type Removing = { pickId: string; code: RemoveReasonCode | null; note: string };
+/** `warned`: the server said the note touches personal characteristics; the next Confirm is the second confirmation. */
+type Removing = { pickId: string; code: RemoveReasonCode | null; note: string; warned?: boolean };
+
+class ApiError extends Error {
+  constructor(readonly code: string | null) {
+    super(code ?? "error");
+  }
+}
 
 async function call<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(path, {
     ...init,
     headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) },
   });
-  const body = (await res.json().catch(() => null)) as { error?: { message?: string } } | null;
-  if (!res.ok) throw new Error(body?.error?.message ?? `HTTP ${res.status}`);
+  const body = (await res.json().catch(() => null)) as { error?: { code?: string } } | null;
+  if (!res.ok) throw new ApiError(body?.error?.code ?? null);
   return body as T;
 }
 
@@ -23,7 +31,7 @@ export type FlatPick = { pick: QueuePick; digest: QueueDigest };
  * State and actions of the review queue, kept out of the markup. One decision per call:
  * there is no function here that acts on more than one pick.
  */
-export function useReviewQueue(messages: { undecidedBlocked: string; actionFailed: string; runDone: string }) {
+export function useReviewQueue(messages: (typeof organiserMessages)["en"]) {
   const [queue, setQueue] = useState<ReviewQueue | null>(null);
   const [loadError, setLoadError] = useState(false);
   const [pickedId, setSelectedId] = useState<string | null>(null);
@@ -84,10 +92,15 @@ export function useReviewQueue(messages: { undecidedBlocked: string; actionFaile
 
   const fail = useCallback(
     (error: unknown) => {
-      const message = error instanceof Error ? error.message : String(error);
-      setNotice(messages.actionFailed.replace("{message}", message));
+      const code = error instanceof ApiError ? error.code : null;
+      if (code === "protected_note") {
+        setRemoving((r) => (r ? { ...r, warned: true } : r));
+        setNotice(organiserErrorLine(messages, code));
+        return;
+      }
+      setNotice(messages.actionFailed.replace("{message}", organiserErrorLine(messages, code)));
     },
-    [messages.actionFailed],
+    [messages],
   );
 
   const move = useCallback(
@@ -141,12 +154,12 @@ export function useReviewQueue(messages: { undecidedBlocked: string; actionFaile
   const startRemove = useCallback((pickId: string) => setRemoving({ pickId, code: null, note: "" }), []);
   const cancelRemove = useCallback(() => setRemoving(null), []);
   const chooseCode = useCallback((code: RemoveReasonCode) => setRemoving((r) => (r ? { ...r, code } : r)), []);
-  const setNote = useCallback((note: string) => setRemoving((r) => (r ? { ...r, note } : r)), []);
+  const setNote = useCallback((note: string) => setRemoving((r) => (r ? { ...r, note, warned: false } : r)), []);
   const confirmRemove = useCallback(() => {
     const r = stateRef.current.removing;
     if (!r || !r.code) return;
     void decide(
-      { pickId: r.pickId, decision: "remove", reasonCode: r.code, ...(r.note.trim() ? { note: r.note.trim() } : {}) },
+      { pickId: r.pickId, decision: "remove", reasonCode: r.code, ...(r.note.trim() ? { note: r.note.trim() } : {}), ...(r.warned ? { confirmProtected: true } : {}) },
       r.pickId,
       true,
     );

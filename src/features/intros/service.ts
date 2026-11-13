@@ -2,13 +2,12 @@ import { and, desc, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import type { Intro, IntroStatus, AuditAction } from "@/contracts";
 import type { Db } from "@/db/client";
-import { digest, intro, pick, talentIdentity } from "@/db/schema";
+import { digest, intro, matchEvent, pick, talentIdentity } from "@/db/schema";
 import { audit } from "@/lib/audit";
 import { HttpError } from "@/lib/http";
 import { newId } from "@/lib/ids";
 import { companyFromToken } from "@/lib/session";
-import { getCurrentEvent } from "@/features/picks/settings";
-import { DECLINE_COOLDOWN_DAYS, INTRO_EXPIRY_MS } from "@/features/picks/constants";
+import { DECLINE_COOLDOWN_DAYS, INTRO_EXPIRY_MS } from "./constants";
 import { OPEN_STATUSES, partyMayMove, ruleFor, type Party } from "./machine";
 
 type IntroRow = typeof intro.$inferSelect;
@@ -164,7 +163,7 @@ export async function requestToMeet(
     throw new HttpError(403, "not_available", "You can only ask to meet someone from your approved picks");
   }
 
-  const event = await getCurrentEvent(db);
+  const [event = null] = await db.select().from(matchEvent).orderBy(desc(matchEvent.date), desc(matchEvent.id)).limit(1);
   let expiresAt = new Date(now.getTime() + INTRO_EXPIRY_MS);
   if (event && event.startsAt.getTime() > now.getTime()) {
     const limit = new Date(event.startsAt.getTime() - 24 * 60 * 60 * 1000);

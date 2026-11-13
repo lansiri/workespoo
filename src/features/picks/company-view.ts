@@ -6,6 +6,7 @@ import { cardForCompany, cardForCompanyRevealed } from "@/features/card";
 import { companyFromToken } from "@/lib/session";
 import { inDisplayOrder } from "./hash";
 import { maskEmployer } from "./mask";
+import { mustFirst } from "./reasons";
 
 /**
  * What a company's digest page is built from. Every field is chosen here, one by one, from
@@ -116,7 +117,9 @@ export async function buildCompanyPage(db: Db, token: string): Promise<CompanyPa
     const card = await safe(() => cardForCompany(db, p.talentId));
     if (!card) continue;
     const need = needs.get(p.needCardId);
-    const live = need && need.version === p.needCardVersion ? need.card : null;
+    // Picks keep the version they were drafted against (need-card.md 6.1): a company save does not hide them.
+    const live = need ? need.card : null;
+    const changed = !!need && need.version !== p.needCardVersion;
     const mask = need ? maskFor(need.card) : (t: string) => t;
     const signalIds = new Set(card.signals.map((s) => s.id));
     const renderings = new Map(card.signals.map((s) => [s.id, s.rendering]));
@@ -129,7 +132,7 @@ export async function buildCompanyPage(db: Db, token: string): Promise<CompanyPa
       const sentence = requirement.postingSentence === null ? undefined : jobs.get(live.jobId)?.sentences[requirement.postingSentence];
       return [
         {
-          text: r.text,
+          text: mask(r.text),
           requirementText: mask(requirement.text),
           signalId: r.signalId,
           rendering: renderings.get(r.signalId) ?? null,
@@ -138,11 +141,14 @@ export async function buildCompanyPage(db: Db, token: string): Promise<CompanyPa
       ];
     });
     const mentioned = new Set(p.body.notMentioned);
+    // After a company save, requirements added since drafting are unknown to this pick: leave them out.
+    const known = new Set([...p.body.notMentioned, ...p.body.reasons.map((r) => r.requirementId)]);
+    const visible = live ? live.requirements.filter((r) => !changed || known.has(r.id)) : [];
     const requirements = live
-      ? live.requirements.map((r) => ({ id: r.id, text: mask(r.text), mentioned: !mentioned.has(r.id) }))
+      ? visible.map((r) => ({ id: r.id, text: mask(r.text), mentioned: !mentioned.has(r.id) }))
       : [];
     const notMentioned = live
-      ? live.requirements
+      ? mustFirst(visible)
           .filter((r) => mentioned.has(r.id))
           .map((r) => ({ text: mask(r.text), statutory: r.statutory !== "none" }))
       : [];

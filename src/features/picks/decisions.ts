@@ -4,6 +4,7 @@ import type { Db } from "@/db/client";
 import { company, digest, pick } from "@/db/schema";
 import { audit } from "@/lib/audit";
 import { HttpError } from "@/lib/http";
+import { findProtectedCard } from "@/lib/lexicon";
 import { REMOVE_NOTE_MAX, REMOVE_REASON_CODES, UNDO_WINDOW_MS } from "./constants";
 import { isOutOfDate, outOfDateFlags } from "./freshness";
 
@@ -20,6 +21,8 @@ export const DecisionBody = z.discriminatedUnion("decision", [
     decision: z.literal("remove"),
     reasonCode: z.enum(REMOVE_REASON_CODES),
     note: z.string().max(REMOVE_NOTE_MAX).optional(),
+    /** The second confirmation for a note that trips the protected-attribute lint. */
+    confirmProtected: z.literal(true).optional(),
   }),
   z.strictObject({ pickId: PickId, decision: z.literal("undo") }),
 ]);
@@ -41,6 +44,19 @@ export async function decidePick(
   db: Db,
   input: DecisionBody,
   opts: { now?: Date } = {},
+): Promise<{ id: string; status: "suggested" | "approved" | "removed" }> {
+  const { pick: first } = await loadPick(db, input.pickId);
+  // The digest row lock keeps drafting and publishing from moving under a decision.
+  return db.transaction(async (tx) => {
+    await tx.select({ id: digest.id }).from(digest).where(eq(digest.id, first.digestId)).for("update");
+    return decideLocked(tx as unknown as Db, input, opts);
+  });
+}
+
+async function decideLocked(
+  db: Db,
+  input: DecisionBody,
+  opts: { now?: Date },
 ): Promise<{ id: string; status: "suggested" | "approved" | "removed" }> {
   const now = opts.now ?? new Date();
   const { pick: p, digestStatus } = await loadPick(db, input.pickId);
@@ -74,6 +90,11 @@ export async function decidePick(
       throw new HttpError(400, "invalid_body", "Write why when the reason is Other");
     }
     if (p.status !== "suggested") throw new HttpError(409, "already_decided", "Undo the earlier decision first");
+    // picks-and-intros.md section 3: a note about personal characteristics needs a warning and a second confirmation.
+    const protectedNote = note.length > 0 && findProtectedCard(note).length > 0;
+    if (protectedNote && input.confirmProtected !== true) {
+      throw new HttpError(409, "protected_note", "Decisions must not rest on personal characteristics");
+    }
     const changed = await db
       .update(pick)
       .set({ status: "removed", reasonCode: input.reasonCode, decisionNote: note || null, decidedBy: "organiser", decidedAt: now })
@@ -86,7 +107,9 @@ export async function decidePick(
       action: "pick.removed",
       subjectType: "pick",
       subjectId: p.id,
-      detail: { pickId: p.id, digestId: p.digestId, needCardId: p.needCardId, reasonCode: input.reasonCode },
+      detail: { pickId: p.id, digestId: p.digestId, needCardId: p.needCardId, reasonCode: input.reasonCode,
+        ...(protectedNote ? { protectedWarning: true, protectedConfirmed: true } : {}),
+      },
     });
     return { id: p.id, status: "removed" };
   }
@@ -118,6 +141,17 @@ export async function publishDigest(
   db: Db,
   digestId: string,
   opts: { now?: Date } = {},
+): Promise<{ id: string; status: "published"; publishedAt: string; companyPath: string }> {
+  return db.transaction(async (tx) => {
+    await tx.select({ id: digest.id }).from(digest).where(eq(digest.id, digestId)).for("update");
+    return publishLocked(tx as unknown as Db, digestId, opts);
+  });
+}
+
+async function publishLocked(
+  db: Db,
+  digestId: string,
+  opts: { now?: Date },
 ): Promise<{ id: string; status: "published"; publishedAt: string; companyPath: string }> {
   const now = opts.now ?? new Date();
   const [d] = await db

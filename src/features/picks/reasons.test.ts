@@ -213,3 +213,16 @@ describe("writeReasons", () => {
     expect(reasons.every((r) => r.text.length <= 200)).toBe(true);
   });
 });
+
+describe("check 2 covers every word of the spec regex", () => {
+  const words = [
+    "he", "she", "him", "her", "his", "hers", "strong", "excellent", "great", "impressive", "perfect", "ideal",
+    "expert", "talented", "skilled", "qualified", "senior", "junior", "fit", "match", "matches", "matched", "best",
+    "top", "highly", "recommend", "recommended", "score", "percent",
+  ];
+  for (const w of words) {
+    it(`drops a reason containing "${w}"`, () => {
+      expect(reasonTextAllowed(`The card describes Python pipelines, ${w} for this.`)).toBe(false);
+    });
+  }
+});

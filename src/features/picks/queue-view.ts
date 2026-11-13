@@ -3,6 +3,7 @@ import { NeedCard, type CardForOrganiser } from "@/contracts";
 import type { Db } from "@/db/client";
 import { company, digest, job, needCard, pick } from "@/db/schema";
 import { cardForOrganiser } from "@/features/card";
+import { mustFirst } from "./reasons";
 import { inDisplayOrder } from "./hash";
 import { isOutOfDate, outOfDateFlags } from "./freshness";
 import { maskEmployer } from "./mask";
@@ -164,7 +165,7 @@ export async function buildReviewQueue(db: Db, opts: { now?: Date } = {}): Promi
             kind: r.kind,
             touched: !notMentioned.has(r.id),
           })),
-          notMentioned: need.requirements
+          notMentioned: mustFirst(need.requirements)
             .filter((r) => notMentioned.has(r.id))
             .map((r) => ({ id: r.id, text: mask(r.text), statutory: r.statutory !== "none" })),
         };

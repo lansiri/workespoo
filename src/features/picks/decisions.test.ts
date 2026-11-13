@@ -97,6 +97,19 @@ describe("decidePick", () => {
     expect(a.detail).toEqual({ pickId: picks[0].id, digestId: picks[0].digestId, needCardId: "nc_1", reasonCode: "other" });
   });
 
+  it("needs a second confirmation for a note about personal characteristics, and logs both", async () => {
+    const { picks } = await world();
+    const note = "needs a work permit, and probably has kids";
+    const body = { pickId: picks[0].id, decision: "remove" as const, reasonCode: "other" as const, note };
+    await expect(decidePick(t.db, body, { now: NOW })).rejects.toMatchObject({ status: 409, code: "protected_note" });
+    expect(await status(picks[0].id)).toBe("suggested");
+    await decidePick(t.db, { ...body, confirmProtected: true }, { now: NOW });
+    expect(await status(picks[0].id)).toBe("removed");
+    const [a] = await audits("pick.removed");
+    expect(a.detail).toMatchObject({ protectedWarning: true, protectedConfirmed: true });
+    expect(JSON.stringify(a.detail)).not.toContain("permit");
+  });
+
   it("refuses 'other' without a note", async () => {
     const { picks } = await world();
     await expect(decidePick(t.db, { pickId: picks[0].id, decision: "remove", reasonCode: "other" })).rejects.toMatchObject({ status: 400 });

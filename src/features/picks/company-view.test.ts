@@ -1,7 +1,7 @@
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import type { PickReason } from "@/contracts";
-import { digest } from "@/db/schema";
+import { digest, needCard } from "@/db/schema";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
 
 const cardMock = vi.hoisted(() => ({ revealedFor: [] as string[], removedSignal: false }));
@@ -224,5 +224,40 @@ describe("before and after both sides agree", () => {
     await world();
     await addIntro(t.db, { id: "intro_1", talentId: "tal_1", companyId: "co_1", status: "expired" });
     expect((await buildCompanyPage(t.db, "tok-1"))!.digest!.groups[0].picks[0].canAsk).toBe(true);
+  });
+
+  it("masks the employer inside stored reason text", async () => {
+    await world();
+    await t.db.update(needCard).set({
+      body: sql`jsonb_set(body, '{requirements,0,text}', '"Python at Acme Robotics data platform"')`,
+    }).where(eq(needCard.id, "nc_1"));
+    await t.db.execute(sql`update pick set body = jsonb_set(body, '{reasons,0,text}', '"The card describes Python, which relates to Python at Acme Robotics data platform."')`);
+    const page = (await buildCompanyPage(t.db, "tok-1"))!;
+    expect(JSON.stringify(page)).not.toMatch(/acme|robotics/i);
+  });
+
+  it("keeps reasons and chips after the company saves the need (version bump)", async () => {
+    await world();
+    await t.db.update(needCard).set({ version: 2, status: "confirmed" }).where(eq(needCard.id, "nc_1"));
+    const [p] = (await buildCompanyPage(t.db, "tok-1"))!.digest!.groups[0].picks;
+    expect(p.reasons).toHaveLength(2);
+    expect(p.requirements).toHaveLength(3);
+    expect(p.notMentioned).toEqual([{ text: "Fluent Finnish", statutory: true }]);
+  });
+
+  it("lists not-mentioned requirements must-first", async () => {
+    await world();
+    await t.db.execute(sql`update pick set body = jsonb_set(body, '{notMentioned}', '["req_4","req_3"]')`);
+    const [row] = await t.db.select().from(needCard).where(eq(needCard.id, "nc_1"));
+    const body = row.body as { requirements: Array<{ id: string; text: string; kind: string }> };
+    const req = (id: string) => body.requirements.find((r) => r.id === id)!;
+    req("req_3").kind = "must";
+    req("req_1").kind = "nice";
+    body.requirements = [req("req_1"), req("req_2"), req("req_3")].map((r) => ({ ...r }));
+    body.requirements[0].id = "req_4";
+    body.requirements[0].text = "Airflow";
+    await t.db.update(needCard).set({ body: body as never }).where(eq(needCard.id, "nc_1"));
+    const [p] = (await buildCompanyPage(t.db, "tok-1"))!.digest!.groups[0].picks;
+    expect(p.notMentioned.map((n) => n.text)).toEqual(["Fluent Finnish", "Airflow"]);
   });
 });
