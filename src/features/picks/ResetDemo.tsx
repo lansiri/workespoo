@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { fmt } from "@/lib/i18n";
@@ -11,6 +12,7 @@ type Outcome = { kind: "done"; people: number; companies: number } | { kind: "no
 /** Two steps: the button asks, the confirm button does it. Shows what happened in plain words. */
 export function ResetDemo() {
   const m = useMessages(consoleMessages);
+  const router = useRouter();
   const [asking, setAsking] = useState(false);
   const [busy, setBusy] = useState(false);
   const [outcome, setOutcome] = useState<Outcome | null>(null);
@@ -25,6 +27,7 @@ export function ResetDemo() {
         return;
       }
       const body = (await res.json()) as { restored: boolean; people: number; companies: number };
+      if (body.restored) router.refresh();
       setOutcome(body.restored ? { kind: "done", people: body.people, companies: body.companies } : { kind: "none" });
     } catch {
       setOutcome({ kind: "failed" });

@@ -58,10 +58,23 @@ export async function listAudit(db: Db, args: { action?: AuditAction | null; bef
     action: r.action,
     subjectType: r.subjectType,
     subjectId: r.subjectId,
-    detail: r.detail,
+    detail: withoutHiddenKeys(r.detail),
     seeded: r.detail?.seeded === true,
   }));
   return { rows, nextBefore: found.length > AUDIT_PAGE_SIZE ? rows[rows.length - 1].id : null };
+}
+
+/** Keys that would show interview language or input mode (voice consent is the precondition for voice). Never shown to organisers. */
+const HIDDEN_DETAIL_KEYS = new Set(
+  ["voice", "voicevendor", "lang", "language", "interviewlang", "interviewlanguage", "inputmode", "consent"],
+);
+
+function withoutHiddenKeys(detail: Record<string, unknown> | null): Record<string, unknown> {
+  const out: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(detail ?? {})) {
+    if (!HIDDEN_DETAIL_KEYS.has(k.toLowerCase())) out[k] = v;
+  }
+  return out;
 }
 
 export const EXPOSURE_BANDS = ["never", "few", "several", "many"] as const;

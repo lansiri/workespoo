@@ -57,6 +57,12 @@ describe("listAudit", () => {
     expect(rows[1].detail).toEqual({ seeded: true, count: 3 });
   });
 
+  it("drops voice consent and language keys from the detail", async () => {
+    await ev(1, "interview.started", { talentId: "t1", mode: "full", liveDemo: false, voice: true, lang: "fi" });
+    const { rows } = await listAudit(t.db);
+    expect(rows[0].detail).toEqual({ talentId: "t1", mode: "full", liveDemo: false });
+  });
+
   it("refuses an unknown action", () => {
     expect(() => parseAuditAction("pick.invented")).toThrowError(/Unknown audit action/);
     expect(parseAuditAction("")).toBeNull();

@@ -66,7 +66,7 @@ async function decideLocked(
     if (p.status !== "suggested") throw new HttpError(409, "already_decided", "Undo the earlier decision first");
     const flags = (await outOfDateFlags(db, [p])).get(p.id);
     if (isOutOfDate(flags)) {
-      throw new HttpError(409, "out_of_date", "The card or the need changed since this pick was drafted. Run today's picks again.");
+      throw new HttpError(409, "out_of_date", "The card or the need changed since this pick was drafted. Run today's picks again. If it stays out of date, this person no longer fits and the pick can be removed.");
     }
     const changed = await db
       .update(pick)

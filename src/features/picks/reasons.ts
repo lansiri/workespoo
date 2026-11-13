@@ -229,6 +229,7 @@ export async function writeReasons(
         temperature: 0.2,
         schema: PicksDraftOutput,
         deadlineMs: REASONS_DEADLINE_MS,
+        signal: AbortSignal.timeout(REASONS_DEADLINE_MS),
         db,
       });
       if (result.data) {
