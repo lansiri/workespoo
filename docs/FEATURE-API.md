@@ -41,7 +41,7 @@ export function stopInterview(db: Db, interviewId: string): Promise<void>;
 export function settleInterview(db: Db, interviewId: string, timeoutMs?: number): Promise<void>;
 ```
 
-`isKnownTurnKey(interviewId, key)` is also exported, for the stream's own turn route only.
+`isKnownTurnKey(interviewId, key)` and `removeAnswer(db, interviewId, turnIndex)` are also exported, for the stream's own routes only. A retry of a turn is recognised by `TurnRequest.clientTurnId` alone; there is no idempotency header.
 
 ## `@/features/card` (S1b)
 

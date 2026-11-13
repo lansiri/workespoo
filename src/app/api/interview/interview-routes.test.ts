@@ -147,7 +147,7 @@ describe("interview routes", () => {
     const res = await remove(post(`/api/interview/${interviewId}/remove`, { turnIndex: 1 }), ctx(interviewId));
     expect(res.status).toBe(200);
     const body = await res.json();
-    expect(body.text.startsWith("Done, I've removed your last answer.")).toBe(true);
+    expect(body.text.startsWith("Done, I've removed that answer.")).toBe(true);
     expect((await remove(post(`/api/interview/${interviewId}/remove`, { turnIndex: 1 }), ctx(interviewId))).status).toBe(404);
     expect((await remove(post(`/api/interview/${interviewId}/remove`, { turnIndex: "x" }), ctx(interviewId))).status).toBe(400);
     const mine = h.talentId;

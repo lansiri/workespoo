@@ -139,11 +139,12 @@ export async function startInterview(db: Db, request: StartInterviewRequest): Pr
     action: "interview.started",
     subjectType: "interview",
     subjectId: interviewId,
+    // Whether the person chose to speak is not written here: the organiser reads this log and
+    // must never learn who spoke and who typed. The consent itself is in the consent table.
     detail: {
       talentId,
       mode: request.mode,
       liveDemo: request.consent.liveDemo,
-      voice: request.consent.voiceVendor,
     },
   });
 

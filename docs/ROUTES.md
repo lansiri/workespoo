@@ -30,6 +30,7 @@ Lead-owned. Streams implement exactly these paths. Phase 2 pages are unstyled bu
 | `POST /api/interview/[id]/turn` | S1 | `TurnRequest`; server-sent events: `turn.delta`, `turn.done` |
 | `GET /api/interview/[id]/events` | S1 | Server-sent events: signals, coverage, `jobs.lit`, `interview.completed`, `card.ready`. Supports `Last-Event-ID`. |
 | `POST /api/interview/[id]/stop` | S1 | Ends the interview early |
+| `POST /api/interview/[id]/remove` | S1 | `{ turnIndex }`: removes one of the person's own answers; answers `{ turnIndex, text }` with the scripted confirmation and the next question |
 | `GET /api/card` | S1 | `CardForPerson` for the session's talent |
 | `PATCH /api/card` | S1 | Edits: remove a signal, edit a phrase, edit `lookingFor` |
 | `POST /api/card/approve` | S1 | Approves the draft |
