@@ -8,7 +8,7 @@ import { fmt } from "@/lib/i18n";
 import { useMessages, useUiLang } from "@/lib/i18n/client";
 import { UI_LANG_LOCALES } from "@/lib/i18n/types";
 import { matchesMessages } from "./messages";
-import type { MatchItem, TalentIntro } from "./payload";
+import type { IntroNotApprovedCode, MatchItem, TalentIntro } from "./payload";
 import { checkAnswer, respondToIntro, useMatches } from "./useMatches";
 
 type M = (typeof matchesMessages)["en"];
@@ -19,6 +19,12 @@ const FOUND_KEYS = {
   text: "foundText",
   role: "foundRole",
 } as const;
+
+const REASON_KEYS: Record<IntroNotApprovedCode, keyof M> = {
+  need_unrelated: "reasonNeedUnrelated",
+  company_full: "reasonCompanyFull",
+  other: "reasonOther",
+};
 
 const STATUS_KEYS: Record<IntroStatus, keyof M> = {
   pending_review: "statusPendingReview",
@@ -90,10 +96,12 @@ function JobCard({ item, m, locale }: { item: MatchItem; m: M; locale: string })
             <Reason key={r.signalId + r.text} reason={r} m={m} />
           ))}
         </ul>
-      ) : (
-        <p>{m.noReasons}</p>
-      )}
-      {item.notMentioned.length > 0 ? (
+      ) : null}
+      {item.notMentioned === null ? (
+        <p data-testid="not-read" className="text-sm">
+          {m.notRead}
+        </p>
+      ) : item.notMentioned.length > 0 ? (
         <p data-testid="not-mentioned">
           {m.notMentioned}:{" "}
           {item.notMentioned.map((n) => (n.statutory ? `${n.text} ${m.statutory}` : n.text)).join(" · ")}
@@ -136,6 +144,9 @@ function IntroRow({ intro, m, locale, onAnswered }: { intro: TalentIntro; m: M; 
       <p data-testid="intro-status">
         {m.introStatusLabel}: {m[STATUS_KEYS[intro.status]]}
       </p>
+      {intro.status === "not_approved" && intro.notApprovedReason ? (
+        <p data-testid="intro-reason">{m[REASON_KEYS[intro.notApprovedReason]]}</p>
+      ) : null}
       {intro.status === "awaiting_talent" && !accepting ? (
         <div className="mt-2 flex gap-2">
           <Button data-testid="intro-accept" disabled={busy} onClick={() => setAccepting(true)}>
@@ -182,7 +193,7 @@ function IntroRow({ intro, m, locale, onAnswered }: { intro: TalentIntro; m: M; 
 export function MatchesView() {
   const m = useMessages(matchesMessages);
   const locale = UI_LANG_LOCALES[useUiLang()];
-  const { state, reload } = useMatches();
+  const { state, reload, gaveUp } = useMatches();
 
   if (state.status === "loading") return <p>{m.loading}</p>;
   if (state.status === "error") return <p role="alert">{m.loadFailed}</p>;
@@ -193,11 +204,15 @@ export function MatchesView() {
       </p>
     );
   }
-  const { matches, intros } = state.data;
+  const { matches, intros, refining } = state.data;
   return (
     <div>
       <h1 className="mb-2 text-2xl font-semibold">{m.title}</h1>
-      <p className="mb-6">{m.intro}</p>
+      <p className="mb-2">{m.intro}</p>
+      {/* Always takes its line, so the postings below do not move when the wording is done. */}
+      <p role="status" data-testid="refining" className="mb-4 min-h-5 text-sm">
+        {refining && !gaveUp ? m.refining : ""}
+      </p>
       {matches.length === 0 ? (
         <section data-testid="matches-empty" className="mb-8">
           <h2 className="font-semibold">{m.emptyTitle}</h2>

@@ -1,19 +1,31 @@
 import type { ChatMessage } from "@/lib/llm";
-import type { EvidenceRef, JobMatchReason, MatchReasonsOutput } from "@/contracts";
-import { findBannedEvaluative } from "@/lib/lexicon";
-import { NOT_MENTIONED_MAX, REASON_BANNED_PATTERN, REASON_MAX_PER_POSTING, STATUTORY_SUFFIX } from "./constants";
+import { z } from "zod";
+import { MatchReasonsOutput as MatchReasonsContract, type EvidenceRef, type JobMatchReason } from "@/contracts";
+import { findBannedEvaluative, findReasonJudgement } from "@/lib/lexicon";
+import { NOT_MENTIONED_MAX, PHRASE_MIN_LENGTH, REASON_MAX_PER_POSTING, STATUTORY_SUFFIX } from "./constants";
+
+/**
+ * The model's answer. Same items as the contract's `MatchReasonsOutput`, but an empty list is
+ * allowed: a posting with no real link to the card gets no reason (match-reasons-F4). The
+ * contract itself still demands at least one; see the report's request for the lead.
+ */
+export const ReasonsReply = z.object({ reasons: z.array(MatchReasonsContract.shape.reasons.element).max(3) });
+export type ReasonsReply = z.infer<typeof ReasonsReply>;
 
 /**
  * A (signal, posting sentence) pair the model may cite. Computed by code.
  * - `requirement`: the posting's Need Card has a requirement tied to that sentence and the signal touches it.
  * - `posting_skill`: the signal's ESCO skill is one the posting lists; the sentence is the first one naming it.
  * - `occupation`: the skill belongs to an occupation the posting is classed under. Code-rendered reasons only.
+ * - `sentence_text`: a posting sentence contains the signal's label as a whole phrase.
+ *
+ * Every pair is a real link. A single shared word is not one.
  */
 export type AllowedPair = {
   signalId: string;
   /** 0-based index into `Job.sentences`, or null when no sentence names it. */
   sentence: number | null;
-  via: "requirement" | "posting_skill" | "occupation";
+  via: "requirement" | "posting_skill" | "sentence_text" | "occupation";
   /** What the posting lists, in words: the requirement text or the ESCO label. */
   listed: string;
   escoUri?: string;
@@ -27,7 +39,7 @@ export type SignalForReason = {
   evidence: EvidenceRef | null;
 };
 
-const VIA_ORDER: Record<AllowedPair["via"], number> = { requirement: 0, posting_skill: 1, occupation: 2 };
+const VIA_ORDER: Record<AllowedPair["via"], number> = { requirement: 0, posting_skill: 1, sentence_text: 2, occupation: 3 };
 
 const signalNumber = (id: string) => Number(id.replace(/\D/g, "")) || 0;
 
@@ -57,6 +69,19 @@ export function uniquePairs(pairs: AllowedPair[]): AllowedPair[] {
 /** Pairs the model may be shown. Occupation pairs never go to the model. */
 export const modelPairs = (pairs: AllowedPair[]) => pairs.filter((p) => p.via !== "occupation");
 
+const escapeRe = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/**
+ * True when `sentence` contains `phrase` as a whole phrase: same letters, case aside, with no
+ * letter or digit on either side. One shared word of a longer label does not count.
+ */
+export function containsWholePhrase(sentence: string, phrase: string): boolean {
+  const p = phrase.trim().replace(/\s+/g, " ");
+  if (p.length < PHRASE_MIN_LENGTH) return false;
+  const re = new RegExp(`(?<![\\p{L}\\p{N}])${escapeRe(p).replace(/ /g, "\\s+")}(?![\\p{L}\\p{N}])`, "iu");
+  return re.test(sentence);
+}
+
 const label = (prefix: "S" | "P", value: string | number) =>
   prefix === "S" ? `S${signalNumber(String(value))}` : `P${value}`;
 
@@ -66,12 +91,14 @@ export const REASONS_SYSTEM_PROMPT = `You explain to a person why a job posting 
 Rules:
 1. Write in plain, friendly English. Short sentences. Address the person as "you".
 2. You may ONLY use the pairs listed under "Allowed pairs". Each reason uses one pair: one signal id (like "S2") and its posting sentence id (like "P5", or null).
-3. Write 1 to 3 reasons. Each reason is one sentence, at most 160 characters, in this shape:
-   "Your card mentions <what the signal says>; the posting asks for <what the sentence asks>."
+3. Write 1 to 3 reasons. Each reason is one sentence, at most 130 characters, in this shape:
+   "Your card mentions <what the signal says>; the posting <asks for | lists as a plus | lists> <what the sentence says>."
+   Use 'lists as a plus' when the sentence says it is an advantage. For a null sentence use 'the posting lists'.
 4. Describe, never judge. Do not praise or grade the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, score, percent.
 5. Do not say whether the person will get the job or is suitable. Do not give advice.
 6. Do not invent facts. Use only the signal text and the sentence text given.
-7. Pick pairs that cover different requirements when you can.`;
+7. Pick pairs that cover different requirements when you can.
+8. If no allowed pair gives a real reason, return {"reasons": []}.`;
 
 /**
  * The messages for one (person, posting) call. Inputs are exactly: the posting title, the
@@ -123,7 +150,7 @@ export type DropCause = "pair_not_allowed" | "banned_wording" | "duplicate_signa
  * the evidence reference) is applied here too. Returns what survived, in model order.
  */
 export function checkModelReasons(
-  output: MatchReasonsOutput,
+  output: ReasonsReply,
   pairs: AllowedPair[],
   signals: SignalForReason[],
 ): { reasons: JobMatchReason[]; dropped: DropCause[] } {
@@ -141,7 +168,7 @@ export function checkModelReasons(
       dropped.push("pair_not_allowed");
       continue;
     }
-    if (REASON_BANNED_PATTERN.test(r.text) || findBannedEvaluative(r.text).length > 0) {
+    if (findReasonJudgement(r.text).length > 0 || findBannedEvaluative(r.text).length > 0) {
       dropped.push("banned_wording");
       continue;
     }
@@ -174,7 +201,9 @@ export function codeReason(pairs: AllowedPair[], signals: SignalForReason[]): Jo
     const tail =
       pair.via === "occupation"
         ? `This kind of work usually involves ${pair.listed}.`
-        : `This posting lists ${pair.listed}.`;
+        : pair.via === "sentence_text"
+          ? `This posting mentions ${pair.listed}.`
+          : `This posting lists ${pair.listed}.`;
     return {
       text: `Your card mentions ${signal.phrase}. ${tail}`.slice(0, 200),
       signalId: signal.id,

@@ -5,10 +5,11 @@ import { loadJobFixtures } from "../../../fixtures/load";
 import { company, interview, job, jobMatch, jobQueue, needCard, signal, talent, turn } from "@/db/schema";
 import type { Intro, NeedCard, SignalCard } from "@/contracts";
 import { resetLlmState, setLlmFake, type LlmOptions } from "@/lib/llm";
-import { computeFeed, feedForTalent } from "./feed";
+import { enqueue } from "@/lib/queue";
+import { computeFeed, feedForTalent, refineFeed, refreshNotMentioned } from "./feed";
 import { matchesPayload } from "./payload";
 import { STATUTORY_SUFFIX } from "./constants";
-import { checkModelReasons, type AllowedPair, type SignalForReason } from "./reasons";
+import { checkModelReasons, containsWholePhrase, REASONS_SYSTEM_PROMPT, type AllowedPair, type SignalForReason } from "./reasons";
 import { uriByLabel, addMaskedCompany, addNeed, addPerson, jobIdByTitle, occupationSkillsOf, req } from "./testkit";
 
 const cards = new Map<string, SignalCard>();
@@ -175,6 +176,7 @@ describe("reasons", () => {
       return goodReply(skills[0].label);
     });
     await computeFeed(t.db, "tal_sw", { now: NOW });
+    await refineFeed(t.db, "tal_sw");
     const mine = (await feedForTalent(t.db, "tal_sw")).find((f) => f.job.id === jobId)!;
     expect(mine.match.reasonsSource).toBe("model");
     expect(mine.match.reasons).toEqual([
@@ -182,6 +184,22 @@ describe("reasons", () => {
     ]);
     expect(mine.match.reasons[0].text).toContain(skills[0].label);
     expect(calls.every((c) => c.role === "analyst" && c.purpose === "matching.feed_reasons" && c.db)).toBe(true);
+  });
+
+  it("refineFeed stores 'not mentioned' from the Need Card as it is now", async () => {
+    const { skills, jobId } = await setup();
+    setLlmFake((opts) => {
+      calls.push(opts);
+      return goodReply(skills[0].label);
+    });
+    const card = needCards.get(jobId)!;
+    needCards.delete(jobId);
+    await computeFeed(t.db, "tal_sw", { now: NOW });
+    needCards.set(jobId, card);
+    await refineFeed(t.db, "tal_sw");
+    const row = (await t.db.select().from(jobMatch).where(eq(jobMatch.talentId, "tal_sw"))).find((r) => r.jobId === jobId)!;
+    expect(row.body.reasonsSource).toBe("model");
+    expect(row.body.notMentioned).toEqual(["Kubernetes in production", `Valid driving licence${STATUTORY_SUFFIX}`, "Fluent Finnish"]);
   });
 
   it("M12: the prompt holds only title, signal phrases and renderings, posting sentences and pairs", async () => {
@@ -195,6 +213,7 @@ describe("reasons", () => {
       text: "Secret transcript sentence about my kitchen.", sentences: ["Secret transcript sentence about my kitchen."], inputMode: "voice",
     });
     await computeFeed(t.db, "tal_sw", { now: NOW });
+    await refineFeed(t.db, "tal_sw");
     const prompt = JSON.stringify(calls.map((c) => c.messages));
     expect(calls.length).toBeGreaterThan(0);
     for (const banned of ["Birch-27", "Secret transcript", "kitchen", "voice", "express", "tal_sw", "interview", "inputMode"]) {
@@ -213,6 +232,7 @@ describe("reasons", () => {
     const { jobId } = await setup();
     setLlmFake(() => ({ reasons: [{ signal: "S1", sentence: "P0", text }] }));
     await computeFeed(t.db, "tal_sw", { now: NOW });
+    await refineFeed(t.db, "tal_sw");
     const mine = (await feedForTalent(t.db, "tal_sw")).find((f) => f.job.id === jobId)!;
     expect(mine.match.reasonsSource).toBe("code");
     expect(mine.match.reasons[0].text).toMatch(/^Your card mentions .+\. This posting lists /);
@@ -229,6 +249,7 @@ describe("reasons", () => {
     ]) {
       setLlmFake(reply);
       await computeFeed(t.db, "tal_sw", { now: NOW });
+      await refineFeed(t.db, "tal_sw");
       const mine = (await feedForTalent(t.db, "tal_sw")).find((f) => f.job.id === jobId)!;
       expect(mine.match.reasonsSource).toBe("code");
       expect(mine.match.reasons).toHaveLength(1);
@@ -283,6 +304,15 @@ describe("reasons", () => {
     expect(ids.length).toBeGreaterThan(0);
     expect(new Set(ids).size).toBe(ids.length);
   });
+
+  it("queues the drafts to run later than now, so step two is claimed first", async () => {
+    await setup();
+    const before = Date.now();
+    await computeFeed(t.db, "tal_sw", { now: NOW });
+    const drafts = (await t.db.select().from(jobQueue)).filter((j) => j.kind === "needs.draft");
+    expect(drafts.length).toBeGreaterThan(0);
+    for (const d of drafts) expect(d.runAfter.getTime()).toBeGreaterThanOrEqual(before + 4000);
+  });
 });
 
 describe("stability and fairness", () => {
@@ -301,6 +331,7 @@ describe("stability and fairness", () => {
     let n = 0;
     setLlmFake(() => ({ reasons: [{ signal: "S1", sentence: null, text: `Your card mentions it; version ${++n}.` }] }));
     await computeFeed(t.db, "tal_sw", { now: NOW });
+    await refineFeed(t.db, "tal_sw");
     const a = await snapshot("tal_sw");
     await computeFeed(t.db, "tal_sw", { now: NOW });
     expect(await snapshot("tal_sw")).toEqual(a);
@@ -395,3 +426,225 @@ describe("the payload for /matches", () => {
   });
 });
 
+
+/** A reply that cites the first allowed pair of the prompt it was given. */
+function firstPairReply(opts: LlmOptions) {
+  const user = String(opts.messages[opts.messages.length - 1].content);
+  const [signal, rest] = user.split("Allowed pairs (signal, sentence):\n")[1].split("\n")[0].split(", ");
+  const sentence = rest.split(" ")[0];
+  return { reasons: [{ signal, sentence: /^P\d+$/.test(sentence) ? sentence : null, text: "Your card mentions it; the posting lists it." }] };
+}
+
+describe("two steps and the model budget", () => {
+  it("step one stores code-written reasons and makes no model call; step two words the top postings only", async () => {
+    const { skills } = await personFor("tal_sw", "Mobile Developer");
+    const jobId = await jobIdByTitle(t.db, "Mobile Developer");
+    needCards.set(
+      jobId,
+      await addNeed(t.db, { id: "nc_m", jobId, requirements: [req("r1", skills[0].label, { escoSkillUris: [skills[0].uri], postingSentence: 0 })] }),
+    );
+    await computeFeed(t.db, "tal_sw", { now: NOW });
+    expect(calls).toHaveLength(0);
+    const first = await feedForTalent(t.db, "tal_sw");
+    expect(first.length).toBeGreaterThan(5);
+    expect(first.every((f) => f.match.reasonsSource === "code")).toBe(true);
+
+    setLlmFake((opts) => {
+      calls.push(opts);
+      return firstPairReply(opts);
+    });
+    await refineFeed(t.db, "tal_sw");
+    expect(calls.length).toBeGreaterThan(0);
+    expect(calls.length).toBeLessThanOrEqual(5);
+    expect(calls.every((c) => c.deadlineMs === 20000 && c.role === "analyst")).toBe(true);
+    const second = await feedForTalent(t.db, "tal_sw");
+    // Same postings in the same order; only reason text changed, and only in the top five.
+    expect(second.map((f) => f.job.id)).toEqual(first.map((f) => f.job.id));
+    expect(second.slice(5).every((f) => f.match.reasonsSource === "code")).toBe(true);
+    expect(second.slice(0, 5).some((f) => f.match.reasonsSource === "model")).toBe(true);
+    // A second run leaves model wording as it is and does not ask for it again.
+    const askedFor = calls.map((c) => String(c.messages[1].content).split("\n")[0]);
+    await refineFeed(t.db, "tal_sw");
+    expect(calls.length).toBe(askedFor.length);
+    expect((await feedForTalent(t.db, "tal_sw")).map((f) => f.match.reasons)).toEqual(second.map((f) => f.match.reasons));
+  });
+
+  it("requests a Need Card draft for at most three postings, none with a card, with companyId null", async () => {
+    await personFor("tal_sw", "Mobile Developer");
+    const jobId = await jobIdByTitle(t.db, "Mobile Developer");
+    needCards.set(jobId, await addNeed(t.db, { id: "nc_m", jobId, requirements: [req("r1", "x")] }));
+    await computeFeed(t.db, "tal_sw", { now: NOW });
+    const drafts = (await t.db.select().from(jobQueue)).filter((j) => j.kind === "needs.draft");
+    expect(drafts).toHaveLength(3);
+    expect(drafts.every((d) => (d.payload as { companyId: unknown }).companyId === null)).toBe(true);
+    expect(drafts.map((d) => (d.payload as { jobId: string }).jobId)).not.toContain(jobId);
+  });
+
+  it("a failed or late model call keeps the code-written reasons", async () => {
+    await personFor("tal_sw", "Mobile Developer");
+    setLlmFake(() => {
+      throw new Error("deadline exceeded");
+    });
+    await computeFeed(t.db, "tal_sw", { now: NOW });
+    const before = await snapshot2("tal_sw");
+    await refineFeed(t.db, "tal_sw");
+    expect(await snapshot2("tal_sw")).toEqual(before);
+  });
+
+  it("payload says whether step two is still queued or running", async () => {
+    await personFor("tal_sw", "Mobile Developer");
+    await computeFeed(t.db, "tal_sw", { now: NOW });
+    expect((await matchesPayload(t.db, "tal_sw")).refining).toBe(false);
+    await enqueue(t.db, "matching.refine_feed", { talentId: "tal_sw", cardVersion: 1 });
+    expect((await matchesPayload(t.db, "tal_sw")).refining).toBe(true);
+    expect((await matchesPayload(t.db, "tal_other")).refining).toBe(false);
+    await t.db.update(jobQueue).set({ doneAt: new Date() });
+    expect((await matchesPayload(t.db, "tal_sw")).refining).toBe(false);
+  });
+});
+
+async function snapshot2(id: string) {
+  return (await feedForTalent(t.db, id)).map(({ match, job: j }) => [j.id, match.reasonsSource, match.reasons]);
+}
+
+describe("reasons rest on real links (match-reasons-F4)", () => {
+  it("containsWholePhrase: a whole phrase counts, one shared word does not", () => {
+    expect(containsWholePhrase("We use Python every day.", "python")).toBe(true);
+    expect(containsWholePhrase("Sinulla on kokemusta asiakaspalvelusta", "asiakaspalvelu")).toBe(false);
+    expect(containsWholePhrase("Mobile client testing and application forms", "mobile application testing")).toBe(false);
+    expect(containsWholePhrase("You do mobile  application testing.", "mobile application testing")).toBe(true);
+    expect(containsWholePhrase("Pythonista wanted", "Python")).toBe(false);
+    expect(containsWholePhrase("Go to work", "go")).toBe(false);
+  });
+
+  async function roleFound(sentences: string[]) {
+    cards.set(
+      "tal_role",
+      await addPerson(t.db, { id: "tal_role", signals: [{ id: "s1", phrase: "mobile application testing" }], roles: ["Lukkoseppä"] }),
+    );
+    await t.db.update(job).set({ sentences }).where(eq(job.id, await jobIdByTitle(t.db, "Lukkoseppä")));
+  }
+
+  it("a posting found only by a role and a shared word gets no reason line, and the model is not asked", async () => {
+    await roleFound(["We test the mobile client.", "Application forms are filled in online."]);
+    await computeFeed(t.db, "tal_role", { now: NOW });
+    await refineFeed(t.db, "tal_role");
+    expect(calls).toHaveLength(0);
+    const [item] = (await matchesPayload(t.db, "tal_role")).matches;
+    expect(item.found).toContain("role");
+    expect(item.reasons).toEqual([]);
+  });
+
+  it("a sentence that holds the signal's label as a whole phrase is a real link", async () => {
+    await roleFound(["Daily mobile application testing on real devices."]);
+    await computeFeed(t.db, "tal_role", { now: NOW });
+    const [m] = await feedForTalent(t.db, "tal_role");
+    expect(m.match.reasons).toEqual([
+      expect.objectContaining({ signalId: "s1", postingSentence: 0, text: "Your card mentions mobile application testing. This posting mentions mobile application testing." }),
+    ]);
+  });
+
+  it("the model may answer with no reasons; code-written reasons stay", async () => {
+    await roleFound(["Daily mobile application testing on real devices."]);
+    await computeFeed(t.db, "tal_role", { now: NOW });
+    setLlmFake((o) => {
+      calls.push(o);
+      return { reasons: [] };
+    });
+    await refineFeed(t.db, "tal_role");
+    expect(calls).toHaveLength(1);
+    const [m] = await feedForTalent(t.db, "tal_role");
+    expect(m.match.reasonsSource).toBe("code");
+    expect(m.match.reasons).toHaveLength(1);
+  });
+
+  it("the prompt has the MR-1 and MR-2 wording of rule 3 and tells the model it may return nothing", () => {
+    expect(REASONS_SYSTEM_PROMPT).toContain("at most 130 characters");
+    expect(REASONS_SYSTEM_PROMPT).not.toContain("at most 160 characters");
+    expect(REASONS_SYSTEM_PROMPT).toContain(
+      `"Your card mentions <what the signal says>; the posting <asks for | lists as a plus | lists> <what the sentence says>."`,
+    );
+    expect(REASONS_SYSTEM_PROMPT).toContain("Use 'lists as a plus' when the sentence says it is an advantage. For a null sentence use 'the posting lists'.");
+    expect(REASONS_SYSTEM_PROMPT).toContain('{"reasons": []}');
+  });
+
+  it("judgement wording from the shared lexicon is dropped (recommend, outstanding, 3 of 5)", () => {
+    const signals: SignalForReason[] = [{ id: "s1", phrase: "Python", rendering: null, evidence: null }];
+    const pairs: AllowedPair[] = [{ signalId: "s1", sentence: 1, via: "requirement", listed: "Python" }];
+    for (const text of ["I recommend this posting for you.", "Your outstanding Python is listed.", "You cover 3 of 5 items."]) {
+      expect(checkModelReasons({ reasons: [{ signal: "S1", sentence: "P1", text }] }, pairs, signals).reasons).toEqual([]);
+    }
+  });
+});
+
+describe("requirements not read yet", () => {
+  it("is null until the posting has a Need Card, then lists what the card does not touch", async () => {
+    const { skills } = await personFor("tal_sw", "Mobile Developer");
+    const jobId = await jobIdByTitle(t.db, "Mobile Developer");
+    await computeFeed(t.db, "tal_sw", { now: NOW });
+    const find = async () => (await matchesPayload(t.db, "tal_sw")).matches.find((m) => m.jobId === jobId)!;
+    expect((await find()).notMentioned).toBeNull();
+
+    const need = await addNeed(t.db, {
+      id: "nc_m",
+      jobId,
+      requirements: [req("r1", skills[0].label, { escoSkillUris: [skills[0].uri] }), req("r2", "Kubernetes in production")],
+    });
+    needCards.set(jobId, need);
+    // Card is there but feeds were stored before it: refresh without a model call.
+    const callsBefore = calls.length;
+    // Before need_changed has run, the payload already reads the card: not null, and not a stale [].
+    expect((await find()).notMentioned).toEqual([{ text: "Kubernetes in production", statutory: false }]);
+    expect(await refreshNotMentioned(t.db, jobId)).toEqual({ updated: 1 });
+    expect(calls.length).toBe(callsBefore);
+    expect((await find()).notMentioned).toEqual([{ text: "Kubernetes in production", statutory: false }]);
+    expect(await refreshNotMentioned(t.db, jobId)).toEqual({ updated: 0 });
+  });
+
+  it("a Need Card with every requirement touched is an empty list, not 'not read'", async () => {
+    const { skills } = await personFor("tal_sw", "Mobile Developer");
+    const jobId = await jobIdByTitle(t.db, "Mobile Developer");
+    needCards.set(jobId, await addNeed(t.db, { id: "nc_m", jobId, requirements: [req("r1", skills[0].label, { escoSkillUris: [skills[0].uri] })] }));
+    await computeFeed(t.db, "tal_sw", { now: NOW });
+    expect((await matchesPayload(t.db, "tal_sw")).matches.find((m) => m.jobId === jobId)!.notMentioned).toEqual([]);
+  });
+});
+
+describe("introductions that were not approved", () => {
+  const notApproved = (reasonCode: string | null, note: string | null) =>
+    [
+      {
+        id: "intro_1", status: "not_approved", initiatedBy: "talent", companyName: "Masked Co", needTitle: "Cook",
+        requestedAt: "2026-11-09T00:00:00.000Z", expiresAt: null, acceptedAt: null,
+        organiserDecision: { by: "organiser", at: "2026-11-10T00:00:00.000Z", reasonCode, note },
+      } as unknown as Intro,
+    ];
+
+  it.each([
+    ["need_unrelated", "need_unrelated"],
+    ["company_full", "company_full"],
+    ["other", "other"],
+    ["something_new", "other"],
+    [null, "other"],
+  ])("code %s reaches the page as %s, never with the organiser's note", async (code, expected) => {
+    intros = notApproved(code, "Private organiser note");
+    const payload = await matchesPayload(t.db, "tal_none");
+    expect(payload.intros[0].notApprovedReason).toBe(expected);
+    expect(JSON.stringify(payload)).not.toContain("Private organiser note");
+  });
+
+  it("an intro in any other state carries no reason", async () => {
+    intros = [{ ...notApproved("other", null)[0], status: "awaiting_talent" } as Intro];
+    expect((await matchesPayload(t.db, "tal_none")).intros[0].notApprovedReason).toBeNull();
+  });
+
+  it("the page has a label in all three languages for each code", async () => {
+    const { matchesMessages } = await import("./messages");
+    for (const lang of ["en", "fi", "sv"] as const) {
+      for (const key of ["reasonNeedUnrelated", "reasonCompanyFull", "reasonOther", "notRead", "refining"] as const) {
+        expect(matchesMessages[lang][key].length).toBeGreaterThan(3);
+      }
+    }
+    expect(matchesMessages.en.notRead).toBe("Requirements not read yet");
+  });
+});

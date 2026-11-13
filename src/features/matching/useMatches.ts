@@ -4,9 +4,12 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { IntroResponseRequest } from "@/contracts";
 import type { MatchesPayload } from "./payload";
 
-/** While the feed is empty (just after approval) poll this often, this many times. */
-const POLL_MS = 3000;
-const MAX_POLLS = 20;
+/** While the feed is empty or its reasons are still being worded, poll this often, this many times. */
+const POLL_MS = 2000;
+const MAX_POLLS = 60;
+/** After that, a slower poll while step two is still running, up to this many more times. */
+const SLOW_POLL_MS = 10000;
+const MAX_SLOW_POLLS = 60;
 
 export type MatchesState =
   | { status: "loading" }
@@ -25,11 +28,12 @@ async function fetchMatches(signal: AbortSignal): Promise<MatchesState> {
   }
 }
 
-/** Loads `/api/matches`; polls briefly while the feed is still being prepared. */
-export function useMatches(): { state: MatchesState; reload: () => void } {
+/** Loads `/api/matches`; polls every two seconds while the feed is empty or its reasons are still being worded. A poll replaces the data in place; postings keep their order. */
+export function useMatches(): { state: MatchesState; reload: () => void; gaveUp: boolean } {
   const [state, setState] = useState<MatchesState>({ status: "loading" });
   const [tick, setTick] = useState(0);
   const polls = useRef(0);
+  const [gaveUp, setGaveUp] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -40,16 +44,20 @@ export function useMatches(): { state: MatchesState; reload: () => void } {
   }, [tick]);
 
   useEffect(() => {
-    if (state.status !== "ready" || state.data.matches.length > 0 || polls.current >= MAX_POLLS) return;
+    if (state.status !== "ready" || (state.data.matches.length > 0 && !state.data.refining)) return;
+    if (polls.current >= MAX_POLLS + MAX_SLOW_POLLS) {
+      setGaveUp(true);
+      return;
+    }
     const timer = setTimeout(() => {
       polls.current += 1;
       setTick((n) => n + 1);
-    }, POLL_MS);
+    }, polls.current >= MAX_POLLS ? SLOW_POLL_MS : POLL_MS);
     return () => clearTimeout(timer);
   }, [state]);
 
   const reload = useCallback(() => setTick((n) => n + 1), []);
-  return { state, reload };
+  return { state, reload, gaveUp };
 }
 
 /** Which field of an accept answer fails the contract, if any. Values are trimmed first. */
