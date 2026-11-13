@@ -1,5 +1,5 @@
 import type { Job, QuestionType, RequirementCategory, RequirementKind, RequirementQuestion, Statutory } from "@/contracts";
-import { findProtectedCard } from "@/lib/lexicon";
+import { COUNTRIES_AND_DEMONYMS, findProtectedCard, findProtectedRequirement } from "@/lib/lexicon";
 import { QUESTION_TEXT_MAX, WHY_MAX, YEARS_QUESTION_MIN_YEARS } from "./constants";
 
 // ---------- statutory class (need-card.md 4.3) ----------
@@ -62,19 +62,88 @@ export function classifyStatutory(input: StatutoryInput): Statutory {
 
 /** Language names also appear in the lexicon's country list; asking for a language is work-related. */
 const LANGUAGE_NAMES =
-  /(?<![\p{L}])(?:English|Swedish|Danish|Norwegian|German|French|Spanish|Italian|Russian|Estonian|Dutch|Polish|Portuguese|Chinese|Japanese|Korean|Arabic|Persian|Turkish|Greek|Hungarian|Czech|Ukrainian|Somali|Thai|Vietnamese)(?![\p{L}])/giu;
+  /(?<![\p{L}])(?:English|Swedish|Danish|Norwegian|German|French|Spanish|Italian|Russian|Estonian|Dutch|Polish|Portuguese|Chinese|Japanese|Korean|Arabic|Persian|Turkish|Greek|Hungarian|Czech|Ukrainian|Somali|Thai|Vietnamese)(?![\p{L}])(?!\s+(?:applicants?|candidates?|people|persons?|workers?|background|origin|descent|heritage|citizens?|nationals?))/giu;
 
 const OTHER_LAW_GLOBAL = new RegExp(OTHER_LAW.source, "gi");
 
 const NATIVE_ORIGIN = /(?<![\p{L}])(?:native|äidinkiel\p{L}*|modersmål\p{L}*)(?![\p{L}])/iu;
 
-/** Protected terms in a requirement text or a cited posting sentence. Language names are not hits. */
+/**
+ * Health words that name a field of work, not a person's health ("health care", "health
+ * centre", "terveyskeskus"). Removed before the lint reads a text (needcard-F9).
+ */
+const HEALTH_SECTOR = new RegExp(
+  [
+    String.raw`health[\s-]?(?:care|centre|center|sector|services?|clinics?|system|and safety|technology)`,
+    String.raw`terveyskeskus\p{L}*|terveydenhuolto\p{L}*|terveyspalvelu\p{L}*|terveysasema\p{L}*|terveysala\p{L}*|terveysteknologia\p{L}*`,
+  ].join("|"),
+  "giu",
+);
+
+// Ethnicity terms are never a place: "Asian origin" stays a hit even though the list holds "Asian".
+const ETHNICITY_TERMS: ReadonlySet<string> = new Set(["arab", "african", "asian", "latin american"]);
+const PLACE_ALTERNATION = [...COUNTRIES_AND_DEMONYMS]
+  .filter((c) => !ETHNICITY_TERMS.has(c.toLowerCase()))
+  .sort((a, b) => b.length - a.length)
+  .map((c) => c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+  .join("|");
+/**
+ * A place used as a place, and nothing looser. Two shapes only:
+ *  - work that happens somewhere: "work in Norway", "travel to Germany", "customers in Sweden and Norway";
+ *  - a country or its adjective in front of a business word: "the Norwegian market", "German accounting standards".
+ * Everything else that names a country or a nationality stays a hit, because it is usually about
+ * where a person comes from: "born in India", "suitable for Indian applicants", "raised in Turkey".
+ */
+const PLACE = `(?:${PLACE_ALTERNATION})`;
+const PLACE_LIST = String.raw`${PLACE}(?:\s*(?:,|/|&|and|or)\s*(?:the\s+)?${PLACE})*`;
+const WORK_SOMEWHERE = String.raw`(?:work(?:ing|s)?|travel(?:ling|ing|s)?|trips?|relocat(?:e|ion|ing)|based|located|operat(?:e|es|ing|ions?)|projects?|customers?|clients?|sales|deliveries|assignments?|sites?|offices?|markets?|business|presence)`;
+const BUSINESS_WORD = String.raw`(?:markets?|marketplace|regions?|customers?|clients?|legislation|laws?|regulations?|standards?|accounting|taxation|tax|business|operations?|subsidiar(?:y|ies)|suppliers?|partners?|projects?|sales|offices?|branch(?:es)?|units?|sites?|plants?|factor(?:y|ies))`;
+const PLACE_USE = new RegExp(
+  String.raw`(?<![\p{L}])(?:${WORK_SOMEWHERE}\s+(?:in|to|across|within|throughout)\s+(?:the\s+)?${PLACE_LIST}|${PLACE_LIST}\s+${BUSINESS_WORD})(?![\p{L}])`,
+  "giu",
+);
+
+/**
+ * Asks about where a person is from, written with words the shared lists leave alone on purpose
+ * ("Finnish" and "Nordic" are fine in "Finnish labour law" or "the Nordic market"). Checked on
+ * the text as written, before anything is stripped.
+ */
+const ORIGIN_WORD = String.raw`(?:${PLACE_ALTERNATION}|Finnish|Finn|Nordic|Scandinavian|European)`;
+const ORIGIN_ASK = new RegExp(
+  [
+    String.raw`(?<![\p{L}])(?:must|should|has to|have to|needs? to)\s+be\s+(?:an?\s+)?${ORIGIN_WORD}(?![\p{L}])`,
+    String.raw`(?<![\p{L}])${ORIGIN_WORD}[\s-]+(?:citizens?|nationals?|born|origin|background|descent|heritage|applicants?|candidates?|people|persons?|workers?|men|women|passport)(?![\p{L}])`,
+    String.raw`(?<![\p{L}])(?:Finns?|kantasuomalai\p{L}*|syntyperäi\p{L}*)(?![\p{L}])`,
+  ].join("|"),
+  "iu",
+);
+
+/** The text with language names, work permits, health-sector phrases and places-as-places taken out. */
+function forLint(text: string): string {
+  return text
+    .replace(LANGUAGE_NAMES, " ")
+    .replace(OTHER_LAW_GLOBAL, " ")
+    .replace(HEALTH_SECTOR, " ")
+    .replace(PLACE_USE, " ");
+}
+
+/**
+ * Protected terms in a requirement text or a cited posting sentence. Language names, place
+ * names and nationality adjectives used for a market ("the Norwegian market") are not hits:
+ * only asks about the person themselves are (needcard-F4, F9).
+ */
 export function protectedHits(text: string): string[] {
+  const clean = forLint(text);
   // A work permit is a legal requirement (recorded as other_law), not a personal characteristic.
-  const hits = findProtectedCard(text.replace(LANGUAGE_NAMES, " ").replace(OTHER_LAW_GLOBAL, " "));
+  const hits = [
+    ...findProtectedCard(clean),
+    ...findProtectedRequirement(clean),
+  ];
   // "Native Finnish" is a proxy for origin; the work needs a language level, not a birthplace.
   const native = NATIVE_ORIGIN.exec(text);
   if (native) hits.push(native[0].toLowerCase());
+  const origin = ORIGIN_ASK.exec(text);
+  if (origin) hits.push(origin[0].toLowerCase());
   return hits;
 }
 
@@ -87,7 +156,7 @@ export const NATIVE_HINT = "Try 'fluent working Finnish'.";
 
 /** Company-written text that describes a person rather than the work (need-card.md 6, rule 3). */
 export function textDescribesPerson(text: string): boolean {
-  return COMPANY_TEXT_PROTECTED.test(text) || protectedHits(text).length > 0;
+  return COMPANY_TEXT_PROTECTED.test(forLint(text)) || protectedHits(text).length > 0;
 }
 
 export function companyTextProblem(text: string): { hint: string | null } | null {

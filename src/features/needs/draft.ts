@@ -11,6 +11,7 @@ import {
 import type { Db } from "@/db/client";
 import { appMeta, company, escoConcept, escoOccupationSkill, jobSkill, needCard } from "@/db/schema";
 import { audit, listAudit } from "@/lib/audit";
+import { employerTerms, maskEmployer } from "@/lib/mask";
 import { HttpError } from "@/lib/http";
 import { escoByUris, escoCandidates } from "@/lib/esco";
 import { newId } from "@/lib/ids";
@@ -24,16 +25,17 @@ import {
   MAX_ESCO_CANDIDATES,
   MAX_PROMPT_SENTENCES,
   MAX_REQUIREMENTS,
+  QUESTION_TEXT_MAX,
   REQUIREMENT_TEXT_MAX,
   SALIENT_PHRASE_MAX_CHARS,
   SALIENT_PHRASE_MAX_SENTENCES,
   TITLE_MAX,
   TRIGRAM_CANDIDATE_RESERVE,
+  WHY_MAX,
 } from "./constants";
-import { employerTerms, maskEmployer } from "./mask";
 import { recomputePoolEvidence } from "./pool";
 import { buildDraftMessages, type EscoPromptCandidate } from "./prompt";
-import { classifyStatutory, decideQuestion, isWorkPermitText, textDescribesPerson } from "./rules";
+import { classifyStatutory, decideQuestion, DEFAULT_WHY, isWorkPermitText, textDescribesPerson } from "./rules";
 import { getNeedCardForJob, saveNeedCard } from "./store";
 
 // ---------- ESCO candidates for the prompt ----------
@@ -111,7 +113,35 @@ export type ValidatedDraft = {
   summary: string;
   requirements: Requirement[];
   droppedSentences: number[];
+  /** Requirements dropped because their text or cited sentence asks for a protected characteristic. */
+  droppedProtected: number;
 };
+
+/** Total budget for the draft call (analyst and bulk alike). */
+export const DRAFT_DEADLINE_MS = 90_000;
+/** Reasoning counts toward the limit; the gateway default of 800 truncates the card (NC-2). */
+export const DRAFT_MAX_TOKENS = 4000;
+
+/**
+ * Safeguard for a model that writes "" or "Finnish" in `language`, or 3.5 in `years` (NC-1):
+ * `language` becomes null unless two lower-case letters, `years` null unless an integer.
+ */
+export function coerceDraftOutput(raw: unknown): unknown {
+  if (!raw || typeof raw !== "object" || !Array.isArray((raw as { requirements?: unknown }).requirements)) return raw;
+  const o = raw as { requirements: unknown[] };
+  return {
+    ...o,
+    requirements: o.requirements.map((item) => {
+      if (!item || typeof item !== "object") return item;
+      const r = item as Record<string, unknown>;
+      return {
+        ...r,
+        language: typeof r.language === "string" && /^[a-z]{2}$/.test(r.language) ? r.language : null,
+        years: typeof r.years === "number" && Number.isInteger(r.years) ? r.years : null,
+      };
+    }),
+  };
+}
 
 function clip(text: string, max: number): string {
   const t = text.trim().replace(/\s+/g, " ");
@@ -135,6 +165,7 @@ export async function validateDraft(
   const usable = Math.min(job.sentences.length, MAX_PROMPT_SENTENCES);
   const terms = employerTerms(job.employerName);
   const dropped = new Set<number>(output.dropped.filter((i) => Number.isInteger(i) && i >= 0 && i < usable));
+  let droppedProtected = 0;
 
   type Kept = { out: NeedCardDraftOutput["requirements"][number]; index: number };
   let kept: Kept[] = [];
@@ -145,6 +176,7 @@ export async function validateDraft(
     // 3. protected characteristics never become requirements
     const hits = textDescribesPerson(r.text) || textDescribesPerson(sentence);
     if (hits) {
+      droppedProtected++;
       dropped.add(r.sentence);
       return;
     }
@@ -210,6 +242,12 @@ export async function validateDraft(
       jobLang: job.lang,
       model: { years: out.years, questionType: out.questionType, question: out.question, why: out.why },
     });
+    if (question) {
+      question.text = maskEmployer(question.text, terms);
+      question.why = maskEmployer(question.why, terms);
+      // Masking can lengthen a text ("Vala" becomes "the company"); re-apply the limits.
+      if (question.why.length > WHY_MAX) question.why = DEFAULT_WHY[question.type];
+    }
     requirements.push({
       id: newId("req"),
       text,
@@ -220,7 +258,7 @@ export async function validateDraft(
       source: "agent",
       languageCode,
       statutory,
-      question,
+      question: question && question.text.length > QUESTION_TEXT_MAX ? null : question,
       pool: null,
     });
   }
@@ -230,6 +268,7 @@ export async function validateDraft(
     summary: clip(maskEmployer(output.summary, terms), 300),
     requirements,
     droppedSentences: [...dropped].sort((a, b) => a - b),
+    droppedProtected,
   };
 }
 
@@ -305,32 +344,39 @@ export async function draftNeedCard(db: Db, jobId: string, companyId: string | n
     purpose: "needs.draft",
     db,
     temperature: 0.2,
+    maxTokens: DRAFT_MAX_TOKENS,
+    deadlineMs: DRAFT_DEADLINE_MS,
     messages: buildDraftMessages(job, candidates),
     schema: NeedCardDraftOutput,
+    coerce: coerceDraftOutput,
   });
   if (result.data === null) throw new Error(`draftNeedCard: the model returned no valid draft (${result.error})`);
 
   const validated = await validateDraft(db, job, result.data, candidates);
-  const previous = await getNeedCardForJob(db, jobId);
-  carryAnswers(validated.requirements, previous);
-
-  const card: NeedCard = NeedCard.parse({
-    id: previous?.id ?? newId("nc"),
-    jobId,
-    companyId: companyId ?? previous?.companyId ?? null,
-    version: (previous?.version ?? 0) + 1,
-    title: validated.title || job.title.slice(0, TITLE_MAX),
-    summary: validated.summary,
-    lang: job.lang,
-    status: "draft",
-    droppedSentences: validated.droppedSentences,
-    requirements: validated.requirements,
-    confirmedAt: null,
-  });
-
-  await db.transaction(async (tx) => {
+  const card = await db.transaction(async (tx) => {
+    // Read again inside the transaction: the company may have answered while the model was
+    // working. Then its version stays and this draft is dropped.
+    const previous = await getNeedCardForJob(tx, jobId);
+    if (previous && (await hasCompanyActivity(tx, previous))) {
+      throw new HttpError(409, "has_company_answers", "The company has already answered this card");
+    }
+    carryAnswers(validated.requirements, previous);
+    const card: NeedCard = NeedCard.parse({
+      id: previous?.id ?? newId("nc"),
+      jobId,
+      companyId: companyId ?? previous?.companyId ?? null,
+      version: (previous?.version ?? 0) + 1,
+      title: validated.title || job.title.slice(0, TITLE_MAX),
+      summary: validated.summary,
+      lang: job.lang,
+      status: "draft",
+      droppedSentences: validated.droppedSentences,
+      requirements: validated.requirements,
+      confirmedAt: null,
+    });
     if (previous) {
-      await saveNeedCard(tx, card);
+      // Only lands if the row still has the version read above.
+      await saveNeedCard(tx, card, new Date(), previous.version);
     } else {
       const inserted = await tx
         .insert(needCard)
@@ -369,6 +415,7 @@ export async function draftNeedCard(db: Db, jobId: string, companyId: string | n
         requirements: card.requirements.length,
         questions: card.requirements.filter((r) => r.question).length,
         droppedSentences: card.droppedSentences.length,
+        droppedProtected: validated.droppedProtected,
       },
     });
 
@@ -377,6 +424,7 @@ export async function draftNeedCard(db: Db, jobId: string, companyId: string | n
       .insert(appMeta)
       .values({ key: fingerprintKey(jobId), value: postingFingerprint(job) })
       .onConflictDoUpdate({ target: appMeta.key, set: { value: postingFingerprint(job), updatedAt: new Date() } });
+    return card;
   });
 
   await enqueue(
