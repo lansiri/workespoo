@@ -2,33 +2,43 @@
 
 Updated by the lead. Times are Helsinki time.
 
-## Now
+## Now (Fri 13 Nov, 22:35)
 
-**Phase 1: foundation** (started Fri 13 Nov, 21:05)
+**Phase 1 is nearly complete; Phase 2 streams are running.**
 
-| Item | Owner | State |
-|---|---|---|
-| Repo, docs, research notes, rules | lead | done |
-| App scaffold (Next.js, tooling, tests, Dockerfile, CI) | Sonnet agent | running |
-| Specs: interview, Signal Card, responsible AI | Opus agent | running |
-| Specs: Need Card, matching, picks, organiser console, synthetic world | Opus agent | running |
-| Contracts (`src/contracts`) | lead | in progress |
-| VPS bootstrap, Caddy, push-to-deploy | Opus agent | **blocked: SSH key login to the VPS does not work yet** |
-| DB schema and first migration | lead | after scaffold |
-| LLM gateway and probe | Sonnet agent | after scaffold |
-| Platform primitives (session, consent, audit, redaction, queue) | Sonnet agent | after scaffold |
-| ESCO import and Työmarkkinatori ingester | Sonnet agent | after scaffold |
-| Voice and turn spike | Sonnet agent | after gateway |
-| Fixtures and golden-path test | lead | after schema |
+| Item | State |
+|---|---|
+| Repo, rules, plan, research notes | done |
+| App scaffold: Next.js 16, tests, Dockerfile, CI | done |
+| 18 spec documents (interview, card, needs, matching, picks, organiser, company, synthetic world, demo script) | done |
+| Contracts and database schema (31 tables) | done, frozen |
+| Shared library: sessions, audit, consent, queue, streaming, word lists | done |
+| Model gateway (Nemotron, DeepSeek, Kimi; fallback; fake and replay for tests) | done; not yet run against a real model |
+| ESCO import, Työmarkkinatori ingestion, fixtures from real postings | done; live run verified |
+| Voice layer: push-to-talk, browser and ElevenLabs adapters | done; not yet run in a real browser or with a key |
+| Three languages: English, Finnish, Swedish; language switcher | done |
+| Logo, brand palette, favicon | done |
+| Server: password changed, key login, hardening, TLS, deploy pipeline | **in progress** (infra agent) |
+| First real deploy to https://workespoo.aichat.fi | after the server work |
+
+## Phase 2 streams (running)
+
+| Stream | Builds |
+|---|---|
+| S1a | Interview engine and its pages |
+| S1b | Signal Card: synthesis, review, approval |
+| S2 | Need Cards, pool evidence, the company's Need Card page |
+| S3a | Eligibility and the person's job feed |
+| S3b | Daily picks, organiser review, company digest, introductions |
+| S4 | Synthetic personas, simulated interviews, seeding, evaluation |
 
 ## Waiting on the owner
 
-1. First login on the VPS and `ssh-copy-id -i ~/.ssh/id_ed25519.pub root@2.29.206.251`.
-2. A Verda key and/or an NVIDIA key for the models.
-3. Optional: an ElevenLabs key for voice.
+1. A model key: Verda (DeepSeek, Kimi) or NVIDIA (Nemotron). Nothing AI-driven can run for real until then.
+2. Optional: an ElevenLabs key for natural voice.
 
 ## Gates
 
-- [ ] Gate 1: live URL over HTTPS, deploy works, streamed model turn, voice round trip, 1,000+ Espoo postings and ESCO in the database
+- [ ] Gate 1: live URL over HTTPS, deploy and rollback proven, streamed model turn, voice round trip, 1,000+ Espoo postings and ESCO in the database
 - [ ] Gate 2: full path works end to end on unstyled pages; evaluation report from simulated interviews
 - [ ] Gate 3: styled product, golden-path test green on the live site, backup video, demo freeze

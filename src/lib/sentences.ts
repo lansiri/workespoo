@@ -37,6 +37,9 @@ const ABBREVIATIONS = new Set([
   "v.",
   "klo.",
   "oy.",
+  "puh.",
+  "tel.",
+  "s.",
 ]);
 
 /** Longest run of words kept as one sentence when the text has no usable punctuation. */
