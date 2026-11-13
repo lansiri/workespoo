@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { cx } from "./cx";
 import { Button } from "./Button";
 import { Dialog } from "./Dialog";
@@ -29,10 +29,11 @@ export type DataControlsProps = {
 
 /** "Your data": download and delete everything, plus the live-demo purge notice. Delete is the only danger button. */
 export function DataControls({ text, purgeNotice, deleted, onExport, onDelete, className }: DataControlsProps) {
+  const uid = useId();
   const [confirming, setConfirming] = useState(false);
   return (
-    <section className={cx("we-box", className)} aria-labelledby="we-data-title">
-      <h3 id="we-data-title">{text.title}</h3>
+    <section className={cx("we-box", className)} aria-labelledby={`${uid}-t`}>
+      <h3 id={`${uid}-t`}>{text.title}</h3>
       <p>{text.body}</p>
       {deleted ? (
         <p className="we-approved-line" role="status">

@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { cx } from "./cx";
 import { Icon } from "./icons";
 import { newIds } from "./newIds";
 import { prefersReducedMotion } from "./flyNote";
 
-export type JobTileData = { id: string; title: string; employer: string; place: string; mentions: string };
+export type JobTileData = { id: string; title: string; employer: string; place?: string | null; mentions?: string };
 
 export type JobsLitText = {
   /** Sticker on the board edge, "Real open jobs". */
@@ -79,11 +79,13 @@ export function JobTile({ tile, mentionsLabel, enterDelay }: { tile: JobTileData
       </span>
       <b>{tile.title}</b>
       <span>
-        {tile.employer} · {tile.place}
+        {tile.place ? `${tile.employer} · ${tile.place}` : tile.employer}
       </span>
-      <em>
-        {mentionsLabel} {tile.mentions}
-      </em>
+      {tile.mentions ? (
+        <em>
+          {mentionsLabel} {tile.mentions}
+        </em>
+      ) : null}
     </li>
   );
 }
@@ -124,6 +126,7 @@ export type JobsLitProps = {
  * ink shadow, sticker on the edge. Tiles that are new since the last render slide in (620 ms, 140 ms stagger).
  */
 export function JobsLit({ count, delta, deltaLabel, tiles, error, text, locale, className }: JobsLitProps) {
+  const uid = useId();
   const ids = tiles.slice(0, 4).map((t) => t.id);
   const key = ids.join("|");
   const [known, setKnown] = useState<string[]>(ids);
@@ -137,11 +140,11 @@ export function JobsLit({ count, delta, deltaLabel, tiles, error, text, locale, 
   const shownTiles = tiles.slice(0, 4);
   const freshOrder = shownTiles.filter((t) => fresh.includes(t.id));
   return (
-    <section className={cx("we-jobs", className)} aria-labelledby="we-jobs-title" data-testid="jobs-lit">
+    <section className={cx("we-jobs", className)} aria-labelledby={`${uid}-t`} data-testid="jobs-lit">
       <span className="we-sticker we-d-only" aria-hidden="true">
         {text.sticker}
       </span>
-      <h3 className="we-sr-only" id="we-jobs-title">
+      <h3 className="we-sr-only" id={`${uid}-t`}>
         {text.sticker}
       </h3>
       {error ? (

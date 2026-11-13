@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { cx } from "./cx";
 import { NoteChip, type NoteChipProps, type NoteGroup } from "./NoteChip";
 import { newIds } from "./newIds";
@@ -44,6 +44,7 @@ const GHOST_WIDTHS = [150, 110, 180, 90];
 
 /** "Notes so far": count pill and a wrapping chip flow. Empty shows four dashed ghost chips. */
 export function NotesList({ notes, enteringIds, order = "newest-on-phone", text, onHover, chipRef, className }: NotesListProps) {
+  const uid = useId();
   const phone = useIsPhone();
   const ids = notes.map((n) => n.id);
   const key = ids.join("|");
@@ -60,9 +61,9 @@ export function NotesList({ notes, enteringIds, order = "newest-on-phone", text,
   const shown = newestFirst ? [...notes].reverse() : notes;
   const latest = notes.filter((n) => entering.has(n.id)).map((n) => n.label);
   return (
-    <section className={cx("we-notes", className)} aria-labelledby="we-notes-title">
+    <section className={cx("we-notes", className)} aria-labelledby={`${uid}-t`}>
       <div className="we-panel-head">
-        <h2 id="we-notes-title">
+        <h2 id={`${uid}-t`}>
           <span>{text.title}</span> <span className="we-n-count">{notes.length > 0 ? notes.length : ""}</span>
         </h2>
         <p data-testid="coverage-hint">{text.help}</p>

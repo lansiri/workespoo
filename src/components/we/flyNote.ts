@@ -82,14 +82,17 @@ export function flyNote(sourceEl: Element | null, targetEl: HTMLElement | null, 
       }
       kf.push({ transform: at(to.x, to.y, 1), opacity: 1, offset: 1 });
       const anim = flyer.animate(kf, { duration: FLIGHT_MS, delay: delayMs, easing: "cubic-bezier(.45,.05,.35,1)", fill: "both" });
-      if (options.onCatch) setTimeout(options.onCatch, delayMs + FLIGHT_MS * 0.38);
+      const catchTimer = options.onCatch ? setTimeout(options.onCatch, delayMs + FLIGHT_MS * 0.38) : undefined;
       const done = () => {
         reveal();
         flyer.remove();
         resolve();
       };
       anim.onfinish = done;
-      anim.oncancel = done;
+      anim.oncancel = () => {
+        clearTimeout(catchTimer);
+        done();
+      };
     } catch {
       reveal();
       resolve();

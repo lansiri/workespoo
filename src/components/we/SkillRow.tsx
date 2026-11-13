@@ -7,7 +7,7 @@ import { Button } from "./Button";
 import { NoteChip, type NoteGroup } from "./NoteChip";
 import { Input } from "./FormFields";
 
-export type OwnQuote = { /** "Answer 2" */ refLabel: string; /** Rendered by code from the stored transcript. */ text: string };
+export type OwnQuote = { /** "Answer 2". Leave out when the contract gives no turn label. */ refLabel?: string; /** Rendered by code from the stored transcript. */ text: string };
 
 export type SkillRowData = {
   id: string;
@@ -83,11 +83,9 @@ export function OwnWordsQuote({ quotes, label }: { quotes: OwnQuote[]; label: st
 export function AiRendering({ children, label, aiTag, solid }: { children: ReactNode; label: string; aiTag: string; solid?: boolean }) {
   return (
     <div className={cx("we-rendering", solid && "we-solid")} data-testid="signal-rendering">
-      {solid ? null : (
-        <span className="we-label">
-          <span aria-hidden="true">✦</span> {label} <AiTag mini>{aiTag}</AiTag>
-        </span>
-      )}
+      <span className="we-label">
+        <span aria-hidden="true">✦</span> {label} <AiTag mini>{aiTag}</AiTag>
+      </span>
       <p>{children}</p>
     </div>
   );

@@ -1,3 +1,7 @@
+"use client";
+
+import { useId } from "react";
+import { useIsPhone } from "./useIsPhone";
 import { cx } from "./cx";
 import { Icon } from "./icons";
 import { Sticker } from "./Sticker";
@@ -27,10 +31,13 @@ export type ApproveBoxProps = {
 
 /** Step 1: approve the card. Ink border and shadow, sticker on the top edge, one large primary button. */
 export function ApproveBox({ state, tally, text, matchesHref = "/matches", onApprove, className }: ApproveBoxProps) {
+  const uid = useId();
+  // On phones the buttons here are hidden and the ApproveBar carries the test ids, so each id exists once and is visible.
+  const phone = useIsPhone();
   return (
-    <section className={cx("we-box we-approve-box", className)} aria-labelledby="we-approve-title">
+    <section className={cx("we-box we-approve-box", className)} aria-labelledby={`${uid}-t`}>
       <Sticker>{text.sticker}</Sticker>
-      <h3 id="we-approve-title">
+      <h3 id={`${uid}-t`}>
         <span className="we-step-no" aria-hidden="true">1</span>
         {text.title}
       </h3>
@@ -40,7 +47,7 @@ export function ApproveBox({ state, tally, text, matchesHref = "/matches", onApp
             <Icon name="check" />
             <span>{text.approved}</span>
           </p>
-          <Button variant="ghost" href={matchesHref} data-testid="go-to-matches">
+          <Button variant="ghost" href={matchesHref} data-testid={phone ? undefined : "go-to-matches"}>
             {text.goToMatches}
           </Button>
         </>
@@ -48,7 +55,7 @@ export function ApproveBox({ state, tally, text, matchesHref = "/matches", onApp
         <>
           <p>{state === "empty" ? text.empty : text.help}</p>
           {tally ? <p className="we-tally">{tally}</p> : null}
-          <Button variant="primary" size="lg" disabled={state !== "ready"} onClick={onApprove} data-testid="approve-card">
+          <Button variant="primary" size="lg" disabled={state !== "ready"} onClick={onApprove} data-testid={phone ? undefined : "approve-card"}>
             {state === "preparing" ? text.preparing : text.approve}
           </Button>
         </>
@@ -59,15 +66,16 @@ export function ApproveBox({ state, tally, text, matchesHref = "/matches", onApp
 
 /** Phone only: the fixed bottom bar with the tally and the approve button (or the matches link once approved). */
 export function ApproveBar({ state, tally, text, matchesHref = "/matches", onApprove }: Pick<ApproveBoxProps, "state" | "tally" | "text" | "matchesHref" | "onApprove">) {
+  const phone = useIsPhone();
   return (
     <div className="we-cd-mbar">
       {tally && state !== "approved" ? <p className="we-tally">{tally}</p> : null}
       {state === "approved" ? (
-        <Button variant="ghost" block href={matchesHref}>
+        <Button variant="ghost" block href={matchesHref} data-testid={phone ? "go-to-matches" : undefined}>
           {text.goToMatches}
         </Button>
       ) : (
-        <Button variant="primary" block disabled={state !== "ready"} onClick={onApprove}>
+        <Button variant="primary" block disabled={state !== "ready"} onClick={onApprove} data-testid={phone ? "approve-card" : undefined}>
           {state === "preparing" ? text.preparing : text.approve}
         </Button>
       )}

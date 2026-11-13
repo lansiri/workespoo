@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useId, useState, type ReactNode } from "react";
 import { cx } from "./cx";
 import { Icon } from "./icons";
 import { AiTag } from "./Tag";
@@ -52,6 +52,7 @@ export type SignalCardProps = {
  * or the stamp at all (they are not merely hidden).
  */
 export function SignalCard(p: SignalCardProps) {
+  const uid = useId();
   const [open, setOpen] = useState(false);
   const company = p.view === "company";
   const state = p.state ?? "ready";
@@ -105,8 +106,8 @@ export function SignalCard(p: SignalCardProps) {
             {p.groups
               .filter((g) => g.rows.some((r) => !company || !r.removed))
               .map((g) => (
-                <section key={g.key} className="we-group" aria-labelledby={`we-g-${g.key}`}>
-                  <h3 className="we-group-title" id={`we-g-${g.key}`}>
+                <section key={g.key} className="we-group" aria-labelledby={`${uid}-g-${g.key}`}>
+                  <h3 className="we-group-title" id={`${uid}-g-${g.key}`}>
                     {g.title}
                   </h3>
                   {g.rows.map((r) => (

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type KeyboardEvent } from "react";
+import { useId, useState, type KeyboardEvent } from "react";
 import { Button } from "./Button";
 import { Dialog } from "./Dialog";
 
@@ -31,6 +31,7 @@ export type RemoveReasonDialogProps = {
  * (and a note written for Other). The reason goes to the audit log and is never shown to the person.
  */
 export function RemoveReasonDialog(p: RemoveReasonDialogProps) {
+  const uid = useId();
   const other = p.otherCode ?? "other";
   const [reason, setReason] = useState<string | null>(p.demoChosen ?? null);
   const [note, setNote] = useState("");
@@ -74,7 +75,7 @@ export function RemoveReasonDialog(p: RemoveReasonDialogProps) {
           {p.reasons.map((r, i) => (
             <li key={r.code}>
               <label className="we-opt">
-                <input type="radio" name="we-remove-reason" checked={reason === r.code} onChange={() => setReason(r.code)} data-testid="pick-remove-reason" value={r.code} />
+                <input type="radio" name={`we-remove-reason-${uid}`} checked={reason === r.code} onChange={() => setReason(r.code)} data-testid="pick-remove-reason" value={r.code} />
                 <span>
                   <kbd className="we-kbd">{i + 1}</kbd> {r.label}
                 </span>
@@ -82,10 +83,10 @@ export function RemoveReasonDialog(p: RemoveReasonDialogProps) {
             </li>
           ))}
         </ol>
-        <label className="we-sr-only" htmlFor="we-remove-note">
+        <label className="we-sr-only" htmlFor={`we-remove-note-${uid}`}>
           {p.noteLabel}
         </label>
-        <textarea id="we-remove-note" className="we-textarea" placeholder={p.noteLabel} value={note} onChange={(e) => setNote(e.target.value)} data-testid="pick-remove-note" />
+        <textarea id={`we-remove-note-${uid}`} className="we-textarea" placeholder={p.noteLabel} value={note} onChange={(e) => setNote(e.target.value)} data-testid="pick-remove-note" />
       </div>
     </Dialog>
   );

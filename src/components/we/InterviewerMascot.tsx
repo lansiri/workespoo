@@ -1,4 +1,6 @@
-import type { CSSProperties } from "react";
+"use client";
+
+import { useEffect, useRef, type CSSProperties } from "react";
 import { cx } from "./cx";
 import { Icon, type IconName } from "./icons";
 
@@ -37,6 +39,14 @@ export type InterviewerMascotProps = {
  */
 export function InterviewerMascot({ state, level = 0.35, size, badgeLabel, finished, catchKey = 0, className }: InterviewerMascotProps) {
   const lvl = Math.max(0, Math.min(1, level));
+  const headRef = useRef<SVGGElement>(null);
+  useEffect(() => {
+    // Replay the head pop with WAAPI so the group stays mounted.
+    if (catchKey <= 0) return;
+    const el = headRef.current;
+    if (!el?.animate || window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    el.animate([{ transform: "scale(1)" }, { transform: "scale(1.22)", offset: 0.4 }, { transform: "scale(1)" }], { duration: 520, easing: "cubic-bezier(.34,1.4,.64,1)" });
+  }, [catchKey]);
   const style = { "--lvl": lvl.toFixed(3), ...(size ? { "--size": `${size}px` } : {}) } as CSSProperties;
   const shownState: MascotState = finished ? "idle" : state;
   return (
@@ -53,7 +63,7 @@ export function InterviewerMascot({ state, level = 0.35, size, badgeLabel, finis
         <g className="we-bob">
           <path d="M34 86L75 195L120 124L165 195L206 86" fill="none" stroke="#0E5E55" strokeWidth="40" strokeLinecap="round" strokeLinejoin="round" />
           <path d="M34 86L75 195L120 124" fill="none" stroke="#FFFFFF" strokeOpacity="0.12" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" transform="translate(-6 -5)" />
-          <g key={catchKey} className={cx("we-catch", catchKey > 0 && "we-caught-now")}>
+          <g ref={headRef} className="we-catch">
             <circle cx="120" cy="56" r="28" fill="#FFB627" />
           </g>
         </g>

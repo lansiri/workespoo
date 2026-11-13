@@ -28,6 +28,8 @@ export type PageShellProps = {
   /** Stop button on the interview. */
   actions?: ReactNode;
   children: ReactNode;
+  /** Set false when another header on the page already carries the site-logo and language test ids. */
+  testIds?: boolean;
   className?: string;
 };
 
@@ -51,11 +53,14 @@ function NavLinks({ nav, current }: { nav: NavItem[]; current?: string }) {
  */
 export function PageShell(p: PageShellProps) {
   const nav = p.nav ?? [];
+  /** Organiser and company bars are tight, so they show EN / FI / SV. The full name stays the accessible name. */
+  const ids = p.testIds !== false;
+  const short = p.audience === "organiser" || p.audience === "company";
   const langs = p.languageSwitcher ?? (
-    <nav className="we-langs" aria-label={p.languageLabel} data-testid="language-switcher">
+    <nav className={cx("we-langs", p.actions ? "we-langs-nophone" : null)} aria-label={p.languageLabel} data-testid={ids ? "language-switcher" : undefined}>
       {p.languages.map((l) => (
-        <Link key={l.code} href={l.href} lang={l.code} hrefLang={l.code} aria-current={l.current ? "true" : undefined} data-testid={`lang-${l.code}`}>
-          {l.label}
+        <Link key={l.code} href={l.href} lang={l.code} hrefLang={l.code} aria-current={l.current ? "true" : undefined} aria-label={short ? l.label : undefined} title={short ? l.label : undefined} data-testid={ids ? `lang-${l.code}` : undefined}>
+          {short ? l.code.toUpperCase() : l.label}
         </Link>
       ))}
     </nav>
@@ -63,7 +68,7 @@ export function PageShell(p: PageShellProps) {
   return (
     <div className={cx("we-shell we-page-body", `we-aud-${p.audience}`, p.className)}>
       <header className="we-topbar">
-        <KitLogo label={p.logoLabel} wordmark={p.wordmark} />
+        <KitLogo label={p.logoLabel} wordmark={p.wordmark} testId={ids} />
         {p.headerSlot}
         {nav.length > 0 ? (
           <nav className="we-mainnav" aria-label={p.navLabel}>

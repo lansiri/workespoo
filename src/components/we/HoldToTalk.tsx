@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { CSSProperties, KeyboardEvent, PointerEvent } from "react";
+import { useRef, type CSSProperties, type KeyboardEvent, type PointerEvent } from "react";
 import { cx } from "./cx";
 import { Icon } from "./icons";
 
@@ -29,6 +29,7 @@ const BAR_SHAPE = [0.6, 0.9, 1, 0.8, 0.55];
  * down starts, key up sends. It never starts recording on its own. When done it becomes the "Check my notes" link.
  */
 export function HoldToTalk({ state, level = 0.3, label, onStart, onRelease, doneHref, describedBy, className }: HoldToTalkProps) {
+  const active = useRef(false);
   if (state === "done") {
     return (
       <Link href={doneHref ?? "#"} className={cx("we-talk", className)} data-testid="go-to-card">
@@ -41,21 +42,28 @@ export function HoldToTalk({ state, level = 0.3, label, onStart, onRelease, done
   function down(e: PointerEvent<HTMLButtonElement>) {
     if (state !== "ready") return;
     e.currentTarget.setPointerCapture?.(e.pointerId);
+    active.current = true;
     onStart?.();
   }
   function up() {
-    if (held) onRelease?.();
+    if (held && active.current) {
+      active.current = false;
+      onRelease?.();
+    }
   }
   function keyDown(e: KeyboardEvent<HTMLButtonElement>) {
     if ((e.key === " " || e.key === "Enter") && !e.repeat) {
       e.preventDefault();
-      if (state === "ready") onStart?.();
+      if (state === "ready") {
+        active.current = true;
+        onStart?.();
+      }
     }
   }
   function keyUp(e: KeyboardEvent<HTMLButtonElement>) {
     if ((e.key === " " || e.key === "Enter") && held) {
       e.preventDefault();
-      onRelease?.();
+      up();
     }
   }
   return (
@@ -70,6 +78,8 @@ export function HoldToTalk({ state, level = 0.3, label, onStart, onRelease, done
       onPointerDown={down}
       onPointerUp={up}
       onPointerCancel={up}
+      onLostPointerCapture={up}
+      onBlur={up}
       onKeyDown={keyDown}
       onKeyUp={keyUp}
       onContextMenu={(e) => e.preventDefault()}

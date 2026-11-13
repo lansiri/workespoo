@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useId, useState, type ReactNode } from "react";
 import { cx } from "./cx";
 import { Button } from "./Button";
 import { Input } from "./FormFields";
@@ -34,6 +34,7 @@ export type RequirementQuestionProps = {
 
 /** A question back to the company about a requirement, with pool evidence and four equal answers. */
 export function RequirementQuestion(p: RequirementQuestionProps) {
+  const uid = useId();
   const [rewording, setRewording] = useState(false);
   const [value, setValue] = useState(p.requirement);
   const t = p.text;
@@ -51,10 +52,10 @@ export function RequirementQuestion(p: RequirementQuestionProps) {
         </p>
       ) : rewording ? (
         <div className="we-q-reword">
-          <label className="we-sr-only" htmlFor="we-q-reword">
+          <label className="we-sr-only" htmlFor={`${uid}-rw`}>
             {t.rewordLabel}
           </label>
-          <Input id="we-q-reword" value={value} onChange={(e) => setValue(e.target.value)} data-testid="question-reword-input" />
+          <Input id={`${uid}-rw`} value={value} onChange={(e) => setValue(e.target.value)} data-testid="question-reword-input" />
           <Button variant="primary" disabled={value.trim().length < 2} onClick={() => p.onAnswer?.("reworded", value.trim())} data-testid="question-reword-save">
             {t.save}
           </Button>

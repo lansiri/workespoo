@@ -12,9 +12,9 @@ export function CheerMark({ className }: { className?: string }) {
 }
 
 /** Logo link for the top bar. The wordmark hides on phones. `label` is the accessible name. */
-export function KitLogo({ label, wordmark, href = "/", className }: { label: string; wordmark: string; href?: string; className?: string }) {
+export function KitLogo({ label, wordmark, href = "/", className, testId = true }: { label: string; wordmark: string; href?: string; className?: string; testId?: boolean }) {
   return (
-    <Link href={href} className={cx("we-logo", className)} aria-label={label} data-testid="site-logo">
+    <Link href={href} className={cx("we-logo", className)} aria-label={label} data-testid={testId ? "site-logo" : undefined}>
       <CheerMark />
       <b>{wordmark}</b>
     </Link>

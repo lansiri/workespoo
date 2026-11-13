@@ -40,7 +40,18 @@ export function Dialog({
       const first = (initialFocus ? root.querySelector<HTMLElement>(initialFocus) : null) ?? root.querySelector<HTMLElement>(FOCUSABLE);
       (first ?? root).focus();
     }
-    return () => opener?.focus?.();
+    function keepIn(e: FocusEvent) {
+      const r = ref.current;
+      if (r && e.target instanceof Node && !r.contains(e.target)) {
+        const items = Array.from(r.querySelectorAll<HTMLElement>(FOCUSABLE));
+        (items[0] ?? r).focus();
+      }
+    }
+    document.addEventListener("focusin", keepIn);
+    return () => {
+      document.removeEventListener("focusin", keepIn);
+      opener?.focus?.();
+    };
   }, [inline, initialFocus]);
 
   function onKeyDown(e: KeyboardEvent<HTMLDivElement>) {
@@ -49,15 +60,18 @@ export function Dialog({
       onClose();
       return;
     }
-    if (e.key !== "Tab" || !ref.current) return;
+    if (inline || e.key !== "Tab" || !ref.current) return;
     const items = Array.from(ref.current.querySelectorAll<HTMLElement>(FOCUSABLE));
     if (items.length === 0) return;
     const first = items[0];
     const last = items[items.length - 1];
-    if (e.shiftKey && document.activeElement === first) {
+    const active = document.activeElement as HTMLElement | null;
+    const sameGroup = (a: HTMLElement | null, b: HTMLElement) =>
+      a instanceof HTMLInputElement && b instanceof HTMLInputElement && a.type === "radio" && b.type === "radio" && !!a.name && a.name === b.name;
+    if (e.shiftKey && (active === first || sameGroup(active, first))) {
       e.preventDefault();
       last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
+    } else if (!e.shiftKey && (active === last || sameGroup(active, last))) {
       e.preventDefault();
       first.focus();
     }

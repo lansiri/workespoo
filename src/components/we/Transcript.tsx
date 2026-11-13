@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useRef } from "react";
+import { Fragment, useEffect, useId, useRef } from "react";
 import { cx } from "./cx";
 import { Icon } from "./icons";
 import { OwnWordsMark } from "./OwnWordsMark";
@@ -37,20 +37,23 @@ export type TranscriptProps = {
  * with the cited sentences marked permanently. Auto-scrolls to the newest turn.
  */
 export function Transcript({ turns, cited = {}, onRemoveTurn, highlightTurn, highlightSentences = [], text, className }: TranscriptProps) {
-  const endRef = useRef<HTMLLIElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+  const titleId = useId();
   useEffect(() => {
-    endRef.current?.scrollIntoView?.({ block: "nearest" });
+    const el = listRef.current;
+    // Scroll only this column, and only when it is the scroll container (not the phone single column).
+    if (el && el.scrollHeight > el.clientHeight && getComputedStyle(el).overflowY !== "visible") el.scrollTop = el.scrollHeight;
   }, [turns.length]);
   return (
-    <section className={cx("we-convo", className)} aria-labelledby="we-convo-title">
+    <section className={cx("we-convo", className)} aria-labelledby={titleId}>
       <div className="we-panel-head">
-        <h2 id="we-convo-title">{text.title}</h2>
+        <h2 id={titleId}>{text.title}</h2>
         <p className="we-only-you">
           <Icon name="lock" />
           <span>{text.onlyYou}</span>
         </p>
       </div>
-      <div className="we-convo-list" data-testid="transcript">
+      <div className="we-convo-list" data-testid="transcript" ref={listRef}>
         {turns.length === 0 ? (
           <p className="we-convo-empty">{text.empty}</p>
         ) : (
@@ -80,7 +83,6 @@ export function Transcript({ turns, cited = {}, onRemoveTurn, highlightTurn, hig
                 </li>
               );
             })}
-            <li ref={endRef} aria-hidden="true" />
           </ol>
         )}
       </div>
