@@ -130,4 +130,55 @@ describe("PlaybackQueue", () => {
     expect(audio.play).toHaveBeenCalledTimes(1);
     expect(audio.src.startsWith("data:audio/wav")).toBe(true);
   });
+
+  it("with a fetch limit, holds later sentences back and drops them on cancel", async () => {
+    const texts: string[] = [];
+    const gates: ((r: Response) => void)[] = [];
+    const held = ((_u: string, init: RequestInit) => {
+      texts.push((JSON.parse(init.body as string) as { text: string }).text);
+      return new Promise<Response>((resolve, reject) => {
+        gates.push(resolve);
+        init.signal?.addEventListener("abort", () =>
+          reject(new DOMException("aborted", "AbortError")),
+        );
+      });
+    }) as unknown as typeof fetch;
+    const audio = new FakeAudio();
+    const q = new PlaybackQueue({
+      fetch: held,
+      createAudio: () => audio,
+      createObjectURL: (b) => `blob:${b.size}`,
+      revokeObjectURL: () => {},
+      createMeter: () => null,
+      now: () => 0,
+      maxConcurrentFetches: 1,
+    });
+    const a = q.enqueue("a", "en");
+    const b = q.enqueue("b", "en");
+    await tick();
+    expect(texts).toEqual(["a"]);
+    gates[0](new Response(new Blob(["a"])));
+    await tick();
+    await tick();
+    expect(texts).toEqual(["a", "b"]);
+    const c = q.enqueue("c", "en");
+    q.cancel();
+    gates[1](new Response(new Blob(["b"])));
+    await Promise.all([a, b, c]);
+    await tick();
+    expect(texts).toEqual(["a", "b"]); // "c" was never requested
+
+    const d = q.enqueue("d", "en");
+    await tick();
+    expect(texts).toEqual(["a", "b", "d"]); // the slot freed up again: "d" is requested at once
+    q.cancel();
+    await d;
+  });
+
+  it("keeps the HTTP status on a failed request", async () => {
+    const { q } = setup(
+      (async () => new Response("no", { status: 503 })) as unknown as typeof fetch,
+    );
+    await expect(q.enqueue("x", "en")).rejects.toMatchObject({ code: "unavailable", status: 503 });
+  });
 });
