@@ -48,6 +48,8 @@ export type VoiceConfig = z.infer<typeof VoiceConfig>;
 export const VoiceTokenResponse = z.object({
   token: z.string().min(1),
   expiresInSeconds: z.number().int().min(1),
+  /** The speech-to-text model the browser should connect with, when the server pins one. */
+  modelId: z.string().optional(),
 });
 export type VoiceTokenResponse = z.infer<typeof VoiceTokenResponse>;
 
