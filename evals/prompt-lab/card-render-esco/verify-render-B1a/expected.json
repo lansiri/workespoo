@@ -1,0 +1,66 @@
+{
+ "B": {
+  "b-en-09": {
+   "n": 1,
+   "phrases": [
+    "Arabic translation"
+   ],
+   "noEvidence": [
+    false
+   ],
+   "banned": [
+    "Arabic",
+    "Finnish"
+   ]
+  },
+  "b-sv-07": {
+   "n": 2,
+   "phrases": [
+    "Barnomsorg",
+    "Laga lunch"
+   ],
+   "noEvidence": [
+    false,
+    false
+   ],
+   "banned": [
+    "Vasa",
+    "Vaasa",
+    "own children",
+    "their children",
+    "Swedish"
+   ]
+  },
+  "b-en-08": {
+   "n": 1,
+   "phrases": [
+    "Welding"
+   ],
+   "noEvidence": [
+    false
+   ],
+   "banned": [
+    "Syria",
+    "expert",
+    "senior",
+    "10",
+    "ten"
+   ]
+  },
+  "b-fi-01": {
+   "n": 1,
+   "phrases": [
+    "Kassatyö ja hyllytys"
+   ],
+   "noEvidence": [
+    false
+   ],
+   "banned": [
+    "Mika",
+    "Finnish",
+    "kassa"
+   ]
+  }
+ },
+ "C": {}
+}

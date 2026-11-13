@@ -1,0 +1,186 @@
+{
+  "item": "card-synthesis",
+  "caseId": "en-full-software",
+  "run": 4,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Full-stack development for real-time energy dashboards",
+    "summary": "They build full-stack dashboards for grid operators using TypeScript, React, Java and Spring Boot. They troubleshoot data imports, test software, review code and deploy services with Docker, Azure and GitHub Actions.",
+    "signals": [
+      {
+        "phrase": "Full-stack web development",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1-S2"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They build full-stack web applications using TypeScript and React on the front end and Java with Spring Boot on the back end."
+      },
+      {
+        "phrase": "Building real-time dashboards",
+        "kind": "skill",
+        "evidence": [
+          "T1.S3"
+        ],
+        "from": [],
+        "rendering": "They build dashboards that show grid operators electricity consumption in real time."
+      },
+      {
+        "phrase": "TypeScript and React",
+        "kind": "tool",
+        "evidence": [
+          "T1.S2"
+        ],
+        "from": [
+          "s2",
+          "s3"
+        ],
+        "rendering": "They use TypeScript and React for front-end development."
+      },
+      {
+        "phrase": "Java and Spring Boot",
+        "kind": "tool",
+        "evidence": [
+          "T1.S2"
+        ],
+        "from": [
+          "s4",
+          "s5"
+        ],
+        "rendering": "They use Java and Spring Boot for back-end development."
+      },
+      {
+        "phrase": "Debugging data imports",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1-S2"
+        ],
+        "from": [
+          "s6"
+        ],
+        "rendering": "They added logging to find a supplier date-format change and wrote a parser supporting both CSV formats."
+      },
+      {
+        "phrase": "Grafana",
+        "kind": "tool",
+        "evidence": [
+          "T3.S3"
+        ],
+        "from": [
+          "s7"
+        ],
+        "rendering": "They configured a Grafana alert to report recurring meter data import failures."
+      },
+      {
+        "phrase": "Usability testing with users",
+        "kind": "skill",
+        "evidence": [
+          "T5.S1-S2"
+        ],
+        "from": [
+          "s8"
+        ],
+        "rendering": "They observe grid operators using the screens every two weeks and work with a UX designer."
+      },
+      {
+        "phrase": "Code reviews",
+        "kind": "skill",
+        "evidence": [
+          "T5.S3"
+        ],
+        "from": [
+          "s9"
+        ],
+        "rendering": "They review code for other developers on their team."
+      },
+      {
+        "phrase": "PostgreSQL",
+        "kind": "tool",
+        "evidence": [
+          "T7.S2"
+        ],
+        "from": [
+          "s10"
+        ],
+        "rendering": "They use PostgreSQL in their development work."
+      },
+      {
+        "phrase": "Docker",
+        "kind": "tool",
+        "evidence": [
+          "T7.S2"
+        ],
+        "from": [
+          "s11"
+        ],
+        "rendering": "They use Docker in their development work."
+      },
+      {
+        "phrase": "Azure",
+        "kind": "tool",
+        "evidence": [
+          "T7.S2"
+        ],
+        "from": [
+          "s12"
+        ],
+        "rendering": "They deploy applications to Azure."
+      },
+      {
+        "phrase": "GitHub Actions",
+        "kind": "tool",
+        "evidence": [
+          "T7.S2"
+        ],
+        "from": [
+          "s13"
+        ],
+        "rendering": "They use GitHub Actions for deployments to Azure."
+      },
+      {
+        "phrase": "Automated testing",
+        "kind": "skill",
+        "evidence": [
+          "T9.S2"
+        ],
+        "from": [
+          "s14"
+        ],
+        "rendering": "They test the import service and track its test coverage."
+      },
+      {
+        "phrase": "Energy sector",
+        "kind": "domain",
+        "evidence": [
+          "T1.S3"
+        ],
+        "from": [
+          "s15"
+        ],
+        "rendering": "They build software used by grid operators to monitor electricity consumption."
+      }
+    ],
+    "roles": [
+      "Full-stack developer in energy or climate tech",
+      "Lead developer"
+    ],
+    "rolesEvidence": [
+      "T11.S1"
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 15035,
+    "firstTokenMs": 15019,
+    "tokensIn": 1492,
+    "tokensOut": 1354,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "item": "picks-draft",
+  "caseId": "en-single-ux",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "req": "R1",
+        "signal": "S1",
+        "text": "The card describes redesigning a clinic web app's booking screens after observing patient difficulties, which relates to UX design for software products."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 4173,
+    "firstTokenMs": 4173,
+    "tokensIn": 580,
+    "tokensOut": 97,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

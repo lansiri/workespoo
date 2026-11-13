@@ -1,0 +1,38 @@
+[
+ {
+  "n": 4,
+  "wallMs": 33732,
+  "ok": 4,
+  "errors": [],
+  "retried": 3,
+  "ttftP50": 32598,
+  "ttftP90": 33056,
+  "ttftMax": 33056,
+  "totalP50": 32983,
+  "totalP90": 33701
+ },
+ {
+  "n": 8,
+  "wallMs": 1176,
+  "ok": 8,
+  "errors": [],
+  "retried": 0,
+  "ttftP50": 796,
+  "ttftP90": 871,
+  "ttftMax": 871,
+  "totalP50": 1118,
+  "totalP90": 1171
+ },
+ {
+  "n": 16,
+  "wallMs": 3677,
+  "ok": 16,
+  "errors": [],
+  "retried": 0,
+  "ttftP50": 2649,
+  "ttftP90": 3383,
+  "ttftMax": 3554,
+  "totalP50": 2688,
+  "totalP90": 3475
+ }
+]

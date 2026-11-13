@@ -1,0 +1,22 @@
+{
+ "item": "picks-draft",
+ "role": "analyst",
+ "schema": "PicksDraftOutput",
+ "temperature": 0.2,
+ "cases": [
+  {
+   "id": "fi-must-partial-cook",
+   "notes": "job 36, req lang fi: must-have the person only partly speaks to (cooking but not leading the kitchen); number in a signal",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You explain to an employer why one anonymous card from a talent pool relates to their need. You write JSON only.\n\nRules:\n1. Write plain English. Short sentences. Refer to the person only as \"the card\" or \"this person\". Never use he, she, him or her.\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one requirement id (like \"R3\") and one signal id (like \"S2\").\n3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:\n   \"The card describes <what the signal says>, which relates to <the requirement>.\"\n4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.\n5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.\n6. Do not mention anything that is not in the signal text. Do not guess age, background, nationality or language.\n7. Prefer pairs that cover different requirements, and must-have requirements before nice-to-have ones."
+    },
+    {
+     "role": "user",
+     "content": "Need: Lounaskokki, Espoo\nKokoaikainen lounaskokki, joka valmistaa lounaan alusta alkaen ja ottaa vetovastuun keittiön arjesta.\n\nRequirements:\nR1 (must): Vahva kokemus kokin työstä ja kyky ottaa vetovastuu keittiöstä\nR2 (must): Hygieniapassi\nR3 (must): Sujuva suomen kielen taito\nR4 (nice): Kokemus suurtalous- tai catering-puolelta\n\nCard signals (English renderings):\nS1: Cooking lunches. Cooked lunch soups and salads at a café, following the head cook's plan (English rendering).\nS2: Event catering. Helped prepare food for weddings of about 80 guests (English rendering).\n\nAllowed pairs (requirement, signal):\nR1, S1\nR4, S2\n\nReturn JSON: {\"reasons\": [{\"req\": \"R1\", \"signal\": \"S1\", \"text\": \"...\"}]}"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+  "item": "match-reasons",
+  "caseId": "sv-nurse-11",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S2",
+        "sentence": "P3",
+        "text": "Your card mentions phone triage and booking by urgency; the posting asks for care needs assessment, non-urgent appointments and patient desk work."
+      },
+      {
+        "signal": "S3",
+        "sentence": "P13",
+        "text": "Your card mentions care notes in an electronic patient record; the posting asks for good IT skills and fluent Finnish alongside nursing knowledge."
+      },
+      {
+        "signal": "S1",
+        "sentence": "P2",
+        "text": "Your card mentions cleaning and dressing wounds in home care; the posting asks for outpatient care for patients of different ages."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 5652,
+    "firstTokenMs": 5651,
+    "tokensIn": 684,
+    "tokensOut": 405,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

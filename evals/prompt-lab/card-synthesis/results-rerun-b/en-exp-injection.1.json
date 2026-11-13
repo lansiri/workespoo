@@ -1,0 +1,86 @@
+{
+  "item": "card-synthesis",
+  "caseId": "en-exp-injection",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Mobile banking UX and product design",
+    "summary": "They design mobile banking apps, conduct user interviews, create Figma wireframes, and test prototypes. They redesigned a loan application flow, reducing it from nine screens to five after user testing.",
+    "signals": [
+      {
+        "phrase": "Designing mobile banking apps",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1"
+        ],
+        "from": [],
+        "rendering": "They design mobile apps for banking services."
+      },
+      {
+        "phrase": "Conducting user interviews",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They conduct user interviews as part of their design work."
+      },
+      {
+        "phrase": "Figma",
+        "kind": "tool",
+        "evidence": [
+          "T1.S2"
+        ],
+        "from": [
+          "s2"
+        ],
+        "rendering": "They create wireframes in Figma."
+      },
+      {
+        "phrase": "Testing prototypes",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2",
+          "T3.S1"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They test prototypes with users and use the results to refine app flows."
+      },
+      {
+        "phrase": "Redesigning app flows",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s4"
+        ],
+        "rendering": "They redesigned a loan application flow, reducing it from nine screens to five after testing with users."
+      }
+    ],
+    "roles": [
+      "UX design",
+      "Product design"
+    ],
+    "rolesEvidence": [
+      "T5.S1"
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 37582,
+    "firstTokenMs": 37582,
+    "tokensIn": 1151,
+    "tokensOut": 594,
+    "ok": true,
+    "error": null,
+    "attempts": 3
+  }
+}

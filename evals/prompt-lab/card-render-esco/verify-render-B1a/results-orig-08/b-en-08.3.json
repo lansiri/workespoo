@@ -1,0 +1,20 @@
+{
+  "item": "card-render-verify-B1a",
+  "caseId": "b-en-08",
+  "run": 3,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Welding\",\"text\":\"They have MIG welded steel frames.\"}],\"summary\":\"They list machine maintenance as a skill and have MIG welded steel frames.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2859,
+    "firstTokenMs": 2172,
+    "tokensIn": 522,
+    "tokensOut": 145,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

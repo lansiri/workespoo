@@ -1,0 +1,12 @@
+[
+ {
+  "schema": "ExtractorOutput",
+  "mode": "json_object",
+  "convert": "ok (1141 chars)",
+  "valid": true,
+  "error": null,
+  "latencyMs": 14439,
+  "attempts": 2,
+  "providerRejectedFormat": false
+ }
+]

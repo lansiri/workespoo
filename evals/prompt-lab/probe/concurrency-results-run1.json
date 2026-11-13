@@ -1,0 +1,58 @@
+[
+ {
+  "n": 4,
+  "wallMs": 42702,
+  "ok": 2,
+  "errors": [
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+  ],
+  "retried": 2,
+  "ttftP50": 42281,
+  "ttftP90": 42281,
+  "ttftMax": 42281,
+  "totalP50": 42595,
+  "totalP90": 42595
+ },
+ {
+  "n": 8,
+  "wallMs": 1789,
+  "ok": 8,
+  "errors": [],
+  "retried": 0,
+  "ttftP50": 1094,
+  "ttftP90": 1368,
+  "ttftMax": 1368,
+  "totalP50": 1389,
+  "totalP90": 1786
+ },
+ {
+  "n": 16,
+  "wallMs": 41445,
+  "ok": 0,
+  "errors": [
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+   "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+  ],
+  "retried": 0,
+  "ttftP50": null,
+  "ttftP90": null,
+  "ttftMax": null,
+  "totalP50": null,
+  "totalP90": null
+ }
+]

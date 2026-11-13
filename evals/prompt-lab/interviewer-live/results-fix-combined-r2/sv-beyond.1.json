@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-fix-combined",
+  "caseId": "sv-beyond",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Tack. Vad har du gjort utanför ditt vanliga arbete, till exempel studier, volontärarbete eller ett eget projekt?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 13287,
+    "firstTokenMs": 12840,
+    "tokensIn": 865,
+    "tokensOut": 45,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "item": "turn-extractor",
+  "role": "live",
+  "schema": "ExtractorOutput",
+  "calls": 5,
+  "ok": 3,
+  "failed": 2,
+  "neededRetry": 2,
+  "latencyMs": {
+    "p50": 2334,
+    "p90": 45626
+  },
+  "firstTokenMs": {
+    "p50": 2276,
+    "p90": 2333
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "sv-04-distress",
+      "run": 3,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    },
+    {
+      "caseId": "sv-04-distress",
+      "run": 4,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    }
+  ]
+}

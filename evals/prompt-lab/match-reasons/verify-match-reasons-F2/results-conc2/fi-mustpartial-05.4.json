@@ -1,0 +1,63 @@
+{
+  "caseId": "fi-mustpartial-05",
+  "run": 4,
+  "conc": 2,
+  "startedMs": 67602,
+  "doneMs": 72701,
+  "ok": true,
+  "error": null,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 5098,
+    "firstTokenMs": 2985,
+    "tokensIn": 1227,
+    "tokensOut": 362,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  },
+  "http": [
+    {
+      "status": 200,
+      "startMs": 67605,
+      "ms": 2980,
+      "headers": {
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "26",
+        "x-ratelimit-remaining-tokens": "2957551",
+        "x-ratelimit-reset-requests": "51s",
+        "x-ratelimit-reset-tokens": "51s"
+      }
+    },
+    {
+      "status": 200,
+      "startMs": 70588,
+      "ms": 2110,
+      "headers": {
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "24",
+        "x-ratelimit-remaining-tokens": "2954756",
+        "x-ratelimit-reset-requests": "48s",
+        "x-ratelimit-reset-tokens": "48s"
+      }
+    }
+  ],
+  "saw429": false,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P9",
+        "text": "Your card mentions cooking school lunches for about 60 people a day; the posting asks for cook experience and kitchen responsibility."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P10",
+        "text": "Your card mentions holding a hygiene passport and following food safety rules; the posting asks for a hygiene passport."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "item": "card-render-fixR4act",
+  "caseId": "fix-R4act-b-fi-01",
+  "run": 1,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Checkout work and shelf stocking\",\"text\":\"They operated the checkout, stocked shelves, handled returns, recorded losses, and taught a colleague to use a new checkout system.\"}],\"summary\":\"They list receiving and checking goods and customer service as skills. They operated the checkout, stocked shelves, handled returns, recorded losses, and taught a colleague to use a new checkout system.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 4721,
+    "firstTokenMs": 3723,
+    "tokensIn": 603,
+    "tokensOut": 290,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

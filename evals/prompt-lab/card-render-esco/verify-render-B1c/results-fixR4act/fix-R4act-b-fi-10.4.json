@@ -1,0 +1,20 @@
+{
+  "item": "card-render-fixR4act",
+  "caseId": "fix-R4act-b-fi-10",
+  "run": 4,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Providing practical nursing care\",\"text\":\"They administered medication and helped residents with washing while working in practical nursing at an assisted living facility.\"}],\"summary\":\"They provided elderly care in an assisted living facility, administering medication and helping residents with washing.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3538,
+    "firstTokenMs": 2766,
+    "tokensIn": 598,
+    "tokensOut": 257,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

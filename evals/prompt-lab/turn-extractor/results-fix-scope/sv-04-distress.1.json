@@ -1,0 +1,30 @@
+{
+  "item": "turn-extractor",
+  "caseId": "sv-04-distress",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "sv",
+    "signals": [],
+    "coverage": {
+      "people": "thin"
+    },
+    "flags": [
+      "distress"
+    ],
+    "note": "Avoid the former manager; gently ask about tasks, tools, or coworkers only if they feel ready."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 964,
+    "firstTokenMs": 963,
+    "tokensIn": 1096,
+    "tokensOut": 42,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

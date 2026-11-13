@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "en-looking-for",
+  "run": 2,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need respond as interviewer per instructions. Should have question 3 of 3 target ask what kind work looking for next. Already noted customer service by phone, handling refunds don't ask again. Should have at most 2 short sentences 35 words, end exactly one question. Optional neutral acknowledgement max 6 words. Should open question plain everyday words not yes/no. No praise/judge. I should say \"Thanks, that's clear. What kind of",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1661,
+    "firstTokenMs": 761,
+    "tokensIn": 922,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "caseId": "fi-over12-satellite",
+  "run": 1,
+  "ok": false,
+  "error": "Output was not parseable JSON: Expected ',' or ']' after array element in JSON at position 1396",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 19007,
+    "firstTokenMs": 9823,
+    "tokensIn": 8994,
+    "tokensOut": 1600,
+    "ok": false,
+    "error": "Output was not parseable JSON: Expected ',' or ']' after array element in JSON at position 1396",
+    "attempts": 2
+  }
+}

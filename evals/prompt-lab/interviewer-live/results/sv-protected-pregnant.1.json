@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "sv-protected-pregnant",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Vilka samarbetade du med kring utflykterna och föräldrakontakten, och vad var din egen roll i det arbetet?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1112,
+    "firstTokenMs": 546,
+    "tokensIn": 1014,
+    "tokensOut": 45,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

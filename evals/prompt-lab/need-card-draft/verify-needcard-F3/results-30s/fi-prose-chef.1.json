@@ -1,0 +1,130 @@
+{
+  "caseId": "fi-prose-chef",
+  "run": 1,
+  "label": "fi-prose-chef.1",
+  "startedAt": 26,
+  "endedAt": 13224,
+  "ok": true,
+  "error": null,
+  "timedOut": false,
+  "schemaOk": true,
+  "schemaErr": null,
+  "requirements": 7,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 13196,
+    "firstTokenMs": 13192,
+    "tokensIn": 3264,
+    "tokensOut": 1073,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  },
+  "data": {
+    "title": "Head Chef",
+    "summary": "Lead a small kitchen team preparing restaurant lunches and catering. The role also involves developing the lunch offering and catering business.",
+    "requirements": [
+      {
+        "text": "At least 3 years as a head chef or shift manager in Finland",
+        "sentence": 5,
+        "kind": "must",
+        "category": "experience",
+        "years": 3,
+        "language": null,
+        "esco": [
+          "K4"
+        ],
+        "statutory": "none",
+        "questionType": "years",
+        "question": "Would someone who has done head chef or shift manager work, with fewer than 3 years, be worth a conversation?",
+        "why": "The posting requires prior head chef or shift manager experience gained over a set period in Finland."
+      },
+      {
+        "text": "Ability to independently lead a kitchen and a small team",
+        "sentence": 6,
+        "kind": "nice",
+        "category": "skill",
+        "years": null,
+        "language": null,
+        "esco": [
+          "K4",
+          "K26"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Passion for hands-on kitchen work",
+        "sentence": 7,
+        "kind": "nice",
+        "category": "other",
+        "years": null,
+        "language": null,
+        "esco": [],
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'passion for hands-on kitchen work' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting emphasises passion for kitchen work and being actively involved rather than working at a laptop."
+      },
+      {
+        "text": "Developmental leadership and ability to inspire the team",
+        "sentence": 13,
+        "kind": "nice",
+        "category": "other",
+        "years": null,
+        "language": null,
+        "esco": [],
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'developmental leadership' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting describes developmental leadership and inspiring others as strengths without giving a concrete example."
+      },
+      {
+        "text": "Broad professional expertise for business and team development",
+        "sentence": 13,
+        "kind": "nice",
+        "category": "skill",
+        "years": null,
+        "language": null,
+        "esco": [
+          "K1",
+          "K4"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Finnish food hygiene passport",
+        "sentence": 28,
+        "kind": "must",
+        "category": "authorisation",
+        "years": null,
+        "language": null,
+        "esco": [],
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Passenger car driving licence",
+        "sentence": 30,
+        "kind": "must",
+        "category": "authorisation",
+        "years": null,
+        "language": null,
+        "esco": [],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      }
+    ],
+    "dropped": []
+  }
+}

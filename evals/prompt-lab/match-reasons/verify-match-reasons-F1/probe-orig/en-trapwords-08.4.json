@@ -1,0 +1,40 @@
+{
+  "item": "verify-F1-orig",
+  "caseId": "en-trapwords-08",
+  "run": 4,
+  "raw": "{\"reasons\":[{\"signal\":\"S1\",\"sentence\":\"P2\",\"text\":\"Your card mentions building and publishing two Android apps in Kotlin; the posting asks for at least five years of mobile app development experience.\"},{\"signal\":\"S2\",\"sentence\":\"P6\",\"text\":\"Your card mentions adding fingerprint login using the phone's secure key storage; the posting asks for biometric authentication or secure key storage.\"}]}",
+  "rawParsed": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P2",
+        "text": "Your card mentions building and publishing two Android apps in Kotlin; the posting asks for at least five years of mobile app development experience."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P6",
+        "text": "Your card mentions adding fingerprint login using the phone's secure key storage; the posting asks for biometric authentication or secure key storage."
+      }
+    ]
+  },
+  "firstAttemptValid": true,
+  "validationError": null,
+  "error": null,
+  "http": [
+    {
+      "status": 200,
+      "ms": 2483
+    }
+  ],
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2513,
+    "firstTokenMs": 2508,
+    "tokensIn": 551,
+    "tokensOut": 193,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

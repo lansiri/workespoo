@@ -1,0 +1,38 @@
+{
+  "item": "match-reasons",
+  "caseId": "fi-trade-06",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P7",
+        "text": "Your card mentions tiling bathrooms; the posting asks for experience in tiling and waterproofing work."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P12",
+        "text": "Your card mentions waterproofing wet rooms; the posting lists wet-room renovations including waterproofing work."
+      },
+      {
+        "signal": "S3",
+        "sentence": "P5",
+        "text": "Your card mentions an occupational safety card; the posting lists the Finnish occupational safety card (Työturvallisuuskortti)."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 5346,
+    "firstTokenMs": 5345,
+    "tokensIn": 672,
+    "tokensOut": 243,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

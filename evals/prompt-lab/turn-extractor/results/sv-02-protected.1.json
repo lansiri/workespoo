@@ -1,0 +1,70 @@
+{
+  "item": "turn-extractor",
+  "caseId": "sv-02-protected",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "sv",
+    "signals": [
+      {
+        "ref": "new",
+        "phrase": "Accounting",
+        "kind": "domain",
+        "evidence": [
+          "T1.S3"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Financial statements",
+        "kind": "skill",
+        "evidence": [
+          "T1.S4"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Tax returns",
+        "kind": "skill",
+        "evidence": [
+          "T1.S4"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Excel",
+        "kind": "tool",
+        "evidence": [
+          "T1.S4"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "beyond": "covered",
+      "people": "covered",
+      "tools": "covered"
+    },
+    "flags": [
+      "protected_info"
+    ],
+    "note": "Accounting, financial statements, tax returns and Excel covered; ask about recent work and a specific task example."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 42060,
+    "firstTokenMs": 42059,
+    "tokensIn": 1079,
+    "tokensOut": 163,
+    "ok": true,
+    "error": null,
+    "attempts": 3
+  }
+}

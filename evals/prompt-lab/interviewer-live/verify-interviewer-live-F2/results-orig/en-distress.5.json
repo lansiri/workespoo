@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verify-F2",
+  "caseId": "en-distress",
+  "run": 5,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need respond to latest person under instructions. Should analyze carefully. I have interviewer role, max 2 short sentences <=35 words, end exactly one question nothing after. Person says sorry this is hard, lost job badly, let go in front everyone, still think about it. Rule 9 if person says something hard or upsetting, do not comment on feelings. Ask whether they would like to skip this topic or stop. Should target tools etc",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1681,
+    "firstTokenMs": 698,
+    "tokensIn": 909,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "item": "card-render-orig",
+  "caseId": "b-sv-11",
+  "run": 4,
+  "role": "analyst",
+  "kind": "text",
+  "ok": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro network error",
+  "meta": null
+}

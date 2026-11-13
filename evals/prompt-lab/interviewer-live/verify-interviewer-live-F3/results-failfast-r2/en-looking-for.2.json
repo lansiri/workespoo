@@ -1,0 +1,21 @@
+{
+  "caseId": "en-looking-for",
+  "run": 2,
+  "deadlineMs": 2000,
+  "modelReply": false,
+  "firstTokenMs": null,
+  "endedMs": 2006,
+  "aborted": true,
+  "text": "",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2004,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "aborted",
+    "attempts": 1
+  }
+}

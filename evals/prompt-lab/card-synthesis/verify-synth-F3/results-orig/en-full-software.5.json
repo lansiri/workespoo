@@ -1,0 +1,157 @@
+{
+  "item": "card-synthesis",
+  "caseId": "en-full-software",
+  "run": 5,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Full-stack development for real-time energy dashboards",
+    "summary": "They build full-stack dashboards for grid operators using TypeScript, React, Java and Spring Boot. They troubleshoot data imports, configure monitoring, test software, review code and gather feedback from operators.",
+    "signals": [
+      {
+        "phrase": "Full-stack web development",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1-S2"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They develop full-stack web applications using TypeScript and React on the front end and Java with Spring Boot on the back end."
+      },
+      {
+        "phrase": "TypeScript and React",
+        "kind": "tool",
+        "evidence": [
+          "T1.S2-S3"
+        ],
+        "from": [
+          "s2",
+          "s3"
+        ],
+        "rendering": "They use TypeScript and React to build front ends for dashboards showing electricity consumption in real time."
+      },
+      {
+        "phrase": "Java and Spring Boot",
+        "kind": "tool",
+        "evidence": [
+          "T1.S2"
+        ],
+        "from": [
+          "s4",
+          "s5"
+        ],
+        "rendering": "They use Java with Spring Boot for back-end development."
+      },
+      {
+        "phrase": "Debugging data imports",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1-S2"
+        ],
+        "from": [
+          "s6"
+        ],
+        "rendering": "They diagnosed silent nightly import failures by adding logging and wrote a parser supporting both supplier CSV date formats."
+      },
+      {
+        "phrase": "Grafana",
+        "kind": "tool",
+        "evidence": [
+          "T3.S3"
+        ],
+        "from": [
+          "s7"
+        ],
+        "rendering": "They configured Grafana alerts to notify the team when meter data imports failed again."
+      },
+      {
+        "phrase": "Usability testing with users",
+        "kind": "skill",
+        "evidence": [
+          "T5.S1-S2"
+        ],
+        "from": [
+          "s8"
+        ],
+        "rendering": "They observe grid operators using dashboard screens every two weeks and work with a UX designer."
+      },
+      {
+        "phrase": "Code reviews",
+        "kind": "skill",
+        "evidence": [
+          "T5.S3"
+        ],
+        "from": [
+          "s9"
+        ],
+        "rendering": "They review code for two junior developers on their team."
+      },
+      {
+        "phrase": "PostgreSQL and Docker",
+        "kind": "tool",
+        "evidence": [
+          "T7.S2"
+        ],
+        "from": [
+          "s10",
+          "s11"
+        ],
+        "rendering": "They use PostgreSQL and Docker in their development work."
+      },
+      {
+        "phrase": "Azure and GitHub Actions",
+        "kind": "tool",
+        "evidence": [
+          "T7.S2"
+        ],
+        "from": [
+          "s12",
+          "s13"
+        ],
+        "rendering": "They deploy applications to Azure with GitHub Actions."
+      },
+      {
+        "phrase": "Automated testing",
+        "kind": "skill",
+        "evidence": [
+          "T9.S2"
+        ],
+        "from": [
+          "s14"
+        ],
+        "rendering": "They use tests to check their work, including coverage of the meter data import service."
+      },
+      {
+        "phrase": "Energy sector",
+        "kind": "domain",
+        "evidence": [
+          "T1.S3"
+        ],
+        "from": [
+          "s15"
+        ],
+        "rendering": "They build real-time electricity consumption dashboards used by grid operators."
+      }
+    ],
+    "roles": [
+      "Full-stack developer in energy or climate tech",
+      "Lead developer"
+    ],
+    "rolesEvidence": [
+      "T11.S1"
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 14870,
+    "firstTokenMs": 14869,
+    "tokensIn": 1472,
+    "tokensOut": 1245,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

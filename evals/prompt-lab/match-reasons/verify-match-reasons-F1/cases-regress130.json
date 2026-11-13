@@ -1,0 +1,50 @@
+{
+  "item": "verify-F1-regress130",
+  "role": "analyst",
+  "schema": "MatchReasonsOutput",
+  "temperature": 0.2,
+  "cases": [
+    {
+      "id": "fi-en-03",
+      "notes": "Finnish posting, English signals; reasons must render the Finnish sentences correctly (forklift or electric order pickers; picking and shelving tyres).",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to a person why a job posting might interest them. You write JSON only.\n\nRules:\n1. Write in plain, friendly English. Short sentences. Address the person as \"you\".\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one signal id (like \"S2\") and its posting sentence id (like \"P5\", or null).\n3. Write 1 to 3 reasons. Each reason is one sentence, at most 130 characters, in this shape:\n   \"Your card mentions <what the signal says>; the posting asks for <what the sentence asks>.\"\n4. Describe, never judge. Do not praise or grade the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, score, percent.\n5. Do not say whether the person will get the job or is suitable. Do not give advice.\n6. Do not invent facts. Use only the signal text and the sentence text given.\n7. Pick pairs that cover different requirements when you can."
+        },
+        {
+          "role": "user",
+          "content": "Posting title: Trukkikuski syksyn rengaslogistiikkaan\n\nYour card (signals):\nS1: Forklift driving. They drove a counterbalance forklift to load and unload pallets at a warehouse.\nS2: Order picking. They picked customer orders from warehouse shelves using a handheld scanner.\n\nPosting sentences you may cite:\nP8: Renkaiden keräily ja hyllytys varastossa\nP15: Trukinajotaidon tai kokemuksen sähköisten keräilylaitteiden käytöstä\n\nAllowed pairs (signal, sentence):\nS1, P15\nS2, P8\n\nReturn JSON: {\"reasons\": [{\"signal\": \"S1\", \"sentence\": \"P4\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "fi-trade-06",
+      "notes": "Practical trade: tiling, waterproofing, safety card. Three pairs.",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to a person why a job posting might interest them. You write JSON only.\n\nRules:\n1. Write in plain, friendly English. Short sentences. Address the person as \"you\".\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one signal id (like \"S2\") and its posting sentence id (like \"P5\", or null).\n3. Write 1 to 3 reasons. Each reason is one sentence, at most 130 characters, in this shape:\n   \"Your card mentions <what the signal says>; the posting asks for <what the sentence asks>.\"\n4. Describe, never judge. Do not praise or grade the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, score, percent.\n5. Do not say whether the person will get the job or is suitable. Do not give advice.\n6. Do not invent facts. Use only the signal text and the sentence text given.\n7. Pick pairs that cover different requirements when you can."
+        },
+        {
+          "role": "user",
+          "content": "Posting title: Laatoittajaa\n\nYour card (signals):\nS1: Tiling bathrooms. They laid wall and floor tiles in bathroom renovations in apartment buildings.\nS2: Waterproofing wet rooms. They applied waterproofing membranes to bathroom floors and walls before tiling.\nS3: Occupational safety card. They hold the Finnish occupational safety card (Työturvallisuuskortti).\n\nPosting sentences you may cite:\nP5: Työturvallisuuskortti\nP7: Kokemusta laatoitus- ja vedeneristystöistä\nP12: Märkätilojen peruskorjauksia, sisältäen kaikki työvaiheet, suojaukset, purkutyöt, pohjatyöt, vedeneristystyöt, laatoitustyöt, kalusteasennukset, mahdolliset alakattotyöt ja muut viimeistelytyöt.\n\nAllowed pairs (signal, sentence):\nS1, P7\nS2, P12\nS3, P5\n\nReturn JSON: {\"reasons\": [{\"signal\": \"S1\", \"sentence\": \"P4\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "sv-nurse-11",
+      "notes": "Swedish posting sentences. P13 also asks for fluent Finnish: must not claim the person has it.",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to a person why a job posting might interest them. You write JSON only.\n\nRules:\n1. Write in plain, friendly English. Short sentences. Address the person as \"you\".\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one signal id (like \"S2\") and its posting sentence id (like \"P5\", or null).\n3. Write 1 to 3 reasons. Each reason is one sentence, at most 130 characters, in this shape:\n   \"Your card mentions <what the signal says>; the posting asks for <what the sentence asks>.\"\n4. Describe, never judge. Do not praise or grade the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, score, percent.\n5. Do not say whether the person will get the job or is suitable. Do not give advice.\n6. Do not invent facts. Use only the signal text and the sentence text given.\n7. Pick pairs that cover different requirements when you can."
+        },
+        {
+          "role": "user",
+          "content": "Posting title: Sjukskötare, Grankulla hälsostation, Grankulla\n\nYour card (signals):\nS1: Wound care. They cleaned and dressed wounds for patients in a home care team.\nS2: Phone triage. They answered patient calls and booked appointments based on how urgent the need was.\nS3: Electronic patient records. They wrote care notes in an electronic patient record system.\n\nPosting sentences you may cite:\nP2: På öppenvårdsmottagningen vårdar vi patienter i olika åldrar per fysiska mottagningsbesök, telefon och elektroniska tjänster.\nP3: Sjukskötarens arbetsbild är mångsidig och omfattar vårdbehovsbedömning, icke-brådskande mottagningstider, skötsel av patientbyrån samt jouruppgifter.\nP13: För att lyckas i uppgiften krävs förutom vårdkunnande även goda IT-kunskaper samt flytande kunskaper i finska.\n\nAllowed pairs (signal, sentence):\nS2, P3\nS3, P13\nS1, P2\n\nReturn JSON: {\"reasons\": [{\"signal\": \"S1\", \"sentence\": \"P4\", \"text\": \"...\"}]}"
+        }
+      ]
+    }
+  ]
+}

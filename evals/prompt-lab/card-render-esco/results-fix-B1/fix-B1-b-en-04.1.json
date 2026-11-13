@@ -1,0 +1,20 @@
+{
+  "item": "card-render-fix-B1",
+  "caseId": "fix-B1-b-en-04",
+  "run": 1,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Hotel cleaning\",\"text\":\"They cleaned about sixteen hotel rooms per shift and previously cleaned offices.\"}],\"summary\":\"They list laundry handling as a skill and have cleaned hotel rooms and offices.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 4202,
+    "firstTokenMs": 3648,
+    "tokensIn": 609,
+    "tokensOut": 309,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "item": "turn-extractor-verifyF1",
+  "caseId": "en-07-offtopic",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [],
+    "coverage": {
+      "beyond": "thin",
+      "open_floor": "thin"
+    },
+    "flags": [
+      "off_topic"
+    ],
+    "note": "No new work skills added; ask about studies, volunteering, or earlier jobs."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 19805,
+    "firstTokenMs": 19804,
+    "tokensIn": 1054,
+    "tokensOut": 43,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

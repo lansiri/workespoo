@@ -1,0 +1,20 @@
+{
+  "item": "esco-pick",
+  "caseId": "c-mix-08",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"picks\":[{\"i\":0,\"choice\":2},{\"i\":1,\"choice\":2},{\"i\":2,\"choice\":1},{\"i\":3,\"choice\":1},{\"i\":4,\"choice\":1}]}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1375,
+    "firstTokenMs": 1044,
+    "tokensIn": 312,
+    "tokensOut": 51,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

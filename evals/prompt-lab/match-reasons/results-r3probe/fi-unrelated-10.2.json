@@ -1,0 +1,40 @@
+{
+  "item": "match-reasons",
+  "caseId": "fi-unrelated-10",
+  "run": 2,
+  "raw": "{\"reasons\":[{\"signal\":\"S1\",\"sentence\":\"P10\",\"text\":\"Your card mentions cleaning data in Excel by removing duplicates and fixing errors; the posting asks for cleaning stairs, elevators, and shared spaces.\"},{\"signal\":\"S1\",\"sentence\":\"P17\",\"text\":\"Your card mentions cleaning data in Excel; the posting asks for previous experience using cleaning machines such as a combination machine.\"}]}",
+  "rawParsed": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P10",
+        "text": "Your card mentions cleaning data in Excel by removing duplicates and fixing errors; the posting asks for cleaning stairs, elevators, and shared spaces."
+      },
+      {
+        "signal": "S1",
+        "sentence": "P17",
+        "text": "Your card mentions cleaning data in Excel; the posting asks for previous experience using cleaning machines such as a combination machine."
+      }
+    ]
+  },
+  "firstAttemptValid": true,
+  "validationError": null,
+  "error": null,
+  "http": [
+    {
+      "status": 200,
+      "ms": 2609
+    }
+  ],
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2614,
+    "firstTokenMs": 2614,
+    "tokensIn": 583,
+    "tokensOut": 195,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

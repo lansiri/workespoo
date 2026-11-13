@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verify-F2",
+  "caseId": "fi-distress",
+  "run": 5,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need respond to latest user. Should follow instructions Finnish, max 2 short sentences <=35 words, exactly one question at end, nothing after. Person says hard/upsetting, bullying at hospital. Rule 9: if person says something hard or upsetting, do not comment on feelings. Ask whether they would like to skip this topic or stop. Should probably have \"Haluaisitko ohittaa tämän aiheen vai",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1952,
+    "firstTokenMs": 943,
+    "tokensIn": 909,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

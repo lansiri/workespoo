@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "en-asks-who-sees",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Companies see your approved notes without your name, and names are shared only if both sides agree. Who did you usually work with, and what was your own part?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 977,
+    "firstTokenMs": 545,
+    "tokensIn": 912,
+    "tokensOut": 40,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

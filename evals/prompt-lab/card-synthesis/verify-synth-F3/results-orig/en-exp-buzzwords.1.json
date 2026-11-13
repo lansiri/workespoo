@@ -1,0 +1,72 @@
+{
+  "item": "card-synthesis",
+  "caseId": "en-exp-buzzwords",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Communication, problem-solving, leadership and teamwork",
+    "summary": "They name communication, problem-solving and leadership as strengths and describe working across teams.",
+    "signals": [
+      {
+        "phrase": "Communication",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They identify communication as one of their key strengths."
+      },
+      {
+        "phrase": "Problem-solving",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s2"
+        ],
+        "rendering": "They identify problem-solving as one of their key strengths."
+      },
+      {
+        "phrase": "Leadership",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They identify leadership as one of their key strengths."
+      },
+      {
+        "phrase": "Teamwork",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1",
+          "T3.S2"
+        ],
+        "from": [
+          "s5"
+        ],
+        "rendering": "They describe themselves as a team player and say they work across teams."
+      }
+    ],
+    "roles": [],
+    "rolesEvidence": []
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 7308,
+    "firstTokenMs": 7307,
+    "tokensIn": 1112,
+    "tokensOut": 563,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

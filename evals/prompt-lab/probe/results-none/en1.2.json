@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "en1",
+  "run": 2,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "That’s great hands-on experience! When you helped customers pick a bike, what did you usually ask them to figure out what they needed?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1397,
+    "firstTokenMs": 1035,
+    "tokensIn": 443,
+    "tokensOut": 35,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

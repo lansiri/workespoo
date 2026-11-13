@@ -1,0 +1,45 @@
+{
+  "caseId": "en-obvious-01",
+  "run": 1,
+  "conc": 2,
+  "startedMs": 32,
+  "doneMs": 2669,
+  "ok": true,
+  "error": null,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2619,
+    "firstTokenMs": 2609,
+    "tokensIn": 503,
+    "tokensOut": 143,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  },
+  "http": [
+    {
+      "status": 200,
+      "startMs": 139,
+      "ms": 2460,
+      "headers": {
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "30",
+        "x-ratelimit-remaining-tokens": "2967515",
+        "x-ratelimit-reset-requests": "58s",
+        "x-ratelimit-reset-tokens": "58s"
+      }
+    }
+  ],
+  "saw429": false,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P22",
+        "text": "Your card mentions React front-end development for a booking web app; the posting asks for experience developing frontend applications with React."
+      }
+    ]
+  }
+}

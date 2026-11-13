@@ -1,0 +1,42 @@
+{
+  "item": "picks-draft",
+  "role": "analyst",
+  "schema": "PicksDraftOutput",
+  "calls": 18,
+  "ok": 14,
+  "failed": 4,
+  "neededRetry": 4,
+  "latencyMs": {
+    "p50": 3439,
+    "p90": 40836
+  },
+  "firstTokenMs": {
+    "p50": 3240,
+    "p90": 4996
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "fi-twin-a-cleaner",
+      "run": 2,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    },
+    {
+      "caseId": "fi-twin-a-cleaner",
+      "run": 3,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    },
+    {
+      "caseId": "en-years-java",
+      "run": 1,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    },
+    {
+      "caseId": "en-years-java",
+      "run": 2,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    }
+  ]
+}

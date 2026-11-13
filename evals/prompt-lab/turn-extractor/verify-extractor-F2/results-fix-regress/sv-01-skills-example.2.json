@@ -1,0 +1,77 @@
+{
+  "item": "turn-extractor",
+  "caseId": "sv-01-skills-example",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "sv",
+    "signals": [
+      {
+        "ref": "new",
+        "phrase": "Home care for elderly",
+        "kind": "domain",
+        "evidence": [
+          "T1.S1-S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Assisting with daily routines",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Medication assistance",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Emergency response with client",
+        "kind": "skill",
+        "evidence": [
+          "T1.S3"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Hilkka deviation reporting",
+        "kind": "tool",
+        "evidence": [
+          "T1.S4"
+        ],
+        "hasExample": true
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "example": "covered",
+      "tools": "covered",
+      "people": "covered"
+    },
+    "flags": [],
+    "note": "Home care tasks, emergency example and Hilkka covered; ask about medication training and desired next work."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3384,
+    "firstTokenMs": 3382,
+    "tokensIn": 1104,
+    "tokensOut": 201,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

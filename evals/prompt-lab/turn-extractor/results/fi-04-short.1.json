@@ -1,0 +1,50 @@
+{
+  "item": "turn-extractor",
+  "caseId": "fi-04-short",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "fi",
+    "signals": [
+      {
+        "ref": "new",
+        "phrase": "Shovel",
+        "kind": "tool",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Power drill",
+        "kind": "tool",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "tools": "covered"
+    },
+    "flags": [
+      "short"
+    ],
+    "note": "Shovel and drill named; ask which tasks they used them for and about other tools or methods."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1650,
+    "firstTokenMs": 1649,
+    "tokensIn": 979,
+    "tokensOut": 103,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

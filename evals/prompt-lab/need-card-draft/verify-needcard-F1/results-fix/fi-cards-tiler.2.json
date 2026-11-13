@@ -1,0 +1,165 @@
+{
+  "caseId": "fi-cards-tiler",
+  "run": 2,
+  "ok": true,
+  "error": null,
+  "attempts": 1,
+  "latencyMs": 21768,
+  "tokensOut": 1841,
+  "raws": [
+    {
+      "title": "Tiler",
+      "summary": "The role covers full wet-room renovations, from protection and demolition to waterproofing, tiling and finishing. Work sites vary, and the employment is permanent.",
+      "requirements": [
+        {
+          "text": "Valid wet-room construction certificate",
+          "kind": "nice",
+          "category": "authorisation",
+          "sentence": 4,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Occupational safety card",
+          "kind": "nice",
+          "category": "authorisation",
+          "sentence": 5,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Hot work card",
+          "kind": "nice",
+          "category": "authorisation",
+          "sentence": 6,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Experience in tiling and waterproofing work",
+          "kind": "nice",
+          "category": "experience",
+          "sentence": 7,
+          "esco": [
+            "K1"
+          ],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Ability to work independently and systematically",
+          "kind": "nice",
+          "category": "other",
+          "sentence": 8,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "vague",
+          "question": "What does 'independent and systematic work' look like in this job? One concrete example helps us find people who have done it.",
+          "why": "The posting asks for independent and systematic work without describing what it involves."
+        },
+        {
+          "text": "Careful workmanship and good problem-solving skills",
+          "kind": "nice",
+          "category": "other",
+          "sentence": 9,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "vague",
+          "question": "What does 'careful workmanship and good problem-solving skills' look like in this job? One concrete example helps us find people who have done it.",
+          "why": "The posting seeks careful workmanship and problem-solving without giving a practical example."
+        },
+        {
+          "text": "Customer-service-oriented attitude",
+          "kind": "nice",
+          "category": "other",
+          "sentence": 10,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "vague",
+          "question": "What does 'customer-service-oriented attitude' look like in this job? One concrete example helps us find people who have done it.",
+          "why": "The posting requests a customer-service-oriented attitude without describing expected situations."
+        },
+        {
+          "text": "Category B driving licence",
+          "kind": "nice",
+          "category": "authorisation",
+          "sentence": 11,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Access to a car for travel between work sites",
+          "kind": "nice",
+          "category": "other",
+          "sentence": 14,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Work experience and professional skill",
+          "kind": "must",
+          "category": "experience",
+          "sentence": 15,
+          "esco": [
+            "K1"
+          ],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "vague",
+          "question": "What does 'professional skill' look like in this job? One concrete example helps us find people who have done it.",
+          "why": "The posting requires work experience and professional skill without defining the expected level."
+        },
+        {
+          "text": "Good spoken and comprehension skills in Finnish",
+          "kind": "must",
+          "category": "language",
+          "sentence": 18,
+          "esco": [],
+          "language": "fi",
+          "years": null,
+          "statutory": "none",
+          "questionType": "language",
+          "question": "Is Finnish needed from day one, or could someone start in English and build up Finnish on the job?",
+          "why": "The posting requires strong spoken and comprehension skills in Finnish for the role."
+        }
+      ],
+      "dropped": []
+    }
+  ]
+}

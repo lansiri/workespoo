@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verifyF1-base",
+  "caseId": "en-people",
+  "run": 3,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need craft next response per instructions. Should understand context. I am interviewer, English max 2 short sentences <=35 words end exactly one question nothing after. Target ask who worked with/for team customers patients users and own part. Note-taker hint ask who supported in IT support; tools covered. Already noted laptop setup ticketing Jira password resets. Should have no praise/judge. Could neutral acknowledgement max6 words optional. Should open question not yes",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1713,
+    "firstTokenMs": 686,
+    "tokensIn": 912,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

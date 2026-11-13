@@ -1,0 +1,25 @@
+{
+  "caseId": "en-rd-director",
+  "run": 2,
+  "label": "en-rd-director.2",
+  "startedAt": 92345,
+  "endedAt": 113683,
+  "ok": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "timedOut": false,
+  "schemaOk": false,
+  "schemaErr": null,
+  "requirements": null,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 21338,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  },
+  "data": null
+}

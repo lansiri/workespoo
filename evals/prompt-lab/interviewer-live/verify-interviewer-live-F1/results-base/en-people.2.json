@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verifyF1-base",
+  "caseId": "en-people",
+  "run": 2,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need respond as interviewer per instructions. Should next question target: who worked with/for team customers patients users and own part. Note-taker hint ask who supported in IT support; tools already covered. Already noted laptop setup, Jira tickets, password resets. Should have at most 2 short sentences max35 words, end exactly one question. Could say \"Thanks, that's clear. Who did you usually support in your IT work, and what was",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 12020,
+    "firstTokenMs": 11059,
+    "tokensIn": 912,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

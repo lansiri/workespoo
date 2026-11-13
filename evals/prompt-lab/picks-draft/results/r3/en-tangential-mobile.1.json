@@ -1,0 +1,28 @@
+{
+  "item": "picks-draft",
+  "caseId": "en-tangential-mobile",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "req": "R1",
+        "signal": "S1",
+        "text": "The card describes a responsive React web shop front end used mostly on phones, which relates to mobile application development for iOS and Android."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2595,
+    "firstTokenMs": 2595,
+    "tokensIn": 594,
+    "tokensOut": 140,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

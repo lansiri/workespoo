@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verifyF1-reg",
+  "caseId": "en-example",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Thanks, that's clear. Could you describe one specific situation in the care home that you handled yourself?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1285,
+    "firstTokenMs": 1007,
+    "tokensIn": 902,
+    "tokensOut": 27,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

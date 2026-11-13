@@ -1,0 +1,20 @@
+{
+  "item": "card-render-verify-B1a-fix",
+  "caseId": "fix-b-fi-01",
+  "run": 1,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Checkout work and shelf stocking\",\"text\":\"They operated the checkout, stocked shelves, handled returns, recorded losses, and taught a coworker to use a new checkout system.\"}],\"summary\":\"They received and checked goods, served customers, operated the checkout, stocked shelves, handled returns, recorded losses, and taught a coworker to use a new checkout system.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 4759,
+    "firstTokenMs": 3613,
+    "tokensIn": 599,
+    "tokensOut": 311,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

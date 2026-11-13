@@ -208,7 +208,7 @@ export function rowsOf<T>(result: unknown): T[];
 
 ## `src/lib/lexicon.ts` (exists)
 
-`findBannedEvaluative(text)`, `findProtectedQuestion(text)`, `findProtectedCard(text)`, `findSpeechCue(text)`, `findReasonJudgement(text, { pronouns })`, `stripQualityWords(phrase)`. The only word lists in the project, in English, Finnish and Swedish. The interview guard, the extractor merge step and card synthesis all use them. Do not copy the lists from the specs into feature code.
+`findBannedEvaluative(text)`, `findProtectedQuestion(text)`, `findProtectedCard(text)`, `findProtectedRequirement(text)`, `findSpeechCue(text)`, `findReasonJudgement(text, { pronouns })`, `stripQualityWords(phrase)`. The only word lists in the project, in English, Finnish and Swedish. The interview guard, the extractor merge step and card synthesis all use them. Do not copy the lists from the specs into feature code.
 
 ## `src/lib/i18n` (interface languages: English, Finnish, Swedish)
 

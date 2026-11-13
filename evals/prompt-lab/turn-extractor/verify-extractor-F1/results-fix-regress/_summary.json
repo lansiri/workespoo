@@ -1,0 +1,27 @@
+{
+  "item": "turn-extractor-verifyF1",
+  "role": "live",
+  "schema": "ExtractorOutput",
+  "calls": 2,
+  "ok": 1,
+  "failed": 1,
+  "neededRetry": 0,
+  "latencyMs": {
+    "p50": 15033,
+    "p90": 15033
+  },
+  "firstTokenMs": {
+    "p50": 2764,
+    "p90": 2764
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "en-02-reuse-known",
+      "run": 1,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro timed out"
+    }
+  ]
+}

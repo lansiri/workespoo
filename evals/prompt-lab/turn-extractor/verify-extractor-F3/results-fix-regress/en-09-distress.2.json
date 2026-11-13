@@ -1,0 +1,70 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-09-distress",
+  "run": 2,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Retail",
+        "kind": "domain",
+        "evidence": [
+          "T1.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Cashier work",
+        "kind": "skill",
+        "evidence": [
+          "T3.S3"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Cash register operation",
+        "kind": "tool",
+        "evidence": [
+          "T3.S3"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Closing the till",
+        "kind": "skill",
+        "evidence": [
+          "T3.S3"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "example": "thin",
+      "tools": "covered",
+      "people": "thin"
+    },
+    "flags": [
+      "distress"
+    ],
+    "note": "Cash register and till closing are covered; gently ask about a specific task they handled themselves."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2555,
+    "firstTokenMs": 2555,
+    "tokensIn": 1042,
+    "tokensOut": 163,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

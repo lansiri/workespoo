@@ -1,0 +1,4319 @@
+{
+  "fi-long-list-dev": {
+    "fixtureIndex": 0,
+    "situation": "long Finnish posting with clear lists; degree; clearance; English work language; >12 asks",
+    "title": "Ohjelmistokehittäjä (full-stack) energiasektorille, Espoo",
+    "lang": "fi",
+    "sector": "private",
+    "source": "tmt",
+    "employerName": "Academic Work Finland Oy",
+    "brands": [
+      "Academic Work"
+    ],
+    "workLanguages": [
+      "en"
+    ],
+    "sentences": [
+      "Tehtävänkuvaus",
+      "Tässä roolissa olet keskeisessä osassa suunnittelemassa, kehittämässä ja ylläpitämässä sovelluksia sekä järjestelmäintegraatioita, jotka tukevat suoraan yrityksen päivittäistä toimintaa ja suunnittelua.",
+      "Pääset heti kiinni käytännön tekemiseen aloittaen konkreettisista kehitystehtävistä ja roolisi painopiste mukautuu projektien ja vahvuuksiesi mukaan.",
+      "Työskentelet osana kansainvälistä tiimiä, ja teet tiivistä yhteistyötä tuoteasiantuntijoiden ja muiden sidosryhmien kanssa.",
+      "Vastaat siitä, että ratkaisut ovat toimintavarmoja, skaalautuvia ja tietoturvallisia läpi koko kehityksen elinkaaren.",
+      "Saat paljon vastuuta ja itsenäisyyttä oman työsi järjestämiseen, mutta et jää yksin – ympärilläsi on ammattitaitoinen tiimi, jossa pääset oppimaan uutta ja vaikuttamaan aidosti siihen, miten asioita tehdään.",
+      "Tarjoamme sinulle",
+      "Kannustavan ja kansainvälisen tiimin, jossa panostasi arvostetaan",
+      "Monipuolisia projekteja ja modernit työkalut",
+      "Mahdollisuuden oppia uusia teknologioita ja kehittää osaamistasi kokeneiden kollegoiden rinnalla",
+      "Verkostoitumismahdollisuuksia alan huippuosaajien kanssa läpi organisaation",
+      "&nbsp;",
+      "Työtehtävät",
+      "Kehität moderneja verkkosovelluksia, taustapalveluita ja rajapintoja",
+      "Huolehdit siitä, että liiketoiminnalle tärkeät sovellukset ovat helppokäyttöisiä, luotettavia ja tietoturvallisia",
+      "Yhdistät sovelluksia muihin järjestelmiin ja tietokantoihin",
+      "Ylläpidät ja kehität pilviympäristöjä sekä automatisoituja julkaisuputkia",
+      "Hyödynnät tekoälytyökaluja arjen kehitystyössä ja varmistat, että koodi on siistiä ja hyvin testattua",
+      "Suunnittelet ja toteutat uusia ominaisuuksia yhdessä tuoteomistajien ja kehitystiimin kanssa",
+      "Etsimme",
+      "Muutaman vuoden käytännön kokemus full-stack-ohjelmistokehityksestä",
+      "Vahvaa osaamista Node.js:stä ja/tai TypeScriptistä sekä osaamista Pythonista, C#:sta tai Javasta",
+      "Kokemusta käyttöliittymäkehityksestä Reactilla",
+      "Kokemusta asiakas-palvelin-arkkitehtuureista (client-server), taustarajapintojen kehityksestä ja järjestelmäintegraatioista",
+      "Perustuntemus pilvialustoista (AWS tai Azure), versiohallinnasta sekä CI/CD-putkien ja DevSecOps-käytäntöjen hyödyntämisestä",
+      "Sujuva suullinen ja kirjallinen englannin kielen taito",
+      "Korkeakoulututkinto tietojenkäsittelytieteestä, tekniikasta, matematiikasta tai vastaavalta alalta",
+      "Taitoa käyttää agenttipohjaisia koodaustyökaluja tehokkaasti tinkimättä ohjelmiston tietoturvasta tai toimintavarmuudesta",
+      "Kykyä tuottaa siistiä, ylläpidettävää ja hyvin testattua koodia parhaita käytäntöjä noudattaen",
+      "Kokemusta liiketoimintakriittisten sovellusten rakentamisesta ja ylläpidosta",
+      "Valitulle henkilölle tehdään turvallisuusselvitys, jonka läpäiseminen on edellytys tehtävän aloittamiselle.",
+      "Eduksi katsotaan",
+      "Aito kiinnostus tai perustiedot optimointiteoriasta, algoritmeista ja koneoppimisesta",
+      "Tietoturvan parhaiden käytäntöjen, IAM/CIAM-ratkaisujen ja integraatiomallien tuntemus",
+      "Kokemus tiedon suoratoistoteknologioista (data streaming)",
+      "SQL- ja NoSQL-tietokantojen perustuntemus",
+      "Menestyäksesi tehtävässä sinulla on",
+      "Vahvat ongelmanratkaisutaidot ja halu selvittää asioiden juurisyyt",
+      "Oma-aloitteinen, rohkea ja ratkaisukeskeinen asenne – tartut toimeen ja kysyt aktiivisesti apua sekä tarkennuksia sidosryhmiltä",
+      "Halua jatkuvaan oppimiseen ja aitoa tiedonjanoa",
+      "Rekrytointiprosessimme",
+      "Academic Work hoitaa tätä hakua asiakkaansa puolesta, jonka toiveena on kaikkien tehtävää koskevien kysymysten osoittaminen Academic Workille.",
+      "Hakijoita haastatellaan jatkuvasti ja mikäli olemme edenneet jo rekrytointiprosessissa pidemmälle, saatamme sulkea haun ennen lopullisia valintoja.",
+      "Valintaprosessiin sisältyvät luonteenpiirteitä sekä kognitiivista kykyä mittaavat testit.",
+      "Testit toimivat työkaluina oikean tekijän löytämiseksi tehtävään sekä takaavat tasa-arvoisen ja oikeudenmukaisen arvioinnin."
+    ],
+    "candidates": [
+      {
+        "k": "K1",
+        "uri": "http://data.europa.eu/esco/skill/d9e5349e-8791-49c2-8ba4-839fdd1606c2",
+        "labelEn": "define technical requirements",
+        "labelFi": "määritellä teknisiä vaatimuksia",
+        "distractor": false
+      },
+      {
+        "k": "K2",
+        "uri": "http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97",
+        "labelEn": "computer programming",
+        "labelFi": "tietokoneohjelmointi",
+        "distractor": false
+      },
+      {
+        "k": "K3",
+        "uri": "http://data.europa.eu/esco/skill/72a74f69-5cf1-43c5-99b9-62a444578919",
+        "labelEn": "engineering processes",
+        "labelFi": "suunnitteluprosessit",
+        "distractor": false
+      },
+      {
+        "k": "K4",
+        "uri": "http://data.europa.eu/esco/skill/8b94aa1e-89c9-459d-b3b4-1dfab8dec2df",
+        "labelEn": "use software libraries",
+        "labelFi": "käyttää ohjelmistokirjastoja",
+        "distractor": false
+      },
+      {
+        "k": "K5",
+        "uri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+        "labelEn": "develop software prototype",
+        "labelFi": "kehittää ohjelmiston prototyyppi",
+        "distractor": false
+      },
+      {
+        "k": "K6",
+        "uri": "http://data.europa.eu/esco/skill/1019423b-3368-4f83-b24f-19e5fa23e816",
+        "labelEn": "software UI design patterns",
+        "labelFi": "ohjelmiston käyttöliittymän suunnittelumallit",
+        "distractor": true
+      },
+      {
+        "k": "K7",
+        "uri": "http://data.europa.eu/esco/skill/be48353d-25c7-4f86-bea9-7b9e248fbc6e",
+        "labelEn": "interpret technical requirements",
+        "labelFi": "tulkita teknisiä vaatimuksia",
+        "distractor": false
+      },
+      {
+        "k": "K8",
+        "uri": "http://data.europa.eu/esco/skill/2b7a79e5-84d8-4880-be66-3d9bb05bea17",
+        "labelEn": "use software design patterns",
+        "labelFi": "käyttää ohjelmistosuunnittelun malleja",
+        "distractor": false
+      },
+      {
+        "k": "K9",
+        "uri": "http://data.europa.eu/esco/skill/6a899482-8bcf-40ca-ae67-579a1cc467ab",
+        "labelEn": "manage engineering project",
+        "labelFi": "huolehtia teknisestä projektikokonaisuudesta",
+        "distractor": false
+      },
+      {
+        "k": "K10",
+        "uri": "http://data.europa.eu/esco/skill/4fabca9a-7435-4f33-b1da-3cdb00340fdc",
+        "labelEn": "perform scientific research",
+        "labelFi": "tehdä tieteellistä tutkimusta",
+        "distractor": false
+      },
+      {
+        "k": "K11",
+        "uri": "http://data.europa.eu/esco/skill/172020d1-e151-445b-8173-e2a5fb16fe51",
+        "labelEn": "utilise computer-aided software engineering tools",
+        "labelFi": "käyttää tietokoneavusteisia ohjelmistonsuunnittelutyökaluja",
+        "distractor": false
+      },
+      {
+        "k": "K12",
+        "uri": "http://data.europa.eu/esco/skill/237db40b-4600-47c0-837f-4a2c4f3014ab",
+        "labelEn": "project management principles",
+        "labelFi": "projektinhallinnan periaatteet",
+        "distractor": true
+      },
+      {
+        "k": "K13",
+        "uri": "http://data.europa.eu/esco/skill/0b0335f3-0aa1-491e-895e-81fc8774a300",
+        "labelEn": "develop automated migration methods",
+        "labelFi": "kehittää automaattisia siirtomenetelmiä",
+        "distractor": false
+      },
+      {
+        "k": "K14",
+        "uri": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+        "labelEn": "project management",
+        "labelFi": "projektinhallinta",
+        "distractor": false
+      },
+      {
+        "k": "K15",
+        "uri": "http://data.europa.eu/esco/skill/901105f8-3a08-453e-b1dc-23619e317fd3",
+        "labelEn": "create flowchart diagram",
+        "labelFi": "luoda vuokaaviodiagrammi",
+        "distractor": false
+      },
+      {
+        "k": "K16",
+        "uri": "http://data.europa.eu/esco/skill/f28617ad-afdd-4041-814c-216153a38998",
+        "labelEn": "analyse software specifications",
+        "labelFi": "analysoida ohjelmiston teknisiä tietoja",
+        "distractor": false
+      },
+      {
+        "k": "K17",
+        "uri": "http://data.europa.eu/esco/skill/2522a6ce-3202-4ac8-9f5b-b9cb5a3a83a1",
+        "labelEn": "debug software",
+        "labelFi": "etsiä ja poistaa virheet ohjelmistosta",
+        "distractor": false
+      },
+      {
+        "k": "K18",
+        "uri": "http://data.europa.eu/esco/skill/3c6fe585-7d12-4315-b579-e30c042088ce",
+        "labelEn": "use computer-aided engineering systems",
+        "labelFi": "käyttää tietokoneavusteisia laskenta- ja analyysijärjestelmiä",
+        "distractor": true
+      },
+      {
+        "k": "K19",
+        "uri": "http://data.europa.eu/esco/skill/f84a433f-34f1-4083-b0a3-24802623509c",
+        "labelEn": "web services",
+        "labelFi": "verkkopalvelut",
+        "distractor": false
+      },
+      {
+        "k": "K20",
+        "uri": "http://data.europa.eu/esco/skill/59ea80e1-463a-4dba-82c6-d0b6d577d532",
+        "labelEn": "technical drawings",
+        "labelFi": "tekniset piirustukset",
+        "distractor": false
+      },
+      {
+        "k": "K21",
+        "uri": "http://data.europa.eu/esco/skill/04fe962b-4017-4eb7-9139-7d69b6922bc9",
+        "labelEn": "use an application-specific interface",
+        "labelFi": "käyttää sovelluskohtaisia käyttöliittymiä",
+        "distractor": false
+      },
+      {
+        "k": "K22",
+        "uri": "http://data.europa.eu/esco/skill/209a5498-3449-4689-8ed9-bd08cab4fd78",
+        "labelEn": "engineering principles",
+        "labelFi": "teknisen suunnittelun periaatteet",
+        "distractor": false
+      },
+      {
+        "k": "K23",
+        "uri": "http://data.europa.eu/esco/skill/9d2e926f-53d9-41f5-98f3-19dfaa687f3f",
+        "labelEn": "tools for software configuration management",
+        "labelFi": "työkalut ohjelmiston kokoonpanon hallintaan",
+        "distractor": false
+      },
+      {
+        "k": "K24",
+        "uri": "http://data.europa.eu/esco/skill/9889b795-d755-41b2-8afd-2e3c87a65a38",
+        "labelEn": "use customer relationship management software",
+        "labelFi": "käyttää asiakkuuksien hallintaohjelmia",
+        "distractor": true
+      },
+      {
+        "k": "K25",
+        "uri": "http://data.europa.eu/esco/skill/0e0c9c11-b39e-43cf-ba95-2fe646f5de64",
+        "labelEn": "identify customer requirements",
+        "labelFi": "määritellä asiakasvaatimukset",
+        "distractor": false
+      },
+      {
+        "k": "K26",
+        "uri": "http://data.europa.eu/esco/skill/6014921e-1d25-4039-adc2-04852d61880e",
+        "labelEn": "ICT debugging tools",
+        "labelFi": "ICT-virheenkorjaustyökalut",
+        "distractor": false
+      },
+      {
+        "k": "K27",
+        "uri": "http://data.europa.eu/esco/skill/541561bc-510c-4a99-881c-2d8bf5a85462",
+        "labelEn": "use technical drawing software",
+        "labelFi": "käyttää teknisen piirtämisen ohjelmistoja",
+        "distractor": false
+      },
+      {
+        "k": "K28",
+        "uri": "http://data.europa.eu/esco/skill/925463a7-d51f-4d5b-9f79-4d28cf30acde",
+        "labelEn": "integrated development environment software",
+        "labelFi": "integroidun kehitysympäristön ohjelmisto",
+        "distractor": false
+      },
+      {
+        "k": "K29",
+        "uri": "http://data.europa.eu/esco/skill/9b9de2a4-d8af-4a7b-933a-a8334ae60067",
+        "labelEn": "JavaScript Framework",
+        "labelFi": "JavaScript Framework",
+        "distractor": false
+      },
+      {
+        "k": "K30",
+        "uri": "http://data.europa.eu/esco/skill/ac51e567-2261-48c7-b0cb-97c07fc60b6c",
+        "labelEn": "develop a specific interior design",
+        "labelFi": "suunnitella määrätty sisustus",
+        "distractor": true
+      },
+      {
+        "k": "K31",
+        "uri": "http://data.europa.eu/esco/skill/f049d050-12da-4e40-813a-2b5eb6df6b51",
+        "labelEn": "Internet of Things",
+        "labelFi": "Esineiden internet",
+        "distractor": false
+      },
+      {
+        "k": "K32",
+        "uri": "http://data.europa.eu/esco/skill/e8b89eb6-51e8-4c3a-babb-88b2e110376b",
+        "labelEn": "Pascal (computer programming)",
+        "labelFi": "Pascal (tietokoneohjelmointi)",
+        "distractor": false
+      },
+      {
+        "k": "K33",
+        "uri": "http://data.europa.eu/esco/skill/13bdd41a-2a18-441f-96db-41252c519413",
+        "labelEn": "Visual Basic",
+        "labelFi": "Visual Basic",
+        "distractor": false
+      },
+      {
+        "k": "K34",
+        "uri": "http://data.europa.eu/esco/skill/d31fab87-2a7d-485c-b699-2901ca294b15",
+        "labelEn": "use functional programming",
+        "labelFi": "käyttää funktionaalista ohjelmointia",
+        "distractor": false
+      },
+      {
+        "k": "K35",
+        "uri": "http://data.europa.eu/esco/skill/af7ae54f-4649-4c16-87c7-59ba41d4d57f",
+        "labelEn": "SPARK",
+        "labelFi": "SPARK",
+        "distractor": false
+      },
+      {
+        "k": "K36",
+        "uri": "http://data.europa.eu/esco/skill/e76dd90d-91c4-49c0-bfd0-dfa2c4c90c81",
+        "labelEn": "interpret electronic design specifications",
+        "labelFi": "tulkita elektronisen suunnittelun määrityksiä",
+        "distractor": true
+      },
+      {
+        "k": "K37",
+        "uri": "http://data.europa.eu/esco/skill/8764d4b1-e069-44f2-8baa-fb1eee1850ec",
+        "labelEn": "Oracle Application Development Framework",
+        "labelFi": "Oracle Application Development Framework",
+        "distractor": false
+      },
+      {
+        "k": "K38",
+        "uri": "http://data.europa.eu/esco/skill/69f0167e-75d9-46cf-847f-72a592880ebb",
+        "labelEn": "STAF",
+        "labelFi": "STAF",
+        "distractor": false
+      },
+      {
+        "k": "K39",
+        "uri": "http://data.europa.eu/esco/skill/020918ef-4b55-47c1-8430-ab7b8f6a7377",
+        "labelEn": "migrate existing data",
+        "labelFi": "siirtää nykyiset tiedot",
+        "distractor": false
+      },
+      {
+        "k": "K40",
+        "uri": "http://data.europa.eu/esco/skill/401eb8d8-6daa-4f8b-90ad-60afc71eb4f8",
+        "labelEn": "Perl",
+        "labelFi": "Perl",
+        "distractor": false
+      }
+    ]
+  },
+  "fi-over12-satellite": {
+    "fixtureIndex": 8,
+    "situation": "more than 12 possible requirements; state-owned; security clearance by law; equality statement naming age/gender",
+    "title": "Kehityspäällikkö, satelliittiteknologiat | Erillisverkot / Espoo, Jyväskylä, Tampere, Kuopio, Turku, Oulu",
+    "lang": "fi",
+    "sector": "private",
+    "source": "tmt",
+    "employerName": "MPS Consulting Oy",
+    "brands": [
+      "Erillisverkot",
+      "Erillisverkko",
+      "Erve"
+    ],
+    "workLanguages": [
+      "fi"
+    ],
+    "sentences": [
+      "Haluatko olla rakentamassa satelliittiteknologioihin perustuvia tulevaisuuden palveluita ja ratkaisuja yhteiskunnan kriittisiin tarpeisiin?",
+      "Haemme Ervejoukkoomme KEHITYSPÄÄLLIKKÖÄ satellittiteknologioiden pariin.",
+      "Erillisverkot on valtion omistama yhtiö, jolla on erityinen tehtävä: me tarjoamme viranomaisille ja huoltovarmuustoimijoille turvalliset ja toimintavarmat ict-palvelut kaikissa olosuhteissa.",
+      "Ne takaavat sen, että Suomi on maailman turvallisin maa nyt ja tulevaisuudessa.",
+      "Erillisverkkolaiset ovat yhteiskunnan turvaajia, joihin voi luottaa tiukoissakin paikoissa.",
+      "Tässä tehtävässä pääset kehittämään ratkaisuja, joiden toimintavarmuudella ja turvallisuudella on yhteiskunnallista merkitystä.",
+      "Satelliittiteknologioiden rooli kriittisessä viestinnässä kasvaa nopeasti, ja Erillisverkoilla olet mukana rakentamassa niiden käytännön hyödyntämistä Suomessa.",
+      "Pääset työssäsi yhdistämään teknologian, liiketoiminnan kehittämisen ja kansainvälisen yhteistyön sekä vaikuttamaan siihen, miten nopeasti kehittyviä satelliittiratkaisuja voidaan hyödyntää osana turvallista ja toimintavarmaa kommunikaatiota.",
+      "Kehityspäällikkönä vastaat satelliittiteknologioihin perustuvan liiketoiminnan ja uusien ratkaisujen kehittämisestä.",
+      "Seuraat alan teknologiakehitystä ja standardointia sekä osallistut aktiivisesti kansallisiin ja kansainvälisiin työryhmiin ja hankkeisiin.",
+      "Lisäksi toimit asiantuntijana Erillisverkkojen tutkimus-, kehitys- ja innovaatiohankkeissa ja arvioit uusien teknologioiden soveltuvuutta Erillisverkkojen ja sen asiakkaiden tarpeisiin.",
+      "Tehtäviisi kuuluu muun muassa",
+      "satelliittitietoliikenteeseen perustuvien palveluiden ja liiketoiminnan kehittäminen",
+      "uusien satelliittiteknologioiden, ratkaisujen ja käyttötapausten tunnistaminen ja arviointi",
+      "alan standardien ja teknologiakehityksen seuraaminen sekä niihin vaikuttaminen",
+      "osallistuminen kansallisiin ja kansainvälisiin työryhmiin ja kehityshankkeisiin",
+      "asiantuntijatehtävät tutkimus-, kehitys- ja innovaatiohankkeissa",
+      "teknologiakokeilujen ja pilottien suunnittelu ja toteutus",
+      "yhteistyö asiakkaiden, teknologiatoimittajien, tutkimusorganisaatioiden ja muiden kumppaneiden kanssa",
+      "uusien ratkaisujen kaupallisen potentiaalin ja palvelumallien arviointi.",
+      "Toimipisteesi voi sijaita valintasi mukaan Espoossa, Jyväskylässä, Tampereella, Kuopiossa, Turussa, Oulussa tai muussa Erillisverkkojen toimipisteessä.",
+      "Hyödynnämme joustavaa hybridityömallia, jossa osa työstä on mahdollista tehdä etänä.",
+      "Työ sisältää matkustamista kotimaassa ja ulkomailla.",
+      "Odotamme sinulta",
+      "satelliittiteknologioiden ja satelliittipohjaisten palveluiden tuntemusta",
+      "liiketoiminnan kehitysosaamista",
+      "tuotekehitys- tai teknologiakehitysosaamista",
+      "kokemusta projektien tai kehityskokonaisuuksien johtamisesta",
+      "valmiuksia toimia tutkimus-, kehitys- ja innovaatiohankkeissa",
+      "kykyä arvioida teknologioita sekä teknisestä että liiketoiminnallisesta näkökulmasta",
+      "hyviä yhteistyö-, viestintä- ja verkostoitumistaitoja",
+      "sujuvaa englannin kielen taitoa kansainvälisessä toimintaympäristössä.",
+      "Eduksi tehtävässä ovat",
+      "satelliittitietoliikenteen (LEO/MEO/GEO/HEO), EO- ja/tai GNSS-tuntemus",
+      "3GPP NTN -teknologioiden ja satelliitti- ja mobiiliverkkojen integraation tuntemus",
+      "ymmärrys satelliittijärjestelmien resilienssistä, käytettävyydestä ja tietoturvasta",
+      "kokemus kansainvälisestä TKI-toiminnasta",
+      "kokemus EU tutkimus- ja kehitysohjelmista, kuten Horizon Europe-, EDF- tai EDA-hankkeista",
+      "turvallisuusviranomaisten toimintaympäristön tuntemus",
+      "kokemus julkisista hankinnoista",
+      "kriittisen kommunikaation ratkaisujen tuntemus",
+      "tietoliikenne- tai järjestelmäarkkitehtuurien tuntemus",
+      "kokemus teknologioiden tuotteistamisesta tai kaupallistamisesta",
+      "kyberturvallisuuden huomioiminen teknologiaratkaisuissa",
+      "kokemus paikkatietojärjestelmien käytöstä.",
+      "Vaikutamme työllämme Suomen turvallisuuteen.",
+      "Vaativat ja monipuoliset tehtävät ainutlaatuisen asiakaskunnan ja teknologioiden parissa vaativat vastapainokseen erityisen hyvän työpaikan.",
+      "Siksi meillä huolehditaan, että Ervejoukkomme voi hyvin ja virtaa riittää myös työpäivän jälkeen.",
+      "Erveläisenä voit olla ylpeä työstäsi ja osaavista työkavereistasi.",
+      "Arvomme yhteistyö, luottamus, kehitys ja vastuullisuus ovat työmme perusta.",
+      "Tarjoamme sinulle",
+      "mahdollisuuden työskennellä kiinnostavien teknologioiden, kansainvälisten verkostojen ja vaativien asiakasympäristöjen parissa yhdessä kokeneiden asiantuntijoiden kanssa",
+      "työpaikan, jossa satsataan työntekijöiden hyvinvointiin; esimerkiksi vuonna 2026 erillisverkkolaiset saavat käyttää viikossa tunnin työaikaa liikuntaan",
+      "hybridityömahdollisuuden",
+      "hyvät työnteon puitteet ja mutkattoman työilmapiirin",
+      "ervenomaiset henkilöstöedut: lounasetu, virike-etu (käytettävissä myös hierontaan ja terveyspalveluihin), laaja työterveyshuolto, matkapuhelinetu ja laaja vapaa-ajan tapaturmavakuutus",
+      "mahdollisuuden tulospalkkioon",
+      "kilpailukykyisen palkan, joka sijoittuu kokemuksestasi ja osaamistaustastasi riippuen 6000–6700 €/kk välille.",
+      "Tehtävässä sovelletaan ICT-alan työehtosopimusta ylemmille toimihenkilöille.",
+      "Jokainen on arvokas.",
+      "Haluamme, että työmme periaatteita kunnioittavat, erilaiset ihmiset voivat meillä kokea aidosti kuuluvansa joukkoon.",
+      "Jokainen arvoihimme sitoutuva voi työskennellä turvallisuudentekijänä – iästä, kokemastaan sukupuolesta, koulutustaustasta, vakaumuksesta, seksuaalisesta suuntautumisesta, ulkonäöstä tai muusta ominaisuudesta riippumatta.",
+      "Teemme turvallisuuskriittistä työtä yhteistyössä viranomaisten kanssa.",
+      "Tehtävään valittavasta henkilöstä tehdään henkilöturvallisuusselvitys (Turvallisuusselvityslaki 726/2014).",
+      "Turvallisuusselvitysten tarkoitus on ennaltaehkäistä kansallista turvallisuutta vaarantavaa toimintaa.",
+      "Turvallisuusselvitysmenettelystä ja selvityksen kohteen oikeuksista löytyy tarkempia tietoja osoitteessa www.supo.fi.",
+      "Lisäksi tehtävät vaativat todistuksen huumausainetestistä."
+    ],
+    "candidates": [
+      {
+        "k": "K1",
+        "uri": "http://data.europa.eu/esco/skill/b3f971b2-6c11-43d3-b5ce-8ba7f5a223c7",
+        "labelEn": "types of satellites",
+        "labelFi": "satelliittityypit",
+        "distractor": false
+      },
+      {
+        "k": "K2",
+        "uri": "http://data.europa.eu/esco/skill/f54c10e4-630d-4e50-95e9-4e9e268e8f12",
+        "labelEn": "approve engineering design",
+        "labelFi": "hyväksyä teknisiä suunnitelmia",
+        "distractor": false
+      },
+      {
+        "k": "K3",
+        "uri": "http://data.europa.eu/esco/skill/5dd96c59-5955-474b-8cf5-e986a5b50f1a",
+        "labelEn": "aerospace engineering",
+        "labelFi": "ilmakehä- ja avaruustekniikka",
+        "distractor": false
+      },
+      {
+        "k": "K4",
+        "uri": "http://data.europa.eu/esco/skill/a521903b-aa32-4954-9790-961b0df1261f",
+        "labelEn": "unmanned air systems",
+        "labelFi": "miehittämättömät ilmajärjestelmät",
+        "distractor": false
+      },
+      {
+        "k": "K5",
+        "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
+        "labelEn": "quality standards",
+        "labelFi": "laatustandardit",
+        "distractor": false
+      },
+      {
+        "k": "K6",
+        "uri": "http://data.europa.eu/esco/skill/172020d1-e151-445b-8173-e2a5fb16fe51",
+        "labelEn": "utilise computer-aided software engineering tools",
+        "labelFi": "käyttää tietokoneavusteisia ohjelmistonsuunnittelutyökaluja",
+        "distractor": true
+      },
+      {
+        "k": "K7",
+        "uri": "http://data.europa.eu/esco/skill/a1816dfd-dbdc-4499-bef3-ff81dd895b33",
+        "labelEn": "industrial engineering",
+        "labelFi": "tuotantotekniikka",
+        "distractor": false
+      },
+      {
+        "k": "K8",
+        "uri": "http://data.europa.eu/esco/skill/42b23922-1c40-4dbe-9e0c-7a568dfdf06b",
+        "labelEn": "adjust engineering designs",
+        "labelFi": "muokata teknisiä suunnitelmia",
+        "distractor": false
+      },
+      {
+        "k": "K9",
+        "uri": "http://data.europa.eu/esco/skill/e3201e73-ef4d-447d-ac9b-b18e45f35eea",
+        "labelEn": "monitor satellites",
+        "labelFi": "valvoa satelliitteja",
+        "distractor": false
+      },
+      {
+        "k": "K10",
+        "uri": "http://data.europa.eu/esco/skill/209a5498-3449-4689-8ed9-bd08cab4fd78",
+        "labelEn": "engineering principles",
+        "labelFi": "teknisen suunnittelun periaatteet",
+        "distractor": false
+      },
+      {
+        "k": "K11",
+        "uri": "http://data.europa.eu/esco/skill/72a74f69-5cf1-43c5-99b9-62a444578919",
+        "labelEn": "engineering processes",
+        "labelFi": "suunnitteluprosessit",
+        "distractor": false
+      },
+      {
+        "k": "K12",
+        "uri": "http://data.europa.eu/esco/skill/1c8327dd-9af0-4124-9c4e-0342d90189d4",
+        "labelEn": "design pharmaceutical manufacturing systems",
+        "labelFi": "suunnitella lääkevalmistusjärjestelmiä",
+        "distractor": true
+      },
+      {
+        "k": "K13",
+        "uri": "http://data.europa.eu/esco/skill/541561bc-510c-4a99-881c-2d8bf5a85462",
+        "labelEn": "use technical drawing software",
+        "labelFi": "käyttää teknisen piirtämisen ohjelmistoja",
+        "distractor": false
+      },
+      {
+        "k": "K14",
+        "uri": "http://data.europa.eu/esco/skill/12c7b323-d870-4f5b-9d7d-d9f525206d77",
+        "labelEn": "production processes",
+        "labelFi": "tuotantoprosessit",
+        "distractor": false
+      },
+      {
+        "k": "K15",
+        "uri": "http://data.europa.eu/esco/skill/8e91c9b3-45de-4db2-91df-138d10031cf0",
+        "labelEn": "log transmitter readings",
+        "labelFi": "kirjata lähettimen lukemia",
+        "distractor": false
+      },
+      {
+        "k": "K16",
+        "uri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+        "labelEn": "manufacturing processes",
+        "labelFi": "valmistusprosessit",
+        "distractor": false
+      },
+      {
+        "k": "K17",
+        "uri": "http://data.europa.eu/esco/skill/3180dd8e-332e-4430-bf4d-c4079e9da1b0",
+        "labelEn": "launching of satellites into orbit",
+        "labelFi": "satelliittien laukaisu kiertoradalle",
+        "distractor": false
+      },
+      {
+        "k": "K18",
+        "uri": "http://data.europa.eu/esco/skill/1e3222fa-724d-41f0-9b0a-e88d1003cd35",
+        "labelEn": "perform a feasibility study on solar absorption cooling",
+        "labelFi": "tehdä toteutettavuustutkimus aurinkovoimalla toimivasta absorptiojäähdytyksestä",
+        "distractor": true
+      },
+      {
+        "k": "K19",
+        "uri": "http://data.europa.eu/esco/skill/334e3e49-fb02-4051-809a-f06adfdc1c40",
+        "labelEn": "troubleshoot",
+        "labelFi": "tunnistaa ongelmia",
+        "distractor": false
+      },
+      {
+        "k": "K20",
+        "uri": "http://data.europa.eu/esco/skill/4fabca9a-7435-4f33-b1da-3cdb00340fdc",
+        "labelEn": "perform scientific research",
+        "labelFi": "tehdä tieteellistä tutkimusta",
+        "distractor": false
+      },
+      {
+        "k": "K21",
+        "uri": "http://data.europa.eu/esco/skill/59ea80e1-463a-4dba-82c6-d0b6d577d532",
+        "labelEn": "technical drawings",
+        "labelFi": "tekniset piirustukset",
+        "distractor": false
+      },
+      {
+        "k": "K22",
+        "uri": "http://data.europa.eu/esco/skill/6e8fe5de-fe6d-482c-92fe-20e56ee57324",
+        "labelEn": "global navigation satellite system performance parameters",
+        "labelFi": "maailmanlaajuisen satelliittinavigointijärjestelmän suorituskykyparametrit",
+        "distractor": false
+      },
+      {
+        "k": "K23",
+        "uri": "http://data.europa.eu/esco/skill/fea269a3-85e5-4953-a5b8-e9b7b275b7df",
+        "labelEn": "geostationary satellites",
+        "labelFi": "geostationaariset satelliitit",
+        "distractor": false
+      },
+      {
+        "k": "K24",
+        "uri": "http://data.europa.eu/esco/skill/233be639-bdb5-4099-ab40-96d537d6c1f3",
+        "labelEn": "ensure compliance with safety legislation",
+        "labelFi": "varmistaa turvallisuuslainsäädännön noudattaminen",
+        "distractor": true
+      },
+      {
+        "k": "K25",
+        "uri": "http://data.europa.eu/esco/skill/532bcdca-a889-4dea-8f7f-4e03d8cfd0d2",
+        "labelEn": "aircraft mechanics",
+        "labelFi": "ilma-alusten mekaniikka",
+        "distractor": false
+      },
+      {
+        "k": "K26",
+        "uri": "http://data.europa.eu/esco/skill/0823ccef-813f-4f22-afef-ac0d68615e8f",
+        "labelEn": "computer simulation",
+        "labelFi": "tietokonesimulaatio",
+        "distractor": false
+      },
+      {
+        "k": "K27",
+        "uri": "http://data.europa.eu/esco/skill/e95058a6-e139-42e7-a470-72038a606649",
+        "labelEn": "assess financial viability",
+        "labelFi": "arvioida taloudellista elinkelpoisuutta",
+        "distractor": false
+      },
+      {
+        "k": "K28",
+        "uri": "http://data.europa.eu/esco/skill/d74df140-eb69-43e2-bac9-1cafc824d702",
+        "labelEn": "execute feasibility study",
+        "labelFi": "tehdä kannattavuustutkimus",
+        "distractor": false
+      },
+      {
+        "k": "K29",
+        "uri": "http://data.europa.eu/esco/skill/be566f3e-6c21-4799-a7d0-fa4abbcb71cd",
+        "labelEn": "ensure aircraft compliance with regulation",
+        "labelFi": "varmistaa ilma-aluksen vaatimustenmukaisuus",
+        "distractor": false
+      },
+      {
+        "k": "K30",
+        "uri": "http://data.europa.eu/esco/skill/39f55791-434d-4169-9a46-c000a2859a66",
+        "labelEn": "ensure safety of mobile electrical systems",
+        "labelFi": "varmistaa liikuteltavien sähköjärjestelmien turvallisuus",
+        "distractor": true
+      },
+      {
+        "k": "K31",
+        "uri": "http://data.europa.eu/esco/skill/47d491a9-f7c0-4b13-a10f-983d3aa0113e",
+        "labelEn": "safety engineering",
+        "labelFi": "turvallisuustekniikka",
+        "distractor": false
+      },
+      {
+        "k": "K32",
+        "uri": "http://data.europa.eu/esco/skill/2964011e-f828-4c6c-b98b-51e984d66365",
+        "labelEn": "material mechanics",
+        "labelFi": "materiaalimekaniikka",
+        "distractor": false
+      },
+      {
+        "k": "K33",
+        "uri": "http://data.europa.eu/esco/skill/4754d9fe-dc3a-4f8f-8ea6-5dbcea3a21ca",
+        "labelEn": "develop computer vision system",
+        "labelFi": "kehittää konenäköjärjestelmä",
+        "distractor": false
+      },
+      {
+        "k": "K34",
+        "uri": "http://data.europa.eu/esco/skill/b34e2ba1-9080-48c9-9b42-ee9192a4d3f1",
+        "labelEn": "use CAD software",
+        "labelFi": "käyttää tietokoneavusteisia suunnitteluohjelmia",
+        "distractor": false
+      },
+      {
+        "k": "K35",
+        "uri": "http://data.europa.eu/esco/skill/7a757fa5-9a6f-43ab-9e66-f8f4dba1ffcb",
+        "labelEn": "use CAM software",
+        "labelFi": "käyttää tietokoneavusteisen valmistuksen ohjelmistoja",
+        "distractor": false
+      },
+      {
+        "k": "K36",
+        "uri": "http://data.europa.eu/esco/skill/3c6fe585-7d12-4315-b579-e30c042088ce",
+        "labelEn": "use computer-aided engineering systems",
+        "labelFi": "käyttää tietokoneavusteisia laskenta- ja analyysijärjestelmiä",
+        "distractor": true
+      },
+      {
+        "k": "K37",
+        "uri": "http://data.europa.eu/esco/skill/f10142ce-d522-49c3-9fd1-054fb63529d4",
+        "labelEn": "develop test procedures",
+        "labelFi": "kehittää testausmenetelmiä",
+        "distractor": false
+      },
+      {
+        "k": "K38",
+        "uri": "http://data.europa.eu/esco/skill/bbd57056-80e0-45bb-a2c1-658ed99a1251",
+        "labelEn": "conduct performance tests",
+        "labelFi": "suorittaa käyttökokeita",
+        "distractor": false
+      },
+      {
+        "k": "K39",
+        "uri": "http://data.europa.eu/esco/skill/6b9194f0-f8bb-4b9a-96a5-2203c9c2671b",
+        "labelEn": "oversee assembly operations",
+        "labelFi": "valvoa kokoonpanotoimintaa",
+        "distractor": false
+      },
+      {
+        "k": "K40",
+        "uri": "http://data.europa.eu/esco/skill/ea14a3eb-526f-4d8d-9015-c2dc62739e7a",
+        "labelEn": "research satellite launch sites",
+        "labelFi": "tutkia satelliittien laukaisupaikkoja",
+        "distractor": false
+      }
+    ]
+  },
+  "fi-prose-chef": {
+    "fixtureIndex": 37,
+    "situation": "requirements buried in prose; 3 years 'in Finland'; hygiene passport; driving licence",
+    "title": "Keittiömestari",
+    "lang": "fi",
+    "sector": "private",
+    "source": "tmt",
+    "employerName": "Restaurants By Spoon Oy",
+    "brands": [
+      "Spoon",
+      "Restaurants By Spoon",
+      "Rosegarden",
+      "Lunchbox"
+    ],
+    "workLanguages": [
+      "fi",
+      "en"
+    ],
+    "sentences": [
+      "Keittiömestari",
+      "Restaurants By Spoon Oy jatkaa strategiansa mukaista laajentumista sesonkipainoitteisissa ravintoloissa.",
+      "Haluamme vahvistaa keittiötiimimme osaamista ja taata kasvavassa yrityksessä vankan osaamisen.",
+      "Haemme nyt joukkoomme toistaiseksi voimassa olevaan työsuhteeseen keittiömestaria vastaamaan Spoon - Rosegardenin ja Spoon - Cateringin keittiötoimesta.",
+      "Olisitko sinä Spoonin tiimiin sopiva mesu?",
+      "Edellytämme sinulta löytyvän aiempaa kokemusta keittiömestarin tai vuoromestarin tehtävistä vähintään kolmen vuoden ajalta suomessa.",
+      "Pystyt itsenäisesti johtamaan keittiötä ja pientä tiimiä.",
+      "Intohimosi löytyy kuitenkin keittiöstä ja tekemisestä, ei läppärin takaa.",
+      "Rosegarden ja catering pyörii pienellä tiimillä, joka tietenkin vahvistuu tapahtumiin tarvittaessa muista Spooneista tai luotetattavista ekstraajista.",
+      "Saat vastuullesi Spoon - Rosegardenin lounaat sekä uuden Lunchbox konseptimme lounastarjonnan.",
+      "Päivittäinen annosmäärä vaihtelee 150 ja 200 annoksen välissä, jatkuvasti kasvaen.",
+      "Spoon - Catering kasvaa vuosittain merkittävää vauhtia ja oikean keittiömestarin löydyttyä tavoitteena on panostaa catering liiketoiminnan kasvuun merkittävästi.",
+      "Lounaskonsepti toimii hyvin vakaalla pohjalla ja järkevillä katetavoitteilla, emme vaadi kuuta taivaalta vaan arvostamme itse tehtyä ja maukasta ruokaa tuoreita raaka-aineita hyödyntäen.",
+      "Vahvuuksiasi on kehittävä johtaminen, jaksat innostaa ja innostua sekä tuoda omaa laajaa ammattitaitoasi liiketoiminnan ja itsesi sekä tiimisi kehittämiseen.",
+      "Meillä pääset kehittymään ammatissasi monipuolisesti ja vauhtia riittää ympäri vuoden.",
+      "Tässä pestissä poikkeuksena muihin Spoonin toimipisteisiin vahvin sesonki painottuu kesän ulkopuolelle.",
+      "Tarjoamme sinulle paikan, jossa pääset itse vaikuttamaan tarjontaan ja uudistaa yhdessä Spoonin johdon kanssa catering tuotetta vastaamaan nykypäivän vaativaan ja monipuoliseen kysyntään.",
+      "Takanasi on kuitenkin vahva selkänoja niin omistajajohdon kuin jo hyväksi todettujen konseptien muodossa.",
+      "Tarjoamme myös kilpailukykyisen palkan sekä työsuhde-edut!",
+      "Palkkaus: Kokoaikainen ja toistaiseksi voimassaoleva työsopimus",
+      "Palkka: 3300-4100€/kk",
+      "Laajat vapaa-ajan tapaturmavakuutukset, työterveys Mehiläisen kanssa, mahdollisuus työsuhdeautoon yms...",
+      "Restaurants By Spoon Oy:n strategian mukainen tavoite on olla omalla sektorillaan luotetuin ja halutuin yhteistyökumppani sekä työnantaja.",
+      "Sloganimme \"Ruokaa suurella sydämellä ja leveällä hymyllä.",
+      "Aina.\" on vahvasti mukana päivittäisessä toiminnassa ja tämän päälle olemme rakentaneet yritykselle arvot, joiden tavoitteena on luoda paras mahdollinen työpaikka ja -yhteisö.",
+      "Kasvamme hallitusti omilla vahvuusalueillamme ja tavoittelemme vakaata kasvua emmekä pikavoittoja.",
+      "Haku päättyy 31.1.2027 mutta paikka täytetään heti sopivan tekijän löydyttyä.",
+      "Työssä vaadittavat luvat ja kortit",
+      "Hygieniapassi",
+      "Työssä vaadittavat ajokortit",
+      "Henkilöauto"
+    ],
+    "candidates": [
+      {
+        "k": "K1",
+        "uri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+        "labelEn": "use cooking techniques",
+        "labelFi": "käyttää ruoanvalmistusmenetelmiä",
+        "distractor": false
+      },
+      {
+        "k": "K2",
+        "uri": "http://data.europa.eu/esco/skill/f4a30153-2b27-4c15-82ea-e0216bd0012f",
+        "labelEn": "compile cooking recipes",
+        "labelFi": "laatia reseptejä",
+        "distractor": false
+      },
+      {
+        "k": "K3",
+        "uri": "http://data.europa.eu/esco/skill/4b15a965-9bb4-42f1-8e44-1024aeb0b08c",
+        "labelEn": "use food preparation techniques",
+        "labelFi": "käyttää ruoanvalmistustekniikoita",
+        "distractor": false
+      },
+      {
+        "k": "K4",
+        "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+        "labelEn": "manage staff",
+        "labelFi": "toimia esimiehenä",
+        "distractor": false
+      },
+      {
+        "k": "K5",
+        "uri": "http://data.europa.eu/esco/skill/3b902c9f-3def-4c0b-b940-02924d698675",
+        "labelEn": "set prices of menu items",
+        "labelFi": "määritellä menun ruokien hinnat",
+        "distractor": false
+      },
+      {
+        "k": "K6",
+        "uri": "http://data.europa.eu/esco/skill/0b41f1ca-73b1-470e-a425-ba3e9c1b6e0b",
+        "labelEn": "maintain safety systems",
+        "labelFi": "huoltaa turvallisuusjärjestelmiä",
+        "distractor": true
+      },
+      {
+        "k": "K7",
+        "uri": "http://data.europa.eu/esco/skill/c87c5366-c9a9-4205-8333-4938a9c384ad",
+        "labelEn": "maintain a safe, hygienic and secure working environment",
+        "labelFi": "ylläpitää siistiä, hygieenistä ja turvallista työskentely-ympäristöä",
+        "distractor": false
+      },
+      {
+        "k": "K8",
+        "uri": "http://data.europa.eu/esco/skill/fd60eb61-262e-4719-bb5c-e5ff4b531ae8",
+        "labelEn": "monitor the use of kitchen equipment",
+        "labelFi": "valvoa keittiövarusteiden käyttöä",
+        "distractor": false
+      },
+      {
+        "k": "K9",
+        "uri": "http://data.europa.eu/esco/skill/5c6ca864-76d5-4217-b3e1-9a7ba7f8f47b",
+        "labelEn": "plan menus",
+        "labelFi": "suunnitella ruokalistoja",
+        "distractor": false
+      },
+      {
+        "k": "K10",
+        "uri": "http://data.europa.eu/esco/skill/d7d53919-5313-4f23-a701-d12f86c03a60",
+        "labelEn": "use resource-efficient technologies in hospitality",
+        "labelFi": "käyttää resurssitehokkaita teknologioita majoitus- ja ravintola-alalla",
+        "distractor": false
+      },
+      {
+        "k": "K11",
+        "uri": "http://data.europa.eu/esco/skill/36a48e03-4466-4ea3-b463-cbce02cbd7bb",
+        "labelEn": "ensure maintenance of kitchen equipment",
+        "labelFi": "varmistaa keittiölaitteiden huolto",
+        "distractor": false
+      },
+      {
+        "k": "K12",
+        "uri": "http://data.europa.eu/esco/skill/1fcc7c3a-9693-4999-870f-8dab6283d9e7",
+        "labelEn": "design safety equipment",
+        "labelFi": "suunnitella turvalaitteita",
+        "distractor": true
+      },
+      {
+        "k": "K13",
+        "uri": "http://data.europa.eu/esco/skill/f7f56b20-8f05-4731-a1bf-79fdcffc72ce",
+        "labelEn": "check deliveries on receipt",
+        "labelFi": "tarkastaa saapuvat toimitukset",
+        "distractor": false
+      },
+      {
+        "k": "K14",
+        "uri": "http://data.europa.eu/esco/skill/e1f5c539-7c93-49ee-917d-a24e0d887686",
+        "labelEn": "control of expenses",
+        "labelFi": "hallita kuluja",
+        "distractor": false
+      },
+      {
+        "k": "K15",
+        "uri": "http://data.europa.eu/esco/skill/0ff99f51-40d9-42f1-a1ec-377b2bb5e15f",
+        "labelEn": "comply with food safety and hygiene",
+        "labelFi": "noudattaa elintarvikkeisiin liittyvää terveys- turvallisuus- hygienia- ja muuta asiaankuuluvaa lainsäädäntöä",
+        "distractor": false
+      },
+      {
+        "k": "K16",
+        "uri": "http://data.europa.eu/esco/skill/9ccd8da7-733b-4aff-a49f-94c390aeb618",
+        "labelEn": "handover the food preparation area",
+        "labelFi": "luovuttaa ruoanvalmistustila seuraavalle vuorolle",
+        "distractor": false
+      },
+      {
+        "k": "K17",
+        "uri": "http://data.europa.eu/esco/skill/dff0087d-25e4-40bf-979e-32fdf2445438",
+        "labelEn": "develop food waste reduction strategies",
+        "labelFi": "kehittää elintarvikejätteen vähentämisstrategioita",
+        "distractor": false
+      },
+      {
+        "k": "K18",
+        "uri": "http://data.europa.eu/esco/skill/39f55791-434d-4169-9a46-c000a2859a66",
+        "labelEn": "ensure safety of mobile electrical systems",
+        "labelFi": "varmistaa liikuteltavien sähköjärjestelmien turvallisuus",
+        "distractor": true
+      },
+      {
+        "k": "K19",
+        "uri": "http://data.europa.eu/esco/skill/8c8da904-cdb3-47d9-bfbf-15ade747d9ec",
+        "labelEn": "work in a hospitality team",
+        "labelFi": "työskennellä ryhmässä matkailu-, majoitus- tai ravitsemisalalla",
+        "distractor": false
+      },
+      {
+        "k": "K20",
+        "uri": "http://data.europa.eu/esco/skill/4cc3ae6a-c53e-4113-aced-41476cd22eb3",
+        "labelEn": "think creatively about food and beverages",
+        "labelFi": "käyttää luovuutta ruokien ja juomien suunnittelussa, valmistuksessa ja esillepanossa",
+        "distractor": false
+      },
+      {
+        "k": "K21",
+        "uri": "http://data.europa.eu/esco/skill/a02d7f88-a240-4644-911b-169af470be5a",
+        "labelEn": "use reheating techniques",
+        "labelFi": "käyttää uudelleenlämmitystekniikoita",
+        "distractor": false
+      },
+      {
+        "k": "K22",
+        "uri": "http://data.europa.eu/esco/skill/2879e8f6-037a-49ed-ba73-6f7d7766223e",
+        "labelEn": "food waste monitoring systems",
+        "labelFi": "elintarvikejätteen seurantajärjestelmät",
+        "distractor": false
+      },
+      {
+        "k": "K23",
+        "uri": "http://data.europa.eu/esco/skill/29b326ea-a9c8-4963-b35a-8541d0cdff77",
+        "labelEn": "store raw food materials",
+        "labelFi": "varastoida elintarvikkeiden raaka-aineita",
+        "distractor": false
+      },
+      {
+        "k": "K24",
+        "uri": "http://data.europa.eu/esco/skill/57c1debf-3867-4e64-baf8-ce70d84f88c9",
+        "labelEn": "maintain store cleanliness",
+        "labelFi": "ylläpitää myymälän siisteyttä",
+        "distractor": true
+      },
+      {
+        "k": "K25",
+        "uri": "http://data.europa.eu/esco/skill/dbeb3539-73c7-4be5-ada5-1d6e9657b356",
+        "labelEn": "types of whisks",
+        "labelFi": "vispilätyypit",
+        "distractor": false
+      },
+      {
+        "k": "K26",
+        "uri": "http://data.europa.eu/esco/skill/538b91e8-565c-4483-bf97-6ff120e207a7",
+        "labelEn": "instruct kitchen personnel",
+        "labelFi": "ohjeistaa keittiöhenkilöstöä",
+        "distractor": false
+      },
+      {
+        "k": "K27",
+        "uri": "http://data.europa.eu/esco/skill/e265e4e2-f031-4012-a7bf-54cac48fb846",
+        "labelEn": "maintain kitchen equipment at correct temperature",
+        "labelFi": "huolehtia keittiölaitteiden oikeasta lämpötilasta",
+        "distractor": false
+      },
+      {
+        "k": "K28",
+        "uri": "http://data.europa.eu/esco/skill/75dfe1ee-5935-42ce-b820-697f827825c3",
+        "labelEn": "maintain customer service",
+        "labelFi": "ylläpitää asiakaspalvelua",
+        "distractor": false
+      },
+      {
+        "k": "K29",
+        "uri": "http://data.europa.eu/esco/skill/c42d2a2a-2f55-45ac-beb1-0a8a76412457",
+        "labelEn": "use food cutting tools",
+        "labelFi": "käyttää elintarvikkeiden leikkaustyökaluja",
+        "distractor": false
+      },
+      {
+        "k": "K30",
+        "uri": "http://data.europa.eu/esco/skill/8645704c-a896-4ac1-8189-9ac5586d5c3a",
+        "labelEn": "prepare detailed working drawings for interior design",
+        "labelFi": "tehdä yksityiskohtaisia sisustussuunnitelmapiirustuksia",
+        "distractor": true
+      },
+      {
+        "k": "K31",
+        "uri": "http://data.europa.eu/esco/skill/3936cc7d-d045-4eb0-b951-b862a072c0a2",
+        "labelEn": "design indicators for food waste reduction",
+        "labelFi": "suunnitella elintarvikejätteen vähentämistä koskevia indikaattoreita",
+        "distractor": false
+      },
+      {
+        "k": "K32",
+        "uri": "http://data.europa.eu/esco/skill/bb84d739-1b06-477b-9195-251650bb3c14",
+        "labelEn": "use culinary finishing techniques",
+        "labelFi": "käyttää ruoanlaiton viimeistelytekniikoita",
+        "distractor": false
+      },
+      {
+        "k": "K33",
+        "uri": "http://data.europa.eu/esco/skill/1f6b05c1-e314-4ae6-b6ef-d469667e8961",
+        "labelEn": "prepare canapés",
+        "labelFi": "valmistaa kanapeita",
+        "distractor": false
+      },
+      {
+        "k": "K34",
+        "uri": "http://data.europa.eu/esco/skill/efd806d5-8390-4591-9c52-14d8f74bfa43",
+        "labelEn": "create decorative food displays",
+        "labelFi": "asettaa ruoka esille edustavasti",
+        "distractor": false
+      },
+      {
+        "k": "K35",
+        "uri": "http://data.europa.eu/esco/skill/bbfb0e36-807c-492f-bed2-267224ba7bc7",
+        "labelEn": "conduct research on food waste prevention",
+        "labelFi": "tehdä tutkimusta elintarvikejätteen synnyn ehkäisystä",
+        "distractor": false
+      },
+      {
+        "k": "K36",
+        "uri": "http://data.europa.eu/esco/skill/de804504-bd5c-465d-b54f-9da299d8ee90",
+        "labelEn": "maintain stock control systems",
+        "labelFi": "ylläpitää varastonhallintajärjestelmiä",
+        "distractor": true
+      },
+      {
+        "k": "K37",
+        "uri": "http://data.europa.eu/esco/skill/c747ab82-9c35-4bf6-ab90-b50b9a53d292",
+        "labelEn": "ensure cleanliness of food preparation area",
+        "labelFi": "puhdistaa ruoanvalmistusalue",
+        "distractor": false
+      },
+      {
+        "k": "K38",
+        "uri": "http://data.europa.eu/esco/skill/d01ea580-9718-4299-a6fd-08ea6d171a1b",
+        "labelEn": "cook fish",
+        "labelFi": "valmistaa kala- ja äyriäisruokia",
+        "distractor": false
+      },
+      {
+        "k": "K39",
+        "uri": "http://data.europa.eu/esco/skill/73a9561d-112c-4d8a-9d5f-b2c11c5bbd5f",
+        "labelEn": "manage waste",
+        "labelFi": "vastata jätteistä",
+        "distractor": false
+      },
+      {
+        "k": "K40",
+        "uri": "http://data.europa.eu/esco/skill/4cca4ccf-b956-4561-af8e-151b66af9631",
+        "labelEn": "cook seafood",
+        "labelFi": "valmistaa ruokaa kaloista ja äyriäisistä",
+        "distractor": false
+      }
+    ]
+  },
+  "en-mobile-fluent-fi": {
+    "fixtureIndex": 40,
+    "situation": "English posting demanding fluent Finnish; 5 years; residency in Finland",
+    "title": "Mobile Developer",
+    "lang": "en",
+    "sector": "private",
+    "source": "tmt",
+    "employerName": "Lokki Henkilöstöpalvelut Oy",
+    "brands": [
+      "Lokki",
+      "Seagull"
+    ],
+    "workLanguages": [
+      "en"
+    ],
+    "sentences": [
+      "We are looking for an experienced Mobile Developer.",
+      "Mandatory Skills and Experience:",
+      "At least five years of experience in mobile application development (iOS/Android, preferably experience with both)",
+      "Experience from at least five completed mobile projects (iOS & Android)",
+      "Experience in designing or implementing functionalities related to digital identity, electronic identification, mobile wallets, or digital credentials",
+      "Experience in designing or implementing functionalities utilizing mobile device security features (e.g.",
+      "NFC, biometric authentication, secure key storage, or secure data storage on a mobile device)",
+      "Answer these questions separately in a few sentences and attach them to your application!",
+      "(Mandatory!)",
+      "Do you have at least 5 years of hands-on experience in mobile application development (iOS and/or Android)?*",
+      "Have you worked on at least 5 completed mobile application projects in a development role?*",
+      "Do you have experience designing or implementing features related to digital identity, electronic identification (eID), digital wallets, or digital credentials?*",
+      "Do you have experience implementing mobile security features such as NFC, biometric authentication, secure key storage (Keychain/Keystore), or secure local data storage?*",
+      "Are you fluent in both spoken and written Finnish?*",
+      "Please apply with your updated CV, that clearly demonstrates your skills and experience relevant to this role",
+      "Note!",
+      "This application is only for individuals already residing in Finland, and relocation is not possible.",
+      "Start date: 4.1.2027",
+      "End date: 31.12.2027",
+      "Scope/hours per week: 100 %",
+      "Location: Mostly remote but candidate need to be in Finland, Helsinki is a plus.",
+      "Language: Fluent spoken and written Finnish is mandatory",
+      "We offer you: We offer a versatile assignment where every day is different and interesting.",
+      "We also offer a very competitive salary and good employee benefits.",
+      "Are you interested in becoming a part of our dynamic team?",
+      "The position will be filled as soon as a suitable person is found, so please be quick and submit your application!",
+      "Please include your salary expectation in your application.",
+      "For more information, contact Kimmo Kärsämä, tel. [removed], [removed] <mailto:[removed]>",
+      "Explore Lokki, through our blog and website: https://www.lokki.fi/ <https://www.lokki.fi/> .",
+      "Lokki Henkilöstöpalvelut Oy (Finnish for Seagull Recruitment Services) has been active in providing recruitment services since 2005 and we belong to The Private Employment Agencies Association HPL.",
+      "Our vision is to provide the best customer experience with our reliable, humane and effortless service around Finland.",
+      "Our most important asset is a person who, as we know, thrives in a reliable and supportive atmosphere.",
+      "At Loki you will be supported by your own human resources consultant throughout your employment relationship.",
+      "At Lokki, we believe in a partnership achieved as a result of flexible service.",
+      "Explore us and our vacancies: https://www.lokki.fi/.",
+      "You can also find us on Facebook and Instagram."
+    ],
+    "candidates": [
+      {
+        "k": "K1",
+        "uri": "http://data.europa.eu/esco/skill/901105f8-3a08-453e-b1dc-23619e317fd3",
+        "labelEn": "create flowchart diagram",
+        "labelFi": "luoda vuokaaviodiagrammi",
+        "distractor": false
+      },
+      {
+        "k": "K2",
+        "uri": "http://data.europa.eu/esco/skill/f28617ad-afdd-4041-814c-216153a38998",
+        "labelEn": "analyse software specifications",
+        "labelFi": "analysoida ohjelmiston teknisiä tietoja",
+        "distractor": false
+      },
+      {
+        "k": "K3",
+        "uri": "http://data.europa.eu/esco/skill/2522a6ce-3202-4ac8-9f5b-b9cb5a3a83a1",
+        "labelEn": "debug software",
+        "labelFi": "etsiä ja poistaa virheet ohjelmistosta",
+        "distractor": false
+      },
+      {
+        "k": "K4",
+        "uri": "http://data.europa.eu/esco/skill/8b94aa1e-89c9-459d-b3b4-1dfab8dec2df",
+        "labelEn": "use software libraries",
+        "labelFi": "käyttää ohjelmistokirjastoja",
+        "distractor": false
+      },
+      {
+        "k": "K5",
+        "uri": "http://data.europa.eu/esco/skill/04fe962b-4017-4eb7-9139-7d69b6922bc9",
+        "labelEn": "use an application-specific interface",
+        "labelFi": "käyttää sovelluskohtaisia käyttöliittymiä",
+        "distractor": false
+      },
+      {
+        "k": "K6",
+        "uri": "http://data.europa.eu/esco/skill/03b9b491-fc9b-4868-914a-bf7cd47b5041",
+        "labelEn": "create solutions to problems",
+        "labelFi": "ratkaista ongelmia",
+        "distractor": true
+      },
+      {
+        "k": "K7",
+        "uri": "http://data.europa.eu/esco/skill/172020d1-e151-445b-8173-e2a5fb16fe51",
+        "labelEn": "utilise computer-aided software engineering tools",
+        "labelFi": "käyttää tietokoneavusteisia ohjelmistonsuunnittelutyökaluja",
+        "distractor": false
+      },
+      {
+        "k": "K8",
+        "uri": "http://data.europa.eu/esco/skill/85c11255-469f-41bd-a6d1-382bc4a87783",
+        "labelEn": "interpret technical texts",
+        "labelFi": "tulkita teknisiä tekstejä",
+        "distractor": false
+      },
+      {
+        "k": "K9",
+        "uri": "http://data.europa.eu/esco/skill/2b7a79e5-84d8-4880-be66-3d9bb05bea17",
+        "labelEn": "use software design patterns",
+        "labelFi": "käyttää ohjelmistosuunnittelun malleja",
+        "distractor": false
+      },
+      {
+        "k": "K10",
+        "uri": "http://data.europa.eu/esco/skill/9d2e926f-53d9-41f5-98f3-19dfaa687f3f",
+        "labelEn": "tools for software configuration management",
+        "labelFi": "työkalut ohjelmiston kokoonpanon hallintaan",
+        "distractor": false
+      },
+      {
+        "k": "K11",
+        "uri": "http://data.europa.eu/esco/skill/6014921e-1d25-4039-adc2-04852d61880e",
+        "labelEn": "ICT debugging tools",
+        "labelFi": "ICT-virheenkorjaustyökalut",
+        "distractor": false
+      },
+      {
+        "k": "K12",
+        "uri": "http://data.europa.eu/esco/skill/1019423b-3368-4f83-b24f-19e5fa23e816",
+        "labelEn": "software UI design patterns",
+        "labelFi": "ohjelmiston käyttöliittymän suunnittelumallit",
+        "distractor": true
+      },
+      {
+        "k": "K13",
+        "uri": "http://data.europa.eu/esco/skill/925463a7-d51f-4d5b-9f79-4d28cf30acde",
+        "labelEn": "integrated development environment software",
+        "labelFi": "integroidun kehitysympäristön ohjelmisto",
+        "distractor": false
+      },
+      {
+        "k": "K14",
+        "uri": "http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97",
+        "labelEn": "computer programming",
+        "labelFi": "tietokoneohjelmointi",
+        "distractor": false
+      },
+      {
+        "k": "K15",
+        "uri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+        "labelEn": "develop software prototype",
+        "labelFi": "kehittää ohjelmiston prototyyppi",
+        "distractor": false
+      },
+      {
+        "k": "K16",
+        "uri": "http://data.europa.eu/esco/skill/41bf7ede-fc84-4a57-8c89-b548d11b0ba1",
+        "labelEn": "manage business knowledge",
+        "labelFi": "hallita liiketoimintatietoa",
+        "distractor": false
+      },
+      {
+        "k": "K17",
+        "uri": "http://data.europa.eu/esco/skill/0b0335f3-0aa1-491e-895e-81fc8774a300",
+        "labelEn": "develop automated migration methods",
+        "labelFi": "kehittää automaattisia siirtomenetelmiä",
+        "distractor": false
+      },
+      {
+        "k": "K18",
+        "uri": "http://data.europa.eu/esco/skill/3c6fe585-7d12-4315-b579-e30c042088ce",
+        "labelEn": "use computer-aided engineering systems",
+        "labelFi": "käyttää tietokoneavusteisia laskenta- ja analyysijärjestelmiä",
+        "distractor": true
+      },
+      {
+        "k": "K19",
+        "uri": "http://data.europa.eu/esco/skill/07e51c60-763a-4335-b4ec-70a15f66d328",
+        "labelEn": "propose ICT solutions to business problems",
+        "labelFi": "ehdottaa ICT-ratkaisuja liiketoimintaongelmiin",
+        "distractor": false
+      },
+      {
+        "k": "K20",
+        "uri": "http://data.europa.eu/esco/skill/0e0c9c11-b39e-43cf-ba95-2fe646f5de64",
+        "labelEn": "identify customer requirements",
+        "labelFi": "määritellä asiakasvaatimukset",
+        "distractor": false
+      },
+      {
+        "k": "K21",
+        "uri": "http://data.europa.eu/esco/skill/d56fc2b5-4b0a-4e7e-9bde-a33736f6ff18",
+        "labelEn": "Scratch (computer programming)",
+        "labelFi": "Scratch (tietokoneohjelmointi)",
+        "distractor": false
+      },
+      {
+        "k": "K22",
+        "uri": "http://data.europa.eu/esco/skill/401eb8d8-6daa-4f8b-90ad-60afc71eb4f8",
+        "labelEn": "Perl",
+        "labelFi": "Perl",
+        "distractor": false
+      },
+      {
+        "k": "K23",
+        "uri": "http://data.europa.eu/esco/skill/f47a1998-0beb-43be-9f46-380aa4d183da",
+        "labelEn": "Jenkins (tools for software configuration management)",
+        "labelFi": "Jenkins (työkalut ohjelmiston kokoonpanon hallintaan)",
+        "distractor": false
+      },
+      {
+        "k": "K24",
+        "uri": "http://data.europa.eu/esco/skill/8764d4b1-e069-44f2-8baa-fb1eee1850ec",
+        "labelEn": "Oracle Application Development Framework",
+        "labelFi": "Oracle Application Development Framework",
+        "distractor": true
+      },
+      {
+        "k": "K25",
+        "uri": "http://data.europa.eu/esco/skill/9b9de2a4-d8af-4a7b-933a-a8334ae60067",
+        "labelEn": "JavaScript Framework",
+        "labelFi": "JavaScript Framework",
+        "distractor": false
+      },
+      {
+        "k": "K26",
+        "uri": "http://data.europa.eu/esco/skill/5be3d306-6cf1-4b49-aa1d-01651dd4ba4c",
+        "labelEn": "object-oriented modelling",
+        "labelFi": "kohteen mukainen mallinnus",
+        "distractor": false
+      },
+      {
+        "k": "K27",
+        "uri": "http://data.europa.eu/esco/skill/b633eb55-8f1f-4ae6-ab4c-2022ffe2cb7f",
+        "labelEn": "C++",
+        "labelFi": "C++",
+        "distractor": false
+      },
+      {
+        "k": "K28",
+        "uri": "http://data.europa.eu/esco/skill/6f8a40d6-f9ce-43ec-a72f-d4213a53f3ed",
+        "labelEn": "Ansible",
+        "labelFi": "Ansible",
+        "distractor": false
+      },
+      {
+        "k": "K29",
+        "uri": "http://data.europa.eu/esco/skill/a4e31589-3632-4926-91d0-15b889c90b9b",
+        "labelEn": "IBM WebSphere",
+        "labelFi": "IBM WebSphere",
+        "distractor": false
+      },
+      {
+        "k": "K30",
+        "uri": "http://data.europa.eu/esco/skill/9889b795-d755-41b2-8afd-2e3c87a65a38",
+        "labelEn": "use customer relationship management software",
+        "labelFi": "käyttää asiakkuuksien hallintaohjelmia",
+        "distractor": true
+      },
+      {
+        "k": "K31",
+        "uri": "http://data.europa.eu/esco/skill/3cd569a2-4f88-4c1e-9995-8dce8c5e51a7",
+        "labelEn": "JavaScript",
+        "labelFi": "JavaScript",
+        "distractor": false
+      },
+      {
+        "k": "K32",
+        "uri": "http://data.europa.eu/esco/skill/13bdd41a-2a18-441f-96db-41252c519413",
+        "labelEn": "Visual Basic",
+        "labelFi": "Visual Basic",
+        "distractor": false
+      },
+      {
+        "k": "K33",
+        "uri": "http://data.europa.eu/esco/skill/6417a4cc-6f61-4459-a114-761a7fa0279d",
+        "labelEn": "Puppet (tools for software configuration management)",
+        "labelFi": "Puppet (työkalut ohjelmiston kokoonpanon hallintaan)",
+        "distractor": false
+      },
+      {
+        "k": "K34",
+        "uri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+        "labelEn": "Java (computer programming)",
+        "labelFi": "Java (tietokoneohjelmointi)",
+        "distractor": false
+      },
+      {
+        "k": "K35",
+        "uri": "http://data.europa.eu/esco/skill/38716afc-a93b-44ab-96cc-2ecf67edcf32",
+        "labelEn": "do cloud refactoring",
+        "labelFi": "toteuttaa pilvioptimointi",
+        "distractor": false
+      },
+      {
+        "k": "K36",
+        "uri": "http://data.europa.eu/esco/skill/ac51e567-2261-48c7-b0cb-97c07fc60b6c",
+        "labelEn": "develop a specific interior design",
+        "labelFi": "suunnitella määrätty sisustus",
+        "distractor": true
+      },
+      {
+        "k": "K37",
+        "uri": "http://data.europa.eu/esco/skill/0d168770-4d9c-4096-b048-a6577818d306",
+        "labelEn": "Apache Maven",
+        "labelFi": "Apache Maven",
+        "distractor": false
+      },
+      {
+        "k": "K38",
+        "uri": "http://data.europa.eu/esco/skill/be80acfc-b6f2-4411-9b8d-b19d9cd2556a",
+        "labelEn": "Swift (computer programming)",
+        "labelFi": "Swift (tietokoneohjelmointi)",
+        "distractor": false
+      },
+      {
+        "k": "K39",
+        "uri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+        "labelEn": "TypeScript",
+        "labelFi": "TypeScript",
+        "distractor": false
+      },
+      {
+        "k": "K40",
+        "uri": "http://data.europa.eu/esco/skill/7814e88f-c133-4c3b-b27f-857afa145d42",
+        "labelEn": "ICT security legislation",
+        "labelFi": "ICT-tietoturvalainsäädäntö",
+        "distractor": false
+      }
+    ]
+  },
+  "en-rd-director": {
+    "fixtureIndex": 39,
+    "situation": "English posting; 15+ years; many soft asks; English working language",
+    "title": "R&D Director",
+    "lang": "en",
+    "sector": "private",
+    "source": "tmt",
+    "employerName": "Kuori Oy",
+    "brands": [
+      "Kuori"
+    ],
+    "workLanguages": [
+      "en"
+    ],
+    "sentences": [
+      "At Kuori, we build heavy-duty outdoor displays, touchscreens, and payment terminals engineered to survive real-world chaos - without failing when weather or high usage hits.",
+      "We've grown from a Finnish startup into a global player with hardware running in over 30 countries, outmanoeuvring sluggish industry giants through speed, mass customisation, and Finnish grit (_sisu_).",
+      "We are looking for a driven, fast-thinking R&D Director to lead our hardware engineering efforts.",
+      "Reporting directly to our CTO, you will have total autonomy to make critical technical decisions, clear obstacles for our engineering teams, and drive product execution as we scale.",
+      "If you run towards accountability and want to shape heavy-duty hardware instead of fighting corporate bureaucracy, this is your invitation to build something great.",
+      "In your daily work, you will:",
+      "Drive product execution across the entire development lifecycle -taking hardware smoothly from initial concept and prototyping through to mass production.",
+      "Lead, mentor, and empower our engineering teams, building an environment where people take pride in their work and perform at their best.",
+      "Make autonomous decisions and proactively resolve bottlenecks to keep technical execution aligned with business goals.",
+      "Maintain control over project timelines, budgets, and technical resources when deadlines tighten.",
+      "Foster seamless cross-functional alignment between your teams, manufacturing, operations, and quality assurance.",
+      "Implement feedback loops and fast problem-solving practices to continuously elevate product quality and technical maturity.",
+      "What we expect from you:",
+      "A builder mindset - you thrive in a company environment where (almost) nothing is set, but everything is possible",
+      "A growth attitude - you enjoy challenges and embrace opportunities for personal and professional development",
+      "Hands-on approach: you are not afraid to take action, dive into the work and carry responsibility.",
+      "You spot what needs to be done and take independent responsibility and deliver results",
+      "Broad technical understanding across mechanics and electronics, with the ability to challenge technical decisions, connect disciplines, and make informed trade-offs.",
+      "Proven track record of owning outcomes and leading technical teams through high-pressure phases.",
+      "A genuine curiosity and practical knack for leveraging modern AI tools to streamline R&D processes, speed up technical workflows, and cut out administrative friction.",
+      "15+ years of relevant work experience in engineering and hardware product development.",
+      "This role requires weekly onsite work at our headquarters in Espoo, Finland, to stay close to hardware prototyping, manufacturing, and engineering teams",
+      "Professional working fluency in English (fluent Finnish is not required).",
+      "What we offer:",
+      "A chance to customise your career and grow in your field in a rapidly growing high-tech company",
+      "Direct line to our CTO and C-level in a low-hierarchy, entrepreneurial environment.",
+      "Unlike legacy hardware giants, you won't fight through five layers of committees and red tape just to ship an engineering fix-our short decision paths mean",
+      "smart ideas always beat corporate bureaucracy.",
+      "An international and easy-going team of 70 bright minds who embrace a culture of humour and collaboration",
+      "Full-time, permanent contract with clear room to expand your leadership footprint as Kuori scales.",
+      "Sounds like your next challenge?",
+      "We encourage you to apply promptly.",
+      "We are looking for the absolute best person for the role - so if that means we need to wait for you to relocate to",
+      "Finland, we are more than willing to wait for the right fit.",
+      "Apply now - let's build something extraordinary together."
+    ],
+    "candidates": [
+      {
+        "k": "K1",
+        "uri": "http://data.europa.eu/esco/skill/fd4386c5-96f0-4c6e-970c-c08729ae0cc6",
+        "labelEn": "develop product design",
+        "labelFi": "kehittää tuotesuunnittelua",
+        "distractor": false
+      },
+      {
+        "k": "K2",
+        "uri": "http://data.europa.eu/esco/skill/94b2c46e-6338-4a1d-950a-d44eef018c53",
+        "labelEn": "collaborate with engineers",
+        "labelFi": "tehdä yhteistyötä insinöörien tai teknisten asiantuntijoiden kanssa",
+        "distractor": false
+      },
+      {
+        "k": "K3",
+        "uri": "http://data.europa.eu/esco/skill/72a74f69-5cf1-43c5-99b9-62a444578919",
+        "labelEn": "engineering processes",
+        "labelFi": "suunnitteluprosessit",
+        "distractor": false
+      },
+      {
+        "k": "K4",
+        "uri": "http://data.europa.eu/esco/skill/2964011e-f828-4c6c-b98b-51e984d66365",
+        "labelEn": "material mechanics",
+        "labelFi": "materiaalimekaniikka",
+        "distractor": false
+      },
+      {
+        "k": "K5",
+        "uri": "http://data.europa.eu/esco/skill/cfbde1b6-8e47-4b83-b430-3d5f7f38d69a",
+        "labelEn": "assess operating cost",
+        "labelFi": "arvioida toimintakustannuksia",
+        "distractor": false
+      },
+      {
+        "k": "K6",
+        "uri": "http://data.europa.eu/esco/skill/07e51c60-763a-4335-b4ec-70a15f66d328",
+        "labelEn": "propose ICT solutions to business problems",
+        "labelFi": "ehdottaa ICT-ratkaisuja liiketoimintaongelmiin",
+        "distractor": true
+      },
+      {
+        "k": "K7",
+        "uri": "http://data.europa.eu/esco/skill/63f224ea-d889-42ea-b3ef-730ef78c7176",
+        "labelEn": "develop new products",
+        "labelFi": "kehittää uusia tuotteita",
+        "distractor": false
+      },
+      {
+        "k": "K8",
+        "uri": "http://data.europa.eu/esco/skill/857e8624-4db0-4725-a758-5914bd8cc350",
+        "labelEn": "thermodynamics",
+        "labelFi": "termodynamiikka",
+        "distractor": false
+      },
+      {
+        "k": "K9",
+        "uri": "http://data.europa.eu/esco/skill/911e13ee-1eec-4243-88c8-3c08a3681a19",
+        "labelEn": "manage resources",
+        "labelFi": "hallita resursseja",
+        "distractor": false
+      },
+      {
+        "k": "K10",
+        "uri": "http://data.europa.eu/esco/skill/949ced5f-7536-4614-ac60-563ffc91a2f2",
+        "labelEn": "strategic planning",
+        "labelFi": "strateginen suunnittelu",
+        "distractor": false
+      },
+      {
+        "k": "K11",
+        "uri": "http://data.europa.eu/esco/skill/2fb8480e-de3c-462b-b169-e8bbb344da68",
+        "labelEn": "innovation processes",
+        "labelFi": "innovaatioprosessit",
+        "distractor": false
+      },
+      {
+        "k": "K12",
+        "uri": "http://data.europa.eu/esco/skill/143d889d-3128-45af-805b-a2d5a1d501c7",
+        "labelEn": "manage stocked company material",
+        "labelFi": "hallita yhtiön varastoja",
+        "distractor": true
+      },
+      {
+        "k": "K13",
+        "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+        "labelEn": "manage staff",
+        "labelFi": "toimia esimiehenä",
+        "distractor": false
+      },
+      {
+        "k": "K14",
+        "uri": "http://data.europa.eu/esco/skill/29fb886c-6be0-4e93-9ea1-232881f2092a",
+        "labelEn": "plan product management",
+        "labelFi": "suunnitella tuotehallintaa",
+        "distractor": false
+      },
+      {
+        "k": "K15",
+        "uri": "http://data.europa.eu/esco/skill/d63f49de-cb72-4ce3-9553-a374a4f32f52",
+        "labelEn": "analyse data about clients",
+        "labelFi": "analysoida tietoja asiakkaista",
+        "distractor": false
+      },
+      {
+        "k": "K16",
+        "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+        "labelEn": "manage budgets",
+        "labelFi": "hallita budjetteja",
+        "distractor": false
+      },
+      {
+        "k": "K17",
+        "uri": "http://data.europa.eu/esco/skill/f5f5b244-6cea-4fbc-8a50-8f712791bc09",
+        "labelEn": "follow company standards",
+        "labelFi": "noudattaa yrityksen vaatimustasoa",
+        "distractor": false
+      },
+      {
+        "k": "K18",
+        "uri": "http://data.europa.eu/esco/skill/581070bd-676a-44fb-a563-cdf8cc3c1463",
+        "labelEn": "train staff about product features",
+        "labelFi": "kouluttaa henkilökuntaa tuotteen ominaisuuksista",
+        "distractor": true
+      },
+      {
+        "k": "K19",
+        "uri": "http://data.europa.eu/esco/skill/750caee5-12a0-46ba-b8aa-1e56370deaf9",
+        "labelEn": "analyse consumer buying trends",
+        "labelFi": "analysoida kuluttajien ostokäyttäytymisen trendejä",
+        "distractor": false
+      },
+      {
+        "k": "K20",
+        "uri": "http://data.europa.eu/esco/skill/33a0a2ea-025e-4107-8717-39ac45b3b78c",
+        "labelEn": "design management",
+        "labelFi": "muotoilujohtaminen",
+        "distractor": false
+      },
+      {
+        "k": "K21",
+        "uri": "http://data.europa.eu/esco/skill/21e0cad8-4eef-42be-b18b-0f8e37f0dbd0",
+        "labelEn": "product life-cycle",
+        "labelFi": "ICT-tuotteen elinkaari",
+        "distractor": false
+      },
+      {
+        "k": "K22",
+        "uri": "http://data.europa.eu/esco/skill/d9e5349e-8791-49c2-8ba4-839fdd1606c2",
+        "labelEn": "define technical requirements",
+        "labelFi": "määritellä teknisiä vaatimuksia",
+        "distractor": false
+      },
+      {
+        "k": "K23",
+        "uri": "http://data.europa.eu/esco/skill/bacbfc27-4b5d-47de-8bfd-af5fa27562a2",
+        "labelEn": "design prototypes",
+        "labelFi": "suunnitella prototyyppejä",
+        "distractor": false
+      },
+      {
+        "k": "K24",
+        "uri": "http://data.europa.eu/esco/skill/5d9e766b-8f17-4e17-bfab-3bb0e0719791",
+        "labelEn": "define quality standards",
+        "labelFi": "määritellä laatustandardeja",
+        "distractor": true
+      },
+      {
+        "k": "K25",
+        "uri": "http://data.europa.eu/esco/skill/6f8f86f8-0ef9-4dd6-8e29-7d790e65706b",
+        "labelEn": "calculate production costs",
+        "labelFi": "laskea tuotantokustannukset",
+        "distractor": false
+      },
+      {
+        "k": "K26",
+        "uri": "http://data.europa.eu/esco/skill/08f0af26-2178-40d2-9267-6d50a7346555",
+        "labelEn": "combine business technology with user experience",
+        "labelFi": "liittää liiketoimintateknologia käyttäjäkokemuksiin",
+        "distractor": false
+      },
+      {
+        "k": "K27",
+        "uri": "http://data.europa.eu/esco/skill/46cb7282-7fb0-4d3c-b6b8-bfe81fab077e",
+        "labelEn": "draw conclusions from market research results",
+        "labelFi": "tehdä johtopäätöksiä markkinatutkimuksen tuloksista",
+        "distractor": false
+      },
+      {
+        "k": "K28",
+        "uri": "http://data.europa.eu/esco/skill/8770350e-746f-4adb-9556-18ca68104be6",
+        "labelEn": "market research",
+        "labelFi": "markkinatutkimus",
+        "distractor": false
+      },
+      {
+        "k": "K29",
+        "uri": "http://data.europa.eu/esco/skill/fe39d4db-4cb5-4299-bb9f-896c8fd6ab13",
+        "labelEn": "perform market research",
+        "labelFi": "tehdä markkinatutkimusta",
+        "distractor": false
+      },
+      {
+        "k": "K30",
+        "uri": "http://data.europa.eu/esco/skill/9889b795-d755-41b2-8afd-2e3c87a65a38",
+        "labelEn": "use customer relationship management software",
+        "labelFi": "käyttää asiakkuuksien hallintaohjelmia",
+        "distractor": true
+      },
+      {
+        "k": "K31",
+        "uri": "http://data.europa.eu/esco/skill/72e88c2d-855d-4dbd-b06c-0e1ca748be5e",
+        "labelEn": "calculate design costs",
+        "labelFi": "laskea suunnittelukustannukset",
+        "distractor": false
+      },
+      {
+        "k": "K32",
+        "uri": "http://data.europa.eu/esco/skill/7bb5d9af-0a7e-48a7-a860-0e1ded0f6e75",
+        "labelEn": "design customer experiences",
+        "labelFi": "suunnitella asiakaskokemuksia",
+        "distractor": false
+      },
+      {
+        "k": "K33",
+        "uri": "http://data.europa.eu/esco/skill/ec6df9cb-be92-4027-80fa-83b70aabce58",
+        "labelEn": "industrial research and development",
+        "labelFi": "teollinen tutkimus- ja kehitystoiminta",
+        "distractor": false
+      },
+      {
+        "k": "K34",
+        "uri": "http://data.europa.eu/esco/skill/b34e2ba1-9080-48c9-9b42-ee9192a4d3f1",
+        "labelEn": "use CAD software",
+        "labelFi": "käyttää tietokoneavusteisia suunnitteluohjelmia",
+        "distractor": false
+      },
+      {
+        "k": "K35",
+        "uri": "http://data.europa.eu/esco/skill/1a3660c2-011c-4e96-9b1d-529afc305428",
+        "labelEn": "inspect quality of products",
+        "labelFi": "tarkastaa tuotteiden laatu",
+        "distractor": false
+      },
+      {
+        "k": "K36",
+        "uri": "http://data.europa.eu/esco/skill/ee239d14-bfc8-4939-91ff-824b5814ff67",
+        "labelEn": "integrate engineering principles in architectural design",
+        "labelFi": "ottaa huomioon tekniikan vaatimukset arkkitehtisuunnitelmassa",
+        "distractor": true
+      },
+      {
+        "k": "K37",
+        "uri": "http://data.europa.eu/esco/skill/03b9b491-fc9b-4868-914a-bf7cd47b5041",
+        "labelEn": "create solutions to problems",
+        "labelFi": "ratkaista ongelmia",
+        "distractor": false
+      },
+      {
+        "k": "K38",
+        "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
+        "labelEn": "mechanics",
+        "labelFi": "mekaniikka",
+        "distractor": false
+      },
+      {
+        "k": "K39",
+        "uri": "http://data.europa.eu/esco/skill/81a2db2c-7e55-44d0-9cd9-74c25147d7cd",
+        "labelEn": "analyse test data",
+        "labelFi": "analysoida testidataa",
+        "distractor": false
+      },
+      {
+        "k": "K40",
+        "uri": "http://data.europa.eu/esco/skill/209a5498-3449-4689-8ed9-bd08cab4fd78",
+        "labelEn": "engineering principles",
+        "labelFi": "teknisen suunnittelun periaatteet",
+        "distractor": false
+      }
+    ]
+  },
+  "fi-public-nurse-kauniainen": {
+    "fixtureIndex": 14,
+    "situation": "public employer (wellbeing services county); Finnish required; Swedish/English a plus; licensed nurse; vaccination and TB check by law",
+    "title": "Sairaanhoitaja, Kauniaisten terveysasema, Kauniainen",
+    "lang": "fi",
+    "sector": "public",
+    "source": "tmt",
+    "employerName": "Länsi-Uudenmaan hyvinvointialue",
+    "brands": [
+      "Länsi-Uudenmaan hyvinvointialue",
+      "Kauniaisten terveysasema"
+    ],
+    "workLanguages": [
+      "fi",
+      "sv"
+    ],
+    "sentences": [
+      "Tervetuloa sairaanhoitajaksi Kauniaisten terveysasemalle!",
+      "Etsimme sairaanhoitajaa Kauniaisten terveysasemalle määräaikaiseen sijaisuuteen.",
+      "Avosairaanhoidon vastaanotolla hoidamme eri ikäisiä potilaita läsnävastaanotoilla, puhelimitse sekä sähköisten palveluiden kautta.",
+      "Sairaanhoitajan työnkuva on monipuolinen, ja siihen kuuluu hoidon tarpeen arviointi, erilaiset kiireettömät vastaanotot, potilastoimiston hoito sekä päivystysvuorot.",
+      "Työtä tehdään arkisin klo 8-16 välillä.",
+      "Kauniaisissa meillä on käytössä tällä hetkellä tiimimalli, jossa ammattilaisilla on jatkuvasti kollegoiden tuki sekä konsultaatiomahdollisuus.",
+      "Tiimissä toimii sairaanhoitajien lisäksi lähihoitaja, terveydenhoitaja ja yhdeksän lääkäriä.",
+      "Terveysasematyössä korostuu moniammatillisuus, kun työtä tehdään läheisessä yhteistyössä hoitajien ja lääkäreiden kesken yhteisissä työtiloissa.",
+      "Länsi-Uudenmaan hyvinvointialueen strategian keskeinen muutoslupaus on omalääkäri jokaiselle.",
+      "Tavoite ohjaa myös meidän yksikkömme toiminnan kehittämistä ja tulee näkymään tulevaisuudessa yhä vahvemmin tavassamme järjestää palveluja.",
+      "Olemme panostaneet hyvään perehdytykseen, jonka toteutamme yksilöllisesti.",
+      "Meillä pääset mukaan mukavaan ja rentoon tiimiin, jota yhdistää yhteisen tekemisen meininki.",
+      "Tehtävän menestyksekäs hoitaminen vaatii hoitotyön osaamisen lisäksi hyviä tietoteknisiä taitoja sekä sujuvaa suomen kielen osaamista.",
+      "Toisen kotimaisen kielen ja englannin kielen osaamisen katsomme eduksi.",
+      "Kauniaisten terveysasema sijaitsee hyvien julkisten kulkuyhteyksien varrella, ja tarjoamme työntekijöille maksuttoman pysäköinnin.",
+      "Talossa on myös oma työpaikkaruokala.",
+      "Olethan paineensietokykyinen ja työhön tarttuva tiimityöstä pitävä sairaanhoitaja.",
+      "Tervetuloa mukaan iloiseen ja ammattitaitoiseen tiimimme!",
+      "Aloitamme haastattelemaan hakijoita jo hakuaikana.",
+      "Työpaikan nimi ja osoite: Kauniaisten terveysasema, Asematie 19, 02700 Kauniainen",
+      "Työaika: 38 h 15 min / viikko, arkisin 8-16.",
+      "Tehtävä on määräaikainen ajalla 1.1.2027 - 30.4.2027.",
+      "Kelpoisuusvaatimus: laillistettu sairaanhoitaja.",
+      "Tehtävässä edellytetään tartuntatautilain 48§:n mukaista rokotussuojaa.",
+      "Tehtävässä edellytetään tartuntatautilain §55 mukaista tuberkuloosiselvitystä.",
+      "Arvostamme aktiivista työotetta, paineensietokykyä, joustavuutta, hyviä asiakaspalvelu- ja tiimityöskentelytaitoja sekä kielitaitoa (ruotsi, englanti).",
+      "Myös aiempi kokemus terveysasematyöskentelystä katsotaan eduksi.",
+      "Työntekijöiden hyvinvointi on meille tärkeää ja haluamme tarjota monipuolisia etuja henkilöstöllemme.",
+      "Tarjoamme kattavan työterveyshuollon lisäksi mm. lounasedun.",
+      "Saat käyttöösi vuodessa 300 €, jonka voit käyttää toiveidesi mukaan kulttuuri-, hyvinvointi-, liikunta- tai matkalippuetuuksiin."
+    ],
+    "candidates": [
+      {
+        "k": "K1",
+        "uri": "http://data.europa.eu/esco/skill/bcd2ce08-ba12-4d66-865f-f4ba36419707",
+        "labelEn": "promote inclusion",
+        "labelFi": "edistää osallisuutta",
+        "distractor": false
+      },
+      {
+        "k": "K2",
+        "uri": "http://data.europa.eu/esco/skill/092f44f6-8631-460c-a862-f79f5c15dc03",
+        "labelEn": "delegate emergency care",
+        "labelFi": "siirtää ensiaputehtäviä muille",
+        "distractor": false
+      },
+      {
+        "k": "K3",
+        "uri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+        "labelEn": "nursing science",
+        "labelFi": "hoitotiede",
+        "distractor": false
+      },
+      {
+        "k": "K4",
+        "uri": "http://data.europa.eu/esco/skill/a28e8141-89ee-4b24-a3bb-1aebcc56c72d",
+        "labelEn": "apply nursing care in long-term care",
+        "labelFi": "tehdä hoitotyötä pitkäaikaishoidossa",
+        "distractor": false
+      },
+      {
+        "k": "K5",
+        "uri": "http://data.europa.eu/esco/skill/52047630-b880-4939-bb19-6700187af031",
+        "labelEn": "adolescence medicine",
+        "labelFi": "nuorisolääketiede",
+        "distractor": false
+      },
+      {
+        "k": "K6",
+        "uri": "http://data.europa.eu/esco/skill/44e2c4c4-9fd2-42d4-a133-d81360ded4bc",
+        "labelEn": "manage health and safety standards",
+        "labelFi": "varmistaa terveys-, turvallisuus- ja hygieniastandardit",
+        "distractor": true
+      },
+      {
+        "k": "K7",
+        "uri": "http://data.europa.eu/esco/skill/0b5aaee4-c948-4853-bf8d-b9cd6c4917ee",
+        "labelEn": "inform policy makers on health-related challenges",
+        "labelFi": "tiedottaa päätöksentekijöitä terveyteen liittyvistä haasteista",
+        "distractor": false
+      },
+      {
+        "k": "K8",
+        "uri": "http://data.europa.eu/esco/skill/b9f16465-56a9-426b-a047-0f9f1f95ec92",
+        "labelEn": "address problems critically",
+        "labelFi": "lähestyä ongelmia kriittisesti",
+        "distractor": false
+      },
+      {
+        "k": "K9",
+        "uri": "http://data.europa.eu/esco/skill/ce0d6a42-59c1-433e-ab62-adfc969c46bb",
+        "labelEn": "ensure safety of healthcare users",
+        "labelFi": "varmistaa terveydenhuollon asiakkaiden turvallisuus",
+        "distractor": false
+      },
+      {
+        "k": "K10",
+        "uri": "http://data.europa.eu/esco/skill/7a63f944-6948-4ae4-9c1f-d08e492535c9",
+        "labelEn": "apply person-centred care",
+        "labelFi": "soveltaa henkilökeskeistä hoitotapaa",
+        "distractor": false
+      },
+      {
+        "k": "K11",
+        "uri": "http://data.europa.eu/esco/skill/bfe4f330-d595-48c7-ab3c-f309471d6953",
+        "labelEn": "psychology",
+        "labelFi": "psykologia",
+        "distractor": false
+      },
+      {
+        "k": "K12",
+        "uri": "http://data.europa.eu/esco/skill/dcc96a49-0bac-4a9c-8f8e-a32b4e47e6eb",
+        "labelEn": "apply health and safety standards",
+        "labelFi": "soveltaa terveys- ja turvallisuusnormeja",
+        "distractor": true
+      },
+      {
+        "k": "K13",
+        "uri": "http://data.europa.eu/esco/skill/b55f61a4-5f9e-4741-ba95-9ac04b64119b",
+        "labelEn": "work in a multicultural environment in health care",
+        "labelFi": "työskennellä monikulttuurisessa ympäristössä terveydenhuollossa",
+        "distractor": false
+      },
+      {
+        "k": "K14",
+        "uri": "http://data.europa.eu/esco/skill/51e79cb4-fab3-404c-88f3-cd4a1bd5879e",
+        "labelEn": "deal with emergency care situations",
+        "labelFi": "toimia ensihoitotilanteessa",
+        "distractor": false
+      },
+      {
+        "k": "K15",
+        "uri": "http://data.europa.eu/esco/skill/81b6d428-028b-4bf5-89a2-5e5cb4a8c444",
+        "labelEn": "provide stroke rehabilitation services",
+        "labelFi": "tarjota aivohalvauksen jälkeisiä kuntoutuspalveluita",
+        "distractor": false
+      },
+      {
+        "k": "K16",
+        "uri": "http://data.europa.eu/esco/skill/646d871b-4503-4dc8-a076-06d7085e4cde",
+        "labelEn": "promote human rights",
+        "labelFi": "edistää ihmisoikeuksia",
+        "distractor": false
+      },
+      {
+        "k": "K17",
+        "uri": "http://data.europa.eu/esco/skill/e98a5096-de98-46d2-88c8-951f4029c038",
+        "labelEn": "evaluate nursing care",
+        "labelFi": "arvioida sairaanhoitoa",
+        "distractor": false
+      },
+      {
+        "k": "K18",
+        "uri": "http://data.europa.eu/esco/skill/02137a68-6860-45e8-8e4d-38db467bb8b6",
+        "labelEn": "human factors regarding safety",
+        "labelFi": "turvallisuuteen vaikuttavat inhimilliset tekijät",
+        "distractor": true
+      },
+      {
+        "k": "K19",
+        "uri": "http://data.europa.eu/esco/skill/e6bf6e73-230a-434c-97b2-a0c042a8b7ac",
+        "labelEn": "apply sustainability principles in health care",
+        "labelFi": "noudattaa kestävän kehityksen periaatteita terveydenhuollossa",
+        "distractor": false
+      },
+      {
+        "k": "K20",
+        "uri": "http://data.europa.eu/esco/skill/ae965e49-06f1-442f-87bf-e48fc1e1d8b6",
+        "labelEn": "analyse quality of nurse care",
+        "labelFi": "analysoida sairaanhoidon laatua",
+        "distractor": false
+      },
+      {
+        "k": "K21",
+        "uri": "http://data.europa.eu/esco/skill/8e0bfbba-6e9d-48e0-b152-2cc949e5022a",
+        "labelEn": "implement scientific decision making in healthcare",
+        "labelFi": "toteuttaa tieteellistä päätöksentekoa terveydenhuollossa",
+        "distractor": false
+      },
+      {
+        "k": "K22",
+        "uri": "http://data.europa.eu/esco/skill/1d4b74b0-1a48-48ec-a3cd-26cca0c212a3",
+        "labelEn": "biological chemistry",
+        "labelFi": "kliininen kemia",
+        "distractor": false
+      },
+      {
+        "k": "K23",
+        "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
+        "labelEn": "adhere to organisational guidelines",
+        "labelFi": "noudattaa organisaation ohjeita",
+        "distractor": false
+      },
+      {
+        "k": "K24",
+        "uri": "http://data.europa.eu/esco/skill/04e6f19b-6458-432f-9790-3979831a03bc",
+        "labelEn": "teach nursing principles",
+        "labelFi": "opettaa hoitotyön periaatteita",
+        "distractor": true
+      },
+      {
+        "k": "K25",
+        "uri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+        "labelEn": "coordinate care",
+        "labelFi": "koordinoida hoitoa",
+        "distractor": false
+      },
+      {
+        "k": "K26",
+        "uri": "http://data.europa.eu/esco/skill/f735e153-1f57-4841-afe9-4712cc740054",
+        "labelEn": "manage multiple patients simultaneously",
+        "labelFi": "hoitaa useita potilaita samanaikaisesti",
+        "distractor": false
+      },
+      {
+        "k": "K27",
+        "uri": "http://data.europa.eu/esco/skill/46003629-a579-4d0a-b3ea-80ef890699d6",
+        "labelEn": "diagnose nursing care",
+        "labelFi": "diagnosoida sairaanhoidon tarvetta",
+        "distractor": false
+      },
+      {
+        "k": "K28",
+        "uri": "http://data.europa.eu/esco/skill/c65aa043-98da-4136-9877-494e72d9e4cf",
+        "labelEn": "interact with healthcare users",
+        "labelFi": "olla yhteydessä terveydenhuollon asiakkaisiin",
+        "distractor": false
+      },
+      {
+        "k": "K29",
+        "uri": "http://data.europa.eu/esco/skill/27a638bc-6362-45f8-afce-5596a606269b",
+        "labelEn": "impact of social contexts on health",
+        "labelFi": "sosiaalisen ympäristön vaikutus terveyteen",
+        "distractor": false
+      },
+      {
+        "k": "K30",
+        "uri": "http://data.europa.eu/esco/skill/09699c24-8f0f-4789-b88f-fd86b19f1875",
+        "labelEn": "provide high-end driving services",
+        "labelFi": "tarjota laadukkaita kuljettajapalveluita",
+        "distractor": true
+      },
+      {
+        "k": "K31",
+        "uri": "http://data.europa.eu/esco/skill/cf6ca1fc-f2be-4deb-bb35-1fffe4099023",
+        "labelEn": "leadership in nursing",
+        "labelFi": "johtajuus sairaanhoidossa",
+        "distractor": false
+      },
+      {
+        "k": "K32",
+        "uri": "http://data.europa.eu/esco/skill/a117f32c-662b-4dd9-b739-1230dd04cb60",
+        "labelEn": "pedagogy",
+        "labelFi": "pedagogiikka",
+        "distractor": false
+      },
+      {
+        "k": "K33",
+        "uri": "http://data.europa.eu/esco/skill/1b3370df-c280-470c-ac35-951f42ca8b19",
+        "labelEn": "promote a positive image of nursing",
+        "labelFi": "edistää positiivista käsitystä hoitotyöstä",
+        "distractor": false
+      },
+      {
+        "k": "K34",
+        "uri": "http://data.europa.eu/esco/skill/441707bb-9ad3-406c-9975-a6bec96f537b",
+        "labelEn": "empower individuals, families and groups",
+        "labelFi": "antaa yksittäisille henkilöille, perheille ja ryhmille työkaluja terveellisiin elämäntapoihin",
+        "distractor": false
+      },
+      {
+        "k": "K35",
+        "uri": "http://data.europa.eu/esco/skill/8881a9c2-bd07-4954-bf27-c1f8acca9af0",
+        "labelEn": "sociology",
+        "labelFi": "sosiologia",
+        "distractor": false
+      },
+      {
+        "k": "K36",
+        "uri": "http://data.europa.eu/esco/skill/09dea77e-870c-49eb-9a97-1398bee57bd0",
+        "labelEn": "cleaning industry health and safety measures",
+        "labelFi": "siivousalan työterveyttä ja -turvallisuutta edistävät toimenpiteet",
+        "distractor": true
+      },
+      {
+        "k": "K37",
+        "uri": "http://data.europa.eu/esco/skill/c82f9319-cf46-4257-a8ce-542d0a7fed8f",
+        "labelEn": "provide treatment strategies for challenges to human health",
+        "labelFi": "tarjota terveysuhkien hoitostrategioita",
+        "distractor": false
+      },
+      {
+        "k": "K38",
+        "uri": "http://data.europa.eu/esco/skill/5ff6f551-f2a4-4cef-a72d-e81116155a43",
+        "labelEn": "newborn care",
+        "labelFi": "vastasyntyneiden hoito",
+        "distractor": false
+      },
+      {
+        "k": "K39",
+        "uri": "http://data.europa.eu/esco/skill/8168333b-8257-48f6-82c5-6b5128c21ecc",
+        "labelEn": "person centred care",
+        "labelFi": "henkilökeskeinen hoito",
+        "distractor": false
+      },
+      {
+        "k": "K40",
+        "uri": "http://data.europa.eu/esco/skill/54411e8e-d62f-46d8-b87b-fce23f8e3bc8",
+        "labelEn": "disability care",
+        "labelFi": "vammaishuolto",
+        "distractor": false
+      }
+    ]
+  },
+  "fi-public-ece-teacher": {
+    "fixtureIndex": 27,
+    "situation": "public employer (City of Espoo); statutory degree (kelpoisuus); criminal record extract; TB check",
+    "title": "Varhaiskasvatuksen opettaja, Eestinkallion esiopetus",
+    "lang": "fi",
+    "sector": "public",
+    "source": "tmt",
+    "employerName": "Espoon kaupunki",
+    "brands": [
+      "Espoon kaupunki",
+      "Eestinkallio"
+    ],
+    "workLanguages": [
+      "fi"
+    ],
+    "sentences": [
+      "Haemme varhaiskasvatuksen opettajaa vakinaiseen tehtävään Eestinkallion esiopetukseen.",
+      "Eestinkallion esiopetus toimii Eestinkallion koulun tiloissa, jossa meillä on 2 esiopetusryhmää, Tammet ja Vaahterat.",
+      "Nyt haemme toista opettajaa Vaahteroiden esiopetusryhmään.",
+      "Ryhmässä työskentelee kanssasi varhaiskasvatuksen opettaja ja lastenhoitaja.",
+      "Ryhmät tekevät tiivistä yhteistyötä keskenään, joten saat myös tukea toisen ryhmän opettajalta ja lastenhoitajalta.",
+      "Olemme pedagogisesti vahva yksikkö ja henkilökuntaamme yhdistää vahva ammattitaito ja ymmärrys esiopetuksen ja varhaiskasvatustyön merkityksellisyydestä.",
+      "Varhaiskasvatuksen opettajana vastaat ryhmän pedagogiikan suunnittelusta, toteuttamisesta ja arvioinnista yhdessä muun tiimin kanssa.",
+      "Toimit lisäksi tiimisi tiimivetäjänä toisen opettajan kanssa.",
+      "Tärkeä osa työtäsi on myös yhteistyö perheiden kanssa.",
+      "Meillä saat vaikuttaa omien työpäiviesi sisältöön ideoimalla yhdessä lasten ja tiimin kanssa.",
+      "Arjen työssä sinua tukevat esiopetusyksikön johtaja ja apulaisjohtaja.",
+      "Meillä on selkeät palaverirakenteet ja käymme paikan päällä viikottain.",
+      "Esihenkilösi on aina valmiina auttamaan ja tukemaan.",
+      "Myös laaja-alainen varhaiskasvatuksen erityisopettaja ja kieli- ja kulttuuriopettaja on aktiivisesti mukana esiopetuksen arjessa.",
+      "Eestinkallion koulu sijaitsee keskeisellä alueella hyvien julkisten yhteyksien päässä ja teemme viikottain retkiä luontoon.",
+      "Käymme myös säännöllisesti liikkumassa lasten kanssa hype-areenalla ja retkillä kulttuurikohteissa.",
+      "Teemme tiivistä yhteistyötä koulun kanssa ja käytössämme on koulun liikuntasali, kirjasto ja ruokailemme koulun ruokalassa.",
+      "Osallistumme myös koulun tapahtumiin ja koululaiset käyvät esimerkiksi lukemassa eskarilaisille kirjoja yhteisillä tunneilla.",
+      "Tarjoamme sinulle mentorointiohjelmamme tuen aloittaessasi varhaiskasvatuksen opettajan työt.",
+      "Mentorointiryhmän tuella espoolainen varhaiskasvatus tulee sinulle tutuksi ja opit tunnistamaan omat vahvuutesi ja osaamisesi.",
+      "Samalla saat aineksia omaan ammatilliseen kasvuun ja työhyvinvointiin.",
+      "Pääset keskustelemaan kokeneen mentorin kanssa uran alkuvaiheeseen liittyvistä iloista ja haasteista, ja tutustut myös muihin varhaiskasvatuksen opettajina aloitteleviin kollegoihin.",
+      "Työpaikan nimi ja osoite: Eestinkallion esiopetus, Viittakorpi 7, 02280 Espoo",
+      "Työaika: 38 h 15 min/viikko",
+      "Tehtävä on vakinainen 26.11.2026 alkaen tai sopimuksen mukaan.",
+      "Käsittelemme hakemuksia ja haastattelemme hakijoita jo hakuaikana.",
+      "Teemme valinnan heti kelpoisen, tehtävään soveltuvan henkilön löydyttyä.",
+      "Haethan tehtävää mahdollisimman pian!",
+      "Kelpoisuusvaatimus: Varhaiskasvatuslain (540/2018) mukainen kelpoisuus.",
+      "Vähintään kasvatustieteen kandidaatin tutkinto, johon sisältyy varhaiskasvatuksen opettajan koulutus, tai sosiaali- ja terveysalan ammattikorkeakoulututkinto (varhaiskasvatus) tai aikaisempi vastaava opistotasoinen tutkinto,",
+      "esim. lastentarhanopettajan tai sosiaalikasvattajan tutkinto (laki 272/2005 ja asetus nro 608/2005).",
+      "Haussa huomioidaan myös juuri valmistuvat varhaiskasvatuksen opettajat.",
+      "Tehtävään valittavan on esitettävä nähtäväksi rikosrekisterilain 6.2 §:n tarkoittama rikosrekisteriote.",
+      "Tartuntatautilaki velvoittaa alle kouluikäisten kanssa työskentelevien tuberkuloositartuntariskin selvittämisen.",
+      "Arvostamme kykyä kohdata lapset ja heidän vanhempansa yksilöllisesti, arvostavasti ja sensitiivisesti.",
+      "Tervetuloa joukkoomme kasvattamaan vastuullista ja välittävää uutta sukupolvea!",
+      "Edelläkävijöiden Espoo - rohkeus uudistaa, taito kehittää",
+      "Espoo on edelläkävijöiden kaupunki.",
+      "Työnantajalupauksemme - rohkeus uudistaa, taito kehittää - näkyy arjessamme sujuvana työnä, osaamisen pitkäjänteisenä kehittämisenä ja fiksuna johtamisena.",
+      "Rakennamme yhdessä kaupunkia, jossa työn merkitys on selkeä ja asiantuntijuutta arvostetaan.",
+      "Tuemme ammatillista oppimistasi ja kehittymistäsi sekä työn ja muun elämän yhteensovittamista joustavilla käytännöillä.",
+      "Toimintamme perustuu avoimuuteen ja luottamukseen, ja kohtaamme toisemme arvostavasti.",
+      "Olemme sitoutuneet yhdenvertaisuuden edistämiseen ja toivomme työyhteisöömme eri-ikäisiä, eri taustoista ja eri kieliä puhuvia osaajia.",
+      "Tehtävään ja hakuprosessiin liittyvissä kysymyksissä voit olla yhteydessä tehtävän lisätietojen antajaan.",
+      "Erityistarpeisiin liittyvissä kysymyksissä voit ottaa yhteyttä: [removed] (mailto:[removed]).",
+      "Käsittelemme yhteydenotot luottamuksellisesti.",
+      "Lue lisää: https://www.esitteemme.fi/espoonrekry/MailView/ (https://www.esitteemme.fi/espoonrekry/MailView/)"
+    ],
+    "candidates": [
+      {
+        "k": "K1",
+        "uri": "http://data.europa.eu/esco/skill/3ff9d956-3e26-40d1-ae0e-f5f247943042",
+        "labelEn": "monitor children's physical development",
+        "labelFi": "seurata lasten fyysistä kehitystä",
+        "distractor": false
+      },
+      {
+        "k": "K2",
+        "uri": "http://data.europa.eu/esco/skill/28ca596e-5e2f-4149-a28d-42d2c4c20227",
+        "labelEn": "assess the development of youth",
+        "labelFi": "arvioida nuorten kehitystä",
+        "distractor": false
+      },
+      {
+        "k": "K3",
+        "uri": "http://data.europa.eu/esco/skill/eeb3e7ea-56f4-422f-8a85-0438b25ff0ce",
+        "labelEn": "kindergarten school procedures",
+        "labelFi": "päiväkodin käytännöt",
+        "distractor": false
+      },
+      {
+        "k": "K4",
+        "uri": "http://data.europa.eu/esco/skill/a65fb963-6faf-47b2-a3d9-c4e5e4d833c5",
+        "labelEn": "support children's wellbeing",
+        "labelFi": "tukea lasten hyvinvointia",
+        "distractor": false
+      },
+      {
+        "k": "K5",
+        "uri": "http://data.europa.eu/esco/skill/81ad8286-cc55-4a08-92a6-38474c35c893",
+        "labelEn": "instructional strategies",
+        "labelFi": "opetusstrategiat",
+        "distractor": false
+      },
+      {
+        "k": "K6",
+        "uri": "http://data.europa.eu/esco/skill/112bf219-beb2-4028-bd28-d8ed643fa32f",
+        "labelEn": "teach teaching principles",
+        "labelFi": "opettaa opettamisen periaatteita",
+        "distractor": true
+      },
+      {
+        "k": "K7",
+        "uri": "http://data.europa.eu/esco/skill/11f536f5-b0e2-46a6-95c1-bd765946604c",
+        "labelEn": "guarantee students' safety",
+        "labelFi": "varmistaa opiskelijoiden turvallisuus",
+        "distractor": false
+      },
+      {
+        "k": "K8",
+        "uri": "http://data.europa.eu/esco/skill/59eb177a-2f30-4943-8b30-5f87dd51a80d",
+        "labelEn": "apply teaching strategies",
+        "labelFi": "soveltaa erilaisia opetusmenetelmiä",
+        "distractor": false
+      },
+      {
+        "k": "K9",
+        "uri": "http://data.europa.eu/esco/skill/573d3f91-c81c-407e-a56d-0f3a63272b43",
+        "labelEn": "adapt teaching to student's capabilities",
+        "labelFi": "mukauttaa opetusta opiskelijoiden tason mukaisesti",
+        "distractor": false
+      },
+      {
+        "k": "K10",
+        "uri": "http://data.europa.eu/esco/skill/731101d9-94bc-4805-bff4-9578d1bf03b5",
+        "labelEn": "learning difficulties",
+        "labelFi": "oppimisvaikeudet",
+        "distractor": false
+      },
+      {
+        "k": "K11",
+        "uri": "http://data.europa.eu/esco/skill/b32e593b-cc7f-4f38-bf50-e69431ec7ada",
+        "labelEn": "demonstrate when teaching",
+        "labelFi": "havainnollistaa opettaessa",
+        "distractor": false
+      },
+      {
+        "k": "K12",
+        "uri": "http://data.europa.eu/esco/skill/20c2011f-c389-49cd-972e-a4809db0476c",
+        "labelEn": "apply Montessori teaching strategies",
+        "labelFi": "soveltaa montessoripedagogiikan opetusstrategioita",
+        "distractor": true
+      },
+      {
+        "k": "K13",
+        "uri": "http://data.europa.eu/esco/skill/20f57a7f-b90e-4403-8c77-5ddd89b5835b",
+        "labelEn": "prepare lesson content",
+        "labelFi": "valmistella oppitunnin sisältöä",
+        "distractor": false
+      },
+      {
+        "k": "K14",
+        "uri": "http://data.europa.eu/esco/skill/b9bb1f03-15e2-4079-943e-7e483b21725b",
+        "labelEn": "give constructive feedback",
+        "labelFi": "antaa rakentavaa palautetta",
+        "distractor": false
+      },
+      {
+        "k": "K15",
+        "uri": "http://data.europa.eu/esco/skill/e3ef4981-2cba-4b34-b273-728c3a33d04f",
+        "labelEn": "apply intercultural teaching strategies",
+        "labelFi": "soveltaa monikulttuurisia opetusstrategioita",
+        "distractor": false
+      },
+      {
+        "k": "K16",
+        "uri": "http://data.europa.eu/esco/skill/edff6d20-660d-4d33-b412-9a5b664a14be",
+        "labelEn": "curriculum objectives",
+        "labelFi": "opetussuunnitelman tavoitteet",
+        "distractor": false
+      },
+      {
+        "k": "K17",
+        "uri": "http://data.europa.eu/esco/skill/a5b0cd5c-e13a-4ab3-8d93-4d242adcfb01",
+        "labelEn": "teamwork principles",
+        "labelFi": "ryhmätyöskentelyn periaatteet",
+        "distractor": false
+      },
+      {
+        "k": "K18",
+        "uri": "http://data.europa.eu/esco/skill/a8d24a95-47b3-4f88-92e7-06600bcd3612",
+        "labelEn": "manage personal professional development",
+        "labelFi": "hallita henkilökohtaista ammatillista kehitystä",
+        "distractor": true
+      },
+      {
+        "k": "K19",
+        "uri": "http://data.europa.eu/esco/skill/6fe019dd-027f-45f3-b19c-d27f7ae00980",
+        "labelEn": "assess students",
+        "labelFi": "arvioida opiskelijoita",
+        "distractor": false
+      },
+      {
+        "k": "K20",
+        "uri": "http://data.europa.eu/esco/skill/d5e1e30e-44ab-4aba-abab-b8263e801b7a",
+        "labelEn": "assist students in their learning",
+        "labelFi": "avustaa opiskelijoita opinnoissa",
+        "distractor": false
+      },
+      {
+        "k": "K21",
+        "uri": "http://data.europa.eu/esco/skill/5a42eaf5-93bb-4bca-8ebd-4d78e96e4929",
+        "labelEn": "maintain students' discipline",
+        "labelFi": "pitää yllä järjestystä koulussa",
+        "distractor": false
+      },
+      {
+        "k": "K22",
+        "uri": "http://data.europa.eu/esco/skill/7530bc44-f09d-4dd2-8911-92b98333e442",
+        "labelEn": "assist students with equipment",
+        "labelFi": "antaa opiskelijoille ohjeita laitteiden käytössä",
+        "distractor": false
+      },
+      {
+        "k": "K23",
+        "uri": "http://data.europa.eu/esco/skill/4a874516-eb34-4dc1-833d-864c5a448db2",
+        "labelEn": "support the positiveness of youths",
+        "labelFi": "tukea nuorten myönteisyyttä",
+        "distractor": false
+      },
+      {
+        "k": "K24",
+        "uri": "http://data.europa.eu/esco/skill/b6b2e665-1085-4f4d-9973-e979721815d7",
+        "labelEn": "assist clients with special needs",
+        "labelFi": "avustaa asiakkaita, joilla on erikoistarpeita",
+        "distractor": true
+      },
+      {
+        "k": "K25",
+        "uri": "http://data.europa.eu/esco/skill/6b58a6d2-89cf-4ab5-bb62-eb29ae968934",
+        "labelEn": "implement care programmes for children",
+        "labelFi": "toteuttaa lasten hoito-ohjelmia",
+        "distractor": false
+      },
+      {
+        "k": "K26",
+        "uri": "http://data.europa.eu/esco/skill/229b10cf-6f3a-490c-9706-01c107df0562",
+        "labelEn": "facilitate teamwork between students",
+        "labelFi": "kannustaa opiskelijoita ryhmätyöhön",
+        "distractor": false
+      },
+      {
+        "k": "K27",
+        "uri": "http://data.europa.eu/esco/skill/cedd0710-62ae-4ff4-89ae-ac52375f86ec",
+        "labelEn": "perform classroom management",
+        "labelFi": "hallita luokkahuonetta",
+        "distractor": false
+      },
+      {
+        "k": "K28",
+        "uri": "http://data.europa.eu/esco/skill/a8c5e58f-1f0f-40bc-8860-aaab0f64f105",
+        "labelEn": "teach kindergarten class content",
+        "labelFi": "opettaa varhaiskasvatuksen opetussisältöjä",
+        "distractor": false
+      },
+      {
+        "k": "K29",
+        "uri": "http://data.europa.eu/esco/skill/07090471-265a-48ec-b744-72b357e801ed",
+        "labelEn": "handle children's problems",
+        "labelFi": "käsitellä lasten ongelmia",
+        "distractor": false
+      },
+      {
+        "k": "K30",
+        "uri": "http://data.europa.eu/esco/skill/0085e6bd-6829-4e8e-b302-842a7fe57ed9",
+        "labelEn": "teach housekeeping skills",
+        "labelFi": "opettaa taloudenhoitotaitoja",
+        "distractor": true
+      },
+      {
+        "k": "K31",
+        "uri": "http://data.europa.eu/esco/skill/4e3db6d7-88b8-492d-89e5-a93d01c3e369",
+        "labelEn": "social development",
+        "labelFi": "sosiaalinen kehitys",
+        "distractor": false
+      },
+      {
+        "k": "K32",
+        "uri": "http://data.europa.eu/esco/skill/f5dc20ae-8b2f-4c9b-b4fa-e9e8c81dbcf4",
+        "labelEn": "encourage students to acknowledge their achievements",
+        "labelFi": "kannustaa opiskelijoita arvostamaan saavutuksiaan",
+        "distractor": false
+      },
+      {
+        "k": "K33",
+        "uri": "http://data.europa.eu/esco/skill/44da96fe-26a3-4a32-9a0f-c49614bb7298",
+        "labelEn": "manage student relationships",
+        "labelFi": "hoitaa oppilaiden sosiaalisia suhteita",
+        "distractor": false
+      },
+      {
+        "k": "K34",
+        "uri": "http://data.europa.eu/esco/skill/8e09fe66-2649-4179-81ef-91fefa3ceee8",
+        "labelEn": "assist children in developing personal skills",
+        "labelFi": "avustaa lasten henkilökohtaisten taitojen kehittämisessä",
+        "distractor": false
+      },
+      {
+        "k": "K35",
+        "uri": "http://data.europa.eu/esco/skill/1be68ecc-7263-4118-8ca5-254e444f3bc0",
+        "labelEn": "consult students on learning content",
+        "labelFi": "suunnitella opetussisältöä opiskelijoiden toiveiden perusteella",
+        "distractor": false
+      },
+      {
+        "k": "K36",
+        "uri": "http://data.europa.eu/esco/skill/0162b701-6bb4-400a-b557-7996053d7daf",
+        "labelEn": "maintain personal hygiene standards when cleaning",
+        "labelFi": "huolehtia henkilökohtaisista hygieniavaatimuksista siivotessa",
+        "distractor": true
+      },
+      {
+        "k": "K37",
+        "uri": "http://data.europa.eu/esco/skill/ef1e63c9-f8c1-46ad-8c74-3cea311c9377",
+        "labelEn": "special needs education",
+        "labelFi": "erityisopetus",
+        "distractor": false
+      },
+      {
+        "k": "K38",
+        "uri": "http://data.europa.eu/esco/skill/06bd47bc-d9f3-4517-8e34-c55c2e81f8c2",
+        "labelEn": "workplace sanitation",
+        "labelFi": "työpaikan puhtaanapito",
+        "distractor": false
+      },
+      {
+        "k": "K39",
+        "uri": "http://data.europa.eu/esco/skill/a44c0ed6-68b1-457a-9c6d-ea8487bdfeb2",
+        "labelEn": "use learning strategies",
+        "labelFi": "käyttää oppimisstrategioita",
+        "distractor": false
+      },
+      {
+        "k": "K40",
+        "uri": "http://data.europa.eu/esco/skill/98a0c718-40b1-4a4f-a366-b8155f238d9b",
+        "labelEn": "promote the safeguarding of young people",
+        "labelFi": "edistää nuorten hyvinvointia",
+        "distractor": false
+      }
+    ]
+  },
+  "fi-cards-tiler": {
+    "fixtureIndex": 17,
+    "situation": "licences and cards: occupational safety card, hot work card, wet-room certificate, B licence",
+    "title": "Laatoittajaa",
+    "lang": "fi",
+    "sector": "private",
+    "source": "tmt",
+    "employerName": "Latva Saneeraus ja Rakennus Oy",
+    "brands": [
+      "Latva Saneeraus",
+      "Latva"
+    ],
+    "workLanguages": [
+      "fi"
+    ],
+    "sentences": [
+      "Latva Saneeraus ja Rakennus Oy on luotettu rakennusalan yritys, joka on palvellut Uudellamaalla yli 6 vuotta.",
+      "Palvelemme monipuolisesti niin taloyhtiöitä, liikekiinteistöjä kuin kotitalouksia.",
+      "Toteutamme kaikenlaiset korjausrakentamisen urakat alusta loppuun ammattitaitoisen henkilöstön voimin.",
+      "Olemme erikoistuneet korjausrakentamiseen.",
+      "Etsimme nyt laatoittajaa, Voimassa olevaa märkätilasertifikaattia",
+      "Työturvallisuuskortti",
+      "tulityökortti",
+      "Kokemusta laatoitus- ja vedeneristystöistä",
+      "Kykyä työskennellä itsenäisesti ja suunnitelmallisesti",
+      "Huolellista työnjälkeä ja hyvää ongelmanratkaisukykyä",
+      "Asiakaspalveluhenkistä asennetta",
+      "B-ajokortti.",
+      "Märkätilojen peruskorjauksia, sisältäen kaikki työvaiheet, suojaukset, purkutyöt, pohjatyöt, vedeneristystyöt, laatoitustyöt, kalusteasennukset, mahdolliset alakattotyöt ja muut viimeistelytyöt.",
+      "Työsuhde on toistaiseksi voimassa oleva.",
+      "Sinulla auto käytössä, koska työkohteemme ovat vaihtuvia.",
+      "Arvostamme kykyä itsenäiseeen työhön ja edellytämme työkokemusta ja ammattitaitoa.",
+      "Lähetä meille hakemus viimeistään 30.11.2026 osoitteeseen [removed] Käsittelemme hakemuksia jo hakuaikana.",
+      "Vastaan mielelläni.",
+      "Työssä vaadittavat luvat ja kortit, puhut että ymmärrät suomenkieltä hyvin.",
+      "Palkka",
+      "Palkkaus sopimuksen mukaan."
+    ],
+    "candidates": [
+      {
+        "k": "K1",
+        "uri": "http://data.europa.eu/esco/skill/504d99c7-395b-479c-815b-2f77ef769e75",
+        "labelEn": "lay tiles",
+        "labelFi": "asentaa laattoja",
+        "distractor": false
+      },
+      {
+        "k": "K2",
+        "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
+        "labelEn": "work ergonomically",
+        "labelFi": "työskennellä ergonomisesti",
+        "distractor": false
+      },
+      {
+        "k": "K3",
+        "uri": "http://data.europa.eu/esco/skill/2da864d4-339f-40ab-91c0-9f8d229a2c0b",
+        "labelEn": "snap chalk line",
+        "labelFi": "merkitä viiva värilangalla",
+        "distractor": false
+      },
+      {
+        "k": "K4",
+        "uri": "http://data.europa.eu/esco/skill/5bfdfb74-91dd-408b-a013-670d6961efc1",
+        "labelEn": "fill tile joints",
+        "labelFi": "täyttää laattasaumat",
+        "distractor": false
+      },
+      {
+        "k": "K5",
+        "uri": "http://data.europa.eu/esco/skill/f32a00ba-39af-4914-8504-434ed2a2fa6c",
+        "labelEn": "plan tiling",
+        "labelFi": "suunnitella laatoitusta",
+        "distractor": false
+      },
+      {
+        "k": "K6",
+        "uri": "http://data.europa.eu/esco/skill/02e235f4-a30a-412a-a06e-1c471ad28678",
+        "labelEn": "follow procedures to control substances hazardous to health",
+        "labelFi": "noudattaa terveydelle vaarallisten aineiden hallintakäytäntöjä",
+        "distractor": true
+      },
+      {
+        "k": "K7",
+        "uri": "http://data.europa.eu/esco/skill/dd7875ef-e4cf-47d5-81ce-228b2de90d5a",
+        "labelEn": "apply tile adhesive",
+        "labelFi": "levittää laattalaastia",
+        "distractor": false
+      },
+      {
+        "k": "K8",
+        "uri": "http://data.europa.eu/esco/skill/95097774-1a0e-4501-a3d9-b0f31973e02d",
+        "labelEn": "sanding techniques",
+        "labelFi": "hiontatekniikat",
+        "distractor": false
+      },
+      {
+        "k": "K9",
+        "uri": "http://data.europa.eu/esco/skill/bfd96453-f2fd-43ea-afc1-fb2dc0d7367d",
+        "labelEn": "mix construction grouts",
+        "labelFi": "sekoittaa saumauslaastia",
+        "distractor": false
+      },
+      {
+        "k": "K10",
+        "uri": "http://data.europa.eu/esco/skill/c643e59b-d74c-4f44-b76e-6e1d96c05ec4",
+        "labelEn": "use safety equipment in construction",
+        "labelFi": "käyttää suojavarusteita rakennustyömaalla",
+        "distractor": false
+      },
+      {
+        "k": "K11",
+        "uri": "http://data.europa.eu/esco/skill/e6997730-8587-498c-bf38-0f25905cda39",
+        "labelEn": "types of tile",
+        "labelFi": "laattatyypit",
+        "distractor": false
+      },
+      {
+        "k": "K12",
+        "uri": "http://data.europa.eu/esco/skill/dcc96a49-0bac-4a9c-8f8e-a32b4e47e6eb",
+        "labelEn": "apply health and safety standards",
+        "labelFi": "soveltaa terveys- ja turvallisuusnormeja",
+        "distractor": true
+      },
+      {
+        "k": "K13",
+        "uri": "http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe",
+        "labelEn": "follow health and safety procedures in construction",
+        "labelFi": "noudattaa terveys- ja turvallisuuskäytäntöjä rakennustyömaalla",
+        "distractor": false
+      },
+      {
+        "k": "K14",
+        "uri": "http://data.europa.eu/esco/skill/b9e08c07-4a52-4448-84dc-8a2df0601239",
+        "labelEn": "cut tiles",
+        "labelFi": "leikata laattoja",
+        "distractor": false
+      },
+      {
+        "k": "K15",
+        "uri": "http://data.europa.eu/esco/skill/0c07d9f7-9a77-4417-b139-17e7cc3f7baf",
+        "labelEn": "caulk expansion joints",
+        "labelFi": "kitata liikuntasaumat",
+        "distractor": false
+      },
+      {
+        "k": "K16",
+        "uri": "http://data.europa.eu/esco/skill/8a169eb9-2cf1-4653-aa5c-af575c9836f9",
+        "labelEn": "types of tile adhesive",
+        "labelFi": "laattojen kiinnitysainetyypit",
+        "distractor": false
+      },
+      {
+        "k": "K17",
+        "uri": "http://data.europa.eu/esco/skill/b92758d4-4591-4df1-9ceb-f907aa71ebd9",
+        "labelEn": "use measurement instruments",
+        "labelFi": "käyttää mittauslaitteita",
+        "distractor": false
+      },
+      {
+        "k": "K18",
+        "uri": "http://data.europa.eu/esco/skill/fafbb75f-ec35-4cc2-996a-20c85ef6c266",
+        "labelEn": "follow safety procedures when working at heights",
+        "labelFi": "noudattaa korkealla tehtävän työn turvallisuusohjeita",
+        "distractor": true
+      },
+      {
+        "k": "K19",
+        "uri": "http://data.europa.eu/esco/skill/50f2d23c-b3fb-48a5-967b-14fd0a6dd205",
+        "labelEn": "inspect construction supplies",
+        "labelFi": "tarkastaa rakennustarvikkeita",
+        "distractor": false
+      },
+      {
+        "k": "K20",
+        "uri": "http://data.europa.eu/esco/skill/4af56376-7b2f-4ced-ac58-0c3967bd1e83",
+        "labelEn": "transport construction supplies",
+        "labelFi": "kuljettaa rakennustarvikkeita",
+        "distractor": false
+      },
+      {
+        "k": "K21",
+        "uri": "http://data.europa.eu/esco/skill/562a111f-40fc-424a-b1ca-784ff2e0488e",
+        "labelEn": "plan surface slope",
+        "labelFi": "suunnitella pintojen kaatoja",
+        "distractor": false
+      },
+      {
+        "k": "K22",
+        "uri": "http://data.europa.eu/esco/skill/4fa2d6ba-4fff-4f21-bddd-4a54ae840955",
+        "labelEn": "work in a construction team",
+        "labelFi": "työskennellä rakennustiimissä",
+        "distractor": false
+      },
+      {
+        "k": "K23",
+        "uri": "http://data.europa.eu/esco/skill/6db3ac8e-8636-4ced-965b-75e35c3193c3",
+        "labelEn": "aesthetics",
+        "labelFi": "estetiikka",
+        "distractor": false
+      },
+      {
+        "k": "K24",
+        "uri": "http://data.europa.eu/esco/skill/00ec5333-e570-477b-9017-2e95fea0150a",
+        "labelEn": "maintain inventory of cleaning supplies",
+        "labelFi": "ylläpitää siivoustarvikkeiden varastoja",
+        "distractor": true
+      },
+      {
+        "k": "K25",
+        "uri": "http://data.europa.eu/esco/skill/9f1bd2a4-91af-4b60-aeb3-0fe1f4434966",
+        "labelEn": "order construction supplies",
+        "labelFi": "tilata rakennustarvikkeita",
+        "distractor": false
+      },
+      {
+        "k": "K26",
+        "uri": "http://data.europa.eu/esco/skill/47ba3c04-2039-42d1-be10-d6325fdfafad",
+        "labelEn": "maintain tile flooring",
+        "labelFi": "huoltaa laattalattiaa",
+        "distractor": false
+      },
+      {
+        "k": "K27",
+        "uri": "http://data.europa.eu/esco/skill/0ab24557-4912-45e5-981e-c350804440e0",
+        "labelEn": "operate mosaic tools",
+        "labelFi": "käyttää mosaiikkityökaluja",
+        "distractor": false
+      },
+      {
+        "k": "K28",
+        "uri": "http://data.europa.eu/esco/skill/6c6f0d6e-1f31-4413-b2ee-dabe135b29a7",
+        "labelEn": "art history",
+        "labelFi": "taidehistoria",
+        "distractor": false
+      },
+      {
+        "k": "K29",
+        "uri": "http://data.europa.eu/esco/skill/ee075bc7-ac7f-4d75-a8c1-da502e0954fb",
+        "labelEn": "make mosaic",
+        "labelFi": "tehdä mosaiikkia",
+        "distractor": false
+      },
+      {
+        "k": "K30",
+        "uri": "http://data.europa.eu/esco/skill/08f09776-a8cd-4981-a5d2-21e01ecf078d",
+        "labelEn": "calculate materials to build equipment",
+        "labelFi": "laskea laitteiden rakentamiseen tarvittavat materiaalit",
+        "distractor": true
+      },
+      {
+        "k": "K31",
+        "uri": "http://data.europa.eu/esco/skill/5598739b-6718-4cff-8402-91d7f65b1505",
+        "labelEn": "maintain work area cleanliness",
+        "labelFi": "huolehtia työskentelyalueen puhtaudesta",
+        "distractor": false
+      },
+      {
+        "k": "K32",
+        "uri": "http://data.europa.eu/esco/skill/536132d6-cfc2-4f20-8c8e-4ab8e5ce79e1",
+        "labelEn": "drill holes in tile",
+        "labelFi": "porata reikiä laattaan",
+        "distractor": false
+      },
+      {
+        "k": "K33",
+        "uri": "http://data.europa.eu/esco/skill/5d9dd44a-81f8-4710-bd4d-af27ec5c2139",
+        "labelEn": "calculate needs for construction supplies",
+        "labelFi": "laskea rakennustarvikkeiden tarve",
+        "distractor": false
+      },
+      {
+        "k": "K34",
+        "uri": "http://data.europa.eu/esco/skill/2206af0c-3deb-48c5-a544-b9983d347da3",
+        "labelEn": "answer requests for quotation",
+        "labelFi": "vastata tarjouspyyntöihin",
+        "distractor": false
+      },
+      {
+        "k": "K35",
+        "uri": "http://data.europa.eu/esco/skill/7eea6974-d606-4175-b95e-f66554816783",
+        "labelEn": "install insulation material",
+        "labelFi": "asentaa eristysmateriaalia",
+        "distractor": false
+      },
+      {
+        "k": "K36",
+        "uri": "http://data.europa.eu/esco/skill/09dea77e-870c-49eb-9a97-1398bee57bd0",
+        "labelEn": "cleaning industry health and safety measures",
+        "labelFi": "siivousalan työterveyttä ja -turvallisuutta edistävät toimenpiteet",
+        "distractor": true
+      },
+      {
+        "k": "K37",
+        "uri": "http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19",
+        "labelEn": "keep records of work progress",
+        "labelFi": "pitää kirjaa työn edistymisestä",
+        "distractor": false
+      },
+      {
+        "k": "K38",
+        "uri": "http://data.europa.eu/esco/skill/20b9852f-a445-4097-8273-4a18fa6bfff0",
+        "labelEn": "apply restoration techniques",
+        "labelFi": "käyttää restaurointitekniikoita",
+        "distractor": false
+      },
+      {
+        "k": "K39",
+        "uri": "http://data.europa.eu/esco/skill/a3e0224a-c952-4b4e-b664-d7186f62715b",
+        "labelEn": "process incoming construction supplies",
+        "labelFi": "käsitellä saapuvia rakennustarvikkeita",
+        "distractor": false
+      },
+      {
+        "k": "K40",
+        "uri": "http://data.europa.eu/esco/skill/827ebc71-b406-483e-9617-33c63dd487a0",
+        "labelEn": "estimate restoration costs",
+        "labelFi": "arvioida entisöintikulut",
+        "distractor": false
+      }
+    ]
+  },
+  "fi-fluent-fi-cook": {
+    "fixtureIndex": 36,
+    "situation": "fluent Finnish must for a cook (language question applies); hygiene passport",
+    "title": "Lounaskokki, Espoo",
+    "lang": "fi",
+    "sector": "private",
+    "source": "tmt",
+    "employerName": "StaffMill Oy",
+    "brands": [
+      "StaffMill"
+    ],
+    "workLanguages": [
+      "fi"
+    ],
+    "sentences": [
+      "Etsitkö vakituista ja kokoaikaista työtä laadukkaan ruoan parissa?",
+      "StaffMill Oy (https://www.staffmill.fi/) etsii nyt asiakkaalleen Espooseen kokenutta lounaskokkia ottamaan vetovastuun keittiön arjesta.",
+      "Tässä tehtävässä pääset valmistamaan korkeatasoista lounasta ammattitaitoisessa ja tiiviissä tiimissä.",
+      "Mitä teet työssäsi:",
+      "Tehtävässäsi vastaat noin 100-200 päivittäisen lounasannoksen valmistuksesta alusta alkaen itse ilman puolivalmisteita.",
+      "Otat keittiössä vetovastuun ja huolehdit siitä, että tarjottava ruoka on aina Premium-tasoa.",
+      "Työskentelet kahden hengen vuorossa, jossa työtehtäviä jaetaan joustavasti: keittiötyön lisäksi osallistut tarvittaessa astiahuoltoon, salin puhtaanapitoon ja kassatyöskentelyyn.",
+      "Työajat sijoittuvat arkipäiviin klo 6.30-14.30 välille.",
+      "Odotamme sinulta:",
+      "Vahvaa kokemusta kokin työstä ja kykyä ottaa vetovastuuta keittiöstä",
+      "Hygieniapassia",
+      "Sujuvaa suomen kielen taitoa",
+      "Eduksi katsotaan:",
+      "Kokemus suurtalous- tai catering-puolelta",
+      "Joustava asenne ja valmius osallistua monipuolisesti ravintolan arjen pyörittämiseen",
+      "Mitä tarjoamme sinulle:",
+      "Tarjoamme sinulle vakituisen työpaikan, jossa pääset toteuttamaan itseäsi laadukkaan ruoanvalmistuksen parissa.",
+      "Työ on säännöllistä päivätyötä arkisin, mikä mahdollistaa erinomaisen tasapainon työn ja vapaa-ajan välillä.",
+      "Saat lisäksi StaffMillin asiantuntevan tiimin tuen taustallesi koko työsuhteen ajaksi.",
+      "Käytännön tiedot:",
+      "Työkohde sijaitsee Espoossa ja työsuhde on vakituinen sekä kokoaikainen.",
+      "Haemme tehtävään yhtä työntekijää.",
+      "Työ alkaa sopimuksen mukaan heti.",
+      "Lisätietoja tehtävästä antaa rekrytointikonsultti Mette, puh. [removed] (tavoitettavissa arkisin klo 8-16).",
+      "Jätä hakemuksesi mahdollisimman pian oheisesta linkistä, käsittelemme hakemukset heti niiden saavuttua."
+    ],
+    "candidates": [
+      {
+        "k": "K1",
+        "uri": "http://data.europa.eu/esco/skill/29b326ea-a9c8-4963-b35a-8541d0cdff77",
+        "labelEn": "store raw food materials",
+        "labelFi": "varastoida elintarvikkeiden raaka-aineita",
+        "distractor": false
+      },
+      {
+        "k": "K2",
+        "uri": "http://data.europa.eu/esco/skill/4b15a965-9bb4-42f1-8e44-1024aeb0b08c",
+        "labelEn": "use food preparation techniques",
+        "labelFi": "käyttää ruoanvalmistustekniikoita",
+        "distractor": false
+      },
+      {
+        "k": "K3",
+        "uri": "http://data.europa.eu/esco/skill/538b91e8-565c-4483-bf97-6ff120e207a7",
+        "labelEn": "instruct kitchen personnel",
+        "labelFi": "ohjeistaa keittiöhenkilöstöä",
+        "distractor": false
+      },
+      {
+        "k": "K4",
+        "uri": "http://data.europa.eu/esco/skill/555d83ff-dbf9-481a-b726-2d502a11904e",
+        "labelEn": "cook vegetable products",
+        "labelFi": "valmistaa kasvisruokia",
+        "distractor": false
+      },
+      {
+        "k": "K5",
+        "uri": "http://data.europa.eu/esco/skill/c42d2a2a-2f55-45ac-beb1-0a8a76412457",
+        "labelEn": "use food cutting tools",
+        "labelFi": "käyttää elintarvikkeiden leikkaustyökaluja",
+        "distractor": false
+      },
+      {
+        "k": "K6",
+        "uri": "http://data.europa.eu/esco/skill/be3e49f5-c9ff-4ddc-a811-c345a8010c35",
+        "labelEn": "prepare cleaning materials for window cleaning",
+        "labelFi": "valmistella ikkunanpesuvälineitä",
+        "distractor": true
+      },
+      {
+        "k": "K7",
+        "uri": "http://data.europa.eu/esco/skill/c747ab82-9c35-4bf6-ab90-b50b9a53d292",
+        "labelEn": "ensure cleanliness of food preparation area",
+        "labelFi": "puhdistaa ruoanvalmistusalue",
+        "distractor": false
+      },
+      {
+        "k": "K8",
+        "uri": "http://data.europa.eu/esco/skill/f19f0cda-73f4-417e-8ec9-c0cacf5e7149",
+        "labelEn": "cook meat dishes",
+        "labelFi": "valmistaa liharuokia",
+        "distractor": false
+      },
+      {
+        "k": "K9",
+        "uri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+        "labelEn": "use cooking techniques",
+        "labelFi": "käyttää ruoanvalmistusmenetelmiä",
+        "distractor": false
+      },
+      {
+        "k": "K10",
+        "uri": "http://data.europa.eu/esco/skill/c87c5366-c9a9-4205-8333-4938a9c384ad",
+        "labelEn": "maintain a safe, hygienic and secure working environment",
+        "labelFi": "ylläpitää siistiä, hygieenistä ja turvallista työskentely-ympäristöä",
+        "distractor": false
+      },
+      {
+        "k": "K11",
+        "uri": "http://data.europa.eu/esco/skill/9ccd8da7-733b-4aff-a49f-94c390aeb618",
+        "labelEn": "handover the food preparation area",
+        "labelFi": "luovuttaa ruoanvalmistustila seuraavalle vuorolle",
+        "distractor": false
+      },
+      {
+        "k": "K12",
+        "uri": "http://data.europa.eu/esco/skill/00ec5333-e570-477b-9017-2e95fea0150a",
+        "labelEn": "maintain inventory of cleaning supplies",
+        "labelFi": "ylläpitää siivoustarvikkeiden varastoja",
+        "distractor": true
+      },
+      {
+        "k": "K13",
+        "uri": "http://data.europa.eu/esco/skill/e1f5c539-7c93-49ee-917d-a24e0d887686",
+        "labelEn": "control of expenses",
+        "labelFi": "hallita kuluja",
+        "distractor": false
+      },
+      {
+        "k": "K14",
+        "uri": "http://data.europa.eu/esco/skill/341cf309-746c-4437-ad14-e0a0ee13eacc",
+        "labelEn": "receive kitchen supplies",
+        "labelFi": "valvoa tilattujen keittiötarvikkeiden saapumista",
+        "distractor": false
+      },
+      {
+        "k": "K15",
+        "uri": "http://data.europa.eu/esco/skill/a02d7f88-a240-4644-911b-169af470be5a",
+        "labelEn": "use reheating techniques",
+        "labelFi": "käyttää uudelleenlämmitystekniikoita",
+        "distractor": false
+      },
+      {
+        "k": "K16",
+        "uri": "http://data.europa.eu/esco/skill/bb84d739-1b06-477b-9195-251650bb3c14",
+        "labelEn": "use culinary finishing techniques",
+        "labelFi": "käyttää ruoanlaiton viimeistelytekniikoita",
+        "distractor": false
+      },
+      {
+        "k": "K17",
+        "uri": "http://data.europa.eu/esco/skill/0ff99f51-40d9-42f1-a1ec-377b2bb5e15f",
+        "labelEn": "comply with food safety and hygiene",
+        "labelFi": "noudattaa elintarvikkeisiin liittyvää terveys- turvallisuus- hygienia- ja muuta asiaankuuluvaa lainsäädäntöä",
+        "distractor": false
+      },
+      {
+        "k": "K18",
+        "uri": "http://data.europa.eu/esco/skill/0162b701-6bb4-400a-b557-7996053d7daf",
+        "labelEn": "maintain personal hygiene standards when cleaning",
+        "labelFi": "huolehtia henkilökohtaisista hygieniavaatimuksista siivotessa",
+        "distractor": true
+      },
+      {
+        "k": "K19",
+        "uri": "http://data.europa.eu/esco/skill/210827e3-3129-45a2-8683-70399f3f561f",
+        "labelEn": "order supplies",
+        "labelFi": "tilata tarvikkeita",
+        "distractor": false
+      },
+      {
+        "k": "K20",
+        "uri": "http://data.europa.eu/esco/skill/8c8da904-cdb3-47d9-bfbf-15ade747d9ec",
+        "labelEn": "work in a hospitality team",
+        "labelFi": "työskennellä ryhmässä matkailu-, majoitus- tai ravitsemisalalla",
+        "distractor": false
+      },
+      {
+        "k": "K21",
+        "uri": "http://data.europa.eu/esco/skill/e265e4e2-f031-4012-a7bf-54cac48fb846",
+        "labelEn": "maintain kitchen equipment at correct temperature",
+        "labelFi": "huolehtia keittiölaitteiden oikeasta lämpötilasta",
+        "distractor": false
+      },
+      {
+        "k": "K22",
+        "uri": "http://data.europa.eu/esco/skill/1316577b-31f7-437f-97ce-27c408b87a55",
+        "labelEn": "prepare dairy products for use in a dish",
+        "labelFi": "valmistella ruoanvalmistukseen käytettävät maitotuotteet",
+        "distractor": false
+      },
+      {
+        "k": "K23",
+        "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
+        "labelEn": "train employees",
+        "labelFi": "kouluttaa työntekijöitä",
+        "distractor": false
+      },
+      {
+        "k": "K24",
+        "uri": "http://data.europa.eu/esco/skill/1b73b2a7-aefc-49ef-8b30-b90ca7429984",
+        "labelEn": "advise customers on building materials",
+        "labelFi": "antaa asiakkaille rakennusmateriaaleja koskevia neuvoja",
+        "distractor": true
+      },
+      {
+        "k": "K25",
+        "uri": "http://data.europa.eu/esco/skill/493a1805-6caa-4cda-8fd3-6495ec8ea451",
+        "labelEn": "prepare sandwiches",
+        "labelFi": "valmistaa voileipiä",
+        "distractor": false
+      },
+      {
+        "k": "K26",
+        "uri": "http://data.europa.eu/esco/skill/5c6ca864-76d5-4217-b3e1-9a7ba7f8f47b",
+        "labelEn": "plan menus",
+        "labelFi": "suunnitella ruokalistoja",
+        "distractor": false
+      },
+      {
+        "k": "K27",
+        "uri": "http://data.europa.eu/esco/skill/f7f56b20-8f05-4731-a1bf-79fdcffc72ce",
+        "labelEn": "check deliveries on receipt",
+        "labelFi": "tarkastaa saapuvat toimitukset",
+        "distractor": false
+      },
+      {
+        "k": "K28",
+        "uri": "http://data.europa.eu/esco/skill/51a26193-9abe-4bce-9108-f50835be1c35",
+        "labelEn": "handle chemical cleaning agents",
+        "labelFi": "käsitellä kemiallisia puhdistusaineita",
+        "distractor": false
+      },
+      {
+        "k": "K29",
+        "uri": "http://data.europa.eu/esco/skill/6b69101a-0e51-45c6-a7e5-5a60a1c85da0",
+        "labelEn": "composition of diets",
+        "labelFi": "ruokavalioiden koostumukset",
+        "distractor": false
+      },
+      {
+        "k": "K30",
+        "uri": "http://data.europa.eu/esco/skill/36a48e03-4466-4ea3-b463-cbce02cbd7bb",
+        "labelEn": "ensure maintenance of kitchen equipment",
+        "labelFi": "varmistaa keittiölaitteiden huolto",
+        "distractor": true
+      },
+      {
+        "k": "K31",
+        "uri": "http://data.europa.eu/esco/skill/13d96098-2ff0-46b8-b326-b7c0e18cc1f1",
+        "labelEn": "nutrition",
+        "labelFi": "ravitsemustiede",
+        "distractor": false
+      },
+      {
+        "k": "K32",
+        "uri": "http://data.europa.eu/esco/skill/c1bbc099-92c5-493c-9f65-8d7acfce5851",
+        "labelEn": "prepared meals",
+        "labelFi": "valmisateriat",
+        "distractor": false
+      },
+      {
+        "k": "K33",
+        "uri": "http://data.europa.eu/esco/skill/728cd984-19ad-441c-8145-b8edc9c53445",
+        "labelEn": "execute chilling processes to food products",
+        "labelFi": "suorittaa elintarvikkeiden jäähdytysprosesseja",
+        "distractor": false
+      },
+      {
+        "k": "K34",
+        "uri": "http://data.europa.eu/esco/skill/fad85f11-e21d-41f4-b221-2f8ab318d4ed",
+        "labelEn": "prepare egg products for use in a dish",
+        "labelFi": "valmistella ruoassa käytettävät kananmuna- ja meijerituotteet",
+        "distractor": false
+      },
+      {
+        "k": "K35",
+        "uri": "http://data.europa.eu/esco/skill/a78b60d6-6cde-4da6-9c48-39bc7396ab16",
+        "labelEn": "prepare desserts",
+        "labelFi": "valmistaa jälkiruoat",
+        "distractor": false
+      },
+      {
+        "k": "K36",
+        "uri": "http://data.europa.eu/esco/skill/3b5d16de-6894-4712-aa52-86f1e2c48f0d",
+        "labelEn": "advise customers on wood products",
+        "labelFi": "antaa asiakkaille puutuotteisiin liittyviä neuvoja",
+        "distractor": true
+      },
+      {
+        "k": "K37",
+        "uri": "http://data.europa.eu/esco/skill/ba74f3e5-4494-405c-8d98-7032f2a883ba",
+        "labelEn": "advise customers on seafood choices",
+        "labelFi": "antaa asiakkaille kala- ja äyriäisvalikoimaa koskevia neuvoja",
+        "distractor": false
+      },
+      {
+        "k": "K38",
+        "uri": "http://data.europa.eu/esco/skill/47d286a7-38b2-4970-a9f2-69c7faa77167",
+        "labelEn": "comply with standard portion sizes",
+        "labelFi": "noudattaa vakiomääräisiä annoskokoja",
+        "distractor": false
+      },
+      {
+        "k": "K39",
+        "uri": "http://data.europa.eu/esco/skill/23b355ee-94db-4831-b16d-935adc5de1cd",
+        "labelEn": "prepare meat products for use in a dish",
+        "labelFi": "valmistella ruoassa käytettävä liha",
+        "distractor": false
+      },
+      {
+        "k": "K40",
+        "uri": "http://data.europa.eu/esco/skill/b72395ea-623b-4204-abef-a67592b0781a",
+        "labelEn": "prepare ready-made dishes",
+        "labelFi": "valmistaa valmisruokia",
+        "distractor": false
+      }
+    ]
+  },
+  "fi-vague-age18": {
+    "fixtureIndex": 19,
+    "situation": "vague posting of soft asks; age 18+ stated; own car",
+    "title": "Panimohyllyttäjä, Raasepori-Hanko",
+    "lang": "fi",
+    "sector": "private",
+    "source": "tmt",
+    "employerName": "Joblink Myymäläpalvelut Oy",
+    "brands": [
+      "Joblink"
+    ],
+    "workLanguages": [
+      "fi"
+    ],
+    "sentences": [
+      "Panimohyllyttäjä",
+      "Haemme panimohyllyttäjää Raaseporin ja Hangon päivittäistavarakauppoihin",
+      "Oletko oma-aloitteinen, itsenäinen ja motivoidut fyysisestä työstä?",
+      "Kiinnostavatko sinua vaihtelevuus ja mahdollisuus tutustua eri työkohteisiin?",
+      "Hienoa – saatat olla etsimämme henkilö!",
+      "Työn kuvaus:",
+      "Haemme asiakkaallemme panimotuotteiden hyllyttäjää.",
+      "Työtä on tarjolla 15 tuntia viikossa, tarvittaessa enemmän.",
+      "Työt sijoittuvat pääasiassa arkipäiville.",
+      "Työt tehdään pääsääntöisesti klo 6-18 välillä, mutta työajat voivat vaihdella päiväkohtaisesti kuormien suuruuksista ja poikkeuspäivistä riippuen.",
+      "Perehdytämme sinut työhön.",
+      "Tehtäväsi on huolehtia asiakkaamme tuotteiden esillepanosta ja hyllyttämisestä.",
+      "Työtehtäviisi kuuluu kaupan varastoon saapuvan kuorman purkaminen, varaston läpikäynti ja lisämyyntipaikkojen täydentäminen päivittäistavarakaupoissa.",
+      "Toivomme sinulta:",
+      "Etsimme ennen kaikkea tekijöitä, jotka nauttivat aikaansaamisesta ja itsenäisestä työskentelystä.",
+      "Erityisesti arvostamme fyysistä jaksamista sekä joustavuutta työpäivien pituuden suhteen.",
+      "Työn luonteen vuoksi yksikään päivä ei ole samanlainen, joten olethan valmis nopeisiinkin muutoksiin.",
+      "Toivomme hakijalta myös huolellisuutta ja organisointikykyä, sillä näitä tarvitaan tuotteiden käsittelyssä ja varaston järjestyksen ylläpidossa.",
+      "Aikaisempi kokemus vastaavista töistä katsotaan eduksi, mutta se ei ole välttämätöntä.",
+      "Tärkeämpää on innostunut ja reipas asenne!",
+      "Työssä tarvitset oman auton kohteiden välillä kulkemista varten.",
+      "Kilometrikorvaukset kohteiden välillä maksetaan.",
+      "Oletko juuri sinä hakemamme tekijä?",
+      "Sinulla on oma auto käytössä",
+      "Kykenet itsenäiseen ja fyysiseen työhön",
+      "Sinulla on reipas ja aikaansaava ote",
+      "Sopeudut joustavasti eripituisiin työpäiviin",
+      "Kommunikoit sujuvasti suomeksi",
+      "Olet täyttänyt jo 18 vuotta",
+      "Toivottavasti innostut työstä, jossa saat olla mukana vaikuttamassa asiakaskokemukseen!",
+      "Ennen ensimmäisiä työvuorojasi huolehdimme, että saat meiltä tarvittavat eväät työssä onnistumiseen.",
+      "Joblink Myymäläpalvelut Oy",
+      "Puhelin: [removed] Sähköposti: [removed] Sijainti: Raasepori, Hanko"
+    ],
+    "candidates": [
+      {
+        "k": "K1",
+        "uri": "http://data.europa.eu/esco/skill/3fe84b03-b2a5-450e-9210-10c124af738c",
+        "labelEn": "client-centred counselling",
+        "labelFi": "asiakaskeskeinen ohjaus",
+        "distractor": false
+      },
+      {
+        "k": "K2",
+        "uri": "http://data.europa.eu/esco/skill/1585fc98-bfe4-461f-97fc-734055a2c3ce",
+        "labelEn": "characteristics of products",
+        "labelFi": "tuotteiden ominaisuudet",
+        "distractor": false
+      },
+      {
+        "k": "K3",
+        "uri": "http://data.europa.eu/esco/skill/de7b8c6c-9ed4-4776-924c-4265dd1d9cde",
+        "labelEn": "demonstrate products' features",
+        "labelFi": "esitellä tuotteen ominaisuuksia",
+        "distractor": false
+      },
+      {
+        "k": "K4",
+        "uri": "http://data.europa.eu/esco/skill/a89c463d-e6f0-417d-9216-b59b92249226",
+        "labelEn": "carry out order intake",
+        "labelFi": "ottaa vastaan tilauksia",
+        "distractor": false
+      },
+      {
+        "k": "K5",
+        "uri": "http://data.europa.eu/esco/skill/fb3bc9b5-2297-4bba-85b1-60f696a92db8",
+        "labelEn": "characteristics of services",
+        "labelFi": "palveluiden ominaisuudet",
+        "distractor": false
+      },
+      {
+        "k": "K6",
+        "uri": "http://data.europa.eu/esco/skill/0e0c9c11-b39e-43cf-ba95-2fe646f5de64",
+        "labelEn": "identify customer requirements",
+        "labelFi": "määritellä asiakasvaatimukset",
+        "distractor": true
+      },
+      {
+        "k": "K7",
+        "uri": "http://data.europa.eu/esco/skill/2239694b-771a-4586-8b54-2794e361a9ae",
+        "labelEn": "maintain relationship with customers",
+        "labelFi": "ylläpitää suhteita asiakkaisiin",
+        "distractor": false
+      },
+      {
+        "k": "K8",
+        "uri": "http://data.europa.eu/esco/skill/00e53a0a-c0ba-4c9f-a2ed-4706d5832a00",
+        "labelEn": "guarantee customer satisfaction",
+        "labelFi": "varmistaa asiakastyytyväisyys",
+        "distractor": false
+      },
+      {
+        "k": "K9",
+        "uri": "http://data.europa.eu/esco/skill/f75b740c-b36c-495e-bc67-efe347bbc6b5",
+        "labelEn": "company policies",
+        "labelFi": "yrityksen käytännöt",
+        "distractor": false
+      },
+      {
+        "k": "K10",
+        "uri": "http://data.europa.eu/esco/skill/c7e8948c-e7e4-406a-957d-55daaa4cdb44",
+        "labelEn": "ensure stock storage safety",
+        "labelFi": "varmistaa varastotuotteiden turvallisuus",
+        "distractor": false
+      },
+      {
+        "k": "K11",
+        "uri": "http://data.europa.eu/esco/skill/7e9daad3-8604-4839-af9b-dc6f8db3ef68",
+        "labelEn": "stock shelves",
+        "labelFi": "täyttää hyllyjä",
+        "distractor": false
+      },
+      {
+        "k": "K12",
+        "uri": "http://data.europa.eu/esco/skill/233be639-bdb5-4099-ab40-96d537d6c1f3",
+        "labelEn": "ensure compliance with safety legislation",
+        "labelFi": "varmistaa turvallisuuslainsäädännön noudattaminen",
+        "distractor": true
+      },
+      {
+        "k": "K13",
+        "uri": "http://data.europa.eu/esco/skill/c609c7cf-ec3f-42df-9147-3ea012e31b66",
+        "labelEn": "Order products",
+        "labelFi": "hoitaa tuotetilauksia asiakkaiden puolesta",
+        "distractor": false
+      },
+      {
+        "k": "K14",
+        "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
+        "labelEn": "monitor stock level",
+        "labelFi": "valvoa varastomääriä",
+        "distractor": false
+      },
+      {
+        "k": "K15",
+        "uri": "http://data.europa.eu/esco/skill/0ae55852-562d-4fc9-be5e-d99f54e91b24",
+        "labelEn": "prepare sales checks",
+        "labelFi": "laatia ostokuitteja",
+        "distractor": false
+      },
+      {
+        "k": "K16",
+        "uri": "http://data.europa.eu/esco/skill/68698869-c13c-4563-adc7-118b7644f45d",
+        "labelEn": "identify customer's needs",
+        "labelFi": "tunnistaa asiakkaan tarpeet",
+        "distractor": false
+      },
+      {
+        "k": "K17",
+        "uri": "http://data.europa.eu/esco/skill/d6d3fee7-47e2-47f4-a0ec-6c75f28c6abd",
+        "labelEn": "product comprehension",
+        "labelFi": "tuotetietous",
+        "distractor": false
+      },
+      {
+        "k": "K18",
+        "uri": "http://data.europa.eu/esco/skill/68269b0a-35c5-4867-bc17-a0b0230fe60c",
+        "labelEn": "ensure finished product meet requirements",
+        "labelFi": "varmistaa, että lopputuote vastaa vaatimuksia",
+        "distractor": true
+      },
+      {
+        "k": "K19",
+        "uri": "http://data.europa.eu/esco/skill/2aed5d29-15c3-44ba-bb5c-80750a815b3c",
+        "labelEn": "follow up orders for customers",
+        "labelFi": "seurata tilauksia asiakkaiden puolesta",
+        "distractor": false
+      },
+      {
+        "k": "K20",
+        "uri": "http://data.europa.eu/esco/skill/1dae8445-12e5-423a-bb26-824010e299b9",
+        "labelEn": "ensure compliance with legal requirements",
+        "labelFi": "varmistaa lakisääteisten vaatimusten noudattaminen",
+        "distractor": false
+      },
+      {
+        "k": "K21",
+        "uri": "http://data.europa.eu/esco/skill/25fce4fb-35b6-49b6-a4fa-c7aa168fd770",
+        "labelEn": "examine merchandise",
+        "labelFi": "tutkia kauppatavaraa",
+        "distractor": false
+      },
+      {
+        "k": "K22",
+        "uri": "http://data.europa.eu/esco/skill/f10cf304-f32c-40ee-97a7-ec8d84d72955",
+        "labelEn": "prevent shoplifting",
+        "labelFi": "estää myymälävarkauksia",
+        "distractor": false
+      },
+      {
+        "k": "K23",
+        "uri": "http://data.europa.eu/esco/skill/efc1d46f-39ab-4c73-ade6-0a99a90dbeba",
+        "labelEn": "plan aftersales arrangements",
+        "labelFi": "suunnitella myynninjälkeisiä järjestelyjä",
+        "distractor": false
+      },
+      {
+        "k": "K24",
+        "uri": "http://data.europa.eu/esco/skill/8c963be4-1f3a-41df-9a57-fcfd32dcfb84",
+        "labelEn": "advise customers on power requirements of products",
+        "labelFi": "neuvoa asiakkaita tuotteiden tehovaatimuksista",
+        "distractor": true
+      },
+      {
+        "k": "K25",
+        "uri": "http://data.europa.eu/esco/skill/b7c8f418-08d5-45d6-b697-ab26c6ecbfb4",
+        "labelEn": "ensure client orientation",
+        "labelFi": "varmistaa asiakaskeskeisyys",
+        "distractor": false
+      },
+      {
+        "k": "K26",
+        "uri": "http://data.europa.eu/esco/skill/0cb013af-6dd9-4fb2-b34e-63dda1a5cf82",
+        "labelEn": "operate cash register",
+        "labelFi": "käyttää kassakonetta",
+        "distractor": false
+      },
+      {
+        "k": "K27",
+        "uri": "http://data.europa.eu/esco/skill/debb8d81-ed7f-447d-853a-5d107fda6fcf",
+        "labelEn": "provide customer follow-up services",
+        "labelFi": "tarjota asiakkaalle myynninjälkeisiä palveluita",
+        "distractor": false
+      },
+      {
+        "k": "K28",
+        "uri": "http://data.europa.eu/esco/skill/77a11321-754a-41de-b9e4-80d747f528db",
+        "labelEn": "organise product display",
+        "labelFi": "järjestää tuotteiden näytteillepano",
+        "distractor": false
+      },
+      {
+        "k": "K29",
+        "uri": "http://data.europa.eu/esco/skill/3cd35f5d-ce6d-4f14-9a09-53d7a28d834c",
+        "labelEn": "maintain relationship with suppliers",
+        "labelFi": "ylläpitää suhteita tavarantoimittajiin",
+        "distractor": false
+      },
+      {
+        "k": "K30",
+        "uri": "http://data.europa.eu/esco/skill/a846cb9e-c152-41e7-bd34-45e7ff941e3b",
+        "labelEn": "legal requirements of ICT products",
+        "labelFi": "ICT-tuotteiden oikeudelliset vaatimukset",
+        "distractor": true
+      },
+      {
+        "k": "K31",
+        "uri": "http://data.europa.eu/esco/skill/a6d697d1-80ba-4175-82d4-43440ed04270",
+        "labelEn": "process refunds",
+        "labelFi": "käsitellä hyvityksiä",
+        "distractor": false
+      },
+      {
+        "k": "K32",
+        "uri": "http://data.europa.eu/esco/skill/2b69525c-731c-4813-99a7-673fa5679d32",
+        "labelEn": "provide customer guidance on product selection",
+        "labelFi": "opastaa asiakasta tuotteen valinnassa",
+        "distractor": false
+      },
+      {
+        "k": "K33",
+        "uri": "http://data.europa.eu/esco/skill/c81c9ea3-4689-4146-9076-24dd175c69bc",
+        "labelEn": "carry out active selling",
+        "labelFi": "tehdä aktiivista myyntityötä",
+        "distractor": false
+      },
+      {
+        "k": "K34",
+        "uri": "http://data.europa.eu/esco/skill/bd2f7603-5e58-4d71-8f13-44c632782b02",
+        "labelEn": "package purchases in bags",
+        "labelFi": "pakata ostokset pusseihin",
+        "distractor": false
+      },
+      {
+        "k": "K35",
+        "uri": "http://data.europa.eu/esco/skill/e3e42d54-78bd-4337-aa87-bb31a7670c9a",
+        "labelEn": "issue sales invoices",
+        "labelFi": "tehdä myyntilaskuja",
+        "distractor": false
+      },
+      {
+        "k": "K36",
+        "uri": "http://data.europa.eu/esco/skill/ccb0809c-d045-4621-82f7-192b9e89a4f2",
+        "labelEn": "provide customer follow-up",
+        "labelFi": "antaa asiakaspalvelua ja huolehtia tarvittavista jatkotoimista",
+        "distractor": true
+      },
+      {
+        "k": "K37",
+        "uri": "http://data.europa.eu/esco/skill/bef39770-1abe-4b86-830a-7c168f69c459",
+        "labelEn": "keep records of merchandise delivery",
+        "labelFi": "pitää kirjaa tavaratoimituksista",
+        "distractor": false
+      },
+      {
+        "k": "K38",
+        "uri": "http://data.europa.eu/esco/skill/e4aea84e-6f33-41f9-a61c-53cf5125ea26",
+        "labelEn": "supervise merchandise displays",
+        "labelFi": "valvoa myytävänä olevien tavaroiden esillepanoa",
+        "distractor": false
+      },
+      {
+        "k": "K39",
+        "uri": "http://data.europa.eu/esco/skill/57c1debf-3867-4e64-baf8-ce70d84f88c9",
+        "labelEn": "maintain store cleanliness",
+        "labelFi": "ylläpitää myymälän siisteyttä",
+        "distractor": false
+      },
+      {
+        "k": "K40",
+        "uri": "http://data.europa.eu/esco/skill/f2aeb587-32fc-4a2c-af4c-07fbb82f7287",
+        "labelEn": "ensure store security",
+        "labelFi": "varmistaa myymälän turvallisuus",
+        "distractor": false
+      }
+    ]
+  },
+  "fi-very-short-pizza": {
+    "fixtureIndex": 20,
+    "situation": "very short posting (2 sentences); 2 years",
+    "title": "Ravintolan työntekijä / Kotipizza Westend",
+    "lang": "fi",
+    "sector": "private",
+    "source": "tmt",
+    "employerName": "Bite & Beans OY",
+    "brands": [
+      "Kotipizza",
+      "Bite & Beans"
+    ],
+    "workLanguages": [
+      "fi"
+    ],
+    "sentences": [
+      "Ruokien valmistaminen ohjeiden mukaisesti, keittiön siisteydestä ja hygieniasta huolehtiminen, raaka-aineiden turvallinen käsittely sekä tarvittaessa avustaminen varaston järjestämisessä ja tilausten vastaanotossa.",
+      "Vähintään kahden vuoden kokemus pizzakokin työtehtävistä."
+    ],
+    "candidates": [
+      {
+        "k": "K1",
+        "uri": "http://data.europa.eu/esco/skill/c87c5366-c9a9-4205-8333-4938a9c384ad",
+        "labelEn": "maintain a safe, hygienic and secure working environment",
+        "labelFi": "ylläpitää siistiä, hygieenistä ja turvallista työskentely-ympäristöä",
+        "distractor": false
+      },
+      {
+        "k": "K2",
+        "uri": "http://data.europa.eu/esco/skill/c747ab82-9c35-4bf6-ab90-b50b9a53d292",
+        "labelEn": "ensure cleanliness of food preparation area",
+        "labelFi": "puhdistaa ruoanvalmistusalue",
+        "distractor": false
+      },
+      {
+        "k": "K3",
+        "uri": "http://data.europa.eu/esco/skill/c42d2a2a-2f55-45ac-beb1-0a8a76412457",
+        "labelEn": "use food cutting tools",
+        "labelFi": "käyttää elintarvikkeiden leikkaustyökaluja",
+        "distractor": false
+      },
+      {
+        "k": "K4",
+        "uri": "http://data.europa.eu/esco/skill/4b15a965-9bb4-42f1-8e44-1024aeb0b08c",
+        "labelEn": "use food preparation techniques",
+        "labelFi": "käyttää ruoanvalmistustekniikoita",
+        "distractor": false
+      },
+      {
+        "k": "K5",
+        "uri": "http://data.europa.eu/esco/skill/0ff99f51-40d9-42f1-a1ec-377b2bb5e15f",
+        "labelEn": "comply with food safety and hygiene",
+        "labelFi": "noudattaa elintarvikkeisiin liittyvää terveys- turvallisuus- hygienia- ja muuta asiaankuuluvaa lainsäädäntöä",
+        "distractor": false
+      },
+      {
+        "k": "K6",
+        "uri": "http://data.europa.eu/esco/skill/be3e49f5-c9ff-4ddc-a811-c345a8010c35",
+        "labelEn": "prepare cleaning materials for window cleaning",
+        "labelFi": "valmistella ikkunanpesuvälineitä",
+        "distractor": true
+      },
+      {
+        "k": "K7",
+        "uri": "http://data.europa.eu/esco/skill/9ccd8da7-733b-4aff-a49f-94c390aeb618",
+        "labelEn": "handover the food preparation area",
+        "labelFi": "luovuttaa ruoanvalmistustila seuraavalle vuorolle",
+        "distractor": false
+      },
+      {
+        "k": "K8",
+        "uri": "http://data.europa.eu/esco/skill/e1f5c539-7c93-49ee-917d-a24e0d887686",
+        "labelEn": "control of expenses",
+        "labelFi": "hallita kuluja",
+        "distractor": false
+      },
+      {
+        "k": "K9",
+        "uri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+        "labelEn": "use cooking techniques",
+        "labelFi": "käyttää ruoanvalmistusmenetelmiä",
+        "distractor": false
+      },
+      {
+        "k": "K10",
+        "uri": "http://data.europa.eu/esco/skill/341cf309-746c-4437-ad14-e0a0ee13eacc",
+        "labelEn": "receive kitchen supplies",
+        "labelFi": "valvoa tilattujen keittiötarvikkeiden saapumista",
+        "distractor": false
+      },
+      {
+        "k": "K11",
+        "uri": "http://data.europa.eu/esco/skill/a02d7f88-a240-4644-911b-169af470be5a",
+        "labelEn": "use reheating techniques",
+        "labelFi": "käyttää uudelleenlämmitystekniikoita",
+        "distractor": false
+      },
+      {
+        "k": "K12",
+        "uri": "http://data.europa.eu/esco/skill/00ec5333-e570-477b-9017-2e95fea0150a",
+        "labelEn": "maintain inventory of cleaning supplies",
+        "labelFi": "ylläpitää siivoustarvikkeiden varastoja",
+        "distractor": true
+      },
+      {
+        "k": "K13",
+        "uri": "http://data.europa.eu/esco/skill/bb84d739-1b06-477b-9195-251650bb3c14",
+        "labelEn": "use culinary finishing techniques",
+        "labelFi": "käyttää ruoanlaiton viimeistelytekniikoita",
+        "distractor": false
+      },
+      {
+        "k": "K14",
+        "uri": "http://data.europa.eu/esco/skill/210827e3-3129-45a2-8683-70399f3f561f",
+        "labelEn": "order supplies",
+        "labelFi": "tilata tarvikkeita",
+        "distractor": false
+      },
+      {
+        "k": "K15",
+        "uri": "http://data.europa.eu/esco/skill/8c8da904-cdb3-47d9-bfbf-15ade747d9ec",
+        "labelEn": "work in a hospitality team",
+        "labelFi": "työskennellä ryhmässä matkailu-, majoitus- tai ravitsemisalalla",
+        "distractor": false
+      },
+      {
+        "k": "K16",
+        "uri": "http://data.europa.eu/esco/skill/e265e4e2-f031-4012-a7bf-54cac48fb846",
+        "labelEn": "maintain kitchen equipment at correct temperature",
+        "labelFi": "huolehtia keittiölaitteiden oikeasta lämpötilasta",
+        "distractor": false
+      },
+      {
+        "k": "K17",
+        "uri": "http://data.europa.eu/esco/skill/29b326ea-a9c8-4963-b35a-8541d0cdff77",
+        "labelEn": "store raw food materials",
+        "labelFi": "varastoida elintarvikkeiden raaka-aineita",
+        "distractor": false
+      },
+      {
+        "k": "K18",
+        "uri": "http://data.europa.eu/esco/skill/0162b701-6bb4-400a-b557-7996053d7daf",
+        "labelEn": "maintain personal hygiene standards when cleaning",
+        "labelFi": "huolehtia henkilökohtaisista hygieniavaatimuksista siivotessa",
+        "distractor": true
+      },
+      {
+        "k": "K19",
+        "uri": "http://data.europa.eu/esco/skill/0a34aa62-441b-4aa4-ab21-db70656f0878",
+        "labelEn": "operate brick oven",
+        "labelFi": "käyttää kiviuunia",
+        "distractor": false
+      },
+      {
+        "k": "K20",
+        "uri": "http://data.europa.eu/esco/skill/2dbdd054-896a-4167-8f11-e9b9ebcf199d",
+        "labelEn": "health, safety and hygiene legislation",
+        "labelFi": "terveyttä, turvallisuutta ja hygieniaa koskeva lainsäädäntö",
+        "distractor": false
+      },
+      {
+        "k": "K21",
+        "uri": "http://data.europa.eu/esco/skill/5c6ca864-76d5-4217-b3e1-9a7ba7f8f47b",
+        "labelEn": "plan menus",
+        "labelFi": "suunnitella ruokalistoja",
+        "distractor": false
+      },
+      {
+        "k": "K22",
+        "uri": "http://data.europa.eu/esco/skill/298ead56-f11b-4c5d-a4d9-282f7a1489b6",
+        "labelEn": "prepare pizza",
+        "labelFi": "tehdä pizzaa",
+        "distractor": false
+      },
+      {
+        "k": "K23",
+        "uri": "http://data.europa.eu/esco/skill/1316577b-31f7-437f-97ce-27c408b87a55",
+        "labelEn": "prepare dairy products for use in a dish",
+        "labelFi": "valmistella ruoanvalmistukseen käytettävät maitotuotteet",
+        "distractor": false
+      },
+      {
+        "k": "K24",
+        "uri": "http://data.europa.eu/esco/skill/09dea77e-870c-49eb-9a97-1398bee57bd0",
+        "labelEn": "cleaning industry health and safety measures",
+        "labelFi": "siivousalan työterveyttä ja -turvallisuutta edistävät toimenpiteet",
+        "distractor": true
+      },
+      {
+        "k": "K25",
+        "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
+        "labelEn": "train employees",
+        "labelFi": "kouluttaa työntekijöitä",
+        "distractor": false
+      },
+      {
+        "k": "K26",
+        "uri": "http://data.europa.eu/esco/skill/493a1805-6caa-4cda-8fd3-6495ec8ea451",
+        "labelEn": "prepare sandwiches",
+        "labelFi": "valmistaa voileipiä",
+        "distractor": false
+      },
+      {
+        "k": "K27",
+        "uri": "http://data.europa.eu/esco/skill/f7f56b20-8f05-4731-a1bf-79fdcffc72ce",
+        "labelEn": "check deliveries on receipt",
+        "labelFi": "tarkastaa saapuvat toimitukset",
+        "distractor": false
+      },
+      {
+        "k": "K28",
+        "uri": "http://data.europa.eu/esco/skill/51a26193-9abe-4bce-9108-f50835be1c35",
+        "labelEn": "handle chemical cleaning agents",
+        "labelFi": "käsitellä kemiallisia puhdistusaineita",
+        "distractor": false
+      },
+      {
+        "k": "K29",
+        "uri": "http://data.europa.eu/esco/skill/6b69101a-0e51-45c6-a7e5-5a60a1c85da0",
+        "labelEn": "composition of diets",
+        "labelFi": "ruokavalioiden koostumukset",
+        "distractor": false
+      },
+      {
+        "k": "K30",
+        "uri": "http://data.europa.eu/esco/skill/1b73b2a7-aefc-49ef-8b30-b90ca7429984",
+        "labelEn": "advise customers on building materials",
+        "labelFi": "antaa asiakkaille rakennusmateriaaleja koskevia neuvoja",
+        "distractor": true
+      },
+      {
+        "k": "K31",
+        "uri": "http://data.europa.eu/esco/skill/13d96098-2ff0-46b8-b326-b7c0e18cc1f1",
+        "labelEn": "nutrition",
+        "labelFi": "ravitsemustiede",
+        "distractor": false
+      },
+      {
+        "k": "K32",
+        "uri": "http://data.europa.eu/esco/skill/c1bbc099-92c5-493c-9f65-8d7acfce5851",
+        "labelEn": "prepared meals",
+        "labelFi": "valmisateriat",
+        "distractor": false
+      },
+      {
+        "k": "K33",
+        "uri": "http://data.europa.eu/esco/skill/728cd984-19ad-441c-8145-b8edc9c53445",
+        "labelEn": "execute chilling processes to food products",
+        "labelFi": "suorittaa elintarvikkeiden jäähdytysprosesseja",
+        "distractor": false
+      },
+      {
+        "k": "K34",
+        "uri": "http://data.europa.eu/esco/skill/fad85f11-e21d-41f4-b221-2f8ab318d4ed",
+        "labelEn": "prepare egg products for use in a dish",
+        "labelFi": "valmistella ruoassa käytettävät kananmuna- ja meijerituotteet",
+        "distractor": false
+      },
+      {
+        "k": "K35",
+        "uri": "http://data.europa.eu/esco/skill/a78b60d6-6cde-4da6-9c48-39bc7396ab16",
+        "labelEn": "prepare desserts",
+        "labelFi": "valmistaa jälkiruoat",
+        "distractor": false
+      },
+      {
+        "k": "K36",
+        "uri": "http://data.europa.eu/esco/skill/233be639-bdb5-4099-ab40-96d537d6c1f3",
+        "labelEn": "ensure compliance with safety legislation",
+        "labelFi": "varmistaa turvallisuuslainsäädännön noudattaminen",
+        "distractor": true
+      },
+      {
+        "k": "K37",
+        "uri": "http://data.europa.eu/esco/skill/ba74f3e5-4494-405c-8d98-7032f2a883ba",
+        "labelEn": "advise customers on seafood choices",
+        "labelFi": "antaa asiakkaille kala- ja äyriäisvalikoimaa koskevia neuvoja",
+        "distractor": false
+      },
+      {
+        "k": "K38",
+        "uri": "http://data.europa.eu/esco/skill/555d83ff-dbf9-481a-b726-2d502a11904e",
+        "labelEn": "cook vegetable products",
+        "labelFi": "valmistaa kasvisruokia",
+        "distractor": false
+      },
+      {
+        "k": "K39",
+        "uri": "http://data.europa.eu/esco/skill/47d286a7-38b2-4970-a9f2-69c7faa77167",
+        "labelEn": "comply with standard portion sizes",
+        "labelFi": "noudattaa vakiomääräisiä annoskokoja",
+        "distractor": false
+      },
+      {
+        "k": "K40",
+        "uri": "http://data.europa.eu/esco/skill/23b355ee-94db-4831-b16d-935adc5de1cd",
+        "labelEn": "prepare meat products for use in a dish",
+        "labelFi": "valmistella ruoassa käytettävä liha",
+        "distractor": false
+      }
+    ]
+  },
+  "fi-native-fi-nurse": {
+    "fixtureIndex": 12,
+    "situation": "native Finnish speaker as alternative to C1/C2; licensed nurse (Valvira); 2 years",
+    "title": "Sairaanhoitaja kotihoitoon",
+    "lang": "fi",
+    "sector": "private",
+    "source": "tmt",
+    "employerName": "Kotisairaanhoito Pendo Oy",
+    "brands": [
+      "Pendo",
+      "Kotisairaanhoito Pendo"
+    ],
+    "workLanguages": [
+      "fi"
+    ],
+    "sentences": [
+      "Kotisairaanhoito Pendo Oy tuottaa kotihoitopalveluita Espoon alueella ja toimii Länsi-Uudenmaan hyvinvointialueen palvelusetelipalveluntuottajana.",
+      "Haemme kokenutta sairaanhoitajaa osaksi kasvavaa kotihoidon tiimiämme!",
+      "Etsimme kokenutta ja itsenäiseen työhön kykenevää laillistettua sairaanhoitajaa.",
+      "Työtehtäviin kuuluu:",
+      "Asiakkaiden terveydentilan arviointi ja seuranta",
+      "Lääkehoidon toteutus",
+      "Hoidon suunnittelu ja kirjaaminen",
+      "Yhteistyö omaisten, lääkärien ja muun tiimin kanssa",
+      "Edellytämme:",
+      "Laillistettu sairaanhoitaja (Valvira)",
+      "Vähintään 2 vuoden kokemus kotihoidosta",
+      "Suomen kielen taito tasolla C1/C2 tai äidinkielinen suomen kieli",
+      "Ajokortti",
+      "Itsenäinen ja vastuullinen työote",
+      "Tarjoamme:",
+      "Monipuolisen työn kasvavassa yrityksessä sekä mahdollisuuden työsuhteen jatkumiseen määräaikaisuuden jälkeen.",
+      "Perehdytyksen ja tiimin tuen",
+      "Mahdollisuuden kehittää omaa osaamista ja kasvaa ammatillisesti.",
+      "Tehtävä täytetään heti sopivan henkilön löydyttyä."
+    ],
+    "candidates": [
+      {
+        "k": "K1",
+        "uri": "http://data.europa.eu/esco/skill/f98e06f5-a09a-4356-b6a8-d55a7d3c5356",
+        "labelEn": "implement nursing care",
+        "labelFi": "toteuttaa sairaanhoitoa",
+        "distractor": false
+      },
+      {
+        "k": "K2",
+        "uri": "http://data.europa.eu/esco/skill/bcd2ce08-ba12-4d66-865f-f4ba36419707",
+        "labelEn": "promote inclusion",
+        "labelFi": "edistää osallisuutta",
+        "distractor": false
+      },
+      {
+        "k": "K3",
+        "uri": "http://data.europa.eu/esco/skill/092f44f6-8631-460c-a862-f79f5c15dc03",
+        "labelEn": "delegate emergency care",
+        "labelFi": "siirtää ensiaputehtäviä muille",
+        "distractor": false
+      },
+      {
+        "k": "K4",
+        "uri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+        "labelEn": "nursing science",
+        "labelFi": "hoitotiede",
+        "distractor": false
+      },
+      {
+        "k": "K5",
+        "uri": "http://data.europa.eu/esco/skill/a28e8141-89ee-4b24-a3bb-1aebcc56c72d",
+        "labelEn": "apply nursing care in long-term care",
+        "labelFi": "tehdä hoitotyötä pitkäaikaishoidossa",
+        "distractor": false
+      },
+      {
+        "k": "K6",
+        "uri": "http://data.europa.eu/esco/skill/44e2c4c4-9fd2-42d4-a133-d81360ded4bc",
+        "labelEn": "manage health and safety standards",
+        "labelFi": "varmistaa terveys-, turvallisuus- ja hygieniastandardit",
+        "distractor": true
+      },
+      {
+        "k": "K7",
+        "uri": "http://data.europa.eu/esco/skill/52047630-b880-4939-bb19-6700187af031",
+        "labelEn": "adolescence medicine",
+        "labelFi": "nuorisolääketiede",
+        "distractor": false
+      },
+      {
+        "k": "K8",
+        "uri": "http://data.europa.eu/esco/skill/0b5aaee4-c948-4853-bf8d-b9cd6c4917ee",
+        "labelEn": "inform policy makers on health-related challenges",
+        "labelFi": "tiedottaa päätöksentekijöitä terveyteen liittyvistä haasteista",
+        "distractor": false
+      },
+      {
+        "k": "K9",
+        "uri": "http://data.europa.eu/esco/skill/b9f16465-56a9-426b-a047-0f9f1f95ec92",
+        "labelEn": "address problems critically",
+        "labelFi": "lähestyä ongelmia kriittisesti",
+        "distractor": false
+      },
+      {
+        "k": "K10",
+        "uri": "http://data.europa.eu/esco/skill/ce0d6a42-59c1-433e-ab62-adfc969c46bb",
+        "labelEn": "ensure safety of healthcare users",
+        "labelFi": "varmistaa terveydenhuollon asiakkaiden turvallisuus",
+        "distractor": false
+      },
+      {
+        "k": "K11",
+        "uri": "http://data.europa.eu/esco/skill/7a63f944-6948-4ae4-9c1f-d08e492535c9",
+        "labelEn": "apply person-centred care",
+        "labelFi": "soveltaa henkilökeskeistä hoitotapaa",
+        "distractor": false
+      },
+      {
+        "k": "K12",
+        "uri": "http://data.europa.eu/esco/skill/dcc96a49-0bac-4a9c-8f8e-a32b4e47e6eb",
+        "labelEn": "apply health and safety standards",
+        "labelFi": "soveltaa terveys- ja turvallisuusnormeja",
+        "distractor": true
+      },
+      {
+        "k": "K13",
+        "uri": "http://data.europa.eu/esco/skill/bfe4f330-d595-48c7-ab3c-f309471d6953",
+        "labelEn": "psychology",
+        "labelFi": "psykologia",
+        "distractor": false
+      },
+      {
+        "k": "K14",
+        "uri": "http://data.europa.eu/esco/skill/b55f61a4-5f9e-4741-ba95-9ac04b64119b",
+        "labelEn": "work in a multicultural environment in health care",
+        "labelFi": "työskennellä monikulttuurisessa ympäristössä terveydenhuollossa",
+        "distractor": false
+      },
+      {
+        "k": "K15",
+        "uri": "http://data.europa.eu/esco/skill/51e79cb4-fab3-404c-88f3-cd4a1bd5879e",
+        "labelEn": "deal with emergency care situations",
+        "labelFi": "toimia ensihoitotilanteessa",
+        "distractor": false
+      },
+      {
+        "k": "K16",
+        "uri": "http://data.europa.eu/esco/skill/81b6d428-028b-4bf5-89a2-5e5cb4a8c444",
+        "labelEn": "provide stroke rehabilitation services",
+        "labelFi": "tarjota aivohalvauksen jälkeisiä kuntoutuspalveluita",
+        "distractor": false
+      },
+      {
+        "k": "K17",
+        "uri": "http://data.europa.eu/esco/skill/646d871b-4503-4dc8-a076-06d7085e4cde",
+        "labelEn": "promote human rights",
+        "labelFi": "edistää ihmisoikeuksia",
+        "distractor": false
+      },
+      {
+        "k": "K18",
+        "uri": "http://data.europa.eu/esco/skill/02137a68-6860-45e8-8e4d-38db467bb8b6",
+        "labelEn": "human factors regarding safety",
+        "labelFi": "turvallisuuteen vaikuttavat inhimilliset tekijät",
+        "distractor": true
+      },
+      {
+        "k": "K19",
+        "uri": "http://data.europa.eu/esco/skill/e98a5096-de98-46d2-88c8-951f4029c038",
+        "labelEn": "evaluate nursing care",
+        "labelFi": "arvioida sairaanhoitoa",
+        "distractor": false
+      },
+      {
+        "k": "K20",
+        "uri": "http://data.europa.eu/esco/skill/e6bf6e73-230a-434c-97b2-a0c042a8b7ac",
+        "labelEn": "apply sustainability principles in health care",
+        "labelFi": "noudattaa kestävän kehityksen periaatteita terveydenhuollossa",
+        "distractor": false
+      },
+      {
+        "k": "K21",
+        "uri": "http://data.europa.eu/esco/skill/ae965e49-06f1-442f-87bf-e48fc1e1d8b6",
+        "labelEn": "analyse quality of nurse care",
+        "labelFi": "analysoida sairaanhoidon laatua",
+        "distractor": false
+      },
+      {
+        "k": "K22",
+        "uri": "http://data.europa.eu/esco/skill/8e0bfbba-6e9d-48e0-b152-2cc949e5022a",
+        "labelEn": "implement scientific decision making in healthcare",
+        "labelFi": "toteuttaa tieteellistä päätöksentekoa terveydenhuollossa",
+        "distractor": false
+      },
+      {
+        "k": "K23",
+        "uri": "http://data.europa.eu/esco/skill/1d4b74b0-1a48-48ec-a3cd-26cca0c212a3",
+        "labelEn": "biological chemistry",
+        "labelFi": "kliininen kemia",
+        "distractor": false
+      },
+      {
+        "k": "K24",
+        "uri": "http://data.europa.eu/esco/skill/04e6f19b-6458-432f-9790-3979831a03bc",
+        "labelEn": "teach nursing principles",
+        "labelFi": "opettaa hoitotyön periaatteita",
+        "distractor": true
+      },
+      {
+        "k": "K25",
+        "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
+        "labelEn": "adhere to organisational guidelines",
+        "labelFi": "noudattaa organisaation ohjeita",
+        "distractor": false
+      },
+      {
+        "k": "K26",
+        "uri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+        "labelEn": "coordinate care",
+        "labelFi": "koordinoida hoitoa",
+        "distractor": false
+      },
+      {
+        "k": "K27",
+        "uri": "http://data.europa.eu/esco/skill/f735e153-1f57-4841-afe9-4712cc740054",
+        "labelEn": "manage multiple patients simultaneously",
+        "labelFi": "hoitaa useita potilaita samanaikaisesti",
+        "distractor": false
+      },
+      {
+        "k": "K28",
+        "uri": "http://data.europa.eu/esco/skill/46003629-a579-4d0a-b3ea-80ef890699d6",
+        "labelEn": "diagnose nursing care",
+        "labelFi": "diagnosoida sairaanhoidon tarvetta",
+        "distractor": false
+      },
+      {
+        "k": "K29",
+        "uri": "http://data.europa.eu/esco/skill/c65aa043-98da-4136-9877-494e72d9e4cf",
+        "labelEn": "interact with healthcare users",
+        "labelFi": "olla yhteydessä terveydenhuollon asiakkaisiin",
+        "distractor": false
+      },
+      {
+        "k": "K30",
+        "uri": "http://data.europa.eu/esco/skill/09699c24-8f0f-4789-b88f-fd86b19f1875",
+        "labelEn": "provide high-end driving services",
+        "labelFi": "tarjota laadukkaita kuljettajapalveluita",
+        "distractor": true
+      },
+      {
+        "k": "K31",
+        "uri": "http://data.europa.eu/esco/skill/27a638bc-6362-45f8-afce-5596a606269b",
+        "labelEn": "impact of social contexts on health",
+        "labelFi": "sosiaalisen ympäristön vaikutus terveyteen",
+        "distractor": false
+      },
+      {
+        "k": "K32",
+        "uri": "http://data.europa.eu/esco/skill/cf6ca1fc-f2be-4deb-bb35-1fffe4099023",
+        "labelEn": "leadership in nursing",
+        "labelFi": "johtajuus sairaanhoidossa",
+        "distractor": false
+      },
+      {
+        "k": "K33",
+        "uri": "http://data.europa.eu/esco/skill/a117f32c-662b-4dd9-b739-1230dd04cb60",
+        "labelEn": "pedagogy",
+        "labelFi": "pedagogiikka",
+        "distractor": false
+      },
+      {
+        "k": "K34",
+        "uri": "http://data.europa.eu/esco/skill/1b3370df-c280-470c-ac35-951f42ca8b19",
+        "labelEn": "promote a positive image of nursing",
+        "labelFi": "edistää positiivista käsitystä hoitotyöstä",
+        "distractor": false
+      },
+      {
+        "k": "K35",
+        "uri": "http://data.europa.eu/esco/skill/441707bb-9ad3-406c-9975-a6bec96f537b",
+        "labelEn": "empower individuals, families and groups",
+        "labelFi": "antaa yksittäisille henkilöille, perheille ja ryhmille työkaluja terveellisiin elämäntapoihin",
+        "distractor": false
+      },
+      {
+        "k": "K36",
+        "uri": "http://data.europa.eu/esco/skill/09dea77e-870c-49eb-9a97-1398bee57bd0",
+        "labelEn": "cleaning industry health and safety measures",
+        "labelFi": "siivousalan työterveyttä ja -turvallisuutta edistävät toimenpiteet",
+        "distractor": true
+      },
+      {
+        "k": "K37",
+        "uri": "http://data.europa.eu/esco/skill/8881a9c2-bd07-4954-bf27-c1f8acca9af0",
+        "labelEn": "sociology",
+        "labelFi": "sosiologia",
+        "distractor": false
+      },
+      {
+        "k": "K38",
+        "uri": "http://data.europa.eu/esco/skill/c82f9319-cf46-4257-a8ce-542d0a7fed8f",
+        "labelEn": "provide treatment strategies for challenges to human health",
+        "labelFi": "tarjota terveysuhkien hoitostrategioita",
+        "distractor": false
+      },
+      {
+        "k": "K39",
+        "uri": "http://data.europa.eu/esco/skill/5ff6f551-f2a4-4cef-a72d-e81116155a43",
+        "labelEn": "newborn care",
+        "labelFi": "vastasyntyneiden hoito",
+        "distractor": false
+      },
+      {
+        "k": "K40",
+        "uri": "http://data.europa.eu/esco/skill/8168333b-8257-48f6-82c5-6b5128c21ecc",
+        "labelEn": "person centred care",
+        "labelFi": "henkilökeskeinen hoito",
+        "distractor": false
+      }
+    ]
+  },
+  "fi-swedish-norway": {
+    "fixtureIndex": 13,
+    "situation": "Swedish language skill for work in Norway; recruiter name left in text",
+    "title": "Sairaanhoitajia Norjaan",
+    "lang": "fi",
+    "sector": "private",
+    "source": "tmt",
+    "employerName": "Jobby Oy",
+    "brands": [
+      "Jobby"
+    ],
+    "workLanguages": [
+      "sv"
+    ],
+    "sentences": [
+      "Etsimme ruotsia osaavia sairaanhoitajia Norjaan.",
+      "Oletko sosiaali- tai terveysalan ammattilainen ja puhut ruotsia?",
+      "Etsimme Suomesta osaavia ja motivoituneita ammattilaisia kokoaikaiseen hoivatyöhön Norjaan.",
+      "Työssä tuet ja hoidat potilaita, joilla on erityisiä tuen tarpeita.",
+      "Tehtävä on vastuullinen ja ajoittain sekä fyysisesti että psyykkisesti vaativa, joten etsimme henkilöitä, jotka säilyttävät rauhallisuutensa myös haastavissa tilanteissa.",
+      "Toivomme sinulta:",
+      "\\- Soveltuvaa sosiaali- tai terveysalan koulutusta",
+      "\\- Erityisesti vernepleier-tausta tai sairaanhoitajan koulutus katsotaan eduksi",
+      "\\- Ruotsin kielen taitoa",
+      "\\- Hyvää paineensietokykyä ja rauhallista työotetta",
+      "\\- Kykyä kohdata ja hallita haastavia tilanteita potilaiden kanssa turvallisesti ja ammattimaisesti",
+      "\\- Hyviä vuorovaikutus- ja yhteistyötaitoja",
+      "\\- Aitoa kiinnostusta vaativaan ja merkitykselliseen hoivatyöhön",
+      "\\- Aikaisempi kokemus työskentelystä erityistä tukea tarvitsevien potilaiden kanssa on eduksi.",
+      "Tarjoamme:",
+      "\\- Kokoaikaisen työn Norjassa",
+      "\\- Aloituksen sopimuksen mukaan",
+      "\\- Mahdollisuuden neuvotella työehdoista kokemuksesi ja osaamisesi perusteella",
+      "\\- Apua sopivien majoitusvaihtoehtojen etsimisessä",
+      "Palkka: Kerro meille palkkatoiveesi hakemuksen yhteydessä.",
+      "Kiinnostuitko?",
+      "Lähetä lyhyt esittely itsestäsi ja CV sekä kerro koulutuksestasi, työkokemuksestasi, kielitaidostasi, mahdollisesta aloitusajankohdastasi ja palkkatoiveestasi.",
+      "Lisätiedot ja hakemukset:",
+      "Kai Karrenberg Jobby Oy",
+      "[removed]",
+      "[removed]"
+    ],
+    "candidates": [
+      {
+        "k": "K1",
+        "uri": "http://data.europa.eu/esco/skill/1023ac61-250f-4eef-b7a9-238cf071685f",
+        "labelEn": "provide professional care in nursing",
+        "labelFi": "tarjota asiantuntijahoitoa sairaanhoidossa",
+        "distractor": false
+      },
+      {
+        "k": "K2",
+        "uri": "http://data.europa.eu/esco/skill/a28e8141-89ee-4b24-a3bb-1aebcc56c72d",
+        "labelEn": "apply nursing care in long-term care",
+        "labelFi": "tehdä hoitotyötä pitkäaikaishoidossa",
+        "distractor": false
+      },
+      {
+        "k": "K3",
+        "uri": "http://data.europa.eu/esco/skill/a32e7fb1-af9e-4c09-8ea7-72b7442e9cda",
+        "labelEn": "solve problems in healthcare",
+        "labelFi": "ratkaista ongelmia terveydenhuollossa",
+        "distractor": false
+      },
+      {
+        "k": "K4",
+        "uri": "http://data.europa.eu/esco/skill/f98e06f5-a09a-4356-b6a8-d55a7d3c5356",
+        "labelEn": "implement nursing care",
+        "labelFi": "toteuttaa sairaanhoitoa",
+        "distractor": false
+      },
+      {
+        "k": "K5",
+        "uri": "http://data.europa.eu/esco/skill/6acf652c-33b2-4e28-8f79-1e553f255229",
+        "labelEn": "plan nursing care",
+        "labelFi": "suunnitella sairaanhoitoa",
+        "distractor": false
+      },
+      {
+        "k": "K6",
+        "uri": "http://data.europa.eu/esco/skill/44e2c4c4-9fd2-42d4-a133-d81360ded4bc",
+        "labelEn": "manage health and safety standards",
+        "labelFi": "varmistaa terveys-, turvallisuus- ja hygieniastandardit",
+        "distractor": true
+      },
+      {
+        "k": "K7",
+        "uri": "http://data.europa.eu/esco/skill/a46743b7-ff8c-49b6-99f7-7fa5bc241771",
+        "labelEn": "use electronic health records in nursing",
+        "labelFi": "käyttää sähköistä potilastietojärjestelmää sairaanhoidossa",
+        "distractor": false
+      },
+      {
+        "k": "K8",
+        "uri": "http://data.europa.eu/esco/skill/bcd2ce08-ba12-4d66-865f-f4ba36419707",
+        "labelEn": "promote inclusion",
+        "labelFi": "edistää osallisuutta",
+        "distractor": false
+      },
+      {
+        "k": "K9",
+        "uri": "http://data.europa.eu/esco/skill/092f44f6-8631-460c-a862-f79f5c15dc03",
+        "labelEn": "delegate emergency care",
+        "labelFi": "siirtää ensiaputehtäviä muille",
+        "distractor": false
+      },
+      {
+        "k": "K10",
+        "uri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+        "labelEn": "nursing science",
+        "labelFi": "hoitotiede",
+        "distractor": false
+      },
+      {
+        "k": "K11",
+        "uri": "http://data.europa.eu/esco/skill/52047630-b880-4939-bb19-6700187af031",
+        "labelEn": "adolescence medicine",
+        "labelFi": "nuorisolääketiede",
+        "distractor": false
+      },
+      {
+        "k": "K12",
+        "uri": "http://data.europa.eu/esco/skill/dcc96a49-0bac-4a9c-8f8e-a32b4e47e6eb",
+        "labelEn": "apply health and safety standards",
+        "labelFi": "soveltaa terveys- ja turvallisuusnormeja",
+        "distractor": true
+      },
+      {
+        "k": "K13",
+        "uri": "http://data.europa.eu/esco/skill/0b5aaee4-c948-4853-bf8d-b9cd6c4917ee",
+        "labelEn": "inform policy makers on health-related challenges",
+        "labelFi": "tiedottaa päätöksentekijöitä terveyteen liittyvistä haasteista",
+        "distractor": false
+      },
+      {
+        "k": "K14",
+        "uri": "http://data.europa.eu/esco/skill/b9f16465-56a9-426b-a047-0f9f1f95ec92",
+        "labelEn": "address problems critically",
+        "labelFi": "lähestyä ongelmia kriittisesti",
+        "distractor": false
+      },
+      {
+        "k": "K15",
+        "uri": "http://data.europa.eu/esco/skill/ce0d6a42-59c1-433e-ab62-adfc969c46bb",
+        "labelEn": "ensure safety of healthcare users",
+        "labelFi": "varmistaa terveydenhuollon asiakkaiden turvallisuus",
+        "distractor": false
+      },
+      {
+        "k": "K16",
+        "uri": "http://data.europa.eu/esco/skill/7a63f944-6948-4ae4-9c1f-d08e492535c9",
+        "labelEn": "apply person-centred care",
+        "labelFi": "soveltaa henkilökeskeistä hoitotapaa",
+        "distractor": false
+      },
+      {
+        "k": "K17",
+        "uri": "http://data.europa.eu/esco/skill/bfe4f330-d595-48c7-ab3c-f309471d6953",
+        "labelEn": "psychology",
+        "labelFi": "psykologia",
+        "distractor": false
+      },
+      {
+        "k": "K18",
+        "uri": "http://data.europa.eu/esco/skill/02137a68-6860-45e8-8e4d-38db467bb8b6",
+        "labelEn": "human factors regarding safety",
+        "labelFi": "turvallisuuteen vaikuttavat inhimilliset tekijät",
+        "distractor": true
+      },
+      {
+        "k": "K19",
+        "uri": "http://data.europa.eu/esco/skill/b55f61a4-5f9e-4741-ba95-9ac04b64119b",
+        "labelEn": "work in a multicultural environment in health care",
+        "labelFi": "työskennellä monikulttuurisessa ympäristössä terveydenhuollossa",
+        "distractor": false
+      },
+      {
+        "k": "K20",
+        "uri": "http://data.europa.eu/esco/skill/51e79cb4-fab3-404c-88f3-cd4a1bd5879e",
+        "labelEn": "deal with emergency care situations",
+        "labelFi": "toimia ensihoitotilanteessa",
+        "distractor": false
+      },
+      {
+        "k": "K21",
+        "uri": "http://data.europa.eu/esco/skill/81b6d428-028b-4bf5-89a2-5e5cb4a8c444",
+        "labelEn": "provide stroke rehabilitation services",
+        "labelFi": "tarjota aivohalvauksen jälkeisiä kuntoutuspalveluita",
+        "distractor": false
+      },
+      {
+        "k": "K22",
+        "uri": "http://data.europa.eu/esco/skill/646d871b-4503-4dc8-a076-06d7085e4cde",
+        "labelEn": "promote human rights",
+        "labelFi": "edistää ihmisoikeuksia",
+        "distractor": false
+      },
+      {
+        "k": "K23",
+        "uri": "http://data.europa.eu/esco/skill/e98a5096-de98-46d2-88c8-951f4029c038",
+        "labelEn": "evaluate nursing care",
+        "labelFi": "arvioida sairaanhoitoa",
+        "distractor": false
+      },
+      {
+        "k": "K24",
+        "uri": "http://data.europa.eu/esco/skill/04e6f19b-6458-432f-9790-3979831a03bc",
+        "labelEn": "teach nursing principles",
+        "labelFi": "opettaa hoitotyön periaatteita",
+        "distractor": true
+      },
+      {
+        "k": "K25",
+        "uri": "http://data.europa.eu/esco/skill/e6bf6e73-230a-434c-97b2-a0c042a8b7ac",
+        "labelEn": "apply sustainability principles in health care",
+        "labelFi": "noudattaa kestävän kehityksen periaatteita terveydenhuollossa",
+        "distractor": false
+      },
+      {
+        "k": "K26",
+        "uri": "http://data.europa.eu/esco/skill/ae965e49-06f1-442f-87bf-e48fc1e1d8b6",
+        "labelEn": "analyse quality of nurse care",
+        "labelFi": "analysoida sairaanhoidon laatua",
+        "distractor": false
+      },
+      {
+        "k": "K27",
+        "uri": "http://data.europa.eu/esco/skill/8e0bfbba-6e9d-48e0-b152-2cc949e5022a",
+        "labelEn": "implement scientific decision making in healthcare",
+        "labelFi": "toteuttaa tieteellistä päätöksentekoa terveydenhuollossa",
+        "distractor": false
+      },
+      {
+        "k": "K28",
+        "uri": "http://data.europa.eu/esco/skill/1d4b74b0-1a48-48ec-a3cd-26cca0c212a3",
+        "labelEn": "biological chemistry",
+        "labelFi": "kliininen kemia",
+        "distractor": false
+      },
+      {
+        "k": "K29",
+        "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
+        "labelEn": "adhere to organisational guidelines",
+        "labelFi": "noudattaa organisaation ohjeita",
+        "distractor": false
+      },
+      {
+        "k": "K30",
+        "uri": "http://data.europa.eu/esco/skill/09699c24-8f0f-4789-b88f-fd86b19f1875",
+        "labelEn": "provide high-end driving services",
+        "labelFi": "tarjota laadukkaita kuljettajapalveluita",
+        "distractor": true
+      },
+      {
+        "k": "K31",
+        "uri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+        "labelEn": "coordinate care",
+        "labelFi": "koordinoida hoitoa",
+        "distractor": false
+      },
+      {
+        "k": "K32",
+        "uri": "http://data.europa.eu/esco/skill/f735e153-1f57-4841-afe9-4712cc740054",
+        "labelEn": "manage multiple patients simultaneously",
+        "labelFi": "hoitaa useita potilaita samanaikaisesti",
+        "distractor": false
+      },
+      {
+        "k": "K33",
+        "uri": "http://data.europa.eu/esco/skill/46003629-a579-4d0a-b3ea-80ef890699d6",
+        "labelEn": "diagnose nursing care",
+        "labelFi": "diagnosoida sairaanhoidon tarvetta",
+        "distractor": false
+      },
+      {
+        "k": "K34",
+        "uri": "http://data.europa.eu/esco/skill/c65aa043-98da-4136-9877-494e72d9e4cf",
+        "labelEn": "interact with healthcare users",
+        "labelFi": "olla yhteydessä terveydenhuollon asiakkaisiin",
+        "distractor": false
+      },
+      {
+        "k": "K35",
+        "uri": "http://data.europa.eu/esco/skill/27a638bc-6362-45f8-afce-5596a606269b",
+        "labelEn": "impact of social contexts on health",
+        "labelFi": "sosiaalisen ympäristön vaikutus terveyteen",
+        "distractor": false
+      },
+      {
+        "k": "K36",
+        "uri": "http://data.europa.eu/esco/skill/09dea77e-870c-49eb-9a97-1398bee57bd0",
+        "labelEn": "cleaning industry health and safety measures",
+        "labelFi": "siivousalan työterveyttä ja -turvallisuutta edistävät toimenpiteet",
+        "distractor": true
+      },
+      {
+        "k": "K37",
+        "uri": "http://data.europa.eu/esco/skill/cf6ca1fc-f2be-4deb-bb35-1fffe4099023",
+        "labelEn": "leadership in nursing",
+        "labelFi": "johtajuus sairaanhoidossa",
+        "distractor": false
+      },
+      {
+        "k": "K38",
+        "uri": "http://data.europa.eu/esco/skill/a117f32c-662b-4dd9-b739-1230dd04cb60",
+        "labelEn": "pedagogy",
+        "labelFi": "pedagogiikka",
+        "distractor": false
+      },
+      {
+        "k": "K39",
+        "uri": "http://data.europa.eu/esco/skill/1b3370df-c280-470c-ac35-951f42ca8b19",
+        "labelEn": "promote a positive image of nursing",
+        "labelFi": "edistää positiivista käsitystä hoitotyöstä",
+        "distractor": false
+      },
+      {
+        "k": "K40",
+        "uri": "http://data.europa.eu/esco/skill/441707bb-9ad3-406c-9975-a6bec96f537b",
+        "labelEn": "empower individuals, families and groups",
+        "labelFi": "antaa yksittäisille henkilöille, perheille ja ryhmille työkaluja terveellisiin elämäntapoihin",
+        "distractor": false
+      }
+    ]
+  }
+}

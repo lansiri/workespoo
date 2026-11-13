@@ -1,0 +1,33 @@
+{
+  "item": "picks-draft",
+  "caseId": "fi-licence-locksmith",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "req": "R1",
+        "signal": "S1",
+        "text": "The card describes installing door locks and electronic access control in apartment buildings, which relates to experience in locksmith work."
+      },
+      {
+        "req": "R2",
+        "signal": "S2",
+        "text": "The card describes holding a B driving licence and driving a company van between sites, which relates to the B driving licence requirement."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 10382,
+    "firstTokenMs": 10379,
+    "tokensIn": 686,
+    "tokensOut": 166,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

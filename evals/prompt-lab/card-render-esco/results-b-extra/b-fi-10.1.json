@@ -1,0 +1,20 @@
+{
+  "item": "card-render",
+  "caseId": "b-fi-10",
+  "run": 1,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Practical nurse\",\"text\":\"They worked as a practical nurse in a residential care facility, administering medication and helping residents with washing.\"}],\"summary\":\"They provided elderly care as a practical nurse, administering medication and helping residents with washing.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 4645,
+    "firstTokenMs": 3984,
+    "tokensIn": 563,
+    "tokensOut": 188,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

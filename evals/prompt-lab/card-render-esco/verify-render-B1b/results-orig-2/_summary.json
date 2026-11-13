@@ -1,0 +1,27 @@
+{
+  "item": "verify-render-B1b-orig",
+  "role": "analyst",
+  "schema": null,
+  "calls": 3,
+  "ok": 2,
+  "failed": 1,
+  "neededRetry": 0,
+  "latencyMs": {
+    "p50": 8309,
+    "p90": 8309
+  },
+  "firstTokenMs": {
+    "p50": 7324,
+    "p90": 7324
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "b-en-04",
+      "run": 3,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro network error"
+    }
+  ]
+}

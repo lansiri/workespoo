@@ -1,0 +1,77 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-01-two-skills",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [
+      {
+        "ref": "new",
+        "phrase": "Grocery warehouse order picking",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1-S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Voice-picking headset",
+        "kind": "tool",
+        "evidence": [
+          "T1.S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Loading store roll cages",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Reorganising picking routes",
+        "kind": "skill",
+        "evidence": [
+          "T1.S3-S5"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Hand pallet jack",
+        "kind": "tool",
+        "evidence": [
+          "T1.S4"
+        ],
+        "hasExample": true
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "example": "covered",
+      "tools": "covered",
+      "people": "covered"
+    },
+    "flags": [],
+    "note": "Warehouse picking, loading and a breakdown example are covered; ask about reach-truck operation and desired next work."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3494,
+    "firstTokenMs": 3490,
+    "tokensIn": 1083,
+    "tokensOut": 204,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

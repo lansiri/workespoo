@@ -1,0 +1,391 @@
+{
+  "outputs": 13,
+  "tally": {
+    "schema": {
+      "checked": 13,
+      "failed": 5
+    },
+    "no employer name": {
+      "checked": 13,
+      "failed": 0
+    },
+    "title/summary English": {
+      "checked": 13,
+      "failed": 0
+    },
+    "protected (title/summary)": {
+      "checked": 26,
+      "failed": 2
+    },
+    "<=12 requirements": {
+      "checked": 13,
+      "failed": 0
+    },
+    "sentence in range": {
+      "checked": 105,
+      "failed": 0
+    },
+    "esco ids in list": {
+      "checked": 105,
+      "failed": 0
+    },
+    "no distractor esco": {
+      "checked": 105,
+      "failed": 1
+    },
+    "kind follows cue rubric": {
+      "checked": 105,
+      "failed": 14
+    },
+    "language null unless language": {
+      "checked": 93,
+      "failed": 0
+    },
+    "years set when stated": {
+      "checked": 6,
+      "failed": 1
+    },
+    "question follows pattern": {
+      "checked": 39,
+      "failed": 0
+    },
+    "question has no forbidden word": {
+      "checked": 39,
+      "failed": 0
+    },
+    "question numbers only years": {
+      "checked": 39,
+      "failed": 0
+    },
+    "why present, <=140, no digits": {
+      "checked": 39,
+      "failed": 0
+    },
+    "question trigger holds (4.1)": {
+      "checked": 39,
+      "failed": 4
+    },
+    "protected (requirement text)": {
+      "checked": 105,
+      "failed": 6
+    },
+    "6.3 lint would keep it (text)": {
+      "checked": 105,
+      "failed": 2
+    },
+    "6.3 lint would keep it (cited sentence)": {
+      "checked": 105,
+      "failed": 0
+    },
+    "text <=80, no digits except years/classes": {
+      "checked": 105,
+      "failed": 1
+    },
+    "no question text when none": {
+      "checked": 66,
+      "failed": 0
+    },
+    "no esco on lang/auth/other": {
+      "checked": 56,
+      "failed": 0
+    },
+    "language ISO code": {
+      "checked": 12,
+      "failed": 0
+    },
+    "statutory=law where code says law": {
+      "checked": 14,
+      "failed": 7
+    },
+    "vague asks get a vague question": {
+      "checked": 3,
+      "failed": 3
+    },
+    "law => no question": {
+      "checked": 13,
+      "failed": 0
+    },
+    "dropped in range": {
+      "checked": 1,
+      "failed": 0
+    }
+  },
+  "problems": [
+    {
+      "caseId": "en-mobile-fluent-fi",
+      "run": 1,
+      "check": "schema",
+      "detail": "raw: requirements.0.language Invalid input: expected string, received undefined; requirements.1.language Invalid input: expected string, received undefined"
+    },
+    {
+      "caseId": "en-mobile-fluent-fi",
+      "run": 1,
+      "check": "years set when stated",
+      "detail": "P3 \"Experience from at least five completed iOS and Android mobile projects\" [must/experience/none/none] years=undefined"
+    },
+    {
+      "caseId": "en-rd-director",
+      "run": 1,
+      "check": "question trigger holds (4.1)",
+      "detail": "P18 \"Track record of owning outcomes and leading teams under pressure\" [must/experience/none/vague]"
+    },
+    {
+      "caseId": "en-rd-director",
+      "run": 1,
+      "check": "question trigger holds (4.1)",
+      "detail": "P19 \"Practical ability to use modern AI tools to improve R&D workflows\" [must/skill/none/vague]"
+    },
+    {
+      "caseId": "en-rd-director",
+      "run": 1,
+      "check": "protected (requirement text)",
+      "detail": "P22 \"Professional working fluency in English\" [must/language/none/language] hits=English"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 1,
+      "check": "schema",
+      "detail": "raw: requirements.0.language Invalid input: expected string, received undefined; requirements.0.years Invalid input: expected number, received undefined"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 1,
+      "check": "statutory=law where code says law",
+      "detail": "P5 \"Occupational safety card\" [nice/authorisation/none/none] <- Työturvallisuuskortti"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 1,
+      "check": "statutory=law where code says law",
+      "detail": "P6 \"Hot work card\" [nice/authorisation/none/none] <- tulityökortti"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 1,
+      "check": "statutory=law where code says law",
+      "detail": "P11 \"Category B driving licence\" [nice/authorisation/none/none] <- B-ajokortti."
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P14 \"Access to a car for travel between changing job sites\" [must/other/none/none] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 1,
+      "check": "vague asks get a vague question",
+      "detail": "P14 \"Access to a car for travel between changing job sites\" [must/other/none/none]"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P18 \"Good spoken and understanding Finnish\" [must/language/none/language] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-fluent-fi-cook",
+      "run": 1,
+      "check": "schema",
+      "detail": "raw: requirements.0.language Invalid input: expected string, received undefined; requirements.0.years Invalid input: expected number, received undefined"
+    },
+    {
+      "caseId": "fi-long-list-dev",
+      "run": 1,
+      "check": "no distractor esco",
+      "detail": "P22 \"Experience developing user interfaces with React\" [nice/experience/none/none] -> K6=software UI design patterns"
+    },
+    {
+      "caseId": "fi-long-list-dev",
+      "run": 1,
+      "check": "protected (requirement text)",
+      "detail": "P25 \"Fluent spoken and written English\" [nice/language/none/none] hits=English"
+    },
+    {
+      "caseId": "fi-long-list-dev",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P30 \"Pass a security clearance before starting\" [must/authorisation/law/none] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-native-fi-nurse",
+      "run": 1,
+      "check": "6.3 lint would keep it (text)",
+      "detail": "P11 \"Advanced or native-level Finnish\" [must/language/none/language] lint=native"
+    },
+    {
+      "caseId": "fi-native-fi-nurse",
+      "run": 1,
+      "check": "statutory=law where code says law",
+      "detail": "P12 \"Driving licence\" [must/authorisation/none/none] <- Ajokortti"
+    },
+    {
+      "caseId": "fi-over12-satellite",
+      "run": 1,
+      "check": "protected (requirement text)",
+      "detail": "P31 \"Fluent English for an international working environment\" [must/language/none/language] hits=English"
+    },
+    {
+      "caseId": "fi-over12-satellite",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P63 \"Personnel security clearance for the selected candidate\" [must/authorisation/law/none] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-over12-satellite",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P66 \"Certificate from a drug test\" [must/authorisation/law/none] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-over12-satellite",
+      "run": 1,
+      "check": "text <=80, no digits except years/classes",
+      "detail": "P34 \"Knowledge of 3GPP NTN and satellite-mobile network integration\" [nice/skill/none/none]"
+    },
+    {
+      "caseId": "fi-prose-chef",
+      "run": 1,
+      "check": "schema",
+      "detail": "raw: requirements.0.language Invalid input: expected string, received undefined; requirements.1.language Invalid input: expected string, received undefined"
+    },
+    {
+      "caseId": "fi-prose-chef",
+      "run": 1,
+      "check": "question trigger holds (4.1)",
+      "detail": "P13 \"Development-focused leadership and ability to inspire others\" [nice/skill/none/vague]"
+    },
+    {
+      "caseId": "fi-prose-chef",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P28 \"Food hygiene passport\" [must/authorisation/law/none] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-prose-chef",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P30 \"Passenger car driving licence\" [must/authorisation/none/none] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-public-ece-teacher",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P29 \"Bachelor of Education with early childhood teacher training, or equivalent\" [must/education/law/none] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-public-ece-teacher",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P32 \"Criminal record extract for working with children\" [must/authorisation/law/none] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-public-ece-teacher",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P33 \"Tuberculosis infection risk assessment\" [must/authorisation/law/none] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-public-nurse-kauniainen",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P12 \"Nursing expertise\" [must/skill/none/none] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-public-nurse-kauniainen",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P12 \"Good information technology skills\" [must/skill/none/none] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-public-nurse-kauniainen",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P12 \"Fluent Finnish\" [must/language/none/language] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-public-nurse-kauniainen",
+      "run": 1,
+      "check": "statutory=law where code says law",
+      "detail": "P12 \"Fluent Finnish\" [must/language/none/language] <- Tehtävän menestyksekäs hoitaminen vaatii hoitotyön osaamisen lisäksi hyviä tietoteknisiä taitoja sekä sujuvaa suomen kielen osaamista."
+    },
+    {
+      "caseId": "fi-public-nurse-kauniainen",
+      "run": 1,
+      "check": "statutory=law where code says law",
+      "detail": "P13 \"Swedish language skills\" [nice/language/none/none] <- Toisen kotimaisen kielen ja englannin kielen osaamisen katsomme eduksi."
+    },
+    {
+      "caseId": "fi-public-nurse-kauniainen",
+      "run": 1,
+      "check": "protected (requirement text)",
+      "detail": "P13 \"Swedish language skills\" [nice/language/none/none] hits=Swedish"
+    },
+    {
+      "caseId": "fi-public-nurse-kauniainen",
+      "run": 1,
+      "check": "statutory=law where code says law",
+      "detail": "P13 \"English language skills\" [nice/language/none/none] <- Toisen kotimaisen kielen ja englannin kielen osaamisen katsomme eduksi."
+    },
+    {
+      "caseId": "fi-public-nurse-kauniainen",
+      "run": 1,
+      "check": "protected (requirement text)",
+      "detail": "P13 \"English language skills\" [nice/language/none/none] hits=English"
+    },
+    {
+      "caseId": "fi-public-nurse-kauniainen",
+      "run": 1,
+      "check": "vague asks get a vague question",
+      "detail": "P25 \"Flexibility and good customer service and teamwork skills\" [nice/other/none/none]"
+    },
+    {
+      "caseId": "fi-public-nurse-kauniainen",
+      "run": 1,
+      "check": "6.3 lint would keep it (text)",
+      "detail": "P26 \"Previous experience working at a health centre\" [nice/experience/none/none] lint=health"
+    },
+    {
+      "caseId": "fi-swedish-norway",
+      "run": 1,
+      "check": "protected (title/summary)",
+      "detail": "Norway: Nurses for Full-Time Care Work in Norway"
+    },
+    {
+      "caseId": "fi-swedish-norway",
+      "run": 1,
+      "check": "protected (title/summary)",
+      "detail": "Norway: Full-time care work in Norway supporting and treating patients with special support needs. The role is responsible and can be physically and psychologically demanding."
+    },
+    {
+      "caseId": "fi-swedish-norway",
+      "run": 1,
+      "check": "protected (requirement text)",
+      "detail": "P8 \"Swedish language skills\" [nice/language/none/none] hits=Swedish"
+    },
+    {
+      "caseId": "fi-swedish-norway",
+      "run": 1,
+      "check": "question trigger holds (4.1)",
+      "detail": "P10 \"Handle challenging patient situations safely and professionally\" [nice/skill/none/vague]"
+    },
+    {
+      "caseId": "fi-vague-age18",
+      "run": 1,
+      "check": "vague asks get a vague question",
+      "detail": "P23 \"Access to your own car\" [must/other/none/none]"
+    },
+    {
+      "caseId": "fi-very-short-pizza",
+      "run": 1,
+      "check": "schema",
+      "detail": "raw: requirements.0.language Invalid input: expected string, received undefined"
+    },
+    {
+      "caseId": "fi-very-short-pizza",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P1 \"At least two years of experience as a pizza cook\" [must/experience/none/none] expected nice (header: -)"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "item": "card-synthesis",
+  "caseId": "en-exp-buzzwords",
+  "run": 5,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Customer service, communication and team collaboration",
+    "summary": "They identify communication, problem solving and leadership as strengths, with a focus on customer service and collaboration across teams. They are seeking an opportunity to grow and contribute.",
+    "signals": [
+      {
+        "phrase": "Workplace communication",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They identify communication as one of their key strengths."
+      },
+      {
+        "phrase": "Problem solving",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s2"
+        ],
+        "rendering": "They identify problem solving as one of their key strengths."
+      },
+      {
+        "phrase": "Team leadership",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They identify leadership as one of their key strengths."
+      },
+      {
+        "phrase": "Customer service",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1"
+        ],
+        "from": [
+          "s4"
+        ],
+        "rendering": "They express an interest in customer service."
+      },
+      {
+        "phrase": "Team collaboration",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1",
+          "T3.S2"
+        ],
+        "from": [
+          "s5"
+        ],
+        "rendering": "They describe teamwork and collaboration across teams as part of their approach."
+      }
+    ],
+    "roles": [],
+    "rolesEvidence": []
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 9853,
+    "firstTokenMs": 9852,
+    "tokensIn": 1112,
+    "tokensOut": 832,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

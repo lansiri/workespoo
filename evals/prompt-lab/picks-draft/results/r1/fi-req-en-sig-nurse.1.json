@@ -1,0 +1,38 @@
+{
+  "item": "picks-draft",
+  "caseId": "fi-req-en-sig-nurse",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "req": "R2",
+        "signal": "S1",
+        "text": "The card describes home visits to older clients, which relates to experience in home care."
+      },
+      {
+        "req": "R6",
+        "signal": "S1",
+        "text": "The card describes writing notes after each home visit, which relates to care planning and documentation."
+      },
+      {
+        "req": "R3",
+        "signal": "S2",
+        "text": "The card describes preparing weekly dose boxes and giving insulin injections, which relates to medication administration."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 5394,
+    "firstTokenMs": 5393,
+    "tokensIn": 703,
+    "tokensOut": 218,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

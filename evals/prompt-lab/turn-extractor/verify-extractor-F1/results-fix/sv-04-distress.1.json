@@ -1,0 +1,31 @@
+{
+  "item": "turn-extractor-verifyF1",
+  "caseId": "sv-04-distress",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "sv",
+    "signals": [],
+    "coverage": {
+      "people": "thin"
+    },
+    "flags": [
+      "distress",
+      "wants_stop"
+    ],
+    "note": "Order packing already covered; avoid the manager topic and gently ask about tasks or tools only if they wish."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1886,
+    "firstTokenMs": 1865,
+    "tokensIn": 1069,
+    "tokensOut": 47,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

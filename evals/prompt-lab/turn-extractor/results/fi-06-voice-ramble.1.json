@@ -1,0 +1,77 @@
+{
+  "item": "turn-extractor",
+  "caseId": "fi-06-voice-ramble",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "fi",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Warehousing",
+        "kind": "domain",
+        "evidence": [
+          "T1.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Relex warehouse management system",
+        "kind": "tool",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Forklift driving",
+        "kind": "tool",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Handheld scanner",
+        "kind": "tool",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Manual picking records",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1-S2"
+        ],
+        "hasExample": true
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "example": "covered",
+      "tools": "covered",
+      "people": "thin"
+    },
+    "flags": [],
+    "note": "Tools and outage workaround covered; ask about forklift certification and regular Relex tasks."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2678,
+    "firstTokenMs": 2678,
+    "tokensIn": 1124,
+    "tokensOut": 191,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "item": "interviewer-live-fix-combined",
+  "role": "live",
+  "schema": null,
+  "calls": 1,
+  "ok": 1,
+  "failed": 0,
+  "neededRetry": 0,
+  "latencyMs": {
+    "p50": 1136,
+    "p90": 1136
+  },
+  "firstTokenMs": {
+    "p50": 884,
+    "p90": 884
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": []
+}

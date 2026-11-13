@@ -1,0 +1,100 @@
+{
+  "item": "card-synthesis",
+  "caseId": "en-full-protected",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Bathroom demolition, tiling and asbestos safety preparation",
+    "summary": "They strip out bathrooms, set up dust walls and negative pressure equipment, and tile bathroom walls and floors. They hold an asbestos removal certificate and an occupational safety card.",
+    "signals": [
+      {
+        "phrase": "Demolishing bathrooms",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2",
+          "T3.S1"
+        ],
+        "from": [
+          "s1",
+          "s2"
+        ],
+        "rendering": "They remove old bathrooms in apartment buildings, break tiles, strip waterproofing and carry out debris."
+      },
+      {
+        "phrase": "Preparing asbestos-safe work areas",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They check asbestos surveys and install dust walls and negative pressure equipment before demolition."
+      },
+      {
+        "phrase": "Negative pressure machine",
+        "kind": "tool",
+        "evidence": [
+          "T3.S2"
+        ],
+        "from": [
+          "s4"
+        ],
+        "rendering": "They use a negative pressure machine as part of dust-control preparations before demolition."
+      },
+      {
+        "phrase": "Tiling walls and floors",
+        "kind": "skill",
+        "evidence": [
+          "T5.S2"
+        ],
+        "from": [
+          "s5"
+        ],
+        "rendering": "They tile bathroom walls and floors."
+      },
+      {
+        "phrase": "Asbestos removal certificate",
+        "kind": "knowledge",
+        "evidence": [
+          "T7.S1"
+        ],
+        "from": [
+          "s6"
+        ],
+        "rendering": "They hold an asbestos removal certificate."
+      },
+      {
+        "phrase": "Occupational safety card",
+        "kind": "knowledge",
+        "evidence": [
+          "T7.S1"
+        ],
+        "from": [
+          "s7"
+        ],
+        "rendering": "They hold an occupational safety card."
+      }
+    ],
+    "roles": [
+      "Tiling work",
+      "Site foreman's helper"
+    ],
+    "rolesEvidence": [
+      "T9.S1"
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 8111,
+    "firstTokenMs": 8110,
+    "tokensIn": 1265,
+    "tokensOut": 713,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

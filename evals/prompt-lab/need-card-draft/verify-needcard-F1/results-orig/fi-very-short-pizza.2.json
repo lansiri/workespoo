@@ -1,0 +1,10 @@
+{
+  "caseId": "fi-very-short-pizza",
+  "run": 2,
+  "ok": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "attempts": 3,
+  "latencyMs": 27240,
+  "tokensOut": null,
+  "raws": []
+}

@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "en-open-floor",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Thanks, that's clear. Is there anything else about your work that you would like in your notes?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 918,
+    "firstTokenMs": 493,
+    "tokensIn": 870,
+    "tokensOut": 27,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "item": "card-synthesis",
+  "caseId": "fi-exp-tiler",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Bathroom and sauna tiling, waterproofing and floor preparation",
+    "summary": "They tile bathrooms and saunas in homes, install waterproofing with the Kiilto system, and prepare floors with levelling and drainage slopes. They hold waterproofing and hot work certifications.",
+    "signals": [
+      {
+        "phrase": "Tiling bathrooms and saunas",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They tile bathrooms and saunas in detached houses and terraced houses."
+      },
+      {
+        "phrase": "Waterproofing",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2"
+        ],
+        "from": [
+          "s2"
+        ],
+        "rendering": "They install waterproofing using the Kiilto system."
+      },
+      {
+        "phrase": "Kiilto",
+        "kind": "tool",
+        "evidence": [
+          "T1.S2"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They use the Kiilto system for waterproofing work."
+      },
+      {
+        "phrase": "Floor levelling and drainage slopes",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s4"
+        ],
+        "rendering": "They level uneven floors and create slopes towards drains before tiling."
+      },
+      {
+        "phrase": "Tile layout measurement",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "from": [
+          "s5"
+        ],
+        "rendering": "They measure tile positions to keep joints aligned with the doorway."
+      },
+      {
+        "phrase": "Waterproofing certificate",
+        "kind": "knowledge",
+        "evidence": [
+          "T5.S1"
+        ],
+        "from": [
+          "s6"
+        ],
+        "rendering": "They hold a waterproofing certificate."
+      },
+      {
+        "phrase": "Hot work card",
+        "kind": "knowledge",
+        "evidence": [
+          "T5.S1"
+        ],
+        "from": [
+          "s7"
+        ],
+        "rendering": "They hold a hot work card."
+      }
+    ],
+    "roles": [
+      "Tiling work"
+    ],
+    "rolesEvidence": [
+      "T5.S2"
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 8432,
+    "firstTokenMs": 8431,
+    "tokensIn": 1271,
+    "tokensOut": 705,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

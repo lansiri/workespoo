@@ -1,0 +1,33 @@
+{
+  "item": "match-reasons",
+  "caseId": "fi-weak-04",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P9",
+        "text": "Your card mentions counting the till and recording daily cash takings; the posting asks for experience in independent bookkeeping."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P5",
+        "text": "Your card mentions answering customer calls and emails about bills; the posting asks for customer service by email and phone."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3465,
+    "firstTokenMs": 3465,
+    "tokensIn": 612,
+    "tokensOut": 204,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

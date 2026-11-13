@@ -1,0 +1,93 @@
+{
+  "item": "need-card-draft-fix-shape",
+  "caseId": "fi-native-fi-nurse",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "title": "Registered Nurse for Home Care",
+    "summary": "The role provides nursing care in clients' homes, including health assessments, medication, care planning and documentation. It also involves cooperation with relatives, doctors and the wider care team.",
+    "requirements": [
+      {
+        "text": "Registration as a nurse with Valvira",
+        "kind": "must",
+        "category": "authorisation",
+        "sentence": 9,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "At least 2 years of experience in home care",
+        "kind": "must",
+        "category": "experience",
+        "sentence": 10,
+        "esco": [
+          "K5"
+        ],
+        "language": null,
+        "years": 2,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Finnish language skills at C1/C2 level",
+        "kind": "must",
+        "category": "language",
+        "sentence": 11,
+        "esco": [],
+        "language": "fi",
+        "years": null,
+        "statutory": "none",
+        "questionType": "language",
+        "question": "Is Finnish needed from day one, or could someone start in English and build up Finnish on the job?",
+        "why": "The posting requires advanced Finnish proficiency for this home care nursing role."
+      },
+      {
+        "text": "Driving licence",
+        "kind": "must",
+        "category": "authorisation",
+        "sentence": 12,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Independent and responsible approach to work",
+        "kind": "must",
+        "category": "other",
+        "sentence": 13,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'independent and responsible approach to work' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting asks for an independent and responsible approach without describing what this involves."
+      }
+    ],
+    "dropped": []
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 10684,
+    "firstTokenMs": 10681,
+    "tokensIn": 2492,
+    "tokensOut": 934,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

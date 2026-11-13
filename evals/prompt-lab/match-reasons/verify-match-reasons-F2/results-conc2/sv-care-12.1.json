@@ -1,0 +1,50 @@
+{
+  "caseId": "sv-care-12",
+  "run": 1,
+  "conc": 2,
+  "startedMs": 6068,
+  "doneMs": 9446,
+  "ok": true,
+  "error": null,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3377,
+    "firstTokenMs": 3377,
+    "tokensIn": 570,
+    "tokensOut": 220,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  },
+  "http": [
+    {
+      "status": 200,
+      "startMs": 6075,
+      "ms": 3367,
+      "headers": {
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "25",
+        "x-ratelimit-remaining-tokens": "2965320",
+        "x-ratelimit-reset-requests": "52s",
+        "x-ratelimit-reset-tokens": "52s"
+      }
+    }
+  ],
+  "saw429": false,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P13",
+        "text": "Your card mentions helping adults with meals, hygiene and daily routines; the posting asks for experience with patients who need special support."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P10",
+        "text": "Your card mentions calming residents during conflicts and reporting incidents; the posting asks for safe handling of challenging patient situations."
+      }
+    ]
+  }
+}

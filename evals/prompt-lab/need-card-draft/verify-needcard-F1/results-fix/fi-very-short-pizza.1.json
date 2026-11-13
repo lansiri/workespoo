@@ -1,0 +1,34 @@
+{
+  "caseId": "fi-very-short-pizza",
+  "run": 1,
+  "ok": true,
+  "error": null,
+  "attempts": 2,
+  "latencyMs": 13124,
+  "tokensOut": 258,
+  "raws": [
+    {
+      "title": "Restaurant Worker",
+      "summary": "The role involves preparing food, maintaining kitchen cleanliness and hygiene, and handling ingredients safely. It may also include helping organise stock and receive orders.",
+      "requirements": [
+        {
+          "text": "At least two years of experience working as a pizza cook",
+          "kind": "nice",
+          "category": "experience",
+          "sentence": 1,
+          "esco": [
+            "K22",
+            "K9"
+          ],
+          "language": null,
+          "years": 2,
+          "statutory": "none",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        }
+      ],
+      "dropped": []
+    }
+  ]
+}

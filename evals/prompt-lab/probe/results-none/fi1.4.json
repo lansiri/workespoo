@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "fi1",
+  "run": 4,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Kuulostaa monipuoliselta kokemukselta! Kerrotko vähän lisää siitä, miten uusien työntekijöiden opastaminen sujui – mitä teit käytännössä?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 8697,
+    "firstTokenMs": 8193,
+    "tokensIn": 830,
+    "tokensOut": 65,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

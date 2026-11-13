@@ -1,0 +1,21 @@
+{
+  "caseId": "sv-beyond",
+  "run": 1,
+  "deadlineMs": 2000,
+  "modelReply": true,
+  "firstTokenMs": 1347,
+  "endedMs": 1994,
+  "aborted": false,
+  "text": "Tack, det är tydligt. Vad har du gjort utanför ditt huvudsakliga arbete, till exempel studier, volontärarbete eller egna projekt?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1993,
+    "firstTokenMs": 1346,
+    "tokensIn": 854,
+    "tokensOut": 54,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

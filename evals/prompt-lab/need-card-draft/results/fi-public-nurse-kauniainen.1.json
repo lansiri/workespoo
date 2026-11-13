@@ -1,0 +1,171 @@
+{
+  "item": "need-card-draft",
+  "caseId": "fi-public-nurse-kauniainen",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "title": "Registered Nurse at a Health Centre",
+    "summary": "The role covers outpatient care for patients of all ages, including care needs assessment, appointments, patient office work and on-call shifts. It is a fixed-term weekday position in a multidisciplinary team.",
+    "requirements": [
+      {
+        "text": "Nursing expertise",
+        "kind": "must",
+        "category": "skill",
+        "sentence": 12,
+        "esco": [
+          "K3"
+        ],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Good information technology skills",
+        "kind": "must",
+        "category": "skill",
+        "sentence": 12,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Fluent Finnish",
+        "kind": "must",
+        "category": "language",
+        "sentence": 12,
+        "esco": [],
+        "language": "fi",
+        "years": null,
+        "statutory": "none",
+        "questionType": "language",
+        "question": "Is Finnish needed from day one, or could someone start in English and build up Finnish on the job?",
+        "why": "The posting asks for fluent Finnish alongside nursing expertise and IT skills."
+      },
+      {
+        "text": "Swedish language skills",
+        "kind": "nice",
+        "category": "language",
+        "sentence": 13,
+        "esco": [],
+        "language": "sv",
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "English language skills",
+        "kind": "nice",
+        "category": "language",
+        "sentence": 13,
+        "esco": [],
+        "language": "en",
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Stress tolerance and a proactive, team-oriented approach",
+        "kind": "nice",
+        "category": "other",
+        "sentence": 16,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'stress tolerance and a proactive, team-oriented approach' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting describes the desired nurse using broad personal qualities without a concrete workplace example."
+      },
+      {
+        "text": "Registration as a licensed nurse",
+        "kind": "must",
+        "category": "authorisation",
+        "sentence": 22,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Vaccination protection required by the Communicable Diseases Act",
+        "kind": "must",
+        "category": "authorisation",
+        "sentence": 23,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Tuberculosis screening required by the Communicable Diseases Act",
+        "kind": "must",
+        "category": "authorisation",
+        "sentence": 24,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Flexibility and good customer service and teamwork skills",
+        "kind": "nice",
+        "category": "other",
+        "sentence": 25,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Previous experience working at a health centre",
+        "kind": "nice",
+        "category": "experience",
+        "sentence": 26,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      }
+    ],
+    "dropped": []
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 56769,
+    "firstTokenMs": 19312,
+    "tokensIn": 7372,
+    "tokensOut": 2698,
+    "ok": true,
+    "error": null,
+    "attempts": 4
+  }
+}

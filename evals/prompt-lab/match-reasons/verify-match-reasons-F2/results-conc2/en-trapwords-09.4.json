@@ -1,0 +1,50 @@
+{
+  "caseId": "en-trapwords-09",
+  "run": 4,
+  "conc": 2,
+  "startedMs": 72701,
+  "doneMs": 75207,
+  "ok": true,
+  "error": null,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2506,
+    "firstTokenMs": 2506,
+    "tokensIn": 553,
+    "tokensOut": 179,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  },
+  "http": [
+    {
+      "status": 200,
+      "startMs": 72704,
+      "ms": 2502,
+      "headers": {
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "23",
+        "x-ratelimit-remaining-tokens": "2954367",
+        "x-ratelimit-reset-requests": "46s",
+        "x-ratelimit-reset-tokens": "46s"
+      }
+    }
+  ],
+  "saw429": false,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P21",
+        "text": "Your card mentions TypeScript and Node.js back-end services; the posting asks for Node.js and/or TypeScript knowledge."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P39",
+        "text": "Your card mentions tracing live-system errors to their cause with logs; the posting asks for problem-solving and getting to root causes."
+      }
+    ]
+  }
+}

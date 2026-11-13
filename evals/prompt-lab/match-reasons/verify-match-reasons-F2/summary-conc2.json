@@ -1,0 +1,65 @@
+{
+ "logicalCalls": 30,
+ "httpRequests": 41,
+ "callsWith429": [
+  "en-obvious-01.4",
+  "fi-nullesco-13.3",
+  "sv-care-12.3"
+ ],
+ "http429": 6,
+ "failed": [
+  "fi-nullesco-13.3: All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+ ],
+ "retryAfterSeconds": [
+  "31",
+  "10",
+  "60",
+  "31",
+  "11",
+  "60"
+ ],
+ "repairRetries(two 200s)": 6,
+ "latencyMs_no429": [
+  1978,
+  2102,
+  2506,
+  2514,
+  2588,
+  2619,
+  2619,
+  2651,
+  2668,
+  2682,
+  2769,
+  2880,
+  2933,
+  3377,
+  3433,
+  3446,
+  3477,
+  3490,
+  3495,
+  3523,
+  3575,
+  4696,
+  5098,
+  5125,
+  5136,
+  5354,
+  7090
+ ],
+ "latencyMs_429": [
+  22680,
+  30570,
+  36651
+ ],
+ "rateLimitHeaderNamesSeen": [
+  "retry-after",
+  "x-ratelimit-limit-requests",
+  "x-ratelimit-limit-tokens",
+  "x-ratelimit-remaining-requests",
+  "x-ratelimit-remaining-tokens",
+  "x-ratelimit-reset-requests",
+  "x-ratelimit-reset-tokens"
+ ]
+}

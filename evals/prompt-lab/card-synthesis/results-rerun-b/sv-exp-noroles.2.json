@@ -1,0 +1,82 @@
+{
+  "item": "card-synthesis",
+  "caseId": "sv-exp-noroles",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Beverage shelf stocking, stock rotation and store rounds",
+    "summary": "They stock beverages in stores, rotate products by date, remove expired bottles and place orders through a phone app. They drive between stores during daily rounds.",
+    "signals": [
+      {
+        "phrase": "Stocking beverage shelves",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They stock shelves with beer and soft drinks in stores for a brewery."
+      },
+      {
+        "phrase": "Driving between stores",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2"
+        ],
+        "from": [
+          "s2"
+        ],
+        "rendering": "They drive between stores to complete daily shelf-stocking rounds."
+      },
+      {
+        "phrase": "Rotating stock by date",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They check product dates, move older bottles forward and remove expired products."
+      },
+      {
+        "phrase": "Ordering stock by app",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "from": [
+          "s4"
+        ],
+        "rendering": "They count missing products and place stock orders through a phone app."
+      },
+      {
+        "phrase": "Working independently",
+        "kind": "skill",
+        "evidence": [
+          "T5.S1"
+        ],
+        "from": [
+          "s5"
+        ],
+        "rendering": "They prefer working independently without constant supervision."
+      }
+    ],
+    "roles": [],
+    "rolesEvidence": []
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 6877,
+    "firstTokenMs": 6876,
+    "tokensIn": 1173,
+    "tokensOut": 473,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

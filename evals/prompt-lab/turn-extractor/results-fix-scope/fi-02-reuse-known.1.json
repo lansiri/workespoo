@@ -1,0 +1,67 @@
+{
+  "item": "turn-extractor",
+  "caseId": "fi-02-reuse-known",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "fi",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Customer service",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1-S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "s3",
+        "phrase": "Cash register",
+        "kind": "tool",
+        "evidence": [
+          "T3.S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Loading bus cards manually",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Calmly explaining issues",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "hasExample": true
+      }
+    ],
+    "coverage": {
+      "example": "covered",
+      "tools": "covered",
+      "people": "covered"
+    },
+    "flags": [],
+    "note": "Specific customer issue and manual card loading covered; ask about other register tasks or responsibilities."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2489,
+    "firstTokenMs": 2488,
+    "tokensIn": 1161,
+    "tokensOut": 161,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

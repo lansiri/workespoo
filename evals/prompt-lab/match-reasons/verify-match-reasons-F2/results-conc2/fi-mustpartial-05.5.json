@@ -1,0 +1,50 @@
+{
+  "caseId": "fi-mustpartial-05",
+  "run": 5,
+  "conc": 2,
+  "startedMs": 83813,
+  "doneMs": 87336,
+  "ok": true,
+  "error": null,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3523,
+    "firstTokenMs": 3523,
+    "tokensIn": 539,
+    "tokensOut": 272,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  },
+  "http": [
+    {
+      "status": 200,
+      "startMs": 83814,
+      "ms": 3520,
+      "headers": {
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "10",
+        "x-ratelimit-remaining-tokens": "2935572",
+        "x-ratelimit-reset-requests": "35s",
+        "x-ratelimit-reset-tokens": "35s"
+      }
+    }
+  ],
+  "saw429": false,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P9",
+        "text": "Your card mentions cooking school lunches for about 60 people a day; the posting asks for cook experience and the ability to take charge of the kitchen."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P10",
+        "text": "Your card mentions that you hold a hygiene passport; the posting asks for a hygiene passport."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "fi-stop",
+  "run": 3,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "[[STOP]]",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 23324,
+    "firstTokenMs": 23165,
+    "tokensIn": 900,
+    "tokensOut": 10,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "item": "turn-extractor",
+  "caseId": "fi-03-protected",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "rawOnFailure": "{\"lang\":\"fi\",\"signals\":[{\"ref\":\"new\",\"phrase\":\"Bookkeeping for accounting firm\",\"kind\":\"skill\",\"evidence\":[\"T1.S4\"],\"hasExample\":false},{\"ref\":\"new\",\"phrase\":\"Purchase invoice entry\",\"kind\":\"skill\",\"evidence\":[\"T1.S4\"],\"hasExample\":false},{\"ref\":\"new\",\"phrase\":\"Procountor\",\"kind\":\"tool\",\"evidence\":[\"T1.S4\"],\"hasExample\":false},{\"ref\":\"new\",\"phrase\":\"VAT returns\",\"kind\":\"skill\",\"evidence\":[\"T1.S4\"],\"hasExample\":false}],\"coverage\":{\"recent_work\":\"covered\",\"tools\":\"covered\",\"people\":\"thin\"},\"flags\":[\"protected_info\"],\"note\":\"Current bookkeeping tasks and Procountor covered; ask about a specific task example and desired next work.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 36297,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

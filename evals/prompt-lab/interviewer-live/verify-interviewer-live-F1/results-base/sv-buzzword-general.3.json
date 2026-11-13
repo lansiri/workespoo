@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verifyF1-base",
+  "caseId": "sv-buzzword-general",
+  "run": 3,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Jag noterar det. Kan du beskriva en specifik situation där du samarbetade med andra, och vad din egen roll var?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2305,
+    "firstTokenMs": 1428,
+    "tokensIn": 918,
+    "tokensOut": 42,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

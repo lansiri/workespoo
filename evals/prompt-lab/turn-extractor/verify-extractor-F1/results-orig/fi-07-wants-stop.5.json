@@ -1,0 +1,41 @@
+{
+  "item": "turn-extractor-verifyF1",
+  "caseId": "fi-07-wants-stop",
+  "run": 5,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "fi",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Parcel delivery",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "people": "thin"
+    },
+    "flags": [
+      "wants_stop",
+      "distress"
+    ],
+    "note": "Person asked to stop; delivery tasks already noted, but their own role and work contacts remain unclear."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1786,
+    "firstTokenMs": 1786,
+    "tokensIn": 996,
+    "tokensOut": 74,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

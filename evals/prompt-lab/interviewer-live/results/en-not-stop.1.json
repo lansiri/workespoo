@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "en-not-stop",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Thanks, that's clear. What tools, equipment or methods did you use at the grill station?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 8888,
+    "firstTokenMs": 8539,
+    "tokensIn": 902,
+    "tokensOut": 26,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

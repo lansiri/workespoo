@@ -1,0 +1,21 @@
+{
+  "item": "match-reasons",
+  "caseId": "fi-nullesco-13",
+  "run": 5,
+  "role": "analyst",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "rawOnFailure": "{\"reasons\":[{\"signal\":\"S1\",\"sentence\":null,\"text\":\"Your card mentions baking bread and pastries every morning in a bakery cafe; the posting asks for food preparation techniques.\"},{\"signal\":\"S2\",\"sentence\":\"P13\",\"text\":\"Your card mentions preparing food for weddings and company events; the posting asks for experience in large-scale kitchens or catering.\"}]}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 40726,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

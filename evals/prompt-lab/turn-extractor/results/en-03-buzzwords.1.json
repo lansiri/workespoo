@@ -1,0 +1,59 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-03-buzzwords",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Answering customer calls",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "s2",
+        "phrase": "Telecommunications",
+        "kind": "domain",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Customer billing enquiries",
+        "kind": "knowledge",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "people": "covered"
+    },
+    "flags": [
+      "buzzwords"
+    ],
+    "note": "Call centre billing work covered; ask about colleagues, own responsibilities, and tools used."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2226,
+    "firstTokenMs": 2225,
+    "tokensIn": 1014,
+    "tokensOut": 133,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

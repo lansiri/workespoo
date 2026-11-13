@@ -1,0 +1,68 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-12-filler",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Production line maintenance",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1",
+          "T3.S1-S3"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Conveyor belt repair",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1-S3"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Belt tension adjustment",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Bakery production",
+        "kind": "domain",
+        "evidence": [
+          "T1.S1"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "example": "covered",
+      "tools": "covered"
+    },
+    "flags": [],
+    "note": "Specific conveyor repair covered; ask about tools used, routine checks, and teamwork on the line."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2575,
+    "firstTokenMs": 2575,
+    "tokensIn": 1018,
+    "tokensOut": 172,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

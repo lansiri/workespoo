@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "sv-people",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Vem arbetade du oftast med eller för, och vad var din egen del i det?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1313,
+    "firstTokenMs": 928,
+    "tokensIn": 939,
+    "tokensOut": 29,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

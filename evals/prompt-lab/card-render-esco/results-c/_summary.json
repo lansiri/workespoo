@@ -1,0 +1,21 @@
+{
+  "item": "esco-pick",
+  "role": "live",
+  "schema": null,
+  "calls": 8,
+  "ok": 8,
+  "failed": 0,
+  "neededRetry": 0,
+  "latencyMs": {
+    "p50": 1291,
+    "p90": 3780
+  },
+  "firstTokenMs": {
+    "p50": 1073,
+    "p90": 3481
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": []
+}

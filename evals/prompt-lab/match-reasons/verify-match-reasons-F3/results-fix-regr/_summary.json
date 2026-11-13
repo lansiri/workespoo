@@ -1,0 +1,27 @@
+{
+  "item": "match-reasons",
+  "role": "analyst",
+  "schema": "MatchReasonsOutput",
+  "calls": 2,
+  "ok": 1,
+  "failed": 1,
+  "neededRetry": 2,
+  "latencyMs": {
+    "p50": 30614,
+    "p90": 30614
+  },
+  "firstTokenMs": {
+    "p50": 30612,
+    "p90": 30612
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "en-trapwords-09",
+      "run": 1,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    }
+  ]
+}

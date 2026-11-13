@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "sv-beyond",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need respond in Swedish, interviewer, next question target outside main job studies volunteering side projects earlier different job. Should have at most 2 short sentences <=35 words, end exactly one question. Neutral ack optional <=6 words. Should not repeat answer. I have recent conversation Q4? Facts question 5 of 5-7. Already noted payroll processing onboarding. Should ask open about something outside main job. Could say \"Tack. Kan",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1403,
+    "firstTokenMs": 500,
+    "tokensIn": 854,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

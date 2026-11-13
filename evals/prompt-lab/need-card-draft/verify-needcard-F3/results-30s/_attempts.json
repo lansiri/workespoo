@@ -1,0 +1,275 @@
+[
+  {
+    "tag": "fi-prose-chef",
+    "startMs": 32,
+    "ms": 13185,
+    "status": "200",
+    "tokensOut": 1073
+  },
+  {
+    "tag": "fi-long-list-dev",
+    "startMs": 29,
+    "ms": 15514,
+    "status": "200",
+    "tokensOut": 1374
+  },
+  {
+    "tag": "en-mobile-fluent-fi",
+    "startMs": 13244,
+    "ms": 9517,
+    "status": "200",
+    "tokensOut": 862
+  },
+  {
+    "tag": "en-rd-director",
+    "startMs": 15549,
+    "ms": 19734,
+    "status": "200",
+    "tokensOut": 1546
+  },
+  {
+    "tag": "fi-cards-tiler",
+    "startMs": 35287,
+    "ms": 296,
+    "status": "429",
+    "tokensOut": null
+  },
+  {
+    "tag": "fi-public-nurse-kauniainen",
+    "startMs": 22766,
+    "ms": 20389,
+    "status": "200",
+    "tokensOut": 1798
+  },
+  {
+    "tag": "fi-long-list-dev",
+    "startMs": 43160,
+    "ms": 254,
+    "status": "429",
+    "tokensOut": null
+  },
+  {
+    "tag": "fi-long-list-dev",
+    "startMs": 53421,
+    "ms": 245,
+    "status": "429",
+    "tokensOut": null
+  },
+  {
+    "tag": "fi-cards-tiler",
+    "startMs": 53586,
+    "ms": 18507,
+    "status": "200",
+    "tokensOut": 1612
+  },
+  {
+    "tag": "fi-prose-chef",
+    "startMs": 72101,
+    "ms": 17016,
+    "status": "200",
+    "tokensOut": 1354
+  },
+  {
+    "tag": "en-mobile-fluent-fi",
+    "startMs": 89122,
+    "ms": 288,
+    "status": "429",
+    "tokensOut": null
+  },
+  {
+    "tag": "fi-long-list-dev",
+    "startMs": 73671,
+    "ms": 18665,
+    "status": "200",
+    "tokensOut": 1536
+  },
+  {
+    "tag": "en-rd-director",
+    "startMs": 92347,
+    "ms": 97,
+    "status": "429",
+    "tokensOut": null
+  },
+  {
+    "tag": "en-mobile-fluent-fi",
+    "startMs": 109429,
+    "ms": 321,
+    "status": "429",
+    "tokensOut": null
+  },
+  {
+    "tag": "en-rd-director",
+    "startMs": 112449,
+    "ms": 101,
+    "status": "429",
+    "tokensOut": null
+  },
+  {
+    "tag": "en-rd-director",
+    "startMs": 113552,
+    "ms": 130,
+    "status": "429",
+    "tokensOut": null
+  },
+  {
+    "tag": "en-mobile-fluent-fi",
+    "startMs": 113752,
+    "ms": 10813,
+    "status": "200",
+    "tokensOut": 1031
+  },
+  {
+    "tag": "fi-public-nurse-kauniainen",
+    "startMs": 113686,
+    "ms": 19585,
+    "status": "200",
+    "tokensOut": 1820
+  },
+  {
+    "tag": "fi-cards-tiler",
+    "startMs": 124567,
+    "ms": 17510,
+    "status": "200",
+    "tokensOut": 1576
+  },
+  {
+    "tag": "fi-long-list-dev",
+    "startMs": 133273,
+    "ms": 16037,
+    "status": "200",
+    "tokensOut": 1425
+  },
+  {
+    "tag": "fi-prose-chef",
+    "startMs": 142081,
+    "ms": 13825,
+    "status": "200",
+    "tokensOut": 1297
+  },
+  {
+    "tag": "en-rd-director",
+    "startMs": 155909,
+    "ms": 255,
+    "status": "429",
+    "tokensOut": null
+  },
+  {
+    "tag": "en-mobile-fluent-fi",
+    "startMs": 149312,
+    "ms": 13431,
+    "status": "200",
+    "tokensOut": 1102
+  },
+  {
+    "tag": "fi-public-nurse-kauniainen",
+    "startMs": 162749,
+    "ms": 284,
+    "status": "429",
+    "tokensOut": null
+  },
+  {
+    "tag": "en-rd-director",
+    "startMs": 174165,
+    "ms": 18185,
+    "status": "200",
+    "tokensOut": 1619
+  },
+  {
+    "tag": "fi-public-nurse-kauniainen",
+    "startMs": 174042,
+    "ms": 19998,
+    "status": "200",
+    "tokensOut": 1634
+  },
+  {
+    "tag": "fi-long-list-dev",
+    "startMs": 194043,
+    "ms": 14900,
+    "status": "200",
+    "tokensOut": 1385
+  },
+  {
+    "tag": "fi-cards-tiler",
+    "startMs": 192354,
+    "ms": 19262,
+    "status": "200",
+    "tokensOut": 1629
+  },
+  {
+    "tag": "en-mobile-fluent-fi",
+    "startMs": 211620,
+    "ms": 13555,
+    "status": "200",
+    "tokensOut": 1184
+  },
+  {
+    "tag": "fi-prose-chef",
+    "startMs": 208947,
+    "ms": 17568,
+    "status": "200",
+    "tokensOut": 1607
+  },
+  {
+    "tag": "en-rd-director",
+    "startMs": 225178,
+    "ms": 15168,
+    "status": "200",
+    "tokensOut": 1422
+  },
+  {
+    "tag": "fi-public-nurse-kauniainen",
+    "startMs": 226517,
+    "ms": 17737,
+    "status": "200",
+    "tokensOut": 1468
+  },
+  {
+    "tag": "fi-cards-tiler",
+    "startMs": 240350,
+    "ms": 18262,
+    "status": "200",
+    "tokensOut": 1638
+  },
+  {
+    "tag": "fi-long-list-dev",
+    "startMs": 244257,
+    "ms": 18089,
+    "status": "200",
+    "tokensOut": 1662
+  },
+  {
+    "tag": "fi-prose-chef",
+    "startMs": 258615,
+    "ms": 13817,
+    "status": "200",
+    "tokensOut": 1104
+  },
+  {
+    "tag": "en-mobile-fluent-fi",
+    "startMs": 262349,
+    "ms": 10607,
+    "status": "200",
+    "tokensOut": 995
+  },
+  {
+    "tag": "en-rd-director",
+    "startMs": 272438,
+    "ms": 15290,
+    "status": "200",
+    "tokensOut": 1408
+  },
+  {
+    "tag": "fi-public-nurse-kauniainen",
+    "startMs": 272962,
+    "ms": 21339,
+    "status": "200",
+    "tokensOut": 1867
+  },
+  {
+    "tag": "fi-cards-tiler",
+    "startMs": 287731,
+    "ms": 17689,
+    "status": "200",
+    "tokensOut": 1537
+  }
+]

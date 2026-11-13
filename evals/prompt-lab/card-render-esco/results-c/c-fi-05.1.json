@@ -1,0 +1,20 @@
+{
+  "item": "esco-pick",
+  "caseId": "c-fi-05",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"picks\":[{\"i\":0,\"choice\":1}]}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1291,
+    "firstTokenMs": 1073,
+    "tokensIn": 159,
+    "tokensOut": 19,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "item": "turn-extractor",
+  "caseId": "fi-02-reuse-known",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "fi",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Customer service",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1",
+          "T3.S1-S3"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "s2",
+        "phrase": "Retail",
+        "kind": "domain",
+        "evidence": [
+          "T1.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "s3",
+        "phrase": "Cash register",
+        "kind": "tool",
+        "evidence": [
+          "T1.S1",
+          "T3.S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Loading travel cards manually",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Handling upset customers",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1-S2"
+        ],
+        "hasExample": true
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "example": "covered",
+      "tools": "covered",
+      "people": "covered"
+    },
+    "flags": [],
+    "note": "Concrete checkout example covered; ask about other tools, stock tasks, and desired next role."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3245,
+    "firstTokenMs": 3245,
+    "tokensIn": 1093,
+    "tokensOut": 204,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

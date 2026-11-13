@@ -1,0 +1,56 @@
+{
+  "caseId": "fi-very-short-pizza",
+  "run": 3,
+  "ok": false,
+  "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/",
+  "attempts": 2,
+  "latencyMs": 6573,
+  "tokensOut": 511,
+  "raws": [
+    {
+      "title": "Pizza Restaurant Worker",
+      "summary": "The role involves preparing food, maintaining kitchen cleanliness and hygiene, and handling ingredients safely. It may also include helping organise stock and receive orders.",
+      "requirements": [
+        {
+          "sentence": 1,
+          "text": "At least two years of experience working as a pizza cook",
+          "kind": "must",
+          "category": "experience",
+          "years": 2,
+          "esco": [
+            "K22",
+            "K9"
+          ],
+          "statutory": "none",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        }
+      ],
+      "dropped": []
+    },
+    {
+      "title": "Pizza Restaurant Worker",
+      "summary": "The role involves preparing food, maintaining kitchen cleanliness and hygiene, and handling ingredients safely. It may also include helping organise stock and receive orders.",
+      "requirements": [
+        {
+          "sentence": 1,
+          "text": "At least two years of experience working as a pizza cook",
+          "kind": "must",
+          "category": "experience",
+          "years": 2,
+          "language": "",
+          "esco": [
+            "K22",
+            "K9"
+          ],
+          "statutory": "none",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        }
+      ],
+      "dropped": []
+    }
+  ]
+}

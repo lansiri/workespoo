@@ -1,0 +1,33 @@
+{
+  "item": "match-reasons",
+  "caseId": "fi-unrelated-10",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P10",
+        "text": "Your card mentions cleaning data in Excel; the posting asks for cleaning stairwells, stairs, elevators, and shared spaces."
+      },
+      {
+        "signal": "S1",
+        "sentence": "P17",
+        "text": "Your card mentions cleaning data in Excel; the posting asks for experience using cleaning machines such as a combination machine."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3542,
+    "firstTokenMs": 3542,
+    "tokensIn": 583,
+    "tokensOut": 229,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

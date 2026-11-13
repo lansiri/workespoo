@@ -1,0 +1,11 @@
+{
+  "fix-F1F2": {
+    "cases": ["en-exp-buzzwords", "en-full-software", "sv-exp-noroles", "en-full-protected"],
+    "replace": [
+      ["6. At most {{maxSignals}} signals. Prefer things the person described doing over things only named.",
+       "6. At most {{maxSignals}} signals. Prefer things the person described doing over things only named. Personality traits, self-praise and work preferences the person only claims about themselves (\"team player\", \"my strengths are leadership\", \"I like working alone\") are not signals. If nothing concrete is left, return an empty signals list."],
+      ["R8. No protected information (see NEVER).",
+       "R8. No protected information (see NEVER). No health words for work tasks: write \"found the cause of\", not \"diagnosed\". Never write \"strength\"."]
+    ]
+  }
+}

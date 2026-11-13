@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "fi1",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Hoidit siis kassaa, leivoit pullat aamuisin ja opastit välillä uusia työntekijöitä. Kerro yhdestä opastustilanteesta: mitä teitte uuden työntekijän kanssa ja mikä meni hyvin?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3745,
+    "firstTokenMs": 2824,
+    "tokensIn": 898,
+    "tokensOut": 228,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

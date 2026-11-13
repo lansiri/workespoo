@@ -1,0 +1,20 @@
+{
+  "item": "card-render-verify-B1a-fix",
+  "caseId": "fix-b-sv-07",
+  "run": 2,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Childcare\",\"text\":\"They cared for children at a daycare center, played outdoors with them, and changed diapers.\"},{\"i\":1,\"phrase\":\"Preparing lunch\",\"text\":\"They prepared lunch for sixty children daily at the same daycare center.\"}],\"summary\":\"They list cleaning as a skill and have childcare experience, including outdoor play, diaper changes, and preparing lunch for sixty children daily.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3704,
+    "firstTokenMs": 2542,
+    "tokensIn": 606,
+    "tokensOut": 255,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

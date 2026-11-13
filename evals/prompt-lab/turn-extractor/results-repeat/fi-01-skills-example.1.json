@@ -1,0 +1,76 @@
+{
+  "item": "turn-extractor",
+  "caseId": "fi-01-skills-example",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "fi",
+    "signals": [
+      {
+        "ref": "new",
+        "phrase": "Hotel room cleaning",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1-S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Linen changing and minibar restocking",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Handling hazardous room incidents",
+        "kind": "skill",
+        "evidence": [
+          "T1.S3-S4"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Surface disinfection procedures",
+        "kind": "knowledge",
+        "evidence": [
+          "T1.S3"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Reporting room readiness to reception",
+        "kind": "skill",
+        "evidence": [
+          "T1.S4"
+        ],
+        "hasExample": true
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "example": "covered",
+      "people": "covered"
+    },
+    "flags": [],
+    "note": "Recent hotel cleaning and one incident are covered; ask about equipment, products, and desired next work."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3161,
+    "firstTokenMs": 3161,
+    "tokensIn": 1160,
+    "tokensOut": 201,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

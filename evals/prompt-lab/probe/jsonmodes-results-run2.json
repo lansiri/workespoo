@@ -1,0 +1,32 @@
+[
+ {
+  "schema": "ExtractorOutput",
+  "mode": "json_object",
+  "convert": "ok (1141 chars)",
+  "valid": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro timed out",
+  "latencyMs": 68829,
+  "attempts": 3,
+  "providerRejectedFormat": false
+ },
+ {
+  "schema": "MatchReasonsOutput",
+  "mode": "json_object",
+  "convert": "ok (483 chars)",
+  "valid": true,
+  "error": null,
+  "latencyMs": 30383,
+  "attempts": 3,
+  "providerRejectedFormat": false
+ },
+ {
+  "schema": "PicksDraftOutput",
+  "mode": "json_schema",
+  "convert": "ok (445 chars)",
+  "valid": true,
+  "error": null,
+  "latencyMs": 1747,
+  "attempts": 1,
+  "providerRejectedFormat": false
+ }
+]

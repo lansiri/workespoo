@@ -1,0 +1,48 @@
+{
+  "item": "verify-F1-fix130",
+  "caseId": "sv-care-12",
+  "run": 5,
+  "raw": "{\"reasons\":[{\"signal\":\"S1\",\"sentence\":\"P13\",\"text\":\"Your card mentions daily support for adults; the posting asks for experience with patients needing special support.\"},{\"signal\":\"S2\",\"sentence\":\"P10\",\"text\":\"Your card mentions calming residents in conflicts; the posting asks for safe, professional handling of challenging patient situations.\"}]}",
+  "rawParsed": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P13",
+        "text": "Your card mentions daily support for adults; the posting asks for experience with patients needing special support."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P10",
+        "text": "Your card mentions calming residents in conflicts; the posting asks for safe, professional handling of challenging patient situations."
+      }
+    ]
+  },
+  "firstAttemptValid": true,
+  "validationError": null,
+  "error": null,
+  "http": [
+    {
+      "status": 429,
+      "ms": 398
+    },
+    {
+      "status": 429,
+      "ms": 294
+    },
+    {
+      "status": 200,
+      "ms": 6574
+    }
+  ],
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 40387,
+    "firstTokenMs": 40386,
+    "tokensIn": 570,
+    "tokensOut": 536,
+    "ok": true,
+    "error": null,
+    "attempts": 3
+  }
+}

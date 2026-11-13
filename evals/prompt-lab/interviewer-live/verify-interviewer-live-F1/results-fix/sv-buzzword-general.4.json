@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verifyF1-fix",
+  "caseId": "sv-buzzword-general",
+  "run": 4,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need craft next reply Swedish per instructions. Should understand context. I am interviewer WorkEspoo. Q4 of 5-7. TARGET ask who worked with/for team customers patients users and own part. Last answer general. Ask one specific situation what happened and what did. Recent: interviewer asked concrete task self, person generic solution oriented flexible team player always delivers. Then tools question, person generic good collaborate communicate with everyone. Should next reply max",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1772,
+    "firstTokenMs": 592,
+    "tokensIn": 931,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

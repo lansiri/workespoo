@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-fix-combined",
+  "caseId": "en-probe",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "You can skip this if you prefer. Could you describe one time you handled a customer complaint, and what you did?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1228,
+    "firstTokenMs": 978,
+    "tokensIn": 917,
+    "tokensOut": 31,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

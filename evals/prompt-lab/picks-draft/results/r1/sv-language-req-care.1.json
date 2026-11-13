@@ -1,0 +1,38 @@
+{
+  "item": "picks-draft",
+  "caseId": "sv-language-req-care",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "req": "R1",
+        "signal": "S1",
+        "text": "The card describes completed practical nurse training, which relates to education in social or health care."
+      },
+      {
+        "req": "R3",
+        "signal": "S2",
+        "text": "The card describes giving patients care instructions in Swedish on a bilingual ward, which relates to knowledge of Swedish."
+      },
+      {
+        "req": "R4",
+        "signal": "S3",
+        "text": "The card describes calming residents with dementia who became agitated during evening care, which relates to stress tolerance and a calm working approach."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 5570,
+    "firstTokenMs": 5570,
+    "tokensIn": 723,
+    "tokensOut": 235,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

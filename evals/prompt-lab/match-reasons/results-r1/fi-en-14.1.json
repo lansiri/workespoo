@@ -1,0 +1,33 @@
+{
+  "item": "match-reasons",
+  "caseId": "fi-en-14",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P21",
+        "text": "Your card mentions Python data pipelines; the posting asks for knowledge of Python alongside Node.js and/or TypeScript."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P24",
+        "text": "Your card mentions deploying and running web services in Azure; the posting asks for basic knowledge of cloud platforms such as AWS or Azure."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2638,
+    "firstTokenMs": 2638,
+    "tokensIn": 592,
+    "tokensOut": 177,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

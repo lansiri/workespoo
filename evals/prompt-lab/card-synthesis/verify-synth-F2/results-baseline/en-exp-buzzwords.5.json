@@ -1,0 +1,21 @@
+{
+  "item": "card-synthesis",
+  "caseId": "en-exp-buzzwords",
+  "run": 5,
+  "role": "analyst",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "rawOnFailure": "{\"headline\":\"Customer service, communication and team collaboration\",\"summary\":\"They name communication, problem-solving and leadership as strengths. They describe an interest in customer service and working across teams.\",\"signals\":[{\"phrase\":\"Workplace communication\",\"kind\":\"skill\",\"evidence\":[\"T3.S1\"],\"from\":[\"s1\"],\"rendering\":\"They identify communication as a key strength.\"},{\"phrase\":\"Problem solving\",\"kind\":\"skill\",\"evidence\":[\"T3.S1\"],\"from\":[\"s2\"],\"rendering\":\"They identify problem-solving as a key strength.\"},{\"phrase\":\"Team leadership\",\"kind\":\"skill\",\"evidence\":[\"T3.S1\"],\"from\":[\"s3\"],\"rendering\":\"They identify leadership as a key strength.\"},{\"phrase\":\"Customer service\",\"kind\":\"skill\",\"evidence\":[\"T1.S1\"],\"from\":[\"s4\"],\"rendering\":\"They describe an interest in customer service.\"},{\"phrase\":\"Team collaboration\",\"kind\":\"skill\",\"evidence\":[\"T1.S1\",\"T3.S2\"],\"from\":[\"s5\"],\"rendering\":\"They describe working with others and collaborating across teams.\"}],\"roles\":[],\"rolesEvidence\":[]}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 44421,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

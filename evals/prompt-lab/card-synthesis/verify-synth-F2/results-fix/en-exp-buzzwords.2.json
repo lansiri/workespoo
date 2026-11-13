@@ -1,0 +1,60 @@
+{
+  "item": "card-synthesis",
+  "caseId": "en-exp-buzzwords",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Communication, problem-solving and leadership",
+    "summary": "They list communication, problem-solving and leadership as skills.",
+    "signals": [
+      {
+        "phrase": "Communication skills",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They list communication as a skill."
+      },
+      {
+        "phrase": "Problem-solving skills",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s2"
+        ],
+        "rendering": "They list problem-solving as a skill."
+      },
+      {
+        "phrase": "Leadership skills",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They list leadership as a skill."
+      }
+    ],
+    "roles": [],
+    "rolesEvidence": []
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 12056,
+    "firstTokenMs": 12054,
+    "tokensIn": 1162,
+    "tokensOut": 367,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

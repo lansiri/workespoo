@@ -1,0 +1,75 @@
+{
+  "item": "turn-extractor-verifyF1",
+  "caseId": "sv-03-reuse-known",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "sv",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Electrical installation",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1-S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Final electrical inspection",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Residual-current device installation",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1-S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Insulation resistance testing",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Inspection protocol documentation",
+        "kind": "skill",
+        "evidence": [
+          "T3.S3"
+        ],
+        "hasExample": true
+      }
+    ],
+    "coverage": {
+      "example": "covered",
+      "tools": "covered"
+    },
+    "flags": [],
+    "note": "Specific handover fault and corrective steps covered; ask about testing instruments and colleagues involved."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 42963,
+    "firstTokenMs": 42952,
+    "tokensIn": 1123,
+    "tokensOut": 185,
+    "ok": true,
+    "error": null,
+    "attempts": 3
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verify-F2",
+  "caseId": "fi-distress",
+  "run": 3,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Haluatko ohittaa tämän aiheen vai lopettaa keskustelun?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 931,
+    "firstTokenMs": 559,
+    "tokensIn": 909,
+    "tokensOut": 30,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

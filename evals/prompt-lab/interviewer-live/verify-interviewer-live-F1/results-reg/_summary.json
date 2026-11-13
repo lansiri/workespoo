@@ -1,0 +1,21 @@
+{
+  "item": "interviewer-live-verifyF1-reg",
+  "role": "live",
+  "schema": null,
+  "calls": 3,
+  "ok": 3,
+  "failed": 0,
+  "neededRetry": 0,
+  "latencyMs": {
+    "p50": 1494,
+    "p90": 1898
+  },
+  "firstTokenMs": {
+    "p50": 999,
+    "p90": 1007
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": []
+}

@@ -1,0 +1,40 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-10-wants-stop",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Printer troubleshooting",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": true
+      }
+    ],
+    "coverage": {
+      "people": "thin"
+    },
+    "flags": [
+      "wants_stop"
+    ],
+    "note": "Printer repair example is covered; person asked to stop, so end the interview."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1488,
+    "firstTokenMs": 1488,
+    "tokensIn": 982,
+    "tokensOut": 67,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "caseId": "en-three-02",
+  "run": 3,
+  "conc": 2,
+  "startedMs": 20277,
+  "doneMs": 27372,
+  "ok": true,
+  "error": null,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 7090,
+    "firstTokenMs": 4299,
+    "tokensIn": 1333,
+    "tokensOut": 571,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  },
+  "http": [
+    {
+      "status": 200,
+      "startMs": 20280,
+      "ms": 4290,
+      "headers": {
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "7",
+        "x-ratelimit-remaining-tokens": "2949225",
+        "x-ratelimit-reset-requests": "38s",
+        "x-ratelimit-reset-tokens": "38s"
+      }
+    },
+    {
+      "status": 200,
+      "startMs": 24588,
+      "ms": 2778,
+      "headers": {
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "2",
+        "x-ratelimit-remaining-tokens": "2944451",
+        "x-ratelimit-reset-requests": "34s",
+        "x-ratelimit-reset-tokens": "34s"
+      }
+    }
+  ],
+  "saw429": false,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P22",
+        "text": "Your card mentions React front-end development for a booking web app; the posting asks for experience developing frontend applications with React."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P37",
+        "text": "Your card mentions PostgreSQL tables and SQL queries for an order system; the posting asks for basic knowledge of SQL and NoSQL databases."
+      },
+      {
+        "signal": "S3",
+        "sentence": "P24",
+        "text": "Your card mentions GitHub Actions pipelines for testing and deployment; the posting asks for familiarity with CI/CD pipelines and DevSecOps practices."
+      }
+    ]
+  }
+}

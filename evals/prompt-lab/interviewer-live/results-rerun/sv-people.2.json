@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "sv-people",
+  "run": 2,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need produce next reply Swedish max 2 short sentences max35 words exactly one question end. Target who worked with/for team customers patients users and own part. Already noted kitchen prep supplier ordering inventory spreadsheet. Conversation concrete wrong delivery called other supplier changed menu; tools Excel and supplier website. Should ask who worked with or for and own part. Could say \"Vilka arbetade du oftast med eller för, och vad var din egen",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1790,
+    "firstTokenMs": 889,
+    "tokensIn": 939,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

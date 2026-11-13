@@ -1,0 +1,76 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-11-voice-ramble",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [
+      {
+        "ref": "new",
+        "phrase": "Restaurant kitchen prep and dishwashing",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1-S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Food delivery by bike",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Wolt",
+        "kind": "tool",
+        "evidence": [
+          "T1.S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Painting, drywall and tiling",
+        "kind": "skill",
+        "evidence": [
+          "T1.S3"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Invoicing in Excel",
+        "kind": "skill",
+        "evidence": [
+          "T1.S4"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "tools": "covered",
+      "people": "covered"
+    },
+    "flags": [],
+    "note": "Recent kitchen, delivery and renovation work covered; ask for one specific task example and what work they want next."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2896,
+    "firstTokenMs": 2895,
+    "tokensIn": 1090,
+    "tokensOut": 199,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

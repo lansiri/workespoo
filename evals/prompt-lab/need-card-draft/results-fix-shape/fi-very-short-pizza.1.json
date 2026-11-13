@@ -1,0 +1,21 @@
+{
+  "item": "need-card-draft-fix-shape",
+  "caseId": "fi-very-short-pizza",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "rawOnFailure": "{\n  \"title\": \"Restaurant Worker\",\n  \"summary\": \"The role involves preparing food, maintaining kitchen cleanliness and hygiene, and handling raw ingredients safely. It may also include helping organise stock and receive orders.\",\n  \"requirements\": [\n    {\n      \"text\": \"At least two years of experience working as a pizza cook\",\n      \"kind\": \"nice\",\n      \"category\": \"experience\",\n      \"sentence\": 1,\n      \"esco\": [\n        \"K22\"\n      ],\n      \"language\": null,\n      \"years\": 2,\n      \"statutory\": \"none\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    }\n  ],\n  \"dropped\": []\n}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 25072,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

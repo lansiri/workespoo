@@ -1,0 +1,21 @@
+{
+  "item": "card-render",
+  "role": "analyst",
+  "schema": null,
+  "calls": 2,
+  "ok": 2,
+  "failed": 0,
+  "neededRetry": 0,
+  "latencyMs": {
+    "p50": 5129,
+    "p90": 5129
+  },
+  "firstTokenMs": {
+    "p50": 4694,
+    "p90": 4694
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": []
+}

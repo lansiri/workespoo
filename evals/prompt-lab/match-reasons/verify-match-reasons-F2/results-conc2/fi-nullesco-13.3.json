@@ -1,0 +1,65 @@
+{
+  "caseId": "fi-nullesco-13",
+  "run": 3,
+  "conc": 2,
+  "startedMs": 27860,
+  "doneMs": 58430,
+  "ok": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 30570,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  },
+  "http": [
+    {
+      "status": 429,
+      "startMs": 27864,
+      "ms": 157,
+      "headers": {
+        "retry-after": "31",
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "0",
+        "x-ratelimit-remaining-tokens": "2942954",
+        "x-ratelimit-reset-requests": "31s",
+        "x-ratelimit-reset-tokens": "31s"
+      }
+    },
+    {
+      "status": 429,
+      "startMs": 48035,
+      "ms": 79,
+      "headers": {
+        "retry-after": "10",
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "0",
+        "x-ratelimit-remaining-tokens": "2958945",
+        "x-ratelimit-reset-requests": "10s",
+        "x-ratelimit-reset-tokens": "10s"
+      }
+    },
+    {
+      "status": 429,
+      "startMs": 58129,
+      "ms": 298,
+      "headers": {
+        "retry-after": "60",
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "0",
+        "x-ratelimit-reset-requests": "60s",
+        "x-ratelimit-reset-tokens": "60s"
+      }
+    }
+  ],
+  "saw429": true,
+  "data": null
+}

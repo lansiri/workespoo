@@ -1,0 +1,20 @@
+{
+  "item": "card-render-verify-B1a-fix",
+  "caseId": "fix-b-fi-01",
+  "run": 1,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Cashier work and stocking\",\"text\":\"They worked at a checkout, stocked shelves, handled returns, recorded waste, and taught a colleague to use a new checkout system.\"}],\"summary\":\"They list receiving and checking goods and customer service as skills. They worked at a checkout, stocked shelves, handled returns, recorded waste, and taught a colleague to use a new checkout system.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3804,
+    "firstTokenMs": 2774,
+    "tokensIn": 599,
+    "tokensOut": 297,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

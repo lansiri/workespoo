@@ -1,0 +1,20 @@
+{
+  "item": "turn-extractor-verifyF1",
+  "caseId": "en-03-buzzwords",
+  "run": 4,
+  "role": "live",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro network error",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 54790,
+    "firstTokenMs": 4113,
+    "tokensIn": 1014,
+    "tokensOut": 133,
+    "ok": false,
+    "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro network error",
+    "attempts": 4
+  }
+}

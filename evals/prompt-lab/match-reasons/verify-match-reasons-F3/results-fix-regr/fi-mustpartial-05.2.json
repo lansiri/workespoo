@@ -1,0 +1,33 @@
+{
+  "item": "match-reasons",
+  "caseId": "fi-mustpartial-05",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P9",
+        "text": "Your card mentions cooking school lunches for about 60 people a day; the posting asks for extensive cooking experience and the ability to lead the kitchen."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P10",
+        "text": "Your card mentions holding a hygiene passport and following food safety rules; the posting lists a hygiene passport."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 44850,
+    "firstTokenMs": 44842,
+    "tokensIn": 575,
+    "tokensOut": 277,
+    "ok": true,
+    "error": null,
+    "attempts": 3
+  }
+}

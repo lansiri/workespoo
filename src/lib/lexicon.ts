@@ -79,6 +79,46 @@ export const PROTECTED_CARD = [
 const PROTECTED_CARD_PATTERNS = [/\b\d{2} years old\b/i, /\baged \d/i];
 
 /**
+ * List C: wording in a job requirement, or in the posting sentence it comes from, that asks
+ * about the candidate's own protected attributes: age, gender, nationality, native language,
+ * religion, health, pregnancy, family, a photo. A hit drops the requirement at drafting and
+ * rejects a company's reworded text.
+ *
+ * Entries are deliberately specific. Bare domain words are left out because they are ordinary
+ * work vocabulary: "health and safety", "healthcare", "React Native", "family daycare",
+ * "ikäihmisten hoiva" (elderly care), "terveydenhuolto", "nuorisotyö" (youth work) and
+ * "kuvankäsittely" (image editing) must all pass. Keyword lists cannot tell every
+ * discriminatory ask from a description of the work, so the drafting model is also told to
+ * leave such sentences out; this list is the backstop.
+ */
+export const PROTECTED_REQUIREMENT = [
+  // English
+  "young", "youthful", "years old", "aged", "age limit", "age range", "age group of the applicant",
+  "male", "female", "gender", "nationality", "citizen*", "native speaker", "native-level",
+  "native level", "native language", "mother tongue", "religio*", "good health", "healthy",
+  "state of health", "pregnan*", "marital status", "family status", "photograph", "headshot",
+  "attach a photo", "photo of yourself",
+  // Finnish
+  "nuori", "nuorta", "nuoren", "nuorekas", "nuorekk*", "ikä", "iältään", "ikävuo*", "ikäraja*",
+  "sukupuol*", "mies", "miehen", "miestä", "miespuoli*", "nainen", "naisen", "naista",
+  "naispuoli*", "kansalai*", "äidinkielenään", "syntyperä*", "uskonto", "uskonno*", "terve",
+  "hyvä terveys", "terveydentila*", "raskau*", "raskaana", "perheetön", "perheellinen",
+  "perhetilann*", "valokuva*",
+  // Swedish
+  "ung", "unga", "yngre", "ålder", "åldern", "kön", "manlig", "kvinnlig", "medborgar*",
+  "som modersmål", "religion*", "god hälsa", "frisk", "gravid*", "familjesituation",
+  "civilstånd", "foto", "fotografi",
+] as const;
+
+const PROTECTED_REQUIREMENT_PATTERNS = [
+  /\b(?:under|over|below|above|max(?:imum)?|min(?:imum)?)\s+\d{2}\s*(?:years|yrs|v\b|vuotta)/iu,
+  /\b\d{2}\s*[-–]\s*\d{2}\s*[- ]?(?:years? old|vuotia\p{L}*|år)/iu,
+  /\b(?:alle|yli)\s+\d{2}\s*[- ]?vuotia\p{L}*/iu,
+  /\b\d{2}\s*[- ]?vuotia\p{L}*/iu,
+  /\b(?:under|över)\s+\d{2}\s*år\b/iu,
+];
+
+/**
  * Countries and nationality adjectives. Finland, the Nordics and Europe are left out on
  * purpose: "Finnish labour law" or "Nordic market sales" describe the labour market a skill
  * applies to, not where a person comes from.
@@ -178,6 +218,7 @@ const BANNED_RE = compileList(BANNED_EVALUATIVE, "giu");
 const QUESTION_RE = compileList(PROTECTED_QUESTION, "giu");
 const CARD_RE = compileList(PROTECTED_CARD, "giu");
 const COUNTRY_RE = compileList(COUNTRIES_AND_DEMONYMS, "gu");
+const REQUIREMENT_RE = compileList(PROTECTED_REQUIREMENT, "giu");
 const QUALITY_RE = compileList(QUALITY_WORDS, "giu");
 const SPEECH_RE = compileList(SPEECH_CUES, "giu");
 const JUDGEMENT_RE = compileList(REASON_JUDGEMENT, "giu");
@@ -206,6 +247,20 @@ export function findProtectedCard(text: string): string[] {
     if (m) hits.push(m[0].toLowerCase());
   }
   hits.push(...[...text.matchAll(COUNTRY_RE)].map((m) => m[0]));
+  return hits;
+}
+
+/**
+ * Protected asks in a job requirement or in the posting sentence it cites (list C and the
+ * age patterns). Work permits are not in this list: they are recorded as an authorisation
+ * requirement set by law, never questioned and never counted.
+ */
+export function findProtectedRequirement(text: string): string[] {
+  const hits = matches(REQUIREMENT_RE, text);
+  for (const pattern of PROTECTED_REQUIREMENT_PATTERNS) {
+    const m = pattern.exec(text);
+    if (m) hits.push(m[0].toLowerCase());
+  }
   return hits;
 }
 

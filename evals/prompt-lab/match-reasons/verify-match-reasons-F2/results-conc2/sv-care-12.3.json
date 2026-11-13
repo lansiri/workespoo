@@ -1,0 +1,91 @@
+{
+  "caseId": "sv-care-12",
+  "run": 3,
+  "conc": 2,
+  "startedMs": 27373,
+  "doneMs": 64025,
+  "ok": true,
+  "error": null,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 36651,
+    "firstTokenMs": 34562,
+    "tokensIn": 1287,
+    "tokensOut": 350,
+    "ok": true,
+    "error": null,
+    "attempts": 4
+  },
+  "http": [
+    {
+      "status": 429,
+      "startMs": 27378,
+      "ms": 118,
+      "headers": {
+        "retry-after": "31",
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "0",
+        "x-ratelimit-remaining-tokens": "2941948",
+        "x-ratelimit-reset-requests": "31s",
+        "x-ratelimit-reset-tokens": "31s"
+      }
+    },
+    {
+      "status": 429,
+      "startMs": 47537,
+      "ms": 298,
+      "headers": {
+        "retry-after": "11",
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "0",
+        "x-ratelimit-remaining-tokens": "2958945",
+        "x-ratelimit-reset-requests": "11s",
+        "x-ratelimit-reset-tokens": "11s"
+      }
+    },
+    {
+      "status": 200,
+      "startMs": 58851,
+      "ms": 3082,
+      "headers": {
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "33",
+        "x-ratelimit-remaining-tokens": "2967944",
+        "x-ratelimit-reset-requests": "60s",
+        "x-ratelimit-reset-tokens": "60s"
+      }
+    },
+    {
+      "status": 200,
+      "startMs": 61939,
+      "ms": 2079,
+      "headers": {
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "31",
+        "x-ratelimit-remaining-tokens": "2962266",
+        "x-ratelimit-reset-requests": "57s",
+        "x-ratelimit-reset-tokens": "57s"
+      }
+    }
+  ],
+  "saw429": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P13",
+        "text": "Your card mentions helping adults with meals, hygiene and daily routines; the posting asks for experience with patients who need special support."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P10",
+        "text": "Your card mentions calming residents during conflicts; the posting asks for safe, professional handling of challenging patient situations."
+      }
+    ]
+  }
+}

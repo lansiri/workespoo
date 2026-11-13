@@ -1,0 +1,58 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-02-reuse-known",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Forklift driving",
+        "kind": "tool",
+        "evidence": [
+          "T3.S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Handling unstable pallet loads",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1-S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Writing deviation reports",
+        "kind": "skill",
+        "evidence": [
+          "T3.S3"
+        ],
+        "hasExample": true
+      }
+    ],
+    "coverage": {
+      "example": "covered",
+      "tools": "covered",
+      "people": "thin"
+    },
+    "flags": [],
+    "note": "Specific unsafe-pallet handling and reporting covered; ask about stock-counting methods and coordination with the day shift."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3440,
+    "firstTokenMs": 3437,
+    "tokensIn": 1106,
+    "tokensOut": 137,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

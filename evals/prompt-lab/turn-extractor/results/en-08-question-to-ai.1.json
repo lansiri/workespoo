@@ -1,0 +1,21 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-08-question-to-ai",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "rawOnFailure": "{\"lang\":\"en\",\"signals\":[{\"ref\":\"s1\",\"phrase\":\"Elderly home care\",\"kind\":\"domain\",\"evidence\":[\"T1.S1\"],\"hasExample\":false}],\"coverage\":{\"recent_work\":\"covered\",\"example\":\"thin\",\"people\":\"thin\"},\"flags\":[\"question_to_ai\"],\"note\":\"Explain note use and privacy, then ask for one specific care task they handled themselves.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 40416,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

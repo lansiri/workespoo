@@ -1,0 +1,33 @@
+{
+  "item": "picks-draft",
+  "caseId": "sv-req-nurse",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "req": "R1",
+        "signal": "S1",
+        "text": "The card describes telephone triage and decisions on same-day appointments, which relates to care needs assessment."
+      },
+      {
+        "req": "R2",
+        "signal": "S2",
+        "text": "The card describes using Apotti to record visits and book follow-ups, which relates to IT knowledge."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 44145,
+    "firstTokenMs": 44145,
+    "tokensIn": 706,
+    "tokensOut": 172,
+    "ok": true,
+    "error": null,
+    "attempts": 3
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "item": "turn-extractor-verifyF1",
+  "caseId": "en-07-offtopic",
+  "run": 3,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [
+      {
+        "ref": "s2",
+        "phrase": "Handling returns",
+        "kind": "skill",
+        "evidence": [
+          "T5.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "s1",
+        "phrase": "Shelf stocking",
+        "kind": "skill",
+        "evidence": [
+          "T5.S1"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "beyond": "covered",
+      "open_floor": "thin"
+    },
+    "flags": [
+      "off_topic"
+    ],
+    "note": "Returns sorting and shelf stocking are noted; ask which role or setting this was and what tools were used."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1842,
+    "firstTokenMs": 1840,
+    "tokensIn": 1013,
+    "tokensOut": 104,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

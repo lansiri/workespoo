@@ -1,0 +1,38 @@
+{
+  "item": "picks-draft",
+  "caseId": "fi-qualification-teacher",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "req": "R1",
+        "signal": "S1",
+        "text": "The card describes early childhood education studies at a university of applied sciences, which relates to teacher eligibility."
+      },
+      {
+        "req": "R2",
+        "signal": "S2",
+        "text": "The card describes planning weekly activities and outdoor trips for a preschool group, which relates to preschool pedagogy."
+      },
+      {
+        "req": "R3",
+        "signal": "S3",
+        "text": "The card describes short daily conversations with parents at pick-up time, which relates to cooperation with families."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2853,
+    "firstTokenMs": 2853,
+    "tokensIn": 713,
+    "tokensOut": 219,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

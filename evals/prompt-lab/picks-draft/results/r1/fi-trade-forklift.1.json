@@ -1,0 +1,33 @@
+{
+  "item": "picks-draft",
+  "caseId": "fi-trade-forklift",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "req": "R1",
+        "signal": "S1",
+        "text": "The card describes driving a counterbalance forklift to unload trucks at a building supply warehouse, which relates to forklift operation."
+      },
+      {
+        "req": "R2",
+        "signal": "S2",
+        "text": "The card describes picking orders with a hand scanner in a grocery warehouse, which relates to experience in warehouse or logistics tasks."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 12156,
+    "firstTokenMs": 12156,
+    "tokensIn": 716,
+    "tokensOut": 180,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

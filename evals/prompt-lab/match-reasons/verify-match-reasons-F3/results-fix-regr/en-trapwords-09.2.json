@@ -1,0 +1,33 @@
+{
+  "item": "match-reasons",
+  "caseId": "en-trapwords-09",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P21",
+        "text": "Your card mentions TypeScript and Node.js back-end services; the posting asks for knowledge of Node.js and/or TypeScript."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P39",
+        "text": "Your card mentions tracing live-system errors to their cause with logs; the posting asks for problem-solving and getting to the root cause of issues."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 30614,
+    "firstTokenMs": 30612,
+    "tokensIn": 589,
+    "tokensOut": 262,
+    "ok": true,
+    "error": null,
+    "attempts": 3
+  }
+}

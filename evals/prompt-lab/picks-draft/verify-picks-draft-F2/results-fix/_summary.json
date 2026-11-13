@@ -1,0 +1,21 @@
+{
+  "item": "picks-draft",
+  "role": "analyst",
+  "schema": "PicksDraftOutput",
+  "calls": 2,
+  "ok": 2,
+  "failed": 0,
+  "neededRetry": 2,
+  "latencyMs": {
+    "p50": 25374,
+    "p90": 25374
+  },
+  "firstTokenMs": {
+    "p50": 25373,
+    "p90": 25373
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": []
+}

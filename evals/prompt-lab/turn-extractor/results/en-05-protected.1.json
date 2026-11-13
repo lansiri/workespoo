@@ -1,0 +1,69 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-05-protected",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [
+      {
+        "ref": "new",
+        "phrase": "Pharmacy stock room management",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Weekly stock counting",
+        "kind": "skill",
+        "evidence": [
+          "T1.S3"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Checking expiry dates",
+        "kind": "skill",
+        "evidence": [
+          "T1.S3"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Ordering medicines from wholesalers",
+        "kind": "skill",
+        "evidence": [
+          "T1.S3"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "beyond": "covered",
+      "people": "covered"
+    },
+    "flags": [
+      "protected_info"
+    ],
+    "note": "Stock control tasks covered; ask about recent local work, tools used, and what work they want next."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2486,
+    "firstTokenMs": 2485,
+    "tokensIn": 1048,
+    "tokensOut": 168,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

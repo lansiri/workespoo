@@ -1,0 +1,45 @@
+{
+  "item": "verify-F1-regress130",
+  "caseId": "fi-trade-06",
+  "run": 1,
+  "raw": "{\"reasons\":[{\"signal\":\"S1\",\"sentence\":\"P7\",\"text\":\"Your card mentions tiling bathroom walls and floors; the posting asks for experience in tiling and waterproofing.\"},{\"signal\":\"S2\",\"sentence\":\"P12\",\"text\":\"Your card mentions waterproofing bathroom floors and walls; the posting asks for wet-room renovations including waterproofing.\"},{\"signal\":\"S3\",\"sentence\":\"P5\",\"text\":\"Your card mentions a Finnish occupational safety card; the posting asks for an occupational safety card.\"}]}",
+  "rawParsed": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P7",
+        "text": "Your card mentions tiling bathroom walls and floors; the posting asks for experience in tiling and waterproofing."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P12",
+        "text": "Your card mentions waterproofing bathroom floors and walls; the posting asks for wet-room renovations including waterproofing."
+      },
+      {
+        "signal": "S3",
+        "sentence": "P5",
+        "text": "Your card mentions a Finnish occupational safety card; the posting asks for an occupational safety card."
+      }
+    ]
+  },
+  "firstAttemptValid": true,
+  "validationError": null,
+  "error": null,
+  "http": [
+    {
+      "status": 200,
+      "ms": 3548
+    }
+  ],
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3564,
+    "firstTokenMs": 3563,
+    "tokensIn": 636,
+    "tokensOut": 265,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

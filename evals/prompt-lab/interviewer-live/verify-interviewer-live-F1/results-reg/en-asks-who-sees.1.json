@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verifyF1-reg",
+  "caseId": "en-asks-who-sees",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need respond to user asking next interviewer reply. Should obey instructions. Should analyze exact. Person asked question about current employer see this and don't want know looking. Should answer one short sentence using only FACTS then ask target question. Facts: Companies see approved notes without person's name. Names shared only if both person and company agree. At end sees notes can change/remove nothing used until approve. Should reassure factual concise. Then ask who worked with/for",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1898,
+    "firstTokenMs": 999,
+    "tokensIn": 925,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

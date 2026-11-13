@@ -1,0 +1,20 @@
+{
+  "item": "card-render-fix-B1",
+  "caseId": "fix-B1-b-en-09",
+  "run": 1,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Arabic translation\",\"text\":\"They translated court documents between two languages for a law firm.\"}],\"summary\":\"They list office administration as a skill and translated court documents between two languages for a law firm.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3896,
+    "firstTokenMs": 3253,
+    "tokensIn": 584,
+    "tokensOut": 256,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

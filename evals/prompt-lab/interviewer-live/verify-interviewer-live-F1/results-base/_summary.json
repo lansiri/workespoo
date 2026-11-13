@@ -1,0 +1,32 @@
+{
+  "item": "interviewer-live-verifyF1-base",
+  "role": "live",
+  "schema": null,
+  "calls": 20,
+  "ok": 18,
+  "failed": 2,
+  "neededRetry": 4,
+  "latencyMs": {
+    "p50": 1924,
+    "p90": 14422
+  },
+  "firstTokenMs": {
+    "p50": 904,
+    "p90": 13983
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "sv-people",
+      "run": 5,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    },
+    {
+      "caseId": "sv-beyond",
+      "run": 1,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    }
+  ]
+}

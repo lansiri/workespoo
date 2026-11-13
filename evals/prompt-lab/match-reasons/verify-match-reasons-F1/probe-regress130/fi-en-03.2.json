@@ -1,0 +1,40 @@
+{
+  "item": "verify-F1-regress130",
+  "caseId": "fi-en-03",
+  "run": 2,
+  "raw": "{\"reasons\":[{\"signal\":\"S1\",\"sentence\":\"P15\",\"text\":\"Your card mentions forklift driving; the posting asks for forklift skills or experience with electric picking equipment.\"},{\"signal\":\"S2\",\"sentence\":\"P8\",\"text\":\"Your card mentions order picking with a handheld scanner; the posting asks for tire picking and shelving in a warehouse.\"}]}",
+  "rawParsed": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P15",
+        "text": "Your card mentions forklift driving; the posting asks for forklift skills or experience with electric picking equipment."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P8",
+        "text": "Your card mentions order picking with a handheld scanner; the posting asks for tire picking and shelving in a warehouse."
+      }
+    ]
+  },
+  "firstAttemptValid": true,
+  "validationError": null,
+  "error": null,
+  "http": [
+    {
+      "status": 200,
+      "ms": 4299
+    }
+  ],
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 4319,
+    "firstTokenMs": 4315,
+    "tokensIn": 548,
+    "tokensOut": 330,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

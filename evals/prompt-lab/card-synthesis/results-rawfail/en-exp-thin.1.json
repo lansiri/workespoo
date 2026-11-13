@@ -1,0 +1,57 @@
+{
+ "item": "card-synthesis",
+ "caseId": "en-exp-thin",
+ "run": 1,
+ "role": "analyst",
+ "kind": "json",
+ "ok": true,
+ "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+ "rawOnFailure": "{\"headline\":\"Office cleaning and floor scrubber use\",\"summary\":\"They clean offices, including floors, toilets, and kitchens, and use a floor scrubber. They are looking for similar cleaning work.\",\"signals\":[{\"phrase\":\"Office cleaning\",\"kind\":\"skill\",\"evidence\":[\"T1.S1-S2\",\"T3.S1\"],\"from\":[\"s1\",\"s2\"],\"rendering\":\"They clean offices, including floors, toilets, and kitchens.\"},{\"phrase\":\"Floor scrubber\",\"kind\":\"tool\",\"evidence\":[\"T3.S2\"],\"from\":[\"s3\"],\"rendering\":\"They use a floor scrubber to clean floors.\"}],\"roles\":[\"Office cleaning\"],\"rolesEvidence\":[\"T5.S1\"]}",
+ "meta": {
+  "provider": "verda",
+  "model": "kimi-k3-1-pro",
+  "latencyMs": 29498,
+  "firstTokenMs": null,
+  "tokensIn": null,
+  "tokensOut": null,
+  "ok": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "attempts": "raw"
+ },
+ "data": {
+  "headline": "Office cleaning and floor scrubber use",
+  "summary": "They clean offices, including floors, toilets, and kitchens, and use a floor scrubber. They are looking for similar cleaning work.",
+  "signals": [
+   {
+    "phrase": "Office cleaning",
+    "kind": "skill",
+    "evidence": [
+     "T1.S1-S2",
+     "T3.S1"
+    ],
+    "from": [
+     "s1",
+     "s2"
+    ],
+    "rendering": "They clean offices, including floors, toilets, and kitchens."
+   },
+   {
+    "phrase": "Floor scrubber",
+    "kind": "tool",
+    "evidence": [
+     "T3.S2"
+    ],
+    "from": [
+     "s3"
+    ],
+    "rendering": "They use a floor scrubber to clean floors."
+   }
+  ],
+  "roles": [
+   "Office cleaning"
+  ],
+  "rolesEvidence": [
+   "T5.S1"
+  ]
+ }
+}

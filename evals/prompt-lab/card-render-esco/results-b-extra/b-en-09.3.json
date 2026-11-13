@@ -1,0 +1,20 @@
+{
+  "item": "card-render",
+  "caseId": "b-en-09",
+  "run": 3,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Arabic translation\",\"text\":\"They worked with court documents for a law firm.\"}],\"summary\":\"They list office administration as a skill and have worked with court documents for a law firm.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 7476,
+    "firstTokenMs": 6878,
+    "tokensIn": 503,
+    "tokensOut": 243,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

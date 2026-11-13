@@ -1,0 +1,31 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-07-offtopic",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [],
+    "coverage": {
+      "beyond": "thin",
+      "open_floor": "thin"
+    },
+    "flags": [
+      "off_topic"
+    ],
+    "note": "Returns sorting and shelf stocking are already covered; ask for a specific skill from studies, volunteering, or earlier work."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 31985,
+    "firstTokenMs": 31983,
+    "tokensIn": 1081,
+    "tokensOut": 50,
+    "ok": true,
+    "error": null,
+    "attempts": 3
+  }
+}

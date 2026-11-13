@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "en1",
+  "run": 4,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "You’ve fixed flat tyres, adjusted brakes and helped customers pick a bike during your two summers at the shop. Could you tell me about one customer you helped choose a bike, and what you did to find a good fit?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 4197,
+    "firstTokenMs": 3047,
+    "tokensIn": 510,
+    "tokensOut": 300,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "item": "card-synthesis",
+  "caseId": "fi-full-noroles-clean",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "School and hotel cleaning",
+    "summary": "They clean school classrooms, corridors and toilets and previously cleaned hotels. They use cleaning machines and chemicals and handle slippery spills safely.",
+    "signals": [
+      {
+        "phrase": "School cleaning",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1",
+          "T3.S1"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They clean classrooms, corridors and toilets before pupils arrive."
+      },
+      {
+        "phrase": "Hotel cleaning",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2"
+        ],
+        "from": [
+          "s2"
+        ],
+        "rendering": "They previously cleaned hotels."
+      },
+      {
+        "phrase": "Scrubber dryer",
+        "kind": "tool",
+        "evidence": [
+          "T3.S2"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They use a scrubber dryer in corridors and mops in classrooms."
+      },
+      {
+        "phrase": "Cleaning chemicals",
+        "kind": "knowledge",
+        "evidence": [
+          "T3.S3"
+        ],
+        "from": [
+          "s4"
+        ],
+        "rendering": "They select acidic products for toilets and alkaline products for floors."
+      },
+      {
+        "phrase": "Handling spills safely",
+        "kind": "skill",
+        "evidence": [
+          "T5.S1-S2"
+        ],
+        "from": [
+          "s5"
+        ],
+        "rendering": "They place warning signs, remove oil with degreaser and report the issue to a kitchen supervisor."
+      },
+      {
+        "phrase": "Cleaning vocational qualification",
+        "kind": "knowledge",
+        "evidence": [
+          "T7.S1"
+        ],
+        "from": [
+          "s6"
+        ],
+        "rendering": "They hold a vocational qualification in cleaning."
+      }
+    ],
+    "roles": [],
+    "rolesEvidence": []
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 18577,
+    "firstTokenMs": 18576,
+    "tokensIn": 1355,
+    "tokensOut": 628,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

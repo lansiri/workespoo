@@ -1,0 +1,102 @@
+[
+ {
+  "schema": "ExtractorOutput",
+  "mode": "json_object",
+  "convert": "ok (1141 chars)",
+  "valid": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "latencyMs": 41886,
+  "attempts": 3,
+  "providerRejectedFormat": false
+ },
+ {
+  "schema": "ExtractorOutput",
+  "mode": "json_schema",
+  "convert": "ok (1141 chars)",
+  "valid": true,
+  "error": null,
+  "latencyMs": 3447,
+  "attempts": 1,
+  "providerRejectedFormat": false
+ },
+ {
+  "schema": "SynthOutput",
+  "mode": "json_object",
+  "convert": "ok (1048 chars)",
+  "valid": true,
+  "error": null,
+  "latencyMs": 3425,
+  "attempts": 1,
+  "providerRejectedFormat": false
+ },
+ {
+  "schema": "SynthOutput",
+  "mode": "json_schema",
+  "convert": "ok (1048 chars)",
+  "valid": true,
+  "error": null,
+  "latencyMs": 6247,
+  "attempts": 1,
+  "providerRejectedFormat": false
+ },
+ {
+  "schema": "NeedCardDraftOutput",
+  "mode": "json_object",
+  "convert": "ok (1366 chars)",
+  "valid": true,
+  "error": null,
+  "latencyMs": 44835,
+  "attempts": 4,
+  "providerRejectedFormat": false
+ },
+ {
+  "schema": "NeedCardDraftOutput",
+  "mode": "json_schema",
+  "convert": "ok (1366 chars)",
+  "valid": true,
+  "error": null,
+  "latencyMs": 4885,
+  "attempts": 1,
+  "providerRejectedFormat": false
+ },
+ {
+  "schema": "MatchReasonsOutput",
+  "mode": "json_object",
+  "convert": "ok (483 chars)",
+  "valid": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "latencyMs": 41797,
+  "attempts": 3,
+  "providerRejectedFormat": false
+ },
+ {
+  "schema": "MatchReasonsOutput",
+  "mode": "json_schema",
+  "convert": "ok (483 chars)",
+  "valid": true,
+  "error": null,
+  "latencyMs": 10769,
+  "attempts": 2,
+  "providerRejectedFormat": false
+ },
+ {
+  "schema": "PicksDraftOutput",
+  "mode": "json_object",
+  "convert": "ok (445 chars)",
+  "valid": true,
+  "error": null,
+  "latencyMs": 1846,
+  "attempts": 1,
+  "providerRejectedFormat": false
+ },
+ {
+  "schema": "PicksDraftOutput",
+  "mode": "json_schema",
+  "convert": "ok (445 chars)",
+  "valid": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro network error",
+  "latencyMs": 42261,
+  "attempts": 3,
+  "providerRejectedFormat": false
+ }
+]

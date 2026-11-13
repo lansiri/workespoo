@@ -1,0 +1,33 @@
+{
+  "item": "match-reasons",
+  "caseId": "sv-care-12",
+  "run": 5,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P13",
+        "text": "Your card mentions supporting residents in a group home; the posting lists as a plus experience with patients who need special support."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P10",
+        "text": "Your card mentions handling difficult situations; the posting asks for safe, professional handling of challenging situations with patients."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 4883,
+    "firstTokenMs": 4883,
+    "tokensIn": 606,
+    "tokensOut": 182,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

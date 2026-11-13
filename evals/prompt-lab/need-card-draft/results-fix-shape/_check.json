@@ -1,0 +1,129 @@
+{
+  "outputs": 3,
+  "tally": {
+    "schema": {
+      "checked": 3,
+      "failed": 0
+    },
+    "no employer name": {
+      "checked": 3,
+      "failed": 0
+    },
+    "title/summary English": {
+      "checked": 3,
+      "failed": 0
+    },
+    "protected (title/summary)": {
+      "checked": 6,
+      "failed": 0
+    },
+    "<=12 requirements": {
+      "checked": 3,
+      "failed": 0
+    },
+    "sentence in range": {
+      "checked": 17,
+      "failed": 0
+    },
+    "esco ids in list": {
+      "checked": 17,
+      "failed": 0
+    },
+    "no esco on lang/auth/other": {
+      "checked": 10,
+      "failed": 0
+    },
+    "no distractor esco": {
+      "checked": 17,
+      "failed": 0
+    },
+    "kind follows cue rubric": {
+      "checked": 17,
+      "failed": 0
+    },
+    "language null unless language": {
+      "checked": 15,
+      "failed": 0
+    },
+    "question follows pattern": {
+      "checked": 7,
+      "failed": 0
+    },
+    "question has no forbidden word": {
+      "checked": 7,
+      "failed": 0
+    },
+    "question numbers only years": {
+      "checked": 7,
+      "failed": 0
+    },
+    "why present, <=140, no digits": {
+      "checked": 7,
+      "failed": 0
+    },
+    "question trigger holds (4.1)": {
+      "checked": 7,
+      "failed": 0
+    },
+    "protected (requirement text)": {
+      "checked": 17,
+      "failed": 1
+    },
+    "6.3 lint would keep it (text)": {
+      "checked": 17,
+      "failed": 0
+    },
+    "6.3 lint would keep it (cited sentence)": {
+      "checked": 17,
+      "failed": 0
+    },
+    "text <=80, no digits except years/classes": {
+      "checked": 17,
+      "failed": 0
+    },
+    "no question text when none": {
+      "checked": 10,
+      "failed": 0
+    },
+    "years set when stated": {
+      "checked": 3,
+      "failed": 0
+    },
+    "vague asks get a vague question": {
+      "checked": 1,
+      "failed": 1
+    },
+    "language ISO code": {
+      "checked": 2,
+      "failed": 0
+    },
+    "statutory=law where code says law": {
+      "checked": 2,
+      "failed": 1
+    },
+    "law => no question": {
+      "checked": 1,
+      "failed": 0
+    }
+  },
+  "problems": [
+    {
+      "caseId": "en-rd-director",
+      "run": 1,
+      "check": "vague asks get a vague question",
+      "detail": "P21 \"Availability for weekly onsite work in Espoo, Finland\" [must/other/none/none]"
+    },
+    {
+      "caseId": "en-rd-director",
+      "run": 1,
+      "check": "protected (requirement text)",
+      "detail": "P22 \"Professional working fluency in English\" [must/language/none/none] hits=English"
+    },
+    {
+      "caseId": "fi-native-fi-nurse",
+      "run": 1,
+      "check": "statutory=law where code says law",
+      "detail": "P12 \"Driving licence\" [must/authorisation/none/none] <- Ajokortti"
+    }
+  ]
+}

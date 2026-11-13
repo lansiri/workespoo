@@ -1,0 +1,38 @@
+{
+  "item": "match-reasons",
+  "caseId": "en-three-02",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P22",
+        "text": "Your card mentions React front-end development; the posting asks for experience developing frontend applications with React."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P37",
+        "text": "Your card mentions PostgreSQL databases and SQL queries; the posting asks for basic knowledge of SQL and NoSQL databases."
+      },
+      {
+        "signal": "S3",
+        "sentence": "P24",
+        "text": "Your card mentions setting up GitHub Actions pipelines; the posting asks for familiarity with CI/CD pipelines and DevSecOps practices."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 15912,
+    "firstTokenMs": 15912,
+    "tokensIn": 571,
+    "tokensOut": 223,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "item": "verify-F1-orig",
+  "caseId": "sv-care-12",
+  "run": 1,
+  "raw": "{\"reasons\":[{\"signal\":\"S1\",\"sentence\":\"P13\",\"text\":\"Your card mentions helping adults with meals, hygiene and daily routines; the posting asks for experience with patients who need special support.\"},{\"signal\":\"S2\",\"sentence\":\"P10\",\"text\":\"Your card mentions calming residents during conflicts and reporting incidents; the posting asks for safe, professional handling of challenging patient situations.\"}]}",
+  "rawParsed": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P13",
+        "text": "Your card mentions helping adults with meals, hygiene and daily routines; the posting asks for experience with patients who need special support."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P10",
+        "text": "Your card mentions calming residents during conflicts and reporting incidents; the posting asks for safe, professional handling of challenging patient situations."
+      }
+    ]
+  },
+  "firstAttemptValid": false,
+  "validationError": "reasons.1.text: Too big: expected string to have <=160 characters",
+  "error": null,
+  "http": [
+    {
+      "status": 429,
+      "ms": 379
+    },
+    {
+      "status": 200,
+      "ms": 4690
+    }
+  ],
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 18109,
+    "firstTokenMs": 18109,
+    "tokensIn": 570,
+    "tokensOut": 284,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

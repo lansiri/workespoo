@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "en1",
+  "run": 4,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "You fixed flat tyres, adjusted brakes and helped customers pick a bike over two summers. When helping someone choose a bike, what did you ask or look at to find a good fit?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2777,
+    "firstTokenMs": 2431,
+    "tokensIn": 511,
+    "tokensOut": 141,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,121 @@
+{
+ "item": "esco-pick",
+ "role": "live",
+ "schema": null,
+ "maxTokens": 300,
+ "temperature": 0,
+ "cases": [
+  {
+   "id": "c-en-01",
+   "notes": "obvious match",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You match skill phrases to entries in the ESCO skills list. For each item choose the candidate number that means the same thing, or a clearly matching slightly broader or narrower skill. Choose 0 if none fits. Do not guess. Output JSON only.\n\nOUTPUT FORMAT\n{\"picks\":[{\"i\":0,\"choice\":2}]}"
+    },
+    {
+     "role": "user",
+     "content": "i=0 | phrase: Stocking shelves | kind: skill\n1. stock shelves\n2. monitor stock level\n3. handle linen in stock\n4. ensure stock storage safety\n0. none\nReturn the JSON now."
+    }
+   ]
+  },
+  {
+   "id": "c-en-02",
+   "notes": "two close candidates, one clearly better",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You match skill phrases to entries in the ESCO skills list. For each item choose the candidate number that means the same thing, or a clearly matching slightly broader or narrower skill. Choose 0 if none fits. Do not guess. Output JSON only.\n\nOUTPUT FORMAT\n{\"picks\":[{\"i\":0,\"choice\":2}]}"
+    },
+    {
+     "role": "user",
+     "content": "i=0 | phrase: Checking incoming deliveries | kind: skill\n1. keep records of merchandise delivery\n2. check for damaged items\n3. check deliveries on receipt\n4. handle delivery of furniture goods\n0. none\nReturn the JSON now."
+    }
+   ]
+  },
+  {
+   "id": "c-en-03",
+   "notes": "shares words, means something else (prescribing is a doctor's task)",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You match skill phrases to entries in the ESCO skills list. For each item choose the candidate number that means the same thing, or a clearly matching slightly broader or narrower skill. Choose 0 if none fits. Do not guess. Output JSON only.\n\nOUTPUT FORMAT\n{\"picks\":[{\"i\":0,\"choice\":2}]}"
+    },
+    {
+     "role": "user",
+     "content": "i=0 | phrase: Giving medication | kind: skill\n1. prescribe medication\n2. medical devices\n3. general medicine\n4. communication\n0. none\nReturn the JSON now."
+    }
+   ]
+  },
+  {
+   "id": "c-en-04",
+   "notes": "no good candidate",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You match skill phrases to entries in the ESCO skills list. For each item choose the candidate number that means the same thing, or a clearly matching slightly broader or narrower skill. Choose 0 if none fits. Do not guess. Output JSON only.\n\nOUTPUT FORMAT\n{\"picks\":[{\"i\":0,\"choice\":2}]}"
+    },
+    {
+     "role": "user",
+     "content": "i=0 | phrase: Planning delivery routes | kind: skill\n1. spatial planning\n2. carry out inventory planning\n3. strategic planning\n4. check deliveries on receipt\n5. keep records of merchandise delivery\n0. none\nReturn the JSON now."
+    }
+   ]
+  },
+  {
+   "id": "c-fi-05",
+   "notes": "Finnish phrase, Finnish labels, trade",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You match skill phrases to entries in the ESCO skills list. For each item choose the candidate number that means the same thing, or a clearly matching slightly broader or narrower skill. Choose 0 if none fits. Do not guess. Output JSON only.\n\nOUTPUT FORMAT\n{\"picks\":[{\"i\":0,\"choice\":2}]}"
+    },
+    {
+     "role": "user",
+     "content": "i=0 | phrase: Kaarihitsaus | kind: skill\n1. käyttää kaarihitsauksen tekniikoita\n2. käyttää happihitsauspoltinta\n3. pistehitsauskoneen osat\n0. none\nReturn the JSON now."
+    }
+   ]
+  },
+  {
+   "id": "c-fi-06",
+   "notes": "Finnish, trap first (prescribe)",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You match skill phrases to entries in the ESCO skills list. For each item choose the candidate number that means the same thing, or a clearly matching slightly broader or narrower skill. Choose 0 if none fits. Do not guess. Output JSON only.\n\nOUTPUT FORMAT\n{\"picks\":[{\"i\":0,\"choice\":2}]}"
+    },
+    {
+     "role": "user",
+     "content": "i=0 | phrase: Lääkkeiden jakaminen | kind: skill\n1. määrätä lääkkeitä\n2. lääkkeiden turvallinen käsittely\n3. kehittää lääkkeitä\n4. lääkevalmisteiden kehittäminen\n0. none\nReturn the JSON now."
+    }
+   ]
+  },
+  {
+   "id": "c-en-07",
+   "notes": "practical trade; top trigram hit is the wrong one",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You match skill phrases to entries in the ESCO skills list. For each item choose the candidate number that means the same thing, or a clearly matching slightly broader or narrower skill. Choose 0 if none fits. Do not guess. Output JSON only.\n\nOUTPUT FORMAT\n{\"picks\":[{\"i\":0,\"choice\":2}]}"
+    },
+    {
+     "role": "user",
+     "content": "i=0 | phrase: Tiling bathrooms | kind: skill\n1. plan tiling\n2. maintain tile flooring\n3. lay tiles\n4. cut tiles\n5. types of tile\n0. none\nReturn the JSON now."
+    }
+   ]
+  },
+  {
+   "id": "c-mix-08",
+   "notes": "batch of 5 like production; Swedish phrase at i=3",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You match skill phrases to entries in the ESCO skills list. For each item choose the candidate number that means the same thing, or a clearly matching slightly broader or narrower skill. Choose 0 if none fits. Do not guess. Output JSON only.\n\nOUTPUT FORMAT\n{\"picks\":[{\"i\":0,\"choice\":2}]}"
+    },
+    {
+     "role": "user",
+     "content": "i=0 | phrase: Electrical installation | kind: skill\n1. electrical instrumentation engineering\n2. install electrical and electronic equipment\n3. electrical stimulation in acupuncture\n4. install electrical household appliances\n5. inspect electrical supplies\n0. none\n\ni=1 | phrase: Writing invoices | kind: skill\n1. teach writing\n2. issue sales invoices\n3. write inspection reports\n4. follow written instructions\n0. none\n\ni=2 | phrase: Forklift | kind: tool\n1. operate forklift\n2. drive vehicles\n3. pick orders for dispatching\n0. none\n\ni=3 | phrase: Lastning av pallar | kind: skill\n1. pallets loading\n2. load products for dispatch\n3. rig loads\n4. load equipment\n0. none\n\ni=4 | phrase: Cleaning hotel rooms | kind: skill\n1. clean rooms\n2. cleaning\n3. check dining room cleanliness\n4. cleaning products\n5. cleaning techniques\n0. none\nReturn the JSON now."
+    }
+   ]
+  }
+ ]
+}

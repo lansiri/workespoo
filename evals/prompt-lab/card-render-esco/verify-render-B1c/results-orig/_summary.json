@@ -1,0 +1,57 @@
+{
+  "item": "card-render-orig",
+  "role": "analyst",
+  "schema": null,
+  "calls": 15,
+  "ok": 8,
+  "failed": 7,
+  "neededRetry": 4,
+  "latencyMs": {
+    "p50": 19432,
+    "p90": 24963
+  },
+  "firstTokenMs": {
+    "p50": 19321,
+    "p90": 24273
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "b-fi-10",
+      "run": 1,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    },
+    {
+      "caseId": "b-fi-10",
+      "run": 2,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    },
+    {
+      "caseId": "b-fi-10",
+      "run": 4,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro timed out"
+    },
+    {
+      "caseId": "b-sv-11",
+      "run": 1,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro network error"
+    },
+    {
+      "caseId": "b-sv-11",
+      "run": 2,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro network error"
+    },
+    {
+      "caseId": "b-sv-11",
+      "run": 3,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro network error"
+    },
+    {
+      "caseId": "b-sv-11",
+      "run": 4,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro network error"
+    }
+  ]
+}

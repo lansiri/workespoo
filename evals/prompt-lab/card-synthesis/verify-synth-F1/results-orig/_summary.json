@@ -1,0 +1,32 @@
+{
+  "item": "card-synthesis",
+  "role": "analyst",
+  "schema": "SynthOutput",
+  "calls": 5,
+  "ok": 3,
+  "failed": 2,
+  "neededRetry": 2,
+  "latencyMs": {
+    "p50": 27814,
+    "p90": 42271
+  },
+  "firstTokenMs": {
+    "p50": 27724,
+    "p90": 27813
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "en-full-software",
+      "run": 1,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro network error"
+    },
+    {
+      "caseId": "en-full-software",
+      "run": 2,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro network error"
+    }
+  ]
+}

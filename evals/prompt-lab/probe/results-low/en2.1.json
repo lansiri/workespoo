@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "en2",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "You help your brother with homework and cook dinner when your mum works late, which shows real responsibility. What’s one thing you do to help him stay on track and get dinner ready on time?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2691,
+    "firstTokenMs": 2177,
+    "tokensIn": 509,
+    "tokensOut": 167,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

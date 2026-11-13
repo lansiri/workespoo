@@ -1,0 +1,21 @@
+{
+  "item": "probe-ttfb",
+  "role": "live",
+  "schema": null,
+  "calls": 20,
+  "ok": 20,
+  "failed": 0,
+  "neededRetry": 0,
+  "latencyMs": {
+    "p50": 6387,
+    "p90": 26832
+  },
+  "firstTokenMs": {
+    "p50": 3389,
+    "p90": 3389
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": []
+}

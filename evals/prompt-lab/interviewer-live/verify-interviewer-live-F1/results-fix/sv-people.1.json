@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verifyF1-fix",
+  "caseId": "sv-people",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Tack, det är tydligt. Vilka arbetade du oftast med eller för, och vad var din egen del i arbetet?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1153,
+    "firstTokenMs": 804,
+    "tokensIn": 952,
+    "tokensOut": 41,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

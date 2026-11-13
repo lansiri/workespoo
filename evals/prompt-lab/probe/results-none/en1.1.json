@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "en1",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Two summers at a bike shop, fixing flat tyres and adjusting brakes, sounds like hands-on work. Can you tell me about one time you helped a customer pick a bike and what you did?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1536,
+    "firstTokenMs": 1017,
+    "tokensIn": 443,
+    "tokensOut": 46,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

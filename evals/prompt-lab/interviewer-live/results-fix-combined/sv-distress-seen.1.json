@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-fix-combined",
+  "caseId": "sv-distress-seen",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Okej. Du kan hoppa över den här frågan. Vad har du gjort utanför ditt vanliga jobb, till exempel studier, volontärarbete eller ett eget projekt?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2438,
+    "firstTokenMs": 559,
+    "tokensIn": 890,
+    "tokensOut": 59,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

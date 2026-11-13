@@ -1,0 +1,144 @@
+{
+  "caseId": "fi-prose-chef",
+  "run": 5,
+  "label": "fi-prose-chef.5",
+  "startedAt": 258615,
+  "endedAt": 272432,
+  "ok": true,
+  "error": null,
+  "timedOut": false,
+  "schemaOk": false,
+  "schemaErr": "requirements.0.language Invalid input: expected string, received undefined; requirements.1.language Invalid input: expected string, received undefined; requirements.1.years Invalid input: expected number, received undefined",
+  "requirements": 9,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 13817,
+    "firstTokenMs": 13817,
+    "tokensIn": 3264,
+    "tokensOut": 1104,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  },
+  "data": {
+    "title": "Head Chef",
+    "summary": "The role leads a small kitchen team producing restaurant lunches and catering services. It combines hands-on cooking with developing the food offering and catering business.",
+    "requirements": [
+      {
+        "text": "At least 3 years as a head chef or shift manager in Finland",
+        "sentence": 5,
+        "kind": "must",
+        "category": "experience",
+        "years": 3,
+        "esco": [
+          "K4"
+        ],
+        "statutory": "none",
+        "questionType": "years",
+        "question": "Would someone who has done head chef or shift manager work, with fewer than 3 years, be worth a conversation?",
+        "why": "The posting asks for prior head chef or shift manager experience for a stated minimum period."
+      },
+      {
+        "text": "Ability to independently lead a kitchen and a small team",
+        "sentence": 6,
+        "kind": "must",
+        "category": "skill",
+        "esco": [
+          "K4",
+          "K26"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Passion for hands-on kitchen work",
+        "sentence": 7,
+        "kind": "nice",
+        "category": "other",
+        "esco": [],
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'passion for hands-on kitchen work' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting emphasises passion for kitchen work and being actively involved rather than working at a laptop."
+      },
+      {
+        "text": "Skill in making tasty food from scratch with fresh ingredients",
+        "sentence": 12,
+        "kind": "nice",
+        "category": "skill",
+        "esco": [
+          "K1",
+          "K3"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Development-focused leadership skills",
+        "sentence": 13,
+        "kind": "must",
+        "category": "skill",
+        "esco": [
+          "K4"
+        ],
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'development-focused leadership' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting names development-focused leadership as a strength without describing a concrete example."
+      },
+      {
+        "text": "Ability to inspire the team and stay enthusiastic",
+        "sentence": 13,
+        "kind": "must",
+        "category": "other",
+        "esco": [],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Broad professional expertise to develop the business and team",
+        "sentence": 13,
+        "kind": "must",
+        "category": "skill",
+        "esco": [
+          "K4",
+          "K20"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Valid hygiene passport",
+        "sentence": 28,
+        "kind": "must",
+        "category": "authorisation",
+        "esco": [],
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Passenger car driving licence",
+        "sentence": 30,
+        "kind": "must",
+        "category": "authorisation",
+        "esco": [],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      }
+    ],
+    "dropped": []
+  }
+}

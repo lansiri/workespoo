@@ -1,0 +1,33 @@
+{
+  "item": "match-reasons",
+  "caseId": "sv-care-12",
+  "run": 5,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P13",
+        "text": "Your card mentions helping adults with meals, hygiene and daily routines; the posting asks for experience with patients needing special support."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P10",
+        "text": "Your card mentions calming residents during conflicts and reporting incidents; the posting asks for safe handling of challenging patient situations."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 5406,
+    "firstTokenMs": 3276,
+    "tokensIn": 1306,
+    "tokensOut": 433,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

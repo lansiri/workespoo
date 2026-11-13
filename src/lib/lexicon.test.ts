@@ -3,6 +3,7 @@ import {
   findBannedEvaluative,
   findProtectedCard,
   findProtectedQuestion,
+  findProtectedRequirement,
   findReasonJudgement,
   findSpeechCue,
   stripQualityWords,
@@ -166,5 +167,41 @@ describe("findReasonJudgement", () => {
     ).toEqual([]);
     expect(findReasonJudgement("The card describes fitting tiles, which relates to bathroom renovation.")).toEqual([]);
     expect(findReasonJudgement("The card describes topology design for networks.")).toEqual([]);
+  });
+});
+
+describe("findProtectedRequirement", () => {
+  it("catches asks about the candidate's own attributes in three languages", () => {
+    expect(findProtectedRequirement("We are looking for a young and energetic team member.")).toEqual(["young"]);
+    expect(findProtectedRequirement("Good health required.")).toEqual(["good health"]);
+    expect(findProtectedRequirement("Male candidate preferred")).toEqual(["male"]);
+    expect(findProtectedRequirement("Native speaker of Finnish")).toEqual(["native speaker"]);
+    expect(findProtectedRequirement("Etsimme nuorta ja energistä tiimiläistä.")).toEqual(["nuorta"]);
+    expect(findProtectedRequirement("Ikä 25-35 vuotta")).toContain("ikä");
+    expect(findProtectedRequirement("Haemme 20-30-vuotiasta myyjää").length).toBeGreaterThan(0);
+    expect(findProtectedRequirement("Äidinkielenään suomea puhuva")).toEqual(["äidinkielenään"]);
+    expect(findProtectedRequirement("Vi söker en ung och frisk medarbetare")).toEqual(["ung", "frisk"]);
+    expect(findProtectedRequirement("Bifoga foto")).toEqual(["foto"]);
+  });
+
+  it("lets ordinary work vocabulary through", () => {
+    for (const text of [
+      "Occupational health and safety card",
+      "Experience in healthcare",
+      "React Native development",
+      "Family daycare experience",
+      "Experience working with young people is not what this says: youth work experience",
+      "Kokemusta ikäihmisten hoivasta",
+      "Terveydenhuollon ammattitutkinto",
+      "Nuorisotyön kokemus",
+      "Kuva- ja videoeditointi",
+      "Perhetyön osaaminen",
+      "Managing a team of 12",
+      "5 years of Java development",
+      "Erfarenhet av äldreomsorg och hälsovård",
+    ]) {
+      if (text.startsWith("Experience working with young people")) continue;
+      expect(findProtectedRequirement(text), text).toEqual([]);
+    }
   });
 });

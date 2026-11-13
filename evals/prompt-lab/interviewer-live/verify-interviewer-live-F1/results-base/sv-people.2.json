@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verifyF1-base",
+  "caseId": "sv-people",
+  "run": 2,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Vem arbetade du oftast med eller för, och vilken var din egen roll i det samarbetet?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 950,
+    "firstTokenMs": 532,
+    "tokensIn": 939,
+    "tokensOut": 34,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

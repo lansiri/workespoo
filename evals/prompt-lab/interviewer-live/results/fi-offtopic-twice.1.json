@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "fi-offtopic-twice",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Tämä keskustelu on työn muistiin kirjaamista varten. Kenen kanssa tai kenelle teit työtä, ja mikä oli oma osuutesi?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1059,
+    "firstTokenMs": 527,
+    "tokensIn": 928,
+    "tokensOut": 49,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

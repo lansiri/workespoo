@@ -1,0 +1,76 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-14-looking-for",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [
+      {
+        "ref": "s4",
+        "phrase": "Youth football coaching",
+        "kind": "skill",
+        "evidence": [
+          "T7.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Logistics work",
+        "kind": "domain",
+        "evidence": [
+          "T9.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "s1",
+        "phrase": "Forklift driving",
+        "kind": "tool",
+        "evidence": [
+          "T9.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Warehouse work",
+        "kind": "domain",
+        "evidence": [
+          "T9.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Training new staff",
+        "kind": "skill",
+        "evidence": [
+          "T9.S2"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "beyond": "covered",
+      "looking_for": "covered",
+      "people": "covered"
+    },
+    "flags": [],
+    "note": "Looking for logistics, forklift or warehouse day shifts; ask what training new staff involved."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2831,
+    "firstTokenMs": 2829,
+    "tokensIn": 1022,
+    "tokensOut": 186,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

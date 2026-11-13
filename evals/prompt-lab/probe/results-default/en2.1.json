@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "en2",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 4217,
+    "firstTokenMs": null,
+    "tokensIn": 508,
+    "tokensOut": 300,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

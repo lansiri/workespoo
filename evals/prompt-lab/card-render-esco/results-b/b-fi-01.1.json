@@ -1,0 +1,20 @@
+{
+  "item": "card-render",
+  "caseId": "b-fi-01",
+  "run": 1,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Cashier work and stocking\",\"text\":\"They operated the checkout, stocked shelves, handled returns, recorded losses, and taught a colleague to use a new checkout system.\"}],\"summary\":\"They list receiving and checking goods and customer service as skills, and have handled checkout work, stocking, returns, loss recording, and checkout system training.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3886,
+    "firstTokenMs": 3354,
+    "tokensIn": 568,
+    "tokensOut": 306,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

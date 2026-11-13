@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "fi2",
+  "run": 2,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Hienoa, että valmennat lasten salibandyjoukkuetta vapaaehtoisena! Kerrotko esimerkin siitä, miten suunnittelet harjoitukset niin, että kaikki lapset pysyvät mukana?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1251,
+    "firstTokenMs": 531,
+    "tokensIn": 832,
+    "tokensOut": 72,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

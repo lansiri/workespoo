@@ -1,0 +1,21 @@
+{
+  "item": "turn-extractor",
+  "caseId": "sv-04-distress",
+  "run": 4,
+  "role": "live",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "rawOnFailure": "{\"lang\":\"sv\",\"signals\":[{\"ref\":\"s1\",\"phrase\":\"Order packing\",\"kind\":\"skill\",\"evidence\":[\"T3.S1\"],\"hasExample\":false},{\"ref\":\"new\",\"phrase\":\"Warehouse work\",\"kind\":\"domain\",\"evidence\":[\"T3.S1\"],\"hasExample\":false}],\"coverage\":{\"recent_work\":\"covered\",\"people\":\"thin\"},\"flags\":[\"distress\"],\"note\":\"Order packing and warehouse work covered; avoid the former manager and ask gently about tasks or tools.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 45453,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

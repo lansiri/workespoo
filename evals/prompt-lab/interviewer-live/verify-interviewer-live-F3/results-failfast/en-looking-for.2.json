@@ -1,0 +1,21 @@
+{
+  "caseId": "en-looking-for",
+  "run": 2,
+  "deadlineMs": 2000,
+  "modelReply": true,
+  "firstTokenMs": 678,
+  "endedMs": 920,
+  "aborted": false,
+  "text": "Thanks, that's clear. What kind of work are you looking for next?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 919,
+    "firstTokenMs": 677,
+    "tokensIn": 922,
+    "tokensOut": 22,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

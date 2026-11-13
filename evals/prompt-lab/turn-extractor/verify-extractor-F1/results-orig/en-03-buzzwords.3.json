@@ -1,0 +1,21 @@
+{
+  "item": "turn-extractor-verifyF1",
+  "caseId": "en-03-buzzwords",
+  "run": 3,
+  "role": "live",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "rawOnFailure": "{\"lang\":\"en\",\"signals\":[{\"ref\":\"s1\",\"phrase\":\"Answering customer calls\",\"kind\":\"skill\",\"evidence\":[\"T3.S1\"],\"hasExample\":false},{\"ref\":\"s2\",\"phrase\":\"Telecommunications\",\"kind\":\"domain\",\"evidence\":[\"T3.S1\"],\"hasExample\":false},{\"ref\":\"new\",\"phrase\":\"Customer billing enquiries\",\"kind\":\"knowledge\",\"evidence\":[\"T3.S1\"],\"hasExample\":false}],\"coverage\":{\"recent_work\":\"covered\",\"people\":\"covered\"},\"flags\":[\"buzzwords\"],\"note\":\"Call centre billing work covered; ask about colleagues, customers served, and their specific responsibilities.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 42098,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

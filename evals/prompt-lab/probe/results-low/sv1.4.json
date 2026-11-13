@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "sv1",
+  "run": 4,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Du tog hand om kassan, fyllde på hyllorna och hjälpte kunder som bara pratade svenska – det låter som att du hade flera uppgifter att växla mellan. Kan du berätta om en gång när du hjälpte en svensktalande kund, vad gjorde du och vad gick bra?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3278,
+    "firstTokenMs": 2287,
+    "tokensIn": 780,
+    "tokensOut": 258,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

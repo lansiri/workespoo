@@ -1,0 +1,152 @@
+{
+  "caseId": "fi-vague-age18",
+  "run": 1,
+  "ok": true,
+  "error": null,
+  "attempts": 2,
+  "latencyMs": 36491,
+  "tokensOut": 1991,
+  "raws": [
+    {
+      "title": "Brewery Shelf Stocker",
+      "summary": "The role involves displaying and shelving brewery products in grocery stores, unloading deliveries and keeping stock areas organised. The part-time work requires travel between store locations.",
+      "requirements": [
+        {
+          "text": "Enjoyment of independent work and getting things done",
+          "kind": "nice",
+          "category": "other",
+          "sentence": 14,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "vague",
+          "question": "What does 'getting things done' look like in this job? One concrete example helps us find people who have done it.",
+          "why": "The posting emphasises independent work and enjoyment of getting things done."
+        },
+        {
+          "text": "Physical stamina",
+          "kind": "nice",
+          "category": "other",
+          "sentence": 15,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "vague",
+          "question": "What does 'physical stamina' look like in this job? One concrete example helps us find people who have done it.",
+          "why": "The posting particularly values physical stamina."
+        },
+        {
+          "text": "Readiness to adapt to rapid changes",
+          "kind": "nice",
+          "category": "other",
+          "sentence": 16,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "vague",
+          "question": "What does 'readiness to adapt to rapid changes' look like in this job? One concrete example helps us find people who have done it.",
+          "why": "The posting asks applicants to be ready for rapid changes because each day can differ."
+        },
+        {
+          "text": "Carefulness and organisational ability",
+          "kind": "nice",
+          "category": "other",
+          "sentence": 17,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "vague",
+          "question": "What does 'carefulness and organisational ability' look like in this job? One concrete example helps us find people who have done it.",
+          "why": "The posting links carefulness and organisation to product handling and stockroom order."
+        },
+        {
+          "text": "Previous experience in similar work",
+          "kind": "nice",
+          "category": "experience",
+          "sentence": 18,
+          "esco": [
+            "K11"
+          ],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Access to your own car",
+          "kind": "must",
+          "category": "other",
+          "sentence": 23,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Ability to work independently and perform physical work",
+          "kind": "must",
+          "category": "other",
+          "sentence": 24,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "vague",
+          "question": "What does 'ability to work independently and perform physical work' look like in this job? One concrete example helps us find people who have done it.",
+          "why": "The posting asks for the ability to handle independent and physical work."
+        },
+        {
+          "text": "Energetic and productive approach",
+          "kind": "must",
+          "category": "other",
+          "sentence": 25,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "vague",
+          "question": "What does 'energetic and productive approach' look like in this job? One concrete example helps us find people who have done it.",
+          "why": "The posting asks for an energetic and productive approach to the work."
+        },
+        {
+          "text": "Flexibility with workdays of varying lengths",
+          "kind": "must",
+          "category": "other",
+          "sentence": 26,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "vague",
+          "question": "What does 'flexibility with workdays of varying lengths' look like in this job? One concrete example helps us find people who have done it.",
+          "why": "The posting asks applicants to adapt flexibly to workdays of different lengths."
+        },
+        {
+          "text": "Fluent communication in Finnish",
+          "kind": "must",
+          "category": "language",
+          "sentence": 27,
+          "esco": [],
+          "language": "fi",
+          "years": null,
+          "statutory": "none",
+          "questionType": "language",
+          "question": "Is Finnish needed from day one, or could someone start in English and build up Finnish on the job?",
+          "why": "The posting asks for fluent communication in Finnish."
+        }
+      ],
+      "dropped": [
+        28
+      ]
+    }
+  ]
+}

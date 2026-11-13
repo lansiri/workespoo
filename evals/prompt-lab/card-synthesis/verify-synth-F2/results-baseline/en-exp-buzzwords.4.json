@@ -1,0 +1,83 @@
+{
+  "item": "card-synthesis",
+  "caseId": "en-exp-buzzwords",
+  "run": 4,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Communication, problem-solving, leadership and teamwork",
+    "summary": "They list communication, problem-solving and leadership as work skills. They describe a team-oriented approach and an interest in customer service.",
+    "signals": [
+      {
+        "phrase": "Communication",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They list communication among their main work skills."
+      },
+      {
+        "phrase": "Problem-solving",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s2"
+        ],
+        "rendering": "They list problem-solving among their main work skills."
+      },
+      {
+        "phrase": "Leadership",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They list leadership among their main work skills."
+      },
+      {
+        "phrase": "Customer service",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1"
+        ],
+        "from": [
+          "s4"
+        ],
+        "rendering": "They express an interest in customer service."
+      },
+      {
+        "phrase": "Teamwork",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1",
+          "T3.S2"
+        ],
+        "from": [
+          "s5"
+        ],
+        "rendering": "They describe a team-oriented approach and working across teams."
+      }
+    ],
+    "roles": [],
+    "rolesEvidence": []
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 6709,
+    "firstTokenMs": 6708,
+    "tokensIn": 1112,
+    "tokensOut": 598,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

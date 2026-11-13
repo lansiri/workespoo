@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "fi-short",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Kiitos. Miltä tyypillinen työpäiväsi varastolla näyttää?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1063,
+    "firstTokenMs": 541,
+    "tokensIn": 960,
+    "tokensOut": 31,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "item": "card-render-fix-B1",
+  "role": "analyst",
+  "schema": null,
+  "calls": 1,
+  "ok": 1,
+  "failed": 0,
+  "neededRetry": 1,
+  "latencyMs": {
+    "p50": 33861,
+    "p90": 33861
+  },
+  "firstTokenMs": {
+    "p50": 32504,
+    "p90": 32504
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": []
+}

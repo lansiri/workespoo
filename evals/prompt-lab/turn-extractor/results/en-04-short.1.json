@@ -1,0 +1,40 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-04-short",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [
+      {
+        "ref": "new",
+        "phrase": "Mop",
+        "kind": "tool",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "tools": "thin"
+    },
+    "flags": [
+      "short"
+    ],
+    "note": "Mop use is noted; ask about other cleaning equipment, products, or methods used."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1172,
+    "firstTokenMs": 1171,
+    "tokensIn": 958,
+    "tokensOut": 66,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

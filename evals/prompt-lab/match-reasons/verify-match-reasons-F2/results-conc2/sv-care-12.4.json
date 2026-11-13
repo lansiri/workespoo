@@ -1,0 +1,63 @@
+{
+  "caseId": "sv-care-12",
+  "run": 4,
+  "conc": 2,
+  "startedMs": 75208,
+  "doneMs": 80334,
+  "ok": true,
+  "error": null,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 5125,
+    "firstTokenMs": 2941,
+    "tokensIn": 1287,
+    "tokensOut": 367,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  },
+  "http": [
+    {
+      "status": 200,
+      "startMs": 75210,
+      "ms": 2937,
+      "headers": {
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "22",
+        "x-ratelimit-remaining-tokens": "2954144",
+        "x-ratelimit-reset-requests": "43s",
+        "x-ratelimit-reset-tokens": "43s"
+      }
+    },
+    {
+      "status": 200,
+      "startMs": 78152,
+      "ms": 2181,
+      "headers": {
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "20",
+        "x-ratelimit-remaining-tokens": "2957961",
+        "x-ratelimit-reset-requests": "40s",
+        "x-ratelimit-reset-tokens": "40s"
+      }
+    }
+  ],
+  "saw429": false,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P13",
+        "text": "Your card mentions helping adults with daily routines; the posting asks for experience with patients who need special support."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P10",
+        "text": "Your card mentions calming residents during conflicts; the posting asks for safe handling of challenging patient situations."
+      }
+    ]
+  }
+}

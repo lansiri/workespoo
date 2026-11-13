@@ -1,0 +1,35 @@
+{
+  "item": "verify-F1-orig",
+  "caseId": "en-trapwords-09",
+  "run": 5,
+  "raw": "null",
+  "rawParsed": null,
+  "firstAttemptValid": false,
+  "validationError": ": Invalid input: expected object, received null",
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "http": [
+    {
+      "status": 429,
+      "ms": 101
+    },
+    {
+      "status": 429,
+      "ms": 283
+    },
+    {
+      "status": 429,
+      "ms": 328
+    }
+  ],
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 40786,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

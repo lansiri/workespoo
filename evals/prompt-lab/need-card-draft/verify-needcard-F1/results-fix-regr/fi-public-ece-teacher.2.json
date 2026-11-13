@@ -1,0 +1,72 @@
+{
+  "caseId": "fi-public-ece-teacher",
+  "run": 2,
+  "ok": true,
+  "error": null,
+  "attempts": 1,
+  "latencyMs": 7303,
+  "tokensOut": 510,
+  "raws": [
+    {
+      "title": "Early Childhood Education Teacher",
+      "summary": "Plan, implement and assess preschool pedagogy with a team and help lead the team. The role also involves close cooperation with children’s families.",
+      "requirements": [
+        {
+          "text": "Qualification required under the Early Childhood Education Act",
+          "kind": "must",
+          "category": "education",
+          "sentence": 28,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "law",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Bachelor’s degree including early childhood teacher training, or equivalent",
+          "kind": "must",
+          "category": "education",
+          "sentence": 29,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "law",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Criminal record extract for working with children",
+          "kind": "must",
+          "category": "authorisation",
+          "sentence": 32,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "law",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Ability to meet children and parents individually, respectfully and sensitively",
+          "kind": "nice",
+          "category": "other",
+          "sentence": 34,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "vague",
+          "question": "What does 'meeting children and parents sensitively' look like in this job? One concrete example helps us find people who have done it.",
+          "why": "The posting values an individual, respectful and sensitive approach to children and parents."
+        }
+      ],
+      "dropped": [
+        33
+      ]
+    }
+  ]
+}

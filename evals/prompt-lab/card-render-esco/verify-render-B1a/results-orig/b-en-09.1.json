@@ -1,0 +1,20 @@
+{
+  "item": "card-render-verify-B1a",
+  "caseId": "b-en-09",
+  "run": 1,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Arabic translation\",\"text\":\"They prepared Finnish versions of Arabic court documents for a law firm.\"}],\"summary\":\"They list office administration as a skill and prepared Finnish versions of Arabic court documents for a law firm.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 30787,
+    "firstTokenMs": 29515,
+    "tokensIn": 503,
+    "tokensOut": 302,
+    "ok": true,
+    "error": null,
+    "attempts": 3
+  }
+}

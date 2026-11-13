@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "fi-tools",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Kiitos. Mitä työkaluja tai koneita käytit purkuun, tasoittamiseen ja laatoitukseen?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 962,
+    "firstTokenMs": 534,
+    "tokensIn": 1067,
+    "tokensOut": 40,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

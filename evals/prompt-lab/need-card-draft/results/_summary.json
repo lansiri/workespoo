@@ -1,0 +1,57 @@
+{
+  "item": "need-card-draft",
+  "role": "analyst",
+  "schema": "NeedCardDraftOutput",
+  "calls": 13,
+  "ok": 6,
+  "failed": 7,
+  "neededRetry": 11,
+  "latencyMs": {
+    "p50": 40490,
+    "p90": 56611
+  },
+  "firstTokenMs": {
+    "p50": 19312,
+    "p90": 39050
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "fi-prose-chef",
+      "run": 1,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    },
+    {
+      "caseId": "en-mobile-fluent-fi",
+      "run": 1,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    },
+    {
+      "caseId": "en-rd-director",
+      "run": 1,
+      "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.1.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.2.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.3.language: Invalid string: must match pattern /^[a-z]{2}$/; requ"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 1,
+      "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.1.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.2.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.3.language: Invalid string: must match pattern /^[a-z]{2}$/; requ"
+    },
+    {
+      "caseId": "fi-fluent-fi-cook",
+      "run": 1,
+      "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.1.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.2.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.4.language: Invalid string: must match pattern /^[a-z]{2}$/; requ"
+    },
+    {
+      "caseId": "fi-very-short-pizza",
+      "run": 1,
+      "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/"
+    },
+    {
+      "caseId": "fi-native-fi-nurse",
+      "run": 1,
+      "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.1.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.3.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.4.language: Invalid string: must match pattern /^[a-z]{2}$/"
+    }
+  ]
+}

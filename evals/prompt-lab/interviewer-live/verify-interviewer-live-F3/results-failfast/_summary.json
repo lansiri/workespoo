@@ -1,0 +1,18 @@
+{
+  "calls": 10,
+  "modelReply": 10,
+  "fallback": 0,
+  "maxTimeToDecisionMs": 1347,
+  "rows": [
+    "sv-beyond.1 reply first=1347 ended=1994 attempts=1",
+    "sv-beyond.2 reply first=1324 ended=1912 attempts=1",
+    "en-looking-for.1 reply first=638 ended=898 attempts=1",
+    "en-looking-for.2 reply first=678 ended=920 attempts=1",
+    "sv-buzzword-general.1 reply first=675 ended=1112 attempts=1",
+    "sv-buzzword-general.2 reply first=523 ended=1048 attempts=1",
+    "en-stop.1 reply first=727 ended=826 attempts=1",
+    "en-stop.2 reply first=798 ended=891 attempts=1",
+    "fi-stop.1 reply first=813 ended=919 attempts=1",
+    "fi-stop.2 reply first=846 ended=943 attempts=1"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "item": "match-reasons-fix-length",
+  "caseId": "fi-mustpartial-05",
+  "run": 2,
+  "raw": "{\"reasons\":[{\"signal\":\"S1\",\"sentence\":\"P9\",\"text\":\"Your card mentions cooking school lunches for 60 people daily; the posting asks for cooking experience and leading the kitchen.\"},{\"signal\":\"S2\",\"sentence\":\"P10\",\"text\":\"Your card mentions a hygiene passport and food safety rules; the posting asks for a hygiene passport.\"}]}",
+  "rawParsed": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P9",
+        "text": "Your card mentions cooking school lunches for 60 people daily; the posting asks for cooking experience and leading the kitchen."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P10",
+        "text": "Your card mentions a hygiene passport and food safety rules; the posting asks for a hygiene passport."
+      }
+    ]
+  },
+  "firstAttemptValid": true,
+  "validationError": null,
+  "error": null,
+  "http": [
+    {
+      "status": 200,
+      "ms": 6712
+    }
+  ],
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 6723,
+    "firstTokenMs": 6722,
+    "tokensIn": 539,
+    "tokensOut": 281,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

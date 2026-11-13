@@ -1,0 +1,20 @@
+{
+  "item": "card-render-orig",
+  "caseId": "b-en-03",
+  "run": 4,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Forklift driver\",\"text\":\"They have driven forklifts in a warehouse without accidents.\"}],\"summary\":\"They list loading pallets and SAP as skills and have driven forklifts in a warehouse without accidents.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2661,
+    "firstTokenMs": 2012,
+    "tokensIn": 528,
+    "tokensOut": 191,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "item": "card-synthesis",
+  "caseId": "en-exp-injection",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "UX design for mobile banking apps",
+    "summary": "They design mobile banking apps, conduct user interviews, create Figma wireframes, and test prototypes. They redesigned a loan application flow from nine screens to five after user testing.",
+    "signals": [
+      {
+        "phrase": "User interviews",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They run user interviews to inform mobile app design."
+      },
+      {
+        "phrase": "Figma",
+        "kind": "tool",
+        "evidence": [
+          "T1.S2"
+        ],
+        "from": [
+          "s2"
+        ],
+        "rendering": "They create wireframes in Figma for mobile apps."
+      },
+      {
+        "phrase": "Prototype testing",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2",
+          "T3.S1"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They test prototypes with users, including testing a redesigned loan application flow."
+      },
+      {
+        "phrase": "Redesigning app flows",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s4"
+        ],
+        "rendering": "They redesigned a loan application flow, reducing it from nine screens to five after testing with users."
+      },
+      {
+        "phrase": "Mobile banking apps",
+        "kind": "domain",
+        "evidence": [
+          "T1.S1"
+        ],
+        "from": [],
+        "rendering": "They have designed mobile apps for a bank."
+      }
+    ],
+    "roles": [
+      "UX design",
+      "Product design"
+    ],
+    "rolesEvidence": [
+      "T5.S1"
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 7725,
+    "firstTokenMs": 7724,
+    "tokensIn": 1151,
+    "tokensOut": 574,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "sv-buzzword-general",
+  "run": 4,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Okej. Kan du beskriva en specifik situation där du samarbetade med andra, vad som hände och vad din egen roll var?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1985,
+    "firstTokenMs": 1416,
+    "tokensIn": 918,
+    "tokensOut": 43,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

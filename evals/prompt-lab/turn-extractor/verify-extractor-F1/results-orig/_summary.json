@@ -1,0 +1,52 @@
+{
+  "item": "turn-extractor-verifyF1",
+  "role": "live",
+  "schema": "ExtractorOutput",
+  "calls": 20,
+  "ok": 14,
+  "failed": 6,
+  "neededRetry": 6,
+  "latencyMs": {
+    "p50": 2093,
+    "p90": 51063
+  },
+  "firstTokenMs": {
+    "p50": 1786,
+    "p90": 11140
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "en-03-buzzwords",
+      "run": 2,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    },
+    {
+      "caseId": "en-03-buzzwords",
+      "run": 3,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    },
+    {
+      "caseId": "en-03-buzzwords",
+      "run": 4,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro network error"
+    },
+    {
+      "caseId": "fi-07-wants-stop",
+      "run": 2,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro network error"
+    },
+    {
+      "caseId": "fi-07-wants-stop",
+      "run": 3,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro timed out"
+    },
+    {
+      "caseId": "fi-07-wants-stop",
+      "run": 4,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro timed out"
+    }
+  ]
+}

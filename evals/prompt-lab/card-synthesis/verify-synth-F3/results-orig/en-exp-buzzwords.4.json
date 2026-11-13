@@ -1,0 +1,21 @@
+{
+  "item": "card-synthesis",
+  "caseId": "en-exp-buzzwords",
+  "run": 4,
+  "role": "analyst",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "rawOnFailure": "{\"headline\":\"Communication, problem-solving, leadership and teamwork\",\"summary\":\"They name communication, problem-solving and leadership as key strengths and describe working across teams. They are seeking an opportunity to grow and add value.\",\"signals\":[{\"phrase\":\"Communication\",\"kind\":\"skill\",\"evidence\":[\"T3.S1\"],\"from\":[\"s1\"],\"rendering\":\"They identify communication as a key strength.\"},{\"phrase\":\"Problem-solving\",\"kind\":\"skill\",\"evidence\":[\"T3.S1\"],\"from\":[\"s2\"],\"rendering\":\"They identify problem-solving as a key strength.\"},{\"phrase\":\"Leadership\",\"kind\":\"skill\",\"evidence\":[\"T3.S1\"],\"from\":[\"s3\"],\"rendering\":\"They identify leadership as a key strength.\"},{\"phrase\":\"Teamwork\",\"kind\":\"skill\",\"evidence\":[\"T1.S1\",\"T3.S2\"],\"from\":[\"s5\"],\"rendering\":\"They describe themselves as a team player who works across teams.\"}],\"roles\":[],\"rolesEvidence\":[]}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 27783,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

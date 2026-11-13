@@ -1,0 +1,41 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-08-question-to-ai",
+  "run": 2,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Elderly home care",
+        "kind": "domain",
+        "evidence": [
+          "T1.S1"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "example": "thin"
+    },
+    "flags": [
+      "question_to_ai"
+    ],
+    "note": "No specific task example yet; ask about one concrete care task and any tools used."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 22784,
+    "firstTokenMs": 22783,
+    "tokensIn": 984,
+    "tokensOut": 77,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

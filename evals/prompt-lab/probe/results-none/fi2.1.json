@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "fi2",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Kuulostaa siltä, että hoidat monta roolia kerralla: suunnittelet harjoitukset, ohjaat lapsia ja sovit käytännön asioita vanhempien kanssa. Kerro yksi viimeaikainen harjoitus tai kisamatka: mitä sinä teit konkreettisesti ja mikä siinä sujui hyvin?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1628,
+    "firstTokenMs": 542,
+    "tokensIn": 832,
+    "tokensOut": 101,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

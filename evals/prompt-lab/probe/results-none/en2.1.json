@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "en2",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "It sounds like you're really responsible, helping your little brother with his homework and cooking dinner for your family. Could you tell me about a time you helped him with his homework and what went well?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1040,
+    "firstTokenMs": 535,
+    "tokensIn": 441,
+    "tokensOut": 46,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

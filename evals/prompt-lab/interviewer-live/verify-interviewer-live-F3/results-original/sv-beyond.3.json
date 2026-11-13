@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "sv-beyond",
+  "run": 3,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need respond in Swedish, max 2 short sentences max35 words, exactly one question at end, target ask something outside main job studies volunteering side projects earlier different job. Already noted payroll processing onboarding. Should not repeat answer. Could say \"Tack. Vad har du gjort utanför ditt huvudsakliga arbete, till exempel studier, volontärarbete, ett sidoprojekt eller",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2465,
+    "firstTokenMs": 1342,
+    "tokensIn": 854,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

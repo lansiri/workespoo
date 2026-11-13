@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "fi-looking-for",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Kiitos. Millaista työtä etsit seuraavaksi?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 18369,
+    "firstTokenMs": 17984,
+    "tokensIn": 878,
+    "tokensOut": 24,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

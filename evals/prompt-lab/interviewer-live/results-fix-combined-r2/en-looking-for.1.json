@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-fix-combined",
+  "caseId": "en-looking-for",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Thanks, that's clear. What kind of work are you looking for next?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1136,
+    "firstTokenMs": 884,
+    "tokensIn": 933,
+    "tokensOut": 22,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

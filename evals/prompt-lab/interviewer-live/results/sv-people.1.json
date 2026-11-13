@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "sv-people",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need respond in Swedish per instructions. Should target ask who worked with/for team customers patients users and own part. Already noted kitchen prep supplier ordering inventory spreadsheet. Recent person described wrong delivery missing fish lunch called another supplier changed menu. Tools Excel and supplier website. Should next reply max 2 short sentences max35 words, end exactly one question nothing after. Optional neutral acknowledgement max6 words no repeat answer. No praise/judgment. Open question plain",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1391,
+    "firstTokenMs": 517,
+    "tokensIn": 939,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

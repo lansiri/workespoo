@@ -1,0 +1,157 @@
+{
+  "caseId": "fi-public-nurse-kauniainen",
+  "run": 3,
+  "label": "fi-public-nurse-kauniainen.3",
+  "startedAt": 162748,
+  "endedAt": 194041,
+  "ok": true,
+  "error": null,
+  "timedOut": false,
+  "schemaOk": false,
+  "schemaErr": "requirements.0.language Invalid input: expected string, received undefined; requirements.0.years Invalid input: expected number, received undefined; requirements.1.language Invalid input: expected string, received undefined",
+  "requirements": 11,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 31293,
+    "firstTokenMs": 31292,
+    "tokensIn": 3172,
+    "tokensOut": 1634,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  },
+  "data": {
+    "title": "Registered Nurse",
+    "summary": "Provide outpatient nursing care to patients of different ages through in-person, telephone and digital services. The fixed-term role includes care needs assessment, appointments, patient office work and urgent care shifts in a multidisciplinary team.",
+    "requirements": [
+      {
+        "sentence": 12,
+        "text": "Nursing expertise",
+        "kind": "must",
+        "category": "skill",
+        "esco": [
+          "K3"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "sentence": 12,
+        "text": "Good information technology skills",
+        "kind": "must",
+        "category": "skill",
+        "esco": [],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "sentence": 12,
+        "text": "Fluent Finnish",
+        "kind": "must",
+        "category": "language",
+        "language": "fi",
+        "esco": [],
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "sentence": 13,
+        "text": "Swedish language skills",
+        "kind": "nice",
+        "category": "language",
+        "language": "sv",
+        "esco": [],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "sentence": 13,
+        "text": "English language skills",
+        "kind": "nice",
+        "category": "language",
+        "language": "en",
+        "esco": [],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "sentence": 25,
+        "text": "Resilience, flexibility and an active approach to work",
+        "kind": "nice",
+        "category": "other",
+        "esco": [],
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'resilience, flexibility and an active approach' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting highlights these personal qualities alongside clinical and language skills."
+      },
+      {
+        "sentence": 25,
+        "text": "Good customer service and teamwork skills",
+        "kind": "nice",
+        "category": "other",
+        "esco": [],
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'good customer service and teamwork skills' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting asks for strong customer service and teamwork without describing specific situations."
+      },
+      {
+        "sentence": 22,
+        "text": "Licensed registered nurse",
+        "kind": "must",
+        "category": "authorisation",
+        "esco": [],
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "sentence": 23,
+        "text": "Vaccination protection required by communicable diseases law",
+        "kind": "must",
+        "category": "authorisation",
+        "esco": [],
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "sentence": 24,
+        "text": "Tuberculosis screening required by communicable diseases law",
+        "kind": "must",
+        "category": "authorisation",
+        "esco": [],
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "sentence": 26,
+        "text": "Previous experience working at a health centre",
+        "kind": "nice",
+        "category": "experience",
+        "esco": [],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      }
+    ],
+    "dropped": []
+  }
+}

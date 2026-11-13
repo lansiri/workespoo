@@ -1,0 +1,33 @@
+{
+  "item": "match-reasons",
+  "caseId": "fi-en-03",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P15",
+        "text": "Your card mentions counterbalance forklift driving; the posting asks for forklift skills or experience with electric picking equipment."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P8",
+        "text": "Your card mentions picking customer orders with a handheld scanner; the posting asks for tire picking and shelving in a warehouse."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3603,
+    "firstTokenMs": 3602,
+    "tokensIn": 548,
+    "tokensOut": 237,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

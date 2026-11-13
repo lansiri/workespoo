@@ -1,0 +1,20 @@
+{
+  "item": "card-render-fixR4act",
+  "caseId": "fix-R4act-b-en-08",
+  "run": 1,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Welding\",\"text\":\"They performed MIG welding on steel frames.\"}],\"summary\":\"They list machine maintenance as a skill and performed MIG welding on steel frames.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2669,
+    "firstTokenMs": 2159,
+    "tokensIn": 557,
+    "tokensOut": 164,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

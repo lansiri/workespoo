@@ -1,0 +1,28 @@
+{
+  "item": "match-reasons",
+  "caseId": "en-obvious-01",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P22",
+        "text": "Your card mentions React front-end development for a booking web app; the posting asks for experience developing frontend applications with React."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 14864,
+    "firstTokenMs": 14864,
+    "tokensIn": 503,
+    "tokensOut": 144,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

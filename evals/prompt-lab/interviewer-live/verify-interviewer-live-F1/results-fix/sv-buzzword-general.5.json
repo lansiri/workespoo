@@ -1,0 +1,10 @@
+{
+  "item": "interviewer-live-verifyF1-fix",
+  "caseId": "sv-buzzword-general",
+  "run": 5,
+  "role": "live",
+  "kind": "text",
+  "ok": false,
+  "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro network error",
+  "meta": null
+}

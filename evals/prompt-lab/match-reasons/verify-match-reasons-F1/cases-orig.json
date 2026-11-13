@@ -1,0 +1,50 @@
+{
+  "item": "verify-F1-orig",
+  "role": "analyst",
+  "schema": "MatchReasonsOutput",
+  "temperature": 0.2,
+  "cases": [
+    {
+      "id": "en-trapwords-08",
+      "notes": "Trap: P0 says 'experienced', P2 says 'At least five years'. Must not say experienced/match/fit or imply five years. P6 is a sentence fragment from the split.",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to a person why a job posting might interest them. You write JSON only.\n\nRules:\n1. Write in plain, friendly English. Short sentences. Address the person as \"you\".\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one signal id (like \"S2\") and its posting sentence id (like \"P5\", or null).\n3. Write 1 to 3 reasons. Each reason is one sentence, at most 160 characters, in this shape:\n   \"Your card mentions <what the signal says>; the posting asks for <what the sentence asks>.\"\n4. Describe, never judge. Do not praise or grade the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, score, percent.\n5. Do not say whether the person will get the job or is suitable. Do not give advice.\n6. Do not invent facts. Use only the signal text and the sentence text given.\n7. Pick pairs that cover different requirements when you can."
+        },
+        {
+          "role": "user",
+          "content": "Posting title: Mobile Developer\n\nYour card (signals):\nS1: Android app development. They built and published two Android apps in Kotlin for a small retail chain.\nS2: Biometric login. They added fingerprint login to an Android app using the phone's secure key storage.\n\nPosting sentences you may cite:\nP0: We are looking for an experienced Mobile Developer.\nP2: At least five years of experience in mobile application development (iOS/Android, preferably experience with both)\nP6: NFC, biometric authentication, secure key storage, or secure data storage on a mobile device)\n\nAllowed pairs (signal, sentence):\nS1, P0\nS1, P2\nS2, P6\n\nReturn JSON: {\"reasons\": [{\"signal\": \"S1\", \"sentence\": \"P4\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "en-trapwords-09",
+      "notes": "Trap: both sentences start with 'Strong'. Spec example shows dropping it.",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to a person why a job posting might interest them. You write JSON only.\n\nRules:\n1. Write in plain, friendly English. Short sentences. Address the person as \"you\".\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one signal id (like \"S2\") and its posting sentence id (like \"P5\", or null).\n3. Write 1 to 3 reasons. Each reason is one sentence, at most 160 characters, in this shape:\n   \"Your card mentions <what the signal says>; the posting asks for <what the sentence asks>.\"\n4. Describe, never judge. Do not praise or grade the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, score, percent.\n5. Do not say whether the person will get the job or is suitable. Do not give advice.\n6. Do not invent facts. Use only the signal text and the sentence text given.\n7. Pick pairs that cover different requirements when you can."
+        },
+        {
+          "role": "user",
+          "content": "Posting title: Software Developer (full-stack) for energy sector, Espoo\n\nYour card (signals):\nS1: TypeScript and Node.js. They wrote back-end services in TypeScript on Node.js for an online shop.\nS2: Troubleshooting production issues. They traced errors in a live system back to their cause using logs and fixed them.\n\nPosting sentences you may cite:\nP21: Strong knowledge of Node.js and/or TypeScript, as well as knowledge of—or interest in learning—Python, C#, or Java\nP39: Strong problem-solving skills and a desire to get to the root cause of issues\n\nAllowed pairs (signal, sentence):\nS1, P21\nS2, P39\n\nReturn JSON: {\"reasons\": [{\"signal\": \"S1\", \"sentence\": \"P4\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "sv-care-12",
+      "notes": "Swedish posting; care worker. P13 is nice-to-have, P10 is expected.",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to a person why a job posting might interest them. You write JSON only.\n\nRules:\n1. Write in plain, friendly English. Short sentences. Address the person as \"you\".\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one signal id (like \"S2\") and its posting sentence id (like \"P5\", or null).\n3. Write 1 to 3 reasons. Each reason is one sentence, at most 160 characters, in this shape:\n   \"Your card mentions <what the signal says>; the posting asks for <what the sentence asks>.\"\n4. Describe, never judge. Do not praise or grade the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, score, percent.\n5. Do not say whether the person will get the job or is suitable. Do not give advice.\n6. Do not invent facts. Use only the signal text and the sentence text given.\n7. Pick pairs that cover different requirements when you can."
+        },
+        {
+          "role": "user",
+          "content": "Posting title: Sjuksköterskor till Norge\n\nYour card (signals):\nS1: Supporting residents in a group home. They helped adults who need daily assistance with meals, hygiene and daily routines in a group home.\nS2: Handling difficult situations. They calmed residents during conflicts and reported incidents to the nurse on duty.\n\nPosting sentences you may cite:\nP10: \\- Förmåga att hantera utmanande situationer med patienter på ett säkert och professionellt sätt\nP13: \\- Tidigare erfarenhet av att arbeta med patienter som behöver särskilt stöd är en fördel.\n\nAllowed pairs (signal, sentence):\nS1, P13\nS2, P10\n\nReturn JSON: {\"reasons\": [{\"signal\": \"S1\", \"sentence\": \"P4\", \"text\": \"...\"}]}"
+        }
+      ]
+    }
+  ]
+}

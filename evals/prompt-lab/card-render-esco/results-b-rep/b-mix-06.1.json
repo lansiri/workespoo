@@ -1,0 +1,20 @@
+{
+  "item": "card-render",
+  "caseId": "b-mix-06",
+  "run": 1,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Excel\",\"text\":\"They list Excel as a skill.\"},{\"i\":1,\"phrase\":\"Hygiene passport\",\"text\":\"They list a hygiene passport as a skill.\"}],\"summary\":\"They list warehouse work, Excel, and a hygiene passport as skills.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3186,
+    "firstTokenMs": 2585,
+    "tokensIn": 512,
+    "tokensOut": 181,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

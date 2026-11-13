@@ -1,0 +1,21 @@
+{
+  "item": "need-card-draft",
+  "caseId": "fi-fluent-fi-cook",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": false,
+  "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.1.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.2.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.4.language: Invalid string: must match pattern /^[a-z]{2}$/; requ",
+  "rawOnFailure": "{\n  \"title\": \"Lunch Cook\",\n  \"summary\": \"Prepare high-quality lunches from scratch and take responsibility for daily kitchen operations. The role also involves helping with dishwashing, dining-area cleanliness and cashier work when needed.\",\n  \"requirements\": [\n    {\n      \"text\": \"Strong experience working as a cook\",\n      \"sentence\": 9,\n      \"kind\": \"must\",\n      \"category\": \"experience\",\n      \"esco\": [\"K9\", \"K2\"],\n      \"statutory\": \"none\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    },\n    {\n      \"text\": \"Ability to take responsibility for leading the kitchen\",\n      \"sentence\": 9,\n      \"kind\": \"must\",\n      \"category\": \"skill\",\n      \"esco\": [\"K3\"],\n      \"statutory\": \"none\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    },\n    {\n      \"text\": \"Valid hygiene passport\",\n      \"sentence\": 10,\n      \"kind\": \"must\",\n      \"category\": \"authorisation\",\n      \"esco\": [],\n      \"statutory\": \"law\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    },\n    {\n      \"text\": \"Fluent Finnish\",\n      \"sentence\": 11,\n      \"kind\": \"must\",\n      \"category\": \"language\",\n      \"language\": \"fi\",\n      \"esco\": [],\n      \"statutory\": \"none\",\n      \"questionType\": \"language\",\n      \"question\": \"Is Finnish needed from day one, or could someone start in English and build up Finnish on the job?\",\n      \"why\": \"The posting requires fluent Finnish but does not explain which tasks need that level from the start.\"\n    },\n    {\n      \"text\": \"Experience in large-scale kitchens or catering\",\n      \"sentence\": 13,\n      \"kind\": \"nice\",\n      \"category\": \"experience\",\n      \"esco\": [\"K9\", \"K2\"],\n      \"statutory\": \"none\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    },\n    {\n      \"text\": \"Flexible attitude and willingness to help with varied restaurant tasks\",\n      \"sentence\": 14,\n      \"kind\": \"nice\",\n      \"category\": \"other\",\n      \"esco\": [],\n      \"statutory\": \"none\",\n      \"questionType\": \"vague\",\n      \"question\": \"What does 'flexible attitude' look like in this job? One concrete example helps us find people who have done it.\",\n      \"why\": \"The posting asks for a flexible attitude without describing the situations where it is needed.\"\n    }\n  ],\n  \"dropped\": []\n}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 46593,
+    "firstTokenMs": 38282,
+    "tokensIn": 6301,
+    "tokensOut": 1716,
+    "ok": false,
+    "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.1.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.2.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.4.language: Invalid string: must match pattern /^[a-z]{2}$/; requ",
+    "attempts": 4
+  }
+}

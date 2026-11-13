@@ -1,0 +1,20 @@
+{
+  "item": "card-render",
+  "caseId": "b-en-05",
+  "run": 1,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Installing heat pumps\",\"text\":\"They installed air source heat pumps in detached houses and handled the piping and wall drilling.\"}],\"summary\":\"They list plumbing as a skill and have installed air source heat pumps, including piping and wall drilling.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3440,
+    "firstTokenMs": 2642,
+    "tokensIn": 520,
+    "tokensOut": 201,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

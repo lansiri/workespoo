@@ -1,0 +1,104 @@
+{
+  "caseId": "en-mobile-fluent-fi",
+  "run": 3,
+  "label": "en-mobile-fluent-fi.3",
+  "startedAt": 149312,
+  "endedAt": 162744,
+  "ok": true,
+  "error": null,
+  "timedOut": false,
+  "schemaOk": false,
+  "schemaErr": "requirements.3.text Too big: expected string to have <=80 characters",
+  "requirements": 5,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 13432,
+    "firstTokenMs": 13431,
+    "tokensIn": 2527,
+    "tokensOut": 1102,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  },
+  "data": {
+    "title": "Mobile Developer",
+    "summary": "The role involves developing iOS and Android mobile applications, including digital identity and credential features. It also covers mobile security capabilities such as NFC, biometric authentication and secure storage.",
+    "requirements": [
+      {
+        "text": "At least five years of mobile application development experience",
+        "sentence": 2,
+        "kind": "must",
+        "category": "experience",
+        "years": 5,
+        "language": null,
+        "esco": [
+          "K14"
+        ],
+        "statutory": "none",
+        "questionType": "years",
+        "question": "Would someone who has done mobile application development, with fewer than 5 years, be worth a conversation?",
+        "why": "The posting asks for extensive hands-on mobile application development experience."
+      },
+      {
+        "text": "Experience from at least five completed iOS and Android mobile projects",
+        "sentence": 3,
+        "kind": "must",
+        "category": "experience",
+        "years": null,
+        "language": null,
+        "esco": [
+          "K14"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Experience with digital identity, eID, mobile wallets or digital credentials",
+        "sentence": 4,
+        "kind": "must",
+        "category": "skill",
+        "years": null,
+        "language": null,
+        "esco": [
+          "K14"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Experience with NFC, biometrics, secure key storage or secure mobile data storage",
+        "sentence": 5,
+        "kind": "must",
+        "category": "skill",
+        "years": null,
+        "language": null,
+        "esco": [
+          "K14"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Fluent spoken and written Finnish",
+        "sentence": 13,
+        "kind": "must",
+        "category": "language",
+        "years": null,
+        "language": "fi",
+        "esco": [],
+        "statutory": "none",
+        "questionType": "language",
+        "question": "Is Finnish needed from day one, or could someone start in English and build up Finnish on the job?",
+        "why": "Fluent spoken and written Finnish is listed as mandatory."
+      }
+    ],
+    "dropped": []
+  }
+}

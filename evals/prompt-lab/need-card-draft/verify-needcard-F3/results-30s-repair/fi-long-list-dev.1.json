@@ -1,0 +1,208 @@
+{
+  "caseId": "fi-long-list-dev",
+  "run": 1,
+  "label": "fi-long-list-dev.1",
+  "startedAt": 11,
+  "endedAt": 17757,
+  "ok": true,
+  "error": null,
+  "timedOut": false,
+  "schemaOk": true,
+  "schemaErr": null,
+  "requirements": 12,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 17738,
+    "firstTokenMs": 17734,
+    "tokensIn": 3447,
+    "tokensOut": 1531,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  },
+  "data": {
+    "title": "Full-Stack Software Developer, Energy Sector",
+    "summary": "Design, develop and maintain full-stack web applications, integrations and cloud environments for the energy sector. The role involves close collaboration with an international team and product stakeholders.",
+    "requirements": [
+      {
+        "text": "A few years of hands-on full-stack software development experience",
+        "kind": "nice",
+        "category": "experience",
+        "sentence": 20,
+        "esco": [
+          "K2"
+        ],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Strong Node.js and/or TypeScript skills, plus Python, C# or Java",
+        "kind": "nice",
+        "category": "skill",
+        "sentence": 21,
+        "esco": [
+          "K2"
+        ],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Experience developing user interfaces with React",
+        "kind": "nice",
+        "category": "experience",
+        "sentence": 22,
+        "esco": [
+          "K29",
+          "K6"
+        ],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Client-server architecture, backend API and systems integration experience",
+        "kind": "nice",
+        "category": "experience",
+        "sentence": 23,
+        "esco": [
+          "K19",
+          "K8"
+        ],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Basic cloud, version control, CI/CD and DevSecOps knowledge",
+        "kind": "nice",
+        "category": "skill",
+        "sentence": 24,
+        "esco": [
+          "K23",
+          "K11"
+        ],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Fluent spoken and written English",
+        "kind": "nice",
+        "category": "language",
+        "sentence": 25,
+        "esco": [],
+        "language": "en",
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Degree in computer science, engineering, mathematics or a related field",
+        "kind": "nice",
+        "category": "education",
+        "sentence": 26,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Effective use of agent-based coding tools without compromising security",
+        "kind": "nice",
+        "category": "skill",
+        "sentence": 27,
+        "esco": [
+          "K11",
+          "K2"
+        ],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Ability to write clean, maintainable and well-tested code",
+        "kind": "nice",
+        "category": "skill",
+        "sentence": 28,
+        "esco": [
+          "K2",
+          "K17"
+        ],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Experience building and maintaining business-critical applications",
+        "kind": "nice",
+        "category": "experience",
+        "sentence": 29,
+        "esco": [
+          "K2"
+        ],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Passing a security clearance before starting the role",
+        "kind": "must",
+        "category": "authorisation",
+        "sentence": 30,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Interest or basic knowledge of optimisation, algorithms and machine learning",
+        "kind": "nice",
+        "category": "skill",
+        "sentence": 32,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      }
+    ],
+    "dropped": []
+  }
+}

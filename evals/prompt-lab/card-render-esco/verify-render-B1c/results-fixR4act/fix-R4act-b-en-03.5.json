@@ -1,0 +1,20 @@
+{
+  "item": "card-render-fixR4act",
+  "caseId": "fix-R4act-b-en-03",
+  "run": 5,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Driving forklifts\",\"text\":\"They have driven forklifts in a warehouse.\"}],\"summary\":\"They list loading pallets and SAP as skills and have driven forklifts in a warehouse.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2199,
+    "firstTokenMs": 1661,
+    "tokensIn": 563,
+    "tokensOut": 162,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

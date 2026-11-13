@@ -1,0 +1,94 @@
+{
+  "item": "card-synthesis",
+  "caseId": "fi-full-noroles-clean",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "School and hotel cleaning",
+    "summary": "They clean classrooms, corridors and toilets, use cleaning machines and select chemicals for different surfaces. They also handled a slippery kitchen spill and reported it to a supervisor.",
+    "signals": [
+      {
+        "phrase": "School cleaning",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1",
+          "T3.S1"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They clean classrooms, corridors and toilets in a school before students arrive."
+      },
+      {
+        "phrase": "Hotel cleaning",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2"
+        ],
+        "from": [
+          "s2"
+        ],
+        "rendering": "They previously worked in hotel cleaning."
+      },
+      {
+        "phrase": "Scrubber dryer",
+        "kind": "tool",
+        "evidence": [
+          "T3.S2"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They use a scrubber dryer in corridors and mops in classrooms."
+      },
+      {
+        "phrase": "Cleaning chemicals",
+        "kind": "knowledge",
+        "evidence": [
+          "T3.S3"
+        ],
+        "from": [
+          "s4"
+        ],
+        "rendering": "They know which cleaning chemicals to use, including acidic products for toilets and alkaline products for floors."
+      },
+      {
+        "phrase": "Handling spills safely",
+        "kind": "skill",
+        "evidence": [
+          "T5.S1-S2"
+        ],
+        "from": [
+          "s5"
+        ],
+        "rendering": "They placed a warning sign, cleaned an oily kitchen floor with degreaser and informed the kitchen supervisor."
+      },
+      {
+        "phrase": "Cleaning vocational qualification",
+        "kind": "knowledge",
+        "evidence": [
+          "T7.S1"
+        ],
+        "from": [
+          "s6"
+        ],
+        "rendering": "They hold a vocational qualification in cleaning."
+      }
+    ],
+    "roles": [],
+    "rolesEvidence": []
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 8786,
+    "firstTokenMs": 8784,
+    "tokensIn": 1385,
+    "tokensOut": 686,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

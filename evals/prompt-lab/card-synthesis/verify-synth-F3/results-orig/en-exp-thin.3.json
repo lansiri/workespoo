@@ -1,0 +1,55 @@
+{
+  "item": "card-synthesis",
+  "caseId": "en-exp-thin",
+  "run": 3,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Office cleaning and floor scrubber operation",
+    "summary": "They clean offices, including floors, toilets and kitchens, and use a floor scrubber. They are looking for similar cleaning work.",
+    "signals": [
+      {
+        "phrase": "Office cleaning",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1-S2",
+          "T3.S1"
+        ],
+        "from": [
+          "s1",
+          "s2"
+        ],
+        "rendering": "They clean offices, including floors, toilets and kitchens."
+      },
+      {
+        "phrase": "Floor scrubber",
+        "kind": "tool",
+        "evidence": [
+          "T3.S2"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They use a floor scrubber to clean floors."
+      }
+    ],
+    "roles": [
+      "Office cleaning"
+    ],
+    "rolesEvidence": [
+      "T5.S1"
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 4724,
+    "firstTokenMs": 4724,
+    "tokensIn": 1045,
+    "tokensOut": 352,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

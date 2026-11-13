@@ -1,0 +1,50 @@
+{
+  "caseId": "fi-nullesco-13",
+  "run": 5,
+  "conc": 2,
+  "startedMs": 88816,
+  "doneMs": 91468,
+  "ok": true,
+  "error": null,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2651,
+    "firstTokenMs": 2650,
+    "tokensIn": 512,
+    "tokensOut": 194,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  },
+  "http": [
+    {
+      "status": 200,
+      "startMs": 88818,
+      "ms": 2647,
+      "headers": {
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "5",
+        "x-ratelimit-remaining-tokens": "2935649",
+        "x-ratelimit-reset-requests": "30s",
+        "x-ratelimit-reset-tokens": "30s"
+      }
+    }
+  ],
+  "saw429": false,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": null,
+        "text": "Your card mentions baking bread and pastries every morning; the posting asks for food preparation techniques."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P13",
+        "text": "Your card mentions preparing food for weddings and company events; the posting asks for experience in large-scale kitchens or catering."
+      }
+    ]
+  }
+}

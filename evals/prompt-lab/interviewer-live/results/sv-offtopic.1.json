@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "sv-offtopic",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Okej. Vilka redskap, maskiner eller metoder använde du i lokalvården på kontoret?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 920,
+    "firstTokenMs": 576,
+    "tokensIn": 977,
+    "tokensOut": 36,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "item": "card-synthesis",
+  "caseId": "sv-full-teacher",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Early childhood education and preschool activities",
+    "summary": "They work with a preschool group, plan weekly activities and lead nature-based learning projects. They use visual schedules, communicate with parents and manage messages and attendance in Wilma and Daisy.",
+    "signals": [
+      {
+        "phrase": "Early childhood education",
+        "kind": "domain",
+        "evidence": [
+          "T1.S1-S2"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They work as a childcare assistant with a preschool group of six-year-olds."
+      },
+      {
+        "phrase": "Planning educational activities",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s2",
+          "s9"
+        ],
+        "rendering": "They plan weekly activities according to the early childhood education plan."
+      },
+      {
+        "phrase": "Nature-based learning activities",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They led a forest project where children collected leaves and practised counting and sorting them."
+      },
+      {
+        "phrase": "Using picture schedules",
+        "kind": "skill",
+        "evidence": [
+          "T5.S1-S2"
+        ],
+        "from": [
+          "s4"
+        ],
+        "rendering": "They created a picture schedule with a child to make transitions easier."
+      },
+      {
+        "phrase": "Parent communication",
+        "kind": "skill",
+        "evidence": [
+          "T5.S3",
+          "T7.S1"
+        ],
+        "from": [
+          "s5"
+        ],
+        "rendering": "They give parents weekly updates and use digital tools to send messages."
+      },
+      {
+        "phrase": "Wilma",
+        "kind": "tool",
+        "evidence": [
+          "T7.S1"
+        ],
+        "from": [
+          "s6"
+        ],
+        "rendering": "They use Wilma to send messages to parents."
+      },
+      {
+        "phrase": "Daisy",
+        "kind": "tool",
+        "evidence": [
+          "T7.S1"
+        ],
+        "from": [
+          "s7"
+        ],
+        "rendering": "They use Daisy to send messages to parents and maintain the attendance list."
+      }
+    ],
+    "roles": [
+      "Early childhood education teacher"
+    ],
+    "rolesEvidence": [
+      "T11.S1"
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 9793,
+    "firstTokenMs": 9787,
+    "tokensIn": 1503,
+    "tokensOut": 815,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "item": "need-card-draft",
+  "caseId": "fi-public-ece-teacher",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "title": "Early Childhood Education Teacher",
+    "summary": "Plan, deliver and assess preschool pedagogy with a team and help lead the team. The role also involves close cooperation with families.",
+    "requirements": [
+      {
+        "text": "Qualification required under the Early Childhood Education Act",
+        "kind": "must",
+        "category": "education",
+        "sentence": 28,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Bachelor of Education with early childhood teacher training, or equivalent",
+        "kind": "must",
+        "category": "education",
+        "sentence": 29,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Criminal record extract for working with children",
+        "kind": "must",
+        "category": "authorisation",
+        "sentence": 32,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Tuberculosis infection risk assessment",
+        "kind": "must",
+        "category": "authorisation",
+        "sentence": 33,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Meet children and parents individually, respectfully and sensitively",
+        "kind": "nice",
+        "category": "other",
+        "sentence": 34,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'meet children and parents individually, respectfully and sensitively' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting values an individual, respectful and sensitive approach to children and their parents."
+      }
+    ],
+    "dropped": []
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 13178,
+    "firstTokenMs": 7652,
+    "tokensIn": 8085,
+    "tokensOut": 945,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "caseId": "sv-buzzword-general",
+  "run": 1,
+  "deadlineMs": 2000,
+  "modelReply": true,
+  "firstTokenMs": 675,
+  "endedMs": 1112,
+  "aborted": false,
+  "text": "Okej. Kan du beskriva en specifik situation där du samarbetade med andra, vad som hände och vad din egen roll var?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1112,
+    "firstTokenMs": 675,
+    "tokensIn": 918,
+    "tokensOut": 43,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

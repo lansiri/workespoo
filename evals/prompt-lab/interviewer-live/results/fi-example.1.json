@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "fi-example",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Kiitos. Kerro yksi tarkka tilanne tai tehtävä, jonka hoidit itse, esimerkiksi tilausten teossa?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1518,
+    "firstTokenMs": 1082,
+    "tokensIn": 952,
+    "tokensOut": 45,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

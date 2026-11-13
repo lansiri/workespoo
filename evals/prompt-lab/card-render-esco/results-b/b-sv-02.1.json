@@ -1,0 +1,20 @@
+{
+  "item": "card-render",
+  "caseId": "b-sv-02",
+  "run": 1,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Warehouse forklift operation\",\"text\":\"They operated a counterbalance forklift, picked warehouse orders, and hold a forklift license.\"}],\"summary\":\"They picked warehouse orders, operated a counterbalance forklift, and hold a forklift license.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3877,
+    "firstTokenMs": 3494,
+    "tokensIn": 531,
+    "tokensOut": 213,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

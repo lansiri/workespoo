@@ -1,0 +1,79 @@
+[
+  {
+    "tag": "fi-prose-chef",
+    "startMs": 65,
+    "ms": 14750,
+    "status": "200",
+    "tokensOut": 1346
+  },
+  {
+    "tag": "fi-long-list-dev",
+    "startMs": 61,
+    "ms": 17686,
+    "status": "200",
+    "tokensOut": 1531
+  },
+  {
+    "tag": "?",
+    "startMs": 14882,
+    "ms": 10557,
+    "status": "200",
+    "tokensOut": 958
+  },
+  {
+    "tag": "en-mobile-fluent-fi",
+    "startMs": 17776,
+    "ms": 11889,
+    "status": "200",
+    "tokensOut": 1044
+  },
+  {
+    "tag": "?",
+    "startMs": 29816,
+    "ms": 9958,
+    "status": "200",
+    "tokensOut": 746
+  },
+  {
+    "tag": "en-rd-director",
+    "startMs": 25483,
+    "ms": 15299,
+    "status": "200",
+    "tokensOut": 1282
+  },
+  {
+    "tag": "?",
+    "startMs": 40795,
+    "ms": 11621,
+    "status": "200",
+    "tokensOut": 897
+  },
+  {
+    "tag": "fi-public-nurse-kauniainen",
+    "startMs": 39811,
+    "ms": 15278,
+    "status": "200",
+    "tokensOut": 1279
+  },
+  {
+    "tag": "?",
+    "startMs": 55096,
+    "ms": 9040,
+    "status": "200",
+    "tokensOut": 740
+  },
+  {
+    "tag": "fi-cards-tiler",
+    "startMs": 52491,
+    "ms": 20586,
+    "status": "200",
+    "tokensOut": 1613
+  },
+  {
+    "tag": "?",
+    "startMs": 73078,
+    "ms": 14417,
+    "status": "200",
+    "tokensOut": 1281
+  }
+]

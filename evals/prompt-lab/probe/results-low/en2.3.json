@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "en2",
+  "run": 3,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "You help your little brother with homework and cook dinner when your mum works late, so you’re used to keeping things going after school. Can you tell me about one evening that went well and what you did?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2486,
+    "firstTokenMs": 1981,
+    "tokensIn": 509,
+    "tokensOut": 173,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

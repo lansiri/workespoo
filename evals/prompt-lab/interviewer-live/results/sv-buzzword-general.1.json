@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "sv-buzzword-general",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need respond Swedish per instructions. Should analyze target: ask who worked with/for and own part. Last answer general. Ask one specific situation, what happened and what did. Should have at most 2 short sentences max35 words end exactly one question. No praise/judging. Could acknowledge \"Okej.\" Then question open. Should not repeat answer. Perhaps \"Okej. Kan du beskriva en specifik situation där du samarb",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1621,
+    "firstTokenMs": 570,
+    "tokensIn": 918,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

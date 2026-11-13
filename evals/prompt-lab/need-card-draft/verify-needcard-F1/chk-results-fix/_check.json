@@ -1,0 +1,291 @@
+{
+  "outputs": 10,
+  "tally": {
+    "schema": {
+      "checked": 10,
+      "failed": 0
+    },
+    "no employer name": {
+      "checked": 10,
+      "failed": 0
+    },
+    "title/summary English": {
+      "checked": 10,
+      "failed": 0
+    },
+    "protected (title/summary)": {
+      "checked": 20,
+      "failed": 0
+    },
+    "<=12 requirements": {
+      "checked": 10,
+      "failed": 0
+    },
+    "sentence in range": {
+      "checked": 63,
+      "failed": 0
+    },
+    "esco ids in list": {
+      "checked": 63,
+      "failed": 0
+    },
+    "no esco on lang/auth/other": {
+      "checked": 47,
+      "failed": 0
+    },
+    "no distractor esco": {
+      "checked": 63,
+      "failed": 0
+    },
+    "kind follows cue rubric": {
+      "checked": 63,
+      "failed": 10
+    },
+    "language null unless language": {
+      "checked": 58,
+      "failed": 0
+    },
+    "no question text when none": {
+      "checked": 39,
+      "failed": 0
+    },
+    "protected (requirement text)": {
+      "checked": 63,
+      "failed": 0
+    },
+    "6.3 lint would keep it (text)": {
+      "checked": 63,
+      "failed": 0
+    },
+    "6.3 lint would keep it (cited sentence)": {
+      "checked": 63,
+      "failed": 0
+    },
+    "text <=80, no digits except years/classes": {
+      "checked": 63,
+      "failed": 0
+    },
+    "statutory=law where code says law": {
+      "checked": 15,
+      "failed": 13
+    },
+    "question follows pattern": {
+      "checked": 24,
+      "failed": 0
+    },
+    "question has no forbidden word": {
+      "checked": 24,
+      "failed": 0
+    },
+    "question numbers only years": {
+      "checked": 24,
+      "failed": 0
+    },
+    "why present, <=140, no digits": {
+      "checked": 24,
+      "failed": 0
+    },
+    "question trigger holds (4.1)": {
+      "checked": 24,
+      "failed": 2
+    },
+    "law => no question": {
+      "checked": 2,
+      "failed": 0
+    },
+    "vague asks get a vague question": {
+      "checked": 5,
+      "failed": 5
+    },
+    "language ISO code": {
+      "checked": 5,
+      "failed": 0
+    },
+    "years set when stated": {
+      "checked": 5,
+      "failed": 0
+    }
+  },
+  "problems": [
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 1,
+      "check": "statutory=law where code says law",
+      "detail": "P5 \"Occupational safety card\" [nice/authorisation/none/none] <- Työturvallisuuskortti"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 1,
+      "check": "statutory=law where code says law",
+      "detail": "P6 \"Hot work card\" [nice/authorisation/none/none] <- tulityökortti"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P14 \"Access to a car for travel between changing work sites\" [must/other/none/none] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 1,
+      "check": "vague asks get a vague question",
+      "detail": "P14 \"Access to a car for travel between changing work sites\" [must/other/none/none]"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 1,
+      "check": "kind follows cue rubric",
+      "detail": "P18 \"Good spoken and comprehension skills in Finnish\" [must/language/none/language] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 2,
+      "check": "statutory=law where code says law",
+      "detail": "P5 \"Occupational safety card\" [nice/authorisation/none/none] <- Työturvallisuuskortti"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 2,
+      "check": "statutory=law where code says law",
+      "detail": "P6 \"Hot work card\" [nice/authorisation/none/none] <- tulityökortti"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 2,
+      "check": "statutory=law where code says law",
+      "detail": "P11 \"Category B driving licence\" [nice/authorisation/none/none] <- B-ajokortti."
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 2,
+      "check": "vague asks get a vague question",
+      "detail": "P14 \"Access to a car for travel between work sites\" [nice/other/none/none]"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 2,
+      "check": "question trigger holds (4.1)",
+      "detail": "P15 \"Work experience and professional skill\" [must/experience/none/vague]"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 2,
+      "check": "kind follows cue rubric",
+      "detail": "P18 \"Good spoken and comprehension skills in Finnish\" [must/language/none/language] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 3,
+      "check": "statutory=law where code says law",
+      "detail": "P5 \"Occupational safety card\" [nice/authorisation/none/none] <- Työturvallisuuskortti"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 3,
+      "check": "statutory=law where code says law",
+      "detail": "P6 \"Hot work card\" [nice/authorisation/none/none] <- tulityökortti"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 3,
+      "check": "kind follows cue rubric",
+      "detail": "P14 \"Access to a car for travel between work sites\" [must/other/none/none] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 3,
+      "check": "vague asks get a vague question",
+      "detail": "P14 \"Access to a car for travel between work sites\" [must/other/none/none]"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 3,
+      "check": "kind follows cue rubric",
+      "detail": "P18 \"Good spoken and comprehension skills in Finnish\" [must/language/none/language] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 4,
+      "check": "statutory=law where code says law",
+      "detail": "P5 \"Occupational safety card\" [nice/authorisation/none/none] <- Työturvallisuuskortti"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 4,
+      "check": "statutory=law where code says law",
+      "detail": "P6 \"Hot work card\" [nice/authorisation/none/none] <- tulityökortti"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 4,
+      "check": "statutory=law where code says law",
+      "detail": "P11 \"Category B driving licence\" [nice/authorisation/none/none] <- B-ajokortti."
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 4,
+      "check": "kind follows cue rubric",
+      "detail": "P14 \"Access to a car for travel between work sites\" [must/other/none/none] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 4,
+      "check": "vague asks get a vague question",
+      "detail": "P14 \"Access to a car for travel between work sites\" [must/other/none/none]"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 4,
+      "check": "kind follows cue rubric",
+      "detail": "P18 \"Good spoken and comprehension skills in Finnish\" [must/language/none/language] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 5,
+      "check": "statutory=law where code says law",
+      "detail": "P5 \"Occupational safety card\" [nice/authorisation/none/none] <- Työturvallisuuskortti"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 5,
+      "check": "statutory=law where code says law",
+      "detail": "P6 \"Hot work card\" [nice/authorisation/none/none] <- tulityökortti"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 5,
+      "check": "statutory=law where code says law",
+      "detail": "P11 \"Category B driving licence\" [nice/authorisation/none/none] <- B-ajokortti."
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 5,
+      "check": "vague asks get a vague question",
+      "detail": "P14 \"Access to a car for travel between work sites\" [nice/other/none/none]"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 5,
+      "check": "question trigger holds (4.1)",
+      "detail": "P15 \"Professional tiling competence\" [must/skill/none/vague]"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 5,
+      "check": "kind follows cue rubric",
+      "detail": "P18 \"Good spoken and comprehension skills in Finnish\" [must/language/none/language] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-very-short-pizza",
+      "run": 2,
+      "check": "kind follows cue rubric",
+      "detail": "P1 \"At least two years of experience as a pizza cook\" [must/experience/none/none] expected nice (header: -)"
+    },
+    {
+      "caseId": "fi-very-short-pizza",
+      "run": 5,
+      "check": "kind follows cue rubric",
+      "detail": "P1 \"At least two years of experience as a pizza cook\" [must/experience/none/none] expected nice (header: -)"
+    }
+  ]
+}

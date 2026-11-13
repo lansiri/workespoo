@@ -1,0 +1,69 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-02-reuse-known",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Forklift driving",
+        "kind": "tool",
+        "evidence": [
+          "T1.S2",
+          "T3.S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "s2",
+        "phrase": "Stock counting",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Handling unsafe pallet stacking",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1-S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Writing deviation reports",
+        "kind": "skill",
+        "evidence": [
+          "T3.S3"
+        ],
+        "hasExample": true
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "example": "covered",
+      "tools": "covered",
+      "people": "thin"
+    },
+    "flags": [],
+    "note": "Specific forklift safety example covered; ask about stock-counting methods and coordination with the day shift."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3473,
+    "firstTokenMs": 3473,
+    "tokensIn": 1038,
+    "tokensOut": 172,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

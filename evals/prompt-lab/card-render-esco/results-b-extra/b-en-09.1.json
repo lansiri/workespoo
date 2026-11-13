@@ -1,0 +1,10 @@
+{
+  "item": "card-render",
+  "caseId": "b-en-09",
+  "run": 1,
+  "role": "analyst",
+  "kind": "text",
+  "ok": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "meta": null
+}

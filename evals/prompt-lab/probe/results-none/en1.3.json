@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "en1",
+  "run": 3,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "That’s great hands-on experience! Fixing flat tyres, adjusting brakes, and helping customers pick bikes shows both technical and people skills. Could you tell me about a time you helped a customer choose a bike—what did you do, and how did it go?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1477,
+    "firstTokenMs": 891,
+    "tokensIn": 443,
+    "tokensOut": 59,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verifyF1-fix",
+  "caseId": "en-people",
+  "run": 4,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Thanks, that's clear. Who did you usually support in IT support, and what was your own part in helping them?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1035,
+    "firstTokenMs": 720,
+    "tokensIn": 925,
+    "tokensOut": 31,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

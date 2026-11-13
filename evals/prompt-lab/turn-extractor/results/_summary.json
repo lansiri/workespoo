@@ -1,0 +1,42 @@
+{
+  "item": "turn-extractor",
+  "role": "live",
+  "schema": "ExtractorOutput",
+  "calls": 27,
+  "ok": 23,
+  "failed": 4,
+  "neededRetry": 6,
+  "latencyMs": {
+    "p50": 2723,
+    "p90": 40719
+  },
+  "firstTokenMs": {
+    "p50": 2678,
+    "p90": 4389
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "en-07-offtopic",
+      "run": 1,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    },
+    {
+      "caseId": "en-08-question-to-ai",
+      "run": 1,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    },
+    {
+      "caseId": "en-14-looking-for",
+      "run": 1,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    },
+    {
+      "caseId": "fi-01-skills-example",
+      "run": 1,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    }
+  ]
+}

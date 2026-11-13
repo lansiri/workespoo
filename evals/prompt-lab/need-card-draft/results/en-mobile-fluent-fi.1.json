@@ -1,0 +1,21 @@
+{
+  "item": "need-card-draft",
+  "caseId": "en-mobile-fluent-fi",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "rawOnFailure": "{\n  \"title\": \"Mobile Developer\",\n  \"summary\": \"The role involves developing iOS and Android applications, including digital identity and credential features. It also covers mobile security functions such as NFC, biometrics and secure storage.\",\n  \"requirements\": [\n    {\n      \"text\": \"Five years in mobile development; both iOS and Android preferred\",\n      \"sentence\": 2,\n      \"kind\": \"must\",\n      \"category\": \"experience\",\n      \"years\": 5,\n      \"esco\": [\"K14\"],\n      \"statutory\": \"none\",\n      \"questionType\": \"years\",\n      \"question\": \"Would someone who has done mobile application development, with fewer than 5 years, be worth a conversation?\",\n      \"why\": \"The posting sets a fixed minimum duration for mobile application development experience.\"\n    },\n    {\n      \"text\": \"Experience from at least five completed iOS and Android mobile projects\",\n      \"sentence\": 3,\n      \"kind\": \"must\",\n      \"category\": \"experience\",\n      \"esco\": [\"K14\"],\n      \"statutory\": \"none\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    },\n    {\n      \"text\": \"Experience with digital identity, eID, mobile wallets or digital credentials\",\n      \"sentence\": 4,\n      \"kind\": \"must\",\n      \"category\": \"experience\",\n      \"esco\": [\"K14\"],\n      \"statutory\": \"none\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    },\n    {\n      \"text\": \"Experience designing or implementing mobile device security features\",\n      \"sentence\": 5,\n      \"kind\": \"must\",\n      \"category\": \"experience\",\n      \"esco\": [\"K14\"],\n      \"statutory\": \"none\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    },\n    {\n      \"text\": \"Fluent spoken and written Finnish\",\n      \"sentence\": 21,\n      \"kind\": \"must\",\n      \"category\": \"language\",\n      \"language\": \"fi\",\n      \"esco\": [],\n      \"statutory\": \"none\",\n      \"questionType\": \"language\",\n      \"question\": \"Is Finnish needed from day one, or could someone start in English and build up Finnish on the job?\",\n      \"why\": \"The posting requires fluent spoken and written Finnish for the role.\"\n    }\n  ],\n  \"dropped\": []\n}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 40490,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

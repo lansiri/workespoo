@@ -1,0 +1,40 @@
+{
+  "item": "verify-F1-regress130",
+  "caseId": "sv-nurse-11",
+  "run": 1,
+  "raw": "{\"reasons\":[{\"signal\":\"S2\",\"sentence\":\"P3\",\"text\":\"Your card mentions phone triage and booking by urgency; the posting asks for care needs assessment and non-urgent appointments.\"},{\"signal\":\"S3\",\"sentence\":\"P13\",\"text\":\"Your card mentions writing care notes in electronic patient records; the posting asks for good IT skills and fluent Finnish.\"}]}",
+  "rawParsed": {
+    "reasons": [
+      {
+        "signal": "S2",
+        "sentence": "P3",
+        "text": "Your card mentions phone triage and booking by urgency; the posting asks for care needs assessment and non-urgent appointments."
+      },
+      {
+        "signal": "S3",
+        "sentence": "P13",
+        "text": "Your card mentions writing care notes in electronic patient records; the posting asks for good IT skills and fluent Finnish."
+      }
+    ]
+  },
+  "firstAttemptValid": true,
+  "validationError": null,
+  "error": null,
+  "http": [
+    {
+      "status": 200,
+      "ms": 4557
+    }
+  ],
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 4568,
+    "firstTokenMs": 4564,
+    "tokensIn": 684,
+    "tokensOut": 341,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

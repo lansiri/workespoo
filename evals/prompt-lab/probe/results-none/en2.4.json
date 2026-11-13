@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "en2",
+  "run": 4,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "That sounds like a big help to your family. Could you tell me about a time when helping with homework or cooking dinner went really well?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 922,
+    "firstTokenMs": 573,
+    "tokensIn": 441,
+    "tokensOut": 35,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

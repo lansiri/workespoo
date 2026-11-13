@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "fi2",
+  "run": 3,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Valmennat siis lasten salibandyjoukkuetta vapaaehtoisena, pidät viikoittaiset harjoitukset ja sovit kisamatkoista vanhempien kanssa. Kerro yhdestä harjoituksesta tai kisamatkasta: mitä teit kä",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 4148,
+    "firstTokenMs": 3435,
+    "tokensIn": 900,
+    "tokensOut": 300,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

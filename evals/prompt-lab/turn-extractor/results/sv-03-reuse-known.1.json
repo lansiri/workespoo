@@ -1,0 +1,77 @@
+{
+  "item": "turn-extractor",
+  "caseId": "sv-03-reuse-known",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "sv",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Electrical installation",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1",
+          "T3.S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "s2",
+        "phrase": "Residential construction",
+        "kind": "domain",
+        "evidence": [
+          "T1.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Final electrical inspection",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1-S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Residual-current device installation",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1-S2"
+        ],
+        "hasExample": true
+      },
+      {
+        "ref": "new",
+        "phrase": "Insulation resistance testing",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "hasExample": true
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "example": "covered",
+      "tools": "covered"
+    },
+    "flags": [],
+    "note": "Specific inspection and correction example covered; ask about test instruments used and their own role within the team."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 22602,
+    "firstTokenMs": 22602,
+    "tokensIn": 1082,
+    "tokensOut": 199,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

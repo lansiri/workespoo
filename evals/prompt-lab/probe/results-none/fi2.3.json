@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "fi2",
+  "run": 3,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Kuulostaa siltä, että sinulla on hyvää kokemusta lasten ohjaamisesta ja vanhempien kanssa yhteydenpidosta. Miten järjestät harjoitukset niin, että kaikki lapset pysyvät mukana ja motivoituneina?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2517,
+    "firstTokenMs": 882,
+    "tokensIn": 832,
+    "tokensOut": 79,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

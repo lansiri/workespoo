@@ -1,0 +1,27 @@
+{
+  "item": "card-render-verify-B1a-fix",
+  "role": "analyst",
+  "schema": null,
+  "calls": 8,
+  "ok": 7,
+  "failed": 1,
+  "neededRetry": 0,
+  "latencyMs": {
+    "p50": 3215,
+    "p90": 4269
+  },
+  "firstTokenMs": {
+    "p50": 2542,
+    "p90": 2843
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "fix-b-fi-01",
+      "run": 2,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)"
+    }
+  ]
+}

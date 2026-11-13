@@ -1,0 +1,20 @@
+{
+  "item": "card-render-fixR4act",
+  "caseId": "fix-R4act-b-sv-11",
+  "run": 1,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Restaurant cooking\",\"text\":\"They worked as a cook in a department store restaurant and were responsible for lunch.\"}],\"summary\":\"They list food hygiene rules as a skill and worked as a restaurant cook responsible for lunch.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3755,
+    "firstTokenMs": 3003,
+    "tokensIn": 566,
+    "tokensOut": 229,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

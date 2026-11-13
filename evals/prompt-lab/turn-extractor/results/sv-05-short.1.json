@@ -1,0 +1,50 @@
+{
+  "item": "turn-extractor",
+  "caseId": "sv-05-short",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "sv",
+    "signals": [
+      {
+        "ref": "new",
+        "phrase": "Forklift driving",
+        "kind": "tool",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Scanner use",
+        "kind": "tool",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "tools": "covered"
+    },
+    "flags": [
+      "short"
+    ],
+    "note": "Forklift and scanner covered; ask for a specific task example and how they use them daily."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1883,
+    "firstTokenMs": 1883,
+    "tokensIn": 967,
+    "tokensOut": 101,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

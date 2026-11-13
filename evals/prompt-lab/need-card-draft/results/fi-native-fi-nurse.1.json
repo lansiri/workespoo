@@ -1,0 +1,21 @@
+{
+  "item": "need-card-draft",
+  "caseId": "fi-native-fi-nurse",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": false,
+  "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.1.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.3.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.4.language: Invalid string: must match pattern /^[a-z]{2}$/",
+  "rawOnFailure": "{\n  \"title\": \"Registered Nurse for Home Care\",\n  \"summary\": \"The role provides nursing care in clients' homes, including health assessments, medication, care planning and documentation. It involves collaboration with relatives, physicians and the care team.\",\n  \"requirements\": [\n    {\n      \"text\": \"Registration as a nurse with Valvira\",\n      \"sentence\": 9,\n      \"kind\": \"must\",\n      \"category\": \"authorisation\",\n      \"language\": null,\n      \"years\": null,\n      \"esco\": [],\n      \"statutory\": \"law\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    },\n    {\n      \"text\": \"At least two years of experience in home care\",\n      \"sentence\": 10,\n      \"kind\": \"must\",\n      \"category\": \"experience\",\n      \"language\": null,\n      \"years\": 2,\n      \"esco\": [\"K5\", \"K1\"],\n      \"statutory\": \"none\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    },\n    {\n      \"text\": \"Advanced or native-level Finnish\",\n      \"sentence\": 11,\n      \"kind\": \"must\",\n      \"category\": \"language\",\n      \"language\": \"fi\",\n      \"years\": null,\n      \"esco\": [],\n      \"statutory\": \"none\",\n      \"questionType\": \"language\",\n      \"question\": \"Is Finnish needed from day one, or could someone start in English and build up Finnish on the job?\",\n      \"why\": \"The posting requires advanced or native-level Finnish for a home care nursing role.\"\n    },\n    {\n      \"text\": \"Driving licence\",\n      \"sentence\": 12,\n      \"kind\": \"must\",\n      \"category\": \"authorisation\",\n      \"language\": null,\n      \"years\": null,\n      \"esco\": [],\n      \"statutory\": \"none\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    },\n    {\n      \"text\": \"Independent and responsible work approach\",\n      \"sentence\": 13,\n      \"kind\": \"must\",\n      \"category\": \"other\",\n      \"language\": null,\n      \"years\": null,\n      \"esco\": [],\n      \"statutory\": \"none\",\n      \"questionType\": \"vague\",\n      \"question\": \"What does 'independent and responsible work approach' look like in this job? One concrete example helps us find people who have done it.\",\n      \"why\": \"The posting asks for an independent and responsible work approach without describing what it involves.\"\n    }\n  ],\n  \"dropped\": []\n}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 21440,
+    "firstTokenMs": 16237,
+    "tokensIn": 5262,
+    "tokensOut": 1161,
+    "ok": false,
+    "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.1.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.3.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.4.language: Invalid string: must match pattern /^[a-z]{2}$/",
+    "attempts": 3
+  }
+}

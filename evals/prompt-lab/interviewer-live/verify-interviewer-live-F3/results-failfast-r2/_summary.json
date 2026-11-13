@@ -1,0 +1,18 @@
+{
+  "calls": 10,
+  "modelReply": 0,
+  "fallback": 10,
+  "maxTimeToDecisionMs": 2010,
+  "rows": [
+    "sv-beyond.1 FALLBACK first=null ended=2004 attempts=1",
+    "sv-beyond.2 FALLBACK first=null ended=2000 attempts=1",
+    "en-looking-for.1 FALLBACK first=null ended=2010 attempts=1",
+    "en-looking-for.2 FALLBACK first=null ended=2006 attempts=1",
+    "sv-buzzword-general.1 FALLBACK first=null ended=2002 attempts=1",
+    "sv-buzzword-general.2 FALLBACK first=null ended=2001 attempts=1",
+    "en-stop.1 FALLBACK first=null ended=2003 attempts=1",
+    "en-stop.2 FALLBACK first=null ended=2003 attempts=1",
+    "fi-stop.1 FALLBACK first=null ended=2002 attempts=1",
+    "fi-stop.2 FALLBACK first=null ended=2000 attempts=1"
+  ]
+}

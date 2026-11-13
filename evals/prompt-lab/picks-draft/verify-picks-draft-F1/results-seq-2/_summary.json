@@ -1,0 +1,27 @@
+{
+  "item": "picks-draft",
+  "role": "analyst",
+  "schema": "PicksDraftOutput",
+  "calls": 1,
+  "ok": 0,
+  "failed": 1,
+  "neededRetry": 1,
+  "latencyMs": {
+    "p50": 44038,
+    "p90": 44038
+  },
+  "firstTokenMs": {
+    "p50": null,
+    "p90": null
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "en-years-java",
+      "run": 1,
+      "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro network error"
+    }
+  ]
+}

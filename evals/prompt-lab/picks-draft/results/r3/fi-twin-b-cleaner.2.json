@@ -1,0 +1,33 @@
+{
+  "item": "picks-draft",
+  "caseId": "fi-twin-b-cleaner",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "req": "R1",
+        "signal": "S1",
+        "text": "The card describes cleaning offices and stairwells on early morning shifts for a cleaning company, which relates to professional cleaning experience."
+      },
+      {
+        "req": "R2",
+        "signal": "S2",
+        "text": "The card describes using a ride-on scrubber dryer to clean a shopping centre's floors, which relates to using cleaning machines such as a combination machine."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2973,
+    "firstTokenMs": 2973,
+    "tokensIn": 674,
+    "tokensOut": 184,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

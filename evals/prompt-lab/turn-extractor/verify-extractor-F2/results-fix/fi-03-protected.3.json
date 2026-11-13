@@ -1,0 +1,69 @@
+{
+  "item": "turn-extractor",
+  "caseId": "fi-03-protected",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "fi",
+    "signals": [
+      {
+        "ref": "new",
+        "phrase": "Bookkeeping for accounting firm",
+        "kind": "skill",
+        "evidence": [
+          "T1.S4"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Purchase invoice entry",
+        "kind": "skill",
+        "evidence": [
+          "T1.S4"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Procountor",
+        "kind": "tool",
+        "evidence": [
+          "T1.S4"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "VAT returns",
+        "kind": "skill",
+        "evidence": [
+          "T1.S4"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "tools": "covered",
+      "people": "thin"
+    },
+    "flags": [
+      "protected_info"
+    ],
+    "note": "Recent bookkeeping tasks and Procountor covered; ask for a specific task example and their own responsibilities."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 43419,
+    "firstTokenMs": 43417,
+    "tokensIn": 1139,
+    "tokensOut": 163,
+    "ok": true,
+    "error": null,
+    "attempts": 3
+  }
+}

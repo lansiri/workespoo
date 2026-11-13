@@ -1,0 +1,157 @@
+{
+  "caseId": "en-rd-director",
+  "run": 4,
+  "label": "en-rd-director.4",
+  "startedAt": 225177,
+  "endedAt": 240347,
+  "ok": true,
+  "error": null,
+  "timedOut": false,
+  "schemaOk": true,
+  "schemaErr": null,
+  "requirements": 9,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 15170,
+    "firstTokenMs": 15169,
+    "tokensIn": 2579,
+    "tokensOut": 1422,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  },
+  "data": {
+    "title": "R&D Director",
+    "summary": "Lead hardware engineering and guide products from concept and prototyping through mass production. Manage technical teams, resources, budgets, and cross-functional execution.",
+    "requirements": [
+      {
+        "sentence": 13,
+        "text": "Builder mindset in an evolving, unstructured company environment",
+        "kind": "must",
+        "category": "other",
+        "language": null,
+        "years": null,
+        "esco": [],
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'builder mindset' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting asks for a builder mindset without describing the specific behaviour expected in the role."
+      },
+      {
+        "sentence": 14,
+        "text": "Growth attitude and openness to challenges and development",
+        "kind": "must",
+        "category": "other",
+        "language": null,
+        "years": null,
+        "esco": [],
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'growth attitude' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting asks for a growth attitude but does not give a concrete example of how it is demonstrated."
+      },
+      {
+        "sentence": 15,
+        "text": "Hands-on approach, willingness to take action, and responsibility",
+        "kind": "must",
+        "category": "other",
+        "language": null,
+        "years": null,
+        "esco": [],
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'hands-on approach' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting requests a hands-on approach without specifying the practical involvement expected from the director."
+      },
+      {
+        "sentence": 16,
+        "text": "Initiative, independent responsibility, and delivery of results",
+        "kind": "must",
+        "category": "other",
+        "language": null,
+        "years": null,
+        "esco": [],
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'independent responsibility' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting emphasises independent responsibility and results without describing a concrete example of either."
+      },
+      {
+        "sentence": 17,
+        "text": "Broad technical understanding of mechanics and electronics",
+        "kind": "must",
+        "category": "skill",
+        "language": null,
+        "years": null,
+        "esco": [
+          "K38",
+          "K40"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "sentence": 18,
+        "text": "Experience leading technical teams and owning outcomes under pressure",
+        "kind": "must",
+        "category": "experience",
+        "language": null,
+        "years": null,
+        "esco": [
+          "K13"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "sentence": 19,
+        "text": "Practical ability to use modern AI tools to improve R&D workflows",
+        "kind": "must",
+        "category": "skill",
+        "language": null,
+        "years": null,
+        "esco": [],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "sentence": 20,
+        "text": "Relevant engineering and hardware product development experience",
+        "kind": "must",
+        "category": "experience",
+        "language": null,
+        "years": 15,
+        "esco": [
+          "K33",
+          "K7",
+          "K21"
+        ],
+        "statutory": "none",
+        "questionType": "years",
+        "question": "Would someone who has done engineering and hardware product development, with fewer than 15 years, be worth a conversation?",
+        "why": "The posting sets a substantial experience threshold for engineering and hardware product development."
+      },
+      {
+        "sentence": 22,
+        "text": "Professional working fluency in English",
+        "kind": "must",
+        "category": "language",
+        "language": "en",
+        "years": null,
+        "esco": [],
+        "statutory": "none",
+        "questionType": "language",
+        "question": "Is English needed from day one, or could someone start in Finnish and build up English on the job?",
+        "why": "Professional working fluency in English is expected, while Finnish is explicitly not required."
+      }
+    ],
+    "dropped": []
+  }
+}

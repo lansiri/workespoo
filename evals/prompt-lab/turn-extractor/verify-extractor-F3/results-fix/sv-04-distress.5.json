@@ -1,0 +1,41 @@
+{
+  "item": "turn-extractor",
+  "caseId": "sv-04-distress",
+  "run": 5,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "sv",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Order packing",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "people": "thin"
+    },
+    "flags": [
+      "distress"
+    ],
+    "note": "Order packing is covered; avoid the former manager and gently ask about tasks or tools if appropriate."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2334,
+    "firstTokenMs": 2333,
+    "tokensIn": 1049,
+    "tokensOut": 75,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

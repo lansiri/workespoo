@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-fix-combined",
+  "caseId": "en-feedback",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I don't rate or compare answers. What kind of work are you looking for next?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 808,
+    "firstTokenMs": 591,
+    "tokensIn": 897,
+    "tokensOut": 24,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

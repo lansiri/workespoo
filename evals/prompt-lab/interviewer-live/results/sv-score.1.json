@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "sv-score",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Jag ger inga omdömen eller jämförelser, jag tar bara anteckningar. Vilka samarbetade du med eller för i schemaläggningen, och vad var din egen roll?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1254,
+    "firstTokenMs": 603,
+    "tokensIn": 910,
+    "tokensOut": 59,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

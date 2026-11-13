@@ -1,0 +1,141 @@
+{
+  "item": "card-synthesis",
+  "caseId": "fi-full-care",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Home care, medication administration and emergency response",
+    "summary": "They provide home care visits, administer medication, measure blood sugar, treat wounds and document each visit. They also respond to emergencies and hold medication administration and hygiene certifications.",
+    "signals": [
+      {
+        "phrase": "Making home care visits",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They check daily home care visits in Hilkka and travel to clients by car."
+      },
+      {
+        "phrase": "Hilkka",
+        "kind": "tool",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s2"
+        ],
+        "rendering": "They use Hilkka to check the daily home care visit schedule."
+      },
+      {
+        "phrase": "Administering medication",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They administer medication during home care visits."
+      },
+      {
+        "phrase": "Measuring blood glucose",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "from": [
+          "s4"
+        ],
+        "rendering": "They measure clients' blood glucose levels."
+      },
+      {
+        "phrase": "Wound care",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "from": [
+          "s5"
+        ],
+        "rendering": "They change wound dressings during home care visits."
+      },
+      {
+        "phrase": "Documenting care visits",
+        "kind": "skill",
+        "evidence": [
+          "T3.S3"
+        ],
+        "from": [
+          "s6"
+        ],
+        "rendering": "They document each visit immediately on a phone."
+      },
+      {
+        "phrase": "Responding to emergencies",
+        "kind": "skill",
+        "evidence": [
+          "T5.S1-S3"
+        ],
+        "from": [
+          "s7"
+        ],
+        "rendering": "They respond to missed door openings by contacting relatives and supervisors, arranging access, calling emergency services, and staying with the client."
+      },
+      {
+        "phrase": "Medication administration permit",
+        "kind": "knowledge",
+        "evidence": [
+          "T9.S1"
+        ],
+        "from": [
+          "s8"
+        ],
+        "rendering": "They hold a medication administration permit."
+      },
+      {
+        "phrase": "Hygiene Passport",
+        "kind": "knowledge",
+        "evidence": [
+          "T9.S1"
+        ],
+        "from": [
+          "s9"
+        ],
+        "rendering": "They hold a Hygiene Passport."
+      },
+      {
+        "phrase": "Elderly care",
+        "kind": "domain",
+        "evidence": [
+          "T1.S1-S2"
+        ],
+        "from": [
+          "s10"
+        ],
+        "rendering": "They work in home care and previously worked in a nursing home."
+      }
+    ],
+    "roles": [
+      "Assisted living care work"
+    ],
+    "rolesEvidence": [
+      "T11.S1"
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 48371,
+    "firstTokenMs": 48371,
+    "tokensIn": 1532,
+    "tokensOut": 1014,
+    "ok": true,
+    "error": null,
+    "attempts": 3
+  }
+}

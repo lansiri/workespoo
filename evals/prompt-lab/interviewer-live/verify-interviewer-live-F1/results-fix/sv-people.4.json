@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verifyF1-fix",
+  "caseId": "sv-people",
+  "run": 4,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Tack. Vilka arbetade du oftast med eller för, och vad var din egen del i samarbetet?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1000,
+    "firstTokenMs": 674,
+    "tokensIn": 952,
+    "tokensOut": 35,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

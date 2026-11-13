@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "en2",
+  "run": 3,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "That’s wonderful—you’re really responsible and caring. Helping your brother with homework and cooking dinner are great examples of supporting others and managing tasks. Could you tell me about a time when helping him with homework went really well?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1132,
+    "firstTokenMs": 530,
+    "tokensIn": 441,
+    "tokensOut": 51,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

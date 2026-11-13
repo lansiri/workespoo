@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "en2",
+  "run": 2,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "That sounds like a lot of responsibility, helping your brother with homework and cooking dinner. Can you tell me about a time when you helped him with something tricky in his homework?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 960,
+    "firstTokenMs": 516,
+    "tokensIn": 441,
+    "tokensOut": 42,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

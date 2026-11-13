@@ -1,0 +1,32 @@
+{
+  "item": "need-card-draft",
+  "role": "analyst",
+  "schema": "NeedCardDraftOutput",
+  "calls": 2,
+  "ok": 0,
+  "failed": 2,
+  "neededRetry": 2,
+  "latencyMs": {
+    "p50": 34425,
+    "p90": 34425
+  },
+  "firstTokenMs": {
+    "p50": 23331,
+    "p90": 23331
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "fi-over12-satellite",
+      "run": 1,
+      "error": "Output was not parseable JSON: Expected ',' or ']' after array element in JSON at position 2366"
+    },
+    {
+      "caseId": "fi-cards-tiler",
+      "run": 1,
+      "error": "Output was not parseable JSON: Expected ',' or ']' after array element in JSON at position 1370"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "item": "picks-draft",
+  "caseId": "en-praise-rnd",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "req": "R1",
+        "signal": "S1",
+        "text": "The card describes leading a team of hardware engineers, which relates to leading and mentoring engineering teams."
+      },
+      {
+        "req": "R2",
+        "signal": "S2",
+        "text": "The card describes taking a payment terminal from first prototype to mass production, which relates to hardware product development."
+      },
+      {
+        "req": "R4",
+        "signal": "S3",
+        "text": "The card describes keeping a product program within its budget, which relates to managing project timelines and budgets."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 17699,
+    "firstTokenMs": 17697,
+    "tokensIn": 662,
+    "tokensOut": 177,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

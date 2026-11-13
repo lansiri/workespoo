@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "en-looking-for",
+  "run": 4,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Thanks, that's clear. What kind of work would you like to do next?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 737,
+    "firstTokenMs": 517,
+    "tokensIn": 922,
+    "tokensOut": 23,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

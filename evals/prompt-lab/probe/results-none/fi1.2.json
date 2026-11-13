@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "fi1",
+  "run": 2,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Kuulostaa siltä, että hoidit kassaa, leivoit pullat aamuisin ja opastit uusia työntekijöitä. Kerrotko yhdestä aamusta, kun leivoit pullat: mitä teit käytännössä ja kenen kanssa?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1372,
+    "firstTokenMs": 487,
+    "tokensIn": 830,
+    "tokensOut": 83,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

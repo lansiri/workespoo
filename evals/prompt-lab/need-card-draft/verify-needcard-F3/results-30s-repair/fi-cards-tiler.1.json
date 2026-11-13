@@ -1,0 +1,25 @@
+{
+  "caseId": "fi-cards-tiler",
+  "run": 1,
+  "label": "fi-cards-tiler.1",
+  "startedAt": 52480,
+  "endedAt": 87516,
+  "ok": false,
+  "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.1.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.2.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.3.language: Invalid string: must match pattern /^[a-z]{2}$/; requ",
+  "timedOut": false,
+  "schemaOk": false,
+  "schemaErr": null,
+  "requirements": null,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 35024,
+    "firstTokenMs": 20597,
+    "tokensIn": 6059,
+    "tokensOut": 2894,
+    "ok": false,
+    "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.1.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.2.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.3.language: Invalid string: must match pattern /^[a-z]{2}$/; requ",
+    "attempts": 2
+  },
+  "data": null
+}

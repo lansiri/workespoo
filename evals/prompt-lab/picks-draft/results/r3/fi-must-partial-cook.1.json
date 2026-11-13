@@ -1,0 +1,33 @@
+{
+  "item": "picks-draft",
+  "caseId": "fi-must-partial-cook",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "req": "R1",
+        "signal": "S1",
+        "text": "The card describes cooking lunch soups and salads at a café, which relates to cooking experience and responsibility for the kitchen."
+      },
+      {
+        "req": "R4",
+        "signal": "S2",
+        "text": "The card describes helping prepare food for weddings of about 80 guests, which relates to experience in large-scale catering."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 4204,
+    "firstTokenMs": 4203,
+    "tokensIn": 661,
+    "tokensOut": 239,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "item": "need-card-draft",
+  "caseId": "fi-over12-satellite",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": false,
+  "error": "Output was not parseable JSON: Expected ',' or ']' after array element in JSON at position 2366",
+  "rawOnFailure": "{\n  \"title\": \"Development Manager, Satellite Technologies\",\n  \"summary\": \"The role develops satellite-based services, solutions and business for critical communications. It involves technology assessment, pilots, research projects and collaboration with national and international partners.\",\n  \"requirements\": [\n    {\n      \"sentence\": ",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 34425,
+    "firstTokenMs": 23331,
+    "tokensIn": 9103,
+    "tokensOut": 1600,
+    "ok": false,
+    "error": "Output was not parseable JSON: Expected ',' or ']' after array element in JSON at position 2366",
+    "attempts": 2
+  }
+}

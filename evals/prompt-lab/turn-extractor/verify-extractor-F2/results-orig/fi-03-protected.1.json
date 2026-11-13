@@ -1,0 +1,21 @@
+{
+  "item": "turn-extractor",
+  "caseId": "fi-03-protected",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "rawOnFailure": "{\"lang\":\"fi\",\"signals\":[{\"ref\":\"new\",\"phrase\":\"Kirjanpito\",\"kind\":\"skill\",\"evidence\":[\"T1.S4\"],\"hasExample\":false},{\"ref\":\"new\",\"phrase\":\"Ostolaskujen kirjaus\",\"kind\":\"skill\",\"evidence\":[\"T1.S4\"],\"hasExample\":false},{\"ref\":\"new\",\"phrase\":\"Procountor\",\"kind\":\"tool\",\"evidence\":[\"T1.S4\"],\"hasExample\":false},{\"ref\":\"new\",\"phrase\":\"Alv-ilmoitukset\",\"kind\":\"skill\",\"evidence\":[\"T1.S4\"],\"hasExample\":false}],\"coverage\":{\"recent_work\":\"covered\",\"tools\":\"covered\",\"people\":\"thin\"},\"flags\":[\"protected_info\"],\"note\":\"Kirjanpito, ostolaskut, Procountor ja alv-ilmoitukset katettu; kysy seuraavaksi konkreettinen työtilanne ja oma rooli.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 42133,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

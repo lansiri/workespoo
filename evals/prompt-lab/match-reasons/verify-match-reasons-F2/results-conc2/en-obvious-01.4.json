@@ -1,0 +1,58 @@
+{
+  "caseId": "en-obvious-01",
+  "run": 4,
+  "conc": 2,
+  "startedMs": 58431,
+  "doneMs": 81111,
+  "ok": true,
+  "error": null,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 22680,
+    "firstTokenMs": 22679,
+    "tokensIn": 503,
+    "tokensOut": 188,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  },
+  "http": [
+    {
+      "status": 429,
+      "startMs": 58433,
+      "ms": 289,
+      "headers": {
+        "retry-after": "60",
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "0",
+        "x-ratelimit-reset-requests": "60s",
+        "x-ratelimit-reset-tokens": "60s"
+      }
+    },
+    {
+      "status": 200,
+      "startMs": 78730,
+      "ms": 2380,
+      "headers": {
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "18",
+        "x-ratelimit-remaining-tokens": "2949976",
+        "x-ratelimit-reset-requests": "40s",
+        "x-ratelimit-reset-tokens": "40s"
+      }
+    }
+  ],
+  "saw429": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P22",
+        "text": "Your card mentions React screens for a booking app connected to a REST API; the posting asks for experience developing frontend applications with React."
+      }
+    ]
+  }
+}

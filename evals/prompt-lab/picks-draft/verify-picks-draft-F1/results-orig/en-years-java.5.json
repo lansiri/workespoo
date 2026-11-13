@@ -1,0 +1,33 @@
+{
+  "item": "picks-draft",
+  "caseId": "en-years-java",
+  "run": 5,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "req": "R1",
+        "signal": "S1",
+        "text": "The card describes Java services written for a route planner used by a delivery company, which relates to Java and Spring Boot experience."
+      },
+      {
+        "req": "R2",
+        "signal": "S2",
+        "text": "The card describes REST APIs built with Spring Boot and tests written for them, which relates to full-stack back end and front end development."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3455,
+    "firstTokenMs": 3454,
+    "tokensIn": 635,
+    "tokensOut": 242,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

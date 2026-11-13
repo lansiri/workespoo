@@ -1,0 +1,82 @@
+{
+  "item": "card-synthesis",
+  "caseId": "en-exp-buzzwords",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Communication, problem-solving, leadership and teamwork",
+    "summary": "They describe skills in communication, problem-solving, leadership, customer service and teamwork. They are looking for an opportunity to grow and contribute.",
+    "signals": [
+      {
+        "phrase": "Communication",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They list communication among their work skills."
+      },
+      {
+        "phrase": "Problem-solving",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s2"
+        ],
+        "rendering": "They list problem-solving among their work skills."
+      },
+      {
+        "phrase": "Leadership",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They list leadership among their work skills."
+      },
+      {
+        "phrase": "Customer service",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1"
+        ],
+        "from": [
+          "s4"
+        ],
+        "rendering": "They express an interest in customer service."
+      },
+      {
+        "phrase": "Teamwork",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1"
+        ],
+        "from": [
+          "s5"
+        ],
+        "rendering": "They describe themselves as a team player."
+      }
+    ],
+    "roles": [],
+    "rolesEvidence": []
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 8948,
+    "firstTokenMs": 8946,
+    "tokensIn": 1112,
+    "tokensOut": 614,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

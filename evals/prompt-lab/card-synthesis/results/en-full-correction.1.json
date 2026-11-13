@@ -1,0 +1,140 @@
+{
+  "item": "card-synthesis",
+  "caseId": "en-full-correction",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Warehouse forklift operations, inventory scanning and rack safety",
+    "summary": "They unload tyre deliveries, scan goods and store pallets on high racks using reach trucks and Ongoing WMS. They isolate damaged racking and report it, and are seeking warehouse shift leader or inventory control work.",
+    "signals": [
+      {
+        "phrase": "Forklift",
+        "kind": "tool",
+        "evidence": [
+          "T1.S1",
+          "T1.S3"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They use a counterbalance forklift to load trailers at a tyre warehouse."
+      },
+      {
+        "phrase": "Reach truck",
+        "kind": "tool",
+        "evidence": [
+          "T1.S3"
+        ],
+        "from": [
+          "s2"
+        ],
+        "rendering": "They mainly use a reach truck for warehouse work."
+      },
+      {
+        "phrase": "Unloading trailers",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1-S2"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They unload tyre deliveries from trailers during seasonal warehouse peaks."
+      },
+      {
+        "phrase": "Scanning goods",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "from": [
+          "s4"
+        ],
+        "rendering": "They scan each tyre set when unloading deliveries."
+      },
+      {
+        "phrase": "Storing pallets on high racks",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2-S3"
+        ],
+        "from": [],
+        "rendering": "They place pallets on racks up to ten metres high using locations assigned by the warehouse system."
+      },
+      {
+        "phrase": "Ongoing WMS",
+        "kind": "tool",
+        "evidence": [
+          "T3.S3"
+        ],
+        "from": [
+          "s5"
+        ],
+        "rendering": "They use Ongoing WMS to find the assigned location for each pallet."
+      },
+      {
+        "phrase": "Reporting rack damage",
+        "kind": "skill",
+        "evidence": [
+          "T5.S1-S2"
+        ],
+        "from": [
+          "s6"
+        ],
+        "rendering": "They stop using damaged rack bays, cordon them off and report the damage to the shift leader."
+      },
+      {
+        "phrase": "Forklift licence",
+        "kind": "knowledge",
+        "evidence": [
+          "T7.S1"
+        ],
+        "from": [
+          "s8"
+        ],
+        "rendering": "They hold a forklift licence."
+      },
+      {
+        "phrase": "Occupational safety card",
+        "kind": "knowledge",
+        "evidence": [
+          "T7.S1"
+        ],
+        "from": [
+          "s7"
+        ],
+        "rendering": "They hold an occupational safety card."
+      },
+      {
+        "phrase": "Tyre warehousing",
+        "kind": "domain",
+        "evidence": [
+          "T1.S1",
+          "T3.S2"
+        ],
+        "from": [],
+        "rendering": "They handle tyre warehouse operations, including trailer unloading and high-rack storage."
+      }
+    ],
+    "roles": [
+      "Warehouse shift leader",
+      "Inventory control"
+    ],
+    "rolesEvidence": [
+      "T9.S1"
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 55125,
+    "firstTokenMs": 55125,
+    "tokensIn": 1308,
+    "tokensOut": 1255,
+    "ok": true,
+    "error": null,
+    "attempts": 3
+  }
+}

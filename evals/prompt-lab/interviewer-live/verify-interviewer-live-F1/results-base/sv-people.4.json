@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verifyF1-base",
+  "caseId": "sv-people",
+  "run": 4,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need craft next reply Swedish, max 2 short sentences <=35 words, exactly one question at end, target who worked with/for and own part. Already noted kitchen prep supplier ordering inventory spreadsheet. Conversation: specific task wrong delivery missing fish lunch called another supplier changed menu. Tools Excel supplier website. Should ask open who worked with or for team customers patients users and own part. Should avoid repeating answer. Could say \"Vilka arbetade",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1924,
+    "firstTokenMs": 827,
+    "tokensIn": 939,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

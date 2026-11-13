@@ -1,0 +1,21 @@
+{
+  "item": "picks-draft",
+  "caseId": "en-years-java",
+  "run": 3,
+  "role": "analyst",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "rawOnFailure": "{\"reasons\":[{\"req\":\"R1\",\"signal\":\"S1\",\"text\":\"The card describes Java services written for a route planner used by a delivery company, which relates to Java and Spring Boot experience.\"},{\"req\":\"R2\",\"signal\":\"S2\",\"text\":\"The card describes REST APIs built with Spring Boot and tests for them, which relates to full-stack development across back end and front end.\"}]}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 40386,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

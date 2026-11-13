@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verifyF1-base",
+  "caseId": "sv-beyond",
+  "run": 5,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need craft next reply Swedish per instructions. Should understand conversation target question 5 of 5-7: Ask about something they can do from outside main job: studies, volunteering, side projects or earlier different job. Already noted payroll processing; employee onboarding. Recent interviewer asked who worked with/for own part. Person: \"Med HR-chefen och med alla anställda som hade frågor om lönen.\" Should next reply",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1493,
+    "firstTokenMs": 517,
+    "tokensIn": 854,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

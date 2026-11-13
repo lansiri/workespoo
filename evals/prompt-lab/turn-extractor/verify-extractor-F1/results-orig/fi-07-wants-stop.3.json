@@ -1,0 +1,21 @@
+{
+  "item": "turn-extractor-verifyF1",
+  "caseId": "fi-07-wants-stop",
+  "run": 3,
+  "role": "live",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro timed out",
+  "rawOnFailure": "{\"lang\":\"fi\",\"signals\":[{\"ref\":\"s1\",\"phrase\":\"Parcel delivery\",\"kind\":\"skill\",\"evidence\":[\"T3.S1\"],\"hasExample\":false}],\"coverage\":{\"people\":\"thin\"},\"flags\":[\"distress\",\"wants_stop\"],\"note\":\"Person asked to stop; delivery driving and carrying parcels already noted, no colleague or customer details given.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 15004,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro timed out",
+    "attempts": 1
+  }
+}

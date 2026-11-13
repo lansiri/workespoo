@@ -1,0 +1,27 @@
+{
+  "item": "turn-extractor",
+  "role": "live",
+  "schema": "ExtractorOutput",
+  "calls": 5,
+  "ok": 4,
+  "failed": 1,
+  "neededRetry": 3,
+  "latencyMs": {
+    "p50": 38237,
+    "p90": 51066
+  },
+  "firstTokenMs": {
+    "p50": 38236,
+    "p90": 38296
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "sv-04-distress",
+      "run": 5,
+      "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro network error"
+    }
+  ]
+}

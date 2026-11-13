@@ -1,0 +1,21 @@
+{
+  "item": "card-synthesis",
+  "caseId": "fi-full-noroles-clean",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "rawOnFailure": "{\"headline\":\"School and hotel cleaning, machines and chemical safety\",\"summary\":\"They clean school classrooms, corridors and toilets and previously cleaned hotels. They use cleaning machines, select chemicals for surfaces and handle slippery spills safely.\",\"signals\":[{\"phrase\":\"School cleaning\",\"kind\":\"skill\",\"evidence\":[\"T1.S1\",\"T3.S1\"],\"from\":[\"s1\"],\"rendering\":\"They clean an assigned school area covering classrooms and toilets on two floors before pupils arrive.\"},{\"phrase\":\"Hotel cleaning\",\"kind\":\"skill\",\"evidence\":[\"T1.S2\"],\"from\":[\"s2\"],\"rendering\":\"They previously worked in hotel cleaning.\"},{\"phrase\":\"Scrubber dryer\",\"kind\":\"tool\",\"evidence\":[\"T3.S2\"],\"from\":[\"s3\"],\"rendering\":\"They use a scrubber dryer in corridors and mops in classrooms.\"},{\"phrase\":\"Cleaning chemicals\",\"kind\":\"knowledge\",\"evidence\":[\"T3.S3\"],\"from\":[\"s4\"],\"rendering\":\"They select cleaning chemicals for different tasks, using acidic products in toilets and alkaline products on floors.\"},{\"phrase\":\"Handling spills safely\",\"kind\":\"skill\",\"evidence\":[\"T5.S1-S2\"],\"from\":[\"s5\"],\"rendering\":\"They respond to slippery oil spills by placing a warning sign, cleaning with degreaser and informing the kitchen supervisor.\"},{\"phrase\":\"Cleaning vocational qualification\",\"kind\":\"knowledge\",\"evidence\":[\"T7.S1\"],\"from\":[\"s6\"],\"rendering\":\"They hold a vocational qualification in cleaning.\"}],\"roles\":[],\"rolesEvidence\":[]}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 37843,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

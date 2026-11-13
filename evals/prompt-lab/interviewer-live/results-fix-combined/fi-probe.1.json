@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-fix-combined",
+  "caseId": "fi-probe",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Voit ohittaa tämän, jos haluat. Kerro yksi konkreettinen tilanne, jossa teit vuorolistat koko porukalle?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1146,
+    "firstTokenMs": 733,
+    "tokensIn": 902,
+    "tokensOut": 46,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

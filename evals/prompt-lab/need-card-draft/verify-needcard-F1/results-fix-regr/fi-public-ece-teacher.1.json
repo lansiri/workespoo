@@ -1,0 +1,129 @@
+{
+  "caseId": "fi-public-ece-teacher",
+  "run": 1,
+  "ok": true,
+  "error": null,
+  "attempts": 2,
+  "latencyMs": 17300,
+  "tokensOut": 1479,
+  "raws": [
+    {
+      "title": "Early Childhood Education Teacher, Eestinkallio Preschool",
+      "summary": "The teacher plans, implements and evaluates preschool pedagogy with the team and shares team leadership. The role also involves close cooperation with families.",
+      "requirements": [
+        {
+          "text": "Bachelor's degree in education with ECE teacher training, or an accepted equivalent",
+          "kind": "must",
+          "category": "education",
+          "sentence": 29,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "law",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Criminal record extract required for work with children",
+          "kind": "must",
+          "category": "authorisation",
+          "sentence": 32,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "law",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Clarification of tuberculosis infection risk",
+          "kind": "must",
+          "category": "authorisation",
+          "sentence": 33,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "law",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Ability to meet children and parents individually, respectfully and sensitively",
+          "kind": "nice",
+          "category": "other",
+          "sentence": 34,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "vague",
+          "question": "What does 'meeting children and parents individually, respectfully and sensitively' look like in this job? One concrete example helps us find people who have done it.",
+          "why": "The posting values an individual, respectful and sensitive approach to children and their parents."
+        }
+      ],
+      "dropped": []
+    },
+    {
+      "title": "Early Childhood Education Teacher, Eestinkallio Preschool",
+      "summary": "The teacher plans, implements and evaluates preschool pedagogy with the team and shares team leadership. The role also involves close cooperation with families.",
+      "requirements": [
+        {
+          "text": "Bachelor's in education with ECE training, or an accepted equivalent",
+          "kind": "must",
+          "category": "education",
+          "sentence": 29,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "law",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Criminal record extract required for work with children",
+          "kind": "must",
+          "category": "authorisation",
+          "sentence": 32,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "law",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Clarification of tuberculosis infection risk",
+          "kind": "must",
+          "category": "authorisation",
+          "sentence": 33,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "law",
+          "questionType": "none",
+          "question": null,
+          "why": null
+        },
+        {
+          "text": "Ability to meet children and parents individually, respectfully and sensitively",
+          "kind": "nice",
+          "category": "other",
+          "sentence": 34,
+          "esco": [],
+          "language": null,
+          "years": null,
+          "statutory": "none",
+          "questionType": "vague",
+          "question": "What does 'meeting children and parents individually, respectfully and sensitively' look like in this job? One concrete example helps us find people who have done it.",
+          "why": "The posting values an individual, respectful and sensitive approach to children and their parents."
+        }
+      ],
+      "dropped": []
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "item": "turn-extractor-verifyF1",
+  "caseId": "sv-03-reuse-known",
+  "run": 2,
+  "role": "live",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "rawOnFailure": "{\"lang\":\"sv\",\"signals\":[{\"ref\":\"s1\",\"phrase\":\"Electrical installation\",\"kind\":\"skill\",\"evidence\":[\"T3.S1-S2\"],\"hasExample\":true},{\"ref\":\"new\",\"phrase\":\"Final electrical inspection\",\"kind\":\"skill\",\"evidence\":[\"T3.S1\"],\"hasExample\":true},{\"ref\":\"new\",\"phrase\":\"Residual-current device installation\",\"kind\":\"skill\",\"evidence\":[\"T3.S1-S2\"],\"hasExample\":true},{\"ref\":\"new\",\"phrase\":\"Insulation resistance testing\",\"kind\":\"skill\",\"evidence\":[\"T3.S2\"],\"hasExample\":true},{\"ref\":\"new\",\"phrase\":\"Electrical inspection documentation\",\"kind\":\"skill\",\"evidence\":[\"T3.S3\"],\"hasExample\":true}],\"coverage\":{\"example\":\"covered\",\"tools\":\"covered\"},\"flags\":[],\"note\":\"Specific handover fault and corrective actions covered; ask about testing instruments and colleagues involved.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 39586,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

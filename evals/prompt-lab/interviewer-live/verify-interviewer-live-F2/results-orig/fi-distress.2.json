@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verify-F2",
+  "caseId": "fi-distress",
+  "run": 2,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need respond in Finnish plain spoken, max 2 short sentences <=35 words, exactly one question at end. Person says hard/upsetting bullying. Rule 9 don't comment feelings, ask whether would like skip topic or stop. Should formulate open? Rule 4 open questions target but rule 9 specific ask whether skip or stop, can be choice question. Should have no yes/no? Conflict specific rule 9 likely ask \"Haluatko oh",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2098,
+    "firstTokenMs": 1013,
+    "tokensIn": 909,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

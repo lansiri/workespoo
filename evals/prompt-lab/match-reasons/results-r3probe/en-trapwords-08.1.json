@@ -1,0 +1,40 @@
+{
+  "item": "match-reasons",
+  "caseId": "en-trapwords-08",
+  "run": 1,
+  "raw": "{\"reasons\":[{\"signal\":\"S1\",\"sentence\":\"P2\",\"text\":\"Your card mentions building and publishing two Android apps in Kotlin; the posting asks for at least five years of mobile application development experience.\"},{\"signal\":\"S2\",\"sentence\":\"P6\",\"text\":\"Your card mentions fingerprint login using the phone's secure key storage; the posting asks for biometric authentication or secure key storage on a mobile device.\"}]}",
+  "rawParsed": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P2",
+        "text": "Your card mentions building and publishing two Android apps in Kotlin; the posting asks for at least five years of mobile application development experience."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P6",
+        "text": "Your card mentions fingerprint login using the phone's secure key storage; the posting asks for biometric authentication or secure key storage on a mobile device."
+      }
+    ]
+  },
+  "firstAttemptValid": false,
+  "validationError": "reasons.1.text: Too big: expected string to have <=160 characters",
+  "error": null,
+  "http": [
+    {
+      "status": 200,
+      "ms": 3747
+    }
+  ],
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3752,
+    "firstTokenMs": 3752,
+    "tokensIn": 551,
+    "tokensOut": 259,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

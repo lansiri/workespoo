@@ -1,0 +1,30 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-03-buzzwords",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [],
+    "coverage": {
+      "people": "thin"
+    },
+    "flags": [
+      "buzzwords"
+    ],
+    "note": "Ask who they worked with and their own part; billing call handling and telecom context are already covered."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1307,
+    "firstTokenMs": 1306,
+    "tokensIn": 1082,
+    "tokensOut": 43,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

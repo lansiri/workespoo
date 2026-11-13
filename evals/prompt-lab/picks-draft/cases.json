@@ -1,0 +1,204 @@
+{
+  "item": "picks-draft",
+  "role": "analyst",
+  "schema": "PicksDraftOutput",
+  "temperature": 0.2,
+  "cases": [
+    {
+      "id": "en-single-ux",
+      "notes": "job 3, req lang en: clear single pair",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to an employer why one anonymous card from a talent pool relates to their need. You write JSON only.\n\nRules:\n1. Write plain English. Short sentences. Refer to the person only as \"the card\" or \"this person\". Never use he, she, him or her.\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one requirement id (like \"R3\") and one signal id (like \"S2\").\n3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:\n   \"The card describes <what the signal says>, which relates to <the requirement>.\"\n4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.\n5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.\n6. Do not mention anything that is not in the signal text. Do not guess age, background, nationality or language.\n7. Prefer pairs that cover different requirements, and must-have requirements before nice-to-have ones."
+        },
+        {
+          "role": "user",
+          "content": "Need: UX Designer\nDesigns user experiences for financial software together with product management and development. Hybrid work in Tampere.\n\nRequirements:\nR1 (must): UX design for software products\nR2 (must): Collaboration with product management and development\nR3 (nice): Using AI tools in design work\nR4 (must): Fluent English\n\nCard signals (English renderings):\nS1: Designing user interfaces. Redesigned the booking screens of a clinic's web app after watching patients struggle with them (English rendering).\n\nAllowed pairs (requirement, signal):\nR1, S1\n\nReturn JSON: {\"reasons\": [{\"req\": \"R1\", \"signal\": \"S1\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "en-three-fullstack",
+      "notes": "job 4, req lang en: three pairs; R2 text contains the banned word 'strong' from the posting; years requirement R5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to an employer why one anonymous card from a talent pool relates to their need. You write JSON only.\n\nRules:\n1. Write plain English. Short sentences. Refer to the person only as \"the card\" or \"this person\". Never use he, she, him or her.\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one requirement id (like \"R3\") and one signal id (like \"S2\").\n3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:\n   \"The card describes <what the signal says>, which relates to <the requirement>.\"\n4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.\n5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.\n6. Do not mention anything that is not in the signal text. Do not guess age, background, nationality or language.\n7. Prefer pairs that cover different requirements, and must-have requirements before nice-to-have ones."
+        },
+        {
+          "role": "user",
+          "content": "Need: Software developer (full-stack), energy sector\nBuilds web applications, backend services and integrations that support planning in an energy company. International team, works in English.\n\nRequirements:\nR1 (must): Full-stack software development\nR2 (must): Strong knowledge of Node.js or TypeScript\nR3 (must): Frontend development with React\nR4 (must): Backend API development and system integration\nR5 (nice): Cloud platforms such as AWS or Azure\nR6 (must): Fluent spoken and written English\nR7 (must): A few years of full-stack experience\n\nCard signals (English renderings):\nS1: React frontends. Built the customer portal of a small logistics firm in React and TypeScript (English rendering).\nS2: Node.js APIs. Wrote REST APIs in Node.js that connect the portal to the firm's order database (English rendering).\nS3: Deploying to Azure. Set up automatic deployments of the portal to Azure (English rendering).\n\nAllowed pairs (requirement, signal):\nR1, S1\nR3, S1\nR2, S1\nR7, S1\nR2, S2\nR4, S2\nR5, S3\n\nReturn JSON: {\"reasons\": [{\"req\": \"R1\", \"signal\": \"S1\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "fi-req-en-sig-nurse",
+      "notes": "job 12, req lang fi: Finnish requirement texts, English signals; years and licence requirements not paired",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to an employer why one anonymous card from a talent pool relates to their need. You write JSON only.\n\nRules:\n1. Write plain English. Short sentences. Refer to the person only as \"the card\" or \"this person\". Never use he, she, him or her.\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one requirement id (like \"R3\") and one signal id (like \"S2\").\n3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:\n   \"The card describes <what the signal says>, which relates to <the requirement>.\"\n4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.\n5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.\n6. Do not mention anything that is not in the signal text. Do not guess age, background, nationality or language.\n7. Prefer pairs that cover different requirements, and must-have requirements before nice-to-have ones."
+        },
+        {
+          "role": "user",
+          "content": "Need: Sairaanhoitaja kotihoitoon\nKotihoidon sairaanhoitaja Espoon alueella: asiakkaiden voinnin seuranta, lääkehoito ja kirjaaminen.\n\nRequirements:\nR1 (must): Laillistettu sairaanhoitaja (Valvira)\nR2 (must): Vähintään 2 vuoden kokemus kotihoidosta\nR3 (must): Lääkehoidon toteutus\nR4 (must): Suomen kielen taito tasolla C1/C2\nR5 (must): Ajokortti\nR6 (must): Hoidon suunnittelu ja kirjaaminen\n\nCard signals (English renderings):\nS1: Home care visits. Visited older clients at home, checked blood pressure and blood sugar, and wrote notes after each visit (English rendering).\nS2: Medication administration. Prepared weekly dose boxes and gave insulin injections to home care clients (English rendering).\n\nAllowed pairs (requirement, signal):\nR2, S1\nR6, S1\nR3, S2\n\nReturn JSON: {\"reasons\": [{\"req\": \"R1\", \"signal\": \"S1\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "sv-req-nurse",
+      "notes": "job 14, req lang sv: Swedish requirement texts and summary",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to an employer why one anonymous card from a talent pool relates to their need. You write JSON only.\n\nRules:\n1. Write plain English. Short sentences. Refer to the person only as \"the card\" or \"this person\". Never use he, she, him or her.\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one requirement id (like \"R3\") and one signal id (like \"S2\").\n3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:\n   \"The card describes <what the signal says>, which relates to <the requirement>.\"\n4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.\n5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.\n6. Do not mention anything that is not in the signal text. Do not guess age, background, nationality or language.\n7. Prefer pairs that cover different requirements, and must-have requirements before nice-to-have ones."
+        },
+        {
+          "role": "user",
+          "content": "Need: Sjukskötare, Grankulla hälsostation\nTidsbundet vikariat på öppenvårdsmottagningen: vårdbehovsbedömning, mottagningar och jour, vardagar kl. 8-16.\n\nRequirements:\nR1 (must): Vårdbehovsbedömning\nR2 (must): Goda IT-kunskaper\nR3 (must): Flytande kunskaper i finska\nR4 (nice): Kunskaper i svenska och engelska\nR5 (must): Mångprofessionellt samarbete med läkare\n\nCard signals (English renderings):\nS1: Telephone triage. Answered patient calls at a health centre and decided who needed a same-day appointment (English rendering).\nS2: Patient record systems. Used the Apotti system to record visits and book follow-up appointments (English rendering).\n\nAllowed pairs (requirement, signal):\nR1, S1\nR2, S2\n\nReturn JSON: {\"reasons\": [{\"req\": \"R1\", \"signal\": \"S1\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "en-tangential-mobile",
+      "notes": "job 40, req lang en: tangential pair: web front end touching mobile app development; honest reason must be modest",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to an employer why one anonymous card from a talent pool relates to their need. You write JSON only.\n\nRules:\n1. Write plain English. Short sentences. Refer to the person only as \"the card\" or \"this person\". Never use he, she, him or her.\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one requirement id (like \"R3\") and one signal id (like \"S2\").\n3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:\n   \"The card describes <what the signal says>, which relates to <the requirement>.\"\n4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.\n5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.\n6. Do not mention anything that is not in the signal text. Do not guess age, background, nationality or language.\n7. Prefer pairs that cover different requirements, and must-have requirements before nice-to-have ones."
+        },
+        {
+          "role": "user",
+          "content": "Need: Mobile developer\nDevelops iOS and Android applications with digital identity and mobile security features.\n\nRequirements:\nR1 (must): Mobile application development for iOS and Android\nR2 (must): Digital identity or electronic identification features\nR3 (must): Mobile security features such as NFC or biometric authentication\nR4 (must): 5 years of mobile application development\nR5 (must): Fluent spoken and written Finnish\n\nCard signals (English renderings):\nS1: Responsive web development. Built a responsive web shop front end in React that customers mostly used on their phones (English rendering).\n\nAllowed pairs (requirement, signal):\nR1, S1\n\nReturn JSON: {\"reasons\": [{\"req\": \"R1\", \"signal\": \"S1\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "fi-must-partial-cook",
+      "notes": "job 36, req lang fi: must-have the person only partly speaks to (cooking but not leading the kitchen); number in a signal",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to an employer why one anonymous card from a talent pool relates to their need. You write JSON only.\n\nRules:\n1. Write plain English. Short sentences. Refer to the person only as \"the card\" or \"this person\". Never use he, she, him or her.\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one requirement id (like \"R3\") and one signal id (like \"S2\").\n3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:\n   \"The card describes <what the signal says>, which relates to <the requirement>.\"\n4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.\n5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.\n6. Do not mention anything that is not in the signal text. Do not guess age, background, nationality or language.\n7. Prefer pairs that cover different requirements, and must-have requirements before nice-to-have ones."
+        },
+        {
+          "role": "user",
+          "content": "Need: Lounaskokki, Espoo\nKokoaikainen lounaskokki, joka valmistaa lounaan alusta alkaen ja ottaa vetovastuun keittiön arjesta.\n\nRequirements:\nR1 (must): Vahva kokemus kokin työstä ja kyky ottaa vetovastuu keittiöstä\nR2 (must): Hygieniapassi\nR3 (must): Sujuva suomen kielen taito\nR4 (nice): Kokemus suurtalous- tai catering-puolelta\n\nCard signals (English renderings):\nS1: Cooking lunches. Cooked lunch soups and salads at a café, following the head cook's plan (English rendering).\nS2: Event catering. Helped prepare food for weddings of about 80 guests (English rendering).\n\nAllowed pairs (requirement, signal):\nR1, S1\nR4, S2\n\nReturn JSON: {\"reasons\": [{\"req\": \"R1\", \"signal\": \"S1\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "fi-twin-a-cleaner",
+      "notes": "job 31, req lang fi: twin A: identical to twin B; hidden attribute differs outside the prompt",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to an employer why one anonymous card from a talent pool relates to their need. You write JSON only.\n\nRules:\n1. Write plain English. Short sentences. Refer to the person only as \"the card\" or \"this person\". Never use he, she, him or her.\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one requirement id (like \"R3\") and one signal id (like \"S2\").\n3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:\n   \"The card describes <what the signal says>, which relates to <the requirement>.\"\n4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.\n5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.\n6. Do not mention anything that is not in the signal text. Do not guess age, background, nationality or language.\n7. Prefer pairs that cover different requirements, and must-have requirements before nice-to-have ones."
+        },
+        {
+          "role": "user",
+          "content": "Need: Kokoaikainen siivooja, Espoo\nAsuinkiinteistöjen yleisten tilojen siivous eri kohteissa Espoossa, arkisin.\n\nRequirements:\nR1 (must): Kokemus ammattisiivouksesta\nR2 (must): Siivouskoneiden, kuten yhdistelmäkoneen, käyttö\nR3 (nice): Puhtaus- ja kiinteistöpalvelualan koulutus\nR4 (must): B-ajokortti ja oman auton käyttömahdollisuus\n\nCard signals (English renderings):\nS1: Office and stairwell cleaning. Cleaned offices and stairwells on early morning shifts for a cleaning company (English rendering).\nS2: Floor scrubber. Used a ride-on scrubber dryer to clean a shopping centre's floors (English rendering).\n\nAllowed pairs (requirement, signal):\nR1, S1\nR2, S2\n\nReturn JSON: {\"reasons\": [{\"req\": \"R1\", \"signal\": \"S1\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "fi-twin-b-cleaner",
+      "notes": "job 31, req lang fi: twin B: identical to twin A",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to an employer why one anonymous card from a talent pool relates to their need. You write JSON only.\n\nRules:\n1. Write plain English. Short sentences. Refer to the person only as \"the card\" or \"this person\". Never use he, she, him or her.\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one requirement id (like \"R3\") and one signal id (like \"S2\").\n3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:\n   \"The card describes <what the signal says>, which relates to <the requirement>.\"\n4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.\n5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.\n6. Do not mention anything that is not in the signal text. Do not guess age, background, nationality or language.\n7. Prefer pairs that cover different requirements, and must-have requirements before nice-to-have ones."
+        },
+        {
+          "role": "user",
+          "content": "Need: Kokoaikainen siivooja, Espoo\nAsuinkiinteistöjen yleisten tilojen siivous eri kohteissa Espoossa, arkisin.\n\nRequirements:\nR1 (must): Kokemus ammattisiivouksesta\nR2 (must): Siivouskoneiden, kuten yhdistelmäkoneen, käyttö\nR3 (nice): Puhtaus- ja kiinteistöpalvelualan koulutus\nR4 (must): B-ajokortti ja oman auton käyttömahdollisuus\n\nCard signals (English renderings):\nS1: Office and stairwell cleaning. Cleaned offices and stairwells on early morning shifts for a cleaning company (English rendering).\nS2: Floor scrubber. Used a ride-on scrubber dryer to clean a shopping centre's floors (English rendering).\n\nAllowed pairs (requirement, signal):\nR1, S1\nR2, S2\n\nReturn JSON: {\"reasons\": [{\"req\": \"R1\", \"signal\": \"S1\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "en-praise-rnd",
+      "notes": "job 39, req lang en: tempting praise: signals carry achievements and praise; R3 text contains 'Strong'",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to an employer why one anonymous card from a talent pool relates to their need. You write JSON only.\n\nRules:\n1. Write plain English. Short sentences. Refer to the person only as \"the card\" or \"this person\". Never use he, she, him or her.\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one requirement id (like \"R3\") and one signal id (like \"S2\").\n3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:\n   \"The card describes <what the signal says>, which relates to <the requirement>.\"\n4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.\n5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.\n6. Do not mention anything that is not in the signal text. Do not guess age, background, nationality or language.\n7. Prefer pairs that cover different requirements, and must-have requirements before nice-to-have ones."
+        },
+        {
+          "role": "user",
+          "content": "Need: R&D Director\nLeads hardware engineering from prototype to mass production for outdoor displays and payment terminals. Reports to the CTO.\n\nRequirements:\nR1 (must): Leading and mentoring engineering teams\nR2 (must): Hardware product development from prototype to mass production\nR3 (must): Strong technical understanding of mechanics and electronics\nR4 (must): Managing project timelines and budgets\nR5 (nice): Experience in a fast-growing company\n\nCard signals (English renderings):\nS1: Leading engineering teams. Led a team of hardware engineers that the company named its best-performing team of the year (English rendering).\nS2: Taking a product to production. Took a payment terminal from first prototype to mass production ahead of schedule, and the CEO praised the launch (English rendering).\nS3: Program budgets. Kept a product program within its budget (English rendering).\n\nAllowed pairs (requirement, signal):\nR1, S1\nR2, S2\nR4, S3\n\nReturn JSON: {\"reasons\": [{\"req\": \"R1\", \"signal\": \"S1\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "sv-language-req-care",
+      "notes": "job 13, req lang sv: language requirement with an evidenced Swedish signal; must not argue fluency",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to an employer why one anonymous card from a talent pool relates to their need. You write JSON only.\n\nRules:\n1. Write plain English. Short sentences. Refer to the person only as \"the card\" or \"this person\". Never use he, she, him or her.\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one requirement id (like \"R3\") and one signal id (like \"S2\").\n3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:\n   \"The card describes <what the signal says>, which relates to <the requirement>.\"\n4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.\n5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.\n6. Do not mention anything that is not in the signal text. Do not guess age, background, nationality or language.\n7. Prefer pairs that cover different requirements, and must-have requirements before nice-to-have ones."
+        },
+        {
+          "role": "user",
+          "content": "Need: Sjuksköterskor till Norge\nHeltidsarbete inom vård i Norge med patienter som behöver särskilt stöd.\n\nRequirements:\nR1 (must): Lämplig utbildning inom social- eller hälso- och sjukvårdsområdet\nR2 (nice): Bakgrund som vernepleier eller sjuksköterskeutbildning\nR3 (must): Kunskaper i svenska\nR4 (must): God stresstålighet och ett lugnt arbetssätt\nR5 (nice): Erfarenhet av patienter som behöver särskilt stöd\n\nCard signals (English renderings):\nS1: Practical nurse training. Completed practical nurse (lähihoitaja) studies (English rendering).\nS2: Swedish at work. Gave patients care instructions in Swedish on a bilingual ward (English rendering).\nS3: Dementia care. Calmed residents with dementia who became agitated during evening care (English rendering).\n\nAllowed pairs (requirement, signal):\nR1, S1\nR3, S2\nR4, S3\nR5, S3\n\nReturn JSON: {\"reasons\": [{\"req\": \"R1\", \"signal\": \"S1\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "fi-licence-locksmith",
+      "notes": "job 26, req lang fi: licence requirement paired with a licence signal; must not argue it is met in full; practical trade",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to an employer why one anonymous card from a talent pool relates to their need. You write JSON only.\n\nRules:\n1. Write plain English. Short sentences. Refer to the person only as \"the card\" or \"this person\". Never use he, she, him or her.\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one requirement id (like \"R3\") and one signal id (like \"S2\").\n3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:\n   \"The card describes <what the signal says>, which relates to <the requirement>.\"\n4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.\n5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.\n6. Do not mention anything that is not in the signal text. Do not guess age, background, nationality or language.\n7. Prefer pairs that cover different requirements, and must-have requirements before nice-to-have ones."
+        },
+        {
+          "role": "user",
+          "content": "Need: Lukkoseppä\nLukkojen ja kulunvalvonnan asennus, huolto ja korjaus asiakkaiden luona, myös päivystys.\n\nRequirements:\nR1 (must): Kokemus lukkosepän tehtävistä\nR2 (must): B-ajokortti\nR3 (must): Valmius osallistua päivystykseen\nR4 (nice): Lukitusalan koulutus ja pätevyydet\nR5 (must): Asiakaspalveluhenkisyys\n\nCard signals (English renderings):\nS1: Installing locks. Changed door locks and installed electronic access control in apartment buildings (English rendering).\nS2: Driving licence. Has a B driving licence and drove the company van between sites (English rendering).\n\nAllowed pairs (requirement, signal):\nR1, S1\nR2, S2\n\nReturn JSON: {\"reasons\": [{\"req\": \"R1\", \"signal\": \"S1\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "fi-trade-forklift",
+      "notes": "job 22, req lang fi: practical trade; physical requirements not paired, must not be mentioned",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to an employer why one anonymous card from a talent pool relates to their need. You write JSON only.\n\nRules:\n1. Write plain English. Short sentences. Refer to the person only as \"the card\" or \"this person\". Never use he, she, him or her.\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one requirement id (like \"R3\") and one signal id (like \"S2\").\n3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:\n   \"The card describes <what the signal says>, which relates to <the requirement>.\"\n4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.\n5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.\n6. Do not mention anything that is not in the signal text. Do not guess age, background, nationality or language.\n7. Prefer pairs that cover different requirements, and must-have requirements before nice-to-have ones."
+        },
+        {
+          "role": "user",
+          "content": "Need: Trukkikuski, rengaslogistiikka\nRenkaiden keräily, hyllytys ja vastaanotto varastossa Espoon Mustasillassa syksyn rengassesongin ajan.\n\nRequirements:\nR1 (must): Trukinajotaito tai kokemus sähköisten keräilylaitteiden käytöstä\nR2 (must): Kokemus varasto- tai logistiikkatehtävistä\nR3 (must): Valmius raskaaseen fyysiseen työhön\nR4 (must): Valmius työskennellä korkeissa paikoissa\nR5 (must): B-ajokortti ja mahdollisuus käyttää omaa autoa\n\nCard signals (English renderings):\nS1: Forklift driving. Drove a counterbalance forklift to unload trucks at a building supply warehouse (English rendering).\nS2: Order picking. Picked orders with a hand scanner in a grocery warehouse on night shifts (English rendering).\n\nAllowed pairs (requirement, signal):\nR1, S1\nR2, S1\nR2, S2\n\nReturn JSON: {\"reasons\": [{\"req\": \"R1\", \"signal\": \"S1\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "en-years-java",
+      "notes": "job 2, req lang en: years requirement paired with a signal that says nothing about years",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to an employer why one anonymous card from a talent pool relates to their need. You write JSON only.\n\nRules:\n1. Write plain English. Short sentences. Refer to the person only as \"the card\" or \"this person\". Never use he, she, him or her.\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one requirement id (like \"R3\") and one signal id (like \"S2\").\n3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:\n   \"The card describes <what the signal says>, which relates to <the requirement>.\"\n4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.\n5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.\n6. Do not mention anything that is not in the signal text. Do not guess age, background, nationality or language.\n7. Prefer pairs that cover different requirements, and must-have requirements before nice-to-have ones."
+        },
+        {
+          "role": "user",
+          "content": "Need: Full-stack developer (Java, Spring Boot)\nDevelops full-stack documentation tools with Java and Spring Boot in a development team. Works in English.\n\nRequirements:\nR1 (must): 1 year of Java and Spring Boot experience\nR2 (must): Full-stack development, back end and front end\nR3 (must): Fluent English communication\nR4 (nice): Knowledge of .NET or Clojure\nR5 (nice): DevOps practices and tools\n\nCard signals (English renderings):\nS1: Java backend services. Wrote Java services for a route planner used by a delivery company (English rendering).\nS2: Spring Boot APIs. Built REST APIs with Spring Boot and wrote tests for them (English rendering).\n\nAllowed pairs (requirement, signal):\nR1, S1\nR1, S2\nR2, S2\n\nReturn JSON: {\"reasons\": [{\"req\": \"R1\", \"signal\": \"S1\", \"text\": \"...\"}]}"
+        }
+      ]
+    },
+    {
+      "id": "fi-qualification-teacher",
+      "notes": "job 27, req lang fi: statutory qualification requirement (authorisation) paired with a degree signal; tempts 'qualified'",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You explain to an employer why one anonymous card from a talent pool relates to their need. You write JSON only.\n\nRules:\n1. Write plain English. Short sentences. Refer to the person only as \"the card\" or \"this person\". Never use he, she, him or her.\n2. You may ONLY use the pairs listed under \"Allowed pairs\". Each reason uses one pair: one requirement id (like \"R3\") and one signal id (like \"S2\").\n3. Write 2 or 3 reasons if at least 2 pairs exist, otherwise 1. Each reason is one sentence, at most 160 characters, in this shape:\n   \"The card describes <what the signal says>, which relates to <the requirement>.\"\n4. Describe, never judge. Do not praise, grade or compare the person. Never use: strong, excellent, great, impressive, perfect, ideal, expert, talented, skilled, qualified, senior, junior, fit, match, best, top, highly, recommend, score, percent.\n5. Do not say whether the person meets the requirement in full. Do not mention years, levels or fluency unless the signal text says them.\n6. Do not mention anything that is not in the signal text. Do not guess age, background, nationality or language.\n7. Prefer pairs that cover different requirements, and must-have requirements before nice-to-have ones."
+        },
+        {
+          "role": "user",
+          "content": "Need: Varhaiskasvatuksen opettaja, esiopetus\nEsiopetusryhmän pedagogiikan suunnittelu, toteutus ja arviointi tiimissä sekä yhteistyö perheiden kanssa.\n\nRequirements:\nR1 (must): Varhaiskasvatuksen opettajan kelpoisuus\nR2 (must): Esiopetuksen pedagogiikan suunnittelu ja toteutus\nR3 (must): Yhteistyö perheiden kanssa\nR4 (must): Hyvä suomen kielen taito\n\nCard signals (English renderings):\nS1: Early childhood education studies. Studied early childhood education at a university of applied sciences (English rendering).\nS2: Planning group activities. Planned weekly activities and outdoor trips for a preschool group (English rendering).\nS3: Talking with parents. Held short daily conversations with parents at pick-up time (English rendering).\n\nAllowed pairs (requirement, signal):\nR1, S1\nR2, S2\nR3, S3\n\nReturn JSON: {\"reasons\": [{\"req\": \"R1\", \"signal\": \"S1\", \"text\": \"...\"}]}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "item": "card-synthesis",
+  "caseId": "sv-exp-noroles",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "rawOnFailure": "{\"headline\":\"Beverage shelf stocking, stock rotation and store ordering\",\"summary\":\"They stock beverages in stores, rotate products by date, remove expired items and place orders through a phone app. They drive between several stores each day.\",\"signals\":[{\"phrase\":\"Stocking store shelves\",\"kind\":\"skill\",\"evidence\":[\"T1.S1\"],\"from\":[\"s1\"],\"rendering\":\"They fill store shelves with beer and soft drinks for a brewery.\"},{\"phrase\":\"Driving between stores\",\"kind\":\"skill\",\"evidence\":[\"T1.S2\"],\"from\":[\"s2\"],\"rendering\":\"They drive to six or seven stores each day.\"},{\"phrase\":\"Rotating stock and checking dates\",\"kind\":\"skill\",\"evidence\":[\"T3.S1\"],\"from\":[\"s3\"],\"rendering\":\"They check product dates, move older bottles to the front and remove expired items.\"},{\"phrase\":\"Ordering stock by app\",\"kind\":\"skill\",\"evidence\":[\"T3.S2\"],\"from\":[\"s4\"],\"rendering\":\"They count missing products and place orders using an app on their phone.\"},{\"phrase\":\"Working independently\",\"kind\":\"skill\",\"evidence\":[\"T5.S1\"],\"from\":[\"s5\"],\"rendering\":\"They prefer working independently without constant supervision.\"}],\"roles\":[],\"rolesEvidence\":[]}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 42983,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

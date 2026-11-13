@@ -1,0 +1,41 @@
+{
+  "item": "turn-extractor-verifyF1",
+  "caseId": "fi-07-wants-stop",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "fi",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Parcel delivery",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "people": "thin"
+    },
+    "flags": [
+      "distress",
+      "wants_stop"
+    ],
+    "note": "Person asked to stop; delivery driving and carrying parcels to doors already noted, no colleagues or customers specified."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1609,
+    "firstTokenMs": 1609,
+    "tokensIn": 996,
+    "tokensOut": 75,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

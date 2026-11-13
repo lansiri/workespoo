@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "en1",
+  "run": 4,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "That's great, fixing flat tyres and adjusting brakes are really practical skills. When you helped customers pick a bike, what did you usually ask them to figure out what they needed?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1353,
+    "firstTokenMs": 923,
+    "tokensIn": 443,
+    "tokensOut": 42,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

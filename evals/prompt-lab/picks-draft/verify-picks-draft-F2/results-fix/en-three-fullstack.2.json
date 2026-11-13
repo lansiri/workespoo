@@ -1,0 +1,38 @@
+{
+  "item": "picks-draft",
+  "caseId": "en-three-fullstack",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "req": "R1",
+        "signal": "S1",
+        "text": "The card describes React frontends built with TypeScript, which relates to full-stack software development."
+      },
+      {
+        "req": "R2",
+        "signal": "S2",
+        "text": "The card describes REST APIs written in Node.js, which relates to knowledge of Node.js or TypeScript."
+      },
+      {
+        "req": "R4",
+        "signal": "S2",
+        "text": "The card describes APIs connecting the portal to an order database, which relates to backend API development and system integration."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 23266,
+    "firstTokenMs": 23265,
+    "tokensIn": 736,
+    "tokensOut": 293,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

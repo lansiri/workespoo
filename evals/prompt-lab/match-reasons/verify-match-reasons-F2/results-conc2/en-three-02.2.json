@@ -1,0 +1,55 @@
+{
+  "caseId": "en-three-02",
+  "run": 2,
+  "conc": 2,
+  "startedMs": 9993,
+  "doneMs": 13427,
+  "ok": true,
+  "error": null,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3433,
+    "firstTokenMs": 3432,
+    "tokensIn": 571,
+    "tokensOut": 290,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  },
+  "http": [
+    {
+      "status": 200,
+      "startMs": 9997,
+      "ms": 3426,
+      "headers": {
+        "x-ratelimit-limit-requests": "40",
+        "x-ratelimit-limit-tokens": "3000000",
+        "x-ratelimit-remaining-requests": "18",
+        "x-ratelimit-remaining-tokens": "2960271",
+        "x-ratelimit-reset-requests": "49s",
+        "x-ratelimit-reset-tokens": "49s"
+      }
+    }
+  ],
+  "saw429": false,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P22",
+        "text": "Your card mentions React front-end development for a booking web app; the posting asks for experience developing frontend applications with React."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P37",
+        "text": "Your card mentions designing PostgreSQL tables and writing SQL queries; the posting asks for basic knowledge of SQL and NoSQL databases."
+      },
+      {
+        "signal": "S3",
+        "sentence": "P24",
+        "text": "Your card mentions GitHub Actions pipelines that test and deploy code; the posting asks for familiarity with CI/CD pipelines and DevSecOps practices."
+      }
+    ]
+  }
+}

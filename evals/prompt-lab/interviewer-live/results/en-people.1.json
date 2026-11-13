@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "en-people",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need respond as interviewer per instructions. Should analyze target: ask who worked with/for and own part. Conversation: specific task laptops, tools Jira Intune Teams. Should next reply max 2 short sentences <=35 words, exactly one question end. English. Neutral acknowledgement optional <=6 words no praise/judge. Should ask who supported in IT support, tools covered. Could say \"Thanks, that's clear. Who did you usually support in your",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1684,
+    "firstTokenMs": 537,
+    "tokensIn": 912,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

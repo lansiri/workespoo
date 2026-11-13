@@ -1,0 +1,40 @@
+{
+  "item": "verify-F1-orig",
+  "caseId": "en-trapwords-09",
+  "run": 4,
+  "raw": "{\"reasons\":[{\"signal\":\"S1\",\"sentence\":\"P21\",\"text\":\"Your card mentions TypeScript and Node.js back-end services for an online shop; the posting asks for Node.js and/or TypeScript knowledge.\"},{\"signal\":\"S2\",\"sentence\":\"P39\",\"text\":\"Your card mentions tracing live-system errors to their cause with logs and fixing them; the posting asks for problem-solving and root-cause analysis.\"}]}",
+  "rawParsed": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P21",
+        "text": "Your card mentions TypeScript and Node.js back-end services for an online shop; the posting asks for Node.js and/or TypeScript knowledge."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P39",
+        "text": "Your card mentions tracing live-system errors to their cause with logs and fixing them; the posting asks for problem-solving and root-cause analysis."
+      }
+    ]
+  },
+  "firstAttemptValid": true,
+  "validationError": null,
+  "error": null,
+  "http": [
+    {
+      "status": 200,
+      "ms": 3349
+    }
+  ],
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 3369,
+    "firstTokenMs": 3361,
+    "tokensIn": 553,
+    "tokensOut": 222,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

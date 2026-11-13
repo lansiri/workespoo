@@ -1,0 +1,21 @@
+{
+  "item": "card-synthesis",
+  "role": "analyst",
+  "schema": "SynthOutput",
+  "calls": 1,
+  "ok": 1,
+  "failed": 0,
+  "neededRetry": 1,
+  "latencyMs": {
+    "p50": 18577,
+    "p90": 18577
+  },
+  "firstTokenMs": {
+    "p50": 18576,
+    "p90": 18576
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": []
+}

@@ -1,0 +1,71 @@
+{
+  "item": "card-synthesis",
+  "caseId": "sv-exp-noroles",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Beverage shelf stocking, stock rotation and store deliveries",
+    "summary": "They drive between stores to stock beverage shelves, rotate products by date, remove expired items, and place replenishment orders through a phone app.",
+    "signals": [
+      {
+        "phrase": "Stocking beverage shelves",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1"
+        ],
+        "from": [
+          "s1"
+        ],
+        "rendering": "They stock store shelves with beer and soft drinks for a brewery."
+      },
+      {
+        "phrase": "Driving between stores",
+        "kind": "skill",
+        "evidence": [
+          "T1.S2"
+        ],
+        "from": [
+          "s2"
+        ],
+        "rendering": "They drive to six or seven stores each day."
+      },
+      {
+        "phrase": "Rotating and checking stock",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s3"
+        ],
+        "rendering": "They check product dates, move older bottles to the front, and remove expired items."
+      },
+      {
+        "phrase": "Ordering stock by phone app",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "from": [
+          "s4"
+        ],
+        "rendering": "They count missing products and place stock orders through an app on their phone."
+      }
+    ],
+    "roles": [],
+    "rolesEvidence": []
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 18565,
+    "firstTokenMs": 18563,
+    "tokensIn": 1246,
+    "tokensOut": 483,
+    "ok": true,
+    "error": null,
+    "attempts": 2
+  }
+}

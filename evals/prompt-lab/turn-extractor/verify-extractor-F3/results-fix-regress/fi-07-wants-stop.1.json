@@ -1,0 +1,40 @@
+{
+  "item": "turn-extractor",
+  "caseId": "fi-07-wants-stop",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "fi",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Parcel delivery",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "people": "thin"
+    },
+    "flags": [
+      "wants_stop"
+    ],
+    "note": "Delivery driving and carrying parcels covered; who they worked with or for remains unanswered. Person asked to end the interview."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1403,
+    "firstTokenMs": 1402,
+    "tokensIn": 1017,
+    "tokensOut": 74,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live-verifyF1-base",
+  "caseId": "sv-buzzword-general",
+  "run": 5,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need respond Swedish, at most 2 short sentences 35 words, end exactly one question. Should target ask who worked with/for and own part, last answer general, ask one specific situation what happened and did. Should not praise/judge. Could say \"Kan du beskriva en konkret situation där du samarbetade med ett team, kunder eller användare? Vad hände, och vad gjor",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 7376,
+    "firstTokenMs": 6378,
+    "tokensIn": 918,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

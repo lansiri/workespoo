@@ -1,0 +1,35 @@
+{
+  "item": "verify-F1-regress130",
+  "caseId": "sv-nurse-11",
+  "run": 2,
+  "raw": "null",
+  "rawParsed": null,
+  "firstAttemptValid": false,
+  "validationError": ": Invalid input: expected object, received null",
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "http": [
+    {
+      "status": 429,
+      "ms": 298
+    },
+    {
+      "status": 429,
+      "ms": 434
+    },
+    {
+      "status": 429,
+      "ms": 248
+    }
+  ],
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 41047,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

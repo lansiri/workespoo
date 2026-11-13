@@ -1,0 +1,21 @@
+{
+  "item": "turn-extractor",
+  "role": "live",
+  "schema": "ExtractorOutput",
+  "calls": 18,
+  "ok": 18,
+  "failed": 0,
+  "neededRetry": 2,
+  "latencyMs": {
+    "p50": 2409,
+    "p90": 22719
+  },
+  "firstTokenMs": {
+    "p50": 2408,
+    "p90": 22718
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": []
+}

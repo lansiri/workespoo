@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "en-people",
+  "run": 2,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need respond as interviewer next reply following instructions. Should analyze target: Ask who they worked with or for (team, customers, patients, users) and own part. Note-taker hint: Ask who they supported in IT support; tools already covered. Already noted laptop setup, Jira tickets, password resets. Should have at most 2 short sentences max35 words, end exactly one question. Can neutral ack max6 words. No praise/j",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1704,
+    "firstTokenMs": 597,
+    "tokensIn": 912,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

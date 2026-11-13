@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "fi-asks-unknown",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Järjestäjät voivat auttaa tuossa. Millaista työtä etsit seuraavaksi?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 941,
+    "firstTokenMs": 586,
+    "tokensIn": 1002,
+    "tokensOut": 35,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

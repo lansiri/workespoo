@@ -1,0 +1,28 @@
+{
+  "item": "match-reasons",
+  "caseId": "fi-onepair-07",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P4",
+        "text": "Your card mentions installing and repairing door locks; the posting asks for lock and locking system installation, maintenance, and repairs."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 10272,
+    "firstTokenMs": 10272,
+    "tokensIn": 529,
+    "tokensOut": 141,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

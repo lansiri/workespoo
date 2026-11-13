@@ -1,0 +1,120 @@
+{
+  "caseId": "en-mobile-fluent-fi",
+  "run": 4,
+  "label": "en-mobile-fluent-fi.4",
+  "startedAt": 211619,
+  "endedAt": 225176,
+  "ok": true,
+  "error": null,
+  "timedOut": false,
+  "schemaOk": false,
+  "schemaErr": "requirements.0.language Invalid input: expected string, received undefined; requirements.1.language Invalid input: expected string, received undefined; requirements.1.years Invalid input: expected number, received undefined",
+  "requirements": 7,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 13556,
+    "firstTokenMs": 13556,
+    "tokensIn": 2527,
+    "tokensOut": 1184,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  },
+  "data": {
+    "title": "Mobile Developer",
+    "summary": "The role involves developing iOS and Android applications, including digital identity and mobile security features. The work is mostly remote but requires residence in Finland.",
+    "requirements": [
+      {
+        "text": "At least five years of mobile application development experience",
+        "sentence": 2,
+        "kind": "must",
+        "category": "experience",
+        "years": 5,
+        "esco": [
+          "K14"
+        ],
+        "statutory": "none",
+        "questionType": "years",
+        "question": "Would someone who has done mobile application development, with fewer than 5 years, be worth a conversation?",
+        "why": "The posting makes extensive hands-on mobile application development experience mandatory."
+      },
+      {
+        "text": "Experience with both iOS and Android development",
+        "sentence": 2,
+        "kind": "nice",
+        "category": "experience",
+        "esco": [
+          "K14"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "At least five completed iOS and Android mobile projects",
+        "sentence": 3,
+        "kind": "must",
+        "category": "experience",
+        "esco": [
+          "K14"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Experience with digital identity, eID, mobile wallets or credentials",
+        "sentence": 4,
+        "kind": "must",
+        "category": "experience",
+        "esco": [
+          "K14"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Experience implementing mobile device security features",
+        "sentence": 12,
+        "kind": "must",
+        "category": "experience",
+        "esco": [
+          "K14"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Fluent spoken and written Finnish",
+        "sentence": 21,
+        "kind": "must",
+        "category": "language",
+        "language": "fi",
+        "esco": [],
+        "statutory": "none",
+        "questionType": "language",
+        "question": "Is Finnish needed from day one, or could someone start in English and build up Finnish on the job?",
+        "why": "The posting requires fluent spoken and written Finnish for a role listed with English as a work language."
+      },
+      {
+        "text": "Already reside in Finland",
+        "sentence": 16,
+        "kind": "must",
+        "category": "other",
+        "esco": [],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      }
+    ],
+    "dropped": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "caseId": "fi-prose-chef",
+  "run": 1,
+  "label": "fi-prose-chef.1",
+  "startedAt": 56,
+  "endedAt": 25481,
+  "ok": false,
+  "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.1.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.2.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.3.language: Invalid string: must match pattern /^[a-z]{2}$/; requ",
+  "timedOut": false,
+  "schemaOk": false,
+  "schemaErr": null,
+  "requirements": null,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 25346,
+    "firstTokenMs": 14760,
+    "tokensIn": 7471,
+    "tokensOut": 2304,
+    "ok": false,
+    "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.1.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.2.language: Invalid string: must match pattern /^[a-z]{2}$/; requirements.3.language: Invalid string: must match pattern /^[a-z]{2}$/; requ",
+    "attempts": 2
+  },
+  "data": null
+}

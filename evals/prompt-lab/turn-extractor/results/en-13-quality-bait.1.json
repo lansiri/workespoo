@@ -1,0 +1,67 @@
+{
+  "item": "turn-extractor",
+  "caseId": "en-13-quality-bait",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "en",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Sales reporting",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1",
+          "T3.S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Excel",
+        "kind": "tool",
+        "evidence": [
+          "T3.S1-S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Pivot tables and VLOOKUPs",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "hasExample": false
+      },
+      {
+        "ref": "new",
+        "phrase": "Power BI",
+        "kind": "tool",
+        "evidence": [
+          "T3.S3"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "recent_work": "covered",
+      "tools": "covered"
+    },
+    "flags": [],
+    "note": "Excel reporting tasks covered; ask for a specific report example and how Power BI is used."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2984,
+    "firstTokenMs": 2982,
+    "tokensIn": 1005,
+    "tokensOut": 161,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

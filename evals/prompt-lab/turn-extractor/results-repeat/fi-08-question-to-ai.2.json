@@ -1,0 +1,42 @@
+{
+  "item": "turn-extractor",
+  "caseId": "fi-08-question-to-ai",
+  "run": 2,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "lang": "fi",
+    "signals": [
+      {
+        "ref": "s1",
+        "phrase": "Business studies",
+        "kind": "knowledge",
+        "evidence": [
+          "T5.S1"
+        ],
+        "hasExample": false
+      }
+    ],
+    "coverage": {
+      "beyond": "covered",
+      "looking_for": "thin"
+    },
+    "flags": [
+      "short",
+      "question_to_ai"
+    ],
+    "note": "Business studies already noted; ask what work they want next and whether they prefer to continue in English."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1331,
+    "firstTokenMs": 1330,
+    "tokensIn": 995,
+    "tokensOut": 80,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

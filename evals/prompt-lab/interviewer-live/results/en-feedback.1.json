@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "en-feedback",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I don't rate answers, and nobody gets a score or ranking. What kind of work are you looking for next?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 847,
+    "firstTokenMs": 531,
+    "tokensIn": 886,
+    "tokensOut": 30,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

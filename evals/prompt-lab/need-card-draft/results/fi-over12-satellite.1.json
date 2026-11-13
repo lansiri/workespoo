@@ -1,0 +1,194 @@
+{
+  "item": "need-card-draft",
+  "caseId": "fi-over12-satellite",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "title": "Development Manager, Satellite Technologies",
+    "summary": "The role develops satellite-based services, business opportunities and technology pilots for critical communications. It involves international cooperation, standards work, research projects and assessment of new solutions.",
+    "requirements": [
+      {
+        "text": "Knowledge of satellite technologies and satellite-based services",
+        "kind": "must",
+        "category": "skill",
+        "sentence": 24,
+        "esco": [
+          "K1",
+          "K3"
+        ],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Business development expertise",
+        "kind": "must",
+        "category": "skill",
+        "sentence": 25,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Product development or technology development expertise",
+        "kind": "must",
+        "category": "skill",
+        "sentence": 26,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Experience leading projects or development programmes",
+        "kind": "must",
+        "category": "experience",
+        "sentence": 27,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Ability to work on research, development and innovation projects",
+        "kind": "must",
+        "category": "skill",
+        "sentence": 28,
+        "esco": [
+          "K20"
+        ],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Ability to assess technologies technically and commercially",
+        "kind": "must",
+        "category": "skill",
+        "sentence": 29,
+        "esco": [
+          "K27",
+          "K28"
+        ],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Good collaboration, communication and networking skills",
+        "kind": "must",
+        "category": "other",
+        "sentence": 30,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'good collaboration, communication and networking skills' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting asks for broad interpersonal skills without describing how they are used in the role."
+      },
+      {
+        "text": "Fluent English for an international working environment",
+        "kind": "must",
+        "category": "language",
+        "sentence": 31,
+        "esco": [],
+        "language": "en",
+        "years": null,
+        "statutory": "none",
+        "questionType": "language",
+        "question": "Is English needed from day one, or could someone start in Finnish and build up English on the job?",
+        "why": "The posting asks for fluent English because the role involves an international working environment."
+      },
+      {
+        "text": "Personnel security clearance for the selected candidate",
+        "kind": "must",
+        "category": "authorisation",
+        "sentence": 63,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Certificate from a drug test",
+        "kind": "must",
+        "category": "authorisation",
+        "sentence": 66,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Knowledge of satellite communications, Earth observation or GNSS",
+        "kind": "nice",
+        "category": "skill",
+        "sentence": 33,
+        "esco": [
+          "K1",
+          "K22",
+          "K23"
+        ],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Knowledge of 3GPP NTN and satellite-mobile network integration",
+        "kind": "nice",
+        "category": "skill",
+        "sentence": 34,
+        "esco": [],
+        "language": null,
+        "years": null,
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      }
+    ],
+    "dropped": []
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 39051,
+    "firstTokenMs": 39050,
+    "tokensIn": 4409,
+    "tokensOut": 1257,
+    "ok": true,
+    "error": null,
+    "attempts": 3
+  }
+}

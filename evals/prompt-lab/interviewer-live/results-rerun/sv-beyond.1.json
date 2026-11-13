@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "sv-beyond",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "I need respond in Swedish, max 2 sentences 35 words, exactly one question at end. Should target ask outside main job: studies volunteering side projects earlier different job. Already noted payroll processing onboarding don't ask again. Recent answer HR chief employees salary questions. Should have acknowledgement neutral <=6 words optional. Ask open question plain. Could say \"Tack. Vad har du gjort utanför ditt huvudsakliga arbete",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1628,
+    "firstTokenMs": 741,
+    "tokensIn": 854,
+    "tokensOut": 90,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

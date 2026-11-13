@@ -1,0 +1,20 @@
+{
+  "item": "card-render",
+  "caseId": "b-en-12",
+  "run": 2,
+  "role": "analyst",
+  "kind": "text",
+  "ok": true,
+  "text": "{\"items\":[{\"i\":0,\"phrase\":\"Delivery driving\",\"text\":\"They drove a delivery van for a postal service.\"}],\"summary\":\"They list customer service as a skill and drove a delivery van for a postal service.\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2972,
+    "firstTokenMs": 2383,
+    "tokensIn": 518,
+    "tokensOut": 194,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

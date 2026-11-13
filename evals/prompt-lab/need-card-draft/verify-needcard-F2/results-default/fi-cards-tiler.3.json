@@ -1,0 +1,17 @@
+{
+  "caseId": "fi-cards-tiler",
+  "run": 3,
+  "ok": false,
+  "error": "Output was not parseable JSON: Expected ',' or ']' after array element in JSON at position 1268",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 21482,
+    "firstTokenMs": 10203,
+    "tokensIn": 5231,
+    "tokensOut": 1600,
+    "ok": false,
+    "error": "Output was not parseable JSON: Expected ',' or ']' after array element in JSON at position 1268",
+    "attempts": 2
+  }
+}

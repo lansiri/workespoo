@@ -1,0 +1,132 @@
+{
+  "caseId": "fi-prose-chef",
+  "run": 3,
+  "label": "fi-prose-chef.3",
+  "startedAt": 142080,
+  "endedAt": 155907,
+  "ok": true,
+  "error": null,
+  "timedOut": false,
+  "schemaOk": false,
+  "schemaErr": "requirements.0.language Invalid input: expected string, received undefined; requirements.1.language Invalid input: expected string, received undefined; requirements.1.years Invalid input: expected number, received undefined",
+  "requirements": 8,
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 13827,
+    "firstTokenMs": 13826,
+    "tokensIn": 3264,
+    "tokensOut": 1297,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  },
+  "data": {
+    "title": "Head Chef",
+    "summary": "The role leads a small kitchen team producing lunches and catering services. It also involves developing the food offering and supporting business growth.",
+    "requirements": [
+      {
+        "text": "At least 3 years as a head chef or shift supervisor in Finland",
+        "sentence": 5,
+        "kind": "must",
+        "category": "experience",
+        "years": 3,
+        "esco": [
+          "K4"
+        ],
+        "statutory": "none",
+        "questionType": "years",
+        "question": "Would someone who has done head chef or shift supervisor work, with fewer than 3 years, be worth a conversation?",
+        "why": "The posting requires prior head chef or shift supervisor experience in Finland for a set minimum period."
+      },
+      {
+        "text": "Ability to independently lead a kitchen and a small team",
+        "sentence": 6,
+        "kind": "nice",
+        "category": "skill",
+        "esco": [
+          "K4",
+          "K26"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Passion for hands-on kitchen work",
+        "sentence": 7,
+        "kind": "nice",
+        "category": "other",
+        "esco": [],
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'passion for hands-on kitchen work' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting emphasises passion for kitchen work and hands-on activity rather than computer-based work."
+      },
+      {
+        "text": "Skill in making tasty homemade food with fresh ingredients",
+        "sentence": 12,
+        "kind": "nice",
+        "category": "skill",
+        "esco": [
+          "K1",
+          "K3",
+          "K20"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Developmental leadership and ability to inspire a team",
+        "sentence": 13,
+        "kind": "nice",
+        "category": "other",
+        "esco": [],
+        "statutory": "none",
+        "questionType": "vague",
+        "question": "What does 'developmental leadership' look like in this job? One concrete example helps us find people who have done it.",
+        "why": "The posting highlights developmental leadership and inspiring others without describing specific examples."
+      },
+      {
+        "text": "Broad professional expertise to develop the business and team",
+        "sentence": 13,
+        "kind": "nice",
+        "category": "skill",
+        "esco": [
+          "K4",
+          "K20"
+        ],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Valid hygiene passport",
+        "sentence": 28,
+        "kind": "must",
+        "category": "authorisation",
+        "esco": [],
+        "statutory": "law",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      },
+      {
+        "text": "Passenger car driving licence",
+        "sentence": 30,
+        "kind": "must",
+        "category": "authorisation",
+        "esco": [],
+        "statutory": "none",
+        "questionType": "none",
+        "question": null,
+        "why": null
+      }
+    ],
+    "dropped": []
+  }
+}

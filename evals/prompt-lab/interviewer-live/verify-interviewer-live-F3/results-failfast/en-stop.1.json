@@ -1,0 +1,21 @@
+{
+  "caseId": "en-stop",
+  "run": 1,
+  "deadlineMs": 2000,
+  "modelReply": true,
+  "firstTokenMs": 727,
+  "endedMs": 826,
+  "aborted": false,
+  "text": "[[STOP]]",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 826,
+    "firstTokenMs": 727,
+    "tokensIn": 889,
+    "tokensOut": 10,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

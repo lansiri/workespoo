@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "en-short",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Okay. What did a typical day look like, from starting your shift to finishing your orders?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 790,
+    "firstTokenMs": 514,
+    "tokensIn": 960,
+    "tokensOut": 26,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

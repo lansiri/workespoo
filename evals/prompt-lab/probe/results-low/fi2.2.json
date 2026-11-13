@@ -1,0 +1,20 @@
+{
+  "item": "probe-ttfb",
+  "caseId": "fi2",
+  "run": 2,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Valmennat siis lasten salibandyjoukkuetta, pidät harjoitukset ja sovit kisamatkoista vanhempien kanssa. Kerro yksi harjoitus tai tilanne, joka sujui erityisen hyvin: mitä sinä teit?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2870,
+    "firstTokenMs": 2145,
+    "tokensIn": 900,
+    "tokensOut": 237,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

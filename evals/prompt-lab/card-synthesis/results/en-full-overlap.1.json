@@ -1,0 +1,158 @@
+{
+  "item": "card-synthesis",
+  "caseId": "en-full-overlap",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "headline": "Lunch cooking, allergen control and kitchen ordering",
+    "summary": "They cook lunches in a staff restaurant, prepare soups, sauces and bread, and order supplies with Jamix. They also manage allergen markings and food safety records and hold a hygiene passport.",
+    "signals": [
+      {
+        "phrase": "Cooking lunches",
+        "kind": "skill",
+        "evidence": [
+          "T1.S1-S2"
+        ],
+        "from": [
+          "s1",
+          "s3"
+        ],
+        "rendering": "They prepare daily lunch service with two warm dishes, a soup and a salad bar."
+      },
+      {
+        "phrase": "Mass catering",
+        "kind": "domain",
+        "evidence": [
+          "T1.S1-S2"
+        ],
+        "from": [
+          "s2"
+        ],
+        "rendering": "They work in a staff restaurant serving about 300 lunches a day."
+      },
+      {
+        "phrase": "Checking menus and deliveries",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [],
+        "rendering": "They check the menu and deliveries before starting the soups and sauces."
+      },
+      {
+        "phrase": "Preparing soups and sauces",
+        "kind": "skill",
+        "evidence": [
+          "T3.S1"
+        ],
+        "from": [
+          "s4",
+          "s5"
+        ],
+        "rendering": "They prepare soups and sauces as part of the morning kitchen routine."
+      },
+      {
+        "phrase": "Baking bread",
+        "kind": "skill",
+        "evidence": [
+          "T3.S2"
+        ],
+        "from": [
+          "s6"
+        ],
+        "rendering": "They bake the bread needed for each day."
+      },
+      {
+        "phrase": "Allergen labelling",
+        "kind": "knowledge",
+        "evidence": [
+          "T5.S1-S2"
+        ],
+        "from": [
+          "s7",
+          "s8"
+        ],
+        "rendering": "They mark dishes for gluten, lactose and nuts and update markings when ingredients change."
+      },
+      {
+        "phrase": "Checking ingredient labels",
+        "kind": "skill",
+        "evidence": [
+          "T5.S2"
+        ],
+        "from": [
+          "s9"
+        ],
+        "rendering": "They check ingredient labels and identified milk in a changed sauce base before lunch service."
+      },
+      {
+        "phrase": "Food safety records",
+        "kind": "skill",
+        "evidence": [
+          "T7.S1"
+        ],
+        "from": [
+          "s10",
+          "s11"
+        ],
+        "rendering": "They complete self-monitoring records, including morning fridge temperatures and cooling logs."
+      },
+      {
+        "phrase": "Food hygiene",
+        "kind": "knowledge",
+        "evidence": [
+          "T7.S1-S2"
+        ],
+        "from": [
+          "s12",
+          "s13"
+        ],
+        "rendering": "They hold a hygiene passport and apply food hygiene procedures through temperature and cooling records."
+      },
+      {
+        "phrase": "Jamix",
+        "kind": "tool",
+        "evidence": [
+          "T9.S1"
+        ],
+        "from": [
+          "s14",
+          "s17"
+        ],
+        "rendering": "They use Jamix for recipes and ordering."
+      },
+      {
+        "phrase": "Ordering supplies",
+        "kind": "skill",
+        "evidence": [
+          "T9.S1-S2"
+        ],
+        "from": [
+          "s15",
+          "s16"
+        ],
+        "rendering": "They order dry goods and vegetables twice a week."
+      }
+    ],
+    "roles": [
+      "À la carte cook",
+      "Head chef"
+    ],
+    "rolesEvidence": [
+      "T11.S1"
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 57174,
+    "firstTokenMs": 57173,
+    "tokensIn": 1431,
+    "tokensOut": 1522,
+    "ok": true,
+    "error": null,
+    "attempts": 3
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "item": "interviewer-live",
+  "caseId": "fi-beyond",
+  "run": 1,
+  "role": "live",
+  "kind": "text",
+  "ok": true,
+  "text": "Kiitos. Mitä olet tehnyt päätyön ulkopuolella, esimerkiksi opiskeluja, vapaaehtoistyötä tai sivuprojekteja?",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1046,
+    "firstTokenMs": 512,
+    "tokensIn": 957,
+    "tokensOut": 53,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}

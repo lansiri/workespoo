@@ -1,0 +1,21 @@
+{
+  "item": "need-card-draft",
+  "caseId": "fi-prose-chef",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": false,
+  "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+  "rawOnFailure": "{\n  \"title\": \"Head Chef\",\n  \"summary\": \"The role involves leading a small kitchen team serving restaurant lunches and catering customers. It combines hands-on cooking with developing the food offering, team and catering business.\",\n  \"requirements\": [\n    {\n      \"text\": \"At least 3 years as a head chef or shift supervisor in Finland\",\n      \"sentence\": 5,\n      \"kind\": \"must\",\n      \"category\": \"experience\",\n      \"years\": 3,\n      \"esco\": [\n        \"K4\"\n      ],\n      \"statutory\": \"none\",\n      \"questionType\": \"years\",\n      \"question\": \"Would someone who has done head chef or shift supervisor work, with fewer than 3 years, be worth a conversation?\",\n      \"why\": \"The posting requires prior head chef or shift supervisor experience for a set minimum period.\"\n    },\n    {\n      \"text\": \"Ability to independently lead a kitchen and a small team\",\n      \"sentence\": 6,\n      \"kind\": \"nice\",\n      \"category\": \"skill\",\n      \"esco\": [\n        \"K4\",\n        \"K26\"\n      ],\n      \"statutory\": \"none\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    },\n    {\n      \"text\": \"Passion for hands-on kitchen work\",\n      \"sentence\": 7,\n      \"kind\": \"nice\",\n      \"category\": \"other\",\n      \"esco\": [],\n      \"statutory\": \"none\",\n      \"questionType\": \"vague\",\n      \"question\": \"What does 'passion for hands-on kitchen work' look like in this job? One concrete example helps us find people who have done it.\",\n      \"why\": \"The posting emphasises passion for kitchen work without describing how it is demonstrated.\"\n    },\n    {\n      \"text\": \"Ability to make tasty food from scratch using fresh ingredients\",\n      \"sentence\": 12,\n      \"kind\": \"nice\",\n      \"category\": \"skill\",\n      \"esco\": [\n        \"K1\",\n        \"K3\"\n      ],\n      \"statutory\": \"none\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    },\n    {\n      \"text\": \"Development-focused leadership and ability to inspire others\",\n      \"sentence\": 13,\n      \"kind\": \"nice\",\n      \"category\": \"skill\",\n      \"esco\": [\n        \"K4\",\n        \"K26\"\n      ],\n      \"statutory\": \"none\",\n      \"questionType\": \"vague\",\n      \"question\": \"What does 'development-focused leadership' look like in this job? One concrete example helps us find people who have done it.\",\n      \"why\": \"The posting names development-focused leadership as a strength but gives no concrete example.\"\n    },\n    {\n      \"text\": \"Broad professional expertise for business and team development\",\n      \"sentence\": 13,\n      \"kind\": \"nice\",\n      \"category\": \"skill\",\n      \"esco\": [\n        \"K4\",\n        \"K20\"\n      ],\n      \"statutory\": \"none\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    },\n    {\n      \"text\": \"Food hygiene passport\",\n      \"sentence\": 28,\n      \"kind\": \"must\",\n      \"category\": \"authorisation\",\n      \"esco\": [],\n      \"statutory\": \"law\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    },\n    {\n      \"text\": \"Passenger car driving licence\",\n      \"sentence\": 30,\n      \"kind\": \"must\",\n      \"category\": \"authorisation\",\n      \"esco\": [],\n      \"statutory\": \"none\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    }\n  ],\n  \"dropped\": []\n}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 41693,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "All LLM providers failed for role \"analyst\". Last error: verda:kimi-k3-1-pro returned HTTP 429 (rate_limit_exceeded)",
+    "attempts": 3
+  }
+}

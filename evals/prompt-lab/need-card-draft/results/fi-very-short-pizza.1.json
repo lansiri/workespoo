@@ -1,0 +1,21 @@
+{
+  "item": "need-card-draft",
+  "caseId": "fi-very-short-pizza",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": false,
+  "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/",
+  "rawOnFailure": "{\n  \"title\": \"Restaurant Worker\",\n  \"summary\": \"The role involves preparing food, maintaining kitchen cleanliness and hygiene, and handling raw ingredients safely. It may also include helping organise stock and receive orders.\",\n  \"requirements\": [\n    {\n      \"sentence\": 1,\n      \"text\": \"At least two years of experience as a pizza cook\",\n      \"kind\": \"must\",\n      \"category\": \"experience\",\n      \"years\": 2,\n      \"esco\": [\n        \"K22\",\n        \"K9\"\n      ],\n      \"statutory\": \"none\",\n      \"questionType\": \"none\",\n      \"question\": null,\n      \"why\": null\n    }\n  ],\n  \"dropped\": []\n}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 29395,
+    "firstTokenMs": 26242,
+    "tokensIn": 4553,
+    "tokensOut": 559,
+    "ok": false,
+    "error": "requirements.0.language: Invalid string: must match pattern /^[a-z]{2}$/",
+    "attempts": 4
+  }
+}

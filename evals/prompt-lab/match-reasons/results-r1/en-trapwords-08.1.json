@@ -1,0 +1,33 @@
+{
+  "item": "match-reasons",
+  "caseId": "en-trapwords-08",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "reasons": [
+      {
+        "signal": "S1",
+        "sentence": "P2",
+        "text": "Your card mentions two published Android apps in Kotlin; the posting asks for at least five years of mobile application development experience."
+      },
+      {
+        "signal": "S2",
+        "sentence": "P6",
+        "text": "Your card mentions fingerprint login with the phone's secure key storage; the posting asks for biometric authentication or secure key storage."
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 7183,
+    "firstTokenMs": 7182,
+    "tokensIn": 551,
+    "tokensOut": 290,
+    "ok": true,
+    "error": null,
+    "attempts": 1
+  }
+}
