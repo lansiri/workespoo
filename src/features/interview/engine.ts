@@ -262,7 +262,44 @@ async function* closingEvents(
 function previousAnswerOf(turns: readonly TurnRow[], beforeIndex: number): TurnRow | undefined {
   return [...turns]
     .reverse()
-    .find((t) => t.role === "participant" && t.kind === "answer" && t.index < beforeIndex && t.redactedAt === null);
+    .find(
+      (t) =>
+        t.role === "participant" &&
+        t.kind === "answer" &&
+        t.index < beforeIndex &&
+        t.redactedAt === null &&
+        preCheck(t.text) !== "delete",
+    );
+}
+
+const DELETED_LINES = Object.values(INTERVIEW_LINES).map((l) => l.deleted);
+const isQuestionTurn = (t: TurnRow) =>
+  t.role === "interviewer" && !!t.target && (t.kind === "opening" || t.kind === "question" || t.kind === "probe");
+const isDeletedReply = (t: TurnRow) => t.kind === "question" && t.role === "interviewer" && DELETED_LINES.some((l) => t.text.startsWith(l));
+
+/**
+ * The target of a question that was pending when an answer was removed. The removal's reply
+ * re-asked another area in its place, so the pending question has to be asked again later.
+ */
+export function lostPendingTarget(turns: readonly TurnRow[]): CoverageArea | null {
+  const lost = new Set<CoverageArea>();
+  for (const d of turns.filter(isDeletedReply)) {
+    const before = turns.filter((t) => t.index < d.index && !isDeletedReply(t));
+    const pending = [...before].reverse().find(isQuestionTurn);
+    if (!pending?.target || pending.target === d.target) continue;
+    const answered = before.some(
+      (t) =>
+        t.index > pending.index &&
+        t.role === "participant" &&
+        t.kind === "answer" &&
+        t.redactedAt === null &&
+        preCheck(t.text) !== "delete",
+    );
+    if (answered) continue;
+    const reasked = turns.some((t) => t.index > d.index && isQuestionTurn(t) && !isDeletedReply(t) && t.target === pending.target);
+    if (!reasked) lost.add(pending.target);
+  }
+  return [...lost].at(-1) ?? null;
 }
 
 /**
@@ -732,7 +769,7 @@ async function* planAndReply(
   const byId = new Map(live.map((s) => [s.id, s]));
 
   /* 3. The deterministic planner. */
-  const plan = planNext({
+  let plan = planNext({
     mode: row.mode,
     questionsAsked: state.questionsAsked,
     elapsedSeconds: elapsedSeconds(state),
@@ -752,6 +789,13 @@ async function* planAndReply(
       .filter((s): s is NonNullable<typeof s> => !!s)
       .map((s) => ({ id: s.id, kind: s.kind, hasExample: s.hasExample })),
   });
+
+  // A removal replaced the question that was pending: ask it now, without counting it twice.
+  const lostTarget = lostPendingTarget(turns);
+  const reaskLost = lostTarget !== null && !ctx.repairFinal && !(plan.action === "close" && plan.reason === "time_cap");
+  if (reaskLost) {
+    plan = { action: "ask", kind: "question", target: lostTarget, reask: false, situation: null, probeSignalId: null };
+  }
 
   const sLang = scriptLang(state, turns, ctx.detected);
 
@@ -871,7 +915,7 @@ async function* planAndReply(
     return {
       ...s,
       stage: "awaiting_answer",
-      questionsAsked: s.questionsAsked + 1,
+      questionsAsked: reaskLost ? s.questionsAsked : s.questionsAsked + 1,
       repairsInRow: 0,
       coverage,
       reasked,

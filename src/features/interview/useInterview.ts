@@ -76,7 +76,7 @@ export function reduce(state: InterviewUiState, action: Action): InterviewUiStat
       return { ...state, transcript: state.transcript.filter((l) => !(l.role === "participant" && l.index === action.index)) };
     case "redactedPrevious": {
       const answers = state.transcript.filter((l) => l.role === "participant");
-      const previous = answers.at(-2);
+      const previous = answers.slice(0, -1).findLast((l) => preCheck(l.text) !== "delete");
       return previous ? { ...state, transcript: state.transcript.filter((l) => l !== previous) } : state;
     }
     case "event":

@@ -58,7 +58,7 @@ export const interviewMessages = {
     modeExpressHelp: "Kolme lyhyttä kysymystä, noin puolitoista minuuttia.",
     modeFull: "Täysi haastattelu",
     modeFullHelp: "Muutama kysymys enemmän, noin neljä minuuttia.",
-    modelLine: "Sanojasi käsittelee avoimen painotuksen tekoälymalli (Kimi K3.1), jota Verda ajaa palvelimillaan Suomessa.",
+    modelLine: "Sanojasi käsittelee avoimin painoin julkaistu tekoälymalli (Kimi K3.1), jota Verda ajaa palvelimillaan Suomessa.",
     voiceProcessorBrowser: "selaimesi puheentunnistuspalvelu",
     cvLabel: "Liitä CV tähän, jos haluat.",
     cvHelp: "Sitä käytetään vain kysymysten valitsemiseen, eikä sitä säilytetä.",

@@ -1102,4 +1102,80 @@ describe("second pass, block C: removing an answer", () => {
     await expect(removeAnswer(t.db, interviewId, 3)).rejects.toMatchObject({ status: 409 });
     await settleInterview(t.db, interviewId);
   });
+
+  it("12. a late extraction of a removed answer writes no note, coverage or flags", async () => {
+    let release: () => void = () => {};
+    const gate = new Promise<void>((r) => (release = r));
+    installFake({
+      extract: (() =>
+        gate.then(() => ({
+          lang: "en",
+          signals: [],
+          coverage: { recent_work: "covered" },
+          flags: ["wants_stop"],
+          note: "ask about forklifts",
+        }))) as unknown as () => object,
+    });
+    const { interviewId } = await startInterview(t.db, request({ mode: "full" }));
+    await say(interviewId, WORK);
+    await removeAnswer(t.db, interviewId, 1);
+    release();
+    await settleInterview(t.db, interviewId);
+    const st = readState((await loadInterview(t.db, interviewId))!);
+    expect(st.lastNote).toBe("");
+    expect(st.coverage.recent_work).toBe("asked");
+    expect(st.flagCounts.wants_stop ?? 0).toBe(0);
+    const done = doneOf(await say(interviewId, SECOND));
+    expect(done.kind).not.toBe("closing");
+    await settleInterview(t.db, interviewId);
+  }, 20000);
+
+  it("12. removing an answer keeps the pending question: it is asked next, express", async () => {
+    installFake();
+    const { interviewId } = await startInterview(t.db, request());
+    await say(interviewId, WORK); // Q2 (example) now pending
+    await settleInterview(t.db, interviewId);
+    await removeAnswer(t.db, interviewId, 1); // re-asks recent_work
+    const r1 = doneOf(await say(interviewId, WORK));
+    await settleInterview(t.db, interviewId);
+    let turns = await turnsOf(interviewId);
+    expect(turns.find((x) => x.index === r1.turnIndex)!.target).toBe("example");
+    const r2 = doneOf(await say(interviewId, SECOND));
+    await settleInterview(t.db, interviewId);
+    turns = await turnsOf(interviewId);
+    expect(turns.find((x) => x.index === r2.turnIndex)!.target).toBe("looking_for");
+    const r3 = doneOf(await say(interviewId, "I would like a warehouse job near Espoo."));
+    expect(r3.kind).toBe("closing");
+    await settleInterview(t.db, interviewId);
+  });
+
+  it("12. 'delete this' while looking_for is pending does not use up looking_for, express", async () => {
+    installFake();
+    const { interviewId } = await startInterview(t.db, request());
+    await say(interviewId, WORK);
+    await settleInterview(t.db, interviewId);
+    await say(interviewId, SECOND); // Q3 looking_for pending
+    await settleInterview(t.db, interviewId);
+    await say(interviewId, "delete this");
+    await settleInterview(t.db, interviewId);
+    const r = doneOf(await say(interviewId, "I carried boxes and checked orders every day."));
+    await settleInterview(t.db, interviewId);
+    const turns = await turnsOf(interviewId);
+    expect(r.kind).toBe("question");
+    expect(turns.find((x) => x.index === r.turnIndex)!.target).toBe("looking_for");
+    expect(doneOf(await say(interviewId, "A warehouse job near Espoo.")).kind).toBe("closing");
+    await settleInterview(t.db, interviewId);
+  });
+
+  it("a second 'delete this' removes the earlier real answer, not the first command", async () => {
+    const { interviewId } = await twoAnswers();
+    await say(interviewId, "delete this");
+    await settleInterview(t.db, interviewId);
+    await say(interviewId, "delete this");
+    await settleInterview(t.db, interviewId);
+    const turns = await turnsOf(interviewId);
+    expect(turns.find((x) => x.index === 1)!.redactedAt).not.toBeNull();
+    expect(turns.find((x) => x.index === 3)!.redactedAt).not.toBeNull();
+    expect(turns.filter((x) => x.text === "delete this").every((x) => x.redactedAt === null)).toBe(true);
+  });
 });

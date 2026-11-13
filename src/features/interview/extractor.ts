@@ -310,6 +310,8 @@ async function extractTurn(db: Db, interviewId: string, turnIndex: number): Prom
   await withLock(`${interviewId}#extract`, async () => {
     const freshRows = await loadSignalRows(db, row.talentId);
     const freshTurns = await loadTurns(db, interviewId);
+    // The answer was removed while the model was working: nothing from it may land.
+    if (freshTurns.find((t) => t.index === turnIndex)?.redactedAt) return;
     const known = freshRows.map(rowToSignal);
     const liveCount = freshRows.filter((s) => s.interviewId === interviewId && s.status !== "removed").length;
     const turnViews = new Map<number, TurnView>(
