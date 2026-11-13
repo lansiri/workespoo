@@ -11,6 +11,19 @@ import { useMessages, useUiLang } from "@/lib/i18n/client";
 import { consentCopy } from "@/lib/i18n/content";
 import { interviewMessages } from "./messages";
 
+const CV_MAX_CHARS = 20000;
+
+/** Both acknowledgements are required before the interview can start. */
+export function canStartInterview(s: { interview: boolean; liveDemo: boolean; busy: boolean }): boolean {
+  return s.interview && s.liveDemo && !s.busy;
+}
+
+/** The speech service named from the voice configuration, in the page's language. */
+export function voiceServiceName(voice: VoiceConfig | null, browserName: string): string {
+  if (voice === null) return "";
+  return voice.adapter === "browser" ? browserName : voice.processor;
+}
+
 /** Consent, mode choice and start. No name is asked for here. */
 export function ConsentForm() {
   const m = useMessages(interviewMessages);
@@ -21,6 +34,7 @@ export function ConsentForm() {
   const [consentInterview, setConsentInterview] = useState(false);
   const [consentVoice, setConsentVoice] = useState(false);
   const [consentLiveDemo, setConsentLiveDemo] = useState(false);
+  const [cvText, setCvText] = useState("");
   const [mode, setMode] = useState<InterviewMode>("express");
   const [lang, setLang] = useState<UiLang>(uiLang);
   const [busy, setBusy] = useState(false);
@@ -40,6 +54,9 @@ export function ConsentForm() {
   }, []);
 
   const voiceAvailable = voice !== null && voice.adapter !== "none";
+  // The configured service, named in the page's language (the server's processor text is English).
+  const voiceService = voiceServiceName(voice, m.voiceProcessorBrowser);
+  const canStart = canStartInterview({ interview: consentInterview, liveDemo: consentLiveDemo, busy });
 
   async function start() {
     setBusy(true);
@@ -52,6 +69,7 @@ export function ConsentForm() {
           mode,
           uiLang: lang,
           consent: { interview: true, voiceVendor: voiceAvailable && consentVoice, liveDemo: consentLiveDemo },
+          ...(cvText.trim() !== "" ? { cvText: cvText.trim().slice(0, CV_MAX_CHARS) } : {}),
         }),
       });
       if (!res.ok) throw new Error(`start failed: ${res.status}`);
@@ -72,7 +90,7 @@ export function ConsentForm() {
         <li>{c.pointReview}</li>
         <li>{c.pointPrivate}</li>
         <li>{c.pointDontShare}</li>
-        <li>{fmt(c.pointModels, { modelProviders: m.modelProviders })}</li>
+        <li>{m.modelLine}</li>
       </ul>
       <p>
         <Link href="/how-it-works">{c.linkHow}</Link>
@@ -82,7 +100,7 @@ export function ConsentForm() {
         className="space-y-5"
         onSubmit={(e) => {
           e.preventDefault();
-          if (consentInterview && !busy) void start();
+          if (canStart) void start();
         }}
       >
         <fieldset className="space-y-3">
@@ -104,7 +122,7 @@ export function ConsentForm() {
                 onChange={(e) => setConsentVoice(e.target.checked)}
               />
               <span>
-                {fmt(c.checkVoice, { processor: voice.processor })} <em>{c.checkVoiceHelp}</em>
+                {fmt(c.checkVoice, { processor: voiceService })} <em>{c.checkVoiceHelp}</em>
               </span>
             </label>
           ) : null}
@@ -118,6 +136,22 @@ export function ConsentForm() {
             <span>{c.checkLiveDemo}</span>
           </label>
         </fieldset>
+
+        <div className="space-y-1">
+          <label htmlFor="cv-text" className="font-medium">
+            {m.cvLabel}
+          </label>
+          <p className="text-sm">{m.cvHelp}</p>
+          <textarea
+            id="cv-text"
+            data-testid="cv-text"
+            value={cvText}
+            onChange={(e) => setCvText(e.target.value)}
+            rows={5}
+            maxLength={CV_MAX_CHARS}
+            className="block w-full rounded-md border px-2 py-1"
+          />
+        </div>
 
         <fieldset className="space-y-2">
           <legend className="font-medium">{m.modeTitle}</legend>
@@ -172,7 +206,7 @@ export function ConsentForm() {
             {m.startError}
           </p>
         ) : null}
-        <Button type="submit" data-testid="start-interview" disabled={!consentInterview || busy}>
+        <Button type="submit" data-testid="start-interview" disabled={!canStart}>
           {busy ? m.starting : c.start}
         </Button>
       </form>

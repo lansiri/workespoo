@@ -10,6 +10,7 @@ import { interviewCopy } from "@/lib/i18n/content";
 import { PushToTalkButton } from "@/features/voice/PushToTalkButton";
 import { useVoice } from "@/features/voice/useVoice";
 import type { InterviewMode } from "@/contracts";
+import { preCheck } from "./commands";
 import { detectLang, isUiLang } from "./lang";
 import { interviewMessages } from "./messages";
 import { useInterview, type InterviewInitial } from "./useInterview";
@@ -168,6 +169,20 @@ export function InterviewRoom(props: { initial: InterviewInitial; mode: Intervie
           {interview.transcript.map((line, i) => (
             <li key={`${line.role}-${line.index}-${i}`} data-role={line.role}>
               <strong>{line.role === "interviewer" ? m.interviewer : m.you}:</strong> {line.text}
+              {line.role === "participant" && line.index > 0 && canAnswer && preCheck(line.text) !== "delete" ? (
+                <>
+                  {" "}
+                  <button
+                    type="button"
+                    data-testid="turn-remove"
+                    data-turn-index={line.index}
+                    className="text-sm underline"
+                    onClick={() => void interview.removeTurn(line.index)}
+                  >
+                    {c.removeAnswer}
+                  </button>
+                </>
+              ) : null}
             </li>
           ))}
         </ol>

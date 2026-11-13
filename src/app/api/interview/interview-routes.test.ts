@@ -25,6 +25,7 @@ vi.mock("@/features/card", () => ({
 import { POST as start } from "./route";
 import { POST as turn } from "./[id]/turn/route";
 import { GET as events } from "./[id]/events/route";
+import { POST as remove } from "./[id]/remove/route";
 import { POST as stop } from "./[id]/stop/route";
 
 let t: TestDb;
@@ -64,7 +65,7 @@ function frames(text: string): { id?: number; event: InterviewEvent }[] {
     }));
 }
 
-const START = { mode: "express", uiLang: "en", consent: { interview: true, voiceVendor: false, liveDemo: false } };
+const START = { mode: "express", uiLang: "en", consent: { interview: true, voiceVendor: false, liveDemo: true } };
 
 describe("interview routes", () => {
   it("POST /api/interview starts an interview and sets the talent session", async () => {
@@ -78,6 +79,9 @@ describe("interview routes", () => {
   it("rejects a start without consent and a malformed body", async () => {
     const noConsent = await start(post("/api/interview", { ...START, consent: { ...START.consent, interview: false } }), undefined as never);
     expect(noConsent.status).toBe(400);
+    const noDemo = await start(post("/api/interview", { ...START, consent: { ...START.consent, liveDemo: false } }), undefined as never);
+    expect(noDemo.status).toBe(400);
+    expect(h.talentId).toBeUndefined();
     const junk = await start(post("/api/interview", { nope: 1 }), undefined as never);
     expect(junk.status).toBe(400);
   });
@@ -85,7 +89,7 @@ describe("interview routes", () => {
   it("runs a turn as server-sent events, then serves the background events with ids and honours Last-Event-ID", async () => {
     const { interviewId } = await (await start(post("/api/interview", START), undefined as never)).json();
 
-    const res = await turn(post(`/api/interview/${interviewId}/turn`, { text: "I worked at a logistics centre receiving goods.", inputMode: "text" }, { "idempotency-key": "abc" }), ctx(interviewId));
+    const res = await turn(post(`/api/interview/${interviewId}/turn`, { text: "I worked at a logistics centre receiving goods.", inputMode: "text", clientTurnId: "client-abc" }), ctx(interviewId));
     expect(res.headers.get("content-type")).toBe("text/event-stream");
     const turnEvents = frames(await res.text()).map((f) => f.event);
     expect(turnEvents.map((e) => e.type)).toEqual(["turn.delta", "turn.delta", "turn.done"]);
@@ -136,6 +140,25 @@ describe("interview routes", () => {
     expect((await turn(post(`/api/interview/${interviewId}/turn`, { text: "", inputMode: "text" }), ctx(interviewId))).status).toBe(400);
   });
 
+  it("POST remove redacts one of the person's answers and replies with the confirmation and the same question again", async () => {
+    const { interviewId } = await (await start(post("/api/interview", START), undefined as never)).json();
+    await (await turn(post(`/api/interview/${interviewId}/turn`, { text: "I worked at a logistics centre receiving goods.", inputMode: "text" }), ctx(interviewId))).text();
+    await settleInterview(t.db, interviewId);
+    const res = await remove(post(`/api/interview/${interviewId}/remove`, { turnIndex: 1 }), ctx(interviewId));
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body.text.startsWith("Done, I've removed your last answer.")).toBe(true);
+    expect((await remove(post(`/api/interview/${interviewId}/remove`, { turnIndex: 1 }), ctx(interviewId))).status).toBe(404);
+    expect((await remove(post(`/api/interview/${interviewId}/remove`, { turnIndex: "x" }), ctx(interviewId))).status).toBe(400);
+    const mine = h.talentId;
+    h.talentId = "tal_someoneelse";
+    expect((await remove(post(`/api/interview/${interviewId}/remove`, { turnIndex: 1 }), ctx(interviewId))).status).toBe(403);
+    h.talentId = undefined;
+    expect((await remove(post(`/api/interview/${interviewId}/remove`, { turnIndex: 1 }), ctx(interviewId))).status).toBe(401);
+    h.talentId = mine;
+    await settleInterview(t.db, interviewId);
+  });
+
   it("stop ends the interview, and a turn after it is refused with 409", async () => {
     const { interviewId } = await (await start(post("/api/interview", START), undefined as never)).json();
     expect((await stop(post(`/api/interview/${interviewId}/stop`, {}), ctx(interviewId))).status).toBe(200);
@@ -152,16 +175,16 @@ describe("interview routes", () => {
     const answers = ["I worked at a logistics centre receiving goods.", "I used a scanner and a forklift every day.", "I work with drivers and the warehouse team."];
     let last: InterviewEvent[] = [];
     for (const [i, text] of answers.entries()) {
-      const res = await turn(post(`/api/interview/${interviewId}/turn`, { text, inputMode: "text" }, { "idempotency-key": `key-${i}` }), ctx(interviewId));
+      const res = await turn(post(`/api/interview/${interviewId}/turn`, { text, inputMode: "text", clientTurnId: `client-key-${i}` }), ctx(interviewId));
       last = frames(await res.text()).map((f) => f.event);
     }
     const done = last.find((e) => e.type === "turn.done");
     expect(done).toMatchObject({ kind: "closing", closing: true });
-    const retry = await turn(post(`/api/interview/${interviewId}/turn`, { text: answers[2], inputMode: "text" }, { "idempotency-key": "key-2" }), ctx(interviewId));
+    const retry = await turn(post(`/api/interview/${interviewId}/turn`, { text: answers[2], inputMode: "text", clientTurnId: "client-key-2" }), ctx(interviewId));
     expect(retry.status).toBe(200);
     expect(frames(await retry.text()).map((f) => f.event).find((e) => e.type === "turn.done")).toEqual(done);
     // A genuinely new answer is still refused.
-    const fresh = await turn(post(`/api/interview/${interviewId}/turn`, { text: "More", inputMode: "text" }, { "idempotency-key": "key-new" }), ctx(interviewId));
+    const fresh = await turn(post(`/api/interview/${interviewId}/turn`, { text: "More", inputMode: "text", clientTurnId: "client-key-new" }), ctx(interviewId));
     expect(fresh.status).toBe(409);
     await settleInterview(t.db, interviewId);
   });

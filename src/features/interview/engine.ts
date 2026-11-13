@@ -8,6 +8,7 @@ import {
   initialInterviewState,
   type CoverageArea,
   type InterviewEvent,
+  type InterviewState,
   type StartInterviewRequest,
   type StartInterviewResponse,
   type TurnKind,
@@ -31,11 +32,13 @@ import { newHandle, newId } from "@/lib/ids";
 import { chatStream, type LlmOptions } from "@/lib/llm";
 import { splitSentences } from "@/lib/sentences";
 import { preCheck, wordCount } from "./commands";
+import { seedsFromCv } from "./cv-seed";
 import { runExtraction } from "./extractor";
 import { publishEvent } from "./events";
 import { guardStream, type GuardResult } from "./guard";
 import { detectLang, isUiLang } from "./lang";
 import { planNext, type Plan } from "./planner";
+import { redactTurn } from "./remove";
 import { buildLivePrompt, type LiveTarget, type Situation } from "./prompts";
 import {
   acquireLock,
@@ -53,7 +56,6 @@ import {
   mutateState,
   readState,
   toTurn,
-  type EngineState,
 } from "./store";
 
 /** How long a turn waits for the previous answer's extraction before planning without it. */
@@ -61,6 +63,8 @@ export const PREVIOUS_EXTRACTION_WAIT_MS = 2000;
 /** How long ending the interview waits for outstanding extraction before synthesis. */
 export const FINISH_EXTRACTION_WAIT_MS = 8000;
 export const SETTLE_DEFAULT_TIMEOUT_MS = 30_000;
+/** The live reply must start within this, gateway wait and retries included (patch IL-2). */
+export const LIVE_DEADLINE_MS = 6000;
 
 type InterviewRow = NonNullable<Awaited<ReturnType<typeof loadInterview>>>;
 type TurnRow = Awaited<ReturnType<typeof loadTurns>>[number];
@@ -83,10 +87,14 @@ export async function startInterview(db: Db, request: StartInterviewRequest): Pr
   const lines = INTERVIEW_LINES[request.uiLang];
   const text = request.mode === "express" ? lines.openingExpress : lines.openingFull;
 
-  const state = initialInterviewState(request.uiLang, now.toISOString()) as EngineState;
+  const state = initialInterviewState(request.uiLang, now.toISOString());
   state.stage = "awaiting_answer";
   state.questionsAsked = 1;
   state.coverage.recent_work = "asked";
+  // The CV text lives only inside this call: what is kept is the validated seeds.
+  const hasCv = (request.cvText ?? "").trim() !== "";
+  const seeds = await seedsFromCv(db, request.cvText);
+  state.cvSeeds = request.mode === "express" ? seeds.slice(0, 1) : seeds.slice(0, 2);
 
   const turnId = newId("trn");
   await db.transaction(async (tx) => {
@@ -94,9 +102,8 @@ export async function startInterview(db: Db, request: StartInterviewRequest): Pr
       id: talentId,
       handle,
       liveDemo: request.consent.liveDemo,
-      purgeAfter: request.consent.liveDemo
-        ? new Date(now.getTime() + getEnv().LIVE_SESSION_TTL_HOURS * 3_600_000)
-        : null,
+      // Everyone who starts is a live demo session; the simulator clears this for synthetic people.
+      purgeAfter: new Date(now.getTime() + getEnv().LIVE_SESSION_TTL_HOURS * 3_600_000),
     });
     await tx.insert(interviewTable).values({
       id: interviewId,
@@ -140,6 +147,16 @@ export async function startInterview(db: Db, request: StartInterviewRequest): Pr
     },
   });
 
+  if (hasCv) {
+    await audit(db, {
+      actor: `talent:${talentId}`,
+      action: "cv.seeded",
+      subjectType: "interview",
+      subjectId: interviewId,
+      detail: { count: state.cvSeeds.length },
+    });
+  }
+
   const [opening] = await db.select().from(turnTable).where(eq(turnTable.id, turnId));
   return { interviewId, talentId, handle, opening: toTurn(opening!) };
 }
@@ -148,19 +165,19 @@ export async function startInterview(db: Db, request: StartInterviewRequest): Pr
  * Helpers
  * ---------------------------------------------------------------------------------------- */
 
-function elapsedSeconds(state: EngineState): number {
+function elapsedSeconds(state: InterviewState): number {
   return Math.max(0, (nowMs() - Date.parse(state.startedAt)) / 1000);
 }
 
 /** The language for scripted lines: the last detected participant language if known, else the UI language. */
-function scriptLang(state: EngineState, turns: readonly TurnRow[], current?: string | null): UiLang {
+function scriptLang(state: InterviewState, turns: readonly TurnRow[], current?: string | null): UiLang {
   if (isUiLang(current)) return current;
   const last = [...turns].reverse().find((t) => t.role === "participant" && isUiLang(t.lang));
   return last && isUiLang(last.lang) ? last.lang : state.uiLang;
 }
 
 /** The language of bank questions: the detected reply language if we have a bank for it. */
-function bankLang(state: EngineState, interviewLang: string, detected: string): UiLang {
+function bankLang(state: InterviewState, interviewLang: string, detected: string): UiLang {
   if (isUiLang(detected)) return detected;
   if (detected !== "unknown" && detected !== "und") return "en"; // a language without a bank
   if (isUiLang(interviewLang)) return interviewLang;
@@ -241,6 +258,125 @@ async function* closingEvents(
   yield* scriptedEvents(closing.text, closing.index, "closing", true);
 }
 
+/** The latest earlier answer that has not been removed. */
+function previousAnswerOf(turns: readonly TurnRow[], beforeIndex: number): TurnRow | undefined {
+  return [...turns]
+    .reverse()
+    .find(
+      (t) =>
+        t.role === "participant" &&
+        t.kind === "answer" &&
+        t.index < beforeIndex &&
+        t.redactedAt === null &&
+        preCheck(t.text) !== "delete",
+    );
+}
+
+const DELETED_LINES = Object.values(INTERVIEW_LINES).map((l) => l.deleted);
+const isQuestionTurn = (t: TurnRow) =>
+  t.role === "interviewer" && !!t.target && (t.kind === "opening" || t.kind === "question" || t.kind === "probe");
+const isDeletedReply = (t: TurnRow) => t.kind === "question" && t.role === "interviewer" && DELETED_LINES.some((l) => t.text.startsWith(l));
+
+/**
+ * The target of a question that was pending when an answer was removed. The removal's reply
+ * re-asked another area in its place, so the pending question has to be asked again later.
+ */
+export function lostPendingTarget(turns: readonly TurnRow[]): CoverageArea | null {
+  const lost = new Set<CoverageArea>();
+  for (const d of turns.filter(isDeletedReply)) {
+    const before = turns.filter((t) => t.index < d.index && !isDeletedReply(t));
+    const pending = [...before].reverse().find(isQuestionTurn);
+    if (!pending?.target || pending.target === d.target) continue;
+    const answered = before.some(
+      (t) =>
+        t.index > pending.index &&
+        t.role === "participant" &&
+        t.kind === "answer" &&
+        t.redactedAt === null &&
+        preCheck(t.text) !== "delete",
+    );
+    if (answered) continue;
+    const reasked = turns.some((t) => t.index > d.index && isQuestionTurn(t) && !isDeletedReply(t) && t.target === pending.target);
+    if (!reasked) lost.add(pending.target);
+  }
+  return [...lost].at(-1) ?? null;
+}
+
+/**
+ * Confirm a removal with the scripted line and ask the same area again with its fallback
+ * question. This is not a new question: the count and the planner's progress stay as they were.
+ */
+async function storeDeletedReply(
+  db: Db,
+  row: InterviewRow,
+  target: CoverageArea,
+  scriptLanguage: UiLang,
+  questionLanguage: UiLang,
+): Promise<{ index: number; text: string }> {
+  const turns = await loadTurns(db, row.id);
+  const question = fallbackQuestion(
+    questionLanguage,
+    { action: "ask", kind: "question", target, reask: false, situation: null, probeSignalId: null },
+    turns,
+    null,
+  );
+  const text = `${INTERVIEW_LINES[scriptLanguage].deleted} ${question}`;
+  const index = await storeTurn(db, row.id, {
+    role: "interviewer",
+    kind: "question",
+    target,
+    text,
+    sentences: splitSentences(text),
+  });
+  const next = await mutateState(db, row.id, (s) => ({
+    ...s,
+    stage: "awaiting_answer",
+    repairsInRow: 0,
+    coverage: { ...s.coverage, [target]: s.coverage[target] === "skipped" ? "skipped" : "asked" },
+  }));
+  await publishEvent(db, row.id, { type: "coverage.updated", areas: next.coverage });
+  return { index, text };
+}
+
+/**
+ * The remove control on one of the person's own answers. Blanks it, drops what only it
+ * supported, confirms with the scripted line and asks the same area again.
+ */
+export async function removeAnswer(
+  db: Db,
+  interviewId: string,
+  turnIndex: number,
+): Promise<{ turnIndex: number; text: string }> {
+  runtime().active.get(interviewId)?.abort();
+  await waitForPending(interviewId, PREVIOUS_EXTRACTION_WAIT_MS);
+  const release = await acquireLock(interviewId);
+  try {
+    const row = await loadInterview(db, interviewId);
+    if (!row) throw new HttpError(404, "not_found", "Interview not found");
+    const state = readState(row);
+    if (row.status !== "active" || state.stage === "closing" || state.stage === "synthesising") {
+      throw new HttpError(409, "interview_closed", "This interview has ended");
+    }
+    const turns = await loadTurns(db, interviewId);
+    const answer = turns.find((t) => t.index === turnIndex && t.role === "participant" && t.kind === "answer");
+    if (!answer || answer.redactedAt !== null) throw new HttpError(404, "not_found", "That answer cannot be removed");
+    const redaction = await redactTurn(db, row.talentId, interviewId, turnIndex);
+    const target = redaction?.target ?? answer.target ?? "recent_work";
+    const sLang = scriptLang(state, turns);
+    const reply = await storeDeletedReply(db, row, target, sLang, bankLang(state, row.lang, sLang));
+    await publishEvent(db, interviewId, {
+      type: "turn.done",
+      turnIndex: reply.index,
+      text: reply.text,
+      kind: "question",
+      closing: false,
+    });
+    return { turnIndex: reply.index, text: reply.text };
+  } finally {
+    release();
+  }
+}
+
 /** True when this retry key was already accepted for the interview (in this process). */
 export function isKnownTurnKey(interviewId: string, key: string | undefined): boolean {
   return key !== undefined && (runtime().seenKeys.get(interviewId)?.has(key) ?? false);
@@ -251,7 +387,7 @@ export function isKnownTurnKey(interviewId: string, key: string | undefined): bo
  * ---------------------------------------------------------------------------------------- */
 
 /** The per-answer flag history is only needed while the interview runs. */
-const dropFlagHistory = (s: EngineState): EngineState => ({ ...s, recentFlags: undefined });
+const dropFlagHistory = (s: InterviewState): InterviewState => ({ ...s, recentFlags: undefined });
 
 /** Wait for extraction, settle the status, announce completion and build the card. Never throws. */
 async function finishInterview(db: Db, interviewId: string, stopped: boolean): Promise<void> {
@@ -259,12 +395,12 @@ async function finishInterview(db: Db, interviewId: string, stopped: boolean): P
     const row = await loadInterview(db, interviewId);
     if (!row) return;
     if (!stopped) {
-      await mutateState(db, interviewId, dropFlagHistory, { status: "completed", completedAt: new Date(nowMs()) });
+      await mutateState(db, interviewId, (s) => s, { status: "completed", completedAt: new Date(nowMs()) });
       await publishEvent(db, interviewId, { type: "interview.completed", interviewId, talentId: row.talentId });
-      await waitForPending(interviewId, FINISH_EXTRACTION_WAIT_MS);
-    } else {
-      await waitForPending(interviewId, FINISH_EXTRACTION_WAIT_MS);
     }
+    await waitForPending(interviewId, FINISH_EXTRACTION_WAIT_MS);
+    // A late extraction may have written flags while we waited: clear them once it has settled.
+    await mutateState(db, interviewId, dropFlagHistory);
     const signals = await countLiveSignals(db, interviewId);
     const status = stopped && signals === 0 ? "abandoned" : "completed";
     if (stopped) {
@@ -361,11 +497,26 @@ export async function settleInterview(
 
 export type SubmitTurnOptions = {
   signal?: AbortSignal;
-  /** Client-supplied id, reused on a retry, so one answer is never stored twice. */
-  idempotencyKey?: string;
 };
 
-function situationFor(state: EngineState, plan: Extract<Plan, { action: "ask" }>, skipped: boolean): Situation | null {
+/**
+ * A CV seed words the first `example` question and, in full mode, the first `tools` question.
+ * It never changes which area is asked.
+ */
+function cvSeedFor(
+  state: InterviewState,
+  plan: Extract<Plan, { action: "ask" }>,
+  mode: InterviewRow["mode"],
+  turns: readonly TurnRow[],
+): { question: string } | null {
+  if (plan.kind !== "question" || plan.reask) return null;
+  if (plan.target !== "example" && !(mode === "full" && plan.target === "tools")) return null;
+  if (askedTargetsOf(turns.map(toTurn)).has(plan.target)) return null;
+  const seed = plan.target === "example" ? state.cvSeeds[0] : (state.cvSeeds[1] ?? null);
+  return seed ? { question: seed.question } : null;
+}
+
+function situationFor(state: InterviewState, plan: Extract<Plan, { action: "ask" }>, skipped: boolean): Situation | null {
   if (skipped) return "skipped";
   if ((state.flagCounts.distress ?? 0) > 0) return "distress_seen";
   const recent = state.recentFlags ?? [];
@@ -382,7 +533,7 @@ export async function* submitTurn(
   opts: SubmitTurnOptions = {},
 ): AsyncGenerator<InterviewEvent, void, void> {
   const rt = runtime();
-  const key = (request as TurnRequest & { clientTurnId?: string }).clientTurnId ?? opts.idempotencyKey;
+  const key = request.clientTurnId;
   const duplicate = key !== undefined && (rt.seenKeys.get(interviewId)?.has(key) ?? false);
   if (key !== undefined && !duplicate) {
     const keys = rt.seenKeys.get(interviewId) ?? new Map<string, number | null>();
@@ -505,7 +656,10 @@ async function* processTurn(
   );
 
   /* 2. Pre-check. */
-  const check = preCheck(text);
+  let check = preCheck(text);
+  // "delete this" needs an earlier answer to delete; with none it is treated like an empty turn.
+  const previousAnswer = check === "delete" ? previousAnswerOf(turns, answerIndex) : undefined;
+  if (check === "delete" && !previousAnswer) check = "empty";
   const lang = detected === "unknown" ? row.lang : detected;
   await mutateState(db, interviewId, (s) => ({ ...s, stage: "replying" }), detected === "unknown" ? undefined : { lang });
   turns = await loadTurns(db, interviewId);
@@ -542,6 +696,14 @@ async function* processTurn(
   if (check === "stop") {
     const closing = await storeClosing(db, interviewId, "stopped", sLang);
     yield* closingEvents(db, interviewId, closing);
+    return;
+  }
+
+  if (check === "delete" && previousAnswer) {
+    const redaction = await redactTurn(db, row.talentId, interviewId, previousAnswer.index);
+    const target = redaction?.target ?? previousAnswer.target ?? answerArea ?? "recent_work";
+    const reply = await storeDeletedReply(db, row, target, sLang, bankLang(state, row.lang, detected));
+    yield* scriptedEvents(reply.text, reply.index, "question", false);
     return;
   }
 
@@ -588,18 +750,26 @@ type ReplyContext = {
 async function* planAndReply(
   db: Db,
   row: InterviewRow,
-  state: EngineState,
+  state: InterviewState,
   turns: TurnRow[],
   ctx: ReplyContext,
   ac: AbortController,
 ): AsyncGenerator<InterviewEvent, void, void> {
   const interviewId = row.id;
+
+  /* The extractor heard a request to end the whole interview: close with the scripted line. */
+  if ((state.flagCounts.wants_stop ?? 0) > 0 && !ctx.repairFinal) {
+    const closing = await storeClosing(db, interviewId, "stopped", scriptLang(state, turns, ctx.detected));
+    yield* closingEvents(db, interviewId, closing);
+    return;
+  }
+
   const signalRows = await loadSignalRows(db, row.talentId);
   const live = signalRows.filter((s) => s.status !== "removed");
   const byId = new Map(live.map((s) => [s.id, s]));
 
   /* 3. The deterministic planner. */
-  const plan = planNext({
+  let plan = planNext({
     mode: row.mode,
     questionsAsked: state.questionsAsked,
     elapsedSeconds: elapsedSeconds(state),
@@ -619,6 +789,13 @@ async function* planAndReply(
       .filter((s): s is NonNullable<typeof s> => !!s)
       .map((s) => ({ id: s.id, kind: s.kind, hasExample: s.hasExample })),
   });
+
+  // A removal replaced the question that was pending: ask it now, without counting it twice.
+  const lostTarget = lostPendingTarget(turns);
+  const reaskLost = lostTarget !== null && !ctx.repairFinal && !(plan.action === "close" && plan.reason === "time_cap");
+  if (reaskLost) {
+    plan = { action: "ask", kind: "question", target: lostTarget, reask: false, situation: null, probeSignalId: null };
+  }
 
   const sLang = scriptLang(state, turns, ctx.detected);
 
@@ -648,12 +825,15 @@ async function* planAndReply(
     for (const sentence of replySentences) yield { type: "turn.delta", text: sentence };
   } else {
     /* 4a. The live call, through the output guard. */
+    const seed = cvSeedFor(state, plan, row.mode, turns);
     const target: LiveTarget =
       plan.kind === "probe" && probeSignal
         ? { kind: "probe", signalPhrase: probeSignal.phrase }
         : plan.reask
           ? { kind: "reask", area: plan.target }
-          : { kind: "area", area: plan.target };
+          : seed
+            ? { kind: "seed", area: plan.target, question: seed.question }
+            : { kind: "area", area: plan.target };
     const prompt = buildLivePrompt({
       replyLang: ctx.detected,
       questionNumber: state.questionsAsked + 1,
@@ -674,6 +854,7 @@ async function* planAndReply(
       ],
       temperature: 0.4,
       maxTokens: 90,
+      deadlineMs: LIVE_DEADLINE_MS,
       signal: upstream.signal,
       db,
     };
@@ -734,7 +915,7 @@ async function* planAndReply(
     return {
       ...s,
       stage: "awaiting_answer",
-      questionsAsked: s.questionsAsked + 1,
+      questionsAsked: reaskLost ? s.questionsAsked : s.questionsAsked + 1,
       repairsInRow: 0,
       coverage,
       reasked,

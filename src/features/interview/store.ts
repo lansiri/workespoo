@@ -15,20 +15,8 @@ type InterviewRow = typeof interview.$inferSelect;
 type TurnRow = typeof turn.$inferSelect;
 type SignalRow = typeof signal.$inferSelect;
 
-/**
- * `InterviewState` plus two engine-only fields that let the planner see the latest completed
- * extraction (the spec's "state as of the last completed extractor result"). They are
- * additive jsonb keys; see "Requests for the lead" in the S1a report.
- */
-export type EngineState = InterviewState & {
-  /** Ids of the signals the latest completed extraction created or changed, oldest first. */
-  lastExtracted?: string[];
-  /** Flags of the last two completed extractions, newest last. */
-  recentFlags?: string[][];
-};
-
-export function readState(row: Pick<InterviewRow, "state">): EngineState {
-  return row.state as EngineState;
+export function readState(row: Pick<InterviewRow, "state">): InterviewState {
+  return row.state as InterviewState;
 }
 
 export async function loadInterview(db: Db, id: string): Promise<InterviewRow | null> {
@@ -115,9 +103,9 @@ export function askedTargetsOf(turns: readonly Pick<Turn, "role" | "kind" | "tar
 export async function mutateState(
   db: Db,
   interviewId: string,
-  change: (state: EngineState) => EngineState,
+  change: (state: InterviewState) => InterviewState,
   extra?: Partial<Pick<InterviewRow, "status" | "completedAt" | "lang">>,
-): Promise<EngineState> {
+): Promise<InterviewState> {
   return db.transaction(async (tx) => {
     const [row] = await tx
       .select({ state: interview.state })
@@ -125,7 +113,7 @@ export async function mutateState(
       .where(eq(interview.id, interviewId))
       .for("update");
     if (!row) throw new Error(`interview ${interviewId} not found`);
-    const next = change(structuredClone(row.state as EngineState));
+    const next = change(structuredClone(row.state as InterviewState));
     await tx
       .update(interview)
       .set({ state: next, ...extra })

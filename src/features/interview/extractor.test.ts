@@ -14,8 +14,8 @@ const sig = (over: Record<string, unknown>) => ({ ref: "new", phrase: "Receiving
 const out = (signals: unknown[], extra: Record<string, unknown> = {}) =>
   parse({ lang: "en", signals, coverage: {}, flags: [], note: "", ...extra });
 const noEsco = async () => null;
-const merge = (signals: unknown[], known: Signal[] = [], liveCount = known.length) =>
-  mergeSignals({ output: out(signals), turns, known, liveCount, resolveEsco: noEsco });
+const merge = (signals: unknown[], known: Signal[] = [], liveCount = known.length, currentTurn = 1) =>
+  mergeSignals({ output: out(signals), turns, known, liveCount, currentTurn, resolveEsco: noEsco });
 
 function known(id: string, phrase: string, over: Partial<Signal> = {}): Signal {
   return { id, phrase, phraseOwn: null, kind: "skill", esco: null, evidence: [{ turnIndex: 1, sentenceFrom: 1, sentenceTo: 1 }], hasExample: false, status: "proposed", addedBy: "agent", ...over };
@@ -62,6 +62,23 @@ describe("merge rules", () => {
     expect(r.unresolvedDropped).toBe(1);
   });
 
+  it("2 (TE-1). drops a signal that cites only earlier turns, keeps one that also cites the current turn", async () => {
+    const r = await merge(
+      [sig({ phrase: "Stale skill", evidence: ["T1.S1"] }), sig({ phrase: "Fresh skill", evidence: ["T1.S1", "T3.S1"] })],
+      [],
+      0,
+      3,
+    );
+    expect(r.created.map((s) => s.phrase)).toEqual(["Fresh skill"]);
+    expect(r.unresolvedDropped).toBe(1);
+  });
+
+  it("2 (TE-1). a known-id reuse that cites only an earlier turn adds nothing", async () => {
+    const r = await merge([sig({ ref: "s1", evidence: ["T1.S2"] })], [known("s1", "Receiving goods")], 1, 3);
+    expect(r.created).toEqual([]);
+    expect(r.updated).toEqual([]);
+  });
+
   it("drops a reference to the interviewer or to a redacted turn", async () => {
     const r = await merge([sig({ evidence: ["T0.S1"] }), sig({ evidence: ["T5.S1"] })]);
     expect(r.created).toEqual([]);
@@ -91,7 +108,7 @@ describe("merge rules", () => {
 
   it("5. de-duplicates a new signal against known ones (same text or trigram >= 0.8)", async () => {
     const existing = [known("s1", "Receiving goods"), known("s2", "Forklift driving")];
-    const r = await merge([sig({ phrase: "receiving goods", evidence: ["T3.S1"] }), sig({ phrase: "Forklift drivin", evidence: ["T3.S2"] })], existing);
+    const r = await merge([sig({ phrase: "receiving goods", evidence: ["T3.S1"] }), sig({ phrase: "Forklift drivin", evidence: ["T3.S2"] })], existing, 2, 3);
     expect(r.created).toEqual([]);
     expect(r.updated.map((s) => s.id).sort()).toEqual(["s1", "s2"]);
     expect(trigramSimilarity("Forklift driving", "Forklift drivin")).toBeGreaterThanOrEqual(0.8);
@@ -100,7 +117,7 @@ describe("merge rules", () => {
 
   it("6. merging unions refs, ORs hasExample and keeps the phrase", async () => {
     const existing = [known("s1", "Receiving goods")];
-    const r = await merge([sig({ ref: "s1", phrase: "Receiving and checking goods", evidence: ["T3.S1-S2"], hasExample: true })], existing);
+    const r = await merge([sig({ ref: "s1", phrase: "Receiving and checking goods", evidence: ["T3.S1-S2"], hasExample: true })], existing, 1, 3);
     const s = r.updated[0]!;
     expect(s.phrase).toBe("Receiving goods");
     expect(s.hasExample).toBe(true);
@@ -119,10 +136,11 @@ describe("merge rules", () => {
   it("7. new signals get the next id, proposed, by the agent, with ESCO from the top match", async () => {
     const esco: EscoRef = { uri: "http://esco/x", labelEn: "SAP", labelFi: "SAP" };
     const r = await mergeSignals({
-      output: out([sig({ phrase: "SAP", kind: "tool", evidence: ["T1.S2"] }), sig({ phrase: "Pallet checking", evidence: ["T3.S1"] })]),
+      output: out([sig({ phrase: "SAP", kind: "tool", evidence: ["T3.S2"] }), sig({ phrase: "Pallet checking", evidence: ["T3.S1"] })]),
       turns,
       known: [known("s4", "Old one", { status: "removed" })],
       liveCount: 0,
+      currentTurn: 3,
       resolveEsco: async (p) => (p === "SAP" ? esco : null),
     });
     expect(r.created.map((s) => [s.id, s.status, s.addedBy, s.esco?.uri ?? null])).toEqual([
@@ -137,7 +155,7 @@ describe("merge rules", () => {
   });
 
   it("de-duplicates inside one extraction", async () => {
-    const r = await merge([sig({ phrase: "Filing claims", evidence: ["T3.S2"] }), sig({ phrase: "filing claims", evidence: ["T3.S3"] })]);
+    const r = await merge([sig({ phrase: "Filing claims", evidence: ["T3.S2"] }), sig({ phrase: "filing claims", evidence: ["T3.S3"] })], [], 0, 3);
     expect(r.created).toHaveLength(1);
     expect(r.created[0]?.evidence).toHaveLength(2);
   });
