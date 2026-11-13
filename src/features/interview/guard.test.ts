@@ -9,7 +9,7 @@ async function* chunks(text: string, size = 4): AsyncGenerator<string> {
 async function run(
   source: AsyncIterable<string>,
   fallbackQuestion = "FALLBACK?",
-  extra: { signal?: AbortSignal; timeoutMs?: number } = {},
+  extra: { signal?: AbortSignal } = {},
 ): Promise<{ sentences: string[]; result: GuardResult; guard: string | null | undefined }> {
   const llmOptions: { guard?: string | null } = {};
   const gen = guardStream(source, { fallbackQuestion, upstream: new AbortController(), llmOptions, ...extra });
@@ -41,14 +41,14 @@ describe("output guard", () => {
 
   it("9. uses the fallback question when the model asks nothing", async () => {
     const { sentences, result, guard } = await run(chunks("Thanks, noted."), "Mitä työkaluja käytät?");
-    expect(sentences).toEqual(["Thanks, noted.", "Mitä työkaluja käytät?"]);
+    expect(sentences).toEqual(["Mitä työkaluja käytät?"]);
     expect(result.fallbackUsed).toBe(true);
     expect(guard).toContain("fallback");
   });
 
   it("drops a protected question and falls back", async () => {
     const { sentences, result } = await run(chunks("Okay. Where are you from originally?"), "What tools do you use?");
-    expect(sentences).toEqual(["Okay.", "What tools do you use?"]);
+    expect(sentences).toEqual(["What tools do you use?"]);
     expect(result.fallbackUsed).toBe(true);
     for (const s of sentences) expect(findProtectedQuestion(s)).toEqual([]);
   });
@@ -96,18 +96,18 @@ describe("output guard", () => {
       throw new Error("provider failed");
     }
     const { sentences, result } = await run(broken());
-    expect(sentences.at(-1)).toBe("FALLBACK?");
+    expect(sentences).toEqual(["FALLBACK?"]);
     expect(result.fallbackUsed).toBe(true);
   });
 
-  it("falls back when the model does not answer in time", async () => {
-    async function* silent(): AsyncGenerator<string> {
-      await new Promise<never>(() => {});
-      yield "never";
+  it("falls back when the model call fails before any text (deadline expiry in the gateway)", async () => {
+    async function* failed(): AsyncGenerator<string> {
+      throw new Error("deadline passed");
     }
-    const { sentences, result } = await run(silent(), "FALLBACK?", { timeoutMs: 20 });
+    const { sentences, result, guard } = await run(failed());
     expect(sentences).toEqual(["FALLBACK?"]);
     expect(result.fallbackUsed).toBe(true);
+    expect(guard).toContain("stream_error");
   });
 
   it("ends without a fallback when the caller aborts (barge-in)", async () => {
@@ -119,7 +119,7 @@ describe("output guard", () => {
       yield "What tools?";
     }
     const { sentences, result } = await run(slow(), "FALLBACK?", { signal: controller.signal });
-    expect(sentences).toEqual(["Thanks."]);
+    expect(sentences).toEqual([]);
     expect(result.aborted).toBe(true);
     expect(result.fallbackUsed).toBe(false);
   });
@@ -141,6 +141,64 @@ describe("output guard", () => {
         expect(findProtectedQuestion(s)).toEqual([]);
       }
     }
+  });
+
+  it("IL-1. shows nothing until the question arrives, then the held statement and the question together", async () => {
+    const shown: string[] = [];
+    const order: string[] = [];
+    async function* source(): AsyncGenerator<string> {
+      yield "Okay, that is clear. ";
+      order.push(`after statement, shown=${shown.length}`);
+      yield "Which tools do you use";
+      order.push(`mid question, shown=${shown.length}`);
+      yield " in that work?";
+    }
+    const gen = guardStream(source(), { fallbackQuestion: "FALLBACK?", upstream: new AbortController() });
+    for (;;) {
+      const step = await gen.next();
+      if (step.done) break;
+      shown.push(step.value);
+    }
+    expect(order).toEqual(["after statement, shown=0", "mid question, shown=0"]);
+    expect(shown).toEqual(["Okay, that is clear.", "Which tools do you use in that work?"]);
+  });
+
+  it("IL-1. a planning leak with no question (over 40 words) is discarded and the fallback is shown", async () => {
+    const leak =
+      "The target is to ask about tools. The person described receiving goods at a warehouse and used a scanner. " +
+      "I should keep it short and avoid praise, then ask one open question about the equipment they handled in that work every day. So the reply will be a single plain question about tools";
+    const { sentences, result, guard } = await run(chunks(leak, 5), "FALLBACK?");
+    expect(sentences).toEqual(["FALLBACK?"]);
+    expect(result.fallbackUsed).toBe(true);
+    expect(guard).toContain("dropped_long");
+    expect(guard).toContain("fallback");
+  });
+
+  it("IL-1. the upstream stream is aborted once 40 words arrive without a question", async () => {
+    const upstream = new AbortController();
+    async function* source(): AsyncGenerator<string> {
+      for (let i = 0; i < 100; i++) {
+        if (upstream.signal.aborted) return;
+        yield "planning words that never end ";
+      }
+    }
+    const gen = guardStream(source(), { fallbackQuestion: "FALLBACK?", upstream });
+    const out: string[] = [];
+    for (;;) {
+      const step = await gen.next();
+      if (step.done) break;
+      out.push(step.value);
+    }
+    expect(out).toEqual(["FALLBACK?"]);
+    expect(upstream.signal.aborted).toBe(true);
+  });
+
+  it("IL-1. a long statement plus a long question stays within the limits (the statement is dropped)", async () => {
+    const statement = "Thanks for telling me about the busy warehouse where you worked with many teams every single week.";
+    const { sentences } = await run(chunks(`${statement} Which tools did you use in that work every single day at the warehouse?`));
+    expect(sentences.join(" ").split(/\s+/).length).toBeLessThanOrEqual(40);
+    expect(sentences.length).toBeLessThanOrEqual(2);
+    expect(sentences.at(-1)).toMatch(/\?$/);
   });
 
   it("drops a held statement when the fallback is used, so the reply stays within 40 words and 2 sentences", async () => {

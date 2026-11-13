@@ -387,7 +387,7 @@ describe("the live reply through the guard", () => {
     installFake({ live: () => "Thanks for sharing." });
     const { interviewId } = await startInterview(t.db, request({ uiLang: "fi" }));
     const events = await say(interviewId, "Olen tehnyt töitä hotellissa ja myös ravintolassa, se oli kivaa.");
-    expect(doneOf(events).text).toBe("Thanks for sharing. Voisitko kertoa yhdestä tehtävästä, jonka hoidit itse?");
+    expect(doneOf(events).text).toBe("Voisitko kertoa yhdestä tehtävästä, jonka hoidit itse?");
     await settleInterview(t.db, interviewId);
     const rows = await t.db.select().from(llmCall).where(eq(llmCall.purpose, "interview.live"));
     expect(rows.some((r) => r.guard?.includes("fallback"))).toBe(true);
@@ -731,5 +731,90 @@ describe("review fixes", () => {
     const state = readState((await loadInterview(t.db, interviewId))!);
     expect(state.reasked).toContain("example");
     await settleInterview(t.db, interviewId);
+  });
+});
+
+describe("second pass, block A: what the real model needs", () => {
+  it("IL-2. the live call carries deadlineMs 6000 and no engine timer of its own", async () => {
+    const calls = installFake();
+    const { interviewId } = await startInterview(t.db, request());
+    await say(interviewId, WORK);
+    await settleInterview(t.db, interviewId);
+    expect(calls.live[0]!.deadlineMs).toBe(6000);
+    expect(calls.live[0]!.role).toBe("live");
+  });
+
+  it("IL-2. a failed live call with nothing shown uses the target's fallback question", async () => {
+    installFake({ live: () => { throw new Error("deadline passed"); } });
+    const { interviewId } = await startInterview(t.db, request());
+    const done = doneOf(await say(interviewId, WORK));
+    expect(Object.values(FALLBACK_QUESTIONS.en).flat()).toContain(done.text);
+    await settleInterview(t.db, interviewId);
+  });
+
+  it("IL-1. a planning leak without a question never reaches the person: the fallback is shown alone", async () => {
+    const leak = "The target is tools so I should ask about equipment. The person mentioned a scanner and a forklift in the warehouse earlier, and I want to keep the reply short and avoid any praise or comment.";
+    installFake({ live: () => leak });
+    const { interviewId } = await startInterview(t.db, request());
+    const events = await say(interviewId, WORK);
+    const shown = events.filter((e) => e.type === "turn.delta").map((e) => (e as { text: string }).text).join(" ");
+    expect(shown).not.toMatch(/target|planning|I should/i);
+    expect(Object.values(FALLBACK_QUESTIONS.en).flat()).toContain(doneOf(events).text);
+    await settleInterview(t.db, interviewId);
+  });
+
+  it("TE-1 to TE-3. the extractor prompt carries the three patches and the call has deadlineMs 20000", async () => {
+    const calls = installFake();
+    const { interviewId } = await startInterview(t.db, request());
+    await say(interviewId, WORK);
+    await settleInterview(t.db, interviewId);
+    const system = calls.extract[0]!.messages[0]!.content;
+    expect(system).toContain("Only the latest turn (the highest T number) is new.");
+    expect(system).toContain('"phrase": always English (translate Finnish or Swedish), 1 to 6 words (a tool or software name alone is fine; never a company or employer name),');
+    expect(system).toContain('"wants_stop" only when they ask to end the whole interview, not to skip one topic.');
+    expect(calls.extract[0]!.deadlineMs).toBe(20000);
+    expect(calls.extract[0]!.timeoutMs).toBeUndefined();
+  });
+
+  it("IL-1 and interviewer-live-F5. the live prompt ends with the no-planning line and has the new FACTS line", async () => {
+    const calls = installFake();
+    const { interviewId } = await startInterview(t.db, request());
+    await say(interviewId, WORK);
+    await settleInterview(t.db, interviewId);
+    const [system, user] = calls.live[0]!.messages.map((m) => m.content);
+    expect(user).toContain("Write only your next reply, exactly as the person will hear it. No planning or notes.");
+    expect(user).not.toContain("Write your next reply now.");
+    expect(system).toContain("- You do not rate, compare or rank people or answers.");
+    expect(system).not.toContain("Nobody gets a score");
+  });
+
+  it("5. a Swedish speaker gets 'Reply in Swedish.', the Swedish fallback question and Swedish scripted lines", async () => {
+    const calls = installFake({ live: () => "" });
+    const { interviewId } = await startInterview(t.db, request({ mode: "full", uiLang: "en" }));
+    const done = doneOf(await say(interviewId, "Jag jobbade på ett lager och det var bra, jag har också städat där i flera år."));
+    expect(calls.live[0]!.messages[0]!.content).toContain("Reply in Swedish.");
+    expect(FALLBACK_QUESTIONS.sv.example).toContain(done.text);
+    await settleInterview(t.db, interviewId);
+    const repair = doneOf(await say(interviewId, "um"));
+    expect(repair).toMatchObject({ kind: "repair", text: INTERVIEW_LINES.sv.repair });
+    const stopped = doneOf(await say(interviewId, "stopp"));
+    expect(stopped.text).toBe(INTERVIEW_LINES.sv.closingStopped);
+    await settleInterview(t.db, interviewId);
+  });
+
+  it("6. wants_stop from the extractor closes the interview at the next planning step", async () => {
+    installFake({
+      extract: async (_o, n) => {
+        await new Promise((r) => setTimeout(r, 150)); // lands after the first reply was planned
+        return { lang: "en", signals: [], coverage: {}, flags: n === 1 ? ["wants_stop"] : [], note: "" };
+      },
+    });
+    const { interviewId } = await startInterview(t.db, request({ mode: "full" }));
+    const first = doneOf(await say(interviewId, "Honestly I would rather end this whole interview now, sorry about that."));
+    expect(first.kind).toBe("question");
+    const second = doneOf(await say(interviewId, "Well, I did warehouse work for a while."));
+    expect(second).toMatchObject({ kind: "closing", closing: true, text: INTERVIEW_LINES.en.closingStopped });
+    await settleInterview(t.db, interviewId);
+    expect((await loadInterview(t.db, interviewId))!.status).toBe("abandoned");
   });
 });

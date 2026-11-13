@@ -27,7 +27,7 @@ import { buildExtractorPrompt, safeNote } from "./prompts";
 import { withLock } from "./runtime";
 import { loadInterview, loadSignalRows, loadTurns, mutateState, readState, rowToSignal } from "./store";
 
-export const EXTRACTOR_TIMEOUT_MS = 8000;
+export const EXTRACTOR_DEADLINE_MS = 20_000;
 export const MAX_LIVE_SIGNALS = 20;
 export const DEDUPE_TRIGRAM_THRESHOLD = 0.8;
 const SIGNAL_ID_RE = /^s\d+$/;
@@ -128,6 +128,8 @@ export type MergeInput = {
   known: readonly Signal[];
   /** Live signals this interview already has (the cap applies to these). */
   liveCount: number;
+  /** Index of the participant turn being extracted. Only a signal citing it is new (patch TE-1). */
+  currentTurn: number;
   resolveEsco: (phrase: string) => Promise<EscoRef | null>;
 };
 
@@ -165,7 +167,8 @@ export async function mergeSignals(input: MergeInput): Promise<MergeResult> {
 
   for (const candidate of input.output.signals) {
     const refs = resolveRefs(candidate.evidence, input.turns);
-    if (refs.length === 0) {
+    // Drop a signal with no resolved ref, or with none in the current turn: the earlier turn is context only.
+    if (refs.length === 0 || !refs.some((r) => r.turnIndex === input.currentTurn)) {
       unresolvedDropped++;
       continue;
     }
@@ -296,7 +299,7 @@ async function extractTurn(db: Db, interviewId: string, turnIndex: number): Prom
     ],
     temperature: 0.1,
     maxTokens: 500,
-    timeoutMs: EXTRACTOR_TIMEOUT_MS,
+    deadlineMs: EXTRACTOR_DEADLINE_MS,
     schema: ExtractorOutput,
     coerce,
     db,
@@ -318,6 +321,7 @@ async function extractTurn(db: Db, interviewId: string, turnIndex: number): Prom
       turns: turnViews,
       known,
       liveCount,
+      currentTurn: turnIndex,
       resolveEsco: (phrase) => escoTopMatch(db, phrase),
     });
 

@@ -1,6 +1,10 @@
 /**
  * Output guard on the live stream (docs/specs/interview.md section 7). Applied sentence by
  * sentence as tokens arrive, before text reaches the client or text-to-speech.
+ *
+ * Nothing is shown until a sentence ending in "?" has arrived (patch IL-1): the model sometimes
+ * writes planning notes first, and those must never reach the person. The buffered statement
+ * (at most one) is emitted together with the question; with no question the fallback is used.
  */
 import { findBannedEvaluative, findProtectedQuestion } from "@/lib/lexicon";
 
@@ -9,7 +13,6 @@ export const GUARD_MAX_SENTENCES = 2;
 export const GUARD_MAX_WORDS = 40;
 /** A non-question sentence (an acknowledgement or a one-line answer) may be at most this long. */
 const MAX_STATEMENT_WORDS = 30;
-export const LIVE_TIMEOUT_MS = 6000;
 
 export type GuardResult = {
   /** Sentences that were emitted, in order. Includes the fallback question when used. */
@@ -29,7 +32,6 @@ export type GuardOptions = {
   upstream: AbortController;
   /** The caller's signal. Aborting it ends the guard without a fallback. */
   signal?: AbortSignal;
-  timeoutMs?: number;
   /** The model call's options: `guard` is set to what the guard did, before the stream is cut. */
   llmOptions?: { guard?: string | null };
 };
@@ -70,7 +72,6 @@ export function endsWithQuestion(text: string): boolean {
   return /\?["'”’)\]]*$/.test(text.trim());
 }
 
-const TIMED_OUT = Symbol("timed out");
 const ABORTED = Symbol("aborted");
 
 /**
@@ -90,11 +91,6 @@ export async function* guardStream(
     aborted: false,
     actions: [],
   };
-  let timedOut = false;
-  const timer = setTimeout(() => {
-    timedOut = true;
-    upstream.abort();
-  }, options.timeoutMs ?? LIVE_TIMEOUT_MS);
   const onAbort = () => {
     result.aborted = true;
     upstream.abort();
@@ -102,9 +98,9 @@ export async function* guardStream(
   if (signal?.aborted) onAbort();
   signal?.addEventListener("abort", onAbort, { once: true });
 
-  const interrupted = new Promise<typeof TIMED_OUT | typeof ABORTED>((resolve) => {
-    upstream.signal.addEventListener("abort", () => resolve(timedOut ? TIMED_OUT : ABORTED), { once: true });
-    if (upstream.signal.aborted) resolve(timedOut ? TIMED_OUT : ABORTED);
+  const interrupted = new Promise<typeof ABORTED>((resolve) => {
+    upstream.signal.addEventListener("abort", () => resolve(ABORTED), { once: true });
+    if (upstream.signal.aborted) resolve(ABORTED);
   });
 
   let raw = "";
@@ -112,29 +108,10 @@ export async function* guardStream(
   let words = 0;
   let statements = 0;
   let haveQuestion = false;
-  /** An acceptable statement is held until a question is accepted, so a fallback never makes the reply too long. */
-  let held: string | null = null;
-  const fallbackSentences = (options.fallbackQuestion.match(/[.!?]+(?=\s|$)/g) ?? []).length;
-  const accept = function* (decided: { emit?: string; done?: boolean }): Generator<string> {
-    if (decided.emit === undefined) return;
-    if (!decided.done) {
-      // A statement can be shown at once only if the fallback could still follow it within the limits.
-      const fits =
-        fallbackSentences <= 1 && wordsIn(decided.emit) + wordsIn(options.fallbackQuestion) <= GUARD_MAX_WORDS;
-      if (fits) {
-        result.emitted.push(decided.emit);
-        yield decided.emit;
-      } else held = decided.emit;
-      return;
-    }
-    if (held !== null) {
-      result.emitted.push(held);
-      yield held;
-      held = null;
-    }
-    result.emitted.push(decided.emit);
-    yield decided.emit;
-  };
+  /** The one acceptable statement, held back until a question is accepted. */
+  let buffered: string | null = null;
+  /** Over 40 words arrived with no question. */
+  let overflowed = false;
 
   /** Decide what to do with one sentence. Applies the effect only when `commit` is true. */
   const judge = (sentence: string, commit: boolean): { emit?: string; done?: boolean; action?: string } => {
@@ -172,7 +149,7 @@ export async function* guardStream(
   const noteIfEndedNow = (): string | null => {
     const actions = [...result.actions];
     if (!haveQuestion && !result.stopped && !result.aborted) {
-      const last = pending.trim() === "" || timedOut ? {} : judge(pending, false);
+      const last = pending.trim() === "" ? {} : judge(pending, false);
       if (last.action) actions.push(last.action);
       if (!last.done) actions.push("fallback");
     }
@@ -191,7 +168,7 @@ export async function* guardStream(
   try {
     reading: while (!result.aborted) {
       const step = await Promise.race([iterator.next(), interrupted]);
-      if (step === TIMED_OUT || step === ABORTED) break;
+      if (step === ABORTED) break;
       if (step.done) break;
       raw += step.value;
       if (raw.includes(STOP_SENTINEL)) {
@@ -208,23 +185,42 @@ export async function* guardStream(
         const sentence = pending.slice(0, boundary);
         pending = pending.slice(boundary).trimStart();
         const decided = consider(sentence);
-        yield* accept(decided);
-        if (decided.done) {
+        if (decided.done && decided.emit !== undefined) {
+          if (buffered !== null) {
+            result.emitted.push(buffered);
+            yield buffered;
+            buffered = null;
+          }
+          result.emitted.push(decided.emit);
+          yield decided.emit;
           haveQuestion = true;
           break reading;
         }
+        if (decided.emit !== undefined) buffered = decided.emit;
+      }
+      // 40 words have arrived and still no question: discard the buffer and use the fallback.
+      if (wordsIn(raw) > GUARD_MAX_WORDS) {
+        overflowed = true;
+        result.actions.push("dropped_long");
+        break;
       }
     }
-    if (!haveQuestion && !result.stopped && !result.aborted && !timedOut && pending.trim() !== "") {
+    if (!haveQuestion && !result.stopped && !result.aborted && !overflowed && pending.trim() !== "") {
       const decided = consider(pending);
       pending = "";
-      yield* accept(decided);
-      if (decided.done) haveQuestion = true;
+      if (decided.done && decided.emit !== undefined) {
+        if (buffered !== null) {
+          result.emitted.push(buffered);
+          yield buffered;
+        }
+        result.emitted.push(decided.emit);
+        yield decided.emit;
+        haveQuestion = true;
+      }
     }
   } catch {
     result.actions.push("stream_error");
   } finally {
-    clearTimeout(timer);
     signal?.removeEventListener("abort", onAbort);
     if (options.llmOptions) {
       Object.defineProperty(options.llmOptions, "guard", {
@@ -246,7 +242,7 @@ export async function* guardStream(
   if (!haveQuestion && !result.aborted) {
     result.fallbackUsed = true;
     result.actions.push("fallback");
-    result.emitted.push(options.fallbackQuestion);
+    result.emitted = [options.fallbackQuestion];
     yield options.fallbackQuestion;
   }
   result.text = result.emitted.join(" ");

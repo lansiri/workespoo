@@ -61,6 +61,8 @@ export const PREVIOUS_EXTRACTION_WAIT_MS = 2000;
 /** How long ending the interview waits for outstanding extraction before synthesis. */
 export const FINISH_EXTRACTION_WAIT_MS = 8000;
 export const SETTLE_DEFAULT_TIMEOUT_MS = 30_000;
+/** The live reply must start within this, gateway wait and retries included (patch IL-2). */
+export const LIVE_DEADLINE_MS = 6000;
 
 type InterviewRow = NonNullable<Awaited<ReturnType<typeof loadInterview>>>;
 type TurnRow = Awaited<ReturnType<typeof loadTurns>>[number];
@@ -594,6 +596,14 @@ async function* planAndReply(
   ac: AbortController,
 ): AsyncGenerator<InterviewEvent, void, void> {
   const interviewId = row.id;
+
+  /* The extractor heard a request to end the whole interview: close with the scripted line. */
+  if ((state.flagCounts.wants_stop ?? 0) > 0 && !ctx.repairFinal) {
+    const closing = await storeClosing(db, interviewId, "stopped", scriptLang(state, turns, ctx.detected));
+    yield* closingEvents(db, interviewId, closing);
+    return;
+  }
+
   const signalRows = await loadSignalRows(db, row.talentId);
   const live = signalRows.filter((s) => s.status !== "removed");
   const byId = new Map(live.map((s) => [s.id, s]));
@@ -674,6 +684,7 @@ async function* planAndReply(
       ],
       temperature: 0.4,
       maxTokens: 90,
+      deadlineMs: LIVE_DEADLINE_MS,
       signal: upstream.signal,
       db,
     };
