@@ -2,12 +2,16 @@
 
 Hackathon build for Junction 2026, City of Espoo challenge "Rethinking Recruitment". An AI interviewer turns a short conversation into a **Signal Card** (skills backed by the person's own words), shows matched real open jobs, and drafts **Daily Picks** for companies that an Espoo organiser approves before anything is sent.
 
-- Plan: `docs/PLAN.md`. Amendments that override it: `docs/PLAN-AMENDMENTS.md`
-- Data model sketch: `docs/DATA-MODEL.md`
-- Verified facts about external APIs: `docs/research/` (read the relevant file before calling any external API)
-- Feature specs and acceptance tests: `docs/specs/`
-- Code patterns for this stack: `docs/PATTERNS.md`
-- Live progress board: `docs/STATUS.md`
+Read in this order before writing code:
+
+1. `docs/LEAD-DECISIONS.md`: what overrides the specs, and what each stream builds first
+2. `docs/LIB-API.md`: the shared library in `src/lib` (binding signatures)
+3. `docs/ROUTES.md`: every page and API path, and the test ids pages must carry
+4. `docs/PATTERNS.md`: code patterns for this stack's versions
+5. The specs for your stream in `docs/specs/`
+6. `docs/research/` before calling any external API
+
+Background: `docs/PLAN.md`, `docs/PLAN-AMENDMENTS.md`. Progress board: `docs/STATUS.md`. The early sketch in `docs/DATA-MODEL.md` is superseded by `src/contracts` and `src/db/schema`.
 
 Live site: https://workespoo.aichat.fi (VPS 2.29.206.251). The app is built and run on the VPS; locally we only edit, lint, type-check and test.
 
@@ -44,10 +48,12 @@ Your training data is probably older than these versions. Check `docs/PATTERNS.m
 | Path | Owner |
 |---|---|
 | `src/contracts/`, `src/db/`, `drizzle/`, `src/lib/`, `src/components/ui/`, `src/app/layout.tsx`, `src/worker/index.ts`, `fixtures/`, `e2e/`, root config, `package.json`, lockfile, `infra/`, `docs/` | Lead only |
-| `src/features/interview/`, `src/app/api/interview/`, `src/app/(talent)/interview/`, `src/app/(talent)/card/` | Stream S1 |
-| `src/features/jobs/`, `src/features/needs/`, `src/app/api/jobs/`, `src/app/api/needs/`, `src/app/(company)/` | Stream S2 |
-| `src/features/matching/`, `src/features/picks/`, `src/app/api/matches/`, `src/app/api/picks/`, `src/app/(organiser)/`, `src/app/(talent)/matches/` | Stream S3 |
-| `src/features/voice/`, `src/app/api/voice/`, `src/features/synth/`, `seed/`, `evals/` | Stream S4 |
+| `src/features/interview/`, `src/features/card/`, `src/app/api/interview/`, `src/app/api/card/`, `src/app/api/me/`, `src/app/(talent)/interview/`, `src/app/(talent)/card/`, `src/app/dev/s1/` | Stream S1 |
+| `src/features/jobs/`, `src/features/needs/`, `src/app/api/jobs/`, `src/app/api/needs/`, `src/app/(company)/c/[token]/need/`, `src/app/dev/s2/` | Stream S2 |
+| `src/features/matching/`, `src/features/picks/`, `src/features/intros/`, `src/app/api/matches/`, `src/app/api/picks/`, `src/app/api/digests/`, `src/app/api/intros/`, `src/app/api/organiser/`, `src/app/(organiser)/`, `src/app/(talent)/matches/`, `src/app/(company)/c/[token]/page.tsx`, `src/app/dev/s3/` | Stream S3 |
+| `src/features/voice/`, `src/app/api/voice/`, `src/app/dev/voice/`, `src/features/synth/`, `seed/`, `evals/` | Stream S4 |
+
+Route groups in parentheses do not appear in URLs: `src/app/(talent)/card/page.tsx` serves `/card`.
 
 ## Conventions
 
