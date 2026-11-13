@@ -67,9 +67,17 @@ describe("approveCard", () => {
     expect(jobs[0].payload).toEqual({ talentId: TALENT, cardVersion: 1 });
   });
 
-  it("refuses a stale rendering, an empty card, a missing draft and a signal with no evidence", async () => {
-    await seedCard(t.db, TALENT, { status: "draft", signals: [signal({ id: "s1", phrase: "A" + "bc" }), signal({ id: "s2", phrase: "Def" })], stale: ["s2"] });
-    expect(await code(approveCard(t.db, TALENT))).toBe("stale_rendering");
+  it("approves at once with the current text while a rewrite is pending, and never calls a model", async () => {
+    await seedCard(t.db, TALENT, { status: "draft", signals: [signal({ id: "s1", phrase: "Abc" }), signal({ id: "s2", phrase: "Def", phraseOwn: "Eri" })], stale: ["s2"] });
+    expect(await approveCard(t.db, TALENT)).toEqual({ version: 1 });
+    const approved = (await loadCard(t.db, TALENT, "approved"))!;
+    expect(approved.companyView.items.map((i) => [i.signalId, i.text])).toEqual([
+      ["s1", "They worked with abc."],
+      ["s2", "They worked with def."],
+    ]);
+  });
+
+  it("refuses an empty card, a missing draft and a signal with no evidence", async () => {
 
     await seedCard(t.db, TALENT, { status: "draft", signals: [signal({ id: "s1", phrase: "Abc", status: "removed" })] });
     expect(await code(approveCard(t.db, TALENT))).toBe("approve_empty");

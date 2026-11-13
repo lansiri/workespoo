@@ -1,9 +1,10 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { talent, auditLog } from "@/db/schema";
+import { eq } from "drizzle-orm";
+import { talent, auditLog, jobQueue } from "@/db/schema";
 import { listAudit } from "@/lib/audit";
 import { HttpError } from "@/lib/http";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
-import { cardForPerson } from "./projections";
+import { cardForCompany, cardForOrganiser, cardForPerson } from "./projections";
 import { CardEdit, editCard } from "./review";
 import { loadCard } from "./store";
 import { seedCard, seedEsco, seedInterview, signal } from "./test-helpers";
@@ -65,22 +66,38 @@ describe("editCard", () => {
     expect(card.signals.map((s) => `${s.id}:${s.status}`)).toEqual(["s1:proposed", "s2:removed", "s3:removed"]);
   });
 
-  it("edits a phrase: keeps the person's text, strips quality words, sets the code-built rendering, re-picks ESCO", async () => {
-    await seedCard(t.db, TALENT, { ...base(), stale: ["s2"] });
-    const r = await editCard(t.db, TALENT, { op: "phrase", signalId: "s2", phrase: "Senior supplier claims" });
+  it("edits a phrase: stores the person's wording, keeps the previous English phrase and text, marks it stale, queues a re-render", async () => {
+    await seedCard(t.db, TALENT, base());
+    const before = (await loadCard(t.db, TALENT, "draft"))!;
+    const r = await editCard(t.db, TALENT, { op: "phrase", signalId: "s2", phrase: "Toimittajareklamaatioiden hoito" });
     expect(r).toEqual({ sensitive: false });
     const card = (await loadCard(t.db, TALENT, "draft"))!;
     const s = card.signals.find((x) => x.id === "s2")!;
-    expect(s).toMatchObject({ phrase: "supplier claims", phraseOwn: "Senior supplier claims" });
-    expect(s.esco?.labelEn).toBe("manage supplier claims");
+    expect(s).toMatchObject({ phrase: "Filing supplier claims", phraseOwn: "Toimittajareklamaatioiden hoito" });
     expect(card.companyView.items.find((i) => i.signalId === "s2")).toEqual({
-      signalId: "s2",
-      text: "The person describes supplier claims.",
-      stale: false,
+      ...before.companyView.items.find((i) => i.signalId === "s2")!,
+      stale: true,
     });
+    expect(card.companyView.summary).toBe(before.companyView.summary.replace("goods receiving and SAP", "receiving goods, filing supplier claims and SAP"));
     const [ev] = await listAudit(t.db, { action: "card.signal_edited" });
     expect(ev.detail).toEqual({ signalId: "s2", version: 1 });
-    expect(JSON.stringify(ev.detail)).not.toContain("supplier claims");
+    expect(JSON.stringify(ev.detail)).not.toContain("supplier");
+    const jobs = await t.db.select().from(jobQueue).where(eq(jobQueue.kind, "card.render"));
+    expect(jobs.map((j) => j.payload)).toEqual([{ talentId: TALENT, signalId: "s2", cardVersion: 1 }]);
+  });
+
+  it("an edit in Finnish never appears in the company or organiser view, even before the re-render", async () => {
+    await seedCard(t.db, TALENT, { ...base(), status: "approved" });
+    await editCard(t.db, TALENT, { op: "phrase", signalId: "s2", phrase: "Toimittajareklamaatioiden hoito" });
+    await seedCard(t.db, TALENT, { ...base(), status: "approved" }); // approved row untouched by the draft
+    const company = JSON.stringify(await cardForCompany(t.db, TALENT));
+    const organiser = JSON.stringify(await cardForOrganiser(t.db, TALENT));
+    expect(company).not.toContain("Toimittaja");
+    expect(organiser).not.toContain("Toimittaja");
+    expect((await cardForPerson(t.db, TALENT))!.signals.find((x) => x.id === "s2")).toMatchObject({
+      phraseOwn: "Toimittajareklamaatioiden hoito",
+      stale: true,
+    });
   });
 
   it("warns about a protected word in the person's own phrase but keeps it (their choice)", async () => {

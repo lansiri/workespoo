@@ -8,7 +8,7 @@ import { resetLlmState, setLlmFake } from "@/lib/llm/testing";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
 import { loadCard } from "./store";
 import { SENTENCES, seedEsco, seedInterview } from "./test-helpers";
-import { synthesiseCard } from "./synthesis";
+import { RENDERING_RULES, synthesiseCard } from "./synthesis";
 
 let t: TestDb;
 beforeAll(async () => {
@@ -180,11 +180,54 @@ describe("synthesiseCard", () => {
     await synthesiseCard(t.db, INTERVIEW);
     const card = (await loadCard(t.db, TALENT, "draft"))!;
     expect(card.companyView.items.map((i) => i.text)).toEqual([
-      "They list Receiving and checking goods as a skill.",
-      "They list Filing supplier claims as a skill.",
+      "They list receiving and checking goods as a skill.",
+      "They list filing supplier claims as a skill.",
       "They list SAP as a skill.",
-      "They list Training new workers as a skill.",
+      "They list training new workers as a skill.",
     ]);
+  });
+
+  it("replaces a rendering that carries a banned evaluative word such as junior", async () => {
+    await seedInterview(t.db);
+    const out = good();
+    out.signals[0].rendering = "They worked as a junior receiver at a logistics centre.";
+    setLlmFake(() => out);
+    await synthesiseCard(t.db, INTERVIEW);
+    const card = (await loadCard(t.db, TALENT, "draft"))!;
+    expect(card.companyView.items[0].text).toBe("They list receiving and checking goods as a skill.");
+    expect(card.companyView.items[3].text).toBe("They trained summer workers to use the scanners.");
+  });
+
+  it("writes the 'They list ... as a skill.' sentence in code for a signal with no described example", async () => {
+    await seedInterview(t.db, { liveSignals: live });
+    const out = good();
+    out.signals[2].rendering = "They are strong at SAP and used it in the interview."; // s2 has no example
+    out.signals[0].rendering = "They list Receiving and checking goods as a skill."; // model copied the pattern
+    setLlmFake(() => out);
+    await synthesiseCard(t.db, INTERVIEW);
+    const card = (await loadCard(t.db, TALENT, "draft"))!;
+    const text = (id: string) => card.companyView.items.find((i) => i.signalId === id)!.text;
+    expect(text("s2")).toBe("They list SAP as a skill.");
+    expect(text("s1")).toBe("They list receiving and checking goods as a skill.");
+    expect(text("s4")).toBe("They documented a short delivery with photos and filed the claim before the driver left.");
+  });
+
+  it("gives the model a bounded wait and the same rules R1 to R8 as prompt B, with the patched texts", async () => {
+    await seedInterview(t.db);
+    let seen: LlmOptions | undefined;
+    setLlmFake((o) => {
+      seen = o;
+      return good();
+    });
+    await synthesiseCard(t.db, INTERVIEW);
+    expect(seen?.deadlineMs).toBe(45_000);
+    const system = seen!.messages[0].content;
+    expect(system).toContain("Never write \"strength\".");
+    expect(system).toContain("found the cause of");
+    expect(system).toContain("between two languages");
+    expect(system).toContain("Studies, courses and shift preferences are not roles.");
+    expect(system).toContain("Personality traits and work preferences");
+    expect(system).toContain(RENDERING_RULES);
   });
 
   it.each([
@@ -226,7 +269,7 @@ describe("synthesiseCard", () => {
     ]);
     expect(card.headline).toBe("Receiving and checking goods, SAP, Filing supplier claims");
     expect(card.companyView.summary).toBe("They talked about receiving and checking goods, SAP and filing supplier claims.");
-    expect(card.companyView.items[0].text).toBe("They list Receiving and checking goods as a skill.");
+    expect(card.companyView.items[0].text).toBe("They list receiving and checking goods as a skill.");
     expect(await listAudit(t.db, { action: "card.synthesis_fallback" })).toHaveLength(1);
   });
 
@@ -280,5 +323,16 @@ describe("synthesiseCard", () => {
     expect(JSON.stringify(row.body)).not.toMatch(/"fi"|voice|inputMode|lang"/);
     void interview;
     void SENTENCES;
+  });
+});
+
+describe("fallbackRendering case", () => {
+  it("keeps product names and lower-cases ordinary lead words", async () => {
+    const { fallbackRendering } = await import("./checks");
+    expect(fallbackRendering("Excel")).toBe("They list Excel as a skill.");
+    expect(fallbackRendering("Python")).toBe("They list Python as a skill.");
+    expect(fallbackRendering("Customer service")).toBe("They list customer service as a skill.");
+    expect(fallbackRendering("Welding")).toBe("They list welding as a skill.");
+    expect(fallbackRendering("SAP")).toBe("They list SAP as a skill.");
   });
 });

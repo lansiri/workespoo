@@ -13,3 +13,5 @@ export {
 export { approveCard, setPoolOptIn } from "./approval";
 export { editCard, CardEdit } from "./review";
 export { purgeLiveSessions } from "./jobs";
+export { renderSignal } from "./render";
+export { exportPersonData, deletePerson } from "./mydata";
