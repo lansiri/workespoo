@@ -2,13 +2,14 @@ import Link from "next/link";
 import { LanguageSwitcher } from "@/lib/i18n/client";
 import { pick } from "@/lib/i18n";
 import type { UiLang } from "@/contracts";
+import { Logo } from "@/components/brand/Logo";
 import { siteMessages } from "./messages";
 
-/** LOGO SLOT: the lead swaps this for the real logo component. Keep the test id. */
+/** The logo links home. `Logo` itself carries `data-testid="site-logo"`. */
 function SiteLogo() {
   return (
-    <Link href="/" data-testid="site-logo" style={{ fontWeight: 700, marginInlineEnd: "1rem" }}>
-      WorkEspoo
+    <Link href="/" aria-label="WorkEspoo" style={{ marginInlineEnd: "1rem", display: "inline-flex" }}>
+      <Logo size={32} />
     </Link>
   );
 }

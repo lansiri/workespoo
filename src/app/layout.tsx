@@ -8,6 +8,7 @@ import { I18nProvider } from "@/lib/i18n/client";
 import { getUiLang } from "@/lib/i18n/server";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { brandFont } from "@/components/brand/fonts";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -38,6 +39,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         geistMono.variable,
         "font-sans",
         inter.variable,
+        brandFont.variable,
       )}
     >
       <body className="min-h-full flex flex-col">
