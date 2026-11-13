@@ -53,6 +53,7 @@ Lead-owned. Streams implement exactly these paths. Phase 2 pages are unstyled bu
 
 | Page | Test ids |
 |---|---|
+| every page (header) | `language-switcher`, `lang-en`, `lang-fi`, `lang-sv`, `site-logo` |
 | `/interview` | `consent-interview`, `consent-voice`, `mode-express`, `mode-full`, `start-interview` |
 | `/interview/[id]` | `interviewer-text` (latest interviewer line), `transcript`, `answer-input`, `send-answer`, `talk-button`, `signal-chip` (one per signal, with `data-signal-id`), `jobs-lit-count`, `interview-done`, `go-to-card` |
 | `/card` | `card-headline`, `card-signal` (with `data-signal-id`), `signal-quote`, `signal-rendering`, `signal-remove`, `approve-card`, `card-approved`, `pool-opt-in`, `go-to-matches` |

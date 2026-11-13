@@ -36,6 +36,18 @@ Numbering, fixed for everyone:
 8. **Demo event date**: Thursday 26 November 2026.
 9. **Other languages**: scripted lines and bank questions exist in English and Finnish; anything else falls back to English.
 
+## Three languages: English, Finnish, Swedish
+
+The owner requires the site and the interviewer to work in Finnish, English and Swedish. Wherever a spec says "English and Finnish", read "English, Finnish and Swedish" (`UiLang` is `en | fi | sv`).
+
+- **Interface**: every visible string goes through `src/lib/i18n` (see `docs/LIB-API.md`). A language switcher in the header sets a cookie. No hardcoded interface text in pages or components, including test pages people will see. `data-testid` values never change with language.
+- **Interviewer**: scripted lines, the fallback question bank and the stop, skip and delete commands exist in all three languages in `src/lib/i18n/content/interview-lines.ts`. The reply-language rule becomes: `en`, `fi` or `sv` detected gives "Reply in English / Finnish / Swedish."; anything else gives "Reply in the same language as the person's last message." Language detection includes a Swedish stopword list.
+- **Guards**: `src/lib/lexicon.ts` covers all three languages.
+- **Voice**: speech-to-text and text-to-speech get the locale from `UI_LANG_LOCALES` until the conversation language is detected.
+- **Cards stay in English** (phrases, headline, company view), with Finnish labels from ESCO shown beside them. That is what lets a company read a card whatever language the person spoke.
+- **Model prompts stay in English.** Only the conversation and the interface are multilingual.
+- The Swedish language code is `sv`. `se` is the country code for Sweden and is not used.
+
 ## What to build first, per stream
 
 The specs describe the full product. Build in this order and stop to report when the first block works end to end. Later blocks are picked up in a second pass.

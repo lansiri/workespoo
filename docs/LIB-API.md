@@ -198,3 +198,57 @@ export function escoByUris(db: Db, uris: string[]): Promise<Map<string, EscoRef>
 export function jobsLitForSkillUris(db: Db, skillUris: string[],
   opts?: { municipalityCodes?: string[]; sampleSize?: number }): Promise<{ count: number; sample: JobTeaser[] }>;
 ```
+
+## `src/lib/sql.ts`
+
+```ts
+/** Raw `db.execute(sql...)` returns an array with postgres.js and `{ rows }` with PGlite. This hides that. */
+export function rowsOf<T>(result: unknown): T[];
+```
+
+## `src/lib/lexicon.ts` (exists)
+
+`findBannedEvaluative(text)`, `findProtectedQuestion(text)`, `findProtectedCard(text)`, `stripQualityWords(phrase)`. The only word lists in the project, in English, Finnish and Swedish. The interview guard, the extractor merge step and card synthesis all use them. Do not copy the lists from the specs into feature code.
+
+## `src/lib/i18n` (interface languages: English, Finnish, Swedish)
+
+Every string a person can see goes through this. No page hardcodes interface text.
+
+```ts
+// src/lib/i18n/types.ts (exists)
+export type Messages<T extends Record<string, string>> = Record<UiLang, T>;   // every language, same keys
+export const UI_LANGS: readonly ["en", "fi", "sv"];
+export const UI_LANG_NAMES: Record<UiLang, string>;      // "English", "Suomi", "Svenska"
+export const UI_LANG_LOCALES: Record<UiLang, string>;    // "en-GB", "fi-FI", "sv-SE" (speech and formatting)
+
+// src/lib/i18n/index.ts (isomorphic: safe in server and client code)
+export function pick<T extends Record<string, string>>(messages: Messages<T>, lang: UiLang): T;
+export function fmt(template: string, vars: Record<string, string | number>): string;   // "{count} postings"
+
+// src/lib/i18n/server.ts (server components and route handlers)
+export const UI_LANG_COOKIE = "ui_lang";
+export function getUiLang(): Promise<UiLang>;   // cookie, else Accept-Language (fi, sv, en), else "en"
+
+// src/lib/i18n/client.tsx ("use client")
+export function I18nProvider(props: { lang: UiLang; children: React.ReactNode }): React.JSX.Element;
+export function useUiLang(): UiLang;
+export function useMessages<T extends Record<string, string>>(messages: Messages<T>): T;
+export function LanguageSwitcher(): React.JSX.Element;   // sets the cookie and refreshes
+```
+
+How a feature uses it:
+
+```ts
+// src/features/<name>/messages.ts
+import type { Messages } from "@/lib/i18n/types";
+export const cardMessages = {
+  en: { approve: "Approve my card", removed: "Removed" },
+  fi: { approve: "Hyväksy korttini", removed: "Poistettu" },
+  sv: { approve: "Godkänn mitt kort", removed: "Borttagen" },
+} satisfies Messages<{ approve: string; removed: string }>;
+
+// server component:  const m = pick(cardMessages, await getUiLang());
+// client component:  const m = useMessages(cardMessages);
+```
+
+Shared content lives in `src/lib/i18n/content/`: `core.ts` (navigation, common buttons and errors), `copy.ts` (the microcopy from `docs/specs/copy.md` in all three languages) and `interview-lines.ts` (the interviewer's scripted lines, fallback question bank, command words and stopword lists). Use those before writing new strings. Each feature keeps its own extra strings in its own `messages.ts`, so no two streams edit the same catalogue.
