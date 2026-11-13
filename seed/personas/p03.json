@@ -24,6 +24,11 @@
       "story": "Reproduced a double-charging bug by sending the same request twice in quick succession and fixed the race behind it."
     },
     {
+      "skillUri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+      "label": "Java (computer programming)",
+      "story": "Writes the services in Java with Spring Boot and covers them with JUnit tests."
+    },
+    {
       "skillUri": "http://data.europa.eu/esco/skill/8b94aa1e-89c9-459d-b3b4-1dfab8dec2df",
       "label": "use software libraries",
       "story": "Chooses and updates the libraries the services depend on and reads their release notes before upgrading."

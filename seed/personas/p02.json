@@ -32,6 +32,11 @@
       "skillUri": "http://data.europa.eu/esco/skill/fd33c66c-70c4-40e6-b87c-5495bd3bf26e",
       "label": "design user interface",
       "story": "Turns the designer's drawings into working screens and checks them against the drawing together with her."
+    },
+    {
+      "skillUri": "http://data.europa.eu/esco/skill/9b9de2a4-d8af-4a7b-933a-a8334ae60067",
+      "label": "JavaScript Framework",
+      "story": "Builds the booking screens in React and keeps the components usable with keyboard and screen reader."
     }
   ],
   "omit": [
