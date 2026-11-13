@@ -13,3 +13,9 @@ Dockerfile
 compose.yaml
 infra
 *.log
+docs
+design
+e2e
+evals/prompt-lab
+.github
+tsconfig.tsbuildinfo

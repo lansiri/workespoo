@@ -13,7 +13,7 @@ STATE=$ROOT/state
 ENV_FILE=$ROOT/env/.env
 HEALTH_TIMEOUT=90
 umask 022
-KEEP_IMAGES=5
+KEEP_IMAGES=2
 
 exec 2>&1
 mkdir -p "$STATE"
@@ -155,7 +155,8 @@ docker image ls workespoo-app --format '{{.CreatedAt}}\t{{.Tag}}' | sort -r | cu
       docker image rm "workespoo-app:$old_tag" >/dev/null 2>&1 && log "pruned image $old_tag"
     done
 docker image prune -f >/dev/null 2>&1 || true
-docker builder prune -f --filter until=168h >/dev/null 2>&1 || true
+# Each image is about 2 GB and the disk is 38 GB: keep little build cache.
+docker builder prune -f --filter until=6h >/dev/null 2>&1 || true
 
 # Keep server-side scripts in step with the deployed commit.
 for pair in "infra/hooks/post-receive:$REPO/hooks/post-receive" "infra/backup.sh:$ROOT/bin/backup.sh" \
