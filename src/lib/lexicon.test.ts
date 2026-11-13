@@ -23,9 +23,24 @@ describe("findBannedEvaluative", () => {
     expect(findBannedEvaluative("Which tools did you use for that?")).toEqual([]);
   });
 
+  it("does not collide with ordinary work vocabulary", () => {
+    // whole-word entries must not match longer words
+    expect(findBannedEvaluative("What kind of work are you looking for next?")).toEqual([]);
+    expect(findBannedEvaluative("How did you plan activities for the seniors?")).toEqual([]);
+    expect(findBannedEvaluative("Mitkä asiat vaikuttavat työhösi eniten?")).toEqual([]);
+    expect(findBannedEvaluative("Kerro tasoitustöistä ja hienosäädöstä.")).toEqual([]);
+    // while the evaluative uses are still caught
+    expect(findBannedEvaluative("As a senior developer you look like a natural.")).toEqual([
+      "senior",
+      "you look like",
+    ]);
+    expect(findBannedEvaluative("Vaikuttava ura, hienoa!")).toEqual(["vaikuttava", "hienoa"]);
+    expect(findBannedEvaluative("Mikä on tasosi?")).toEqual(["tasosi"]);
+  });
+
   it("catches praise in Swedish", () => {
     expect(findBannedEvaluative("Imponerande, du låter självsäker.")).toEqual([
-      "imponerande",
+      "imponera",
       "du låter",
       "självsäker",
     ]);
@@ -44,12 +59,19 @@ describe("findProtectedQuestion", () => {
     expect(findProtectedQuestion("Do you have children?")).toEqual(["children"]);
     expect(findProtectedQuestion("Mikä on äidinkielesi?")).toEqual(["äidinkiel"]);
     expect(findProtectedQuestion("Onko sinulla lapsia tai sairausloma?")).toEqual(["laps", "sairau"]);
+    expect(findProtectedQuestion("Kuinka monta lasta sinulla on?")).toEqual(["lasta"]);
+    expect(findProtectedQuestion("Mikä on syntymävuotesi?")).toEqual(["syntymävuo"]);
     expect(findProtectedQuestion("Tarvitsetko oleskeluluvan?")).toEqual(["oleskelulu"]);
+    // "lasta" is a whole word, so loading cargo is not a protected topic
+    expect(findProtectedQuestion("Miten lastaus ja lastaaminen sujui varastolla?")).toEqual([]);
   });
 
   it("catches protected topics in Swedish without colliding with English", () => {
     expect(findProtectedQuestion("Var kommer du ifrån?")).toEqual(["var kommer du ifrån"]);
     expect(findProtectedQuestion("Har du barn?")).toEqual(["har du barn"]);
+    expect(findProtectedQuestion("Hur många barn har du?")).toEqual(["barn har du"]);
+    expect(findProtectedQuestion("Var är du född?")).toEqual(["är du född"]);
+    expect(findProtectedQuestion("Hur arbetade du med din manager?")).toEqual([]);
     expect(findProtectedQuestion("Vad är ditt modersmål?")).toEqual(["modersmål"]);
     expect(findProtectedQuestion("What did you make in the barn as a gift?")).toEqual([]);
     expect(findProtectedQuestion("Vilka verktyg använde du i det arbetet?")).toEqual([]);

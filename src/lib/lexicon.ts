@@ -1,62 +1,78 @@
 /**
  * Word lists that keep evaluation and protected attributes out of the product.
- * Source: docs/specs/interview.md sections 10.3 and 10.4, extended by the lead with Swedish and
- * with Finnish stems that also match inflected forms. Lead-owned: the interview guard,
- * the turn extractor's merge step and card synthesis all use these, so they must not drift.
+ * Source: docs/specs/interview.md sections 10.3 and 10.4, extended by the lead with Swedish,
+ * with Finnish stems that also match inflected forms, and with fixes for entries that
+ * collided with ordinary work vocabulary. Lead-owned: the interview guard, the turn
+ * extractor's merge step and card synthesis all use these, so they must not drift.
  *
- * Matching is case-insensitive and a pattern must start at a word boundary, so a stem such
- * as `sairau` matches `sairausloma` while `born` does not match `stubborn`. Country names and
- * nationality adjectives are matched case-sensitively as whole words, because many are also
- * ordinary words in lower case (`polish`, `turkey`, `china`).
+ * How entries match (always case-insensitive, always starting at a word boundary):
+ * - an entry ending in `*` is a stem: `sairau*` matches `sairaus` and `sairausloma`;
+ * - any other entry is a whole word or phrase: `senior` matches "senior developer" but
+ *   not "seniors", and `taso` does not match `tasoitus`.
+ * Country names and nationality adjectives are matched case-sensitively as whole words,
+ * because many are also ordinary words in lower case (`polish`, `turkey`, `china`).
+ *
+ * The lists err on the side of blocking. When a question is dropped, the interviewer falls
+ * back to a scripted bank question, which is a mild cost; a protected question getting
+ * through is not.
  */
 
 /** The interviewer must never say these: praise, levels, or remarks on manner of speaking. */
 export const BANNED_EVALUATIVE = [
   // English
   "impressive", "great", "excellent", "amazing", "awesome", "fantastic", "wonderful", "brilliant",
-  "outstanding", "perfect", "well done", "good job", "nice work", "strong", "talented", "skilled",
-  "expert", "senior", "junior", "level", "score", "rating", "you sound", "you seem", "you look",
-  "confident", "nervous", "passionate", "enthusias", "your accent", "your english", "your finnish",
-  "fluent",
+  "outstanding", "perfect", "perfectly", "well done", "good job", "nice work", "strong",
+  "stronger", "strongest", "talented", "skilled", "expert", "senior", "junior", "level", "levels",
+  "score", "scores", "rating", "ratings", "you sound", "you seem", "you look like",
+  "you look good", "you look tired", "you look nervous", "you look young", "you look old",
+  "confident", "nervous", "passionate", "enthusias*", "your accent", "your english",
+  "your finnish", "your swedish", "fluent", "fluently",
   // Finnish
-  "vaikuttava", "upea", "hieno", "hienoa", "mahtava", "loistava", "erinomai", "täydellinen",
-  "hyvin tehty", "hyvä vastaus", "taitava", "lahjakas", "asiantuntija", "kokenut", "taso",
-  "pisteet", "kuulostat", "vaikutat", "itsevarma", "hermostu", "innokas", "aksentti", "suomesi",
-  "englantisi", "ruotsisi", "sujuva",
+  "vaikuttava", "vaikuttavaa", "vaikuttavan", "vaikuttavalta", "upea*", "hieno", "hienoa",
+  "hienosti", "hienon", "hienolta", "mahtava*", "loistava*", "erinomai*", "täydelli*",
+  "hyvin tehty", "hyvä vastaus", "taitava*", "lahjakas", "lahjakk*", "kokenut", "taso", "tason",
+  "tasoa", "tasosi", "tasolla", "tasoinen", "tasoista", "pisteet", "pisteitä", "kuulostat",
+  "vaikutat", "itsevarma*", "hermostu*", "innokas", "innokk*", "aksentti*", "aksentin",
+  "aksenttisi", "suomesi", "englantisi", "ruotsisi", "sujuva*",
   // Swedish
-  "imponerande", "fantastisk", "utmärkt", "underbar", "lysande", "perfekt", "bra jobbat",
-  "bra svar", "snyggt jobbat", "duktig", "skicklig", "talang", "begåvad", "nivå", "poäng",
-  "betyg", "du låter", "du verkar", "självsäker", "nervös", "passionerad", "entusias",
-  "din accent", "din brytning", "din svenska", "din engelska", "din finska", "flytande",
+  "imponera*", "fantastisk*", "utmärkt*", "underbar*", "lysande", "perfekt", "bra jobbat",
+  "bra svar", "snyggt jobbat", "duktig*", "skicklig*", "talang*", "begåvad*", "nivå", "nivån",
+  "poäng", "betyg", "du låter", "du verkar", "självsäker*", "nervös*", "passionerad*",
+  "entusias*", "din accent", "din brytning", "din svenska", "din engelska", "din finska",
+  "flytande",
 ] as const;
 
 /** List A: topics the interviewer must never ask about. */
 export const PROTECTED_QUESTION = [
   // English
-  "how old", "your age", "were you born", "where are you from", "where do you come from",
-  "nationality", "citizenship", "ethnic", "religio", "married", "husband", "wife", "children",
-  "kids", "pregnan", "maternity", "your health", "disab", "illness", "diagnos", "visa",
-  "residence permit", "work permit", "native language", "mother tongue", "first language", "gender",
+  "how old", "your age", "were you born", "when you were born", "where are you from",
+  "where do you come from", "nationality", "citizenship", "ethnic*", "religio*", "married",
+  "husband", "wife", "children", "kids", "pregnan*", "maternity", "your health", "disab*",
+  "illness", "illnesses", "diagnos*", "visa", "residence permit", "work permit",
+  "native language", "mother tongue", "first language", "gender",
   // Finnish. Stems, so that inflected forms match (äidinkielesi, lapsesi, oleskeluluvan).
-  "ikäsi", "minkä ikäinen", "kuinka vanha", "milloin synnyit", "mistä olet kotoisin",
-  "kansalaisuu", "etni", "uskonto", "uskonno", "naimisi", "puoliso", "vaimo", "laps", "raskau",
-  "äitiysloma", "terveydentila", "sairau", "vamma", "diagnoo", "oleskelulu", "työlupa", "työluva",
-  "viisumi", "äidinkiel", "sukupuol",
+  "ikäsi", "minkä ikäinen", "kuinka vanha", "milloin synnyit", "olet syntynyt", "syntymävuo*",
+  "mistä olet kotoisin", "kansalaisuu*", "etni*", "uskonto*", "uskonno*", "naimisi*", "puoliso*",
+  "vaimo*", "aviomie*", "laps*", "lasta", "lasten", "raskau*", "raskaana", "äitiysloma*",
+  "terveydentila*", "sairau*", "vamma*", "diagnoo*", "oleskelulu*", "työlupa*", "työluva*",
+  "viisumi*", "äidinkiel*", "sukupuol*",
   // Swedish. Phrases rather than short words, so they cannot collide with English or Finnish.
-  "hur gammal", "din ålder", "när är du född", "var kommer du ifrån", "varifrån kommer du",
-  "nationalitet", "medborgarskap", "etnisk", "är du gift", "din make", "din maka", "din fru",
-  "din man", "har du barn", "dina barn", "gravid", "föräldraledig", "mammaledig", "din hälsa",
-  "funktionsneds", "sjukdom", "visum", "uppehållstillstånd", "arbetstillstånd", "modersmål",
-  "förstaspråk", "ditt kön",
+  "hur gammal", "din ålder", "när är du född", "är du född", "när föddes du",
+  "var kommer du ifrån", "varifrån kommer du", "nationalitet*", "medborgarskap*", "etnisk*",
+  "är du gift", "din make", "din maka", "din fru", "din man", "har du barn", "barn har du",
+  "dina barn", "gravid*", "föräldraledig*", "mammaledig*", "din hälsa", "funktionsneds*",
+  "sjukdom*", "visum", "uppehållstillstånd*", "arbetstillstånd*", "modersmål*", "förstaspråk*",
+  "ditt kön",
 ] as const;
 
 /**
  * List B: terms that must not appear in card text (headline, phrase, company view).
  * Narrower than list A, because words such as "health and safety" are legitimate skills.
+ * Card text is always English.
  */
 export const PROTECTED_CARD = [
-  "nationality", "citizen", "ethnic", "religio", "married", "husband", "wife", "my children",
-  "kids", "pregnan", "maternity leave", "paternity leave", "disab", "diagnos", "visa",
+  "nationality", "citizen*", "ethnic*", "religio*", "married", "husband", "wife", "my children",
+  "kids", "pregnan*", "maternity leave", "paternity leave", "disab*", "diagnos*", "visa",
   "residence permit", "work permit", "native language", "mother tongue", "native speaker", "gender",
 ] as const;
 
@@ -115,30 +131,27 @@ export const QUALITY_WORDS = [
   "skilled", "proficient",
 ] as const;
 
+const BEFORE = "(?<![\\p{L}\\p{N}])";
+const AFTER = "(?![\\p{L}\\p{N}])";
+
 function escapeRegExp(text: string): string {
   return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-/** Case-insensitive, must start at a word boundary, may continue into a longer word. */
-function compilePrefixList(list: readonly string[]): RegExp {
-  const alternatives = [...list].sort((a, b) => b.length - a.length).map(escapeRegExp);
-  return new RegExp(`(?<![\\p{L}\\p{N}])(?:${alternatives.join("|")})`, "giu");
+/** Compile a list where `stem*` entries may continue into a longer word and others may not. */
+function compileList(list: readonly string[], flags: string): RegExp {
+  const sorted = [...list].sort((a, b) => b.length - a.length);
+  const alternatives = sorted.map((entry) =>
+    entry.endsWith("*") ? escapeRegExp(entry.slice(0, -1)) : `${escapeRegExp(entry)}${AFTER}`,
+  );
+  return new RegExp(`${BEFORE}(?:${alternatives.join("|")})`, flags);
 }
 
-/** Case-sensitive whole words. */
-function compileWholeWordList(list: readonly string[]): RegExp {
-  const alternatives = [...list].sort((a, b) => b.length - a.length).map(escapeRegExp);
-  return new RegExp(`(?<![\\p{L}\\p{N}])(?:${alternatives.join("|")})(?![\\p{L}\\p{N}])`, "gu");
-}
-
-const BANNED_RE = compilePrefixList(BANNED_EVALUATIVE);
-const QUESTION_RE = compilePrefixList(PROTECTED_QUESTION);
-const CARD_RE = compilePrefixList(PROTECTED_CARD);
-const COUNTRY_RE = compileWholeWordList(COUNTRIES_AND_DEMONYMS);
-const QUALITY_RE = new RegExp(
-  `(?<![\\p{L}\\p{N}])(?:${QUALITY_WORDS.map(escapeRegExp).join("|")})(?![\\p{L}\\p{N}])`,
-  "giu",
-);
+const BANNED_RE = compileList(BANNED_EVALUATIVE, "giu");
+const QUESTION_RE = compileList(PROTECTED_QUESTION, "giu");
+const CARD_RE = compileList(PROTECTED_CARD, "giu");
+const COUNTRY_RE = compileList(COUNTRIES_AND_DEMONYMS, "gu");
+const QUALITY_RE = compileList(QUALITY_WORDS, "giu");
 
 function matches(re: RegExp, text: string): string[] {
   return [...text.matchAll(re)].map((m) => m[0].toLowerCase());
