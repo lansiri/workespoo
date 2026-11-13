@@ -1,12 +1,10 @@
 import type { JobDefinition, Schedule } from "@/lib/queue";
+import { jobs as cardJobs, schedules as cardSchedules } from "@/features/card/jobs";
 
 /**
- * Every feature's background work is registered here. To add a feature, export `jobs` and
- * `schedules` from `src/features/<name>/jobs.ts` and spread them in:
- *
- *   import { jobs as jobsJobs, schedules as jobsSchedules } from "@/features/jobs/jobs";
- *   export const allJobs: JobDefinition[] = [...jobsJobs];
- *   export const allSchedules: Schedule[] = [...jobsSchedules];
+ * Every feature's background work is registered here. Lead-owned: a feature exports `jobs`
+ * and `schedules` from `src/features/<name>/jobs.ts`, and the lead adds them at merge time.
+ * A job whose handler is not registered yet simply stays queued.
  */
-export const allJobs: JobDefinition[] = [];
-export const allSchedules: Schedule[] = [];
+export const allJobs: JobDefinition[] = [...cardJobs];
+export const allSchedules: Schedule[] = [...cardSchedules];

@@ -95,3 +95,9 @@ Phase 2 pages are the real routes and hooks without styling: plain HTML elements
 - **Introductions on the person's page.** `introsForTalent` returns each introduction together with the company's display name (masked in the demo) and the need's title, so the page can say who is asking and about what. The contract type is `IntroForTalent`.
 - **Age and gender wording in postings.** Keyword lists cannot tell "we want a young person" from "work with young people", so the word lists are not extended for this. The drafting model is told to leave such sentences out and list them as dropped; the prompt lab tests that on real postings.
 - **Reasons stay in English** in the Finnish and Swedish interfaces, like card renderings. The surrounding labels are translated.
+
+## Decisions from the Signal Card review (13 Nov, 23:20)
+
+- **An edited phrase must not reach companies as the person typed it.** A phrase the person edits or adds can be in any language and any register, which would leak language and fluency. So: the person's wording is kept in `phraseOwn` (shown to them, and to a company only after both sides agree). The English `phrase` and the rendering that companies and the organiser see are rewritten by prompt B from the person's wording and the evidence. Until prompt B has answered, and whenever it fails, companies keep seeing the previous English phrase and rendering for that signal; for a signal the person added themselves with no previous text, the signal is left out of the company view until prompt B succeeds. The interim rule in the S1b brief (use the typed text directly) is withdrawn.
+- **Speech and interview words** live in `src/lib/lexicon.ts` as `SPEECH_CUES` with `findSpeechCue()`, like every other word list.
+- **Opting in to or out of the pool** enqueues `matching.card_approved`, so eligibility is recomputed; the matching handler must drop eligibility for someone who has left the pool.

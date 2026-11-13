@@ -125,6 +125,18 @@ export const COUNTRIES_AND_DEMONYMS = [
   "Arabic", "African", "Asian", "Latin American",
 ] as const;
 
+/**
+ * Words about how someone spoke or about the interview itself. They must never appear in text
+ * a company or organiser reads about a person (writing rules R3 and R7 in signal-card.md),
+ * because they hint at language, fluency or input mode. Card text is always English.
+ * This also catches legitimate skills such as translation or public speaking; such a rendering
+ * falls back to a plain code-built sentence, which is the safe side.
+ */
+export const SPEECH_CUES = [
+  "interview*", "accent*", "fluen*", "translat*", "speak*", "spoke*", "spoken", "typed", "typing",
+  "mother tongue", "pronunciation",
+] as const;
+
 /** Words that grade a skill. They are removed from phrases; a phrase is never a level. */
 export const QUALITY_WORDS = [
   "advanced", "expert", "senior", "junior", "strong", "good", "basic", "excellent", "experienced",
@@ -152,6 +164,7 @@ const QUESTION_RE = compileList(PROTECTED_QUESTION, "giu");
 const CARD_RE = compileList(PROTECTED_CARD, "giu");
 const COUNTRY_RE = compileList(COUNTRIES_AND_DEMONYMS, "gu");
 const QUALITY_RE = compileList(QUALITY_WORDS, "giu");
+const SPEECH_RE = compileList(SPEECH_CUES, "giu");
 
 function matches(re: RegExp, text: string): string[] {
   return [...text.matchAll(re)].map((m) => m[0].toLowerCase());
@@ -176,6 +189,11 @@ export function findProtectedCard(text: string): string[] {
   }
   hits.push(...[...text.matchAll(COUNTRY_RE)].map((m) => m[0]));
   return hits;
+}
+
+/** Manner-of-speaking or interview wording in text meant for a company or organiser. */
+export function findSpeechCue(text: string): string[] {
+  return matches(SPEECH_RE, text);
 }
 
 /**

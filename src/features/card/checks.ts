@@ -1,4 +1,4 @@
-import { findBannedEvaluative, findProtectedCard } from "@/lib/lexicon";
+import { findBannedEvaluative, findProtectedCard, findSpeechCue } from "@/lib/lexicon";
 
 /** Rendering used when a model rendering fails a code check. Still labelled as an AI rendering. */
 export const fallbackRendering = (phrase: string): string => `They list ${phrase} as a skill.`;
@@ -6,19 +6,12 @@ export const fallbackRendering = (phrase: string): string => `They list ${phrase
 /** Rendering written by code for a phrase the person wrote or edited themselves. */
 export const personDescribes = (phrase: string): string => `The person describes ${phrase}.`;
 
-/**
- * Stored at synthesis and shown above renderings to companies. The spec's full wording
- * (signal-card.md section 5) is 96 characters, over the contract's 80-character limit for
- * `CompanyView.label`, so this is the same statement, shortened.
- */
+/** Stored at synthesis and shown above renderings to companies (signal-card.md section 5). */
 export const COMPANY_RENDERING_LABEL = "Written by AI from their words and approved by them. Not a quote or fact.";
 
 export const MAX_RENDERING_WORDS = 25;
 export const MAX_SUMMARY_WORDS = 40;
 export const MAX_HEADLINE_WORDS = 10;
-
-/** Manner-of-speaking and interview words that must never reach a company (rules R3 and R7). */
-const SPEECH_CUES = /(?<![\p{L}\p{N}])(?:interview\w*|accent\w*|fluen\w*|translat\w*|speak\w*|spoke\w*|spoken|typed|typing|mother tongue|pronunciation)(?![\p{L}\p{N}])/iu;
 
 export function wordCount(text: string): number {
   return text.trim().split(/\s+/).filter(Boolean).length;
@@ -39,7 +32,7 @@ export function textProblem(text: string, sources: readonly string[], maxWords: 
   if (wordCount(text) > maxWords) return "too_long";
   if (findProtectedCard(text).length > 0) return "protected";
   if (findBannedEvaluative(text).length > 0) return "evaluative";
-  if (SPEECH_CUES.test(text)) return "speech_cue";
+  if (findSpeechCue(text).length > 0) return "speech_cue";
   const t = normalise(text);
   for (const source of sources) {
     const s = normalise(source);

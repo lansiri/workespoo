@@ -3,6 +3,7 @@ import {
   findBannedEvaluative,
   findProtectedCard,
   findProtectedQuestion,
+  findSpeechCue,
   stripQualityWords,
 } from "./lexicon";
 
@@ -119,5 +120,21 @@ describe("stripQualityWords", () => {
 
   it("leaves ordinary phrases unchanged", () => {
     expect(stripQualityWords("warehouse stock control")).toBe("warehouse stock control");
+  });
+});
+
+describe("findSpeechCue", () => {
+  it("catches wording about how someone spoke or about the interview", () => {
+    expect(findSpeechCue("In the interview they spoke fluently about SAP.")).toEqual([
+      "interview",
+      "spoke",
+      "fluen",
+    ]);
+    expect(findSpeechCue("They typed that they handle supplier claims.")).toEqual(["typed"]);
+  });
+
+  it("leaves ordinary skill wording alone", () => {
+    expect(findSpeechCue("They receive goods and check them against orders.")).toEqual([]);
+    expect(findSpeechCue("They maintain bespoke reporting tools.")).toEqual([]);
   });
 });

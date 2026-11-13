@@ -123,7 +123,7 @@ Scripts only (`npm run seed`, `npm run sim`); nothing imports it.
 
 | Kind | Payload | Enqueued by | Handled by | Does |
 |---|---|---|---|---|
-| `matching.card_approved` | `{ talentId, cardVersion }` | `card` on approval | `matching` | `computeFeed`, then `computeEligibility({ talentId })`, then `needs.recompute_pool` for each affected need |
+| `matching.card_approved` | `{ talentId, cardVersion }` | `card` on approval, and on opting in to or out of the pool | `matching` | `computeFeed`, then `computeEligibility({ talentId })`, then `needs.recompute_pool` for each affected need |
 | `matching.need_changed` | `{ needCardId, version }` | `needs` on draft, edit, confirm | `matching` | `computeEligibility({ needCardId })`, then `needs.recompute_pool` |
 | `needs.recompute_pool` | `{ needCardId }` | `matching` | `needs` | `recomputePoolEvidence` |
 | `needs.draft` | `{ jobId, companyId }` | `matching` (feed explanations), `synth` (seeding) | `needs` | `draftNeedCard` |
