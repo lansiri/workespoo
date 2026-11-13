@@ -12,8 +12,8 @@ export type IsoDateTime = z.infer<typeof IsoDateTime>;
 export const Lang = z.enum(["en", "fi", "sv", "other"]);
 export type Lang = z.infer<typeof Lang>;
 
-/** Languages the interface and the scripted interviewer lines exist in. */
-export const UiLang = z.enum(["en", "fi"]);
+/** Languages the interface and the scripted interviewer lines exist in: English, Finnish, Swedish. */
+export const UiLang = z.enum(["en", "fi", "sv"]);
 export type UiLang = z.infer<typeof UiLang>;
 
 export const InputMode = z.enum(["voice", "text"]);

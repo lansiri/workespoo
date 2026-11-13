@@ -1,0 +1,101 @@
+import { describe, expect, it } from "vitest";
+import {
+  findBannedEvaluative,
+  findProtectedCard,
+  findProtectedQuestion,
+  stripQualityWords,
+} from "./lexicon";
+
+describe("findBannedEvaluative", () => {
+  it("catches praise and remarks on manner of speaking in English and Finnish", () => {
+    expect(findBannedEvaluative("That is an impressive project.")).toEqual(["impressive"]);
+    expect(findBannedEvaluative("You sound very confident!")).toEqual(["you sound", "confident"]);
+    expect(findBannedEvaluative("Hienoa, kuulostat itsevarmalta.")).toEqual([
+      "hienoa",
+      "kuulostat",
+      "itsevarma",
+    ]);
+  });
+
+  it("matches stems at the start of a word only", () => {
+    expect(findBannedEvaluative("Your enthusiasm shows.")).toEqual(["enthusias"]);
+    expect(findBannedEvaluative("We set up a multilevel cache.")).toEqual([]);
+    expect(findBannedEvaluative("Which tools did you use for that?")).toEqual([]);
+  });
+
+  it("catches praise in Swedish", () => {
+    expect(findBannedEvaluative("Imponerande, du låter självsäker.")).toEqual([
+      "imponerande",
+      "du låter",
+      "självsäker",
+    ]);
+  });
+
+  it("leaves neutral acknowledgements alone", () => {
+    expect(findBannedEvaluative("Thanks, that's clear. What did you do next?")).toEqual([]);
+    expect(findBannedEvaluative("Kiitos, tämä selvä. Mitä teit seuraavaksi?")).toEqual([]);
+    expect(findBannedEvaluative("Tack, det är tydligt. Vad gjorde du sedan?")).toEqual([]);
+  });
+});
+
+describe("findProtectedQuestion", () => {
+  it("catches protected topics", () => {
+    expect(findProtectedQuestion("Where are you from originally?")).toEqual(["where are you from"]);
+    expect(findProtectedQuestion("Do you have children?")).toEqual(["children"]);
+    expect(findProtectedQuestion("Mikä on äidinkielesi?")).toEqual(["äidinkiel"]);
+    expect(findProtectedQuestion("Onko sinulla lapsia tai sairausloma?")).toEqual(["laps", "sairau"]);
+    expect(findProtectedQuestion("Tarvitsetko oleskeluluvan?")).toEqual(["oleskelulu"]);
+  });
+
+  it("catches protected topics in Swedish without colliding with English", () => {
+    expect(findProtectedQuestion("Var kommer du ifrån?")).toEqual(["var kommer du ifrån"]);
+    expect(findProtectedQuestion("Har du barn?")).toEqual(["har du barn"]);
+    expect(findProtectedQuestion("Vad är ditt modersmål?")).toEqual(["modersmål"]);
+    expect(findProtectedQuestion("What did you make in the barn as a gift?")).toEqual([]);
+    expect(findProtectedQuestion("Vilka verktyg använde du i det arbetet?")).toEqual([]);
+  });
+
+  it("does not match inside unrelated words", () => {
+    expect(findProtectedQuestion("Were you stubborn about the design?")).toEqual([]);
+    expect(findProtectedQuestion("Tell me about a recent task you handled yourself.")).toEqual([]);
+  });
+});
+
+describe("findProtectedCard", () => {
+  it("catches protected terms, ages, countries and nationalities", () => {
+    expect(findProtectedCard("Stock room management in a Nigerian pharmacy")).toEqual(["Nigerian"]);
+    expect(findProtectedCard("52 years old warehouse lead")).toContain("52 years old");
+    expect(findProtectedCard("Native speaker level customer service")).toEqual(["native speaker"]);
+  });
+
+  it("keeps legitimate skill wording", () => {
+    expect(findProtectedCard("Health and safety inspections")).toEqual([]);
+    expect(findProtectedCard("Healthcare data analysis")).toEqual([]);
+    expect(findProtectedCard("Finnish labour law")).toEqual([]);
+    expect(findProtectedCard("Nordic market sales")).toEqual([]);
+  });
+
+  it("matches countries case-sensitively as whole words", () => {
+    expect(findProtectedCard("I polish UI designs before release")).toEqual([]);
+    expect(findProtectedCard("Polish market expansion")).toEqual(["Polish"]);
+    expect(findProtectedCard("Fine china restoration")).toEqual([]);
+  });
+});
+
+describe("stripQualityWords", () => {
+  it("removes grading words and year counts", () => {
+    expect(stripQualityWords("senior Java developer")).toBe("Java developer");
+    expect(stripQualityWords("5 years of Python programming")).toBe("Python programming");
+    expect(stripQualityWords("Expert project management, 10+ years")).toBe("project management");
+    expect(stripQualityWords("strong customer service")).toBe("customer service");
+  });
+
+  it("returns an empty string when nothing meaningful is left", () => {
+    expect(stripQualityWords("expert")).toBe("");
+    expect(stripQualityWords("5 years")).toBe("");
+  });
+
+  it("leaves ordinary phrases unchanged", () => {
+    expect(stripQualityWords("warehouse stock control")).toBe("warehouse stock control");
+  });
+});

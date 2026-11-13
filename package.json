@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "next typegen && tsc --noEmit",
-    "test": "vitest run",
+    "test": "node --require ./scripts/node20-polyfill.cjs node_modules/vitest/vitest.mjs run",
     "check": "npm run typecheck && npm run lint && npm run test",
     "format": "prettier --write .",
     "worker": "tsx src/worker/index.ts",

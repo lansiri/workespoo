@@ -8,6 +8,10 @@ export default defineConfig({
     include: ["src/**/*.test.ts", "tests/**/*.test.ts"],
     exclude: [".claude/**", "node_modules/**", ".next/**", "e2e/**"],
     env: { NODE_ENV: "test" },
-    testTimeout: 30_000,
+    // Generous timeouts and few workers: several agents run test suites on this machine at
+    // the same time, and starting an in-process Postgres under load can take many seconds.
+    testTimeout: 60_000,
+    hookTimeout: 120_000,
+    maxWorkers: 4,
   },
 });

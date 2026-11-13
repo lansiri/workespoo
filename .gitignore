@@ -55,3 +55,6 @@ npm-debug.log*
 
 # keep the example env file in the repo (must stay after the .env* rule above)
 !.env.example
+
+# vitest cache
+.vitest/
