@@ -186,3 +186,43 @@ const key = requireEnv("NVIDIA_API_KEY"); // throws a clear error if unset, at t
 ```
 
 Never read `process.env` directly in app code. Importing `@/lib/env` never throws, and `npm run build` works with no variables set, so call `getEnv()` inside functions, not at module top level. Tests can change variables and call `resetEnvCache()`.
+
+## Interface text in three languages
+
+Every visible string goes through `src/lib/i18n`. Each feature keeps its own `messages.ts`; `Messages<...>` makes a missing key in any language a compile error. Use `fmt` for placeholders: `fmt("{count} postings", { count: 3 })`.
+
+```ts
+// src/features/card/messages.ts
+import type { Messages } from "@/lib/i18n";
+export const cardMessages = {
+  en: { approve: "Approve my card" },
+  fi: { approve: "Hyväksy korttini" },
+  sv: { approve: "Godkänn mitt kort" },
+} satisfies Messages<{ approve: string }>;
+```
+
+```tsx
+// Server component (page, layout)
+import { pick } from "@/lib/i18n";
+import { getUiLang } from "@/lib/i18n/server";
+import { cardMessages } from "./messages";
+
+export default async function Page() {
+  const m = pick(cardMessages, await getUiLang());
+  return <button data-testid="approve-card">{m.approve}</button>;
+}
+```
+
+```tsx
+// Client component
+"use client";
+import { useMessages } from "@/lib/i18n/client";
+import { cardMessages } from "./messages";
+
+export function ApproveButton() {
+  const m = useMessages(cardMessages);
+  return <button data-testid="approve-card">{m.approve}</button>;
+}
+```
+
+Rules: `data-testid` values never depend on language. Do not import `@/lib/i18n/server` from a client component (use `useMessages`). Never put interface text in a page or component file.

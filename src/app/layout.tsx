@@ -4,6 +4,10 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { I18nProvider } from "@/lib/i18n/client";
+import { getUiLang } from "@/lib/i18n/server";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -22,10 +26,11 @@ export const metadata: Metadata = {
   description: "Prototype for Junction 2026. Not an official City of Espoo service.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const lang = await getUiLang();
   return (
     <html
-      lang="en"
+      lang={lang}
       className={cn(
         "h-full",
         "antialiased",
@@ -36,7 +41,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       )}
     >
       <body className="min-h-full flex flex-col">
-        <TooltipProvider>{children}</TooltipProvider>
+        <I18nProvider lang={lang}>
+          <TooltipProvider>
+            <SiteHeader lang={lang} />
+            <div className="flex-1">{children}</div>
+            <SiteFooter lang={lang} />
+          </TooltipProvider>
+        </I18nProvider>
         <Toaster />
       </body>
     </html>
