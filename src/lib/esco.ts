@@ -5,8 +5,14 @@ import type { EscoRef } from "@/contracts";
 
 export type EscoCandidate = { uri: string; labelEn: string; labelFi: string | null; similarity: number };
 
-/** Minimum score for `escoTopMatch` (lead-tunable starting value, docs/LEAD-DECISIONS.md). */
-export const ESCO_TOP_MATCH_MIN_SIMILARITY = 0.45;
+/**
+ * Minimum score for `escoTopMatch`. Tuned on the full ESCO list (14 Nov): at 0.45 trigrams gave
+ * confident nonsense ("Excel" to "demand excellence from performers", "React" to "react to
+ * mining emergencies", "data pipelines" to "clear pipelines"); at 0.75 every accepted match in
+ * a 46-phrase probe was right. Looser but correct matches ("order picking" to "pick orders for
+ * dispatching") need a model to choose among `escoCandidates`, not a lower threshold.
+ */
+export const ESCO_TOP_MATCH_MIN_SIMILARITY = 0.75;
 /** Candidates scoring below this are noise and never returned. */
 const CANDIDATE_FLOOR = 0.15;
 
@@ -19,10 +25,11 @@ function unwrapRows<T>(result: unknown): T[] {
 /**
  * Trigram candidates over English and Finnish labels of non-retired concepts, best first.
  *
- * The score of a label is the mean of `similarity` (whole-string overlap) and
- * `word_similarity` (the phrase against the best-matching part of the label), so that
- * "python" finds "Python (computer programming)" while a vague phrase still ranks short,
- * close labels above long ones. The better of the English and Finnish scores is used.
+ * The score of a label is the mean of `similarity` (whole-string overlap, with a qualifier in
+ * brackets at the end of the label left out) and `word_similarity` (the phrase against the
+ * best-matching part of the label), so that "python" scores 1 against "Python (computer
+ * programming)" while a vague phrase still ranks short, close labels above long ones. The
+ * better of the English and Finnish scores is used.
  */
 export async function escoCandidates(
   db: Db,
@@ -37,9 +44,9 @@ export async function escoCandidates(
     SELECT uri, label_en, label_fi, score FROM (
       SELECT uri, label_en, label_fi,
         GREATEST(
-          (similarity(lower(label_en), ${p}) + word_similarity(${p}, lower(label_en))) / 2,
+          (similarity(regexp_replace(lower(label_en), '\\s*\\([^)]*\\)\\s*$', ''), ${p}) + word_similarity(${p}, lower(label_en))) / 2,
           CASE WHEN label_fi IS NULL THEN 0
-               ELSE (similarity(lower(label_fi), ${p}) + word_similarity(${p}, lower(label_fi))) / 2 END
+               ELSE (similarity(regexp_replace(lower(label_fi), '\\s*\\([^)]*\\)\\s*$', ''), ${p}) + word_similarity(${p}, lower(label_fi))) / 2 END
         ) AS score
       FROM esco_concept
       WHERE NOT retired ${typeFilter}
@@ -58,7 +65,7 @@ export async function escoCandidates(
   }));
 }
 
-/** The best skill match at or above `minSimilarity` (default 0.45), or null. */
+/** The best skill match at or above `minSimilarity` (default 0.75), or null. */
 export async function escoTopMatch(
   db: Db,
   phrase: string,

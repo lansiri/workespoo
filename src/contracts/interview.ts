@@ -195,6 +195,16 @@ export const SynthOutput = z.object({
 });
 export type SynthOutput = z.infer<typeof SynthOutput>;
 
+/**
+ * JSON the analyst model returns when it matches card phrases to ESCO candidates
+ * (docs/specs/prompts/card-synthesis.md, prompt C). `i` is the item's number in the request,
+ * `choice` the candidate's number, or 0 for "none fits".
+ */
+export const EscoPickOutput = z.object({
+  picks: z.array(z.object({ i: z.number().int().min(0), choice: z.number().int().min(0).max(8) })).max(20),
+});
+export type EscoPickOutput = z.infer<typeof EscoPickOutput>;
+
 /* ------------------------------------------------------------------------------------------
  * API requests and responses
  * ---------------------------------------------------------------------------------------- */

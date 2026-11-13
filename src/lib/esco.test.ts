@@ -57,9 +57,38 @@ describe("esco lookups against the fixture subset", () => {
     expect(ref!.uri).toMatch(/\/esco\/skill\//);
     expect((await escoTopMatch(t.db, "asiakaspalvelu"))!.labelEn).toBe("customer service");
     expect(await escoTopMatch(t.db, "underwater basket diving championship")).toBeNull();
-    expect(await escoTopMatch(t.db, "python", 0.99)).toBeNull();
+    expect(await escoTopMatch(t.db, "python", 1.01)).toBeNull();
     // occupations are never returned as skill matches
     expect(await escoTopMatch(t.db, "nurse responsible for general care")).not.toMatchObject({ labelEn: "nurse responsible for general care" });
+  });
+
+  it("escoTopMatch refuses confident nonsense and keeps the plain matches", async () => {
+    const skill = (id: string, labelEn: string) => ({ uri: `http://data.europa.eu/esco/skill/test-${id}`, type: "skill" as const, labelEn, labelFi: null });
+    await t.db
+      .insert(escoConcept)
+      .values([
+        skill("excellence", "demand excellence from performers"),
+        skill("mining", "react to mining emergencies"),
+        skill("pipelines", "clear pipelines"),
+        skill("powertools", "use power tools"),
+        skill("java", "Java (computer programming)"),
+        skill("cash", "operate cash register"),
+        skill("wms", "use a warehouse management system"),
+      ])
+      .onConflictDoNothing();
+    // These scored 0.49 to 0.61 under the old 0.45 threshold and were shown on cards.
+    expect(await escoTopMatch(t.db, "Excel")).toBeNull();
+    expect(await escoTopMatch(t.db, "React")).toBeNull();
+    expect(await escoTopMatch(t.db, "data pipelines")).toBeNull();
+    expect(await escoTopMatch(t.db, "Power BI")).toBeNull();
+    // A qualifier in brackets does not count against the label.
+    expect((await escoTopMatch(t.db, "Java"))!.labelEn).toBe("Java (computer programming)");
+    // A leading verb in the label is fine when the rest is the phrase.
+    expect((await escoTopMatch(t.db, "cash register"))!.labelEn).toBe("operate cash register");
+    expect((await escoTopMatch(t.db, "warehouse management system"))!.labelEn).toBe("use a warehouse management system");
+    expect((await escoTopMatch(t.db, "forklift"))!.labelEn).toBe("operate forklift");
+    // The candidates are still there for a model to choose from.
+    expect((await escoCandidates(t.db, "excel", { type: "skill", limit: 5 })).length).toBeGreaterThan(0);
   });
 
   it("escoByUris resolves known uris and ignores unknown ones", async () => {

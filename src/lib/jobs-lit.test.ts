@@ -3,7 +3,7 @@ import { company, escoOccupationSkill, job, jobSkill, needCard } from "@/db/sche
 import type { NeedCard } from "@/contracts";
 import { createTestDb, type TestDb } from "../../tests/helpers/db";
 import { loadJobFixtures } from "../../fixtures/load";
-import { jobsLitForSkillUris } from "./jobs-lit";
+import { jobsLitForSignals, jobsLitForSkillUris, phraseQuery } from "./jobs-lit";
 
 const PYTHON = "http://data.europa.eu/esco/skill/python";
 const SQL_SKILL = "http://data.europa.eu/esco/skill/sql";
@@ -102,6 +102,92 @@ describe("jobsLitForSkillUris", () => {
   it("returns nothing for no skills or unknown skills", async () => {
     expect(await jobsLitForSkillUris(t.db, [])).toEqual({ count: 0, sample: [] });
     expect(await jobsLitForSkillUris(t.db, ["http://data.europa.eu/esco/skill/unknown"])).toEqual({ count: 0, sample: [] });
+  });
+});
+
+describe("phraseQuery", () => {
+  it("searches for adjacent words and lets a long last word take endings", () => {
+    expect(phraseQuery("Python")).toBe("'python':*");
+    expect(phraseQuery("SQL")).toBe("'sql'");
+    expect(phraseQuery("Data pipelines")).toBe("'data' <-> 'pipelines':*");
+    expect(phraseQuery("Power BI")).toBe("'power' <-> 'bi'");
+    expect(phraseQuery("asiakaspalvelu")).toBe("'asiakaspalvelu':*");
+  });
+
+  it("keeps only letters and digits, so nothing can break the query", () => {
+    expect(phraseQuery("C++ & (Linux) | !x:*")).toBe("'c' <-> 'linux' <-> 'x'");
+    expect(phraseQuery("it's 'quoted'")).toBe("'it' <-> 's' <-> 'quoted':*");
+  });
+
+  it("gives up on phrases too short or too long to search for", () => {
+    expect(phraseQuery("")).toBeNull();
+    expect(phraseQuery("C#")).toBeNull();
+    expect(phraseQuery("a very long phrase of more than five words")).toBeNull();
+  });
+});
+
+describe("jobsLitForSignals", () => {
+  let t: TestDb;
+  const CS = "http://data.europa.eu/esco/skill/test-customer-service";
+  const row = (id: string, over: Partial<typeof job.$inferInsert> = {}) => ({
+    id, source: "tmt" as const, sourceId: id, url: `https://x.example/${id}`, title: id, employerName: `Employer ${id}`,
+    municipality: "Espoo", municipalityCode: "049", ...over,
+  });
+
+  beforeAll(async () => {
+    t = await createTestDb();
+    const { escoConcept } = await import("@/db/schema");
+    await t.db.insert(escoConcept).values({ uri: CS, type: "skill", labelEn: "customer service", labelFi: "asiakaspalvelu" });
+    await t.db.insert(job).values([
+      row("fi_mentions", { description: "Haemme myyjää. Työhön kuuluu asiakaspalvelua ja kassatyötä.", postedAt: new Date("2026-11-05T00:00:00Z") }),
+      row("en_mentions", { description: "You will handle customer service by phone and chat.", postedAt: new Date("2026-11-04T00:00:00Z") }),
+      row("python_inflected", { description: "Kirjoitat Pythonia ja SQL:ää päivittäin.", postedAt: new Date("2026-11-03T00:00:00Z") }),
+      row("linked_only", { description: "Nothing to see in the text.", postedAt: new Date("2026-11-02T00:00:00Z") }),
+      row("reactive", { description: "We value a reactive and proactive attitude.", postedAt: new Date("2026-11-01T00:00:00Z") }),
+      row("inactive_mentions", { active: false, description: "Customer service role." }),
+      row("masked_mentions", { description: "Customer service role at a demo company." }),
+    ]);
+    await t.db.insert(jobSkill).values([{ jobId: "linked_only", skillUri: CS, origin: "posting" }]);
+    await t.db.insert(company).values([{ id: "co_m", displayName: "Demo M", source: "synthetic", masked: true, digestToken: "tok-m" }]);
+    await t.db.insert(needCard).values([{ id: "nc_m", jobId: "masked_mentions", companyId: "co_m", body: { stub: true } as unknown as NeedCard }]);
+  }, 60_000);
+  afterAll(() => t.close());
+
+  it("lights postings that mention the ESCO label in Finnish or English, and those linked to the skill", async () => {
+    const r = await jobsLitForSignals(t.db, [{ phrase: "Helping customers", escoUri: CS }], { sampleSize: 10 });
+    expect(r.sample.map((s) => s.id)).toEqual(["fi_mentions", "en_mentions", "linked_only"]);
+    expect(r.count).toBe(3);
+    // Each sampled posting says which skill it mentions; a posting that is only linked says nothing.
+    expect(r.sample.map((s) => s.mention ?? null)).toEqual(["asiakaspalvelu", "customer service", null]);
+  });
+
+  it("puts postings that mention a skill before those that are only linked", async () => {
+    const r = await jobsLitForSignals(t.db, [{ phrase: "SQL", escoUri: CS }], { sampleSize: 2 });
+    // python_inflected (3 Nov) mentions SQL; fi_mentions (5 Nov) mentions the Finnish label.
+    expect(r.sample.map((s) => [s.id, s.mention])).toEqual([["fi_mentions", "asiakaspalvelu"], ["en_mentions", "customer service"]]);
+    const all = await jobsLitForSignals(t.db, [{ phrase: "SQL", escoUri: CS }], { sampleSize: 10 });
+    expect(all.sample.map((s) => s.id)).toEqual(["fi_mentions", "en_mentions", "python_inflected", "linked_only"]);
+    expect(all.sample[2].mention).toBe("SQL");
+  });
+
+  it("lights postings that mention the person's own phrase, inflected forms included", async () => {
+    const r = await jobsLitForSignals(t.db, [{ phrase: "Python" }, { phrase: "SQL", escoUri: null }], { sampleSize: 10 });
+    expect(r.sample.map((s) => s.id)).toEqual(["python_inflected"]);
+  });
+
+  it("counts a posting once however many skills it mentions", async () => {
+    const r = await jobsLitForSignals(t.db, [{ phrase: "Python" }, { phrase: "SQL" }, { phrase: "customer service", escoUri: CS }]);
+    expect(r.count).toBe(4);
+  });
+
+  it("returns nothing for no signals or for phrases that cannot be searched", async () => {
+    expect(await jobsLitForSignals(t.db, [])).toEqual({ count: 0, sample: [] });
+    expect(await jobsLitForSignals(t.db, [{ phrase: "C#" }])).toEqual({ count: 0, sample: [] });
+  });
+
+  it("leaves out inactive postings and masked demo companies", async () => {
+    const ids = (await jobsLitForSignals(t.db, [{ phrase: "customer service" }], { sampleSize: 10 })).sample.map((s) => s.id);
+    expect(ids).toEqual(["en_mentions"]);
   });
 });
 

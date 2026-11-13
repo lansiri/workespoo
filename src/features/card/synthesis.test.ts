@@ -74,7 +74,9 @@ describe("synthesiseCard", () => {
       { turnIndex: 1, sentenceFrom: 1, sentenceTo: 1 },
       { turnIndex: 3, sentenceFrom: 2, sentenceTo: 2 },
     ]);
-    expect(card.signals[1].esco?.labelEn).toBe("manage supplier claims");
+    // The text matcher accepts near-exact labels only. A looser but right label such as
+    // "manage supplier claims" is the model's to pick among candidates (card-synthesis.md, prompt C).
+    expect(card.signals[1].esco ?? null).toBeNull();
     expect(card.signals[2].esco?.labelFi).toBe("SAP");
     expect(card.lookingFor.roles).toEqual(["Warehouse coordinator", "Purchasing"]);
     expect(card.companyView.items).toHaveLength(4);

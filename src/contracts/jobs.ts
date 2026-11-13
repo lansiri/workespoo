@@ -57,6 +57,11 @@ export const JobTeaser = z.object({
   municipality: z.string().nullable(),
   url: z.string(),
   source: JobSource,
+  /**
+   * Set in the "jobs light up" event when the posting's text mentions one of the person's
+   * skills in so many words: the phrase or ESCO label it mentions.
+   */
+  mention: z.string().nullable().optional(),
 });
 export type JobTeaser = z.infer<typeof JobTeaser>;
 
