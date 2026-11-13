@@ -166,12 +166,34 @@ class PiperWorker {
     return this.current !== null || this.queue.length > 0;
   }
 
-  synthesise(text: string): Promise<Buffer> {
-    if (this.dead) return Promise.reject(new PiperFailedError("Speech process stopped"));
-    return new Promise<Buffer>((resolve, reject) => {
-      this.queue.push({ line: `${JSON.stringify({ text })}\n`, resolve, reject });
-      this.next();
+  /**
+   * `promise` is the raw outcome of the sentence; it settles when Piper finishes it or the
+   * process dies. `cancel()` takes a still-queued sentence out so Piper never sees it; a
+   * running sentence cannot be recalled, so it still runs to its end marker.
+   */
+  synthesise(text: string): { promise: Promise<Buffer>; cancel(): void } {
+    if (this.dead) {
+      return {
+        promise: Promise.reject(new PiperFailedError("Speech process stopped")),
+        cancel: () => {},
+      };
+    }
+    let job!: Job;
+    const promise = new Promise<Buffer>((resolve, reject) => {
+      job = { line: `${JSON.stringify({ text })}\n`, resolve, reject };
     });
+    this.queue.push(job);
+    this.next();
+    return {
+      promise,
+      cancel: () => {
+        const i = this.queue.indexOf(job);
+        if (i >= 0) {
+          this.queue.splice(i, 1);
+          job.reject(abortError());
+        }
+      },
+    };
   }
 
   stop(): void {
@@ -277,13 +299,19 @@ export class PiperPool {
   async synthesise(text: string, lang: string, signal?: AbortSignal): Promise<Buffer> {
     if (signal?.aborted) throw abortError();
     const release = await this.acquire(signal);
+    let job: { promise: Promise<Buffer>; cancel(): void };
+    const voice = piperLang(lang);
     try {
-      const voice = piperLang(lang);
-      const pcm = await this.raceAbort(this.worker(voice).synthesise(text), signal);
-      return wavFile(pcm, PIPER_VOICES[voice].sampleRate);
-    } finally {
+      job = this.worker(voice).synthesise(text);
+    } catch (e) {
       release();
+      throw e;
     }
+    // The slot is held until Piper is really done with the sentence, not until the caller left.
+    const free = () => release();
+    job.promise.then(free, free);
+    const pcm = await this.raceAbort(job.promise, signal, job.cancel);
+    return wavFile(pcm, PIPER_VOICES[voice].sampleRate);
   }
 
   /** Stops every process that has had nothing to do for the idle time. */
@@ -377,10 +405,13 @@ export class PiperPool {
    * An abort answers the caller at once. The sentence already handed to Piper still runs to
    * its end marker, so the next sentence's audio is not mixed with this one's.
    */
-  private raceAbort<T>(work: Promise<T>, signal?: AbortSignal): Promise<T> {
+  private raceAbort<T>(work: Promise<T>, signal?: AbortSignal, cancel?: () => void): Promise<T> {
     if (!signal) return work;
     return new Promise<T>((resolve, reject) => {
-      const onAbort = () => reject(abortError());
+      const onAbort = () => {
+        cancel?.();
+        reject(abortError());
+      };
       signal.addEventListener("abort", onAbort, { once: true });
       work.then(
         (v) => {

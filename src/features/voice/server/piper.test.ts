@@ -347,6 +347,44 @@ describe("PiperPool", () => {
     expect(pool.inFlight).toBe(0);
   });
 
+  it("never writes an aborted sentence that was still queued", async () => {
+    const { pool, children } = setup();
+    const abort = new AbortController();
+    const a = pool.synthesise("Running.", "en");
+    await received(children[0], 1);
+    const b = pool.synthesise("Queued.", "en", abort.signal);
+    const bRejected = expect(b).rejects.toMatchObject({ name: "AbortError" });
+    await tick();
+    abort.abort();
+    await bRejected;
+    const c = pool.synthesise("Next.", "en");
+    children[0].answer([1, 0]);
+    await a;
+    await received(children[0], 2);
+    expect(children[0].texts).toEqual(["Running.", "Next."]);
+    children[0].answer([2, 0]);
+    await c;
+  });
+
+  it("keeps the slot of an aborted running sentence until Piper finishes it", async () => {
+    const { pool, children } = setup({ slotWaitMs: 20 });
+    const abort = new AbortController();
+    const a = pool.synthesise("A.", "en", abort.signal);
+    const aRejected = expect(a).rejects.toMatchObject({ name: "AbortError" });
+    const b = pool.synthesise("B.", "fi");
+    await received(children[0], 1);
+    await received(children[1], 1);
+    abort.abort();
+    await aRejected;
+    expect(pool.inFlight).toBe(2);
+    await expect(pool.synthesise("C.", "sv")).rejects.toBeInstanceOf(PiperBusyError);
+    children[0].answer([1, 0]);
+    await until(() => pool.inFlight === 1);
+    children[1].answer([1, 0]);
+    await b;
+    expect(pool.inFlight).toBe(0);
+  });
+
   it("never logs the text", async () => {
     const spies = (["log", "info", "warn", "error", "debug"] as const).map((m) =>
       vi.spyOn(console, m).mockImplementation(() => {}),
