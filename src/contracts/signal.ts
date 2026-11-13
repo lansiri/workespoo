@@ -81,7 +81,7 @@ export const EMPTY_LOOKING_FOR: LookingFor = {
  * a card cannot be approved while any item is stale.
  */
 export const CompanyView = z.object({
-  label: z.string().max(80),
+  label: z.string().max(140),
   summary: z.string().max(300),
   items: z.array(z.object({ signalId: SignalId, text: z.string().max(220), stale: z.boolean() })),
 });
@@ -182,5 +182,8 @@ export const CardForPerson = z.object({
   ),
   lookingFor: LookingFor,
   approvedAt: IsoDateTime.nullable(),
+  /** True for a real person trying the product live; their data is purged at `purgeAfter`. */
+  liveDemo: z.boolean().optional(),
+  purgeAfter: IsoDateTime.nullable().optional(),
 });
 export type CardForPerson = z.infer<typeof CardForPerson>;
