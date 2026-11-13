@@ -3,8 +3,8 @@
  * docs/FEATURE-API.md; the owning stream replaces these stub bodies.
  */
 import type { Db } from "@/db/client";
-import type { Intro } from "@/contracts";
+import type { IntroForTalent } from "@/contracts";
 
-export async function introsForTalent(_db: Db, _talentId: string): Promise<Intro[]> {
+export async function introsForTalent(_db: Db, _talentId: string): Promise<IntroForTalent[]> {
   throw new Error("@/features/intros: introsForTalent is not implemented yet");
 }

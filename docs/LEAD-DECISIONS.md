@@ -86,3 +86,12 @@ The specs describe the full product. Build in this order and stop to report when
 ## Page rules for Phase 2
 
 Phase 2 pages are the real routes and hooks without styling: plain HTML elements, shadcn primitives where they save time, no design work. Every interactive element gets a stable `data-testid`. Phase 3 restyles these pages without changing routes, hooks or test ids.
+
+## Decisions made while reviewing the first stream reports (13 Nov, 23:00)
+
+- **Model.** One model is available: `kimi-k3-1-pro` on Verda. It serves all three roles; `reasoning_effort` is `none` for the live role and `low` for the others. Measured settings and verified prompt changes land in `docs/llm-capabilities.md` and `docs/specs/prompts/PATCHES.md`.
+- **Language requirements and `touches`.** Follow `matching.md` 3.1: a person who holds the required language (evidenced or self-declared) touches a language requirement, so "Fluent Finnish" is not listed as "not mentioned" for someone who declared Finnish. Language requirements still never count towards eligibility.
+- **Feed retrieval gate.** On real data most postings carry ESCO occupations but no direct skills, and common skills such as Python, Java and SQL are only optional skills of software occupations. So a posting enters a person's feed when any of these holds: at least one direct skill link; at least two of the person's skills linked through the posting's occupations, essential or optional; one occupation-linked skill, essential or optional, plus a text hit for one of the person's signal labels (English or Finnish) in the posting; or text hits for at least two different signals. Essential links order above optional ones. This widens the person's own feed only. Eligibility for picks keeps its own rule.
+- **Introductions on the person's page.** `introsForTalent` returns each introduction together with the company's display name (masked in the demo) and the need's title, so the page can say who is asking and about what. The contract type is `IntroForTalent`.
+- **Age and gender wording in postings.** Keyword lists cannot tell "we want a young person" from "work with young people", so the word lists are not extended for this. The drafting model is told to leave such sentences out and list them as dropped; the prompt lab tests that on real postings.
+- **Reasons stay in English** in the Finnish and Swedish interfaces, like card renderings. The surrounding labels are translated.

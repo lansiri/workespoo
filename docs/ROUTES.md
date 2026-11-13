@@ -34,7 +34,7 @@ Lead-owned. Streams implement exactly these paths. Phase 2 pages are unstyled bu
 | `POST /api/card/pool` | S1 | `{ inPool: boolean }` |
 | `GET /api/matches` | S3 | The session talent's job feed and pending introductions |
 | `POST /api/intros` | S3 | A company asks to meet (company token in the body) |
-| `POST /api/intros/[id]/respond` | S3 | The person accepts or declines |
+| `POST /api/intros/[id]/respond` | S3 | The person accepts or declines. Body: `IntroResponseRequest` (`{ decision: "accept", displayName, contact }` or `{ decision: "decline" }`) |
 | `POST /api/organiser/login` | S3 | `{ passcode }`; sets the organiser session |
 | `GET /api/picks/queue` | S3 | Draft digests with their picks, for the organiser |
 | `POST /api/picks/decision` | S3 | `{ pickId, decision: "approve" | "remove", reasonCode?, note? }` |
