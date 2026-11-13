@@ -1,0 +1,15 @@
+node_modules
+.next
+.git
+.claude
+.env
+.env.*
+!.env.example
+coverage
+playwright-report
+test-results
+Dockerfile
+.dockerignore
+compose.yaml
+infra
+*.log
