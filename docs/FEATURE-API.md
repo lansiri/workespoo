@@ -97,8 +97,10 @@ export function recomputePoolEvidence(db: Db, needCardId: string): Promise<void>
 /** The person's job feed, in feed order, with the posting each match refers to. */
 export function feedForTalent(db: Db, talentId: string):
   Promise<Array<{ match: JobMatch; job: Job }>>;
-/** Recomputes the feed for one person from their approved card. */
+/** Recomputes the feed for one person from their approved card, with code-written reasons and no model call. */
 export function computeFeed(db: Db, talentId: string): Promise<{ matches: number }>;
+/** Step two: words the reasons of the top postings with the model. Postings never move. */
+export function refineFeed(db: Db, talentId: string): Promise<{ refined: number }>;
 /** Recomputes eligibility rows: for one need against the pool, or for one person against all needs. */
 export function computeEligibility(db: Db, scope: { needCardId: string } | { talentId: string }):
   Promise<{ rows: number }>;
@@ -144,7 +146,10 @@ Exported from `src/features/synth/index.ts` (S4). The route `POST /api/organiser
 | `picks.draft_daily` | `{ date }` | schedule, or `POST /api/picks/run` | `picks` | `draftDailyDigests` |
 | `jobs.ingest_tmt` | `{ municipalities }` | schedule | `jobs` | `ingestTmt` |
 | `jobs.crawl_occupations` | `{ limit }` | schedule | `jobs` | `crawlOccupationSkills` |
-| `trust.purge_live_sessions` | `{}` | schedule | `card` | Deletes live demo talents past `purgeAfter`; audit `talent.purged` |
+| `trust.purge_live_sessions` | `{}` | schedule | `card` | Deletes every person who is not synthetic and is past `purgeAfter`; audit `talent.purged` |
+| `matching.refine_feed` | `{ talentId, cardVersion }` | `matching` after the feed's first step | `matching` | `refineFeed`: words the reasons of the top postings with the model, in place |
+| `card.render` | `{ talentId, signalId, cardVersion }` | `card` when the person edits a phrase | `card` | Rewrites the English phrase and the company-view sentence (prompt B) |
+| `jobs.rescrub` | `{}` | the lead, once after a deploy that changes the scrub rules | `jobs` | `rescrubStoredPostings`: removes contact sentences from stored postings |
 
 Each feature exports `jobs: JobDefinition[]` and `schedules: Schedule[]` from `src/features/<name>/jobs.ts`. The lead wires them into `src/worker/registry.ts` at merge time. In tests, call `runReadyJobs(db, [...])` with the definitions you need.
 

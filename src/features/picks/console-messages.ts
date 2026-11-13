@@ -180,6 +180,7 @@ export const AUDIT_ACTION_LABELS: Record<UiLang, Record<AuditAction, string>> = 
     "agenda.manual_assigned": "A meeting slot was assigned by hand",
     "organiser.quotes_viewed": "An organiser viewed original quotes",
     "settings.changed": "A setting was changed",
+    "demo.reset": "The demo was put back to its saved state",
   },
   fi: {
     "interview.started": "Haastattelu aloitettiin",
@@ -230,6 +231,7 @@ export const AUDIT_ACTION_LABELS: Record<UiLang, Record<AuditAction, string>> = 
     "agenda.manual_assigned": "Tapaamisaika varattiin käsin",
     "organiser.quotes_viewed": "Järjestäjä katsoi alkuperäisiä lainauksia",
     "settings.changed": "Asetusta muutettiin",
+    "demo.reset": "Demo palautettiin tallennettuun tilaan",
   },
   sv: {
     "interview.started": "En intervju startades",
@@ -280,6 +282,7 @@ export const AUDIT_ACTION_LABELS: Record<UiLang, Record<AuditAction, string>> = 
     "agenda.manual_assigned": "En mötestid bokades för hand",
     "organiser.quotes_viewed": "En arrangör tittade på originalcitat",
     "settings.changed": "En inställning ändrades",
+    "demo.reset": "Demon återställdes till sitt sparade läge",
   },
 };
 

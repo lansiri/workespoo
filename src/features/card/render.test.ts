@@ -58,7 +58,9 @@ describe("renderSignal (prompt B)", () => {
     expect(seen?.messages[1].content).toContain("- Once a truck came with the wrong pallets");
     const { signal: s, item, card } = await rendered();
     expect(s).toMatchObject({ phrase: "Handling supplier claims", phraseOwn: OWN });
-    expect(s.esco?.labelEn).toBe("manage supplier claims");
+    // The text matcher accepts near-exact labels only; a looser but right label such as
+    // "manage supplier claims" is the model's to pick among candidates (prompt C).
+    expect(s.esco ?? null).toBeNull();
     expect(item).toEqual({ signalId: "s2", text: good.items[0].text, stale: false });
     expect(card.companyView.summary).toContain("handling supplier claims");
   });

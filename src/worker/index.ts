@@ -3,9 +3,11 @@
 
 import { closeDb, getDb } from "@/db/client";
 import { runSchedules, runWorkerLoop } from "@/lib/queue";
-import { allJobs, allSchedules } from "./registry";
+import { allJobs, allSchedules, backgroundKinds } from "./registry";
 
 const HEARTBEAT_MS = 60_000;
+/** Loops that take any job, quick ones first. One more loop takes quick jobs only. */
+const GENERAL_LOOPS = Math.max(1, Number.parseInt(process.env.WORKER_LOOPS ?? "2", 10) || 2);
 
 function log(msg: string): void {
   console.log(`[worker ${new Date().toISOString()}] ${msg}`);
@@ -14,7 +16,8 @@ function log(msg: string): void {
 async function main(): Promise<void> {
   const db = getDb();
   const abort = new AbortController();
-  log(`started, ${allJobs.length} job kind(s), ${allSchedules.length} schedule(s)`);
+  log(`started, ${allJobs.length} job kind(s), ${allSchedules.length} schedule(s), ${GENERAL_LOOPS} general loop(s) and 1 for quick jobs`);
+  const quickJobs = allJobs.filter((j) => !backgroundKinds.includes(j.kind));
   const timer = setInterval(() => log("heartbeat"), HEARTBEAT_MS);
 
   const stop = (signal: string) => {
@@ -27,7 +30,10 @@ async function main(): Promise<void> {
 
   try {
     await Promise.all([
-      runWorkerLoop(db, allJobs, { signal: abort.signal }),
+      runWorkerLoop(db, quickJobs, { signal: abort.signal, workerId: `worker-${process.pid}-quick` }),
+      ...Array.from({ length: GENERAL_LOOPS }, (_, i) =>
+        runWorkerLoop(db, allJobs, { signal: abort.signal, workerId: `worker-${process.pid}-${i + 1}`, last: backgroundKinds }),
+      ),
       runSchedules(db, allSchedules, abort.signal),
     ]);
   } finally {

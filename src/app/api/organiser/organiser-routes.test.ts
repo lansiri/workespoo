@@ -83,4 +83,17 @@ describe("reset-demo route", () => {
     expect(await (await resetRoute(post(), undefined as never)).json()).toEqual({ restored: false, people: 0, companies: 0 });
     expect(mocks.reset).toHaveBeenCalledWith(t.db);
   });
+
+  it("records a restore in the audit log with counts only, and nothing when there was no snapshot", async () => {
+    const { listAudit } = await import("@/lib/audit");
+    const before = (await listAudit(t.db, { action: "demo.reset" })).length;
+    mocks.reset.mockResolvedValueOnce({ restored: false, people: 0, companies: 0 });
+    await resetRoute(post(), undefined as never);
+    expect((await listAudit(t.db, { action: "demo.reset" })).length).toBe(before);
+    mocks.reset.mockResolvedValueOnce({ restored: true, people: 15, companies: 8 });
+    await resetRoute(post(), undefined as never);
+    const rows = await listAudit(t.db, { action: "demo.reset" });
+    expect(rows.length).toBe(before + 1);
+    expect(rows[0]).toMatchObject({ actor: "organiser", subjectType: "system", detail: { people: 15, companies: 8 } });
+  });
 });

@@ -200,6 +200,29 @@ describe("queue", () => {
     await runSchedules(t.db, [], AbortSignal.abort());
   });
 
+  it("takes background kinds only when nothing else is ready", async () => {
+    const order: string[] = [];
+    const slow = defineJob("test.slow", z.object({ n: z.number() }), async ({ n }) => void order.push(`slow${n}`));
+    const quick = defineJob("test.quick", z.object({ n: z.number() }), async ({ n }) => void order.push(`quick${n}`));
+    await enqueue(t.db, "test.slow", { n: 1 });
+    await enqueue(t.db, "test.slow", { n: 2 });
+    await enqueue(t.db, "test.quick", { n: 1 });
+    await enqueue(t.db, "test.quick", { n: 2 });
+    expect(await runReadyJobs(t.db, [slow, quick], { last: ["test.slow"] })).toBe(4);
+    expect(order).toEqual(["quick1", "quick2", "slow1", "slow2"]);
+  });
+
+  it("keeps the order jobs were queued in when no kind is marked as background", async () => {
+    const order: string[] = [];
+    const a = defineJob("test.a", z.object({}), async () => void order.push("a"));
+    const b = defineJob("test.b", z.object({}), async () => void order.push("b"));
+    await enqueue(t.db, "test.a", {});
+    await enqueue(t.db, "test.b", {});
+    await enqueue(t.db, "test.a", {});
+    await runReadyJobs(t.db, [a, b]);
+    expect(order).toEqual(["a", "b", "a"]);
+  });
+
   it("runWorkerLoop processes jobs and stops on abort", async () => {
     const done: number[] = [];
     const job = defineJob("test.w", z.object({ i: z.number() }), async (p) => {

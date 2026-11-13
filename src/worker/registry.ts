@@ -11,6 +11,13 @@ import { jobs as picksJobs, schedules as picksSchedules } from "@/features/picks
  * A job whose handler is not registered yet simply stays queued.
  */
 export const allJobs: JobDefinition[] = [...cardJobs, ...ingestJobs, ...needsJobs, ...matchingJobs, ...picksJobs];
+/**
+ * Work nobody is waiting on: slow, and often a long model call. The worker takes these only
+ * when nothing else is ready, and keeps one of its loops free of them altogether, so a person's
+ * feed, their eligibility and the organiser's picks never wait behind a Need Card draft.
+ */
+export const backgroundKinds: string[] = ["needs.draft", "jobs.ingest_tmt", "jobs.crawl_occupations", "jobs.rescrub"];
+
 export const allSchedules: Schedule[] = [
   ...cardSchedules,
   ...ingestSchedules,

@@ -72,9 +72,19 @@ export async function enqueue(db: Db, kind: string, payload: unknown, opts: Enqu
 
 type Claimed = typeof jobQueue.$inferSelect;
 
-async function claim(db: Db, kinds: string[], workerId: string): Promise<Claimed | null> {
+/**
+ * Claim the next ready job. Kinds listed in `last` are taken only when nothing else is ready,
+ * so slow background work never holds up a job a person is waiting on.
+ */
+async function claim(db: Db, kinds: string[], workerId: string, last: string[] = []): Promise<Claimed | null> {
   const now = new Date();
   const staleBefore = new Date(now.getTime() - LOCK_TIMEOUT_MS);
+  const lastKinds = last.filter((k) => kinds.includes(k));
+  // No term at all when nothing is marked: a bare constant in ORDER BY means a column position.
+  const order =
+    lastKinds.length > 0
+      ? [asc(sql`(${jobQueue.kind} IN (${sql.join(lastKinds.map((k) => sql`${k}`), sql`, `)}))::int`), asc(jobQueue.runAfter), asc(jobQueue.id)]
+      : [asc(jobQueue.runAfter), asc(jobQueue.id)];
   return db.transaction(async (tx) => {
     const [row] = await tx
       .select()
@@ -88,7 +98,7 @@ async function claim(db: Db, kinds: string[], workerId: string): Promise<Claimed
           or(isNull(jobQueue.lockedAt), lt(jobQueue.lockedAt, staleBefore)),
         ),
       )
-      .orderBy(asc(jobQueue.runAfter), asc(jobQueue.id))
+      .orderBy(...order)
       .limit(1)
       .for("update", { skipLocked: true });
     if (!row) return null;
@@ -121,13 +131,19 @@ async function finish(db: Db, row: Claimed, def: JobDefinition): Promise<void> {
   }
 }
 
-async function drain(db: Db, definitions: JobDefinition[], workerId: string, signal?: AbortSignal): Promise<number> {
+async function drain(
+  db: Db,
+  definitions: JobDefinition[],
+  workerId: string,
+  signal?: AbortSignal,
+  last: string[] = [],
+): Promise<number> {
   const byKind = new Map(definitions.map((d) => [d.kind, d]));
   const kinds = [...byKind.keys()];
   if (kinds.length === 0) return 0;
   let ran = 0;
   while (!signal?.aborted) {
-    const row = await claim(db, kinds, workerId);
+    const row = await claim(db, kinds, workerId, last);
     if (!row) break;
     await finish(db, row, byKind.get(row.kind)!);
     ran++;
@@ -135,9 +151,12 @@ async function drain(db: Db, definitions: JobDefinition[], workerId: string, sig
   return ran;
 }
 
-/** Process every job that is ready now, then return how many ran (successes and failures). */
-export function runReadyJobs(db: Db, definitions: JobDefinition[]): Promise<number> {
-  return drain(db, definitions, `ready-${process.pid}`);
+/**
+ * Process every job that is ready now, then return how many ran (successes and failures).
+ * Kinds in `opts.last` run only when nothing else is ready.
+ */
+export function runReadyJobs(db: Db, definitions: JobDefinition[], opts: { last?: string[] } = {}): Promise<number> {
+  return drain(db, definitions, `ready-${process.pid}`, undefined, opts.last);
 }
 
 function sleep(ms: number, signal?: AbortSignal): Promise<void> {
@@ -153,18 +172,22 @@ function sleep(ms: number, signal?: AbortSignal): Promise<void> {
   });
 }
 
-/** Long-running loop for the worker process. Resolves when `signal` aborts. */
+/**
+ * Long-running loop for the worker process. Resolves when `signal` aborts. Several loops may
+ * run side by side (jobs are claimed with SKIP LOCKED, so none runs twice). Kinds in
+ * `opts.last` are taken only when nothing else is ready.
+ */
 export async function runWorkerLoop(
   db: Db,
   definitions: JobDefinition[],
-  opts: { pollMs?: number; signal?: AbortSignal; workerId?: string } = {},
+  opts: { pollMs?: number; signal?: AbortSignal; workerId?: string; last?: string[] } = {},
 ): Promise<void> {
   const pollMs = opts.pollMs ?? 1000;
   const workerId = opts.workerId ?? `worker-${process.pid}`;
   while (!opts.signal?.aborted) {
     let ran = 0;
     try {
-      ran = await drain(db, definitions, workerId, opts.signal);
+      ran = await drain(db, definitions, workerId, opts.signal, opts.last);
     } catch (err) {
       console.error("[queue] worker loop error:", err instanceof Error ? err.message : String(err));
     }
