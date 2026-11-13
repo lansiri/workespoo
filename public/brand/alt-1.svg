@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="WorkEspoo concept: spark bubble">
+<defs><mask id="we-alt1-m"><rect width="64" height="64" fill="#fff"/><path d="M51 3Q53.42 11.58 62 14Q53.42 16.42 51 25Q48.58 16.42 40 14Q48.58 11.58 51 3Z" fill="#000" stroke="#000" stroke-width="6" stroke-linejoin="round"/></mask></defs>
+<path d="M18 14H38C45.7 14 52 20.3 52 28V36C52 43.7 45.7 50 38 50H25L13.5 58.5C12.6 59.2 11.5 58.5 11.6 57.4L12.4 49.2C7.4 47.2 4 42 4 36V28C4 20.3 10.3 14 18 14Z" fill="#0E5E55" mask="url(#we-alt1-m)"/>
+<circle cx="16" cy="33" r="4" fill="#FFFFFF"/><circle cx="28" cy="33" r="4" fill="#FFFFFF"/><circle cx="40" cy="33" r="4" fill="#FFFFFF"/>
+<path d="M51 3Q53.42 11.58 62 14Q53.42 16.42 51 25Q48.58 16.42 40 14Q48.58 11.58 51 3Z" fill="#FFB627"/>
+</svg>
