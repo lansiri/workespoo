@@ -1,0 +1,63 @@
+/* Gallery-only layout. Every class is prefixed wg-. The kit itself lives in src/components/we. */
+.wg { background: var(--cream); color: var(--ink); font-family: var(--font-body); }
+.wg-wrap { max-width: 1240px; margin: 0 auto; padding: 32px 32px 96px; }
+.wg h1 { font-family: var(--font-display); font-weight: 600; font-size: 40px; letter-spacing: -0.01em; line-height: 1.15; }
+.wg-lead { color: var(--muted-ink); max-width: 760px; margin-top: 8px; }
+.wg-index { display: flex; flex-wrap: wrap; gap: 6px 10px; margin: 20px 0 8px; padding: 0; list-style: none; font-size: 14px; }
+.wg-index a { color: var(--pine); text-decoration: underline; text-underline-offset: 3px; }
+.wg-section { margin-top: 56px; scroll-margin-top: 16px; }
+.wg-section > h2 { font-family: var(--font-display); font-weight: 600; font-size: 28px; line-height: 1.15; padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
+.wg-note { color: var(--muted-ink); font-size: 15px; margin: 10px 0 0; max-width: 820px; }
+.wg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 22px; margin-top: 20px; align-items: start; }
+.wg-grid.wg-wide { grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); }
+.wg-grid.wg-one { grid-template-columns: minmax(0, 1fr); }
+.wg-spec { min-width: 0; }
+.wg-spec > .wg-label { display: block; font: 700 11.5px/1.2 var(--font-body); letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted-ink); margin-bottom: 10px; }
+.wg-box { padding: 18px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md); }
+.wg-box.wg-cream { background: var(--cream); }
+.wg-box.wg-night { background: var(--night); }
+.wg-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 20px; }
+.wg-swatch { border: 1px solid var(--line-strong); border-radius: 14px; overflow: hidden; background: var(--paper); font-size: 13px; }
+.wg-swatch i { display: block; height: 56px; }
+.wg-swatch div { padding: 8px 10px; }
+.wg-swatch b { display: block; font-size: 13.5px; }
+.wg-swatch span { color: var(--muted-ink); }
+.wg-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.wg-stack { display: flex; flex-direction: column; gap: 14px; }
+.wg-frame { border: 1px dashed var(--line-strong); border-radius: 12px; overflow: hidden; background: var(--cream); }
+.wg-frame .we-topbar { padding-left: 16px; padding-right: 16px; }
+.wg-type { display: grid; gap: 10px; margin-top: 20px; }
+.wg-type > div { display: flex; flex-wrap: wrap; gap: 4px 20px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.wg-type small { flex: none; width: 180px; color: var(--muted-ink); font-size: 13px; }
+.wg-shadows { display: flex; flex-wrap: wrap; gap: 26px; margin-top: 20px; }
+.wg-shadows div { padding: 18px 22px; background: var(--paper); border: 2px solid var(--ink); border-radius: 18px; font-size: 14px; }
+.wg-slider { display: flex; gap: 10px; align-items: center; font-size: 14px; }
+.wg-slider input { accent-color: var(--pine); }
+.wg-tools { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+.wg-tools button { min-height: 44px; padding: 8px 14px; border-radius: 999px; border: 2px solid var(--ink); background: var(--paper); font-weight: 600; font-size: 14px; }
+.wg-tools button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+/* The assembled examples sit in the page flow, so the phone's fixed bars become plain bars here. */
+.we-frame { border: 2px solid var(--ink); border-radius: 14px; overflow: hidden; background: var(--cream); }
+.wg .we-iv { min-height: 0; padding-bottom: 0; }
+.wg .we-iv-controls, .wg .we-cd-mbar { position: static; }
+.wg .we-topbar { position: relative; }
+.wg .we-cp-banner { margin: 0 0 22px; }
+.wg .we-keys.we-fixed { position: static; }
+.we-looking-title { font-size: 20px; }
+.we-hint-line { font-size: 13px; color: var(--muted-ink); margin-top: 4px; }
+.we-looking dl div + div { margin-top: 0; }
+.we-looking dl > div { min-width: 0; }
+
+@media (max-width: 760px) {
+  .wg-wrap { padding: 20px 16px 96px; }
+  .wg h1 { font-size: 28px; }
+  .wg-section > h2 { font-size: 22px; }
+  .wg-grid, .wg-grid.wg-wide { grid-template-columns: minmax(0, 1fr); }
+  .wg-type small { width: 100%; }
+  .wg-frame .we-topbar { padding: 0 16px; }
+}
+.wg-sub { font-family: var(--font-display); font-weight: 500; font-size: 22px; margin-top: 36px; }
+.wg-icon { width: 28px; height: 28px; }
+.wg .wg-toast { position: absolute; left: 0; bottom: 0; transform: none; opacity: 1; }
+.wg .we-need-box { background: var(--paper); }
