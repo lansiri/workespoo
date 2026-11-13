@@ -1,0 +1,14 @@
+node_modules
+.next
+out
+build
+coverage
+drizzle
+package-lock.json
+.claude
+playwright-report
+test-results
+public
+src/components/ui
+docs
+CLAUDE.md
