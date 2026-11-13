@@ -34,25 +34,22 @@ export const TEXT_TERM_MIN_LENGTH = 4;
 export const TEXT_TERM_MAX = 60;
 
 /** Reasons. */
-export const REASON_TOP_POSTINGS = 12;
+export const REASON_TOP_POSTINGS = 5;
+/** Need Card drafts requested per feed, for the first postings without one. */
+export const NEED_DRAFT_POSTINGS = 3;
+/** Deadline of one reason call; a late call keeps the code-written reasons. */
+export const REASON_DEADLINE_MS = 20_000;
+/** A signal label shorter than this is never matched against posting text as a phrase. */
+export const PHRASE_MIN_LENGTH = 3;
 export const REASON_CONCURRENCY = 4;
 export const REASON_MAX_PER_POSTING = 3;
 export const REASON_TEMPERATURE = 0.2;
 export const REASON_SENTENCE_MAX_CHARS = 300;
-/** ESCO label against a posting sentence, for the non-Need-Card allowed pairs. */
-export const SENTENCE_LABEL_SIMILARITY = 0.5;
 
 /** "Not mentioned in your conversation" list. */
 export const NOT_MENTIONED_MAX = 5;
 /** Appended in English to a statutory requirement; the page swaps it for the interface language. */
 export const STATUTORY_SUFFIX = " (checked by the employer at hiring)";
-
-/**
- * The reason prompt's own banned wording, as listed in docs/specs/prompts/match-reasons.md
- * (code check 2). It is applied in addition to the shared lexicon.
- */
-export const REASON_BANNED_PATTERN =
-  /\b(strong|excellent|great|impressive|perfect|ideal|expert|talented|skilled|qualified|senior|junior|fit|match(es|ed)?|best|top|highly|score|percent)\b|%|\d+\s*\/\s*\d+/i;
 
 /** Words that carry no meaning in an ESCO label, left out of the text search. */
 export const TEXT_STOPWORDS = new Set([

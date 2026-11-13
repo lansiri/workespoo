@@ -4,9 +4,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { IntroResponseRequest } from "@/contracts";
 import type { MatchesPayload } from "./payload";
 
-/** While the feed is empty (just after approval) poll this often, this many times. */
-const POLL_MS = 3000;
-const MAX_POLLS = 20;
+/** While the feed is empty or its reasons are still being worded, poll this often, this many times. */
+const POLL_MS = 2000;
+const MAX_POLLS = 60;
 
 export type MatchesState =
   | { status: "loading" }
@@ -25,7 +25,7 @@ async function fetchMatches(signal: AbortSignal): Promise<MatchesState> {
   }
 }
 
-/** Loads `/api/matches`; polls briefly while the feed is still being prepared. */
+/** Loads `/api/matches`; polls every two seconds while the feed is empty or its reasons are still being worded. A poll replaces the data in place; postings keep their order. */
 export function useMatches(): { state: MatchesState; reload: () => void } {
   const [state, setState] = useState<MatchesState>({ status: "loading" });
   const [tick, setTick] = useState(0);
@@ -40,7 +40,7 @@ export function useMatches(): { state: MatchesState; reload: () => void } {
   }, [tick]);
 
   useEffect(() => {
-    if (state.status !== "ready" || state.data.matches.length > 0 || polls.current >= MAX_POLLS) return;
+    if (state.status !== "ready" || (state.data.matches.length > 0 && !state.data.refining) || polls.current >= MAX_POLLS) return;
     const timer = setTimeout(() => {
       polls.current += 1;
       setTick((n) => n + 1);
