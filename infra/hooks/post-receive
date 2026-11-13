@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # WorkEspoo push-to-deploy hook. Installed into /opt/workespoo/repo.git/hooks/
 # by infra/bootstrap.sh (and refreshed from the deployed commit after each
-# successful deploy). Everything printed here reaches the pusher's terminal.
+# successful deploy). It runs as the unprivileged `deploy` user, who pushes to
+# deploy@<host>:/opt/workespoo/repo.git and is in the docker group.
+# Everything printed here reaches the pusher's terminal.
 set -uo pipefail
 
 ROOT=${WORKESPOO_ROOT:-/opt/workespoo}
@@ -10,6 +12,7 @@ APP=$ROOT/app
 STATE=$ROOT/state
 ENV_FILE=$ROOT/env/.env
 HEALTH_TIMEOUT=90
+umask 022
 KEEP_IMAGES=5
 
 exec 2>&1
@@ -56,7 +59,9 @@ checkout() {  # checkout <commit> into $APP without moving the bare repo's HEAD
 restore_prev_checkout() {  # keep $APP matching what is actually running
   local prev_sha
   [[ -n "$PREV" ]] || return 0
-  prev_sha=$(git --git-dir="$REPO" rev-parse "$PREV^{commit}" 2>/dev/null) && checkout "$prev_sha" || true
+  if prev_sha=$(git --git-dir="$REPO" rev-parse "$PREV^{commit}" 2>/dev/null); then
+    checkout "$prev_sha" || true
+  fi
 }
 
 dc() {
@@ -153,7 +158,8 @@ docker image prune -f >/dev/null 2>&1 || true
 docker builder prune -f --filter until=168h >/dev/null 2>&1 || true
 
 # Keep server-side scripts in step with the deployed commit.
-for pair in "infra/hooks/post-receive:$REPO/hooks/post-receive" "infra/backup.sh:$ROOT/bin/backup.sh"; do
+for pair in "infra/hooks/post-receive:$REPO/hooks/post-receive" "infra/backup.sh:$ROOT/bin/backup.sh" \
+            "infra/set-env.sh:$ROOT/bin/set-env.sh"; do
   src=$APP/${pair%%:*}; dst=${pair#*:}
   if [[ -f "$src" ]] && ! cmp -s "$src" "$dst" && bash -n "$src"; then
     install -m 755 "$src" "$dst.new" && mv -f "$dst.new" "$dst" && log "updated $dst"
