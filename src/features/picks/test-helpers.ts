@@ -1,5 +1,5 @@
 /** Builders for tests: a hand-made pool, companies, needs and eligibility rows. Not used by production code. */
-import type { NeedCard, SignalCard } from "@/contracts";
+import type { NeedCard, PickReason, SignalCard } from "@/contracts";
 import type { Db } from "@/db/client";
 import { company, eligibility, job, needCard, signalCard, talent } from "@/db/schema";
 
@@ -166,6 +166,10 @@ export async function addPastPick(
     status?: "suggested" | "approved" | "removed";
     needCardVersion?: number;
     cardVersion?: number;
+    body?: { reasons: PickReason[]; notMentioned: string[] };
+    origin?: "agent" | "organiser" | "talent_request";
+    id?: string;
+    digestStatus?: "draft" | "published";
   },
 ): Promise<string> {
   const digestId = `dig_${args.companyId}_${args.digestDate}`;
@@ -175,13 +179,13 @@ export async function addPastPick(
       id: digestId,
       companyId: args.companyId,
       date: args.digestDate,
-      status: "published",
+      status: args.digestStatus ?? "published",
       seed: `seed-${digestId}`,
-      publishedBy: "organiser",
-      publishedAt: args.createdAt,
+      publishedBy: args.digestStatus === "draft" ? null : "organiser",
+      publishedAt: args.digestStatus === "draft" ? null : args.createdAt,
     })
     .onConflictDoNothing();
-  const id = `pick_${Math.random().toString(36).slice(2, 10)}`;
+  const id = args.id ?? `pick_${Math.random().toString(36).slice(2, 10)}`;
   await db.insert(pick).values({
     id,
     digestId,
@@ -190,8 +194,8 @@ export async function addPastPick(
     needCardVersion: args.needCardVersion ?? 1,
     talentId: args.talentId,
     cardVersion: args.cardVersion ?? 1,
-    origin: "agent",
-    body: { reasons: [], notMentioned: [] },
+    origin: args.origin ?? "agent",
+    body: args.body ?? { reasons: [], notMentioned: [] },
     status: args.status ?? "approved",
     createdAt: args.createdAt,
   });
