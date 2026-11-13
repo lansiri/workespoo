@@ -1,37 +1,39 @@
 // Long-running worker process. Run with `npm run worker`.
-// No queue logic here yet: feature agents register job handlers below.
+// Features register their jobs and schedules in ./registry.
+
+import { closeDb, getDb } from "@/db/client";
+import { runSchedules, runWorkerLoop } from "@/lib/queue";
+import { allJobs, allSchedules } from "./registry";
 
 const HEARTBEAT_MS = 60_000;
-
-type JobHandler = (payload: unknown) => Promise<void>;
-const handlers = new Map<string, JobHandler>();
-
-export function registerHandler(name: string, handler: JobHandler): void {
-  handlers.set(name, handler);
-}
-
-// ---------------------------------------------------------------------------
-// JOB HANDLERS: register them here, e.g. registerHandler("ingest-jobs", fn);
-// ---------------------------------------------------------------------------
 
 function log(msg: string): void {
   console.log(`[worker ${new Date().toISOString()}] ${msg}`);
 }
 
 async function main(): Promise<void> {
-  log(`started, ${handlers.size} handler(s) registered`);
+  const db = getDb();
+  const abort = new AbortController();
+  log(`started, ${allJobs.length} job kind(s), ${allSchedules.length} schedule(s)`);
   const timer = setInterval(() => log("heartbeat"), HEARTBEAT_MS);
 
-  await new Promise<void>((resolve) => {
-    const stop = (signal: string) => {
-      log(`received ${signal}, shutting down`);
-      clearInterval(timer);
-      resolve();
-    };
-    process.once("SIGTERM", () => stop("SIGTERM"));
-    process.once("SIGINT", () => stop("SIGINT"));
-  });
+  const stop = (signal: string) => {
+    if (abort.signal.aborted) return;
+    log(`received ${signal}, shutting down`);
+    abort.abort();
+  };
+  process.once("SIGTERM", () => stop("SIGTERM"));
+  process.once("SIGINT", () => stop("SIGINT"));
 
+  try {
+    await Promise.all([
+      runWorkerLoop(db, allJobs, { signal: abort.signal }),
+      runSchedules(db, allSchedules, abort.signal),
+    ]);
+  } finally {
+    clearInterval(timer);
+    await closeDb();
+  }
   log("stopped");
 }
 
