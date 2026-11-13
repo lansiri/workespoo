@@ -11,14 +11,14 @@ export async function uriByLabel(db: Db, labelEn: string): Promise<string> {
   return row.uri;
 }
 
-/** Essential skills (label, uri) of the first occupation of the fixture posting whose title contains `title`. */
+/** Essential skills (label, uri) of the first occupation of the first fixture posting whose title contains `title`. */
 export async function occupationSkillsOf(db: Db, title: string, take = 4) {
   const rows = rowsOf<{ uri: string; label_en: string }>(
     await db.execute(sql`
-      SELECT c.uri, c.label_en FROM job j
+      SELECT DISTINCT c.uri, c.label_en FROM job j
       JOIN esco_occupation_skill os ON os.occupation_uri = j.esco_occupation_uris[1] AND os.relation = 'essential'
       JOIN esco_concept c ON c.uri = os.skill_uri
-      WHERE j.title ILIKE ${`%${title}%`}
+      WHERE j.id = (SELECT id FROM job WHERE title ILIKE ${`%${title}%`} ORDER BY id LIMIT 1)
       ORDER BY c.uri LIMIT ${take}`),
   );
   return rows.map((r) => ({ uri: r.uri, label: r.label_en }));
