@@ -108,7 +108,7 @@ function run(mode: InterviewMode = "full", overrides: Partial<SimulatedRun> = {}
 }
 
 const call = (purpose: string, extra: Partial<LlmCallRow> = {}): LlmCallRow => ({
-  id: 1, at: new Date(), role: "live", provider: "p", model: "m", purpose, latencyMs: 10, firstTokenMs: null, tokensIn: null, tokensOut: null, ok: true, error: null, guard: null, ...extra,
+  id: 1, at: new Date(), role: "live", provider: "p", model: "m", purpose, latencyMs: 10, firstTokenMs: null, tokensIn: null, tokensOut: null, ok: true, error: null, guard: null, attempts: null, queuedMs: null, ...extra,
 });
 
 describe("rubric metrics on hand-built interviews", () => {
