@@ -323,3 +323,14 @@ describe("synthesiseCard", () => {
     void SENTENCES;
   });
 });
+
+describe("fallbackRendering case", () => {
+  it("keeps product names and lower-cases ordinary lead words", async () => {
+    const { fallbackRendering } = await import("./checks");
+    expect(fallbackRendering("Excel")).toBe("They list Excel as a skill.");
+    expect(fallbackRendering("Python")).toBe("They list Python as a skill.");
+    expect(fallbackRendering("Customer service")).toBe("They list customer service as a skill.");
+    expect(fallbackRendering("Welding")).toBe("They list welding as a skill.");
+    expect(fallbackRendering("SAP")).toBe("They list SAP as a skill.");
+  });
+});

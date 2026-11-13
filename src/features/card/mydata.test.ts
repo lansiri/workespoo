@@ -40,6 +40,7 @@ beforeEach(async () => {
   await t.db.update(turn).set({ redactedAt: new Date(), text: "", sentences: [] }).where(eq(turn.id, "trn_int_test00000001_3"));
   await enqueue(t.db, "card.render", { talentId: ME, signalId: "s1", cardVersion: 2 });
   await enqueue(t.db, "card.render", { talentId: OTHER, signalId: "s1", cardVersion: 2 });
+  await audit(t.db, { actor: "company:cmp_000000001", action: "identity.revealed", subjectType: "intro", subjectId: "int2_00000001", detail: { introId: "int2_00000001", talentId: ME } });
   await audit(t.db, { actor: "system", action: "eligibility.computed", subjectType: "talent", subjectId: ME, detail: { n: 1 } });
   await audit(t.db, { actor: "system", action: "eligibility.computed", subjectType: "talent", subjectId: OTHER, detail: { n: 1 } });
 });
@@ -60,7 +61,9 @@ describe("exportPersonData", () => {
     expect(text).not.toContain(OTHER);
     expect(text).not.toContain("Fern-31");
     expect(text).not.toContain("int2_00000002");
-    expect(text).not.toContain("aino@example.org"); // identity is only for a company after an accepted introduction
+    expect(data.identity).toMatchObject({ displayName: "Aino Virtanen", contact: "aino@example.org" });
+    expect(data.person).toMatchObject({ synthetic: false, liveDemo: false, purgeAfter: null });
+    expect(data.audit.some((a) => a.action === "identity.revealed")).toBe(true); // written by the company, about this person
     expect(await listAudit(t.db, { action: "data.exported" })).toHaveLength(1);
   });
 });

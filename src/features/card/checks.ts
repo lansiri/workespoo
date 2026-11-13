@@ -42,10 +42,21 @@ export function textProblem(text: string, sources: readonly string[], maxWords: 
   return null;
 }
 
-/** Lower-case the first letter unless the word is an acronym or a proper-looking token (SAP, iPad). */
+const GENERIC_LEAD = new Set([
+  "customer", "food", "data", "team", "project", "time", "cash", "stock", "sales", "warehouse", "elderly",
+  "first", "basic", "safety", "health", "quality", "child", "office", "line", "truck", "forklift", "machine",
+  "inventory", "supplier", "delivery", "goods", "people", "general", "manual", "technical", "social",
+]);
+
+/**
+ * Lower-case the first letter only when the first word is an ordinary English word (an -ing form
+ * or a common lead noun). Acronyms and product names the person wrote (SAP, iPad, Excel, Python)
+ * keep their case.
+ */
 export function lowerFirst(phrase: string): string {
-  const first = phrase.split(/\s+/)[0] ?? "";
-  if (/[A-Z].*[A-Z]/.test(first)) return phrase;
+  const first = (phrase.split(/\s+/)[0] ?? "").toLowerCase();
+  const ordinary = (first.length > 4 && first.endsWith("ing")) || GENERIC_LEAD.has(first);
+  if (!ordinary || /^[A-Z].*[A-Z]/.test(phrase.split(/\s+/)[0] ?? "")) return phrase;
   return phrase.charAt(0).toLowerCase() + phrase.slice(1);
 }
 

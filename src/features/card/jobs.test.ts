@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { eq } from "drizzle-orm";
-import { consent, jobQueue, talent, interview } from "@/db/schema";
+import { consent, jobQueue, notification, talent, interview } from "@/db/schema";
 import { listAudit } from "@/lib/audit";
 import { recordConsent } from "@/lib/consent";
 import { enqueue, runReadyJobs } from "@/lib/queue";
@@ -46,6 +46,16 @@ describe("purge", () => {
     expect(await purgeLiveSessions(t.db, new Date(NOW.getTime() + 2000))).toBe(1);
     expect(await purgeLiveSessions(t.db, new Date(NOW.getTime() + 2000))).toBe(0);
     expect(await listAudit(t.db, { action: "talent.purged" })).toHaveLength(2);
+  });
+
+  it("also removes notifications and queued jobs that carry a purged person's id", async () => {
+    await seedInterview(t.db, { talentId: "tal_resid000001", interviewId: "int_resid000001", handle: "Moss-20" });
+    await t.db.update(talent).set({ synthetic: false, purgeAfter: new Date(NOW.getTime() - 1000) }).where(eq(talent.id, "tal_resid000001"));
+    await t.db.insert(notification).values({ id: "ntf_resid", recipientType: "talent", recipientId: "tal_resid000001", kind: "x", payload: {} });
+    await enqueue(t.db, "card.render", { talentId: "tal_resid000001", signalId: "s1", cardVersion: 1 });
+    expect(await purgeLiveSessions(t.db, NOW)).toBeGreaterThanOrEqual(1);
+    expect(await t.db.select().from(notification).where(eq(notification.id, "ntf_resid"))).toHaveLength(0);
+    expect(JSON.stringify(await t.db.select().from(jobQueue))).not.toContain("tal_resid000001");
   });
 
   it("is registered as a job and scheduled every 30 minutes", async () => {

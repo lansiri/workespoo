@@ -1,4 +1,4 @@
-import { and, eq, or, sql } from "drizzle-orm";
+import { and, eq, inArray, or, sql } from "drizzle-orm";
 import type { Db } from "@/db/client";
 import {
   auditLog,
@@ -8,9 +8,11 @@ import {
   intro,
   jobQueue,
   notification,
+  pick,
   signal as signalTable,
   signalCard,
   talent,
+  talentIdentity,
   turn,
 } from "@/db/schema";
 import { audit } from "@/lib/audit";
@@ -60,10 +62,24 @@ export async function exportPersonData(db: Db, talentId: string) {
     .from(intro)
     .leftJoin(company, eq(company.id, intro.companyId))
     .where(eq(intro.talentId, talentId));
+  const [identityRow] = await db.select().from(talentIdentity).where(eq(talentIdentity.talentId, talentId));
+  // Rows about the person that are logged under their interview, introduction or pick, or name
+  // them in the detail (for example identity.revealed written by the other side).
+  const pickRows = await db
+    .select({ id: pick.id })
+    .from(pick)
+    .where(eq(pick.talentId, talentId));
+  const ownIds = [talentId, ...interviews.map((i) => i.id), ...intros.map((i) => i.row.id), ...pickRows.map((p) => p.id)];
   const auditRows = await db
     .select()
     .from(auditLog)
-    .where(or(eq(auditLog.subjectId, talentId), eq(auditLog.actor, `talent:${talentId}`)))
+    .where(
+      or(
+        inArray(auditLog.subjectId, ownIds),
+        eq(auditLog.actor, `talent:${talentId}`),
+        sql`${auditLog.detail}->>'talentId' = ${talentId}`,
+      ),
+    )
     .orderBy(auditLog.id);
 
   await audit(db, {
@@ -77,7 +93,18 @@ export async function exportPersonData(db: Db, talentId: string) {
   const iso = (d: Date | null) => d?.toISOString() ?? null;
   return {
     exportedAt: new Date().toISOString(),
-    person: { id: person.id, handle: person.handle, inPool: person.inPool, createdAt: person.createdAt.toISOString() },
+    person: {
+      id: person.id,
+      handle: person.handle,
+      inPool: person.inPool,
+      synthetic: person.synthetic,
+      liveDemo: person.liveDemo,
+      purgeAfter: iso(person.purgeAfter),
+      createdAt: person.createdAt.toISOString(),
+    },
+    identity: identityRow
+      ? { displayName: identityRow.displayName, contact: identityRow.contact, createdAt: identityRow.createdAt.toISOString() }
+      : null,
     cards: cards.map((c) => ({ status: c.status, version: c.version, approvedAt: iso(c.approvedAt), body: c.body })),
     signals: signals.map((s) => ({
       id: s.id,
@@ -106,6 +133,14 @@ export async function exportPersonData(db: Db, talentId: string) {
   };
 }
 
+/** Rows that carry a person's id without a foreign key, so the talent cascade misses them. */
+export async function deleteResidue(tx: Db, ids: string[]): Promise<void> {
+  if (ids.length === 0) return;
+  await tx.delete(consent).where(and(eq(consent.subjectType, "talent"), inArray(consent.subjectId, ids)));
+  await tx.delete(notification).where(and(eq(notification.recipientType, "talent"), inArray(notification.recipientId, ids)));
+  await tx.delete(jobQueue).where(inArray(sql<string>`${jobQueue.payload}->>'talentId'`, ids));
+}
+
 /**
  * Deletes the person and everything that hangs off them. Rows without a foreign key to the
  * person (consents, notifications, queued jobs) are removed here. One audit row records ids
@@ -122,9 +157,7 @@ export function deletePerson(db: Db, talentId: string): Promise<{ deleted: boole
       cards: await n(tx.select({ n: sql<number>`count(*)::int` }).from(signalCard).where(eq(signalCard.talentId, talentId))),
       introductions: await n(tx.select({ n: sql<number>`count(*)::int` }).from(intro).where(eq(intro.talentId, talentId))),
     };
-    await tx.delete(consent).where(and(eq(consent.subjectType, "talent"), eq(consent.subjectId, talentId)));
-    await tx.delete(notification).where(and(eq(notification.recipientType, "talent"), eq(notification.recipientId, talentId)));
-    await tx.delete(jobQueue).where(sql`${jobQueue.payload}->>'talentId' = ${talentId}`);
+    await deleteResidue(tx, [talentId]);
     await tx.delete(talent).where(eq(talent.id, talentId)); // cascades to everything else
     await audit(tx, {
       actor: `talent:${talentId}`,

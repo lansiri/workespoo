@@ -63,9 +63,16 @@ export function useCard() {
   }, [state, load]);
 
   // While a rewritten phrase is waiting for the model, check again shortly.
+  // Backstop: stop asking after POLL_LONG_AFTER tries; the earlier text stays visible to companies.
   const rewriting = state.phase === "ready" && state.card.signals.some((x) => x.status !== "removed" && x.stale);
+  const rewriteTries = useRef(0);
   useEffect(() => {
-    if (!rewriting) return;
+    if (!rewriting) {
+      rewriteTries.current = 0;
+      return;
+    }
+    if (rewriteTries.current >= POLL_LONG_AFTER) return;
+    rewriteTries.current += 1;
     const id = setTimeout(() => void load(), POLL_MS);
     return () => clearTimeout(id);
   }, [rewriting, state, load]);

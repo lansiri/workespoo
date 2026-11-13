@@ -6,8 +6,8 @@ import { resetLlmState, setLlmFake } from "@/lib/llm/testing";
 import { runReadyJobs } from "@/lib/queue";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
 import { jobs } from "./jobs";
-import { cardForCompany, cardForOrganiser } from "./projections";
-import { renderSignal } from "./render";
+import { cardForCompany, cardForOrganiser, cardForPerson } from "./projections";
+import { RENDER_SYSTEM_PROMPT, renderSignal } from "./render";
 import { editCard } from "./review";
 import { approveCard } from "./approval";
 import { loadCard, saveCard } from "./store";
@@ -85,7 +85,8 @@ describe("renderSignal (prompt B)", () => {
     expect(await renderSignal(t.db, { talentId: TALENT, signalId: "s2", cardVersion: 1 })).toBe("kept");
     const after = await rendered();
     expect(after.signal.phrase).toBe(before.signal.phrase);
-    expect(after.item).toEqual({ ...before.item, stale: true });
+    expect(after.item).toEqual({ ...before.item, stale: false }); // earlier text stays, no longer shown as pending
+    expect((await cardForPerson(t.db, TALENT))!.signals.find((s) => s.id === "s2")?.stale).toBe(false);
   });
 
   it("a stale job for an older version changes nothing", async () => {
@@ -134,5 +135,32 @@ describe("renderSignal (prompt B)", () => {
     expect(company.signals.find((s) => s.id === "s2")).toMatchObject({ phrase: "Handling supplier claims", rendering: good.items[0].text });
     expect((await t.db.select().from(signalTable).where(eq(signalTable.id, "s2")))[0].phrase).toBe("Handling supplier claims");
     expect(JSON.stringify(company)).not.toContain("Toimittaja");
+  });
+
+  it("a rewrite that lands after approval and a later edit also reaches the new draft", async () => {
+    await edit();
+    await approveCard(t.db, TALENT);
+    await editCard(t.db, TALENT, { op: "remove", signalId: "s1" }); // draft v2 copied from approved v1
+    setLlmFake(() => good);
+    expect(await renderSignal(t.db, { talentId: TALENT, signalId: "s2", cardVersion: 1 })).toBe("applied");
+    const draft = (await loadCard(t.db, TALENT, "draft"))!;
+    expect(draft.signals.find((s) => s.id === "s2")?.phrase).toBe("Handling supplier claims");
+    expect(draft.companyView.items.find((i) => i.signalId === "s2")).toMatchObject({ stale: false, text: good.items[0].text });
+    await approveCard(t.db, TALENT);
+    expect((await cardForCompany(t.db, TALENT))!.signals.find((s) => s.id === "s2")).toMatchObject({ phrase: "Handling supplier claims" });
+  });
+
+  it("code writes the list sentence for a skill the person only named", async () => {
+    const d = (await loadCard(t.db, TALENT, "draft"))!;
+    await saveCard(t.db, TALENT, { ...d, signals: d.signals.map((s) => (s.id === "s2" ? { ...s, hasExample: false } : s)) });
+    await edit();
+    setLlmFake(() => ({ items: [{ i: 0, phrase: "Handling supplier claims", text: "They checked deliveries and filed claims." }] }));
+    expect(await renderSignal(t.db, { talentId: TALENT, signalId: "s2", cardVersion: 1 })).toBe("applied");
+    expect((await rendered()).item?.text).toBe("They list handling supplier claims as a skill.");
+  });
+
+  it("prompt B names the protected attributes whenever it points at NEVER", () => {
+    expect(RENDER_SYSTEM_PROMPT).toContain("(see NEVER)");
+    expect(RENDER_SYSTEM_PROMPT).toMatch(/NEVER\n- Never record age, gender/);
   });
 });
