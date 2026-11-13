@@ -42,7 +42,8 @@ const data = (picks: CompanyPick[]): CompanyPageData => ({
 
 const render = (d: CompanyPageData, lang: "en" | "fi" | "sv" = "en") =>
   renderToStaticMarkup(
-    createElement(I18nProvider, { lang }, createElement(CompanyDigestView, { data: d, token: "tok-1", lang })),
+    // eslint-disable-next-line react/no-children-prop
+    createElement(I18nProvider, { lang, children: createElement(CompanyDigestView, { data: d, token: "tok-1", lang }) }),
   );
 const text = (html: string) => html.replace(/<[^>]+>/g, " ").replace(/&quot;|&#x27;/g, "'").replace(/\s+/g, " ");
 
