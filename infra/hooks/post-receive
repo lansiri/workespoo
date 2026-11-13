@@ -1,0 +1,164 @@
+#!/usr/bin/env bash
+# WorkEspoo push-to-deploy hook. Installed into /opt/workespoo/repo.git/hooks/
+# by infra/bootstrap.sh (and refreshed from the deployed commit after each
+# successful deploy). Everything printed here reaches the pusher's terminal.
+set -uo pipefail
+
+ROOT=${WORKESPOO_ROOT:-/opt/workespoo}
+REPO=$ROOT/repo.git
+APP=$ROOT/app
+STATE=$ROOT/state
+ENV_FILE=$ROOT/env/.env
+HEALTH_TIMEOUT=90
+KEEP_IMAGES=5
+
+exec 2>&1
+mkdir -p "$STATE"
+# Mirror output into a log on the server as well.
+exec > >(tee -a "$STATE/deploy.log") 2>&1
+
+log() { printf '[deploy %s] %s\n' "$(date '+%H:%M:%S')" "$*"; }
+finish() { sleep 0.2; exit "$1"; }  # let tee drain
+fail() { log "$*"; echo "DEPLOY FAILED $*"; finish 1; }
+
+# Pick the last update to refs/heads/main from stdin; ignore everything else.
+target=""
+while read -r _old new ref; do
+  if [[ "$ref" == "refs/heads/main" ]]; then target="$new"; fi
+done
+if [[ -z "$target" ]]; then
+  log "no push to main; nothing to deploy"
+  finish 0
+fi
+if [[ "$target" =~ ^0+$ ]]; then
+  log "main was deleted; nothing to deploy"
+  finish 0
+fi
+
+exec 9>"$STATE/deploy.lock"
+if ! flock -n 9; then
+  fail "another deploy is already running (lock $STATE/deploy.lock)"
+fi
+
+unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE
+SHA=$(git --git-dir="$REPO" rev-parse "$target^{commit}") || fail "cannot resolve $target"
+TAG=${SHA:0:12}
+PREV=$(cat "$STATE/current" 2>/dev/null || true)
+
+log "=== $(date -Is) deploying $TAG (currently running: ${PREV:-nothing}) ==="
+[[ -f "$ENV_FILE" ]] || fail "env file $ENV_FILE missing (run infra/bootstrap.sh)"
+
+checkout() {  # checkout <commit> into $APP without moving the bare repo's HEAD
+  mkdir -p "$APP"
+  GIT_INDEX_FILE="$STATE/app.index" git --git-dir="$REPO" --work-tree="$APP" read-tree --reset -u "$1"
+}
+
+restore_prev_checkout() {  # keep $APP matching what is actually running
+  local prev_sha
+  [[ -n "$PREV" ]] || return 0
+  prev_sha=$(git --git-dir="$REPO" rev-parse "$PREV^{commit}" 2>/dev/null) && checkout "$prev_sha" || true
+}
+
+dc() {
+  docker compose --project-directory "$APP" -f "$APP/compose.yaml" --env-file "$ENV_FILE" "$@"
+}
+
+export ENV_FILE
+
+sync_caddy() {  # git replaces Caddyfile with a new inode; a file bind mount keeps the old one
+  if ! dc exec -T caddy cat /etc/caddy/Caddyfile 2>/dev/null | cmp -s - "$APP/Caddyfile"; then
+    log "Caddyfile changed; recreating caddy"
+    dc up -d --no-build --no-deps --force-recreate caddy
+  fi
+}
+
+health_ok() {  # polled from the caddy container, i.e. inside the compose network
+  dc exec -T caddy wget -q -T 5 -O /dev/null http://web:3000/api/health >/dev/null 2>&1
+}
+
+wait_healthy() {
+  local deadline=$((SECONDS + HEALTH_TIMEOUT))
+  while (( SECONDS < deadline )); do
+    if health_ok; then return 0; fi
+    sleep 3
+  done
+  return 1
+}
+
+rollback() {  # rollback <reason>
+  local reason=$1
+  log "deploy of $TAG failed: $reason"
+  log "--- last web logs ---"
+  dc logs --no-color --tail 40 web || true
+  if [[ -z "$PREV" ]]; then
+    fail "$reason (no previous version to roll back to)"
+  fi
+  log "rolling back to $PREV"
+  local prev_sha
+  prev_sha=$(git --git-dir="$REPO" rev-parse "$PREV^{commit}" 2>/dev/null) || fail "$reason; rollback impossible: $PREV not in repo"
+  checkout "$prev_sha" || fail "$reason; rollback checkout of $PREV failed"
+  if APP_TAG=$PREV GIT_COMMIT=$prev_sha dc up -d --no-build --remove-orphans && sync_caddy && wait_healthy; then
+    log "rolled back; $PREV is serving again"
+    fail "$reason (rolled back to $PREV)"
+  fi
+  fail "$reason; ROLLBACK TO $PREV ALSO FAILED, site may be down"
+}
+
+checkout "$SHA" || fail "checkout of $TAG failed"
+[[ -f "$APP/compose.yaml" ]] || fail "compose.yaml missing in commit $TAG"
+[[ -f "$APP/Dockerfile" ]] || fail "Dockerfile missing in commit $TAG"
+
+export APP_TAG=$TAG GIT_COMMIT=$SHA
+
+log "--- build workespoo-app:$TAG ---"
+if ! dc build web; then
+  restore_prev_checkout
+  fail "build failed; ${PREV:-nothing} left running"
+fi
+
+log "--- database ---"
+if ! dc up -d --wait db; then
+  restore_prev_checkout
+  fail "database did not become healthy"
+fi
+
+log "--- migrations ---"
+if ! dc run --rm --no-deps -T web npm run db:migrate; then
+  restore_prev_checkout
+  fail "migrations failed; ${PREV:-nothing} left running"
+fi
+
+log "--- start ---"
+if ! dc up -d --no-build --remove-orphans || ! sync_caddy; then
+  rollback "compose up failed"
+fi
+
+log "--- health (up to ${HEALTH_TIMEOUT}s) ---"
+if ! wait_healthy; then
+  rollback "health check did not pass within ${HEALTH_TIMEOUT}s"
+fi
+
+if [[ -n "$PREV" && "$PREV" != "$TAG" ]]; then echo "$PREV" > "$STATE/previous"; fi
+echo "$TAG" > "$STATE/current"
+log "healthy; recorded $TAG as current"
+
+# Keep the newest $KEEP_IMAGES app images (plus current and previous).
+keep_prev=$(cat "$STATE/previous" 2>/dev/null || true)
+docker image ls workespoo-app --format '{{.CreatedAt}}\t{{.Tag}}' | sort -r | cut -f2 \
+  | tail -n +$((KEEP_IMAGES + 1)) | while read -r old_tag; do
+      [[ "$old_tag" == "$TAG" || "$old_tag" == "$keep_prev" ]] && continue
+      docker image rm "workespoo-app:$old_tag" >/dev/null 2>&1 && log "pruned image $old_tag"
+    done
+docker image prune -f >/dev/null 2>&1 || true
+docker builder prune -f --filter until=168h >/dev/null 2>&1 || true
+
+# Keep server-side scripts in step with the deployed commit.
+for pair in "infra/hooks/post-receive:$REPO/hooks/post-receive" "infra/backup.sh:$ROOT/bin/backup.sh"; do
+  src=$APP/${pair%%:*}; dst=${pair#*:}
+  if [[ -f "$src" ]] && ! cmp -s "$src" "$dst" && bash -n "$src"; then
+    install -m 755 "$src" "$dst.new" && mv -f "$dst.new" "$dst" && log "updated $dst"
+  fi
+done
+
+echo "DEPLOY OK $TAG"
+finish 0

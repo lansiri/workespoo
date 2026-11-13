@@ -1,0 +1,87 @@
+# WorkEspoo production stack. On the VPS the deploy hook runs this with
+#   --env-file /opt/workespoo/env/.env  (interpolation: POSTGRES_*, APP_DOMAIN)
+#   ENV_FILE=/opt/workespoo/env/.env    (runtime env for web and worker)
+#   APP_TAG=<short sha> GIT_COMMIT=<full sha>
+name: workespoo
+
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "5"
+
+x-app: &app
+  build:
+    context: .
+    dockerfile: Dockerfile
+    args:
+      GIT_COMMIT: ${GIT_COMMIT:-unknown}
+  image: workespoo-app:${APP_TAG:-dev}
+  env_file:
+    - ${ENV_FILE:-.env}
+  restart: unless-stopped
+  logging: *logging
+  depends_on:
+    db:
+      condition: service_healthy
+
+services:
+  db:
+    image: postgres:17
+    restart: unless-stopped
+    logging: *logging
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-workespoo}
+      POSTGRES_DB: ${POSTGRES_DB:-workespoo}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set in the env file}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    shm_size: 256mb
+
+  web:
+    <<: *app
+    command: ["npm", "run", "start"]
+    environment:
+      # Docker sets HOSTNAME to the container id; Next.js binds to it if left alone.
+      HOSTNAME: 0.0.0.0
+      PORT: "3000"
+    expose:
+      - "3000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  worker:
+    <<: *app
+    command: ["npm", "run", "worker"]
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    logging: *logging
+    depends_on:
+      - web
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:-localhost}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+volumes:
+  db-data:
+  caddy-data:
+  caddy-config:

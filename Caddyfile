@@ -1,0 +1,39 @@
+# APP_DOMAIN comes from the env file via compose. Caddy obtains and renews
+# the certificate automatically (HTTP-01 / TLS-ALPN-01 on ports 80/443).
+{$APP_DOMAIN} {
+	# Compress ordinary responses only. text/event-stream is deliberately
+	# not listed so the interviewer's SSE stream is never held in a
+	# compressor buffer.
+	encode {
+		zstd
+		gzip
+		match {
+			header Content-Type text/html*
+			header Content-Type text/plain*
+			header Content-Type text/css*
+			header Content-Type text/xml*
+			header Content-Type text/javascript*
+			header Content-Type application/json*
+			header Content-Type application/javascript*
+			header Content-Type application/xml*
+			header Content-Type application/manifest+json*
+			header Content-Type image/svg+xml*
+		}
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Cross-Origin-Opener-Policy "same-origin"
+		# Microphone allowed for this origin only (voice interview).
+		Permissions-Policy "microphone=(self), camera=(), geolocation=(), payment=(), usb=()"
+		-Server
+	}
+
+	reverse_proxy web:3000 {
+		# Flush every write immediately: server-sent events must not be buffered.
+		flush_interval -1
+	}
+}
