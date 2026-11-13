@@ -1,5 +1,5 @@
 /**
- * `npm run seed [-- --reset] [--rebuild] [--snapshot] [--companies 8|12] [--mode express|full] [--fake] [--pglite]`
+ * `npm run seed [-- --reset] [--rebuild] [--snapshot] [--companies 8|12] [--pitch-job <jobId>] [--mode express|full] [--fake] [--pglite]`
  *
  * Builds the demo: the event on Thursday 26 November 2026, masked "Demo company NN" companies
  * from real postings, their Need Cards, the simulated pool, eligibility, and yesterday's digest
@@ -28,6 +28,7 @@ async function main() {
       rebuild: { type: "boolean", default: false },
       snapshot: { type: "boolean", default: false },
       companies: { type: "string", default: "8" },
+      "pitch-job": { type: "string" },
       mode: { type: "string" },
       fake: { type: "boolean", default: false },
       pglite: { type: "boolean", default: false },
@@ -48,7 +49,7 @@ async function main() {
     if (values.reset && !restore) log(opened.memory || values.rebuild ? "reset: rebuilding the whole pipeline" : "reset: no snapshot in seed/snapshot, rebuilding the whole pipeline (this calls the model)");
     const summary = restore
       ? (log("reset: restoring seed/snapshot, no model calls"), await restoreDemoSnapshot(opened.db, { deps, personas, appUrl: env.APP_URL, log }))
-      : await seedDemo(opened.db, { deps, personas, companies, mode, reset: values.reset, appUrl: env.APP_URL, log });
+      : await seedDemo(opened.db, { deps, personas, companies, pitchJobId: values["pitch-job"], mode, reset: values.reset, appUrl: env.APP_URL, log });
     if (values.snapshot) {
       if (opened.memory) throw new Error("--snapshot needs the real database: leave out --fake and --pglite");
       const counts = await snapshotDemo(opened.db);

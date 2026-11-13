@@ -226,8 +226,10 @@ export async function synthesiseCard(
         schema: SynthOutput,
         coerce: coerceSynth,
         temperature: 0.2,
-        maxTokens: 1800,
-        deadlineMs: 45_000,
+        // A full interview gives about 14 notes. Measured on the real model: 1,800 tokens cut the
+        // answer short (reasoning counts toward the limit) and one attempt takes 25 to 35 s.
+        maxTokens: 4000,
+        deadlineMs: 90_000,
         db,
       });
       output = result.data;

@@ -145,7 +145,8 @@ export async function runSimulatedInterview(
     last = { kind: reply.kind, target: reply.target ?? null };
   }
 
-  await deps.settleInterview(db, interviewId, options.settleTimeoutMs);
+  // With the real model the card takes 20 to 40 s after the last answer, more with a repair.
+  await deps.settleInterview(db, interviewId, options.settleTimeoutMs ?? 150_000);
 
   await db
     .insert(talentIdentity)

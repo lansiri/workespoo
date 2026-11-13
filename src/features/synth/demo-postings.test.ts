@@ -1,7 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { loadJobFixtures } from "../../../fixtures/load";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
-import { loadDemoCandidates, selectDemoPostings, STAFFING_AGENCY, type DemoCandidate } from "./demo-postings";
+import { loadDemoCandidates, PITCH_NUMBER, selectDemoPostings, STAFFING_AGENCY, type DemoCandidate } from "./demo-postings";
 
 const EVENT_DATE = new Date("2026-11-26T11:00:00Z");
 let t: TestDb;
@@ -75,5 +75,28 @@ describe("selectDemoPostings", () => {
     const { picks, unmet } = selectDemoPostings(candidates.slice(0, 3), { count: 8 });
     expect(picks.length).toBeLessThanOrEqual(3);
     expect(unmet.some((u) => u.startsWith("only"))).toBe(true);
+  });
+});
+
+describe("a named pitch posting", () => {
+  const make = (jobId: string, title: string, employerName: string, lang: DemoCandidate["lang"], isco2: string, text: string): DemoCandidate => ({
+    jobId, title, employerName, employerBusinessId: null, source: "tmt", sector: "private", lang, isco2, sentenceCount: 30, text,
+  });
+  const named = [
+    make("job_ict", "Developer", "Alpha Oy", "en", "25", "Developer\nFinnish required"),
+    make("job_named", "ERP specialist", "Beta Oy", "fi", "21", "ERP specialist\nPuhut sujuvaa suomea"),
+    make("job_other", "Cook", "Gamma Oy", "fi", "51", "Cook\nsuomen kielen taito"),
+  ];
+
+  it("becomes company 03 when it is among the candidates", () => {
+    const { picks, unmet } = selectDemoPostings(named, { count: 3, pitchJobId: "job_named" });
+    expect(picks.find((p) => p.number === PITCH_NUMBER)?.candidate.jobId).toBe("job_named");
+    expect(unmet.join(" ")).not.toContain("is not among the candidates");
+  });
+
+  it("falls back to the usual choice and says so when it is not", () => {
+    const { picks, unmet } = selectDemoPostings(named, { count: 3, pitchJobId: "job_gone" });
+    expect(picks.find((p) => p.number === PITCH_NUMBER)?.candidate.jobId).toBe("job_ict");
+    expect(unmet.join(" ")).toContain("job_gone is not among the candidates");
   });
 });

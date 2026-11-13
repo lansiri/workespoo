@@ -3,14 +3,13 @@ import { eq } from "drizzle-orm";
 import { loadJobFixtures } from "../../../fixtures/load";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
 import { jobSkill, llmCall, needCard } from "@/db/schema";
-import { NeedCardDraftOutput } from "@/contracts";
 import { listAudit } from "@/lib/audit";
 import { setLlmFake } from "@/lib/llm";
 import { runReadyJobs } from "@/lib/queue";
 import { getJob } from "@/features/jobs";
 import { draftNeedCard, getNeedCard, getNeedCardForJob, listNeedCards } from "./index";
-import { RequirementQuestion } from "@/contracts";
-import { coerceDraftOutput, validateDraft } from "./draft";
+import { NeedCardDraftOutput, RequirementQuestion } from "@/contracts";
+import { coerceDraftOutput, shortenAtWord, validateDraft } from "./draft";
 import { jobs as needJobs } from "./jobs";
 import {
   addCompany,
@@ -460,7 +459,10 @@ describe("second pass: what the real model needs", () => {
     const keep = coerceDraftOutput({ requirements: [{ language: "sv", years: 4 }, { language: "Sv", years: null }] }) as {
       requirements: Array<{ language: unknown; years: unknown }>;
     };
-    expect(keep.requirements).toEqual([{ language: "sv", years: 4 }, { language: null, years: null }]);
+    expect(keep.requirements).toEqual([
+      { language: "sv", years: 4, statutory: "none" },
+      { language: null, years: null, statutory: "none" },
+    ]);
     expect(coerceDraftOutput("junk")).toBe("junk");
   });
 
@@ -570,5 +572,52 @@ describe("re-drafting while the company acts on its card", () => {
     const card = await makeCard(t.db, { jobId, companyId, requirements: [{ text: "Python", category: "skill", postingSentence: 0 }] });
     await expect(saveNeedCard(t.db, { ...card, version: 2 }, new Date(), 7)).rejects.toMatchObject({ code: "conflict" });
     expect((await getNeedCardForJob(t.db, jobId))!.version).toBe(1);
+  });
+});
+
+describe("coerceDraftOutput repairs the shape without adding meaning", () => {
+  const req = (over: Record<string, unknown> = {}) => ({
+    text: "Python", kind: "must", category: "skill", sentence: 0, esco: [], language: null, years: null,
+    statutory: "none", questionType: "none", question: null, why: null, ...over,
+  });
+
+  it("shortens a requirement that is too long at a word boundary, with no dangling word", () => {
+    const long = "Experience of maintaining and repairing electromechanical assistive devices and equipment in a workshop";
+    const out = coerceDraftOutput({ title: "T", summary: "S", requirements: [req({ text: long })], dropped: [] }) as { requirements: Array<{ text: string }> };
+    expect(out.requirements[0].text.length).toBeLessThanOrEqual(80);
+    expect(long.startsWith(out.requirements[0].text)).toBe(true);
+    expect(out.requirements[0].text).not.toMatch(/(?:\band|\bor|\bin|,)$/);
+    expect(NeedCardDraftOutput.safeParse(out).success).toBe(true);
+  });
+
+  it("leaves short texts alone and collapses whitespace", () => {
+    expect(shortenAtWord("  Fluent   Finnish ", 80)).toBe("Fluent Finnish");
+    expect(shortenAtWord("one two three four", 9)).toBe("one two");
+    expect(shortenAtWord("supercalifragilisticexpialidocious", 10)).toBe("supercalif");
+  });
+
+  it("cuts a list of more than twelve with every must first", () => {
+    const requirements = [
+      ...Array.from({ length: 8 }, (_, i) => req({ text: `nice ${i}`, kind: "nice" })),
+      ...Array.from({ length: 6 }, (_, i) => req({ text: `must ${i}`, kind: "must" })),
+    ];
+    const out = coerceDraftOutput({ title: "T", summary: "S", requirements, dropped: [] }) as { requirements: Array<{ text: string; kind: string }> };
+    expect(out.requirements).toHaveLength(12);
+    expect(out.requirements.filter((r) => r.kind === "must")).toHaveLength(6);
+    expect(out.requirements.slice(0, 6).every((r) => r.kind === "must")).toBe(true);
+  });
+
+  it("drops ESCO labels that are not candidate numbers and sets an unknown statutory value to none", () => {
+    const out = coerceDraftOutput({
+      title: "A title that is far longer than sixty characters and would otherwise fail the whole card",
+      summary: "S",
+      requirements: [req({ esco: ["K1", "python", "K22", 3, "K3", "K4"], statutory: "maybe" })],
+      dropped: [1, -2, "x", 3.5],
+    }) as { title: string; requirements: Array<{ esco: string[]; statutory: string }>; dropped: number[] };
+    expect(out.title.length).toBeLessThanOrEqual(60);
+    expect(out.requirements[0].esco).toEqual(["K1", "K22", "K3"]);
+    expect(out.requirements[0].statutory).toBe("none");
+    expect(out.dropped).toEqual([1]);
+    expect(NeedCardDraftOutput.safeParse(out).success).toBe(true);
   });
 });

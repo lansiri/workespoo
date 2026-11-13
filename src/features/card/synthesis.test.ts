@@ -220,7 +220,8 @@ describe("synthesiseCard", () => {
       return good();
     });
     await synthesiseCard(t.db, INTERVIEW);
-    expect(seen?.deadlineMs).toBe(45_000);
+    expect(seen?.deadlineMs).toBe(90_000);
+    expect(seen?.maxTokens).toBe(4000);
     const system = seen!.messages[0].content;
     expect(system).toContain("Never write \"strength\".");
     expect(system).toContain("found the cause of");

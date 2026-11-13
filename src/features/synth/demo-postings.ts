@@ -83,7 +83,12 @@ const tagsOf = (c: DemoCandidate) => ({
 
 export const PITCH_NUMBER = 3;
 
-export function selectDemoPostings(candidates: DemoCandidate[], options: { count?: number } = {}): DemoSelection {
+/**
+ * `pitchJobId` names the posting behind the pitch company (number 03). The demo script is written
+ * around one need, so the lead chooses it by reading the real postings; without it the first
+ * ICT posting with a Finnish requirement is taken.
+ */
+export function selectDemoPostings(candidates: DemoCandidate[], options: { count?: number; pitchJobId?: string } = {}): DemoSelection {
   const count = options.count ?? 8;
   const large = count >= 12;
   const order = [...candidates].sort((a, b) => seededHash("demo-company", a.jobId).localeCompare(seededHash("demo-company", b.jobId)));
@@ -102,8 +107,11 @@ export function selectDemoPostings(candidates: DemoCandidate[], options: { count
   };
   const have = (pred: (c: DemoCandidate) => boolean) => picks.filter(pred).length;
 
-  // The pitch posting: ICT, a Finnish requirement, English if any exists.
+  // The pitch posting: the one the lead named, else ICT, a Finnish requirement, English if any exists.
+  const named = options.pitchJobId ? take((c) => c.jobId === options.pitchJobId) : null;
+  if (options.pitchJobId && !named) unmet.push(`pitch posting: ${options.pitchJobId} is not among the candidates (expired, too short, or a staffing agency)`);
   const pitch =
+    named ??
     take((c) => tagsOf(c).ict && tagsOf(c).finnishRequirement && tagsOf(c).en) ??
     take((c) => tagsOf(c).ict && tagsOf(c).finnishRequirement) ??
     take((c) => tagsOf(c).ict);

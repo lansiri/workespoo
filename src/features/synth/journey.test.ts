@@ -17,7 +17,7 @@ import { HttpError } from "@/lib/http";
 import { listAudit } from "@/lib/audit";
 import { resetLlmState, setLlmFake } from "@/lib/llm";
 import { runReadyJobs } from "@/lib/queue";
-import { allJobs } from "@/worker/registry";
+import { allJobs, backgroundKinds } from "@/worker/registry";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
 import { loadJobFixtures } from "../../../fixtures/load";
 
@@ -96,11 +96,15 @@ const ctx = (id: string) => ({ params: Promise.resolve({ id }) }) as never;
 
 /** Run every ready queue job, as the worker does, until nothing is left. */
 async function runQueue(): Promise<number> {
+  // The feed queues its Need Card drafts a few seconds ahead so that quick jobs go first.
+  // Run what is ready, move the clock past the delay, and run again until nothing is left.
   let total = 0;
-  for (let round = 0; round < 50; round++) {
-    const ran = await runReadyJobs(t.db, allJobs);
+  for (let pass = 0; pass < 30; pass++) {
+    const ran = await runReadyJobs(t.db, allJobs, { last: backgroundKinds });
     total += ran;
-    if (ran === 0) break;
+    const open = await t.db.select({ id: jobQueue.id }).from(jobQueue).where(isNull(jobQueue.doneAt));
+    if (open.length === 0) break;
+    if (ran === 0) vi.setSystemTime(new Date(Date.now() + 30_000));
   }
   return total;
 }
@@ -281,7 +285,11 @@ describe("one person through the whole product", () => {
     expect(text).not.toContain(persona.name);
     expect(text).not.toContain(persona.email);
     expect(text).not.toContain(talentId);
-    for (const planted of persona.planted.flatMap((p) => [...p.tokens, ...p.alsoCheck])) expect(text.toLowerCase()).not.toContain(planted.toLowerCase());
+    // Whole words only: ids are random letters and digits and may contain "38" by chance.
+    const escape = (w: string) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    for (const planted of persona.planted.flatMap((p) => [...p.tokens, ...p.alsoCheck])) {
+      expect(text, planted).not.toMatch(new RegExp(`(?<![\\p{L}\\p{N}_])${escape(planted)}(?![\\p{L}\\p{N}_])`, "iu"));
+    }
     expect(text).not.toContain(SIMULATED_TRANSCRIPT_LINE);
     expect(text).not.toContain("inputMode");
     expect(text).not.toContain("interviewLang");

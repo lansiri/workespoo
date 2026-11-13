@@ -41,6 +41,8 @@ export type SeedOptions = {
   personas: Persona[];
   /** Number of masked demo companies: 8 (default) or 12. */
   companies?: number;
+  /** The posting behind the pitch company, when the lead has chosen one (`--pitch-job`). */
+  pitchJobId?: string;
   /** Interview mode for every persona; default is each persona's own. */
   mode?: InterviewMode;
   /** Remove existing demo state first. */
@@ -141,7 +143,7 @@ export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummar
   if (!chosen) {
     const candidates = await loadDemoCandidates(db, DEMO_EVENT_STARTS);
     if (candidates.length === 0) throw new Error("No postings to build demo companies from. Ingest Espoo postings first: npm run ingest -- all");
-    const selection = selectDemoPostings(candidates, { count });
+    const selection = selectDemoPostings(candidates, { count, pitchJobId: options.pitchJobId });
     warnings.push(...selection.unmet.map((u) => `demo postings: ${u}`));
     chosen = await createCompanies(db, selection.picks);
     await db.insert(appMeta).values({ key: DEMO_COMPANIES_KEY, value: chosen }).onConflictDoUpdate({ target: appMeta.key, set: { value: chosen } });
@@ -158,8 +160,20 @@ export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummar
       continue;
     }
     log(`drafting the Need Card for ${demoCompanyName(c.number)}`);
-    const card = await deps.draftNeedCard(db, c.jobId, c.companyId);
-    needCardIds.set(c.companyId, card.id);
+    // A draft can fail on one odd model answer. Try twice, then go on without this company's
+    // card and say so: the rest of the demo world is worth more than stopping here.
+    let card: Awaited<ReturnType<NonNullable<typeof deps>["draftNeedCard"]>> | null = null;
+    let lastError = "";
+    for (let attempt = 1; attempt <= 2 && !card; attempt++) {
+      try {
+        card = await deps.draftNeedCard(db, c.jobId, c.companyId);
+      } catch (error) {
+        lastError = error instanceof Error ? error.message : String(error);
+        log(`  draft ${attempt} of 2 failed for ${demoCompanyName(c.number)}: ${lastError.slice(0, 160)}`);
+      }
+    }
+    if (card) needCardIds.set(c.companyId, card.id);
+    else warnings.push(`${demoCompanyName(c.number)} has no Need Card: ${lastError.slice(0, 160)}`);
   }
 
   // 4. The pool: one simulated interview per persona that is not already in the pool.

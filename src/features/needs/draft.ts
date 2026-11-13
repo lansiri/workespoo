@@ -126,20 +126,52 @@ export const DRAFT_MAX_TOKENS = 4000;
  * Safeguard for a model that writes "" or "Finnish" in `language`, or 3.5 in `years` (NC-1):
  * `language` becomes null unless two lower-case letters, `years` null unless an integer.
  */
+const SUMMARY_MAX = 300;
+const DANGLING = /[\s,;:–—-]+(?:and|or|with|in|of|for|to|the|a|an|as|at|on|by|including)?$/i;
+
+/** Cut a text that is too long at a word boundary, without leaving a dangling "and" or comma. */
+export function shortenAtWord(text: string, max: number): string {
+  const t = text.trim().replace(/\s+/g, " ");
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max + 1);
+  const at = cut.lastIndexOf(" ");
+  let out = (at > max * 0.5 ? cut.slice(0, at) : t.slice(0, max)).trimEnd();
+  for (let i = 0; i < 3; i++) out = out.replace(DANGLING, "").trimEnd();
+  return out;
+}
+
+/**
+ * Repairs the small ways a model answer misses the shape, before validation, so that one long
+ * requirement or one missing key does not cost the whole card (the first real run lost a card
+ * to a requirement of 86 characters). Meaning is never added: texts are only shortened, lists
+ * only cut (every "must" before any "nice", as rule 4 of the prompt says), unknown values set
+ * to their neutral default.
+ */
 export function coerceDraftOutput(raw: unknown): unknown {
   if (!raw || typeof raw !== "object" || !Array.isArray((raw as { requirements?: unknown }).requirements)) return raw;
-  const o = raw as { requirements: unknown[] };
+  const o = raw as Record<string, unknown> & { requirements: unknown[] };
+  let requirements = o.requirements.map((item) => {
+    if (!item || typeof item !== "object") return item;
+    const r = item as Record<string, unknown>;
+    return {
+      ...r,
+      ...(typeof r.text === "string" ? { text: shortenAtWord(r.text, REQUIREMENT_TEXT_MAX) } : {}),
+      ...(Array.isArray(r.esco) ? { esco: r.esco.filter((k): k is string => typeof k === "string" && /^K\d+$/.test(k)).slice(0, 3) } : {}),
+      language: typeof r.language === "string" && /^[a-z]{2}$/.test(r.language) ? r.language : null,
+      years: typeof r.years === "number" && Number.isInteger(r.years) ? r.years : null,
+      ...(r.statutory === "law" || r.statutory === "none" ? {} : { statutory: "none" }),
+    };
+  });
+  if (requirements.length > MAX_REQUIREMENTS) {
+    const isMust = (x: unknown) => !!x && typeof x === "object" && (x as { kind?: unknown }).kind === "must";
+    requirements = [...requirements.filter(isMust), ...requirements.filter((x) => !isMust(x))].slice(0, MAX_REQUIREMENTS);
+  }
   return {
     ...o,
-    requirements: o.requirements.map((item) => {
-      if (!item || typeof item !== "object") return item;
-      const r = item as Record<string, unknown>;
-      return {
-        ...r,
-        language: typeof r.language === "string" && /^[a-z]{2}$/.test(r.language) ? r.language : null,
-        years: typeof r.years === "number" && Number.isInteger(r.years) ? r.years : null,
-      };
-    }),
+    ...(typeof o.title === "string" ? { title: shortenAtWord(o.title, TITLE_MAX) } : {}),
+    ...(typeof o.summary === "string" ? { summary: shortenAtWord(o.summary, SUMMARY_MAX) } : {}),
+    requirements,
+    ...(Array.isArray(o.dropped) ? { dropped: o.dropped.filter((n): n is number => typeof n === "number" && Number.isInteger(n) && n >= 0) } : {}),
   };
 }
 
