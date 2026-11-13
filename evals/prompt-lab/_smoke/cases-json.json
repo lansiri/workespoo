@@ -1,0 +1,11 @@
+{
+  "item": "smoke-json",
+  "role": "analyst",
+  "schema": "MatchReasonsOutput",
+  "maxTokens": 400,
+  "cases": [
+    { "id": "en-01", "messages": [
+      { "role": "system", "content": "Write one reason linking a card signal to a posting sentence. Return only JSON: {\"reasons\":[{\"signal\":\"S1\",\"sentence\":\"P2\",\"text\":\"...\"}]}. Use only the labels given. No praise words." },
+      { "role": "user", "content": "Signals:\nS1 | Python data pipelines\nPosting sentences:\nP2 We need someone to build and run Python ETL jobs." } ] }
+  ]
+}

@@ -107,8 +107,8 @@ export function computeEligibility(db: Db, scope: { needCardId: string } | { tal
 ```ts
 /** Drafts today's digests for every participating company. Idempotent per company and day. */
 export function draftDailyDigests(db: Db, date: string): Promise<{ digests: number; picks: number }>;
-/** The introductions a person has to answer or has answered, for the `/matches` page. */
-export function introsForTalent(db: Db, talentId: string): Promise<Intro[]>;
+/** The introductions a person has to answer or has answered, for the `/matches` page, each with the company's display name and the need's title. */
+export function introsForTalent(db: Db, talentId: string): Promise<IntroForTalent[]>;
 ```
 
 ## `@/features/voice` (S4, exists after wave 1b)

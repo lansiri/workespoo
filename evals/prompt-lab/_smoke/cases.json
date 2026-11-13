@@ -1,0 +1,11 @@
+{
+  "item": "smoke",
+  "role": "live",
+  "schema": null,
+  "maxTokens": 120,
+  "cases": [
+    { "id": "en-01", "messages": [
+      { "role": "system", "content": "You are an interviewer. Reply with exactly one short question, at most 20 words. No praise." },
+      { "role": "user", "content": "I build data pipelines in Python that load sensor data into a database every night." } ] }
+  ]
+}

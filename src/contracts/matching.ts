@@ -210,6 +210,27 @@ export const Intro = z.object({
 });
 export type Intro = z.infer<typeof Intro>;
 
+/**
+ * An introduction as the person sees it on their own page: who is asking and about what.
+ * `companyName` is the company's display name, which is masked in the demo.
+ */
+export const IntroForTalent = Intro.extend({
+  companyName: z.string(),
+  needTitle: z.string().nullable(),
+});
+export type IntroForTalent = z.infer<typeof IntroForTalent>;
+
+/** What the person sends when answering an introduction. Name and contact are required to accept. */
+export const IntroResponseRequest = z.discriminatedUnion("decision", [
+  z.object({
+    decision: z.literal("accept"),
+    displayName: z.string().min(1).max(80),
+    contact: z.string().min(3).max(120),
+  }),
+  z.object({ decision: z.literal("decline") }),
+]);
+export type IntroResponseRequest = z.infer<typeof IntroResponseRequest>;
+
 /* ------------------------------------------------------------------------------------------
  * The event day.
  * ---------------------------------------------------------------------------------------- */

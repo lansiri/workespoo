@@ -18,7 +18,8 @@
     "llm:probe": "tsx scripts/llm-probe.ts",
     "ingest": "tsx scripts/ingest.ts",
     "sim": "tsx scripts/sim.ts",
-    "seed": "tsx scripts/seed.ts"
+    "seed": "tsx scripts/seed.ts",
+    "lab": "tsx evals/prompt-lab/run.ts"
   },
   "dependencies": {
     "@elevenlabs/elevenlabs-js": "^2.78.0",

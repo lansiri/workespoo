@@ -21,7 +21,7 @@ done
 
 if ! git -C "$root" remote get-url "$remote" >/dev/null 2>&1; then
   echo "remote '$remote' is not configured. Add it once with:" >&2
-  echo "  git remote add vps root@2.29.206.251:/opt/workespoo/repo.git" >&2
+  echo "  git remote add vps deploy@2.29.206.251:/opt/workespoo/repo.git" >&2
   exit 2
 fi
 
