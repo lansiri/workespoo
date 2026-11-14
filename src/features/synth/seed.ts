@@ -11,6 +11,7 @@ import { and, eq, gte, inArray, like, lte, or } from "drizzle-orm";
 import type { InterviewMode } from "@/contracts";
 import type { Db } from "@/db/client";
 import { appMeta, company, consent, digest, eligibility, llmCall, matchEvent, eventCompany, needCard, pick, talent } from "@/db/schema";
+import { QUESTIONS_KEY_PREFIX } from "@/features/application";
 import { audit } from "@/lib/audit";
 import { newId, newToken } from "@/lib/ids";
 import { runSimulatedApplications, type ApplicationsReport } from "./applications";
@@ -129,6 +130,9 @@ export async function resetDemo(db: Db): Promise<void> {
         detail: { count: real, reason: "demo reset" },
       });
     }
+    // The worded questions of the demo companies' jobs go with them (a restore brings the snapshot's back).
+    const needs = await tx.select({ id: needCard.id }).from(needCard).where(like(needCard.companyId, "co_demo%"));
+    if (needs.length > 0) await tx.delete(appMeta).where(or(...needs.map((n) => like(appMeta.key, `${QUESTIONS_KEY_PREFIX}${n.id}:%`))));
     await tx.delete(company).where(like(company.id, "co_demo%"));
     await tx.delete(matchEvent).where(eq(matchEvent.id, DEMO_EVENT_ID));
     await tx.delete(appMeta).where(or(eq(appMeta.key, DEMO_COMPANIES_KEY), like(appMeta.key, `settings:${DEMO_EVENT_ID}:%`)));

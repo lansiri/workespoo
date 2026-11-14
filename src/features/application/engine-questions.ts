@@ -23,8 +23,13 @@ interface Stored {
   questions: PlannedQuestion[];
 }
 
-export const questionsKey = (needCardId: string, version: number, lang: UiLang) =>
-  `application:questions:${needCardId}:${version}:${lang}`;
+/**
+ * Where a job's worded questions are kept (`app_meta`), so that every applicant in a language
+ * gets the same wording. The demo snapshot stores these rows with the simulated applications:
+ * a person who applies after a reset must be asked what the simulated applicants were asked.
+ */
+export const QUESTIONS_KEY_PREFIX = "application:questions:";
+export const questionsKey = (needCardId: string, version: number, lang: UiLang) => `${QUESTIONS_KEY_PREFIX}${needCardId}:${version}:${lang}`;
 
 function validStored(value: unknown, ctx: JobContext): PlannedQuestion[] | null {
   const q = (value as Stored | null)?.questions;

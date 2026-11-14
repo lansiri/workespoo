@@ -20,6 +20,7 @@ import {
   appMeta, application, applicationTurn, company, consent, eligibility, eventCompany, interview, interviewEvent, jobMatch, matchEvent,
   needCard, signal, signalCard, talent, talentIdentity, talentLanguage, turn,
 } from "@/db/schema";
+import { QUESTIONS_KEY_PREFIX } from "@/features/application";
 import { newToken } from "@/lib/ids";
 import { DEMO_COMPANIES_KEY, DEMO_EVENT_ID, resetDemo, seedDemo, type SeedOptions, type SeedSummary } from "./seed";
 
@@ -50,7 +51,8 @@ const TABLES: TableSpec[] = [
   { table: application, where: (i) => and(inArray(application.talentId, [...i.talents, ""]), eq(application.status, "assessed")) },
   { table: applicationTurn, where: (i) => inArray(applicationTurn.applicationId, [...i.applications, ""]) },
   { table: consent, where: (i) => or(inArray(consent.subjectId, [...i.talents, ...i.companies, ""])) },
-  { table: appMeta, where: () => eq(appMeta.key, DEMO_COMPANIES_KEY) },
+  // The demo companies, and the worded questions of their jobs: the next applicant must be asked what these applicants were asked.
+  { table: appMeta, where: (i) => or(eq(appMeta.key, DEMO_COMPANIES_KEY), ...i.needs.map((id) => like(appMeta.key, `${QUESTIONS_KEY_PREFIX}${id}:%`))) },
 ];
 
 const nameOf = (t: PgTable) => getTableName(t);

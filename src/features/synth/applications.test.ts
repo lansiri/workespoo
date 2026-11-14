@@ -1,9 +1,10 @@
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { eq } from "drizzle-orm";
+import { eq, like } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { application, applicationTurn, talent } from "@/db/schema";
+import { appMeta, application, applicationTurn, needCard, talent } from "@/db/schema";
+import { QUESTIONS_KEY_PREFIX } from "@/features/application";
 import { loadJobFixtures } from "../../../fixtures/load";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
 import { chooseApplicants, MAX_APPLICANTS_PER_JOB, MAX_JOBS_PER_PERSON, PITCH_APPLICANTS, runSimulatedApplications, type ApplyCompany } from "./applications";
@@ -97,6 +98,11 @@ describe("simulated applications on a seeded demo (fake engine)", () => {
     try {
       const apps = await t.db.select().from(application);
       const turns = await t.db.select().from(applicationTurn);
+      // The worded questions of a demo job travel with the snapshot; those of any other job do not.
+      const [need] = await t.db.select({ id: needCard.id }).from(needCard).where(like(needCard.companyId, "co_demo%")).limit(1);
+      const mine = `${QUESTIONS_KEY_PREFIX}${need!.id}:1:en`;
+      const other = `${QUESTIONS_KEY_PREFIX}nc_not_a_demo_card:1:en`;
+      for (const key of [mine, other]) await t.db.insert(appMeta).values({ key, value: { questions: [{ requirementId: "r", question: "Tell me about it?", wording: "model" }] } }).onConflictDoNothing();
       const counts = await snapshotDemo(t.db, dir);
       expect(counts.application).toBe(apps.length);
       expect(counts.application_turn).toBe(turns.length);
@@ -108,6 +114,14 @@ describe("simulated applications on a seeded demo (fake engine)", () => {
       expect((await t.db.select().from(applicationTurn)).length).toBe(turns.length);
       expect(after.map((a) => a.id).sort()).toEqual(apps.map((a) => a.id).sort());
       expect(after.every((a) => a.status === "assessed" && a.assessment !== null && a.createdAt instanceof Date)).toBe(true);
+      // Restored exactly once, with its value; the other job's questions were never in the files.
+      const kept = await t.db.select().from(appMeta).where(eq(appMeta.key, mine));
+      expect(kept).toHaveLength(1);
+      expect((kept[0]!.value as { questions: unknown[] }).questions).toHaveLength(1);
+      await t.db.delete(appMeta).where(eq(appMeta.key, other));
+      await restoreDemoSnapshot(t.db, { deps: createFakeEngine(t.db, { personas, applications: true }), personas, now: () => NOW, appUrl: "https://example.test", dir });
+      expect(await t.db.select().from(appMeta).where(eq(appMeta.key, other))).toHaveLength(0);
+      expect(await t.db.select().from(appMeta).where(eq(appMeta.key, mine))).toHaveLength(1);
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }
@@ -115,9 +129,13 @@ describe("simulated applications on a seeded demo (fake engine)", () => {
 
   it("resetDemo leaves no application behind", async () => {
     expect((await t.db.select().from(application)).length).toBeGreaterThan(0);
+    const before = await t.db.select().from(appMeta).where(like(appMeta.key, `${QUESTIONS_KEY_PREFIX}%`));
+    expect(before.length).toBeGreaterThan(0);
     await resetDemo(t.db);
     expect(await t.db.select().from(application)).toHaveLength(0);
     expect(await t.db.select().from(applicationTurn)).toHaveLength(0);
+    // The demo jobs' worded questions go with them.
+    expect(await t.db.select().from(appMeta).where(like(appMeta.key, `${QUESTIONS_KEY_PREFIX}%`))).toHaveLength(0);
   }, 120_000);
 });
 
