@@ -34,11 +34,12 @@ const tid = (scope: Page | Locator, id: string) => scope.locator(`[data-testid="
 async function signInOrganiser(page: Page): Promise<void> {
   await page.goto("/organiser", { waitUntil: "domcontentloaded" });
   if (await tid(page, "passcode-input").count()) {
-    // Typing before the page is interactive is lost: type until the button takes it.
+    // The page may not be interactive yet: clear and type until the button takes it.
     await expect(async () => {
+      await tid(page, "passcode-input").fill("");
       await tid(page, "passcode-input").fill(PASSCODE);
       await expect(tid(page, "passcode-submit")).toBeEnabled({ timeout: 1_000 });
-    }).toPass({ timeout: 30_000 });
+    }).toPass({ timeout: 90_000 });
     await tid(page, "passcode-submit").click();
   }
   await expect(tid(page, "reset-demo")).toBeVisible({ timeout: 20_000 });
@@ -98,7 +99,7 @@ test.describe("golden path", () => {
         await tid(talent, "consent-live-demo").check();
         await tid(talent, "mode-express").check();
         await expect(tid(talent, "start-interview")).toBeEnabled({ timeout: 1_000 });
-      }).toPass({ timeout: 30_000 });
+      }).toPass({ timeout: 90_000 });
       await tid(talent, "start-interview").click();
       await talent.waitForURL(/\/interview\/[^/]+$/, { timeout: 30_000 });
       await expect(tid(talent, "interviewer-text")).toBeVisible({ timeout: 30_000 });

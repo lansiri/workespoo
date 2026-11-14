@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, Field, Input } from "@/components/we";
 import { useMessages } from "@/lib/i18n/client";
 import { organiserMessages } from "./messages";
@@ -12,6 +12,15 @@ export function PasscodeForm() {
   const [passcode, setPasscode] = useState("");
   const [failed, setFailed] = useState(false);
   const [busy, setBusy] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // On a slow connection the passcode may be typed before the page is interactive. The text
+  // stays in the field, but nothing told React about it, so the button stayed off and typing
+  // the same text again did not help. Take over what is already in the field.
+  useEffect(() => {
+    const typed = formRef.current?.querySelector<HTMLInputElement>('[data-testid="passcode-input"]')?.value ?? "";
+    if (typed) setPasscode(typed);
+  }, []);
 
   async function submit(event: React.FormEvent) {
     event.preventDefault();
@@ -31,7 +40,7 @@ export function PasscodeForm() {
   }
 
   return (
-    <form onSubmit={submit}>
+    <form onSubmit={submit} ref={formRef}>
       <Field label={m.passcode}>
         {({ id, describedBy }) => (
           <Input
