@@ -7,7 +7,7 @@ import { fmt } from "@/lib/i18n";
 import { useMessages, useUiLang } from "@/lib/i18n/client";
 import { formatWhen, meetErrorLine, rankedMessages } from "../messages-organiser";
 import type { CompanyApplicant, CompanyApplicants } from "../rank";
-import { EvidenceList, LevelsBox, RatingsList } from "./RankedListView";
+import { EvidenceList, LevelStrip, LevelsBox, RatingsList } from "./RankedListView";
 import "./ranked.css";
 
 type M = (typeof rankedMessages)["en"];
@@ -104,7 +104,10 @@ function ApplicantCard({ a, job, token, m, lang }: { a: CompanyApplicant; job: J
       <div className="we-rk-head">
         <span className="we-rk-pos">{a.position}</span>
         <PersonHandle handle={a.handle} ariaLabel={fmt(m.handleAria, { handle: a.handle })} />
-        <span className="we-rk-points">{fmt(m.pointsOf, { n: a.points, m: a.maxPoints })}</span>
+        <span className="we-rk-score">
+          <LevelStrip ratings={a.ratings} requirements={job.requirements} lang={lang} label={m.stripLabel} />
+          <span className="we-rk-points">{fmt(m.pointsOf, { n: a.points, m: a.maxPoints })}</span>
+        </span>
       </div>
       {a.moved ? <p className="we-rk-note" style={{ marginTop: 8 }}>{m.movedByOrganiser}</p> : null}
       <RatingsList ratings={a.ratings} requirements={job.requirements} m={m} lang={lang} testId="company-rating" aiNote={m.notAQuote} />

@@ -43,6 +43,31 @@ export function RatingsList(props: {
   );
 }
 
+/**
+ * One applicant's levels at a glance: a mark per requirement, in the list's order, filled by
+ * level. It shows the same levels as the text under it and nothing more; the names are in its
+ * label and on each mark, so it is not colour alone.
+ */
+export function LevelStrip(props: {
+  ratings: ReadonlyArray<{ requirementId: string; level: number }>;
+  requirements: ReadonlyArray<{ requirementId: string; text: string }>;
+  lang: UiLang;
+  label: string;
+}) {
+  const marks = props.requirements.flatMap((req) => {
+    const rating = props.ratings.find((r) => r.requirementId === req.requirementId);
+    return rating ? [{ id: req.requirementId, level: Math.min(Math.max(rating.level, 0), 3), text: `${req.text}: ${levelName(props.lang, rating.level)}` }] : [];
+  });
+  if (marks.length === 0) return null;
+  return (
+    <span className="we-rk-strip" role="img" aria-label={`${props.label}: ${marks.map((m) => m.text).join("; ")}`} data-testid="ranked-strip">
+      {marks.map((m) => (
+        <span key={m.id} data-level={m.level} title={m.text} />
+      ))}
+    </span>
+  );
+}
+
 /** What the levels mean, from the anchors, and that nobody is left off by a rating. */
 export function LevelsBox({ m, lang }: { m: M; lang: UiLang }) {
   return (
@@ -51,7 +76,12 @@ export function LevelsBox({ m, lang }: { m: M; lang: UiLang }) {
       <dl>
         {LEVEL_NAMES[lang].map((name, i) => (
           <div key={name}>
-            <dt>{name}</dt>
+            <dt>
+              <span className="we-rk-strip" aria-hidden="true">
+                <span data-level={i} />
+              </span>{" "}
+              {name}
+            </dt>
             <dd>{LEVEL_ANCHORS[lang][i]}</dd>
           </div>
         ))}
@@ -163,8 +193,11 @@ function ApplicantCard(props: {
         <span className="we-rk-pos">{a.position}</span>
         <PersonHandle handle={a.handle} ariaLabel={fmt(m.handleAria, { handle: a.handle })} />
         <SyntheticTag>{a.synthetic ? m.synthetic : m.liveDemoPerson}</SyntheticTag>
-        <span className="we-rk-points" data-testid="ranked-points">
-          {fmt(m.pointsOf, { n: a.points, m: a.maxPoints })}
+        <span className="we-rk-score">
+          <LevelStrip ratings={a.ratings} requirements={list.requirements} lang={lang} label={m.stripLabel} />
+          <span className="we-rk-points" data-testid="ranked-points">
+            {fmt(m.pointsOf, { n: a.points, m: a.maxPoints })}
+          </span>
         </span>
       </div>
       <RatingsList ratings={a.ratings} requirements={list.requirements} m={m} lang={lang} testId="ranked-rating" aiNote={m.aiLabel} />
