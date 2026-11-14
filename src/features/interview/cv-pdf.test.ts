@@ -1,5 +1,8 @@
+import { readdirSync, readFileSync } from "node:fs";
+import { createDeflate } from "node:zlib";
 import { describe, expect, it } from "vitest";
-import { CV_PDF_MAX_BYTES, looksLikePdf, readCvPdf } from "./cv-pdf";
+import { CV_PDF_DEADLINE_MS, CV_PDF_MAX_BYTES, CV_TEXT_MAX_CHARS, looksLikePdf, readCvPdf, runPdfChild } from "./cv-pdf";
+import { createRateLimiter } from "./cv-rate-limit";
 
 /**
  * A minimal one-page PDF with one text line per entry (Helvetica, WinAnsi, so ä and ö work).
@@ -98,5 +101,150 @@ describe("readCvPdf", () => {
   it("looksLikePdf finds the header within the first kilobyte", () => {
     expect(looksLikePdf(new TextEncoder().encode("   %PDF-1.7"))).toBe(true);
     expect(looksLikePdf(new TextEncoder().encode("PK\u0003\u0004"))).toBe(false);
+  });
+});
+
+/** A one-page PDF whose content stream is `body`, optionally deflated (FlateDecode). */
+function makeRawPdf(body: Buffer, flate: boolean): Uint8Array {
+  const parts: Buffer[] = [];
+  const offsets: number[] = [];
+  let len = 0;
+  const push = (b: Buffer | string) => {
+    const buf = typeof b === "string" ? Buffer.from(b, "latin1") : b;
+    parts.push(buf);
+    len += buf.length;
+  };
+  push("%PDF-1.4\n");
+  const objs = [
+    "<< /Type /Catalog /Pages 2 0 R >>",
+    "<< /Type /Pages /Kids [4 0 R] /Count 1 >>",
+    "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>",
+    "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>",
+  ];
+  objs.forEach((o, i) => {
+    offsets[i + 1] = len;
+    push(`${i + 1} 0 obj\n${o}\nendobj\n`);
+  });
+  offsets[5] = len;
+  push(`5 0 obj\n<< /Length ${body.length}${flate ? " /Filter /FlateDecode" : ""} >>\nstream\n`);
+  push(body);
+  push("\nendstream\nendobj\n");
+  const xref = len;
+  let x = "xref\n0 6\n0000000000 65535 f \n";
+  for (let i = 1; i <= 5; i++) x += `${String(offsets[i]).padStart(10, "0")} 00000 n \n`;
+  push(x + `trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`);
+  return new Uint8Array(Buffer.concat(parts));
+}
+
+/** Deflate `megabytes` MB of zeros without ever holding them in this process. */
+async function zeroBomb(megabytes: number): Promise<Buffer> {
+  const z = createDeflate();
+  const out: Buffer[] = [];
+  z.on("data", (c: Buffer) => out.push(c));
+  const done = new Promise<void>((r) => z.on("end", () => r()));
+  const chunk = Buffer.alloc(1024 * 1024);
+  for (let i = 0; i < megabytes; i++) {
+    if (!z.write(chunk)) await new Promise((r) => z.once("drain", r));
+  }
+  z.end();
+  await done;
+  return Buffer.concat(out);
+}
+
+/** Processes whose command line names the child script, found by scanning /proc. */
+function childCount(): number {
+  let n = 0;
+  try {
+    for (const pid of readdirSync("/proc")) {
+      if (!/^\d+$/.test(pid)) continue;
+      try {
+        if (readFileSync(`/proc/${pid}/cmdline`, "utf8").includes("cv-pdf-child.mjs")) n += 1;
+      } catch {
+        // the process ended while we looked
+      }
+    }
+  } catch {
+    // no /proc here
+  }
+  return n;
+}
+
+describe("reading in a child process", () => {
+  parses("a run of several hundred thousand letters returns well inside the deadline", async () => {
+    const word = "a".repeat(400_000);
+    const pdf = makeRawPdf(Buffer.from(`BT /F1 11 Tf 72 760 Td (${word}) Tj ET`, "latin1"), false);
+    const started = Date.now();
+    const result = await readCvPdf(pdf);
+    expect(Date.now() - started).toBeLessThan(CV_PDF_DEADLINE_MS);
+    expect(result.ok).toBe(true);
+    if (result.ok) expect(result.text.length).toBeLessThanOrEqual(CV_TEXT_MAX_CHARS);
+  }, 30_000);
+
+  parses("a stream that expands to hundreds of megabytes is killed, and the event loop keeps turning", async () => {
+    const bomb = await zeroBomb(900);
+    const pdf = makeRawPdf(bomb, true);
+    expect(pdf.length).toBeLessThan(CV_PDF_MAX_BYTES);
+    const rssBefore = process.memoryUsage().rss;
+    let last = Date.now();
+    let worstGap = 0;
+    const timer = setInterval(() => {
+      const t = Date.now();
+      worstGap = Math.max(worstGap, t - last);
+      last = t;
+    }, 20);
+    const started = Date.now();
+    const result = await readCvPdf(pdf);
+    clearInterval(timer);
+    expect(result).toEqual({ ok: false, error: "unreadable" });
+    expect(Date.now() - started).toBeLessThan(CV_PDF_DEADLINE_MS);
+    expect(worstGap).toBeLessThan(220);
+    expect(process.memoryUsage().rss - rssBefore).toBeLessThan(150 * 1024 * 1024);
+    expect(childCount()).toBe(0);
+  }, 30_000);
+
+  parses("a child that never answers is killed at the deadline, no child is left and the slot is free", async () => {
+    const started = Date.now();
+    const answer = await runPdfChild(new TextEncoder().encode("%PDF-1.4"), "hang");
+    const took = Date.now() - started;
+    expect(answer).toEqual({ ok: false });
+    expect(took).toBeGreaterThanOrEqual(CV_PDF_DEADLINE_MS - 100);
+    expect(took).toBeLessThan(CV_PDF_DEADLINE_MS + 2_500);
+    expect(childCount()).toBe(0);
+    // The slot is free: three more parses of a bad file are answered, none is "busy".
+    const bad = new TextEncoder().encode("%PDF-1.4 broken");
+    const results = await Promise.all([readCvPdf(bad), readCvPdf(bad), readCvPdf(bad)]);
+    for (const r of results) expect(r.ok === false && r.error).not.toBe("busy");
+  }, 30_000);
+
+  it("gives the child none of the parent's secrets", async () => {
+    process.env.DATABASE_URL = "postgres://secret";
+    process.env.LLM_API_KEY = "secret";
+    try {
+      const answer = await runPdfChild(new TextEncoder().encode("%PDF-1.4"), "env");
+      // Node 20 cannot run the child at all; where it runs, check what it was given.
+      if (!pdfjsRuns) return expect(answer).toEqual({ ok: false });
+      expect(answer.ok).toBe(true);
+      if (!answer.ok) return;
+      const names = answer.text.split(",");
+      expect(names).not.toContain("DATABASE_URL");
+      expect(names).not.toContain("LLM_API_KEY");
+      expect(names.filter((n) => !["PATH", "NODE_ENV", "CV_PDF_TEST_MODE"].includes(n))).toEqual([]);
+    } finally {
+      delete process.env.DATABASE_URL;
+      delete process.env.LLM_API_KEY;
+    }
+  });
+});
+
+describe("createRateLimiter", () => {
+  it("counts per key inside a window and stays bounded", () => {
+    let t = 0;
+    const allow = createRateLimiter({ limit: 2, windowMs: 1000, maxKeys: 3, now: () => t });
+    expect([allow("a"), allow("a"), allow("a")]).toEqual([true, true, false]);
+    expect(allow("b")).toBe(true);
+    t = 1500;
+    expect(allow("a")).toBe(true);
+    for (const k of ["c", "d", "e", "f"]) allow(k);
+    expect(allow("a")).toBe(true);
   });
 });

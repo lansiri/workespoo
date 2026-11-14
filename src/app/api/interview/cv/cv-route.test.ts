@@ -15,8 +15,14 @@ vi.mock("@/features/interview/cv-pdf", async (orig) => {
 
 import { POST } from "./route";
 
+let nextClient = 0;
+/** Each request comes from a new client address unless the test names one. */
 function upload(body: BodyInit, headers: Record<string, string> = {}): Request {
-  return new Request("http://test/api/interview/cv", { method: "POST", body, headers: { "content-type": "application/pdf", ...headers } });
+  return new Request("http://test/api/interview/cv", {
+    method: "POST",
+    body,
+    headers: { "content-type": "application/pdf", "x-forwarded-for": `10.0.0.${++nextClient}`, ...headers },
+  });
 }
 
 describe("POST /api/interview/cv", () => {
@@ -52,5 +58,20 @@ describe("POST /api/interview/cv", () => {
     const res = await POST(upload(new Uint8Array([1, 2, 3])));
     expect(res.status).toBe(status);
     expect(await res.json()).toEqual({ error: { code: error } });
+  });
+
+  it("limits uploads per client address and does not share the limit between clients", async () => {
+    h.result = { ok: false, error: "unreadable" };
+    const a = { "x-forwarded-for": "203.0.113.7, 10.1.1.1" };
+    const before = h.calls;
+    for (let i = 0; i < 6; i++) expect((await POST(upload(new Uint8Array([1]), a))).status).toBe(422);
+    const limited = await POST(upload(new Uint8Array([1]), a));
+    expect(limited.status).toBe(429);
+    expect(limited.headers.get("retry-after")).toBe("2");
+    expect(await limited.json()).toEqual({ error: { code: "busy" } });
+    expect(h.calls).toBe(before + 6);
+    // Another client is unaffected, and so is the same first address behind another proxy hop.
+    expect((await POST(upload(new Uint8Array([1]), { "x-forwarded-for": "203.0.113.8" }))).status).toBe(422);
+    expect((await POST(upload(new Uint8Array([1]), { "x-forwarded-for": "203.0.113.7" }))).status).toBe(429);
   });
 });

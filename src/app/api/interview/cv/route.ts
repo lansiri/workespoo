@@ -1,7 +1,11 @@
 import type { CvUploadError, CvUploadResponse } from "@/contracts";
 import { CV_PDF_MAX_BYTES, readCvPdf } from "@/features/interview/cv-pdf";
+import { clientKey, createRateLimiter } from "@/features/interview/cv-rate-limit";
 
 export const dynamic = "force-dynamic";
+
+/** Six uploads a minute per client address; the endpoint needs no session. */
+const allow = createRateLimiter({ limit: 6, windowMs: 60_000, maxKeys: 5_000 });
 
 const STATUS: Record<CvUploadError, number> = {
   too_large: 413,
@@ -28,6 +32,7 @@ function fail(error: CvUploadError): Response {
  * in this request only: they are not written to disk, stored, logged or audited.
  */
 export async function POST(req: Request): Promise<Response> {
+  if (!allow(clientKey(req.headers))) return fail("busy");
   const declared = Number(req.headers.get("content-length"));
   if (Number.isFinite(declared) && declared > CV_PDF_MAX_BYTES) return fail("too_large");
 
