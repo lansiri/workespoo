@@ -119,6 +119,8 @@ export type ValidatedDraft = {
 
 /** Total budget for the draft call (analyst and bulk alike). */
 export const DRAFT_DEADLINE_MS = 90_000;
+/** The longest one attempt may take; the deadline above still bounds the whole call. */
+export const DRAFT_ATTEMPT_TIMEOUT_MS = 75_000;
 /** Reasoning counts toward the limit; the gateway default of 800 truncates the card (NC-2). */
 export const DRAFT_MAX_TOKENS = 4000;
 
@@ -378,6 +380,9 @@ export async function draftNeedCard(db: Db, jobId: string, companyId: string | n
     temperature: 0.2,
     maxTokens: DRAFT_MAX_TOKENS,
     deadlineMs: DRAFT_DEADLINE_MS,
+    // One piece, like card synthesis: of 47 real drafts three took over 25 s, close to the
+    // gateway's 30 s wait for an answer's next piece, which for these calls is the whole answer.
+    timeoutMs: DRAFT_ATTEMPT_TIMEOUT_MS,
     messages: buildDraftMessages(job, candidates),
     schema: NeedCardDraftOutput,
     coerce: coerceDraftOutput,

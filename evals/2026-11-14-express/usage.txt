@@ -1,0 +1,19 @@
+p01 (express): wall 66.4 s, 7 calls (11 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1, card.synthesis 1, interview.extract 3 (3 failed), interview.live 2 (2 failed)
+  failures by reason: all llm providers failed 1, the ms deadline for 4
+p02 (express): wall 29.4 s, 7 calls (7 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1, card.synthesis 1, interview.extract 3, interview.live 2
+  failures by reason: none
+p03 (express): wall 26.4 s, 8 calls (8 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 1, interview.extract 3, interview.live 2
+  failures by reason: none
+p04 (express): wall 28.2 s, 8 calls (8 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 1, interview.extract 3, interview.live 2
+  failures by reason: none
+p05 (express): wall 36.1 s, 7 calls (7 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1, card.synthesis 1, interview.extract 3, interview.live 2
+  failures by reason: none
+
+total: wall 186.6 s, 37 calls (41 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 5, card.synthesis 5, interview.esco_pick 2, interview.extract 15 (3 failed), interview.live 10 (2 failed)
+  failures by reason: all llm providers failed 1, the ms deadline for 4

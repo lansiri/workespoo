@@ -230,6 +230,10 @@ export async function synthesiseCard(
         // answer short (reasoning counts toward the limit) and one attempt takes 25 to 35 s.
         maxTokens: 4000,
         deadlineMs: 90_000,
+        // The answer arrives in one piece, so the gateway's 30 s wait for "the next piece" was the
+        // limit for the whole answer: of 15 real syntheses one was cut off there and four more took
+        // over 25 s. A cut-off synthesis leaves the person with the code-built card.
+        timeoutMs: 75_000,
         db,
       });
       output = result.data;
