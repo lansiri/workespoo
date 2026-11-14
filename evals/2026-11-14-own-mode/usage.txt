@@ -1,49 +1,49 @@
-p01 (full): wall 63.5 s, 18 calls (18 requests), waited for a rate-limit slot 0.0 s
-  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 3, interview.extract 7, interview.live 6
-  failures by reason: none
-p02 (full): wall 61.4 s, 19 calls (19 requests), waited for a rate-limit slot 0.0 s
-  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 4, interview.extract 7, interview.live 6
-  failures by reason: none
-p03 (full): wall 55.5 s, 19 calls (19 requests), waited for a rate-limit slot 0.0 s
-  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 4, interview.extract 7, interview.live 6
-  failures by reason: none
-p04 (full): wall 67.9 s, 20 calls (21 requests), waited for a rate-limit slot 0.0 s
+p01 (full): wall 55.3 s, 20 calls (20 requests), waited for a rate-limit slot 0.0 s
   by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 5, interview.extract 7, interview.live 6
   failures by reason: none
-p05 (full): wall 45.0 s, 14 calls (14 requests), waited for a rate-limit slot 0.0 s
-  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 3, interview.extract 5, interview.live 4
-  failures by reason: none
-p06 (full): wall 59.9 s, 19 calls (19 requests), waited for a rate-limit slot 0.0 s
-  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 4, interview.extract 7, interview.live 6
-  failures by reason: none
-p07 (full): wall 58.1 s, 16 calls (16 requests), waited for a rate-limit slot 0.0 s
-  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 3, interview.extract 6, interview.live 5
-  failures by reason: none
-p08 (full): wall 57.0 s, 17 calls (17 requests), waited for a rate-limit slot 0.0 s
+p02 (full): wall 54.7 s, 17 calls (17 requests), waited for a rate-limit slot 0.0 s
   by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 4, interview.extract 6, interview.live 5
   failures by reason: none
-p09 (full): wall 64.1 s, 17 calls (17 requests), waited for a rate-limit slot 0.0 s
-  by purpose: card.esco_pick 1, card.synthesis 1 (1 failed), interview.esco_pick 4, interview.extract 6, interview.live 5
-  failures by reason: all llm providers failed 1
-p10 (express): wall 33.6 s, 8 calls (8 requests), waited for a rate-limit slot 0.0 s
+p03 (full): wall 61.6 s, 17 calls (17 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 4, interview.extract 6, interview.live 5
+  failures by reason: none
+p04 (full): wall 80.0 s, 20 calls (21 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 5, interview.extract 7, interview.live 6
+  failures by reason: none
+p05 (full): wall 76.4 s, 17 calls (19 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1 (1 failed), card.synthesis 1, interview.esco_pick 4, interview.extract 6, interview.live 5
+  failures by reason: the ms deadline for 1
+p06 (full): wall 64.6 s, 19 calls (19 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 4, interview.extract 7, interview.live 6
+  failures by reason: none
+p07 (full): wall 57.1 s, 17 calls (17 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 4, interview.extract 6, interview.live 5
+  failures by reason: none
+p08 (full): wall 56.1 s, 17 calls (17 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 4, interview.extract 6, interview.live 5
+  failures by reason: none
+p09 (full): wall 53.3 s, 17 calls (17 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 4, interview.extract 6, interview.live 5
+  failures by reason: none
+p10 (express): wall 30.9 s, 8 calls (8 requests), waited for a rate-limit slot 0.0 s
   by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 1, interview.extract 3, interview.live 2
   failures by reason: none
-p11 (express): wall 28.6 s, 7 calls (7 requests), waited for a rate-limit slot 0.0 s
+p11 (express): wall 25.8 s, 8 calls (8 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 1, interview.extract 3, interview.live 2
+  failures by reason: none
+p12 (full): wall 56.3 s, 16 calls (17 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 3, interview.extract 6, interview.live 5
+  failures by reason: none
+p13 (full): wall 56.4 s, 16 calls (16 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 3, interview.extract 6, interview.live 5
+  failures by reason: none
+p14 (full): wall 61.8 s, 20 calls (20 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 5, interview.extract 7, interview.live 6
+  failures by reason: none
+p15 (express): wall 33.8 s, 7 calls (7 requests), waited for a rate-limit slot 0.0 s
   by purpose: card.esco_pick 1, card.synthesis 1, interview.extract 3, interview.live 2
   failures by reason: none
-p12 (full): wall 51.2 s, 16 calls (16 requests), waited for a rate-limit slot 0.0 s
-  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 3, interview.extract 6, interview.live 5
-  failures by reason: none
-p13 (full): wall 63.0 s, 17 calls (18 requests), waited for a rate-limit slot 0.0 s
-  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 4, interview.extract 6, interview.live 5
-  failures by reason: none
-p14 (full): wall 68.2 s, 19 calls (19 requests), waited for a rate-limit slot 0.0 s
-  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 4, interview.extract 7, interview.live 6
-  failures by reason: none
-p15 (express): wall 31.5 s, 8 calls (8 requests), waited for a rate-limit slot 0.0 s
-  by purpose: card.esco_pick 1, card.synthesis 1, interview.esco_pick 1, interview.extract 3, interview.live 2
-  failures by reason: none
 
-total: wall 808.5 s, 234 calls (236 requests), waited for a rate-limit slot 0.0 s
-  by purpose: card.esco_pick 15, card.synthesis 15 (1 failed), interview.esco_pick 47, interview.extract 86, interview.live 71
-  failures by reason: all llm providers failed 1
+total: wall 824.1 s, 236 calls (240 requests), waited for a rate-limit slot 0.0 s
+  by purpose: card.esco_pick 15 (1 failed), card.synthesis 15, interview.esco_pick 51, interview.extract 85, interview.live 70
+  failures by reason: the ms deadline for 1

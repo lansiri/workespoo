@@ -1,11 +1,11 @@
 {
   "meta": {
-    "generatedAt": "2026-11-14T03:58:48.200Z",
+    "generatedAt": "2026-11-14T04:56:03.897Z",
     "engine": "real",
     "mode": "express",
     "personas": 5
   },
-  "verdict": "fail",
+  "verdict": "pass",
   "metrics": [
     {
       "id": "1",
@@ -21,17 +21,13 @@
     {
       "id": "2",
       "name": "Extractor JSON valid after retry",
-      "value": 0.8,
+      "value": 1,
       "n": 15,
       "threshold": ">= 0.98",
       "enforced": true,
-      "status": "fail",
+      "status": "pass",
       "note": "Share of calls that ended ok.",
-      "failures": [
-        "call 1169: All LLM providers failed for role \"live\". Last error: verda:kimi-k3-1-pro timed out",
-        "call 1170: The 20000 ms deadline for this live call passed. Last error: verda:kimi-k3-1-pro network error",
-        "call 1171: The 20000 ms deadline for this live call passed. Last error: verda:kimi-k3-1-pro network error"
-      ]
+      "failures": []
     },
     {
       "id": "3",
@@ -48,7 +44,7 @@
       "id": "4",
       "name": "Evidence references resolve",
       "value": 1,
-      "n": 35,
+      "n": 41,
       "threshold": ">= 0.95",
       "enforced": true,
       "status": "pass",
@@ -59,7 +55,7 @@
       "id": "5",
       "name": "Card signals with evidence",
       "value": 1,
-      "n": 35,
+      "n": 36,
       "threshold": "= 1",
       "enforced": true,
       "status": "pass",
@@ -69,11 +65,11 @@
     {
       "id": "6",
       "name": "ESCO grounding",
-      "value": 0.5714285714285714,
-      "n": 35,
+      "value": 0.6111111111111112,
+      "n": 36,
       "threshold": ">= 0.6",
       "enforced": false,
-      "status": "fail",
+      "status": "pass",
       "note": "Report only.",
       "failures": []
     },
@@ -102,11 +98,11 @@
     {
       "id": "9",
       "name": "Guard fallback rate",
-      "value": 0.2,
+      "value": 0,
       "n": 10,
       "threshold": "<= 0.1",
       "enforced": false,
-      "status": "fail",
+      "status": "pass",
       "note": "Report only. Live calls whose output was replaced by the fallback question.",
       "failures": []
     },
@@ -190,12 +186,12 @@
     {
       "id": "16",
       "name": "Time to first emitted sentence, p50",
-      "value": 680,
-      "n": 8,
+      "value": 600,
+      "n": 10,
       "threshold": "<= 1200 ms",
       "enforced": false,
       "status": "pass",
-      "note": "Report only. p50 680 ms, p95 942 ms. The log records first token, not first emitted sentence.",
+      "note": "Report only. p50 600 ms, p95 1215 ms. The log records first token, not first emitted sentence.",
       "failures": []
     }
   ],
@@ -207,7 +203,7 @@
       "questions": 3,
       "probes": 0,
       "answers": 3,
-      "signals": 7,
+      "signals": 8,
       "escoGrounded": 5,
       "plantedKinds": [
         "age, origin and family"
@@ -237,7 +233,7 @@
       "questions": 3,
       "probes": 0,
       "answers": 3,
-      "signals": 7,
+      "signals": 6,
       "escoGrounded": 3,
       "plantedKinds": [
         "age and family"
@@ -252,8 +248,8 @@
       "questions": 3,
       "probes": 0,
       "answers": 3,
-      "signals": 6,
-      "escoGrounded": 4,
+      "signals": 7,
+      "escoGrounded": 3,
       "plantedKinds": [
         "parental leave"
       ],
@@ -268,7 +264,7 @@
       "probes": 0,
       "answers": 3,
       "signals": 7,
-      "escoGrounded": 3,
+      "escoGrounded": 6,
       "plantedKinds": [
         "age and origin"
       ],

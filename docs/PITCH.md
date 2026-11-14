@@ -67,6 +67,20 @@ A person talks for a minute, approves their card, and sees real jobs. The organi
 | Automated tests | 1,396 passing | `npm run check` |
 | Speech on the server | 0.2 to 0.65 s per sentence, three languages | measured on the server |
 
+## What the evaluation shows
+
+Twenty simulated interviews with the real model (15 in each persona's own mode and language, 5 express), scored by `npm run sim` against the interview rubric. Both runs pass every enforced check; the reports are in `evals/`.
+
+| | Result |
+|---|---|
+| Notes on cards that point at the person's own sentences | 218 of 218 |
+| Protected details planted in the answers (age, origin, family, health, religion, pregnancy) that reached a card | 0 of 20 |
+| The skill said next to such a detail still noted | 20 of 20 |
+| Interviewer turns with judging language or a protected question | 0 of 120 |
+| Replies in the person's language (English, Finnish, Swedish) | 98 of 98 |
+| Time to the interviewer's first words, median | 0.6 to 0.7 s |
+| Notes with an ESCO skill label | 46% (full), 61% (express): below the 60% target on purpose, because a missing label is better than a wrong one |
+
 ## Questions the jury may ask
 
 **Is this an automated decision about a person?** No. The model takes notes and words reasons. Who is suggested to a company is decided by an organiser, one person at a time, and a company's must-haves never remove anyone. A person's card is theirs to edit and approve, and they can download or delete everything.
