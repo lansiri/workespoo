@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, type CSSProperties, type KeyboardEvent, type PointerEvent } from "react";
+import { useState, type CSSProperties, type KeyboardEvent, type PointerEvent } from "react";
 import { cx } from "./cx";
 import { Icon } from "./icons";
 
@@ -25,11 +25,38 @@ export type HoldToTalkProps = {
 const BAR_SHAPE = [0.6, 0.9, 1, 0.8, 0.55];
 
 /**
+ * One press of the talk button, kept apart from rendering. It starts only when the button is
+ * ready and ends exactly once, when the finger or key lifts, whatever was drawn in between. A
+ * quick tap on a slow phone is over before React has drawn "listening"; a press that waited for
+ * that drawing to end would never end, and the microphone would stay open.
+ */
+export function createHold() {
+  let active = false;
+  return {
+    get active() {
+      return active;
+    },
+    start(state: HoldToTalkState, onStart?: () => void): boolean {
+      if (active || state !== "ready") return false;
+      active = true;
+      onStart?.();
+      return true;
+    },
+    end(onRelease?: () => void): boolean {
+      if (!active) return false;
+      active = false;
+      onRelease?.();
+      return true;
+    },
+  };
+}
+
+/**
  * Main voice control: hold to record, release to send. A real button with pointer capture; Space or Enter
  * down starts, key up sends. It never starts recording on its own. When done it becomes the "Check my notes" link.
  */
 export function HoldToTalk({ state, level = 0.3, label, onStart, onRelease, doneHref, describedBy, className }: HoldToTalkProps) {
-  const active = useRef(false);
+  const [hold] = useState(createHold);
   if (state === "done") {
     return (
       <Link href={doneHref ?? "#"} className={cx("we-talk", className)} data-testid="go-to-card">
@@ -40,28 +67,26 @@ export function HoldToTalk({ state, level = 0.3, label, onStart, onRelease, done
   }
   const held = state === "listening";
   function down(e: PointerEvent<HTMLButtonElement>) {
-    if (state !== "ready") return;
-    e.currentTarget.setPointerCapture?.(e.pointerId);
-    active.current = true;
-    onStart?.();
+    if (state !== "ready" || hold.active) return;
+    try {
+      // Keeps the release coming to this button when the finger slides off it.
+      e.currentTarget.setPointerCapture?.(e.pointerId);
+    } catch {
+      // A pointer that cannot be captured is still a press.
+    }
+    hold.start(state, onStart);
   }
   function up() {
-    if (held && active.current) {
-      active.current = false;
-      onRelease?.();
-    }
+    hold.end(onRelease);
   }
   function keyDown(e: KeyboardEvent<HTMLButtonElement>) {
     if ((e.key === " " || e.key === "Enter") && !e.repeat) {
       e.preventDefault();
-      if (state === "ready") {
-        active.current = true;
-        onStart?.();
-      }
+      hold.start(state, onStart);
     }
   }
   function keyUp(e: KeyboardEvent<HTMLButtonElement>) {
-    if ((e.key === " " || e.key === "Enter") && held) {
+    if ((e.key === " " || e.key === "Enter") && hold.active) {
       e.preventDefault();
       up();
     }

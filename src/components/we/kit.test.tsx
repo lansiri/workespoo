@@ -74,6 +74,33 @@ describe("kit renders with required props", () => {
   });
 });
 
+describe("a press of the talk button", () => {
+  it("ends when the finger lifts, even if nothing was drawn in between", async () => {
+    const { createHold } = await import("./HoldToTalk");
+    const hold = createHold();
+    const calls: string[] = [];
+    expect(hold.start("ready", () => calls.push("start"))).toBe(true);
+    // No render has happened: the component still believes the state is "ready".
+    expect(hold.end(() => calls.push("release"))).toBe(true);
+    expect(calls).toEqual(["start", "release"]);
+    // The release is reported once, however many "up" events arrive (pointer up, lost capture, blur).
+    expect(hold.end(() => calls.push("release"))).toBe(false);
+    expect(calls).toEqual(["start", "release"]);
+  });
+
+  it("starts only from ready and only once", async () => {
+    const { createHold } = await import("./HoldToTalk");
+    const hold = createHold();
+    const calls: string[] = [];
+    for (const state of ["disabled", "listening", "done"] as const) expect(hold.start(state, () => calls.push(state))).toBe(false);
+    expect(hold.end(() => calls.push("release"))).toBe(false);
+    expect(hold.start("ready", () => calls.push("start"))).toBe(true);
+    expect(hold.start("ready", () => calls.push("start again"))).toBe(false);
+    expect(hold.active).toBe(true);
+    expect(calls).toEqual(["start"]);
+  });
+});
+
 function props_all_removed() {
   return {
     handle: "Birch-27", handleAria: "Nickname Birch-27",
