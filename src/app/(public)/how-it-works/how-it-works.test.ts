@@ -127,9 +127,9 @@ describe("How this works: the job interview", () => {
   it.each(langs)("covers consent, same questions, code order, what the model never gets, the organiser, no removal, withdrawal and the word lists in %s", (lang) => {
     const body = pageContent(lang, "browser").sections[JOB].body;
     const must: Record<(typeof langs)[number], RegExp[]> = {
-      en: [/say yes/, /same questions/, /Code, not the AI/, /never given your name, nickname, interview language/, /organiser reads the answers/, /approves the list before the company/, /never removes anyone/, /withdraw/, /word lists/],
-      fi: [/vastaat kyllä/, /samat kysymykset/, /ohjelma, ei tekoäly/, /ei koskaan saa nimeäsi, nimimerkkiäsi, haastattelun kieltä/, /järjestäjä lukee vastaukset/, /hyväksyy listan ennen kuin yritys/, /ei koskaan poista ketään/, /perua hakemuksen/, /sanalistoja/],
-      sv: [/säger ja/, /samma frågor/, /programmet, inte AI:n/, /aldrig ditt namn, ditt alias, intervjuspråket/, /arrangör i Esbo läser svaren/, /godkänner listan innan företaget/, /tar aldrig bort någon/, /dra tillbaka/, /ordlistor/],
+      en: [/say yes/, /same questions/, /Code, not the AI/, /never given your name, your nickname or whether you spoke or typed/, /not told which language you chose/, /organiser is shown the answers/, /approve the list before the company/, /never removes anyone/, /withdraw/, /word lists/],
+      fi: [/vastaat kyllä/, /samat kysymykset/, /ohjelma, ei tekoäly/, /ei koskaan saa nimeäsi, nimimerkkiäsi eikä tietoa/, /Sille ei kerrota, minkä kielen valitsit/, /järjestäjä näkee jokaisen arvion taustalla olevat vastaukset/, /hyväksyy listan ennen kuin yritys/, /ei koskaan poista ketään/, /perua hakemuksen/, /sanalistoja/],
+      sv: [/säger ja/, /samma frågor/, /programmet, inte AI:n/, /aldrig ditt namn, ditt alias eller om du pratade/, /får inte veta vilket språk du valde/, /arrangör i Esbo ser svaren/, /godkänna listan innan företaget/, /tar aldrig bort någon/, /dra tillbaka/, /ordlistor/],
     };
     for (const re of must[lang]) expect(body, String(re)).toMatch(re);
   });

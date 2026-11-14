@@ -145,7 +145,7 @@ export const matchesMessages = {
     railCardTitle: "Korttisi",
     railCardBody: "Täällä näkyvät työpaikat perustuvat hyväksyttyyn korttiisi. Voit muuttaa muistiinpanojasi milloin tahansa.",
     railApplyTitle: "Tapahtuman työpaikat, joita voit hakea",
-    railApplyBody: "Hae työhaastattelulla, jonka kysymykset tulevat työpaikkailmoituksesta. Toisin kuin tällä sivulla, siellä vastauksesi arvioidaan ilmoitusta vasten, ja sinulle kerrotaan ennen aloitusta, miten.",
+    railApplyBody: "Hae työhaastattelulla, jonka kysymykset tulevat työpaikkailmoituksesta. Toisin kuin tällä sivulla, siellä vastauksesi arvioidaan ilmoituksen vaatimusten perusteella, ja sinulle kerrotaan ennen aloitusta, miten.",
     railApplyLink: "Katso työpaikat",
     railHowTitle: "Miten ehdotukset toimivat",
     railHowBody: "Espoon järjestäjä tarkistaa jokaisen ehdotuksen ennen kuin yritys näkee sen. Yritys näkee kortin lempinimelläsi, ei nimeäsi. Nimesi jaetaan vain, jos sanot kyllä tapaamiselle.",
