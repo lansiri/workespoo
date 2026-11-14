@@ -14,9 +14,10 @@ import type { Db } from "@/db/client";
 import { application, applicationTurn, company, job, needCard } from "@/db/schema";
 import { audit } from "@/lib/audit";
 import { chatJson } from "@/lib/llm";
-import { findBannedEvaluative, findProtectedCard, findReasonJudgement } from "@/lib/lexicon";
+import { findBannedEvaluative, findReasonJudgement, findSpeechCue } from "@/lib/lexicon";
 import { employerTerms, maskEmployer } from "@/lib/mask";
 import { splitSentences } from "@/lib/sentences";
+import { findProtectedAnswer } from "./assess-protected";
 import { LEFT_OUT, answersAbout, questionsAbout, toApplicationTurn } from "./assess-turns";
 import { CODE_REASONS, CODE_SUMMARY, NOT_ANSWERED_REASON } from "./levels";
 import { assessMessages } from "./prompts-assess";
@@ -75,7 +76,7 @@ export function buildAssessorInput(args: {
       const sentences: AssessorSentence[] = [];
       for (const turn of answersAbout(turns, req.requirementId)) {
         turn.sentences.forEach((text, k) => {
-          const leftOut = findProtectedCard(text).length > 0;
+          const leftOut = findProtectedAnswer(text).length > 0;
           sentences.push({
             label: `T${turn.index}.S${k + 1}`,
             turnIndex: turn.index,
@@ -100,16 +101,41 @@ export function buildAssessorInput(args: {
 
 const LANGS = ["en", "fi", "sv"] as const;
 
-/** True when any text fails a check: it is empty, judges, names a protected detail or names the employer. */
-function textFails(text: string, terms: readonly string[]): boolean {
+const SWEDISH_PRONOUNS = /(?<![\p{L}\p{N}])(?:han|hon|hans|henne|honom)(?![\p{L}\p{N}])/iu;
+/** Words the prompt bans because they blame: weak, poor, lacks, fails, only and their Finnish and Swedish forms. */
+const BLAME = /(?<![\p{L}\p{N}])(?:weak|poor|lack|fail|only|heikk|huono|puuttu|puuttee|epäonnistu|vain|svag|dålig|saknar|saknas|misslyck|bara)/iu;
+const QUOTE_MARKS = /["“”„«»]/u;
+const RUN = 5;
+
+const words = (text: string): string[] => text.toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? [];
+
+/** Every run of RUN consecutive words in the answer sentences the assessor could read. */
+function answerRuns(input: AssessorInput): Set<string> {
+  const runs = new Set<string>();
+  for (const r of input.requirements) {
+    for (const s of r.sentences) {
+      if (s.leftOut) continue;
+      const w = words(s.text);
+      for (let i = 0; i + RUN <= w.length; i++) runs.add(w.slice(i, i + RUN).join(" "));
+    }
+  }
+  return runs;
+}
+
+/** True when any text fails a check: it is empty, judges, blames, quotes the person, names a protected detail, a gender, a speech cue or the employer. */
+function textFails(text: string, terms: readonly string[], runs: ReadonlySet<string>): boolean {
   if (text.trim().length === 0) return true;
   if (findBannedEvaluative(text).length > 0) return true;
-  if (findProtectedCard(text).length > 0) return true;
-  if (findReasonJudgement(text).length > 0) return true;
+  if (findProtectedAnswer(text).length > 0) return true;
+  if (findReasonJudgement(text, { pronouns: true }).length > 0) return true;
+  if (SWEDISH_PRONOUNS.test(text) || BLAME.test(text) || QUOTE_MARKS.test(text)) return true;
+  if (findSpeechCue(text).length > 0) return true;
+  const w = words(text);
+  for (let i = 0; i + RUN <= w.length; i++) if (runs.has(w.slice(i, i + RUN).join(" "))) return true;
   return terms.length > 0 && maskEmployer(text, terms) !== text;
 }
 
-const localFails = (t: LocalText, terms: readonly string[]): boolean => LANGS.some((l) => textFails(t[l], terms));
+const localFails = (t: LocalText, terms: readonly string[], runs: ReadonlySet<string>): boolean => LANGS.some((l) => textFails(t[l], terms, runs));
 
 /** Evidence labels that point at a shown, not left out sentence of this input. A range counts only when every sentence in it does. */
 function resolveEvidence(labels: readonly string[], citable: ReadonlySet<string>): EvidenceRef[] {
@@ -148,15 +174,18 @@ export function checkAssessment(args: {
   if (!parsed.success) return null;
   const out = parsed.data;
   const terms = args.employerTerms;
+  const runs = answerRuns(args.input);
 
   const citable = new Set<string>();
   for (const r of args.input.requirements) for (const s of r.sentences) if (!s.leftOut) citable.add(`${s.turnIndex}:${s.sentence}`);
 
+  let matched = 0;
   const ratings: RequirementRating[] = args.input.requirements.map((req) => {
     if (req.sentences.length === 0) {
       return { requirementId: req.requirementId, level: 0, evidence: [], reason: NOT_ANSWERED_REASON, wording: "code" };
     }
     const given = out.ratings.find((r) => r.requirement === req.label);
+    if (given) matched++;
     if (!given) {
       return { requirementId: req.requirementId, level: 0, evidence: [], reason: CODE_REASONS[0], wording: "code" };
     }
@@ -164,15 +193,18 @@ export function checkAssessment(args: {
     const downgraded = given.level > 0 && evidence.length === 0;
     const level = downgraded ? 0 : Math.min(3, Math.max(0, Math.trunc(given.level)));
     const reason: LocalText = { en: given.reason_en.trim(), fi: given.reason_fi.trim(), sv: given.reason_sv.trim() };
-    if (downgraded || localFails(reason, terms)) {
+    if (downgraded || localFails(reason, terms, runs)) {
       return { requirementId: req.requirementId, level, evidence, reason: CODE_REASONS[level], wording: "code" };
     }
     return { requirementId: req.requirementId, level, evidence, reason, wording: "model" };
   });
 
+  // Output that matches none of the answered requirements is a failed call, not a rating.
+  if (matched === 0 && args.input.requirements.some((r) => r.sentences.length > 0)) return null;
+
   let summary: LocalText = { en: out.summary_en.trim(), fi: out.summary_fi.trim(), sv: out.summary_sv.trim() };
   const tooLong = LANGS.some((l) => splitSentences(summary[l]).length > 2);
-  if (tooLong || localFails(summary, terms)) {
+  if (tooLong || localFails(summary, terms, runs)) {
     const n = String(ratings.filter((r) => r.level >= 2).length);
     const m = String(ratings.length);
     summary = {

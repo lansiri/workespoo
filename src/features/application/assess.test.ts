@@ -78,6 +78,28 @@ describe("buildAssessorInput", () => {
   });
 });
 
+describe("protected details in answers, in en, fi and sv", () => {
+  it.each([
+    "Olen 52-vuotias ja minulla on kolme lasta.",
+    "Olen kotoisin Syyriasta ja olen muslimi.",
+    "Jag är 52 år och har tre barn.",
+    "Jag kommer från Irak.",
+    "I am 52 and a mother of three.",
+    "I am a Muslim woman.",
+    "I have diabetes so I took a year off.",
+    "I was on sick leave after my burnout.",
+    "I am a native Arabic speaker.",
+  ])("leaves out %s", (sentence) => {
+    const input = inputFrom([opening, turn(1, "r1", [sentence, "I rebuilt the import."])]);
+    expect(input.requirements[0].sentences[0].leftOut).toBe(true);
+    expect(JSON.stringify(input)).not.toContain(sentence);
+  });
+
+  it.each(["I rebuilt the nightly import.", "Olen vastannut tuontien rakentamisesta.", "Jag har byggt importen själv.", "I worked with children in a daycare."])("keeps %s", (sentence) => {
+    expect(inputFrom([opening, turn(1, "r1", [sentence])]).requirements[0].sentences[0].leftOut).toBe(false);
+  });
+});
+
 describe("checkAssessment", () => {
   const input = inputFrom([
     opening,
@@ -103,6 +125,31 @@ describe("checkAssessment", () => {
     ]);
     expect(a.ratings[0].evidence).toEqual([{ turnIndex: 1, sentenceFrom: 1, sentenceTo: 1 }]);
     expect(a.summary.en).toBe(SUMMARY.summary_en);
+  });
+
+  it.each([
+    "She rebuilt the nightly import herself.",
+    'The answer says: "I rebuilt the nightly import" and the counts were right.',
+    "The answer says I rebuilt the nightly import and so on.",
+    "The answer mentions being 52 years of age.",
+    "The answer mentions being a Muslim.",
+    "The answer lacks any example and fails to show own work.",
+    "The answer gives a poor and weak description.",
+    "Kolmen lapsen äiti kuvaa tuontia.",
+    "Hon beskriver importen.",
+    "Svaret nämner tre barn och diabetes.",
+  ])("replaces the reason %s by the code's sentence", (text) => {
+    const a = check({
+      ratings: [{ requirement: "R1", level: 2, evidence: ["T1.S1"], reason_en: text, reason_fi: text, reason_sv: text }],
+      ...SUMMARY,
+    })!;
+    expect(a.ratings[0]).toMatchObject({ level: 2, wording: "code", reason: CODE_REASONS[2] });
+  });
+
+  it("returns null when the output matches none of the answered requirements", () => {
+    expect(check({ ratings: [], ...SUMMARY })).toBeNull();
+    expect(check({ ratings: [{ requirement: "R9", level: 3, evidence: ["T1.S1"], ...goodReasons("The answer describes imports.") }], ...SUMMARY })).toBeNull();
+    expect(check({ ratings: [{ requirement: "R01", level: 3, evidence: ["T1.S1"], ...goodReasons("The answer describes imports.") }], ...SUMMARY })).toBeNull();
   });
 
   it("returns null when the call failed or the output is not the schema", () => {
@@ -169,7 +216,10 @@ describe("checkAssessment", () => {
 
   it("rates a requirement without answers as not answered, whatever the model said", () => {
     const a = check({
-      ratings: [{ requirement: "R3", level: 3, evidence: ["T1.S1"], ...goodReasons("The answer describes Airflow.") }],
+      ratings: [
+        { requirement: "R1", level: 2, evidence: ["T1.S1"], ...goodReasons("The answer describes an import.") },
+        { requirement: "R3", level: 3, evidence: ["T1.S1"], ...goodReasons("The answer describes Airflow.") },
+      ],
       ...SUMMARY,
     })!;
     expect(a.ratings[2]).toMatchObject({ level: 0, evidence: [], wording: "code", reason: NOT_ANSWERED_REASON });
@@ -187,7 +237,12 @@ describe("checkAssessment", () => {
     })!;
     expect(a.ratings).toHaveLength(3);
     expect(a.summary.en).toBe(CODE_SUMMARY.en.replace("{n}", "1").replace("{m}", "3"));
-    const long = check({ ratings: [], summary_en: "One. Two. Three.", summary_fi: "Yksi.", summary_sv: "Ett." })!;
+    const long = check({
+      ratings: [{ requirement: "R1", level: 1, evidence: ["T1.S1"], ...goodReasons("The answer describes an import.") }],
+      summary_en: "One. Two. Three.",
+      summary_fi: "Yksi.",
+      summary_sv: "Ett.",
+    })!;
     expect(long.summary.en).toContain("0 of 3");
   });
 });

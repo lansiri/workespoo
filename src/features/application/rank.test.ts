@@ -19,6 +19,7 @@ import {
   applicantsForCompany,
   applicationPoints,
   approveRanking,
+  rankedListSignature,
   askToMeetApplicant,
   evidenceForOrganiser,
   listJobsWithApplicants,
@@ -227,6 +228,14 @@ describe("the ranked list", () => {
     expect(list.changedSincePublished).toBe(true);
     await moveApplicant(db, JOB, { applicationId: "p4", position: 1, reason: "Because again" });
     expect((await rankedListForJob(db, JOB))!.changedSincePublished).toBe(false);
+  });
+
+  it("refuses to approve a list that is not the one the organiser saw", async () => {
+    const seen = rankedListSignature((await rankedListForJob(db, JOB))!);
+    await db.delete(application).where(eq(application.id, "p3"));
+    await expect(approveRanking(db, JOB, { seen })).rejects.toMatchObject({ status: 409, code: "list_changed" });
+    const now = (await rankedListForJob(db, JOB))!;
+    expect((await approveRanking(db, JOB, { seen: rankedListSignature(now) })).applicants).toHaveLength(3);
   });
 
   it("refuses to approve when nobody is rated", async () => {

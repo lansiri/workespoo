@@ -18,7 +18,7 @@ import { applicantRanking, application, applicationTurn, company, job, needCard,
 import { createIntroRequest, latestIntroForPair } from "@/features/intros";
 import { audit } from "@/lib/audit";
 import { HttpError } from "@/lib/http";
-import { findProtectedCard } from "@/lib/lexicon";
+import { findProtectedAnswer } from "./assess-protected";
 import { employerTerms, maskEmployer } from "@/lib/mask";
 import { companyFromToken } from "@/lib/session";
 import { LEFT_OUT, answersAbout, expandRefs, questionsAbout, toApplicationTurn } from "./assess-turns";
@@ -241,6 +241,11 @@ function signature(list: ReadonlyArray<{ applicationId: string; points: number; 
   return list.map((a) => `${a.applicationId}:${a.points}/${a.maxPoints}`).join("|");
 }
 
+/** What an organiser saw, as one string: the Need Card version, then people, order and points. Sent back with an approval so a changed list is refused. */
+export function rankedListSignature(list: { needCardVersion: number | null; applicants: ReadonlyArray<{ applicationId: string; points: number; maxPoints: number }> }): string {
+  return `${list.needCardVersion ?? "-"}#${signature(list.applicants)}`;
+}
+
 /** The list for one job, or null when the job is not one of the event's. Organiser only. */
 export function rankedListForJob(db: Db, jobId: string): Promise<RankedList | null> {
   return loadList(db, jobId);
@@ -344,11 +349,15 @@ export function unpinApplicant(db: Db, jobId: string, applicationId: string, opt
 }
 
 /** Stores the list exactly as it stands as the approved one. Audits `ranking.approved` with the count. 409 `nothing_to_approve` when there is no assessed applicant. */
-export function approveRanking(db: Db, jobId: string, options?: { now?: () => Date }): Promise<PublishedRanking> {
+export function approveRanking(db: Db, jobId: string, options?: { now?: () => Date; seen?: string }): Promise<PublishedRanking> {
   const now = (options?.now ?? (() => new Date()))();
   return withRanking(db, jobId, async (tx) => {
     const list = await loadList(tx, jobId);
     if (!list || list.applicants.length === 0) throw new HttpError(409, "nothing_to_approve", "There is no rated applicant to approve");
+    // The organiser approves what they looked at: when `seen` is given and the list has moved on (a new rating, a new Need Card), refuse so the page reloads.
+    if (options?.seen !== undefined && options.seen !== rankedListSignature(list)) {
+      throw new HttpError(409, "list_changed", "The list changed while you were looking at it. Reload and check it again.");
+    }
     const published: PublishedRanking = {
       needCardVersion: list.needCardVersion,
       requirements: list.requirements,
@@ -403,7 +412,7 @@ async function buildEvidence(db: Db, app: ApplicationRow): Promise<ApplicationEv
         // A sentence with a protected detail is never shown, here as for the assessor.
         answers: answersAbout(turns, req.requirementId).map((t) => ({
           index: t.index,
-          sentences: t.sentences.map((s) => (findProtectedCard(s).length > 0 ? LEFT_OUT : s)),
+          sentences: t.sentences.map((s) => (findProtectedAnswer(s).length > 0 ? LEFT_OUT : s)),
         })),
         cited: expandRefs(rating?.evidence ?? []),
       };
