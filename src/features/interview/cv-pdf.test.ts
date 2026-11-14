@@ -1,8 +1,15 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { createDeflate } from "node:zlib";
 import { describe, expect, it, vi } from "vitest";
-import { CV_PDF_DEADLINE_MS, CV_PDF_MAX_BYTES, CV_TEXT_MAX_CHARS, looksLikePdf, readCvPdf, runPdfChild } from "./cv-pdf";
+import { CV_PDF_CHILD_NICE_DEFAULT, CV_PDF_DEADLINE_MS, CV_PDF_MAX_BYTES, CV_TEXT_MAX_CHARS, childNice, looksLikePdf, readCvPdf, runPdfChild } from "./cv-pdf";
 import { createRateLimiter } from "./cv-rate-limit";
+
+// The readings below must not depend on how busy the machine is: a test run uses every
+// processor, and a child at lowered priority then gets too little time to meet the deadline
+// (this is how the run on GitHub failed). The priority has its own test at the end.
+vi.hoisted(() => {
+  process.env.CV_PDF_CHILD_NICE = "0";
+});
 
 const anon = vi.hoisted(() => ({ seen: [] as number[], throwNext: false }));
 vi.mock("./cv-anonymise", async (orig) => {
@@ -284,5 +291,23 @@ describe("createRateLimiter", () => {
     allow("a");
     t = 30_000;
     expect(allow("a")).toBe(30);
+  });
+});
+
+describe("the child's priority", () => {
+  it("is lowered by ten unless the environment says otherwise, and never by an invalid amount", () => {
+    const before = process.env.CV_PDF_CHILD_NICE;
+    try {
+      delete process.env.CV_PDF_CHILD_NICE;
+      expect(childNice()).toBe(CV_PDF_CHILD_NICE_DEFAULT);
+      expect(CV_PDF_CHILD_NICE_DEFAULT).toBe(10);
+      for (const [raw, want] of [["0", 0], ["19", 19], ["5", 5], ["", 10], ["20", 10], ["-1", 10], ["high", 10], ["2.5", 10]] as const) {
+        process.env.CV_PDF_CHILD_NICE = raw;
+        expect(childNice(), raw).toBe(want);
+      }
+    } finally {
+      if (before === undefined) delete process.env.CV_PDF_CHILD_NICE;
+      else process.env.CV_PDF_CHILD_NICE = before;
+    }
   });
 });

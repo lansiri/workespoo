@@ -47,6 +47,22 @@ export type CvPdfResult = ({ ok: true } & AnonymisedCv) | { ok: false; error: Cv
 
 export type ChildAnswer = { ok: true; pages: number; text: string } | { ok: false };
 
+/**
+ * How far the child's priority is lowered (niceness, 0 to 19). Ten leaves the web process about
+ * nine tenths of a processor the two compete for, and still lets a PDF be read in time on a busy
+ * machine. Nineteen did not: on a machine whose processors were all busy (the test run on
+ * GitHub) the child got so little time that every read, ordinary PDFs included, ran into the
+ * deadline. `CV_PDF_CHILD_NICE` overrides it; 0 leaves the priority alone.
+ */
+export const CV_PDF_CHILD_NICE_DEFAULT = 10;
+
+export function childNice(): number {
+  const raw = process.env.CV_PDF_CHILD_NICE;
+  if (raw === undefined || raw.trim() === "") return CV_PDF_CHILD_NICE_DEFAULT;
+  const n = Number(raw);
+  return Number.isInteger(n) && n >= 0 && n <= 19 ? n : CV_PDF_CHILD_NICE_DEFAULT;
+}
+
 let running = 0;
 
 /** A PDF starts with `%PDF-`, allowed within the first kilobyte. */
@@ -92,10 +108,11 @@ export function runPdfChild(bytes: Uint8Array, testMode?: string): Promise<Child
       return;
     }
 
-    // Lowest priority: a PDF made to burn CPU must not starve the web process on a 2-vCPU host.
+    // Lower priority: a PDF made to burn CPU must not starve the web process on a 2-vCPU host.
     // Raising a process's own niceness needs no capability.
+    const nice = childNice();
     try {
-      if (child.pid !== undefined) os.setPriority(child.pid, 19);
+      if (child.pid !== undefined && nice > 0) os.setPriority(child.pid, nice);
     } catch {
       // not fatal
     }
