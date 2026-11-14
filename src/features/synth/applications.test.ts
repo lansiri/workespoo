@@ -75,6 +75,23 @@ describe("simulated applications on a seeded demo (fake engine)", () => {
     expect((await t.db.select().from(application)).length).toBe(before);
   }, 120_000);
 
+  it("an application left half-done is not counted, not snapshotted, and is run again", async () => {
+    const all = await t.db.select().from(application);
+    const stale = all[0];
+    await t.db.update(application).set({ status: "interviewing", assessment: null }).where(eq(application.id, stale.id));
+    const dir = mkdtempSync(path.join(tmpdir(), "apps-stale-"));
+    try {
+      const counts = await snapshotDemo(t.db, dir);
+      expect(counts.application).toBe(all.length - 1);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+    await seedDemo(t.db, { deps: createFakeEngine(t.db, { personas, applications: true }), personas, now: () => NOW, appUrl: "https://example.test" });
+    const after = await t.db.select().from(application);
+    expect(after).toHaveLength(all.length);
+    expect(after.every((r) => r.status === "assessed" && r.assessment !== null)).toBe(true);
+  }, 120_000);
+
   it("snapshot and restore round-trip application and application_turn for simulated people", async () => {
     const dir = mkdtempSync(path.join(tmpdir(), "apps-snap-"));
     try {

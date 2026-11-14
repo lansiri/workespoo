@@ -12,7 +12,7 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { eq, inArray, like, or } from "drizzle-orm";
+import { and, eq, inArray, like, or } from "drizzle-orm";
 import { getTableColumns, getTableName, type SQL } from "drizzle-orm";
 import type { PgTable } from "drizzle-orm/pg-core";
 import type { Db } from "@/db/client";
@@ -47,7 +47,7 @@ const TABLES: TableSpec[] = [
   { table: jobMatch, where: (i) => inArray(jobMatch.talentId, [...i.talents, ""]) },
   { table: eligibility, where: (i) => inArray(eligibility.needCardId, [...i.needs, ""]) },
   // Applications of simulated people. `applicant_ranking` is left out on purpose: after a reset no list is approved.
-  { table: application, where: (i) => inArray(application.talentId, [...i.talents, ""]) },
+  { table: application, where: (i) => and(inArray(application.talentId, [...i.talents, ""]), eq(application.status, "assessed")) },
   { table: applicationTurn, where: (i) => inArray(applicationTurn.applicationId, [...i.applications, ""]) },
   { table: consent, where: (i) => or(inArray(consent.subjectId, [...i.talents, ...i.companies, ""])) },
   { table: appMeta, where: () => eq(appMeta.key, DEMO_COMPANIES_KEY) },
@@ -80,7 +80,7 @@ async function collectIds(db: Db): Promise<Ids> {
   const companies = (await db.select({ id: company.id }).from(company).where(like(company.id, "co_demo%"))).map((r) => r.id);
   const interviews = talents.length ? (await db.select({ id: interview.id }).from(interview).where(inArray(interview.talentId, talents))).map((r) => r.id) : [];
   const needs = companies.length ? (await db.select({ id: needCard.id }).from(needCard).where(inArray(needCard.companyId, companies))).map((r) => r.id) : [];
-  const applications = talents.length ? (await db.select({ id: application.id }).from(application).where(inArray(application.talentId, talents))).map((r) => r.id) : [];
+  const applications = talents.length ? (await db.select({ id: application.id }).from(application).where(and(inArray(application.talentId, talents), eq(application.status, "assessed")))).map((r) => r.id) : [];
   return { talents, interviews, companies, needs, applications };
 }
 

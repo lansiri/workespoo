@@ -1,4 +1,6 @@
 import { afterEach, describe, expect, it } from "vitest";
+import { escoConcept } from "@/db/schema";
+import { createTestDb } from "../../../tests/helpers/db";
 import { resetLlmState, setLlmFake } from "@/lib/llm";
 import { answerJobQuestion, buildJobAnswerMessages, fallbackJobAnswer, relevantFacts, type JobQuestion } from "./job-candidate";
 import { loadPersonas } from "./persona";
@@ -76,4 +78,23 @@ describe("relevantFacts", () => {
     const word = f.story.match(/\p{L}{6,}/u)![0];
     expect(relevantFacts(persona, `needs ${word}`)).toContain(f);
   });
+});
+
+describe("the NOT done section of the sheet", () => {
+  it("holds the omitted skills as labels, never as ESCO uris", async () => {
+    const t = await createTestDb();
+    try {
+      await t.db.insert(escoConcept).values(persona.omit.map((uri, i) => ({ uri, type: "skill" as const, labelEn: `Omitted skill ${i}` })));
+      let system = "";
+      setLlmFake((opts) => {
+        system = String((opts.messages as Array<{ content: string }>)[0].content);
+        return "I have not done that. The closest I have is a story.";
+      });
+      await answerJobQuestion(t.db, persona, q());
+      expect(system).not.toContain("http://data.europa.eu/esco");
+      persona.omit.forEach((_, i) => expect(system).toContain(`- Omitted skill ${i}`));
+    } finally {
+      await t.close();
+    }
+  }, 60_000);
 });

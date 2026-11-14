@@ -10,6 +10,8 @@
  */
 import type { UiLang } from "@/contracts";
 import type { Db } from "@/db/client";
+import { escoConcept } from "@/db/schema";
+import { inArray } from "drizzle-orm";
 import { chatText, llmConfigured } from "@/lib/llm";
 import type { Persona } from "./persona";
 
@@ -83,7 +85,7 @@ export function fallbackJobAnswer(persona: Persona, q: JobQuestion): string {
   return closest ? say.none(closest) : say.noStory;
 }
 
-function sheetText(persona: Persona): string {
+function sheetText(persona: Persona, omitLabels: string[]): string {
   return [
     `Work: ${persona.occupationLabel}.`,
     "Things you have done (your own stories):",
@@ -94,11 +96,20 @@ function sheetText(persona: Persona): string {
     `- ${persona.answers.tools}`,
     `- ${persona.answers.people}`,
     "Things you have NOT done, or never mention:",
-    ...persona.omit.map((o) => `- ${o}`),
+    ...omitLabels.map((o) => `- ${o}`),
   ].join("\n");
 }
 
-export function buildJobAnswerMessages(persona: Persona, q: JobQuestion) {
+/** The omitted skills as words: the persona file holds ESCO uris, the model needs labels. A uri with no label is left out, never shown raw. */
+export async function omitLabels(db: Db | undefined, persona: Persona): Promise<string[]> {
+  const uris = persona.omit.filter((o) => o.startsWith("http"));
+  const plain = persona.omit.filter((o) => !o.startsWith("http"));
+  if (!db || uris.length === 0) return plain;
+  const rows = await db.select({ uri: escoConcept.uri, label: escoConcept.labelEn }).from(escoConcept).where(inArray(escoConcept.uri, uris));
+  return [...plain, ...rows.map((r) => r.label)];
+}
+
+export function buildJobAnswerMessages(persona: Persona, q: JobQuestion, omitted: string[] = []) {
   const system = [
     "You play a job applicant in a simulated job interview for a software test. Answer as this one person would talk, in the first person.",
     `Write in ${LANGUAGE_NAME[persona.interviewLang]}. Two to five sentences, plain speech, no lists, no headings.`,
@@ -108,7 +119,7 @@ export function buildJobAnswerMessages(persona: Persona, q: JobQuestion) {
     "Do not mention the sheet, the test or the interviewer's role. Do not mention age, family, health, nationality or religion.",
     "",
     "THE SHEET",
-    sheetText(persona),
+    sheetText(persona, omitted),
   ].join("\n");
   const user = q.followUp
     ? [
@@ -128,10 +139,11 @@ export function buildJobAnswerMessages(persona: Persona, q: JobQuestion) {
 export async function answerJobQuestion(db: Db | undefined, persona: Persona, q: JobQuestion): Promise<string> {
   if (!llmConfigured("bulk")) return fallbackJobAnswer(persona, q);
   try {
+    const omitted = await omitLabels(db, persona);
     const { text } = await chatText({
       role: "bulk",
       purpose: "synth.job_answer",
-      messages: buildJobAnswerMessages(persona, q),
+      messages: buildJobAnswerMessages(persona, q, omitted),
       maxTokens: 400,
       temperature: 0.4,
       db,

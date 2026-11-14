@@ -8,7 +8,7 @@
  * the persona sheet, send, then assess directly (no queue). A run that did not end assessed is
  * deleted and reported, never left half-done.
  */
-import { and, eq, inArray } from "drizzle-orm";
+import { and, eq, inArray, ne } from "drizzle-orm";
 import type { ApplicationPlan } from "@/contracts";
 import type { Db } from "@/db/client";
 import { application, eligibility, needCard, talent } from "@/db/schema";
@@ -157,8 +157,11 @@ export async function runSimulatedApplications(
   const log = options.log ?? (() => {});
   const plan = chooseApplicants(await eligiblePeople(db, companies, personas));
   const report: ApplicationsReport = { planned: plan.length, assessed: 0, failed: [] };
+  const planned = [...plan.map((p) => p.talentId), ""];
+  // A run that was killed half-way leaves an application that is not assessed: remove it and run it again.
+  await db.delete(application).where(and(inArray(application.talentId, planned), ne(application.status, "assessed")));
   const present = new Set(
-    (await db.select({ talentId: application.talentId, jobId: application.jobId }).from(application).where(inArray(application.talentId, [...plan.map((p) => p.talentId), ""]))).map((r) => `${r.talentId}:${r.jobId}`),
+    (await db.select({ talentId: application.talentId, jobId: application.jobId }).from(application).where(inArray(application.talentId, planned))).map((r) => `${r.talentId}:${r.jobId}`),
   );
   for (const a of plan) {
     const persona = personas.find((p) => p.id === a.personaId);
