@@ -6,7 +6,8 @@ export type JobPostingCardProps = {
   jobId: string;
   title: string;
   employer: string;
-  place: string;
+  /** Municipality or district. Left out when the posting has none. */
+  place: string | null;
   /** "Closes 12 Dec", already formatted. */
   closes?: string;
   url: string;
@@ -35,10 +36,12 @@ export function JobPostingCard(p: JobPostingCardProps) {
             <b>{p.employer}</b>
           </p>
           <p className="we-meta">
-            <span>
-              <Icon name="pin" />
-              {p.place}
-            </span>
+            {p.place ? (
+              <span>
+                <Icon name="pin" />
+                {p.place}
+              </span>
+            ) : null}
             {p.closes ? (
               <span>
                 <Icon name="calendar" />

@@ -42,6 +42,8 @@ export type SignalCardProps = {
   onEditSignal?: (id: string) => void;
   onRemoveSignal?: (id: string) => void;
   onUndo?: (id: string) => void;
+  /** A save is in flight: the row buttons wait. */
+  busy?: boolean;
   className?: string;
 };
 
@@ -57,6 +59,8 @@ export function SignalCard(p: SignalCardProps) {
   const company = p.view === "company";
   const state = p.state ?? "ready";
   const kept = p.groups.flatMap((g) => g.rows);
+  // Every note removed: the empty line shows above the removed rows, so Undo stays reachable.
+  const noneActive = kept.length > 0 && kept.every((r) => r.removed);
   return (
     <div className={cx("we-sig-card", p.className)} data-view={company ? "company" : "person"}>
       <span className="we-tape" aria-hidden="true" />
@@ -102,7 +106,13 @@ export function SignalCard(p: SignalCardProps) {
           </p>
         ) : (
           <>
-            <p className={cx("we-order-note", company && "we-fixed-ai")}>{p.orderNote}</p>
+            {noneActive ? (
+              <p className="we-card-state-text" data-testid="card-empty">
+                {p.emptyText}
+              </p>
+            ) : (
+              <p className={cx("we-order-note", company && "we-fixed-ai")}>{p.orderNote}</p>
+            )}
             {p.groups
               .filter((g) => g.rows.some((r) => !company || !r.removed))
               .map((g) => (
@@ -120,6 +130,7 @@ export function SignalCard(p: SignalCardProps) {
                       onEdit={p.onEditSignal}
                       onRemove={p.onRemoveSignal}
                       onUndo={p.onUndo}
+                      busy={p.busy}
                     />
                   ))}
                 </section>

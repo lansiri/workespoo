@@ -13,7 +13,7 @@ export type SkillRowData = {
   id: string;
   phrase: string;
   group: NoteGroup;
-  /** ESCO labels in English and Finnish. null: no match. */
+  /** ESCO labels in English and Finnish (Finnish may be empty). null: no match. */
   esco: { en: string; fi: string } | null;
   addedBy: "ai" | "person";
   /** The AI wording companies see. null while it is being prepared. */
@@ -21,6 +21,8 @@ export type SkillRowData = {
   removed?: boolean;
   /** One quote per answer, never joined. Empty for notes added by the person. */
   quotes: OwnQuote[];
+  /** Calm one-line notes under the evidence (for example "Shown to companies as: …"). Plain text, never an error colour. */
+  notes?: { text: string; testId?: string }[];
 };
 
 export type SkillRowText = {
@@ -61,6 +63,8 @@ export type SkillRowProps = {
   onEdit?: (id: string) => void;
   onRemove?: (id: string) => void;
   onUndo?: (id: string) => void;
+  /** A save is in flight: edit, remove and undo wait. */
+  busy?: boolean;
   className?: string;
 };
 
@@ -92,7 +96,7 @@ export function AiRendering({ children, label, aiTag, solid }: { children: React
 }
 
 /** One note: phrase chip, ESCO labels, the person's words and the AI wording side by side. */
-export function SkillRow({ signal, view = "person", text, editing, onEdit, onRemove, onUndo, className }: SkillRowProps) {
+export function SkillRow({ signal, view = "person", text, editing, onEdit, onRemove, onUndo, busy, className }: SkillRowProps) {
   const company = view === "company";
   const t = (s: string) => s.replace("{phrase}", signal.phrase);
   if (signal.removed) {
@@ -102,7 +106,7 @@ export function SkillRow({ signal, view = "person", text, editing, onEdit, onRem
         <div className="we-sig-top">
           <NoteChip signalId={signal.id} phrase={signal.phrase} group={signal.group} plain removed />
           <span className="we-removed-note">{text.removedNote}</span>
-          <Button variant="quiet" onClick={() => onUndo?.(signal.id)} data-testid="signal-undo">
+          <Button variant="quiet" onClick={() => onUndo?.(signal.id)} disabled={busy} data-testid="signal-undo">
             {text.undo}
           </Button>
         </div>
@@ -118,7 +122,7 @@ export function SkillRow({ signal, view = "person", text, editing, onEdit, onRem
               {text.inputLabel}
             </label>
             <Input id={`we-edit-${signal.id}`} value={editing.draft} maxLength={60} onChange={(e) => editing.onDraftChange(e.target.value)} data-testid="signal-phrase-input" />
-            <Button variant="primary" onClick={editing.onSave} disabled={editing.draft.trim().length < 2} data-testid="signal-phrase-save">
+            <Button variant="primary" onClick={editing.onSave} disabled={busy || editing.draft.trim().length < 2} data-testid="signal-phrase-save">
               {text.save}
             </Button>
             <Button variant="ghost" onClick={editing.onCancel}>
@@ -135,10 +139,10 @@ export function SkillRow({ signal, view = "person", text, editing, onEdit, onRem
         )}
         {company || editing ? null : (
           <div className="we-sig-actions">
-            <Button variant="quiet" icon="edit" onClick={() => onEdit?.(signal.id)} aria-label={t(text.editAria)} data-testid="signal-edit">
+            <Button variant="quiet" icon="edit" onClick={() => onEdit?.(signal.id)} disabled={busy} aria-label={t(text.editAria)} data-testid="signal-edit">
               {text.edit}
             </Button>
-            <Button variant="quiet" icon="x" onClick={() => onRemove?.(signal.id)} aria-label={t(text.removeAria)} data-testid="signal-remove">
+            <Button variant="quiet" icon="x" onClick={() => onRemove?.(signal.id)} disabled={busy} aria-label={t(text.removeAria)} data-testid="signal-remove">
               {text.remove}
             </Button>
           </div>
@@ -148,7 +152,13 @@ export function SkillRow({ signal, view = "person", text, editing, onEdit, onRem
         <span className="we-lbl">{text.escoLabel}</span>
         {signal.esco ? (
           <>
-            <b lang="en">{signal.esco.en}</b> · <span lang="fi">{signal.esco.fi}</span>
+            <b lang="en">{signal.esco.en}</b>
+            {signal.esco.fi ? (
+              <>
+                {" · "}
+                <span lang="fi">{signal.esco.fi}</span>
+              </>
+            ) : null}
           </>
         ) : (
           <span>{text.noEsco}</span>
@@ -167,6 +177,13 @@ export function SkillRow({ signal, view = "person", text, editing, onEdit, onRem
           </AiRendering>
         )}
       </div>
+      {company || !signal.notes?.length
+        ? null
+        : signal.notes.map((n, i) => (
+            <p key={i} className="we-calm-info" data-testid={n.testId}>
+              {n.text}
+            </p>
+          ))}
     </article>
   );
 }

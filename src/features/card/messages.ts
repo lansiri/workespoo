@@ -1,13 +1,12 @@
 import type { Messages } from "@/lib/i18n";
 
 /** Strings the review page needs beyond `cardCopy`, `approvalCopy` and `poolCopy`. */
-export const cardMessages = {
-  en: {
+const en = {
     waiting: "Your card is being prepared. This page updates by itself.",
     waitingLong: "This is taking longer than usual. You can keep waiting or try again.",
     loadFailed: "We couldn't load your card.",
     saveFailed: "That didn't save. Please try again.",
-    signedOut: "Start an interview first, and your card will appear here.",
+    signedOut: "Start a conversation to make your card.",
     notSet: "Not set",
     rolesHelp: "Up to three, separated by commas.",
     languagesHelp: "Up to five, separated by commas.",
@@ -32,13 +31,55 @@ export const cardMessages = {
     draftNotice: "You have changes that aren't approved yet.",
     reworded: "An edit has been reworded for companies. Please check the text below before you approve. Companies still see your approved card.",
     noEscoShort: "No ESCO match",
-  },
+    kicker: "Signal Card",
+    handleAria: "Nickname {handle}",
+    aiTag: "AI",
+    aiLabelPerson: "Summary written by AI from your own words",
+    aiLabelCompany: "Summary written by AI from this person's own words",
+    readSummary: "Read the summary",
+    hideSummary: "Hide the summary",
+    orderNote: "Notes are in the order you talked about them. Nothing here is scored.",
+    companyLabel: "Written by AI from this person's own words and approved by them. Not a quote, not a verified fact.",
+    companyBannerDraft: "A preview of your edited card. Companies keep seeing your approved card until you approve this one. Your own words, your language and whether you spoke or typed stay with you until you both say yes.",
+    companyBanner: "This is exactly what a company sees. Your own words, your language and whether you spoke or typed stay with you until you both say yes.",
+    viewGroup: "Preview",
+    viewPerson: "My view",
+    sideNoScoreTitle: "Nothing here is a score",
+    sideNoScoreBody: "Companies see notes in the order you talked about them. No ranking, no percentages, no strength levels.",
+    footerSynthetic: "Synthetic demo profile",
+    footerDraft: "Draft · nobody sees this until you approve it",
+    footerDraftEdit: "Changes not approved yet · companies still see your approved card",
+    footerEsco: "Skill labels: ESCO, European Commission",
+    stampLabel: "Approved by you",
+    waitingBadge: "Writing notes…",
+    emptyText: "No notes are kept right now. Bring one back with Undo, or start a new conversation.",
+    yoursToApprove: "Yours to approve",
+    approveTitle: "Approve your card",
+    approveHelp: "Your card is a draft. Nobody sees it until you approve it, and you can change it at any time.",
+    keptOne: "1 note kept",
+    keptMany: "{n} notes kept",
+    removedOne: "1 removed",
+    removedMany: "{n} removed",
+    poolYesHelp: "Your card is suggested without your name, and a person checks it first.",
+    poolLocked: "Approve your card first. Nothing is chosen for you.",
+    poolLeaveTitle: "Leave the pool?",
+    poolLeaveBody: "Nobody will suggest your card to companies any more. Pending suggestions are removed.",
+    deleteTitle: "Delete everything?",
+    deletedDone: "Everything has been deleted.",
+    editAria: "Edit {phrase}",
+    removeAria: "Remove {phrase}",
+    escoBox: "ESCO",
+    signedOutLink: "Start the conversation",
+} satisfies Record<string, string>;
+
+export const cardMessages = {
+  en,
   fi: {
     waiting: "Korttiasi valmistellaan. Sivu päivittyy itsestään.",
     waitingLong: "Tämä kestää tavallista pidempään. Voit odottaa vielä tai yrittää uudelleen.",
     loadFailed: "Korttiasi ei saatu ladattua.",
     saveFailed: "Tallennus ei onnistunut. Yritä uudelleen.",
-    signedOut: "Aloita ensin haastattelu, niin korttisi ilmestyy tähän.",
+    signedOut: "Aloita keskustelu, niin korttisi syntyy.",
     notSet: "Ei valittu",
     rolesHelp: "Enintään kolme, pilkulla erotettuina.",
     languagesHelp: "Enintään viisi, pilkulla erotettuina.",
@@ -63,13 +104,52 @@ export const cardMessages = {
     draftNotice: "Sinulla on muutoksia, joita ei ole vielä hyväksytty.",
     reworded: "Muokkaus on kirjoitettu yrityksille uudelleen. Tarkista teksti alla ennen hyväksymistä. Yritykset näkevät edelleen hyväksymäsi kortin.",
     noEscoShort: "Ei ESCO-vastinetta",
+    kicker: "Signal Card",
+    handleAria: "Lempinimi {handle}",
+    aiTag: "AI",
+    aiLabelPerson: "Tekoälyn kirjoittama yhteenveto omista sanoistasi",
+    aiLabelCompany: "Tekoälyn kirjoittama yhteenveto tämän henkilön omista sanoista",
+    readSummary: "Lue yhteenveto",
+    hideSummary: "Piilota yhteenveto",
+    orderNote: "Muistiinpanot ovat siinä järjestyksessä, jossa puhuit niistä. Mitään ei pisteytetä.",
+    companyLabel: "Tekoäly kirjoitti tämän henkilön omien sanojen pohjalta, ja hän on hyväksynyt sen. Ei lainaus eikä varmistettu tieto.",
+    companyBannerDraft: "Esikatselu muokatusta kortistasi. Yritykset näkevät edelleen hyväksytyn korttisi, kunnes hyväksyt tämän. Omat sanasi, kielesi ja se, puhuitko vai kirjoititko, pysyvät vain sinulla, kunnes molemmat sanotte kyllä.",
+    companyBanner: "Yritys näkee tämän täsmälleen tällaisena. Omat sanasi, kielesi ja se, puhuitko vai kirjoititko, pysyvät vain sinulla, kunnes molemmat sanotte kyllä.",
+    viewGroup: "Esikatselu",
+    viewPerson: "Oma näkymä",
+    sideNoScoreTitle: "Tässä ei ole pisteitä",
+    sideNoScoreBody: "Yritykset näkevät muistiinpanot siinä järjestyksessä, jossa puhuit niistä. Ei paremmuusjärjestystä, ei prosentteja, ei taitotasoja.",
+    footerSynthetic: "Synteettinen demoprofiili",
+    footerDraft: "Luonnos · kukaan ei näe tätä ennen kuin hyväksyt sen",
+    footerDraftEdit: "Muutoksia ei ole vielä hyväksytty · yritykset näkevät edelleen hyväksymäsi kortin",
+    footerEsco: "Taitojen nimet: ESCO, Euroopan komissio",
+    stampLabel: "Sinä hyväksyit",
+    waitingBadge: "Kirjoitan muistiinpanoja…",
+    emptyText: "Yhtään muistiinpanoa ei ole nyt jäljellä. Palauta poistettu Kumoa-painikkeella tai aloita uusi keskustelu.",
+    yoursToApprove: "Sinä päätät",
+    approveTitle: "Hyväksy korttisi",
+    approveHelp: "Korttisi on luonnos. Kukaan ei näe sitä ennen kuin hyväksyt sen, ja voit muuttaa sitä milloin tahansa.",
+    keptOne: "1 muistiinpano jäljellä",
+    keptMany: "{n} muistiinpanoa jäljellä",
+    removedOne: "1 poistettu",
+    removedMany: "{n} poistettu",
+    poolYesHelp: "Korttisi ehdotetaan ilman nimeäsi, ja ihminen tarkistaa sen ensin.",
+    poolLocked: "Hyväksy korttisi ensin. Mitään ei ole valittu valmiiksi.",
+    poolLeaveTitle: "Poistutko joukosta?",
+    poolLeaveBody: "Kukaan ei enää ehdota korttiasi yrityksille. Odottavat ehdotukset poistetaan.",
+    deleteTitle: "Poistetaanko kaikki?",
+    deletedDone: "Kaikki on poistettu.",
+    editAria: "Muokkaa: {phrase}",
+    removeAria: "Poista: {phrase}",
+    escoBox: "ESCO",
+    signedOutLink: "Aloita keskustelu",
   },
   sv: {
     waiting: "Ditt kort förbereds. Sidan uppdateras av sig själv.",
     waitingLong: "Det tar längre tid än vanligt. Du kan vänta lite till eller försöka igen.",
     loadFailed: "Vi kunde inte hämta ditt kort.",
     saveFailed: "Det sparades inte. Försök igen.",
-    signedOut: "Starta en intervju först, så dyker ditt kort upp här.",
+    signedOut: "Starta ett samtal för att skapa ditt kort.",
     notSet: "Inte valt",
     rolesHelp: "Högst tre, avskilda med kommatecken.",
     languagesHelp: "Högst fem, avskilda med kommatecken.",
@@ -94,35 +174,44 @@ export const cardMessages = {
     draftNotice: "Du har ändringar som inte är godkända än.",
     reworded: "En ändring har skrivits om för företag. Kontrollera texten nedan innan du godkänner. Företag ser fortfarande ditt godkända kort.",
     noEscoShort: "Ingen ESCO-motsvarighet",
+    kicker: "Signal Card",
+    handleAria: "Smeknamn {handle}",
+    aiTag: "AI",
+    aiLabelPerson: "Sammanfattning skriven av AI utifrån dina egna ord",
+    aiLabelCompany: "Sammanfattning skriven av AI utifrån personens egna ord",
+    readSummary: "Läs sammanfattningen",
+    hideSummary: "Dölj sammanfattningen",
+    orderNote: "Anteckningarna står i den ordning du pratade om dem. Inget poängsätts.",
+    companyLabel: "Skrivet av AI utifrån personens egna ord och godkänt av personen. Inget citat och inget kontrollerat faktum.",
+    companyBannerDraft: "En förhandsvisning av ditt ändrade kort. Företag ser fortfarande ditt godkända kort tills du godkänner det här. Dina egna ord, ditt språk och om du pratade eller skrev stannar hos dig tills ni båda har sagt ja.",
+    companyBanner: "Det här är exakt vad ett företag ser. Dina egna ord, ditt språk och om du pratade eller skrev stannar hos dig tills ni båda har sagt ja.",
+    viewGroup: "Förhandsvisning",
+    viewPerson: "Min vy",
+    sideNoScoreTitle: "Här finns inga poäng",
+    sideNoScoreBody: "Företag ser anteckningarna i den ordning du pratade om dem. Ingen rangordning, inga procent, inga nivåer.",
+    footerSynthetic: "Syntetisk demoprofil",
+    footerDraft: "Utkast · ingen ser detta förrän du godkänner det",
+    footerDraftEdit: "Ändringar är inte godkända än · företag ser fortfarande ditt godkända kort",
+    footerEsco: "Färdighetsnamn: ESCO, Europeiska kommissionen",
+    stampLabel: "Godkänt av dig",
+    waitingBadge: "Skriver anteckningar…",
+    emptyText: "Inga anteckningar är kvar just nu. Ta tillbaka en med Ångra, eller starta ett nytt samtal.",
+    yoursToApprove: "Du bestämmer",
+    approveTitle: "Godkänn ditt kort",
+    approveHelp: "Ditt kort är ett utkast. Ingen ser det förrän du godkänner det, och du kan ändra det när som helst.",
+    keptOne: "1 anteckning kvar",
+    keptMany: "{n} anteckningar kvar",
+    removedOne: "1 borttagen",
+    removedMany: "{n} borttagna",
+    poolYesHelp: "Ditt kort föreslås utan ditt namn, och en person granskar det först.",
+    poolLocked: "Godkänn ditt kort först. Inget är förvalt.",
+    poolLeaveTitle: "Gå ur gruppen?",
+    poolLeaveBody: "Ingen föreslår ditt kort för företag längre. Förslag som väntar tas bort.",
+    deleteTitle: "Radera allt?",
+    deletedDone: "Allt har raderats.",
+    editAria: "Redigera: {phrase}",
+    removeAria: "Ta bort: {phrase}",
+    escoBox: "ESCO",
+    signedOutLink: "Starta samtalet",
   },
-} satisfies Messages<{
-  waiting: string;
-  waitingLong: string;
-  loadFailed: string;
-  saveFailed: string;
-  signedOut: string;
-  notSet: string;
-  rolesHelp: string;
-  languagesHelp: string;
-  phraseLabel: string;
-  escoLabel: string;
-  removedHeading: string;
-  staleError: string;
-  approveFailed: string;
-  saved: string;
-  seeMatches: string;
-  myDataTitle: string;
-  myDataHelp: string;
-  exportData: string;
-  deleteData: string;
-  deleteWarning: string;
-  deleteConfirm: string;
-  deleteCancel: string;
-  deleteFailed: string;
-  shownAs: string;
-  notShownYet: string;
-  rewriting: string;
-  draftNotice: string;
-  reworded: string;
-  noEscoShort: string;
-}>;
+} satisfies Messages<typeof en>;

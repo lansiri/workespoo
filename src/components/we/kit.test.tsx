@@ -74,6 +74,15 @@ describe("kit renders with required props", () => {
   });
 });
 
+function props_all_removed() {
+  return {
+    handle: "Birch-27", handleAria: "Nickname Birch-27",
+    header: { kicker: "Signal Card", aiTag: "AI", aiLabel: "Summary", headline: "Headline", summary: "", readSummary: "Read", hideSummary: "Hide" },
+    orderNote: "Order note", groups: [{ key: "skill", title: "What I do", rows: [{ ...signal, removed: true }] }],
+    rowText, footer: [], stampLabel: "Approved by you", waitingText: "w", waitingBadge: "w", emptyText: "No notes are kept right now.", errorText: "e",
+  };
+}
+
 describe("signal card family", () => {
   const props = {
     handle: "Birch-27", handleAria: "Nickname Birch-27",
@@ -165,6 +174,17 @@ describe("matches, picks and the organiser", () => {
     expect(renderToStaticMarkup(<IntroRequest {...base} status="pending" initialForm />)).toContain('data-testid="intro-confirm"');
     expect(renderToStaticMarkup(<IntroRequest {...base} status="accepted" slot={{ time: "Thu 26 Nov, 13:00", place: "Table 11" }} />)).toContain("Table 11");
     for (const s of ["declined", "expired", "waiting"] as const) expect(renderToStaticMarkup(<IntroRequest {...base} status={s} />)).toContain(`data-status="${s}"`);
+    const closed = renderToStaticMarkup(<IntroRequest {...base} lead="" status="closed" text={{ ...text, closed: "Withdrawn" }} statusNote={{ text: "The company's slots are full.", testId: "intro-reason" }} error="Please try again." />);
+    expect(closed).toContain('data-status="closed"');
+    expect(closed).toContain("Withdrawn");
+    expect(closed).toContain('data-testid="intro-reason"');
+    expect(closed).toContain('role="alert"');
+  });
+
+  it("keeps Undo reachable when every note is removed, and says nothing is kept", () => {
+    const html = renderToStaticMarkup(<SignalCard {...props_all_removed()} />);
+    expect(html).toContain('data-testid="card-empty"');
+    expect(html).toContain('data-testid="signal-undo"');
   });
   it("gives approve and remove identical weight and offers no approve-all", () => {
     const text = { approve: "Approve", remove: "Remove", undo: "Undo", hint: "Decide this person on their own.", approved: "Approved", approvedNote: "Will be in today's list.", removed: "Removed" };

@@ -12,6 +12,8 @@ export type ReasonText = {
   postingLabel: string;
   /** Template used when there is no posting sentence: "Mentions {label}". */
   mentions: string;
+  /** Feed only: label of the system's one-sentence reason ("Why it is shown"). */
+  whyLabel?: string;
   /** Feed only. */
   seeOwnWords?: string;
   hideOwnWords?: string;
@@ -31,7 +33,11 @@ export type ReasonLineProps = {
   postingSentence?: string | null;
   escoLabel?: string;
   /** Feed only: the person's sentence, rendered by code from the transcript. */
-  ownWords?: { refLabel: string; text: string };
+  ownWords?: { refLabel?: string; text: string };
+  /** Feed only: the system's own one-sentence reason (code- or model-written), shown in its own labelled row. Never in quotes. */
+  sentence?: string;
+  /** Used instead of "Mentions {label}" when there is no posting sentence (plain words, not a quote). */
+  postingFallback?: string;
   /** Company only, after both sides agreed. */
   revealedQuote?: string | string[];
   text: ReasonText;
@@ -50,7 +56,11 @@ function testIdFor(v: ReasonVariant): string {
 export function ReasonLine(p: ReasonLineProps) {
   const [open, setOpen] = useState(false);
   const ownId = useId();
-  const posting = p.postingSentence ? <q>{p.postingSentence}</q> : <span>{p.text.mentions.replace("{label}", p.escoLabel ?? p.cardText)}</span>;
+  const posting = p.postingSentence ? (
+    <q>{p.postingSentence}</q>
+  ) : (
+    <span>{p.postingFallback ?? p.text.mentions.replace("{label}", p.escoLabel ?? p.cardText)}</span>
+  );
   if (p.variant === "organiser") {
     return (
       <li className={cx("we-qreason", p.className)} data-testid="pick-reason">
@@ -68,7 +78,7 @@ export function ReasonLine(p: ReasonLineProps) {
   const side: ReactNode = (
     <>
       <span className="we-label">{p.text.cardLabel}</span>
-      {p.cardKind === "phrase" ? <b>{p.cardText}</b> : <span>{p.cardText}</span>}
+      {p.cardText === "" ? null : p.cardKind === "phrase" ? <b>{p.cardText}</b> : <span>{p.cardText}</span>}
       {p.variant === "feed" && p.ownWords && p.text.seeOwnWords ? (
         <span className="we-own">
           <button type="button" aria-expanded={open} aria-controls={ownId} onClick={() => setOpen((v) => !v)} data-testid="see-own-words">
@@ -78,7 +88,7 @@ export function ReasonLine(p: ReasonLineProps) {
             <span id={ownId} data-testid="own-words">
               <q>{p.ownWords.text}</q>
               <small>
-                {p.text.yourWords} · {p.ownWords.refLabel}
+                {p.ownWords.refLabel ? `${p.text.yourWords} · ${p.ownWords.refLabel}` : p.text.yourWords}
               </small>
             </span>
           ) : null}
@@ -97,6 +107,12 @@ export function ReasonLine(p: ReasonLineProps) {
   );
   return (
     <li className={cx("we-reason", p.className)} data-testid={testIdFor(p.variant)} data-variant={p.variant}>
+      {p.sentence ? (
+        <div className="we-r-why">
+          {p.text.whyLabel ? <span className="we-label">{p.text.whyLabel}</span> : null}
+          <span>{p.sentence}</span>
+        </div>
+      ) : null}
       <div className="we-r-card">{side}</div>
       <div className="we-r-post">
         <span className="we-label">{p.text.postingLabel}</span>

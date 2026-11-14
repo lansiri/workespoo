@@ -11,6 +11,8 @@ export type PoolConsentProps = {
   /** null: not chosen yet. Never preselected. */
   inPool: boolean | null;
   onChange?: (inPool: boolean) => void;
+  /** A save is in flight. */
+  busy?: boolean;
   text: {
     title: string;
     body: string;
@@ -32,7 +34,7 @@ export type PoolConsentProps = {
 };
 
 /** Step 2: "Can Espoo suggest you to companies?" Both options start empty and stay locked until the card is approved. */
-export function PoolConsent({ approved, inPool, onChange, text, className }: PoolConsentProps) {
+export function PoolConsent({ approved, inPool, onChange, busy, text, className }: PoolConsentProps) {
   const name = useId();
   const [confirming, setConfirming] = useState(false);
   return (
@@ -43,14 +45,14 @@ export function PoolConsent({ approved, inPool, onChange, text, className }: Poo
       </h3>
       <p>{text.body}</p>
       <label className="we-choice">
-        <input type="radio" name={name} disabled={!approved} checked={inPool === true} onChange={() => onChange?.(true)} data-testid="pool-opt-in" />
+        <input type="radio" name={name} disabled={!approved || busy} checked={inPool === true} onChange={() => onChange?.(true)} data-testid="pool-opt-in" />
         <span className="we-choice-text">
           <b>{text.yes}</b>
           <span>{text.yesHelp}</span>
         </span>
       </label>
       <label className="we-choice">
-        <input type="radio" name={name} disabled={!approved} checked={inPool === false} onChange={() => onChange?.(false)} data-testid="pool-opt-out" />
+        <input type="radio" name={name} disabled={!approved || busy} checked={inPool === false} onChange={() => onChange?.(false)} data-testid="pool-opt-out" />
         <span className="we-choice-text">
           <b>{text.no}</b>
           <span>{text.noHelp}</span>
@@ -68,7 +70,7 @@ export function PoolConsent({ approved, inPool, onChange, text, className }: Poo
         </p>
       ) : null}
       {inPool === true ? (
-        <Button variant="quiet" className="we-leave" onClick={() => setConfirming(true)} data-testid="pool-leave">
+        <Button variant="quiet" className="we-leave" onClick={() => setConfirming(true)} disabled={busy} data-testid="pool-leave">
           {text.leave}
         </Button>
       ) : null}
@@ -83,6 +85,7 @@ export function PoolConsent({ approved, inPool, onChange, text, className }: Poo
               </Button>
               <Button
                 variant="primary"
+                disabled={busy}
                 onClick={() => {
                   setConfirming(false);
                   onChange?.(false);

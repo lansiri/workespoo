@@ -1,13 +1,24 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import type { IntroStatus } from "@/contracts";
-import { Button } from "@/components/ui/button";
+import {
+  Button,
+  EmptyState,
+  ErrorState,
+  JobPostingCard,
+  LoadingState,
+  NotMentionedList,
+  ReasonLine,
+  ReasonList,
+  type IntroRequestProps,
+  IntroRequest,
+} from "@/components/we";
+import { coreCopy } from "@/lib/i18n/content";
 import { fmt } from "@/lib/i18n";
 import { useMessages, useUiLang } from "@/lib/i18n/client";
 import { UI_LANG_LOCALES } from "@/lib/i18n/types";
-import { matchesMessages } from "./messages";
+import { matchesFixedMessages, matchesMessages } from "./messages";
 import type { IntroNotApprovedCode, MatchItem, TalentIntro } from "./payload";
 import { checkAnswer, respondToIntro, useMatches } from "./useMatches";
 
@@ -38,83 +49,82 @@ const STATUS_KEYS: Record<IntroStatus, keyof M> = {
   cancelled: "statusCancelled",
 };
 
+const KIT_STATUS: Record<IntroStatus, IntroRequestProps["status"]> = {
+  awaiting_talent: "pending",
+  accepted: "accepted",
+  declined: "declined",
+  expired: "expired",
+  pending_review: "waiting",
+  awaiting_company: "waiting",
+  withdrawn: "closed",
+  cancelled: "closed",
+  not_approved: "closed",
+};
+
 function formatDate(iso: string, locale: string): string {
   const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? iso : d.toLocaleDateString(locale);
-}
-
-function Reason({ reason, m }: { reason: MatchItem["reasons"][number]; m: M }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <li data-testid="match-reason" className="mb-3">
-      <p>{reason.text}</p>
-      {reason.rendering ? (
-        <p>
-          <strong>{m.fromCard}:</strong> {reason.rendering} <em>({m.renderingTag})</em>
-        </p>
-      ) : null}
-      {reason.quote ? (
-        <>
-          <button type="button" className="underline" data-testid="see-own-words" onClick={() => setOpen(!open)}>
-            {open ? m.hideWords : m.seeWords}
-          </button>
-          {open ? <blockquote data-testid="own-words" className="border-l-2 pl-3">{reason.quote}</blockquote> : null}
-        </>
-      ) : null}
-      {reason.postingSentence ? (
-        <p>
-          <strong>{m.fromPosting}:</strong> {reason.postingSentence}
-        </p>
-      ) : null}
-    </li>
-  );
+  return Number.isNaN(d.getTime()) ? iso : d.toLocaleDateString(locale, { day: "numeric", month: "short" });
 }
 
 function JobCard({ item, m, locale }: { item: MatchItem; m: M; locale: string }) {
+  const fixed = useMessages(matchesFixedMessages);
+  const found = item.found.map((f) => m[FOUND_KEYS[f]]).join(", ");
+  const reasonText = {
+    cardLabel: m.fromCard,
+    postingLabel: m.fromPosting,
+    mentions: "{label}",
+    seeOwnWords: m.seeWords,
+    hideOwnWords: m.hideWords,
+    yourWords: m.yourWords,
+  };
   return (
-    <article data-testid="job-match" data-job-id={item.jobId} className="mb-6 border-b pb-4">
-      <h2 className="text-lg font-semibold">{item.title}</h2>
-      <p>
-        {m.employer}: {item.employerName}
-        {item.municipality ? ` · ${m.place}: ${item.municipality}` : ""}
-        {item.closesAt ? ` · ${fmt(m.closes, { date: formatDate(item.closesAt, locale) })}` : ""}
-      </p>
-      <p>
-        <a data-testid="job-link" href={item.url} target="_blank" rel="noopener noreferrer" className="underline">
-          {m.openPosting}
-        </a>
-      </p>
-      <p data-testid="source-attribution" className="text-sm">
-        {item.attribution}
-      </p>
-      <p className="text-sm">
-        {m.foundHeading}: {item.found.map((f) => m[FOUND_KEYS[f]]).join(", ")}
-      </p>
-      {item.reasons.length > 0 ? (
-        <ul className="mt-2">
-          {item.reasons.map((r) => (
-            <Reason key={r.signalId + r.text} reason={r} m={m} />
-          ))}
-        </ul>
-      ) : null}
-      {item.notMentioned === null ? (
-        <p data-testid="not-read" className="text-sm">
-          {m.notRead}
-        </p>
-      ) : item.notMentioned.length > 0 ? (
-        <p data-testid="not-mentioned">
-          {m.notMentioned}:{" "}
-          {item.notMentioned.map((n) => (n.statutory ? `${n.text} ${m.statutory}` : n.text)).join(" · ")}
-        </p>
-      ) : null}
-    </article>
+    <JobPostingCard
+      jobId={item.jobId}
+      title={item.title}
+      employer={item.employerName}
+      place={item.municipality}
+      closes={item.closesAt ? fmt(m.closes, { date: formatDate(item.closesAt, locale) }) : undefined}
+      url={item.url}
+      source={item.attribution}
+      openLabel={m.openPosting}
+      reasons={
+        item.reasons.length > 0 ? (
+          <ReasonList variant="feed">
+            {item.reasons.map((r, i) => (
+              <ReasonLine
+                // Index, not text: the wording may be refined in place without remounting the row.
+                key={`${r.signalId}-${i}`}
+                variant="feed"
+                // Model-written wording (English only) stays out of the feed; the person's own words are the evidence.
+                cardText=""
+                cardKind="rendering"
+                postingSentence={r.postingSentence}
+                postingFallback={`${m.foundHeading}: ${found}`}
+                ownWords={r.quote ? { text: r.quote } : undefined}
+                text={reasonText}
+              />
+            ))}
+          </ReasonList>
+        ) : undefined
+      }
+      notMentioned={
+        <NotMentionedList
+          audience="person"
+          items={item.notMentioned}
+          text={{
+            label: m.notMentioned,
+            statutory: m.statutory,
+            fine: fixed.notMentionedFine,
+            suffix: m.notMentionedSuffix,
+            notRead: m.notRead,
+          }}
+        />
+      }
+    />
   );
 }
 
-function IntroRow({ intro, m, locale, onAnswered }: { intro: TalentIntro; m: M; locale: string; onAnswered: () => void }) {
-  const [accepting, setAccepting] = useState(false);
-  const [name, setName] = useState("");
-  const [contact, setContact] = useState("");
+function IntroItem({ intro, m, locale, onAnswered }: { intro: TalentIntro; m: M; locale: string; onAnswered: () => void }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -127,64 +137,57 @@ function IntroRow({ intro, m, locale, onAnswered }: { intro: TalentIntro; m: M; 
     else setError(m.answerFailed);
   }
 
-  function confirmAccept() {
-    const answer = { decision: "accept", displayName: name.trim(), contact: contact.trim() } as const;
+  function accept(v: { displayName: string; contact: string }) {
+    const answer = { decision: "accept", displayName: v.displayName.trim(), contact: v.contact.trim() } as const;
     const problem = checkAnswer(answer);
     if (problem === "name") return setError(m.nameRequired);
     if (problem === "nameLong") return setError(m.nameTooLong);
-    if (problem === "contact") return setError(contact.trim().length === 0 ? m.nameRequired : m.contactInvalid);
+    if (problem === "contact") return setError(answer.contact.length === 0 ? m.nameRequired : m.contactInvalid);
     void send(answer);
   }
 
+  const status = KIT_STATUS[intro.status];
+  const waitsForPerson = status === "pending" || status === "waiting";
+  const expires = intro.expiresAt ? formatDate(intro.expiresAt, locale) : null;
+  const waitingLabel = intro.status === "pending_review" ? m.statusPendingReview : intro.status === "awaiting_company" ? m.statusAwaitingCompany : m.statusAwaitingTalent;
   return (
-    <li data-testid="intro-request" data-intro-id={intro.id} className="mb-4 border-b pb-3">
-      <p>{fmt(m.introFrom, { company: intro.companyName })}</p>
-      {intro.needTitle ? <p>{fmt(m.introAbout, { title: intro.needTitle })}</p> : null}
-      <p className="text-sm">{fmt(m.introAsked, { date: formatDate(intro.requestedAt, locale) })}</p>
-      <p data-testid="intro-status">
-        {m.introStatusLabel}: {m[STATUS_KEYS[intro.status]]}
-      </p>
-      {intro.status === "not_approved" && intro.notApprovedReason ? (
-        <p data-testid="intro-reason">{m[REASON_KEYS[intro.notApprovedReason]]}</p>
-      ) : null}
-      {intro.status === "awaiting_talent" && !accepting ? (
-        <div className="mt-2 flex gap-2">
-          <Button data-testid="intro-accept" disabled={busy} onClick={() => setAccepting(true)}>
-            {m.accept}
-          </Button>
-          <Button data-testid="intro-decline" variant="outline" disabled={busy} onClick={() => void send({ decision: "decline" })}>
-            {m.decline}
-          </Button>
-        </div>
-      ) : null}
-      {accepting ? (
-        <form
-          className="mt-2 grid max-w-md gap-2"
-          onSubmit={(e) => {
-            e.preventDefault();
-            confirmAccept();
-          }}
-        >
-          <p>{m.acceptHeading}</p>
-          <label>
-            {m.nameLabel}
-            <input data-testid="intro-name" className="block w-full border p-1" value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" />
-          </label>
-          <label>
-            {m.contactLabel}
-            <input data-testid="intro-contact" className="block w-full border p-1" value={contact} onChange={(e) => setContact(e.target.value)} />
-          </label>
-          <div className="flex gap-2">
-            <Button type="submit" data-testid="intro-confirm" disabled={busy}>
-              {busy ? m.sending : m.confirmAccept}
-            </Button>
-            <Button type="button" variant="outline" disabled={busy} onClick={() => setAccepting(false)}>
-              {m.cancel}
-            </Button>
-          </div>
-        </form>
-      ) : null}
-      {error ? <p role="alert">{error}</p> : null}
+    <li>
+      <IntroRequest
+        introId={intro.id}
+        status={status}
+        heading={intro.needTitle ? fmt(m.introHeading, { company: intro.companyName, title: intro.needTitle }) : fmt(m.introFrom, { company: intro.companyName })}
+        lead={waitsForPerson ? m.nameHidden : ""}
+        acceptedNote={fmt(m.acceptedNote, { company: intro.companyName })}
+        busy={busy}
+        error={error ?? undefined}
+        statusNote={
+          intro.status === "not_approved" && intro.notApprovedReason
+            ? { text: m[REASON_KEYS[intro.notApprovedReason]], testId: "intro-reason" }
+            : undefined
+        }
+        onAccept={accept}
+        onDecline={() => void send({ decision: "decline" })}
+        text={{
+          sticker: m.introSticker,
+          whyTitle: "",
+          waiting: expires ? fmt(m.waitingBy, { date: expires }) : m.waitingFor,
+          accept: m.accept,
+          decline: m.decline,
+          nameLabel: m.nameLabel,
+          nameHelp: fmt(m.nameHelp, { company: intro.companyName }),
+          contactLabel: m.contactLabel,
+          contactHelp: m.contactHelp,
+          share: m.confirmAccept,
+          sending: m.sending,
+          cancel: m.cancel,
+          accepted: m.statusAccepted,
+          openAgenda: "",
+          declined: m.declinedNote,
+          expired: expires ? fmt(m.expiredNote, { date: expires }) : m.expiredNoDate,
+          waitingOrganiser: waitingLabel,
+          closed: m[STATUS_KEYS[intro.status]],
+        }}
+      />
     </li>
   );
 }
@@ -192,50 +195,100 @@ function IntroRow({ intro, m, locale, onAnswered }: { intro: TalentIntro; m: M; 
 /** The person's feed and introductions. Data loading is in `useMatches`. */
 export function MatchesView() {
   const m = useMessages(matchesMessages);
+  const core = useMessages(coreCopy);
   const locale = UI_LANG_LOCALES[useUiLang()];
   const { state, reload, gaveUp } = useMatches();
 
-  if (state.status === "loading") return <p>{m.loading}</p>;
-  if (state.status === "error") return <p role="alert">{m.loadFailed}</p>;
+  const head = (
+    <div className="we-page-head">
+      <h1>{m.title}</h1>
+      <p>{m.intro}</p>
+    </div>
+  );
+
+  if (state.status === "loading") {
+    return (
+      <div className="we-page">
+        {head}
+        <LoadingState message={m.loading} badgeLabel={m.loadingBadge} />
+      </div>
+    );
+  }
+  if (state.status === "error") {
+    return (
+      <div className="we-page">
+        {head}
+        <ErrorState message={m.loadFailed} action={{ label: core.tryAgain, onClick: reload }} />
+      </div>
+    );
+  }
   if (state.status === "signed_out") {
     return (
-      <p>
-        {m.signIn} <Link href="/interview" className="underline">{m.signInLink}</Link>
-      </p>
+      <div className="we-page">
+        {head}
+        <EmptyState message={m.signIn} />
+        <p style={{ marginTop: 16 }}>
+          <Button variant="primary" href="/interview">
+            {m.signInLink}
+          </Button>
+        </p>
+      </div>
     );
   }
   const { matches, intros, refining } = state.data;
   return (
-    <div>
-      <h1 className="mb-2 text-2xl font-semibold">{m.title}</h1>
-      <p className="mb-2">{m.intro}</p>
-      {/* Always takes its line, so the postings below do not move when the wording is done. */}
-      <p role="status" data-testid="refining" className="mb-4 min-h-5 text-sm">
-        {refining && !gaveUp ? m.refining : ""}
-      </p>
-      {matches.length === 0 ? (
-        <section data-testid="matches-empty" className="mb-8">
-          <h2 className="font-semibold">{m.emptyTitle}</h2>
-          <p>{m.emptyBody}</p>
-          <p>
-            <Link href="/card" className="underline">{m.editCard}</Link>
+    <div className="we-page">
+      {head}
+      <div className="we-two-col">
+        <div>
+          {intros.length > 0 ? (
+            <ul className="we-feed we-intro-list" aria-label={m.introSticker}>
+              {intros.map((i) => (
+                <IntroItem key={i.id} intro={i} m={m} locale={locale} onAnswered={reload} />
+              ))}
+            </ul>
+          ) : null}
+          <div className="we-section-head">
+            <h2>{m.feedHeading}</h2>
+            {matches.length > 0 ? <p>{fmt(m.feedCount, { n: matches.length })}</p> : null}
+          </div>
+          {/* Always takes its line, so the postings below do not move when the wording is done. */}
+          <p role="status" data-testid="refining" className="we-refining">
+            {refining && !gaveUp ? m.refining : ""}
           </p>
-        </section>
-      ) : (
-        matches.map((item) => <JobCard key={item.jobId} item={item} m={m} locale={locale} />)
-      )}
-      <section>
-        <h2 className="mb-2 text-xl font-semibold">{m.introsHeading}</h2>
-        {intros.length === 0 ? (
-          <p>{m.introsEmpty}</p>
-        ) : (
-          <ul>
-            {intros.map((i) => (
-              <IntroRow key={i.id} intro={i} m={m} locale={locale} onAnswered={reload} />
-            ))}
-          </ul>
-        )}
-      </section>
+          {matches.length === 0 ? (
+            <div data-testid="matches-empty">
+              <EmptyState message={m.emptyBody} ghostShape="rows" />
+              <p style={{ marginTop: 16 }}>
+                <Button variant="ghost" href="/card">
+                  {m.editCard}
+                </Button>
+              </p>
+            </div>
+          ) : (
+            <ul className="we-feed">
+              {matches.map((item) => (
+                <li key={item.jobId}>
+                  <JobCard item={item} m={m} locale={locale} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <aside className="we-rail">
+          <section className="we-box">
+            <h3>{m.railCardTitle}</h3>
+            <p>{m.railCardBody}</p>
+            <Button variant="ghost" href="/card">
+              {m.editCard}
+            </Button>
+          </section>
+          <section className="we-box">
+            <h3>{m.railHowTitle}</h3>
+            <p>{m.railHowBody}</p>
+          </section>
+        </aside>
+      </div>
     </div>
   );
 }

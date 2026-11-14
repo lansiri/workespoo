@@ -8,7 +8,7 @@ import { Button } from "./Button";
 import { Slot } from "./Slot";
 import { Field, Input } from "./FormFields";
 
-export type IntroStatus = "pending" | "accepted" | "declined" | "expired" | "waiting";
+export type IntroStatus = "pending" | "accepted" | "declined" | "expired" | "waiting" | "closed";
 
 export type IntroRequestProps = {
   introId: string;
@@ -27,6 +27,12 @@ export type IntroRequestProps = {
   acceptedNote?: string;
   /** Open the form straight away (gallery, tests). */
   initialForm?: boolean;
+  /** True while an answer is being sent: the buttons wait. */
+  busy?: boolean;
+  /** Plain problem text under the buttons or the form (role="alert"). */
+  error?: string;
+  /** Extra plain line under the status (for example why a request was not sent). */
+  statusNote?: { text: string; testId?: string };
   onAccept?: (v: { displayName: string; contact: string }) => void;
   onDecline?: () => void;
   agendaHref?: string;
@@ -49,6 +55,10 @@ export type IntroRequestProps = {
     declined: string;
     expired: string;
     waitingOrganiser: string;
+    /** closed: withdrawn, cancelled or not sent. The page passes the exact words for that case. */
+    closed?: string;
+    /** Label of the confirm button while sending. */
+    sending?: string;
   };
   className?: string;
 };
@@ -63,10 +73,12 @@ export function IntroRequest(p: IntroRequestProps) {
     <section className={cx("we-intro", p.className)} data-testid="intro-request" data-intro-id={p.introId} aria-label={p.heading}>
       <Sticker>{t.sticker}</Sticker>
       <h2>{p.heading}</h2>
-      <p className="we-lead">
-        <b>{p.lead}</b>
-        {p.summary ? ` ${p.summary}` : ""}
-      </p>
+      {p.lead || p.summary ? (
+        <p className="we-lead">
+          <b>{p.lead}</b>
+          {p.summary ? ` ${p.summary}` : ""}
+        </p>
+      ) : null}
       {p.status === "pending" && p.reasons ? (
         <div className="we-intro-why">
           <span className="we-label">{t.whyTitle}</span>
@@ -94,20 +106,20 @@ export function IntroRequest(p: IntroRequestProps) {
                 {(f) => <Input id={f.id} aria-describedby={f.describedBy} value={contact} onChange={(e) => setContact(e.target.value)} autoComplete="off" data-testid="intro-contact" />}
               </Field>
               <div className="we-row">
-                <Button type="submit" variant="primary" disabled={!name.trim() || !contact.trim()} data-testid="intro-confirm">
-                  {t.share}
+                <Button type="submit" variant="primary" disabled={p.busy || !name.trim() || !contact.trim()} data-testid="intro-confirm">
+                  {p.busy && t.sending ? t.sending : t.share}
                 </Button>
-                <Button variant="ghost" onClick={() => setForm(false)}>
+                <Button variant="ghost" disabled={p.busy} onClick={() => setForm(false)}>
                   {t.cancel}
                 </Button>
               </div>
             </form>
           ) : (
             <div className="we-intro-actions">
-              <Button variant="ghost" size="lg" icon="check" onClick={() => setForm(true)} data-testid="intro-accept">
+              <Button variant="ghost" size="lg" icon="check" disabled={p.busy} onClick={() => setForm(true)} data-testid="intro-accept">
                 {t.accept}
               </Button>
-              <Button variant="ghost" size="lg" icon="x" onClick={p.onDecline} data-testid="intro-decline">
+              <Button variant="ghost" size="lg" icon="x" disabled={p.busy} onClick={p.onDecline} data-testid="intro-decline">
                 {t.decline}
               </Button>
             </div>
@@ -141,6 +153,22 @@ export function IntroRequest(p: IntroRequestProps) {
         <p className="we-status-line" data-testid="intro-status" data-status="expired">
           <Icon name="clock" />
           <span>{t.expired}</span>
+        </p>
+      ) : null}
+      {p.status === "closed" ? (
+        <p className="we-status-line" data-testid="intro-status" data-status="closed">
+          <Icon name="minus" />
+          <span>{t.closed}</span>
+        </p>
+      ) : null}
+      {p.statusNote ? (
+        <p className="we-status-line" data-testid={p.statusNote.testId}>
+          <span>{p.statusNote.text}</span>
+        </p>
+      ) : null}
+      {p.error ? (
+        <p className="we-status-line we-err-line" role="alert">
+          <span>{p.error}</span>
         </p>
       ) : null}
       {p.status === "waiting" ? (
