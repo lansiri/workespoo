@@ -3,7 +3,9 @@
 //   node e2e/make-video.mjs out/demo-video out/workespoo-demo.mp4
 //
 // Needs ffmpeg with libx264 and drawtext. FONT_FILE picks the caption font (default: Noto Sans,
-// then DejaVu Sans). Each caption is shown during the seconds captions.json gives it.
+// then DejaVu Sans). Each caption is shown during the seconds captions.json gives it. An optional
+// speedups.json ({clip, from, to, factor} per waiting stretch) plays those stretches faster; the
+// times are those of the recorded clip, so captions and speedups use the same clock.
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -27,6 +29,8 @@ if (!FONT) {
 }
 
 const captions = JSON.parse(readFileSync(path.join(dir, "captions.json"), "utf8"));
+const speedFile = path.join(dir, "speedups.json");
+const speedups = existsSync(speedFile) ? JSON.parse(readFileSync(speedFile, "utf8")) : [];
 const clips = readdirSync(dir).filter((f) => /^\d\d-.*\.webm$/.test(f)).sort();
 if (clips.length === 0) throw new Error(`no clips in ${dir}`);
 
@@ -62,9 +66,29 @@ clips.forEach((clipFile, index) => {
     );
   });
   const part = path.join(work, `part-${String(index).padStart(2, "0")}.mp4`);
+  // Waiting stretches are cut out of the captioned clip and put back sped up (no audio, so setpts is enough).
+  const fast = speedups.filter((x) => x.clip === clipFile).sort((a, b) => a.from - b.from);
+  let graph = `[0:v]${filters.join(",")}`;
+  if (fast.length === 0) graph += "[out]";
+  else {
+    const pieces = [];
+    let at = 0;
+    fast.forEach((x) => {
+      pieces.push({ from: at, to: x.from, factor: 1 });
+      pieces.push({ from: x.from, to: x.to, factor: x.factor });
+      at = x.to;
+    });
+    pieces.push({ from: at, to: null, factor: 1 });
+    graph += `,split=${pieces.length}${pieces.map((_, k) => `[s${k}]`).join("")};`;
+    pieces.forEach((q, k) => {
+      const range = q.to === null ? `start=${q.from.toFixed(3)}` : `start=${q.from.toFixed(3)}:end=${q.to.toFixed(3)}`;
+      graph += `[s${k}]trim=${range},setpts=(PTS-STARTPTS)/${q.factor}[p${k}];`;
+    });
+    graph += `${pieces.map((_, k) => `[p${k}]`).join("")}concat=n=${pieces.length}:v=1:a=0[out]`;
+  }
   execFileSync(
     "ffmpeg",
-    ["-y", "-loglevel", "error", "-i", path.join(dir, clipFile), "-vf", filters.join(","), "-r", "25", "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "24", "-pix_fmt", "yuv420p", part],
+    ["-y", "-loglevel", "error", "-i", path.join(dir, clipFile), "-filter_complex", graph, "-map", "[out]", "-r", "25", "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "24", "-pix_fmt", "yuv420p", part],
     { stdio: "inherit" },
   );
   parts.push(part);
