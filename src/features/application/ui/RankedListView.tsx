@@ -257,6 +257,12 @@ function ApplicantCard(props: {
   );
 }
 
+/** True when two fetched lists show the same requirements, people, order, points and ratings. */
+export function sameRankedList(a: RankedList, b: RankedList): boolean {
+  const shown = (l: RankedList) => JSON.stringify({ r: l.requirements, a: l.applicants, p: l.pendingAssessment });
+  return shown(a) === shown(b);
+}
+
 /** The organiser's ranked list of one job's applicants, with moves and one approval. */
 export function RankedListView({ jobId, initial, initialMoveOpenFor }: { jobId: string; initial?: RankedList; initialMoveOpenFor?: string }) {
   const m = useMessages(rankedMessages);
@@ -284,6 +290,18 @@ export function RankedListView({ jobId, initial, initialMoveOpenFor }: { jobId: 
   }, [initial, jobId, apply]);
 
   const errorLine = (code: string | null) => (code === "nothing_to_approve" ? m.errNothing : m.errGeneric);
+
+  /** Reloads just before approving; sends nothing when the list is not the one on screen. */
+  async function approve(): Promise<string | null> {
+    if (!list) return m.errGeneric;
+    setBusy(true);
+    const fresh = await fetchList(jobId);
+    setBusy(false);
+    if (fresh.state !== "ok" || !fresh.list) return m.errGeneric;
+    apply(fresh);
+    if (!sameRankedList(list, fresh.list)) return m.errChanged;
+    return post("approve", { expected: list.applicants.map((a) => a.applicationId) });
+  }
 
   async function post(path: string, body?: unknown): Promise<string | null> {
     setBusy(true);
@@ -344,7 +362,7 @@ export function RankedListView({ jobId, initial, initialMoveOpenFor }: { jobId: 
         <span className="we-rk-status" data-testid="ranked-status" data-state={status.key}>
           {status.text}
         </span>
-        <Button variant="primary" data-testid="ranked-approve" disabled={busy || list.applicants.length === 0} onClick={async () => setError(await post("approve"))}>
+        <Button variant="primary" data-testid="ranked-approve" disabled={busy || list.applicants.length === 0} onClick={async () => setError(await approve())}>
           {busy ? m.approving : m.approve}
         </Button>
       </div>

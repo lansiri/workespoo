@@ -20,7 +20,7 @@ import { LEVEL_NAMES } from "../levels";
 import { moveProblem, rankedMessages } from "../messages-organiser";
 import type { CompanyApplicants, RankedList } from "../rank";
 import { CompanyApplicantsView } from "./CompanyApplicantsView";
-import { RankedListView } from "./RankedListView";
+import { RankedListView, sameRankedList } from "./RankedListView";
 
 const wrap = (el: React.ReactElement, lang: UiLang = "en") =>
   // eslint-disable-next-line react/no-children-prop
@@ -89,6 +89,17 @@ describe("organiser pages without a session", () => {
     expect(overview).toContain("signin-title");
     const detail = wrap(await OrganiserRankedListPage({ params: Promise.resolve({ jobId: "job_1" }) } as never));
     expect(detail).toContain("signin-title");
+  });
+});
+
+describe("sameRankedList", () => {
+  it("notices a changed order, a new person or a changed requirement kind", () => {
+    const a = list();
+    expect(sameRankedList(a, list())).toBe(true);
+    expect(sameRankedList(a, { ...a, applicants: [...a.applicants].reverse() })).toBe(false);
+    expect(sameRankedList(a, { ...a, applicants: a.applicants.slice(1) })).toBe(false);
+    expect(sameRankedList(a, { ...a, pendingAssessment: a.pendingAssessment + 1 })).toBe(false);
+    expect(sameRankedList(a, { ...a, requirements: a.requirements.map((r, i) => (i === 0 ? { ...r, kind: r.kind === "must" ? "nice" : "must" } : r)) })).toBe(false);
   });
 });
 

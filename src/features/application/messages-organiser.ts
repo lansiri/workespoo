@@ -69,6 +69,7 @@ const en = {
   statusChanged: "Changed since it was approved",
   errNothing: "There is nobody on the list to approve yet.",
   errGeneric: "Something went wrong, try again.",
+  errChanged: "The list changed while you were reading it. Check it and approve again.",
 
   // Levels and requirements, shared by the organiser and the company
   levelLabel: "Level",
@@ -167,6 +168,7 @@ export const rankedMessages = {
     statusChanged: "Muuttunut hyväksymisen jälkeen",
     errNothing: "Listalla ei vielä ole ketään hyväksyttäväksi.",
     errGeneric: "Jokin meni pieleen, yritä uudelleen.",
+    errChanged: "Lista muuttui sillä aikaa kun luit sitä. Tarkista se ja hyväksy uudelleen.",
 
     levelLabel: "Taso",
     levelsTitle: "Mitä tasot tarkoittavat",
@@ -260,6 +262,7 @@ export const rankedMessages = {
     statusChanged: "Ändrad sedan den godkändes",
     errNothing: "Det finns ingen på listan att godkänna ännu.",
     errGeneric: "Något gick fel, försök igen.",
+    errChanged: "Listan ändrades medan du läste den. Kontrollera den och godkänn igen.",
 
     levelLabel: "Nivå",
     levelsTitle: "Vad nivåerna betyder",
