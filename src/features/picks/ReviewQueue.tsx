@@ -286,7 +286,8 @@ function DigestView(props: {
       onPublish={() => void q.publish(digest.id)}
       text={{
         status: fmt(m.publishStatus, { n: undecided.length, total: picks.length }),
-        ready: m.publishReady,
+        // With nobody on the list there is no decision to speak of: say what publishing does.
+        ready: picks.length === 0 ? m.publishNobody : m.publishReady,
         published: m.publishedLabel,
         publish: fmt(m.publishTo, { company: digest.company.displayName }),
         helpLead: m.publishHelpLead,
