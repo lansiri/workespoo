@@ -6,6 +6,8 @@
 
 /* ---------- the list of jobs ---------- */
 
+.we-ap-jobs-banner { margin-top: 24px; max-width: 720px; }
+.we-ap-jobs-banner + .we-ap-jobs { margin-top: 20px; }
 .we-ap-jobs { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 20px; }
 .we-ap-job { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px; display: flex; flex-direction: column; gap: 12px; min-width: 0; box-shadow: var(--shadow-1); }
 .we-ap-job-company { font-size: 14px; font-weight: 600; color: var(--muted-ink); }

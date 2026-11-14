@@ -76,6 +76,12 @@ const THINK_MS = 2_000;
 
 const tid = (scope: Page | Locator, id: string) => scope.locator(`[data-testid="${id}"]`);
 
+/** With E2E_SHOTS=<directory> the journey leaves a picture of every screen there. */
+const SHOTS = process.env.E2E_SHOTS ?? "";
+async function shot(page: Page, name: string): Promise<void> {
+  if (SHOTS) await page.screenshot({ path: `${SHOTS}/${name}.png`, fullPage: true });
+}
+
 async function signInOrganiser(page: Page): Promise<void> {
   await page.goto("/organiser", { waitUntil: "domcontentloaded" });
   if (await tid(page, "passcode-input").count()) {
@@ -189,6 +195,7 @@ test.describe("job interview", () => {
       const job = tid(talent, "apply-job").filter({ hasText: PITCH_COMPANY });
       await expect(job).toHaveCount(1, { timeout: 30_000 });
       expect(await tid(talent, "apply-job").count()).toBeGreaterThanOrEqual(2);
+      await shot(talent, "01-jobs");
       await tid(job, "apply-start").click();
       await talent.waitForURL(/\/apply\/new\?job=/, { timeout: 30_000 });
     });
@@ -198,6 +205,7 @@ test.describe("job interview", () => {
       await expect(tid(talent, "apply-points-list")).toContainText(/rated|rates/i);
       await expect(tid(talent, "apply-points-list")).toContainText(/organiser/i);
       await expect(tid(talent, "apply-begin")).toBeDisabled();
+      await shot(talent, "02-start");
       await expect(async () => {
         await tid(talent, "apply-consent").check();
         await expect(tid(talent, "apply-begin")).toBeEnabled({ timeout: 1_000 });
@@ -224,7 +232,9 @@ test.describe("job interview", () => {
         expect(times, `questions about "${requirement.slice(0, 60)}"`).toBeLessThan(2);
         const say = JOB_ANSWERS.find((a) => a.about.test(requirement)) ?? DEFAULT_ANSWER;
         await answerAndWait(talent, times === 0 ? say.first : say.then, "apply-ended");
+        if (i === 1) await shot(talent, "03-room");
       }
+      await shot(talent, "04-room-ended");
       await expect(tid(talent, "apply-ended")).toBeVisible({ timeout: 30_000 });
       // Everything asked was answered: nothing is left waiting.
       await expect(talent.locator('[data-testid="apply-requirement"][data-progress="waiting"]')).toHaveCount(0);
@@ -234,6 +244,7 @@ test.describe("job interview", () => {
       await tid(talent, "apply-to-review").click();
       await expect(tid(talent, "apply-review")).toBeVisible({ timeout: 30_000 });
       expect(await tid(talent, "apply-answer").count()).toBeGreaterThanOrEqual(covered);
+      await shot(talent, "05-review");
       await tid(talent, "apply-send").click();
       // The rating is made in the background; the page shows it when it is there.
       await expect(tid(talent, "apply-result")).toBeVisible({ timeout: 180_000 });
@@ -250,6 +261,7 @@ test.describe("job interview", () => {
       // No place on a list yet: no organiser has approved one.
       await expect(tid(talent, "apply-position")).toHaveCount(0);
       test.info().annotations.push({ type: "own levels", description: levels.join(" ") });
+      await shot(talent, "06-result");
     });
 
     await test.step("7. the organiser: everyone is on the list, the answers behind a rating can be read", async () => {
@@ -263,6 +275,7 @@ test.describe("job interview", () => {
       await expect(tid(mine, "ranked-evidence")).toBeVisible({ timeout: 20_000 });
       // The person's own words, as they said them.
       await expect(tid(mine, "ranked-evidence")).toContainText("machine shop");
+      await shot(organiser, "07-organiser-list");
     });
 
     await test.step("8. the organiser moves one person, which needs a reason, and approves the order", async () => {
@@ -283,6 +296,7 @@ test.describe("job interview", () => {
       await expect(link).toBeVisible();
       companyPath = (await link.getAttribute("href")) ?? "";
       expect(companyPath).toMatch(/^\/c\/[\w-]{20,}\/applicants$/);
+      await shot(organiser, "08-organiser-approved");
     });
 
     await test.step("9. the company sees the approved order with reasons, and no name or own words", async () => {
@@ -293,7 +307,11 @@ test.describe("job interview", () => {
       const mine = tid(company, "company-applicant").filter({ hasText: handle });
       await expect(tid(mine, "company-rating").first()).toBeVisible();
       await expect(tid(company, "revealed-name")).toHaveCount(0);
-      await expect(company.locator("body")).not.toContainText("machine shop");
+      // The reasons describe the answers; the answers themselves are not there.
+      await expect(tid(company, "ranked-evidence")).toHaveCount(0);
+      await expect(company.locator("body")).not.toContainText("Nobody asked me to look");
+      await expect(company.locator("body")).not.toContainText("I set up items and work orders");
+      await shot(company, "09-company-list");
       await tid(mine, "ask-to-meet").click();
       await tid(company, "ask-to-meet-send").click();
       await expect(tid(tid(company, "company-applicant").filter({ hasText: handle }), "intro-status")).toBeVisible({ timeout: 20_000 });
@@ -302,6 +320,7 @@ test.describe("job interview", () => {
     await test.step("10. the person sees their place on the approved list, and agrees to meet", async () => {
       await talent.goto(applicationPath, { waitUntil: "domcontentloaded" });
       await expect(tid(talent, "apply-position")).toBeVisible({ timeout: 30_000 });
+      await shot(talent, "10-result-with-place");
       await talent.goto("/matches", { waitUntil: "domcontentloaded" });
       const request = tid(talent, "intro-request").filter({ hasText: PITCH_COMPANY });
       await expect(request).toBeVisible({ timeout: 30_000 });
@@ -317,6 +336,7 @@ test.describe("job interview", () => {
       const mine = tid(company, "company-applicant").filter({ hasText: handle });
       await expect(tid(mine, "revealed-name")).toContainText("Alex Demo", { timeout: 20_000 });
       await expect(tid(mine, "ranked-evidence")).toContainText("machine shop");
+      await shot(company, "11-company-after-both-agreed");
     });
 
     await test.step("12. the audit log holds every step", async () => {

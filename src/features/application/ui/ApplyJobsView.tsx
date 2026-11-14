@@ -23,34 +23,43 @@ export function jobAction(job: Pick<ApplyJob, "jobId" | "application">): { kind:
 /** The jobs, one box each. Presentational: the data comes in as props. */
 export function ApplyJobsList({ jobs }: { jobs: ApplyJob[] }) {
   const m = useMessages(applyMessages);
+  // When every company on the list is a demo company, say so once above the list, not on every job.
+  const allMasked = jobs.length > 1 && jobs.every((job) => job.masked);
   return (
-    <ul className="we-ap-jobs">
-      {jobs.map((job) => {
-        const action = jobAction(job);
-        return (
-          <li key={job.jobId} className="we-ap-job" data-testid="apply-job" data-job-id={job.jobId}>
-            {job.masked ? <MaskedDemoBanner lead={m.maskedLead} text={m.maskedText} /> : null}
-            <span className="we-ap-job-company">{job.companyName}</span>
-            <h2>{job.title}</h2>
-            {job.summary ? <p className="we-ap-job-summary">{job.summary}</p> : null}
-            <h3>{m.adAsks}</h3>
-            <ul className="we-ap-job-reqs">
-              {job.requirements.map((r) => (
-                <li key={r.requirementId} data-kind={r.kind}>
-                  <span>{r.text}</span>
-                  <Tag>{r.kind === "must" ? m.tagMust : m.tagNice}</Tag>
-                </li>
-              ))}
-            </ul>
-            <div className="we-ap-job-action">
-              <Button variant={action.kind === "open" ? "ghost" : "primary"} href={action.href} data-testid={action.testId}>
-                {m[action.label]}
-              </Button>
-            </div>
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      {allMasked ? (
+        <div className="we-ap-jobs-banner">
+          <MaskedDemoBanner lead={m.maskedLeadAll} text={m.maskedTextAll} />
+        </div>
+      ) : null}
+      <ul className="we-ap-jobs">
+        {jobs.map((job) => {
+          const action = jobAction(job);
+          return (
+            <li key={job.jobId} className="we-ap-job" data-testid="apply-job" data-job-id={job.jobId}>
+              {job.masked && !allMasked ? <MaskedDemoBanner lead={m.maskedLead} text={m.maskedText} /> : null}
+              <span className="we-ap-job-company">{job.companyName}</span>
+              <h2>{job.title}</h2>
+              {job.summary ? <p className="we-ap-job-summary">{job.summary}</p> : null}
+              <h3>{m.adAsks}</h3>
+              <ul className="we-ap-job-reqs">
+                {job.requirements.map((r) => (
+                  <li key={r.requirementId} data-kind={r.kind}>
+                    <span>{r.text}</span>
+                    <Tag>{r.kind === "must" ? m.tagMust : m.tagNice}</Tag>
+                  </li>
+                ))}
+              </ul>
+              <div className="we-ap-job-action">
+                <Button variant={action.kind === "open" ? "ghost" : "primary"} href={action.href} data-testid={action.testId}>
+                  {m[action.label]}
+                </Button>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </>
   );
 }
 

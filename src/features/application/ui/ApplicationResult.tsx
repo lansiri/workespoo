@@ -9,7 +9,7 @@ import { useMessages, useUiLang } from "@/lib/i18n/client";
 import { renderEvidence } from "@/lib/sentences";
 import type { ApplicationTurn, EvidenceRef, RatingLevel, UiLang } from "@/contracts";
 import type { OwnApplication } from "../engine";
-import { LEVEL_ANCHORS, LEVEL_NAMES } from "../levels";
+import { LEVEL_ANCHORS_OWN, LEVEL_NAMES } from "../levels";
 import { applyMessages } from "../messages-talent";
 import "./apply.css";
 
@@ -30,10 +30,24 @@ export function ownSentences(turns: readonly ApplicationTurn[], evidence: readon
   return out;
 }
 
-/** The level's name and anchor, in the page's language. */
+/** The level's name and anchor, in the page's language, as said to the person whose result it is. */
 export function levelText(level: RatingLevel, lang: UiLang): { name: string; anchor: string } {
   const at = Math.max(0, Math.min(3, level));
-  return { name: LEVEL_NAMES[lang][at], anchor: LEVEL_ANCHORS[lang][at] };
+  return { name: LEVEL_NAMES[lang][at], anchor: LEVEL_ANCHORS_OWN[lang][at] };
+}
+
+/**
+ * The cited sentences of one answer, put together again: a long sentence is stored in pieces,
+ * and pieces that follow each other read as the one sentence the person said.
+ */
+export function ownPassages(own: ReadonlyArray<{ turnIndex: number; sentence: number; text: string }>): Array<Array<{ turnIndex: number; sentence: number; text: string }>> {
+  const passages: Array<Array<{ turnIndex: number; sentence: number; text: string }>> = [];
+  for (const s of own) {
+    const last = passages[passages.length - 1];
+    if (last && last[0]!.turnIndex === s.turnIndex) last.push(s);
+    else passages.push([s]);
+  }
+  return passages;
 }
 
 /** "Withdraw my application", with a question first. Deletes the application and goes back to the jobs. */
@@ -163,11 +177,15 @@ export function ApplicationResult({ application }: { application: OwnApplication
                 <div className="we-ap-own">
                   <span className="we-ap-label">{m.resultOwnWords}</span>
                   {own.length > 0 ? (
-                    own.map((s, i) => (
-                      <blockquote key={`${s.turnIndex}-${s.sentence}-${i}`}>
-                        <OwnWordsMark turn={s.turnIndex} sentence={s.sentence}>
-                          {s.text}
-                        </OwnWordsMark>
+                    ownPassages(own).map((passage, p) => (
+                      <blockquote key={`${passage[0]!.turnIndex}-${p}`}>
+                        {passage.map((s, i) => (
+                          <span key={`${s.sentence}-${i}`}>
+                            <OwnWordsMark turn={s.turnIndex} sentence={s.sentence}>
+                              {s.text}
+                            </OwnWordsMark>{" "}
+                          </span>
+                        ))}
                       </blockquote>
                     ))
                   ) : (

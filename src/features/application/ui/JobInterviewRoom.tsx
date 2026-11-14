@@ -362,12 +362,6 @@ export function JobInterviewRoom(props: { initial: JobInterviewInitial; voiceCon
                 {m.roomActionFailed}
               </p>
             ) : null}
-            {interview.ended ? (
-              <div className="we-ap-ended" data-testid="apply-ended">
-                <b>{m.roomEndedTitle}</b>
-                <span>{m.roomEndedBody}</span>
-              </div>
-            ) : null}
             {voiceOn ? (
               <>
                 <span className="we-sr-only" aria-hidden="true" data-testid="voice-status">
@@ -379,7 +373,8 @@ export function JobInterviewRoom(props: { initial: JobInterviewInitial; voiceCon
               </>
             ) : null}
             {interview.ended ? (
-              <div className="we-ap-to-review">
+              // The interviewer's closing line above already says what comes next: the button is enough.
+              <div className="we-ap-to-review" data-testid="apply-ended">
                 <Button variant="primary" size="lg" data-testid="apply-to-review" onClick={() => router.refresh()}>
                   {m.roomToReview}
                 </Button>

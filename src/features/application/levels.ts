@@ -33,6 +33,28 @@ export const LEVEL_ANCHORS: Record<UiLang, readonly [string, string, string, str
   ],
 };
 
+/** The same anchors as the person reads them on their own result: said to them, not about them. */
+export const LEVEL_ANCHORS_OWN: Record<UiLang, readonly [string, string, string, string]> = {
+  en: [
+    "Nothing in your answers speaks to this requirement.",
+    "You say you have this, without an example from your own work.",
+    "A concrete example from your own work that involves this.",
+    "A concrete example from your own work, with what you did and what came of it, in a setting like the one the ad describes.",
+  ],
+  fi: [
+    "Vastauksissasi ei puhuttu tästä vaatimuksesta.",
+    "Kerrot osaavasi tämän, mutta ilman esimerkkiä omasta työstäsi.",
+    "Konkreettinen esimerkki omasta työstäsi, johon tämä liittyy.",
+    "Konkreettinen esimerkki omasta työstäsi: mitä teit ja mitä siitä seurasi, ilmoitusta vastaavassa ympäristössä.",
+  ],
+  sv: [
+    "Inget i dina svar handlar om det här kravet.",
+    "Du säger att du kan detta, men utan ett exempel från ditt eget arbete.",
+    "Ett konkret exempel från ditt eget arbete där detta ingår.",
+    "Ett konkret exempel från ditt eget arbete: vad du gjorde och vad det ledde till, i en miljö som liknar annonsens.",
+  ],
+};
+
 /** The reason code writes for a level when the model's reason failed a check. */
 export const CODE_REASONS: readonly [LocalText, LocalText, LocalText, LocalText] = [
   {

@@ -6,12 +6,12 @@ import type { ApplicationTurn, UiLang } from "@/contracts";
 import { I18nProvider } from "@/lib/i18n/client";
 import type { OwnApplication } from "../engine";
 import type { ApplyJob } from "../requirements";
-import { LEVEL_ANCHORS, LEVEL_NAMES } from "../levels";
+import { LEVEL_ANCHORS_OWN, LEVEL_NAMES } from "../levels";
 import { applyMessages } from "../messages-talent";
 import { ApplicationGone, ApplyJobsList, jobAction } from "./ApplyJobsView";
 import { ApplyStart, canStartApplication, startRequest } from "./ApplyStart";
 import { ApplicationReview, ApplicationSent, reviewEntries, standingAnswers } from "./ApplicationReview";
-import { ApplicationResult, levelText, ownSentences } from "./ApplicationResult";
+import { ApplicationResult, levelText, ownPassages, ownSentences } from "./ApplicationResult";
 import { JobInterviewRoom, JobRoomChromeProvider, JobRoomProgress, JobRoomStopButton, jobMascotState, notedSentences, questionNumber } from "./JobInterviewRoom";
 
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push: () => {}, refresh: () => {} }) }));
@@ -313,7 +313,8 @@ describe("the result", () => {
     expect(html).toContain('data-testid="apply-result"');
     expect(html).toMatch(/data-testid="apply-rating"[^>]*data-requirement-id="r1"[^>]*data-level="2"|data-testid="apply-rating"[^>]*data-level="2"/);
     expect(html).toContain(LEVEL_NAMES[lang][2]);
-    expect(html).toContain(LEVEL_ANCHORS[lang][2].replace(/'/g, "&#x27;"));
+    // Said to the person, not about them.
+    expect(html).toContain(LEVEL_ANCHORS_OWN[lang][2].replace(/'/g, "&#x27;"));
     expect(html).toContain(LEVEL_NAMES[lang][0]);
     expect(html).toContain(m.resultWrittenByAi);
     expect(html).toContain("we-ai-mini");
@@ -337,8 +338,23 @@ describe("the result", () => {
     expect(html).toContain('data-testid="apply-points"');
   });
 
+  it("puts the pieces of one answer together again and keeps different answers apart", () => {
+    const piece = (turnIndex: number, sentence: number) => ({ turnIndex, sentence, text: `t${turnIndex}s${sentence}` });
+    expect(ownPassages([piece(1, 0), piece(1, 1), piece(3, 0), piece(1, 2)]).map((p) => p.map((s) => s.text))).toEqual([["t1s0", "t1s1"], ["t3s0"], ["t1s2"]]);
+    expect(ownPassages([])).toEqual([]);
+  });
+
+  it("says once, above the list, that the companies are demo companies when all of them are", () => {
+    const all = render(createElement(ApplyJobsList, { jobs: [job(), job({ jobId: "job-2" })] }));
+    expect(all.match(/data-testid="masked-banner"/g)).toHaveLength(1);
+    expect(all).toContain(applyMessages.en.maskedTextAll.replace(/'/g, "&#x27;"));
+    const one = render(createElement(ApplyJobsList, { jobs: [job()] }));
+    expect(one).toContain(applyMessages.en.maskedText.replace(/'/g, "&#x27;"));
+  });
+
   it("names a level only by the written scale", () => {
-    expect(levelText(3, "en")).toEqual({ name: LEVEL_NAMES.en[3], anchor: LEVEL_ANCHORS.en[3] });
+    expect(levelText(3, "en")).toEqual({ name: LEVEL_NAMES.en[3], anchor: LEVEL_ANCHORS_OWN.en[3] });
+    expect(LEVEL_ANCHORS_OWN.en.join(" ")).not.toMatch(/the person|their own/);
     expect(levelText(7 as never, "en").name).toBe(LEVEL_NAMES.en[3]);
   });
 });
