@@ -252,6 +252,12 @@ button.we-chip:hover { border-color: var(--ink); }
 .we-iv-line .we-who { display: block; font: 700 12px/1 var(--font-body); letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted-ink); margin-bottom: 12px; }
 .we-iv-line.we-long { font-size: 25px; }
 .we-iv-line .we-unspoken { color: var(--muted-ink); }
+/* A long turn: the lead-in is quieter body text, the question below it keeps the big type. */
+.we-iv-line .we-iv-lead { display: block; max-width: 600px; margin: 0 auto 14px; font: 400 18px/1.5 var(--font-body); letter-spacing: 0; color: var(--muted-ink); }
+.we-iv-line .we-iv-question { display: block; }
+/* While it is being spoken, spoken words are ink and the rest muted, in the lead-in too. */
+.we-iv-line[data-speaking] .we-iv-lead { color: var(--ink); }
+.we-presenter .we-iv-line .we-iv-lead { font-size: 22px; max-width: 760px; }
 
 /* the words box: live caption while listening, the last answer with its marked sentences after */
 .we-words {
@@ -263,8 +269,9 @@ button.we-chip:hover { border-color: var(--ink); }
 .we-words .we-who em { font-style: normal; font-weight: 600; letter-spacing: 0; text-transform: none; font-size: 13px; color: var(--muted-ink); }
 .we-words.we-live { background: var(--mint-soft); border: 2px solid var(--mint); }
 .we-words.we-live .we-who { color: var(--pine); }
-.we-words.we-said { border: 2px solid var(--pine); }
-.we-words.we-empty { border-style: dashed; color: var(--muted-ink); font-size: 16px; display: flex; align-items: center; }
+.we-words.we-said { border: 2px solid var(--pine); box-shadow: 0 3px 0 rgba(14, 94, 85, 0.12); animation: we-said-in 260ms ease-out both; }
+@keyframes we-said-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.we-words.we-empty { border-style: dashed; color: var(--muted-ink); font-size: 16px; display: flex; align-items: center; justify-content: center; text-align: center; text-wrap: balance; }
 .we-words .we-caret { display: inline-block; width: 2px; height: 1.1em; background: var(--pine); vertical-align: -3px; margin-left: 2px; animation: we-blink 1s steps(2) infinite; }
 @keyframes we-blink { 50% { opacity: 0; } }
 
@@ -296,10 +303,17 @@ button.we-chip:hover { border-color: var(--ink); }
   height: 72px; display: flex; align-items: center; gap: 8px;
   background: var(--paper); border: 2px solid #8e8574; border-radius: var(--r-pill); padding: 0 8px 0 22px;
 }
-.we-type-box:focus-within { border-color: var(--pine); box-shadow: 0 0 0 3px rgba(14, 94, 85, 0.15); }
+.we-type-box:focus-within { border-color: var(--pine); box-shadow: 0 0 0 4px rgba(14, 94, 85, 0.2); }
 .we-type-box input { flex: 1; min-width: 0; border: 0; background: transparent; font-size: 17px; outline: none; height: 100%; }
+/* The pill shows focus (focus-within above); the kit's square focus ring on the inner input looked like a box inside it. */
+.we-type-box input:focus, .we-type-box input:focus-visible { outline: none; box-shadow: none; border-radius: 0; }
 .we-type-box input::placeholder { color: var(--faint); }
 .we-type-box .we-btn { min-height: 52px; padding: 0 14px; box-shadow: none; }
+/* While the talk button is held, the field shows the words being heard: same place the person types, a listening look. */
+.we-type-box.we-listening { background: var(--mint-soft); border-color: var(--mint); animation: we-listen-ring 1.6s ease-in-out infinite; }
+.we-type-box.we-listening input { color: var(--pine); cursor: default; }
+.we-type-box.we-listening input::placeholder { color: var(--pine); opacity: 0.75; }
+@keyframes we-listen-ring { 0%, 100% { box-shadow: 0 0 0 0 rgba(14, 94, 85, 0.18); } 50% { box-shadow: 0 0 0 5px rgba(14, 94, 85, 0.12); } }
 
 .we-iv-hints { margin-top: 12px; display: flex; justify-content: space-between; gap: 16px; font-size: 14px; color: var(--muted-ink); }
 .we-iv-hints button { background: none; border: 0; padding: 0; color: var(--pine); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
@@ -809,6 +823,7 @@ button.we-chip:hover { border-color: var(--ink); }
   .we-iv-line { font-size: 22px; margin-top: 26px; min-height: 0; }
   .we-iv-line.we-long { font-size: 19px; }
   .we-iv-line .we-who { margin-bottom: 8px; }
+  .we-iv-line .we-iv-lead { font-size: 15.5px; margin-bottom: 10px; }
   .we-words { font-size: 16px; margin-top: 12px; padding: 10px 14px 12px; min-height: 0; }
   .we-words .we-who em { display: none; }
   .we-words.we-empty { font-size: 15px; }
@@ -872,6 +887,7 @@ button.we-chip:hover { border-color: var(--ink); }
   .we-stage[data-state="thinking"] .we-ring-base { animation: none; }
   .we-stage[data-state="speaking"] .we-waves path { animation: none; opacity: 1; }
   .we-words .we-caret { animation: none; }
+  .we-type-box.we-listening { animation: none; box-shadow: 0 0 0 3px rgba(14, 94, 85, 0.15); }
   .we-chip.we-fresh { outline: 2px solid var(--sun); outline-offset: 2px; }
 }
 .we-rail .we-q-actions { grid-template-columns: 1fr; }

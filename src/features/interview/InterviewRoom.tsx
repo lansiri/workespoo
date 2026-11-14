@@ -128,6 +128,8 @@ export function InterviewRoom(props: {
   const speaking = voiceOn && voice.status === "speaking";
   const listening = voiceOn && voice.status === "listening";
   const transcribing = voiceOn && voice.status === "transcribing";
+  // While the talk button is held (and until the recogniser is done), the input field shows the words heard.
+  const hearing = listening || transcribing;
 
   /* what the top bar shows, and what its Stop button does */
   const asked = interview.transcript.filter((l) => l.role === "interviewer" && l.index >= 0).length;
@@ -250,7 +252,6 @@ export function InterviewRoom(props: {
     ? m.badgeFinished
     : { idle: m.badgeIdle, listening: m.badgeListening, thinking: m.badgeThinking, speaking: m.badgeSpeaking }[mascotState];
   const talkState = interview.ended ? "done" : listening ? "listening" : mascotState === "thinking" ? "disabled" : "ready";
-  const typedLive = canAnswer && draft.trim() !== "";
 
   const voiceProblem = interview.ended
     ? null
@@ -310,14 +311,10 @@ export function InterviewRoom(props: {
                 {e.modelSlow}
               </p>
             ) : null}
-            {listening || transcribing || typedLive ? (
+            {/* The middle shows an answer once it is sent; typing and speaking stay in the input field. */}
+            {lastAnswer ? (
               <WordsBox
-                mode="live"
-                label={m.wordsLive}
-                text={listening || transcribing ? voice.partial || "…" : draft}
-              />
-            ) : lastAnswer ? (
-              <WordsBox
+                key={answers.length}
                 mode="said"
                 label={fmt(m.wordsSaid, { n: answers.length })}
                 hint={m.wordsHint}
@@ -345,6 +342,9 @@ export function InterviewRoom(props: {
                 <span className="we-sr-only" aria-hidden="true" data-testid="voice-status">
                   {voice.status}
                 </span>
+                <span className="we-sr-only" aria-hidden="true" data-testid="voice-partial">
+                  {voice.partial}
+                </span>
                 <span className="we-sr-only" aria-hidden="true" data-testid="voice-final">
                   {voice.finalTranscript}
                 </span>
@@ -352,7 +352,7 @@ export function InterviewRoom(props: {
             ) : null}
             <InterviewControls
               done={interview.ended}
-              typing={typing}
+              typing={typing || hearing}
               jobsMini={<JobsMini count={jobCount || undefined} delta={delta} deltaLabel={deltaLabel} text={jobsText} locale={uiLang} />}
               talk={
                 interview.ended ? (
@@ -375,10 +375,12 @@ export function InterviewRoom(props: {
               orLabel={m.orLabel}
               typeBox={
                 <TypeAnswer
-                  value={draft}
+                  value={hearing ? voice.partial : draft}
                   onChange={setDraft}
                   onSend={submit}
                   sending={interview.sending}
+                  listening={hearing}
+                  listeningPlaceholder={m.badgeListening}
                   placeholder={c.textPlaceholder}
                   sendLabel={c.send}
                   sendingLabel={m.sending}
