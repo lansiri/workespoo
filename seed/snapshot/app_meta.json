@@ -1,5 +1,81 @@
 [
  {
+  "key": "application:questions:nc_uyb94repx9n8:1:en",
+  "value": {
+   "questions": [
+    {
+     "wording": "model",
+     "question": "Describe a time you worked with an ERP system, software development, or technical systems development. What did you do yourself?",
+     "requirementId": "req_163d0uspvctx"
+    },
+    {
+     "wording": "model",
+     "question": "Tell us about a time you developed a process while considering the wider system around it. How did you map the overall system, and what did you change?",
+     "requirementId": "req_vc43ywe040dp"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a technical problem you took the initiative to solve without waiting for direction. What steps did you take yourself?",
+     "requirementId": "req_oecq8qidjrk6"
+    },
+    {
+     "wording": "model",
+     "question": "Tell us about work you did that produced concrete results in production or daily work. What did you do, and what changed for the people using it?",
+     "requirementId": "req_btmdjd5g9hba"
+    },
+    {
+     "wording": "model",
+     "question": "How have you used Finnish at work? Describe a situation where you discussed or explained technical matters in Finnish.",
+     "requirementId": "req_z9itud19d7oo"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a time you used English technical material, such as documentation, in your work. What did you do with it?",
+     "requirementId": "req_h94tlc7y0wll"
+    }
+   ]
+  },
+  "updatedAt": "2026-11-14T12:46:32.604Z"
+ },
+ {
+  "key": "application:questions:nc_uyb94repx9n8:1:fi",
+  "value": {
+   "questions": [
+    {
+     "wording": "model",
+     "question": "Kerro työstä, jossa olet kehittänyt ERP-järjestelmää, ohjelmistoa tai muuta teknistä järjestelmää. Mitä teit itse?",
+     "requirementId": "req_163d0uspvctx"
+    },
+    {
+     "wording": "model",
+     "question": "Kerro tilanteesta, jossa hahmotit järjestelmäkokonaisuuden ja kehitit sen prosesseja. Mitä muutoksia teit itse?",
+     "requirementId": "req_vc43ywe040dp"
+    },
+    {
+     "wording": "model",
+     "question": "Kerro tilanteesta, jossa ratkaisit teknisen ongelman oma-aloitteisesti. Mitä teit itse ongelman selvittämiseksi ja korjaamiseksi?",
+     "requirementId": "req_oecq8qidjrk6"
+    },
+    {
+     "wording": "model",
+     "question": "Kerro työstäsi, jonka tulokset näkyivät konkreettisesti tuotannossa tai päivittäisessä työssä. Mitä teit itse ja mikä muuttui?",
+     "requirementId": "req_btmdjd5g9hba"
+    },
+    {
+     "wording": "model",
+     "question": "Kerro, miten olet käyttänyt suomea työssäsi, esimerkiksi teknisissä keskusteluissa tai dokumentoinnissa. Millaisissa tilanteissa olet käyttänyt sitä?",
+     "requirementId": "req_z9itud19d7oo"
+    },
+    {
+     "wording": "model",
+     "question": "Kerro tilanteesta, jossa käytit englanninkielistä teknistä materiaalia työssäsi. Mitä materiaalia käytit ja mitä teit sen avulla?",
+     "requirementId": "req_h94tlc7y0wll"
+    }
+   ]
+  },
+  "updatedAt": "2026-11-14T12:49:01.721Z"
+ },
+ {
   "key": "seed:demo-companies",
   "value": [
    {
@@ -86,5 +162,385 @@
    }
   ],
   "updatedAt": "2026-11-14T00:37:37.456Z"
+ },
+ {
+  "key": "application:questions:nc_ncivfnx96sx2:2:en",
+  "value": {
+   "questions": [
+    {
+     "wording": "model",
+     "question": "Tell us about a time you used Excel in your work. What did you build or do yourself, and which Excel features did you use?",
+     "requirementId": "req_nu7vil3es3h5"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a time you learned a new skill that took you beyond routine bookkeeping. What did you learn, and how did you use it in your work?",
+     "requirementId": "req_qcanepviyy3z"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a customer service situation where you had to explain something clearly and keep the communication friendly. What did you say and do?",
+     "requirementId": "req_mk18fxtn7em3"
+    },
+    {
+     "wording": "model",
+     "question": "Tell us about a customer question you could not answer immediately. How did you investigate it, and what did you do to follow the issue through to completion?",
+     "requirementId": "req_gm3y4y93z6sf"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a time your accuracy and responsibility mattered in bookkeeping or another work task. What checks did you make, and what did you personally take responsibility for?",
+     "requirementId": "req_mdo3oj1164xh"
+    },
+    {
+     "wording": "model",
+     "question": "Tell us about a workday when you took on varied tasks and had to switch between them. What were the tasks, and how did you handle the changes?",
+     "requirementId": "req_5kymalfofubo"
+    }
+   ]
+  },
+  "updatedAt": "2026-11-14T12:53:20.259Z"
+ },
+ {
+  "key": "application:questions:nc_jgpgnh8d4c69:1:en",
+  "value": {
+   "questions": [
+    {
+     "wording": "model",
+     "question": "Describe your hands-on full-stack development work over the past few years, focusing on one project. What did you personally build on the frontend and backend?",
+     "requirementId": "req_idlsep5jn7n3"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a project where you used Node.js or TypeScript. What did you build yourself, and how have you used or explored Python, C#, or Java in your work?",
+     "requirementId": "req_sroja6gd05ti"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a time you developed a backend API within a client-server architecture and integrated it with another system. What did you implement yourself?",
+     "requirementId": "req_dctd5mz312ba"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a project where you used AWS or Azure, version control, and a CI/CD pipeline. What did you do yourself, and how did you apply DevSecOps practices?",
+     "requirementId": "req_s2w8bqycgpvg"
+    },
+    {
+     "wording": "model",
+     "question": "Describe how you have used spoken and written English at work, including one example of a discussion and one example of documentation or another written deliverable.",
+     "requirementId": "req_eod39fbk2m14"
+    },
+    {
+     "wording": "model",
+     "question": "Tell me about your university degree in computer science, engineering, mathematics, or a related field, and describe one project you completed during those studies.",
+     "requirementId": "req_4p2mfm8c6h8f"
+    }
+   ]
+  },
+  "updatedAt": "2026-11-14T12:53:21.032Z"
+ },
+ {
+  "key": "application:questions:nc_ncivfnx96sx2:2:sv",
+  "value": {
+   "questions": [
+    {
+     "wording": "model",
+     "question": "Beskriv ett arbete där du använde Excel regelbundet. Vilka uppgifter utförde du själv, och vilka funktioner använde du?",
+     "requirementId": "req_nu7vil3es3h5"
+    },
+    {
+     "wording": "model",
+     "question": "Berätta om en gång då du lärde dig något nytt utanför den vanliga bokföringen. Vad gjorde du för att utveckla den nya kunskapen?",
+     "requirementId": "req_qcanepviyy3z"
+    },
+    {
+     "wording": "model",
+     "question": "Beskriv ett kundärende där du behövde förklara något tydligt och vänligt. Hur kommunicerade du med kunden?",
+     "requirementId": "req_mk18fxtn7em3"
+    },
+    {
+     "wording": "model",
+     "question": "Berätta om en kundfråga du inte kunde svara på direkt. Hur undersökte du saken och följde upp den tills den var helt löst?",
+     "requirementId": "req_gm3y4y93z6sf"
+    },
+    {
+     "wording": "model",
+     "question": "Beskriv en bokföringsuppgift där noggrannhet och ansvar var särskilt viktiga. Vad gjorde du själv för att kontrollera arbetet och slutföra uppgiften?",
+     "requirementId": "req_mdo3oj1164xh"
+    },
+    {
+     "wording": "model",
+     "question": "Berätta om en arbetsdag då du tog dig an flera olika uppgifter och behövde växla mellan dem. Vad gjorde du själv?",
+     "requirementId": "req_5kymalfofubo"
+    }
+   ]
+  },
+  "updatedAt": "2026-11-14T12:54:38.511Z"
+ },
+ {
+  "key": "application:questions:nc_ncivfnx96sx2:2:fi",
+  "value": {
+   "questions": [
+    {
+     "wording": "model",
+     "question": "Kerro työtehtävästä, jossa käytit Exceliä. Mitä teit itse taulukolla tai tiedoilla?",
+     "requirementId": "req_nu7vil3es3h5"
+    },
+    {
+     "wording": "model",
+     "question": "Kerro kerrasta, jolloin opit uuden asian tavanomaisen kirjanpidon ulkopuolella. Mitä teit itse oppiaksesi ja ottaaksesi uuden tehtävän haltuun?",
+     "requirementId": "req_qcanepviyy3z"
+    },
+    {
+     "wording": "model",
+     "question": "Kerro asiakaspalvelutilanteesta, jossa selkeytit asiakkaalle vaikeaa asiaa. Mitä sanoit tai teit viestiäksesi selkeästi ja ystävällisesti?",
+     "requirementId": "req_mk18fxtn7em3"
+    },
+    {
+     "wording": "model",
+     "question": "Kerro asiakkaan kysymyksestä, johon et tiennyt vastausta heti. Miten selvitit asian ja varmistit, että se hoidettiin loppuun asti?",
+     "requirementId": "req_gm3y4y93z6sf"
+    },
+    {
+     "wording": "model",
+     "question": "Kerro kirjanpitoon liittyvästä tehtävästä, jossa tarkkuus ja vastuullisuus olivat tärkeitä. Miten tarkistit oman työsi ja hoidit sen loppuun?",
+     "requirementId": "req_mdo3oj1164xh"
+    },
+    {
+     "wording": "model",
+     "question": "Kerro työpäivästä, jona otit rohkeasti haltuun erilaisia tehtäviä. Miten vaihdoit tehtävästä toiseen ja pidit työt hallinnassa?",
+     "requirementId": "req_5kymalfofubo"
+    }
+   ]
+  },
+  "updatedAt": "2026-11-14T12:57:21.098Z"
+ },
+ {
+  "key": "application:questions:nc_nyapvx03ehau:2:fi",
+  "value": {
+   "questions": [
+    {
+     "wording": "model",
+     "question": "Kerro sosiaali- ja terveysalan asiakastyöstä, jota olet tehnyt. Mikä oli oma roolisi ja mitä teit asiakkaan hyväksi?",
+     "requirementId": "req_a3u97efwsicu"
+    },
+    {
+     "wording": "model",
+     "question": "Kerro, miten olet arvioinut asiakkaan palvelutarvetta kotihoidossa tai kotipalveluissa. Mitä teit itse arvioinnissa ja työn koordinoinnissa?",
+     "requirementId": "req_iye900ivhxm7"
+    },
+    {
+     "wording": "model",
+     "question": "Kerro tilanteesta, jossa teit asiakastyötä itsenäisesti ja vastasit sen etenemisestä. Mitä päätöksiä teit itse ja miten varmistit työn valmistumisen?",
+     "requirementId": "req_d1lepm7m4dn6"
+    },
+    {
+     "wording": "model",
+     "question": "Kerro tilanteesta, jossa organisoit asiakastyötä ja teit yhteistyötä useiden ihmisten kanssa. Mitä teit itse, jotta yhteistyö ja työnjako sujuivat?",
+     "requirementId": "req_fu7ol3ldv3z0"
+    },
+    {
+     "wording": "model",
+     "question": "Kerro asiakastyön tilanteesta, jossa etsit ratkaisun asiakkaan tarpeeseen. Mitä teit itse ja miten ratkaisu auttoi asiakasta?",
+     "requirementId": "req_kje7kdacxb9o"
+    },
+    {
+     "wording": "model",
+     "question": "Kerro, miten olet osallistunut palveluiden myyntiin, markkinointiin tai asiakashankintaan. Mitä teit itse ja mitä siitä seurasi?",
+     "requirementId": "req_4jcimh6966ie"
+    }
+   ]
+  },
+  "updatedAt": "2026-11-14T12:59:11.025Z"
+ },
+ {
+  "key": "application:questions:nc_nyapvx03ehau:2:en",
+  "value": {
+   "questions": [
+    {
+     "wording": "model",
+     "question": "Describe a time you worked directly with customers in social and health care. What were your own responsibilities, and what customer work did you carry out?",
+     "requirementId": "req_a3u97efwsicu"
+    },
+    {
+     "wording": "model",
+     "question": "Tell us about your experience with home care, service needs assessment, work coordination, or client responsibility. Describe one example and what you did yourself.",
+     "requirementId": "req_iye900ivhxm7"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a time you managed your client work independently and responsibly. What decisions did you make, and how did you make sure your tasks were completed?",
+     "requirementId": "req_d1lepm7m4dn6"
+    },
+    {
+     "wording": "model",
+     "question": "Give an example of a time you organised client services while working with customers, relatives, or other professionals. How did you communicate and organise the work?",
+     "requirementId": "req_fu7ol3ldv3z0"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a time you solved a customer's problem in a customer-oriented and solution-focused way. What was the situation, and what did you do?",
+     "requirementId": "req_kje7kdacxb9o"
+    },
+    {
+     "wording": "model",
+     "question": "Tell us about a time you took part in service sales, marketing, or customer acquisition. What did you do yourself, and what interested you about the work?",
+     "requirementId": "req_4jcimh6966ie"
+    }
+   ]
+  },
+  "updatedAt": "2026-11-14T13:00:38.242Z"
+ },
+ {
+  "key": "application:questions:nc_pocgnfgt3lvr:2:en",
+  "value": {
+   "questions": [
+    {
+     "wording": "model",
+     "question": "Describe a time you used a new technology to develop a product or technical solution in a customer project. What did you do yourself?",
+     "requirementId": "req_uo60yhgvrz2j"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a mechanical design problem you identified and moved forward with customers or colleagues. How did you investigate it, and what practical solution did you deliver?",
+     "requirementId": "req_c5dl2h0h1v1r"
+    },
+    {
+     "wording": "model",
+     "question": "Describe your technical higher education, such as a mechanical engineering degree, and one design project you completed during your studies.",
+     "requirementId": "req_zr4jpxovdbas"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a mechanical design you worked on in a product development or industrial setting. What was your own role from concept to finished design?",
+     "requirementId": "req_fx5vo7d2n82n"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a project where you used 3D CAD and a PDM/PLM system, such as SolidWorks or NX. What did you model, and how did you manage the design data?",
+     "requirementId": "req_2szmrmaz1znc"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a product structure you designed. How did you choose its materials and manufacturing methods, and what did you change based on those choices?",
+     "requirementId": "req_yf8ljim3ly9j"
+    }
+   ]
+  },
+  "updatedAt": "2026-11-14T13:01:32.528Z"
+ },
+ {
+  "key": "application:questions:nc_tt1iyhhlyo8p:2:en",
+  "value": {
+   "questions": [
+    {
+     "wording": "model",
+     "question": "Describe your work as a head chef or shift supervisor, including how long you held each role and the kitchen duties you handled yourself.",
+     "requirementId": "req_dsjig5d8wj1l"
+    },
+    {
+     "wording": "model",
+     "question": "Tell us about a time you independently ran a kitchen and led a small team. What did you do yourself during a shift?",
+     "requirementId": "req_js2s0f9snmb1"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a recent period when most of your working time was spent on hands-on kitchen work rather than at a laptop. What cooking or preparation tasks did you do yourself?",
+     "requirementId": "req_emc30rjjfhov"
+    },
+    {
+     "wording": "model",
+     "question": "Tell us about a lunch dish or menu you made from scratch using fresh ingredients. What did you prepare yourself, and how did you make it tasty?",
+     "requirementId": "req_y91umzqxejz4"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a time you developed someone's kitchen skills and inspired your team. What did you do yourself, and what changed?",
+     "requirementId": "req_naip0vxuc7r4"
+    },
+    {
+     "wording": "model",
+     "question": "Tell us about a time you used your broad kitchen expertise to improve both the business and your team. What did you change, and what was the result?",
+     "requirementId": "req_uadqqzwgvr7y"
+    }
+   ]
+  },
+  "updatedAt": "2026-11-14T12:56:24.454Z"
+ },
+ {
+  "key": "application:questions:nc_bfn8y6d4liki:2:en",
+  "value": {
+   "questions": [
+    {
+     "wording": "model",
+     "question": "What engineering field did you study, and which project from your studies or work best shows your background in that field?",
+     "requirementId": "req_jtep8j6prptw"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a project where you worked with Siemens PLCs and TIA Portal. What did you do yourself?",
+     "requirementId": "req_84iuqbj54jo4"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a project where you did PLC programming and worked with HMI/SCADA or industrial communication networks. What was your role?",
+     "requirementId": "req_m5h2ekbba540"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a time you used EPLAN for electrical or control-system documentation. What documents did you produce or update yourself?",
+     "requirementId": "req_hw8gko0clqsw"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a project where you handled testing, commissioning, troubleshooting, or system integration. What did you do yourself, and what problem did you resolve?",
+     "requirementId": "req_53duznu77uz9"
+    },
+    {
+     "wording": "model",
+     "question": "Describe your work on an electrical automation or control system. What parts of the system did you design, configure, or maintain yourself?",
+     "requirementId": "req_umlxp1gbhc6o"
+    }
+   ]
+  },
+  "updatedAt": "2026-11-14T12:57:30.381Z"
+ },
+ {
+  "key": "application:questions:nc_hvpjp4wzxq8s:2:en",
+  "value": {
+   "questions": [
+    {
+     "wording": "model",
+     "question": "Tell us about a fast-moving project where you had to stay solution-oriented. What did you do yourself to keep the work moving?",
+     "requirementId": "req_7a8nasiy2om0"
+    },
+    {
+     "wording": "model",
+     "question": "What is your B.Sc. or M.Sc. degree in, and how have you applied your Electrical Engineering or related studies in your work?",
+     "requirementId": "req_4pngjc325jv2"
+    },
+    {
+     "wording": "model",
+     "question": "Describe your work on electrical distribution systems within an infrastructure project. What parts did you handle yourself?",
+     "requirementId": "req_u90r54ott79c"
+    },
+    {
+     "wording": "model",
+     "question": "Tell us about a time you reviewed and evaluated a technical solution and its documentation. What did you examine, and what conclusions did you reach?",
+     "requirementId": "req_40u57xumdyer"
+    },
+    {
+     "wording": "model",
+     "question": "Describe a difficult technical problem you solved through analysis. What steps did you take, and what was the result?",
+     "requirementId": "req_nu9bv4o7k8b9"
+    },
+    {
+     "wording": "model",
+     "question": "Tell us about a project where you worked with multiple stakeholders. How did you communicate technical information and handle differing views?",
+     "requirementId": "req_dkjs0lgbeyux"
+    }
+   ]
+  },
+  "updatedAt": "2026-11-14T13:02:43.406Z"
  }
 ]
