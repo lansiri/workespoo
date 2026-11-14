@@ -33,6 +33,25 @@ Updated by the lead. Times are Helsinki time.
 | On the live site, the model calls of that run | The rating: one call, 19.8 s, started when the application was sent (the queued job that backs it up found it done and made no second call). Deciding on a follow-up: 0.7 to 1.1 s. No call to word the questions: they came from the snapshot, so the person was asked what the simulated applicants were asked |
 | The demo world's ratings | 107 of the 108 reasons are in the model's own words; one was replaced by the code's sentence. When the four applications to the pitch company's job were rated a second time, 2 of their 24 levels moved, each by one level: a rating is not perfectly steady from run to run, which is one reason an organiser checks the list |
 
+### The CV upload as a PDF (a teammate's pull request, merged on GitHub at 16:07)
+
+On the consent screen a person can now upload their CV as a PDF as well as paste it. The server reads the text layer, removes personal details by fixed rules and shows the result in the CV box for the person to check; as before, a CV only chooses up to two interview questions and is not kept. The pull request passed its own tests and merged into main without conflicts. It was reviewed before it went to the live site, and that review changed it:
+
+| Found (each reproduced) | What was done |
+|---|---|
+| One 2 MB PDF holding a single very long word froze the whole web process for about an hour: the text was cut to length only after the anonymiser had run, and one of its patterns took quadratic time | The text is cut to 20,000 characters first; the patterns were rewritten to run in linear time (also the e-mail pattern in `src/lib/redact.ts`) |
+| A compressed stream in a small PDF expands without limit inside pdf.js, past the web container's memory | The PDF is read in a short-lived child process, never in the web process: 10 s deadline, 256 MiB memory limit watched by the parent, lowest priority, an answer size limit, each ending in a kill and "unreadable"; it gets none of the server's credentials |
+| A parse that ran past its deadline kept its slot and the processor; no limit per client | The child is killed at the deadline; two PDFs at a time; 20 uploads a minute per client address |
+| Language skills were removed for everyone but Finnish speakers ("Languages: English, Swedish" came out empty) while "Finnish: native" passed | Names of languages stay; the statement of a first language goes |
+| Ages in short forms, health, religion, gender, military service, family and nationality words in Finnish and Swedish reached the model; so did names in prose, in handles and in reference lines | Added, with a test per case in three languages; work history is kept ("nurse on a diabetes ward" stays) |
+| A hostile CV could make the interviewer ask for contact details, identity numbers, bank details, passwords, a faith or a diagnosis | The questions a CV may lead to are checked much more strictly |
+| The screen and "How this works" said the name and personal details "are removed"; uploading replaced what the person had typed | The text says the rules try and can miss, and asks the person to check; an upload is added after typed text, never over it |
+| The first CV after a server start stalled the server for about two seconds (the patterns being compiled) | The server sends itself one warm-up request when it starts |
+
+Checked afterwards, on the server's Node version (22, in a container): 662 tests of the interview feature pass; hostile PDFs sent through the same code path each answered in about a second with the server's event loop stalled for at most 17 ms, and a stream expanding to 900 MB was killed and answered "unreadable" in under 3 s (`scripts/lab/cv-attack.ts`). `npm run check`: 2,174 passing. Both journeys pass on a local production build. Each fix was itself reviewed by a second reader who tried to defeat it, and corrected again.
+
+Not checked: a real person's real CV (the tests use made-up ones), and a PDF on a phone.
+
 ### Not done
 
 1. Done at 15:37: the public page `/how-it-works` now limits "does not score" to the conversation and has a section on the job interview, in three languages; deployed; `job-interview`, `golden-path` and `voice` passed on the live site.
