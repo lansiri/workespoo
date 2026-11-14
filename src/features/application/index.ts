@@ -36,6 +36,7 @@ export {
   type ApplicationEvidence,
   type CompanyApplicant,
   type CompanyApplicants,
+  type OwnPosition,
   type RankedApplicant,
   type RankedList,
 } from "./rank";

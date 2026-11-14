@@ -556,12 +556,30 @@ export async function askToMeetApplicant(db: Db, args: { token: string; applicat
   return createIntroRequest(db, { companyId: co.id, talentId: app.talentId, needCardId: card?.id ?? null, pickId: null, now: args.now });
 }
 
+/** A person's place on the list a company sees, with whether a neighbour is level with them on points. */
+export interface OwnPosition {
+  position: number;
+  of: number;
+  approvedAt: string;
+  /** Which neighbours are within `CLOSE_POINTS` of this person's points. Their points are never given. */
+  levelWith: "above" | "below" | "both" | null;
+}
+
 /** The person's place on the approved list of a job, or null when there is none or they are not on it. */
-export async function ownPosition(db: Db, applicationId: string): Promise<{ position: number; of: number; approvedAt: string } | null> {
+export async function ownPosition(db: Db, applicationId: string): Promise<OwnPosition | null> {
   const [app] = await db.select({ jobId: application.jobId }).from(application).where(eq(application.id, applicationId)).limit(1);
   if (!app) return null;
   const approved = await approvedList(db, app.jobId);
   const mine = approved?.applicants.find((a) => a.applicationId === applicationId);
   if (!approved || !mine) return null;
-  return { position: mine.position, of: approved.applicants.length, approvedAt: approved.published.publishedAt };
+  const at = approved.applicants.indexOf(mine);
+  const close = (other: PublishedApplicant | undefined): boolean => other !== undefined && closeTo(other.points, mine.points) !== null;
+  const above = close(approved.applicants[at - 1]);
+  const below = close(approved.applicants[at + 1]);
+  return {
+    position: mine.position,
+    of: approved.applicants.length,
+    approvedAt: approved.published.publishedAt,
+    levelWith: above && below ? "both" : above ? "above" : below ? "below" : null,
+  };
 }

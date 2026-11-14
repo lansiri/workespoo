@@ -126,7 +126,7 @@ const assessed = (): OwnApplication =>
       ],
     },
     points: { points: 4, maxPoints: 9 },
-    position: { position: 2, of: 5, approvedAt: "2026-11-14T12:00:00Z" },
+    position: { position: 2, of: 5, approvedAt: "2026-11-14T12:00:00Z", levelWith: null },
     submittedAt: "2026-11-14T10:30:00Z",
   });
 
@@ -330,6 +330,18 @@ describe("the result", () => {
   it("the reason follows the page's language", () => {
     expect(render(createElement(ApplicationResult, { application: assessed() }), "fi")).toContain("Vastaus kuvaa päivittäistä trukkityötä.");
     expect(render(createElement(ApplicationResult, { application: assessed() }), "sv")).toContain("Svaret beskriver dagligt truckarbete.");
+  });
+
+  it.each([
+    ["above", "resultLevelAbove"],
+    ["below", "resultLevelBelow"],
+    ["both", "resultLevelBoth"],
+  ] as const)("says when the person's place is level with the neighbour %s", (levelWith, key) => {
+    const application = { ...assessed(), position: { position: 2, of: 5, approvedAt: "2026-11-14T12:00:00Z", levelWith } };
+    const html = render(createElement(ApplicationResult, { application }));
+    expect(html).toContain('data-testid="apply-level-with"');
+    expect(html).toContain(applyMessages.en[key]);
+    expect(render(createElement(ApplicationResult, { application: assessed() }))).not.toContain("apply-level-with");
   });
 
   it("leaves out the position until a list has been approved", () => {

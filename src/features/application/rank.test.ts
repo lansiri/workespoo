@@ -177,6 +177,11 @@ describe("the ranked list", () => {
     ]);
     await approveRanking(db, JOB);
     expect((await applicantsForCompany(db, TOKEN))!.jobs[0].applicants.map((a) => a.closeToAbove)).toEqual([null, 2, 2, null, null]);
+    // The person is told the same about their own place, without anybody's points.
+    expect((await ownPosition(db, "p1"))!.levelWith).toBe("below");
+    expect((await ownPosition(db, "p5"))!.levelWith).toBe("both");
+    expect((await ownPosition(db, "p2"))!.levelWith).toBe("above");
+    expect((await ownPosition(db, "p3"))!.levelWith).toBeNull();
   });
 
   it("keeps a submitted application off the list and counts it as pending", async () => {
@@ -327,7 +332,7 @@ describe("the ranked list", () => {
     expect(await order()).toEqual(["p1", "p3", "p4"]);
     const seen = (await applicantsForCompany(db, TOKEN))!.jobs[0].applicants;
     expect(seen.map((a) => [a.applicationId, a.position])).toEqual([["p1", 1], ["p3", 2], ["p4", 3]]);
-    expect(await ownPosition(db, "p3")).toEqual({ position: 2, of: 3, approvedAt: expect.any(String) });
+    expect(await ownPosition(db, "p3")).toEqual({ position: 2, of: 3, approvedAt: expect.any(String), levelWith: null });
     expect(await ownPosition(db, "p2")).toBeNull();
   });
 

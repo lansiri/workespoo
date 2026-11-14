@@ -141,6 +141,11 @@ export function ApplicationResult({ application }: { application: OwnApplication
         {application.position ? (
           <span data-testid="apply-position">{fmt(m.resultPosition, { n: application.position.position, m: application.position.of })}</span>
         ) : null}
+        {application.position?.levelWith ? (
+          <span className="we-ap-fine" data-testid="apply-level-with">
+            {application.position.levelWith === "both" ? m.resultLevelBoth : application.position.levelWith === "above" ? m.resultLevelAbove : m.resultLevelBelow}
+          </span>
+        ) : null}
       </div>
 
       <p className="we-ap-fine" style={{ marginTop: 20 }}>

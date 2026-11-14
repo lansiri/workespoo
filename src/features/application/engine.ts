@@ -50,7 +50,7 @@ import { ASSESS_KIND, ASSESS_MAX_ATTEMPTS, ASSESS_QUEUE_DELAY_MS } from "./jobs"
 import { bridgeFor, closingLine, deletedLine, openingLine, repairLine, scriptedFollowUp } from "./lines";
 import { buildTurnPrompt, followUpProblem } from "./prompts-interview";
 import { screenAnswerSentence } from "./assess-protected";
-import { applicationPoints, ownPosition } from "./rank";
+import { applicationPoints, ownPosition, type OwnPosition } from "./rank";
 import { currentRequirementKinds, loadApplyContext, loadJobContext } from "./requirements";
 
 /**
@@ -621,7 +621,7 @@ export interface OwnApplication {
   /** Points under the Need Card as it is now. Null until assessed. */
   points: { points: number; maxPoints: number } | null;
   /** The person's place on the list an organiser approved, when they are on it. */
-  position: { position: number; of: number; approvedAt: string } | null;
+  position: OwnPosition | null;
   createdAt: string;
   submittedAt: string | null;
 }
