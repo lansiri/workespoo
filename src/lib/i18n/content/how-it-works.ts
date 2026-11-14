@@ -2,7 +2,9 @@
  * The public "How this works" page, from docs/specs/responsible-ai.md section 7, with one
  * added section that states the EU AI Act timing as cautiously as section 5 of that spec does.
  * Placeholders: `{voice}` (the sentence about the speech service in use) and `{model}` (the model
- * line). Every sentence is true of the product as built (docs/LEAD-DECISIONS.md, 14 Nov 01:30).
+ * line). Every sentence is true of the product as built (docs/LEAD-DECISIONS.md, 14 Nov 01:30), and
+ * the job interview section follows the owner's decision of 14 Nov 12:50 and docs/specs/job-interview.md.
+ * It sits at index 8, after "Limits we know about", so the earlier sections keep their places.
  */
 import type { UiLang } from "@/contracts";
 
@@ -31,7 +33,7 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
       },
       {
         heading: "The AI takes notes. It does not judge.",
-        body: "It does not score you, rate your answers, guess your level or comment on how you speak or feel. It does not ask about your age, gender, background, nationality, religion, health, family, residence permit or native language. If you mention any of these, it is not written down on your card.",
+        body: "In this conversation it does not score you, rate your answers, guess your level or comment on how you speak or feel. It does not ask about your age, gender, background, nationality, religion, health, family, residence permit or native language. If you mention any of these, it is not written down on your card. Only a job interview you choose to take later is rated, and you are told before it starts.",
       },
       {
         heading: "Your words are the evidence",
@@ -51,11 +53,15 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
       },
       {
         heading: "Your data",
-        body: "We do not store audio. {voice} Your text is processed by {model}. A CV, if you paste one, is only used to choose up to two questions and is not kept. Live demo sessions are deleted after 24 hours. You can download your data or delete it at any time.",
+        body: "We do not store audio. {voice} Your text is processed by {model}. A CV, if you paste one, is only used to choose up to two questions and is not kept. Live demo sessions are deleted after 24 hours. You can download your data or delete it at any time, job applications and their ratings included.",
       },
       {
         heading: "Limits we know about",
         body: "Speech recognition is less accurate for some accents. AI models can miss things or describe them differently for different people; that is why you review everything. Some skills have no match in the European ESCO skills list; they stay on your card anyway.",
+      },
+      {
+        heading: "Applying for a job: the one thing that is rated",
+        body: "Once your card is approved, you can choose one job of the event and take a job interview with questions from its ad. You are told beforehand that your answers will be rated and the applicants put in order, and nothing starts until you say yes. Everyone who applies to the job gets the same questions; only a follow-up question can differ. When you send your application, an AI rates the evidence in your answers for each requirement on four levels (No evidence, Stated, Example, Example close to this job) and writes a reason that points to your own sentences. Code, not the AI, then works out the order: points from the levels, with a must-have counting twice as much as a nice-to-have, then the number of must-haves with a concrete example, then who sent first. The AI is never given your name, nickname, interview language or whether you spoke or typed, and a sentence in which you mention your age, origin, first language, religion, family, gender or health is left out of what it reads. An organiser reads the answers, can move a person with a written reason, and approves the list before the company sees anything. The company sees the order, the levels and the reasons, but not your name or your own words unless you both agree to meet. A rating never removes anyone from the list. You see your own levels and reasons, and your place once the list is approved, and you can withdraw, which deletes the application everywhere. The checks that keep personal details from the AI are word lists and can miss an unusual way of saying something. That is why a person reads every list before a company does.",
       },
       {
         heading: "The EU AI Act",
@@ -80,7 +86,7 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
       },
       {
         heading: "Tekoäly tekee muistiinpanoja. Se ei arvioi sinua.",
-        body: "Se ei pisteytä sinua, arvioi vastauksiasi, arvaa osaamisesi tasoa eikä kommentoi sitä, miten puhut tai miltä sinusta tuntuu. Se ei kysy ikääsi, sukupuoltasi, taustaasi, kansalaisuuttasi, uskontoasi, terveyttäsi, perhettäsi, oleskelulupaasi tai äidinkieltäsi. Jos mainitset jonkin näistä, sitä ei kirjata korttiisi.",
+        body: "Tässä keskustelussa se ei pisteytä sinua, arvioi vastauksiasi, arvaa osaamisesi tasoa eikä kommentoi sitä, miten puhut tai miltä sinusta tuntuu. Se ei kysy ikääsi, sukupuoltasi, taustaasi, kansalaisuuttasi, uskontoasi, terveyttäsi, perhettäsi, oleskelulupaasi tai äidinkieltäsi. Jos mainitset jonkin näistä, sitä ei kirjata korttiisi. Vain työhaastattelu, jonka valitset myöhemmin itse, arvioidaan, ja siitä kerrotaan ennen kuin se alkaa.",
       },
       {
         heading: "Omat sanasi ovat näyttö",
@@ -100,11 +106,15 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
       },
       {
         heading: "Tietosi",
-        body: "Emme tallenna ääntä. {voice} Tekstiäsi käsittelee {model}. Jos liität mukaan CV:n, sitä käytetään vain enintään kahden kysymyksen valitsemiseen, eikä sitä säilytetä. Livedemon istunnot poistetaan 24 tunnin kuluttua. Voit ladata tietosi tai poistaa ne milloin tahansa.",
+        body: "Emme tallenna ääntä. {voice} Tekstiäsi käsittelee {model}. Jos liität mukaan CV:n, sitä käytetään vain enintään kahden kysymyksen valitsemiseen, eikä sitä säilytetä. Livedemon istunnot poistetaan 24 tunnin kuluttua. Voit ladata tietosi tai poistaa ne milloin tahansa, myös työhakemukset ja niiden arviot.",
       },
       {
         heading: "Rajoitukset, jotka tiedämme",
         body: "Puheentunnistus toimii joillakin aksenteilla huonommin. Tekoälymallit voivat jättää asioita huomaamatta tai kuvata niitä eri ihmisille eri tavoin. Siksi tarkistat kaiken itse. Kaikille taidoille ei löydy vastinetta eurooppalaisesta ESCO-luokituksesta. Ne pysyvät silti kortillasi.",
+      },
+      {
+        heading: "Työn hakeminen: ainoa asia, jota arvioidaan",
+        body: "Kun korttisi on hyväksytty, voit valita yhden tapahtuman työpaikan ja käydä työhaastattelun, jonka kysymykset tulevat sen ilmoituksesta. Sinulle kerrotaan etukäteen, että vastauksesi arvioidaan ja hakijat asetetaan järjestykseen, eikä mitään aloiteta ennen kuin vastaat kyllä. Kaikilta työpaikan hakijoilta kysytään samat kysymykset, vain tarkentava kysymys voi olla eri. Kun lähetät hakemuksen, tekoäly arvioi jokaisen vaatimuksen kohdalla vastaustesi näytön neljällä tasolla (Ei näyttöä, Mainittu, Esimerkki, Esimerkki tätä työtä vastaavasta) ja kirjoittaa perustelun, joka viittaa omiin lauseisiisi. Järjestyksen laskee sen jälkeen ohjelma, ei tekoäly: ensin tasoista tulevat pisteet, joissa pakollinen vaatimus painaa kaksi kertaa niin paljon kuin toivottu, sitten se, monessako pakollisessa vaatimuksessa on konkreettinen esimerkki, ja lopuksi se, kuka lähetti ensin. Tekoäly ei koskaan saa nimeäsi, nimimerkkiäsi, haastattelun kieltä eikä tietoa siitä, puhuitko vai kirjoititko, ja lause, jossa kerrot iästäsi, alkuperästäsi, äidinkielestäsi, uskonnostasi, perheestäsi, sukupuolestasi tai terveydestäsi, jätetään pois siitä, mitä se lukee. Espoon järjestäjä lukee vastaukset, voi siirtää hakijaa kirjallisella perustelulla ja hyväksyy listan ennen kuin yritys näkee mitään. Yritys näkee järjestyksen, tasot ja perustelut, mutta ei nimeäsi eikä omia sanojasi, ellette molemmat sovi tapaamisesta. Arvio ei koskaan poista ketään listalta. Näet omat tasosi ja perustelusi sekä listan hyväksymisen jälkeen sijasi, ja voit perua hakemuksen, jolloin se poistetaan kaikkialta. Tarkistukset, jotka pitävät henkilökohtaiset tiedot poissa tekoälyltä, ovat sanalistoja, ja epätavallinen sanamuoto voi mennä niistä läpi. Siksi ihminen lukee jokaisen listan ennen kuin yritys näkee sen.",
       },
       {
         heading: "EU:n tekoälysäädös",
@@ -129,7 +139,7 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
       },
       {
         heading: "AI:n antecknar. Den bedömer inte.",
-        body: "Den poängsätter dig inte, betygsätter inte dina svar, gissar inte hur kunnig du är och kommenterar inte hur du pratar eller mår. Den frågar inte om din ålder, ditt kön, din bakgrund, nationalitet, religion, hälsa, familj, ditt uppehållstillstånd eller ditt modersmål. Om du nämner något av detta skrivs det inte upp på ditt kort.",
+        body: "I det här samtalet poängsätter den dig inte, betygsätter inte dina svar, gissar inte hur kunnig du är och kommenterar inte hur du pratar eller mår. Den frågar inte om din ålder, ditt kön, din bakgrund, nationalitet, religion, hälsa, familj, ditt uppehållstillstånd eller ditt modersmål. Om du nämner något av detta skrivs det inte upp på ditt kort. Bara en jobbintervju som du själv väljer att göra senare bedöms, och det får du veta innan den börjar.",
       },
       {
         heading: "Dina egna ord är grunden",
@@ -149,11 +159,15 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
       },
       {
         heading: "Dina uppgifter",
-        body: "Vi sparar inte ljud. {voice} Din text behandlas av {model}. Om du klistrar in ett CV används det bara för att välja högst två frågor, och det sparas inte. Sessioner i livedemon raderas efter 24 timmar. Du kan ladda ner dina uppgifter eller radera dem när som helst.",
+        body: "Vi sparar inte ljud. {voice} Din text behandlas av {model}. Om du klistrar in ett CV används det bara för att välja högst två frågor, och det sparas inte. Sessioner i livedemon raderas efter 24 timmar. Du kan ladda ner dina uppgifter eller radera dem när som helst, även jobbansökningar och deras bedömningar.",
       },
       {
         heading: "Begränsningar vi känner till",
         body: "Taligenkänningen fungerar sämre med vissa brytningar. AI-modeller kan missa saker eller beskriva dem olika för olika personer. Därför går du själv igenom allt. Vissa färdigheter saknar motsvarighet i den europeiska ESCO-klassificeringen. De står ändå kvar på ditt kort.",
+      },
+      {
+        heading: "Att söka ett jobb: det enda som bedöms",
+        body: "När ditt kort är godkänt kan du välja ett jobb på evenemanget och göra en jobbintervju med frågor från dess annons. Du får veta i förväg att dina svar bedöms och att de sökande ordnas, och ingenting börjar förrän du säger ja. Alla som söker jobbet får samma frågor, bara en följdfråga kan skilja sig. När du skickar din ansökan bedömer en AI underlaget i dina svar för varje krav på fyra nivåer (Inget underlag, Nämnt, Exempel, Exempel nära det här jobbet) och skriver ett skäl som hänvisar till dina egna meningar. Sedan räknar programmet, inte AI:n, ut ordningen: först poäng från nivåerna, där ett skall-krav väger dubbelt så mycket som ett meriterande krav, sedan antalet skall-krav med ett konkret exempel och sist vem som skickade först. AI:n får aldrig ditt namn, ditt alias, intervjuspråket eller om du pratade eller skrev, och en mening där du nämner din ålder, ditt ursprung, ditt modersmål, din religion, familj, ditt kön eller din hälsa lämnas utanför det den läser. En arrangör i Esbo läser svaren, kan flytta en person med ett skriftligt skäl och godkänner listan innan företaget ser något. Företaget ser ordningen, nivåerna och skälen, men inte ditt namn eller dina egna ord, om ni inte båda går med på att träffas. En bedömning tar aldrig bort någon från listan. Du ser dina egna nivåer och skäl och, när listan är godkänd, din plats, och du kan dra tillbaka ansökan, som då raderas överallt. Kontrollerna som håller personliga uppgifter borta från AI:n är ordlistor och kan missa ett ovanligt sätt att säga något. Därför läser en människa varje lista innan ett företag ser den.",
       },
       {
         heading: "EU:s AI-förordning",
