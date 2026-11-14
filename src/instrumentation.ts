@@ -17,9 +17,12 @@ export async function register(): Promise<void> {
   const url = `http://127.0.0.1:${process.env.PORT ?? "3000"}/api/interview/cv`;
   const ask = (triesLeft: number): void => {
     const timer = setTimeout(() => {
+      const started = Date.now();
       fetch(url, { signal: AbortSignal.timeout(20_000) })
         .then((res) => {
-          if (!res.ok && triesLeft > 0) ask(triesLeft - 1);
+          // One line in the server's log per start, so it can be seen that the warm-up happened.
+          if (res.ok) console.log(`[start] the CV anonymiser's patterns are compiled (${Date.now() - started} ms)`);
+          else if (triesLeft > 0) ask(triesLeft - 1);
         })
         .catch(() => {
           // Not listening yet, or busy: try again a few times, then leave it to the first CV.
