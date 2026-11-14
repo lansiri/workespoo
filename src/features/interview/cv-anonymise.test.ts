@@ -161,6 +161,14 @@ describe("anonymiseCv time on hostile text", () => {
     "one very long capitalised word": (n) => `Aino\n${"A".repeat(n)}`,
     years: (n) => "2019 ".repeat(n / 5),
     "first person": (n) => "I am ".repeat(n / 5),
+    "first person and a capital": (n) => "I am Ab ".repeat(n / 8),
+    "my name is": (n) => "My name is ".repeat(n / 11),
+    "platform names": (n) => "discord a ".repeat(n / 10),
+    "glued addresses": (n) => "a@b.fi_".repeat(n / 7),
+    "dotted labels and an underscore": (n) => "ab.cd_".repeat(n / 6),
+    "hyphen pairs": (n) => "Ab-Cd. ".repeat(n / 7),
+    "retired": (n) => "Retired ".repeat(n / 8),
+    "compound health": (n) => "a".repeat(n) + "vamma",
   };
 
   /** CPU time of this process in milliseconds, not the clock: a busy machine does not make a linear pattern look slow. */
@@ -345,5 +353,162 @@ describe("anonymiseCv: names", () => {
     const { text } = anonymiseCv("EXPERIENCE\nBuilt tools. Follow me @maija_k, Instagram: maija_k, twitter: maijak and (@maija.k).");
     expect(text).not.toMatch(/maija/i);
     expect(text).toContain("Built tools.");
+  });
+});
+
+// ---------- the second review: gaps in what is removed ----------
+
+/** Pairs: the personal line goes, the work line stays. */
+describe("anonymiseCv: age, origin, first language, health, gender, faith, military (pairs)", () => {
+  const goes = (text: string, ...gone: RegExp[]) => {
+    const out = anonymiseCv(`EXPERIENCE\nBuilt things.\n\n${text}`).text;
+    for (const re of gone) expect(out, text).not.toMatch(re);
+    expect(out).toContain("Built things.");
+  };
+
+  it.each([
+    ["35-year-old developer with 10 years of experience", /35/],
+    ["I am thirty-five years old.", /thirty/i],
+    ["Retired, 67, looking for part-time work.", /67|Retired/],
+    ["I am a pensioner.", /pensioner/i],
+    ["Eläkeläinen, etsin osa-aikatyötä.", /Eläkeläinen/],
+    ["Call \uFF10\uFF14\uFF10 \uFF11\uFF12\uFF13 \uFF14\uFF15\uFF16\uFF17. I am \uFF13\uFF15.", /\d|I am/],
+  ])("age: %s", (line, re) => goes(line, re));
+
+  it.each([
+    ["Muutin Suomeen Irakista vuonna 2015.", /Irak/],
+    ["Kotoisin Somaliasta. Tulin Suomeen pakolaisena.", /Somalia|pakolai/],
+    ["Maahanmuuttaja Somaliasta.", /Somalia|Maahanmuutt/],
+    ["Kom till Sverige från Irak", /Irak/],
+    ["Somali-Finnish.", /Somali/],
+    ["I am Roma.", /Roma/],
+    ["Romani background.", /Romani/],
+    ["Asylum seeker.", /Asylum/],
+    ["Turvapaikanhakija.", /Turvapaik/],
+  ])("origin: %s", (line, re) => goes(line, re));
+
+  it("origin words in a job stay: a language pair, a refugee-free sentence about Iraq-free work", () => {
+    const out = anonymiseCv("EXPERIENCE\nEnglish-Finnish translator for a law firm.\nFront-end developer.\nBuilt a booking tool.").text;
+    expect(out).toContain("English-Finnish translator");
+    expect(out).toContain("Front-end developer.");
+  });
+
+  it.each([
+    ["Native languages: Somali and Arabic.", /Somali|Arabic/],
+    ["Home language: Arabic", /Arabic/],
+    ["Kotikieli: arabia", /arabia/],
+  ])("first language: %s", (line, re) => goes(line, re));
+
+  it("a language skill stays beside a first-language statement", () => {
+    const out = anonymiseCv("LANGUAGES\nFinnish: native, English: fluent, Swedish (good)").text;
+    expect(out).toContain("Finnish");
+    expect(out).toContain("English: fluent");
+    expect(out).not.toMatch(/native/i);
+  });
+
+  it.each([
+    ["I use a wheelchair.", /wheelchair/i],
+    ["I am deaf and use sign language.", /deaf/i],
+    ["I am blind.", /blind/i],
+    ["I have multiple sclerosis.", /sclerosis/i],
+    ["I'm a recovering alcoholic.", /alcoholic/i],
+    ["Minulla on kuulovamma.", /vamma/],
+    ["Jag är döv.", /döv/],
+    ["Kuuro.", /Kuuro/],
+  ])("health: %s", (line, re) => goes(line, re));
+
+  it("health words in a job stay as work", () => {
+    const out = anonymiseCv("EXPERIENCE\nNurse on a diabetes ward\nTaught children with dyslexia\nBuilt an app for wheelchair users").text;
+    expect(out).toContain("Nurse on a");
+    expect(out).toContain("Taught children with");
+    expect(out).toContain("Built an app for");
+    expect(out).not.toMatch(/diabetes|dyslexia|wheelchair/i);
+  });
+
+  it.each([
+    ["Pronouns: she/her", /she\/her/],
+    ["As a single mum I learned time management.", /single mum/],
+    ["Raising my two boys taught me patience.", /boys/],
+    ["I pray five times a day.", /pray/],
+    ["I wear a hijab.", /hijab/],
+    ["I observe Ramadan and Shabbat.", /Ramadan|Shabbat/],
+    ["Reserve officer (lieutenant)", /Reserve officer|lieutenant/],
+  ])("gender, family, faith, military: %s", (line, re) => goes(line, re));
+
+  it("work that mentions children, reserves or a pension stays", () => {
+    const out = anonymiseCv("EXPERIENCE\nTaught children Python.\nManaged reserve funds.\nBuilt a pension calculator.\nRetired the legacy billing system.").text;
+    expect(out).toContain("Taught children Python.");
+    expect(out).toContain("Managed reserve funds.");
+    expect(out).toContain("Built a pension calculator.");
+    expect(out).toContain("legacy billing system");
+  });
+
+  it("fullwidth @ and digits are read as ordinary ones", () => {
+    expect(anonymiseCv("liisa\uFF20firma.fi").text).not.toMatch(/firma/);
+  });
+});
+
+describe("anonymiseCv: names in prose, domains and handles", () => {
+  it.each([
+    ["Profile\nHi, I'm Liisa Korhonen, a backend developer. Liisa likes clean code."],
+    ["Profile\nOlen Liisa Korhonen, ohjelmistokehittäjä. Korhonen on tehnyt API:ta."],
+    ["Profile\nJag är Liisa Korhonen, utvecklare. Liisa gillar kod."],
+    ["Profile\nMy name is Dr. Liisa Korhonen. Liisa builds APIs."],
+    ["Profile\nmy name is liisa korhonen and I build APIs. Liisa Korhonen likes clean code."],
+    ["Profile\nNimeni on Liisa Korhonen. Liisa rakentaa rajapintoja."],
+    ["Profile\nMinun nimeni on Liisa Korhonen."],
+    ["Profile\nJag heter Liisa Korhonen."],
+    ["Profile\nMitt namn är Liisa Korhonen."],
+  ])("the name goes, every use of it: %s", (cv) => {
+    const { text } = anonymiseCv(`${cv}\nSkills\nPython`);
+    expect(text).not.toMatch(/Liisa|Korhonen/i);
+    expect(text).toContain("Python");
+  });
+
+  it("'I am Finnish' and 'I am a developer' are not names", () => {
+    const out = anonymiseCv("Profile\nI am a developer. I am Passionate about data. Olen kehittäjä.").text;
+    expect(out).toContain("I am a developer.");
+    expect(out).toContain("Passionate about data");
+    expect(out).toContain("Olen kehittäjä.");
+  });
+
+  it("a bare domain goes, also in lower case with the name in it; technologies stay", () => {
+    const out = anonymiseCv("Liisa Korhonen\nSoftware Developer | liisakorhonen.com | Espoo\n\nProfile\nPortfolio at korhonen.dev and liisa-korhonen.fi. Uses ASP.NET and Socket.io.").text;
+    expect(out).not.toMatch(/korhonen|liisa/i);
+    expect(out).toContain("ASP.NET");
+    expect(out).toContain("Socket.io");
+    expect(out).toContain("Software Developer");
+  });
+
+  it.each([["discord liisa#1234"], ["bsky liisa.bsky.social"], ["telegram liisa_k"]])("a handle after a platform name: %s", (line) => {
+    expect(anonymiseCv(`EXPERIENCE\nBuilt things.\n${line}`).text).not.toMatch(/liisa/);
+  });
+
+  it("platform names in work stay", () => {
+    const out = anonymiseCv("EXPERIENCE\nGithub Actions pipelines, Telegram bots, Discord bot development.").text;
+    expect(out).toBe("EXPERIENCE\nGithub Actions pipelines, Telegram bots, Discord bot development.");
+  });
+
+  it("a word that holds the name and looks like a handle goes whole", () => {
+    const out = anonymiseCv("Liisa Korhonen\nDeveloper\n\nProfile\nSee also korhonen_l and k.korhonen99.").text;
+    expect(out).not.toMatch(/korhonen/i);
+  });
+});
+
+describe("anonymiseCv: References as one line", () => {
+  it("'References: available upon request' drops that line only", () => {
+    const out = anonymiseCv("Experience\nDeveloper\nReferences: available upon request\nSkills: Python, SQL\nProjects: built the ERP integration").text;
+    expect(out).toBe("Experience\nDeveloper\nSkills: Python, SQL\nProjects: built the ERP integration");
+  });
+  it("lines after it stay, a plain list too", () => {
+    const out = anonymiseCv("Experience\nDeveloper\nSuosittelijat: saatavilla pyynnöstä\nPython, SQL, Kubernetes\nBuilt the ERP integration for 40 stores\nLed a team of five").text;
+    expect(out).toContain("Built the ERP integration for 40 stores");
+    expect(out).toContain("Led a team of five");
+  });
+  it("a reference with a name still drops its section, which ends at an inline heading", () => {
+    const out = anonymiseCv("Experience\nDeveloper\nReferences: Matti Meikäläinen, CEO, +358 40 111 2222\nPekka Peloton, CTO\nSkills: Python, SQL\nBuilt tools").text;
+    expect(out).not.toMatch(/Matti|Pekka|358/);
+    expect(out).toContain("Skills: Python, SQL");
+    expect(out).toContain("Built tools");
   });
 });

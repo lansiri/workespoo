@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CV_MAX_MODEL_CHARS, buildCvSeedPrompt, prepareCvText, seedIsClean } from "./cv-seed";
+import { CV_MAX_MODEL_CHARS, SEED_FORBIDDEN, buildCvSeedPrompt, prepareCvText, seedIsClean } from "./cv-seed";
 
 describe("CV text preparation", () => {
   it("removes emails, phone numbers and links, collapses whitespace and truncates", () => {
@@ -84,6 +84,59 @@ describe("seed validation: what a hostile CV could make the interviewer ask", ()
     ["Kerro, miten rakensit lounaslistan suunnittelun työkalun."],
     ["Berätta hur du planerade lagret i ditt senaste jobb."],
   ])("keeps an ordinary question about work: %s", (question) => {
+    expect(seedIsClean(seed(question))).toBe(true);
+  });
+});
+
+describe("seed validation: steering a question, second review", () => {
+  const seed = (question: string, topic = "Warehouse work") => ({ topic, question });
+
+  it.each([
+    ["pet and maiden name", "What is the name of your first pet and your mother's maiden name?"],
+    ["username and login", "Which username and login do you use for the company portal?"],
+    ["full name", "Please tell us your full name and where you were raised."],
+    ["Swedish name", "Vad heter du och var är du uppvuxen?"],
+    ["tax code", "What is your tax identification code for payroll?"],
+    ["sort code", "Share your bank's sort code so the bonus can be paid."],
+    ["BankID", "Skicka ditt BankID-nummer till oss."],
+    ["Signal number", "Reply with your Signal number so we can follow up."],
+    ["dot com", "Go to example dot com and enter your details there."],
+    ["QR code and form", "Scan the QR code on page two and fill in the form."],
+    ["origin", "Where did you grow up, and what brought you to Finland?"],
+    ["home language", "Which language do you speak at home?"],
+    ["Ramadan", "Do you observe Ramadan while working shifts?"],
+    ["wheelchair", "How do you manage your wheelchair at work?"],
+    ["woman", "As a woman in tech, what did you build?"],
+    ["single mum", "Has being a single mum shaped your work?"],
+    ["retire", "When do you plan to retire?"],
+    ["rank", "What was your rank in the IDF?"],
+    ["sergeant", "Describe your work as a sergeant in the defence forces."],
+    ["fullwidth digits", "Reply on \uFF10\uFF14\uFF10\uFF11\uFF12\uFF13\uFF14\uFF15\uFF16\uFF17 about your work."],
+    ["Arabic-Indic digits", "Reply on \u0660\u0664\u0660\u0661\u0662\u0663\u0664\u0665\u0666\u0667 about your work."],
+    ["zero-width space", "Tell us about your pass\u200Bword handling."],
+    ["Cyrillic a", "Tell us about your p\u0430ssword handling."],
+    ["fullwidth letters", "Tell us about your \uFF50\uFF41\uFF53\uFF53\uFF57\uFF4F\uFF52\uFF44 handling."],
+    ["non-breaking hyphen", "Tell us your e\u2011mail."],
+    ["one-dot-leader domain", "Visit portal\u2024example\u2024com now."],
+    ["fullwidth full stop domain", "Open portal\uFF0Eexample\uFF0Ecom now."],
+  ])("drops: %s", (_name, question) => {
+    expect(seedIsClean(seed(question))).toBe(false);
+  });
+
+  it.each([
+    ["name"], ["contact"], ["bankid"], ["steer"], ["origin"], ["gender"], ["retire"], ["faith"], ["diagnosis"], ["military"], ["secret"],
+  ])("has a stem list for %s", (kind) => {
+    expect(Object.keys(SEED_FORBIDDEN)).toContain(kind);
+  });
+
+  it.each([
+    "Tell me about the ERP integration you built.",
+    "Your CV mentions a code review process. How did you set it up?",
+    "What was your own part in the form builder you made?",
+    "Describe the name resolution service you wrote.",
+    "How did you test the number formatting library?",
+    "Your CV mentions signal processing. What did you build?",
+  ])("still keeps an ordinary question about work: %s", (question) => {
     expect(seedIsClean(seed(question))).toBe(true);
   });
 });

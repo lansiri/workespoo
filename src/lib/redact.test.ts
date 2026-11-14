@@ -251,4 +251,16 @@ describe("redactContacts: time", () => {
     expect(redactContacts("etunimi.sukunimi (at) espoo.fi")).toBe(R);
     expect(redactContacts("etunimi at firma dot fi")).toBe(R);
   });
+  it("two addresses glued together are both found", () => {
+    expect(redactContacts("Contact a@b.fi_matti.meikalainen@firma.fi today")).toBe(`Contact ${R} today`);
+    expect(redactContacts("jobs@a.fi+matti.m@b.fi")).toBe(R);
+    expect(redactContacts("x@y.fi'liisa@z.fi")).toBe(R);
+  });
+  it("a long chain of glued addresses and a long run with underscores take linear time", () => {
+    const t = process.cpuUsage();
+    redactContacts("a@b.fi_".repeat(40_000));
+    redactContacts("ab.cd_".repeat(40_000));
+    const spent = process.cpuUsage(t);
+    expect((spent.user + spent.system) / 1000).toBeLessThan(1500);
+  });
 });

@@ -87,6 +87,12 @@ describe("How this works: text", () => {
     expect(data("en")).toContain("download your data or delete it at any time, job applications and their ratings included.");
     expect(data("fi")).toContain("milloin tahansa, myös työhakemukset ja niiden arviot.");
     expect(data("sv")).toContain("när som helst, även jobbansökningar och deras bedömningar.");
+    expect(data("en")).toContain("(not AI) that try to remove your name");
+    expect(data("en")).toContain("text you paste goes through them when you start");
+    expect(data("fi")).toContain("(ei tekoäly), jotka yrittävät");
+    expect(data("fi")).toContain("liittämäsi teksti käy ne läpi, kun aloitat");
+    expect(data("sv")).toContain("(inte AI) som försöker");
+    expect(data("sv")).toContain("text du klistrar in går genom dem när du börjar");
     expect(data("en")).toContain("try to remove your name");
     expect(data("en")).toContain("can miss some");
     expect(data("fi")).toContain("yrittävät poistaa nimesi");

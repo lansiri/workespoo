@@ -118,19 +118,20 @@ const PERSONAL_LABELS = [
   "nationality", "citizenship", "gender", "sex", "marital status", "civil status", "family", "children",
   "religion", "health", "photo", "social security number", "personal identity code", "id number", "passport",
   "disability", "diagnosis", "health condition", "faith", "military service", "national service",
-  "mother tongue", "native language", "first language", "family status", "family situation",
+  "mother tongue", "native language", "native languages", "first language", "family status", "family situation",
+  "home language", "home languages", "pronouns", "pronoun", "gender identity", "ethnicity",
   // Finnish
   "nimi", "etunimi", "sukunimi", "osoite", "katuosoite", "postiosoite", "postinumero", "postitoimipaikka",
   "kotikunta", "asuinpaikka", "asuinkunta", "puhelin", "puh", "matkapuhelin", "gsm", "sähköposti",
   "s-posti", "kotisivu", "kotisivut", "syntymäaika", "syntynyt", "syntymäpaikka", "ikä", "kansalaisuus",
   "sukupuoli", "siviilisääty", "perhe", "perhesuhteet", "lapset", "uskonto", "terveys", "valokuva",
   "henkilötunnus", "hetu", "sotu", "äidinkieli", "vammaisuus", "sairaudet", "terveydentila", "varusmiespalvelus",
-  "asepalvelus", "siviilipalvelus", "perhetilanne", "lapsia", "uskonnollinen vakaumus", "vakaumus",
+  "asepalvelus", "siviilipalvelus", "kotikieli", "kotikielet", "pronominit", "perhetilanne", "lapsia", "uskonnollinen vakaumus", "vakaumus",
   // Swedish
   "namn", "förnamn", "efternamn", "adress", "postnummer", "postadress", "ort", "telefon", "mobil",
   "e-post", "mejl", "hemsida", "födelsedatum", "född", "födelseort", "ålder", "nationalitet",
   "medborgarskap", "kön", "civilstånd", "familj", "barn", "hälsa", "foto", "personnummer",
-  "modersmål", "funktionsnedsättning", "sjukdomar", "värnplikt", "militärtjänst", "trosuppfattning", "familjesituation",
+  "modersmål", "hemspråk", "pronomen", "funktionsnedsättning", "sjukdomar", "värnplikt", "militärtjänst", "trosuppfattning", "familjesituation",
 ];
 
 const LABEL_LINE = new RegExp(
@@ -303,28 +304,65 @@ function stripCvWords(line: string): string {
     .trim();
 }
 
-const NAME_LEADIN = /(?<![\p{L}\p{N}])(?:my\s+name\s+is|my\s+name['’]s|minun\s+nimeni\s+on|nimeni\s+on|jag\s+heter|mitt\s+namn\s+är|mitt\s+namn\s+är)\s+/giu;
+/** "My name is ...": the words that follow are a name, whatever their case. */
+const NAME_LEADIN_STRONG = /(?<![\p{L}\p{N}])(?:my\s+name\s+is|my\s+name['’]s|minun\s+nimeni\s+on|nimeni\s+on|jag\s+heter|mitt\s+namn\s+är|mitt\s+namn\s+är)\s+/giu;
+/** "I am ...", "Olen ...": a name only when capitalised words follow (two at least), so "I am Finnish" and "Olen kehittäjä" are left alone. */
+const NAME_LEADIN_WEAK = /(?<![\p{L}\p{N}])(?:i\s+am|i['’]m|olen|jag\s+är)\s+/giu;
+const TITLES = new Set(["dr", "mr", "mrs", "ms", "miss", "mx", "prof", "professor", "fm", "ktm", "di", "tkt", "dipl", "herr", "fru", "tohtori"]);
+/** Words that end a lowercase name in "my name is liisa korhonen and I ...". */
+const NAME_END = new Set([
+  "and", "ja", "och", "i", "am", "a", "an", "the", "from", "is", "on", "in", "at", "with", "but", "so", "who", "jag", "olen", "minä", "ur", "of",
+  "backend", "frontend", "developer", "engineer", "designer", "nurse", "teacher",
+]);
+/** Capitalised words after "I am" that are never a name. */
+const WEAK_STOP = new Set([
+  "certified", "passionate", "motivated", "dedicated", "highly", "currently", "looking", "proficient", "skilled",
+  "fluent", "responsible", "open", "flexible", "available", "interested", "experienced", "based", "happy",
+]);
 
-/** "My name is Liisa Korhonen", "Nimeni on ...", "Jag heter ...", "Mitt namn är ...": the name that follows. */
+function isNationalityWord(w: string): boolean {
+  if (LANGUAGE_SET.has(w.toLowerCase())) return true;
+  for (const re of [COUNTRY, DEMONYM_FI_SV, COUNTRY_FI_SV]) {
+    re.lastIndex = 0;
+    if (re.test(w)) return true;
+  }
+  return false;
+}
+
+/**
+ * "My name is Liisa Korhonen", "Nimeni on ...", "Jag heter ...", "Mitt namn är ...", and with two
+ * capitalised words "I'm Liisa Korhonen", "Olen Liisa Korhonen", "Jag är ...": the name that follows.
+ * A title (Dr, Mr, Prof) is skipped. After "my name is" the words count in any case.
+ */
 function namesFromProse(text: string): string[] {
   const out: string[] = [];
-  for (const m of text.matchAll(NAME_LEADIN)) {
-    const start = (m.index ?? 0) + m[0].length;
-    const run: string[] = [];
-    let pending: string[] = [];
-    for (const raw of text.slice(start, start + 120).split(/\s+/).slice(0, 6)) {
-      const w = raw.replace(/[.,;:!?)"”]+$/u, "");
-      const last = w !== raw;
-      if (isNameWord(w)) {
-        run.push(...pending, w);
-        pending = [];
-      } else if (PARTICLES.has(w) && run.length > 0) {
-        pending.push(w);
-        continue;
-      } else break;
-      if (last || run.filter((r) => !PARTICLES.has(r)).length === 4) break;
+  for (const [re, strong] of [[NAME_LEADIN_STRONG, true], [NAME_LEADIN_WEAK, false]] as const) {
+    for (const m of text.matchAll(re)) {
+      const start = (m.index ?? 0) + m[0].length;
+      const run: string[] = [];
+      let pending: string[] = [];
+      for (const raw of text.slice(start, start + 120).split(/\s+/).slice(0, 7)) {
+        const w = raw.replace(/[.,;:!?)"”]+$/u, "");
+        const last = w !== raw;
+        if (w === "") break;
+        if (run.length === 0 && TITLES.has(w.toLowerCase())) continue;
+        const lower = w.toLowerCase();
+        const wordLike = /^[\p{L}][\p{L}'’-]*$/u.test(w);
+        const ok = strong
+          ? wordLike && !NAME_END.has(lower) && !isStopWord(w)
+          : isNameWord(w) && !WEAK_STOP.has(lower) && !(run.length === 0 && isNationalityWord(w));
+        if (ok) {
+          // Written in capitals for the name patterns ("liisa" is stored as "Liisa").
+          run.push(...pending, w.charAt(0).toLocaleUpperCase("fi") + w.slice(1));
+          pending = [];
+        } else if (PARTICLES.has(lower) && run.length > 0) {
+          pending.push(w);
+          continue;
+        } else break;
+        if (last || run.filter((r) => !PARTICLES.has(r)).length === 4) break;
+      }
+      if (run.length >= (strong ? 1 : 2)) out.push(run.join(" "));
     }
-    if (run.length > 0) out.push(run.join(" "));
   }
   return out;
 }
@@ -388,10 +426,27 @@ const URL = /\b(?:https?:\/\/|www\.)\S+/giu;
 const SOCIAL = /\b(?:[a-z]{2,3}\.)?(?:linkedin|github|gitlab|behance|dribbble|facebook|instagram|twitter|x|medium|stackoverflow|tiktok|youtube)\.com\/\S*/giu;
 // A match starts only at the start of a run of host characters, so a long run of dots and letters is read once.
 const DOMAIN_PATH = /(?<![a-z0-9.-])[a-z0-9-]+(?:\.[a-z0-9-]+)*\.(?:com|fi|se|io|net|org|dev|me|eu|app|page|site)\/\S*/giu;
+/**
+ * A web address without a path ("liisakorhonen.com", "bsky.social", "korhonen.dev"). Starts only at the
+ * start of a run of host characters. Names of technologies that look like one are put back by `bareDomain`.
+ */
+const DOMAIN_BARE = /(?<![\p{L}\p{N}.@_-])[\p{L}\p{N}-]+(?:\.[\p{L}\p{N}-]+)*\.(?:com|fi|se|io|net|org|dev|me|eu|app|page|site|social|blog|xyz|tech|info)(?![\p{L}\p{N}-])/giu;
+const NOT_A_DOMAIN = new Set(["asp.net", "socket.io", "vb.net", "f.net", "c.net", ".net"]);
+
+function bareDomain(m: string, removed: CvRemoved): string {
+  if (NOT_A_DOMAIN.has(m.toLowerCase())) return m;
+  removed.contact += 1;
+  return REDACTED;
+}
 const HANDLE = new RegExp(`${BEFORE}@[\\p{L}\\p{N}_.]{2,}`, "gu");
 /** "Instagram: maija_k", "skype: live:maija": a handle that carries no "@", anywhere in a line. */
 const SOCIAL_LABEL = new RegExp(
   `${BEFORE}(?:instagram|insta|ig|twitter|tiktok|telegram|snapchat|skype|discord|signal|whatsapp|facebook|fb|threads|mastodon|github|gitlab|linkedin|xing|behance|dribbble|youtube|wechat|kik)\\s*[:：]\\s*[^\\s,;|]+`,
+  "giu",
+);
+/** "discord liisa#1234", "bsky liisa_k": the platform name and a handle (with a #, _, . or digit) without a colon. */
+const SOCIAL_SPACE = new RegExp(
+  `${BEFORE}(?:instagram|insta|ig|twitter|tiktok|telegram|snapchat|skype|discord|signal|whatsapp|fb|threads|mastodon|github|gitlab|bsky|bluesky|reddit|twitch|steam|kik|wechat)[^\\S\\n]+@?(?=[\\p{L}\\p{N}_.#-]*(?:[#_\\d]|\\.[\\p{L}\\p{N}]))[\\p{L}\\p{N}_.#-]{3,}`,
   "giu",
 );
 
@@ -417,8 +472,9 @@ const DATEISH = `(?:\\d{1,2}\\s*[./-]\\s*\\d{1,2}\\s*[./-]\\s*(?:${YEAR}|\\d{2})
 const ONGOING = "(?:present|current|now|today|ongoing|nyt|nykyään|nykyhetki|jatkuu|pågående|nu|idag)";
 const DATE_RANGE = new RegExp(`${BEFORE}${DATEISH}(?:\\s*[–—-]\\s*(?:${DATEISH}|${ONGOING})?)?${AFTER}`, "giu");
 const LEADING_RANGE = new RegExp(`[–—-]\\s*${DATEISH}${AFTER}`, "giu");
+const NUM_WORD = "(?:twenty|thirty|forty|fifty|sixty|seventy)(?:[\\s-]+(?:one|two|three|four|five|six|seven|eight|nine))?|(?:sixteen|seventeen|eighteen|nineteen)";
 const AGE = new RegExp(
-  `${BEFORE}(?:\\d{2}\\s*(?:years?\\s+old|yrs?\\s+old|y\\/o|-?vuotia\\p{L}*|år\\s+gammal|-?åring|v\\.?|år)|(?:age|aged|ikä|ålder)\\s*:?\\s*\\d{2})${AFTER}`,
+  `${BEFORE}(?:\\d{2}[\\s-]*(?:years?[\\s-]+old|yrs?[\\s-]+old|y\\/o|-?vuotia\\p{L}*|år[\\s-]+gammal|-?åring|v\\.?|år)|(?:${NUM_WORD})[\\s-]+years?[\\s-]+old|(?:age|aged|ikä|ålder)\\s*:?\\s*\\d{2})${AFTER}`,
   "giu",
 );
 
@@ -443,7 +499,7 @@ const LANGUAGES_FI = [
   "suomi", "suomea", "suomeksi", "englanti", "englantia", "englanniksi", "ruotsi", "ruotsia", "ruotsiksi",
   "venäjä", "venäjää", "venäjäksi", "saksa", "saksaa", "saksaksi", "ranska", "ranskaa", "ranskaksi", "espanja",
   "espanjaa", "espanjaksi", "italia", "italiaa", "portugali", "portugalia", "arabia", "arabiaa", "somali",
-  "somalia", "viro", "viroa", "kiina", "kiinaa", "japani", "japania", "turkki", "turkkia", "persia", "kurdi",
+  "viro", "viroa", "kiina", "kiinaa", "japani", "japania", "turkki", "turkkia", "persia", "kurdi",
   "puola", "puolaa", "hollanti", "hollantia", "norja", "norjaa", "tanska", "tanskaa", "unkari", "kreikka",
   "heprea", "hindi", "urdu", "swahili", "latina", "romania", "bulgaria", "serbia", "kroatia", "ukraina",
 ] as const;
@@ -508,6 +564,21 @@ const DEMONYMS_FI_SV = [
 ] as const;
 const DEMONYM_FI_SV = wholeWords(DEMONYMS_FI_SV);
 
+/**
+ * Country names in Finnish and Swedish spellings, with their case endings ("Irakista", "Somaliasta",
+ * "Syyriasta"): stems that continue into the whole word. Names that are also the name of a language
+ * ("suomi", "ruotsi", "viro", "kiina") are not here; the header rule handles "Suomi" and "Ruotsi".
+ */
+const COUNTRIES_FI_SV = [
+  "irak*", "syyria*", "syrien*", "somalia*", "afganistan*", "iran*", "pakistan*", "eritrea*", "etiopia*",
+  "nigeria*", "kongo*", "kenia*", "marokko*", "algeria*", "egypti*", "libanon*", "palestiina*", "palestin*",
+  "israel*", "kosovo*", "bosnia*", "vietnam*", "thaimaa*", "filippiini*", "intia*", "indien*", "sudan*", "libya*",
+  "libyen*", "ghana*", "kamerun*", "tunisia*", "tunisien*", "jemen*", "jordania*", "myanmar*", "bangladesh*",
+  "nepal*", "sri lanka*", "latvia*", "liettua*", "yhdysvalto*", "amerikka*", "britannia*", "kanada*",
+  "meksiko*", "brasilia*", "kolumbia*", "kuuba*", "turkiet*", "estland*", "ryssland*",
+] as const;
+const COUNTRY_FI_SV = wholeWords(COUNTRIES_FI_SV);
+
 /** Every word that can name a nationality: the shared list, the languages that double as one, and the above. */
 const NATIONALITY_SRC = [
   wordSource([...COUNTRIES_AND_DEMONYMS, ...LANGUAGES_EN, ...DEMONYMS_FI_SV]),
@@ -530,6 +601,9 @@ const PROTECTED_WORDS = wordList([
   "faith", "religious", "believer*", "christian*", "muslim*", "islam*", "jewish", "judaism", "hindu*", "buddhis*",
   "catholic*", "lutheran*", "atheis*", "agnostic*", "military service", "national service", "conscript*",
   "military duty", "army service", "reservist*", "sick leave",
+  "native languages", "home language*", "refugee*", "asylum*", "immigrant*", "pronoun*", "pensioner*", "single parent",
+  "pray*", "hijab*", "ramadan", "shabbat", "sabbath", "kippah", "reserve officer*", "reserve lieutenant", "reserve sergeant",
+  "moved to finland", "moved to sweden", "came to finland", "came to sweden",
   // Finnish
   "kansalaisuu*", "kansalainen", "syntynyt", "syntyperä*", "syntymäaika", "syntymäpaikka", "syntymävuo*",
   "naimisi*", "avioliito*", "aviomie*", "vaimo*", "puoliso*", "eronnut", "lapseni", "lapsemme",
@@ -540,13 +614,16 @@ const PROTECTED_WORDS = wordList([
   "uskova*", "kristitty", "kristitty*", "kristillis*", "muslimi*", "juutalai*", "buddhalai*", "hindulai*",
   "ateisti*", "luterila*", "ortodoksi*", "varusmies*", "asepalvelu*", "siviilipalvelu*", "reservin*",
   "reserviläi*", "sairausloma*", "sairaslom*", "mies", "nainen",
+  "kotikiel*", "pakolai*", "turvapaik*", "maahanmuutt*", "kotoisin", "eläkeläi*", "eläkkeel*", "yksinhuolta*", "rukoil*", "rukous",
+  "reserviupseer*", "muutin suomeen", "tulin suomeen", "muutin ruotsiin", "olen muuttanut suomeen",
   // Swedish
   "medborgar*", "nationalitet*", "etnisk*", "född", "födelsedatum", "födelseår", "är gift", "gift med", "sambo",
   "skild", "änka", "änkling", "religion*", "hälsotillstånd*", "sjukdom*", "funktionsneds*",
   "gravid*", "föräldraledig*", "mammaledig*", "pappaledig*", "kön", "modersmål*", "förstaspråk*",
   "uppehållstillstånd*", "arbetstillstånd*",
   "kristen*", "judisk*", "katolsk*", "ateist*", "troende", "trosuppfattning*", "församling*", "kyrka*",
-  "moské*", "värnplikt*", "militärtjänst*", "civiltjänst*", "sjukskriv*", "sjukledig*", "manlig", "kvinnlig",
+  "moské*", "hemspråk*", "flykting*", "asyl*", "invandrare", "pensionär*", "pensionerad*", "ensamstående",
+  "reservofficer*", "kom till sverige", "kom till finland", "flyttade till sverige", "flyttade till finland", "bön", "böner", "värnplikt*", "militärtjänst*", "civiltjänst*", "sjukskriv*", "sjukledig*", "manlig", "kvinnlig",
   "kvinna",
 ]);
 
@@ -556,6 +633,7 @@ const HEALTH_WORDS_LIST = [
   "anxiety", "ahdistu*", "ahdistuneisuu*", "ångest*", "bipolar*", "bipolaari*", "skitsofren*", "schizophren*",
   "epilep*", "astma*", "asthma", "cancer", "syöpä*", "syövä*", "handicap*", "vammaisuu*", "burnout", "burn-out",
   "uupumu*", "ptsd", "hiv", "mental illness", "eating disorder", "tourette*", "ocd",
+  "wheelchair*", "pyörätuol*", "rullstol*", "multiple sclerosis", "alcoholi*", "alkoholis*", "alkoholist*", "sclerosis",
 ] as const;
 const HEALTH_WORDS = wholeWords(HEALTH_WORDS_LIST);
 const HEALTH_SRC = wordSource(HEALTH_WORDS_LIST);
@@ -564,7 +642,9 @@ const ME = "(?:i\\s+am|i['’]m|olen|jag\\s+är)";
 const NB = "(?<![\\p{L}\\p{N}])";
 
 const FAMILY_PHRASES = [
-  /(?<![\p{L}\p{N}])(?:my|our|\d+|one|two|three|four|five|six)\s+(?:children|child|kids|sons?|daughters?)(?![\p{L}\p{N}])/iu,
+  /(?<![\p{L}\p{N}])(?:my|our|\d+|one|two|three|four|five|six)\s+(?:(?:young|small|little|newborn|twin|grown|adult)\s+)?(?:children|child|kids|sons?|daughters?|boys?|girls?|babies|baby|toddlers?|twins)(?![\p{L}\p{N}])/iu,
+  /(?<![\p{L}\p{N}])(?:single|solo)\s+(?:mum|mom|mother|dad|father|parent)(?![\p{L}\p{N}])/iu,
+  /(?<![\p{L}\p{N}])(?:as|being|raising)\s+(?:a\s+)?(?:mum|mom|mother|dad|father|parent|man|woman)(?![\p{L}\p{N}])/iu,
   /(?<![\p{L}\p{N}])(?:mother|father|parent|mum|mom|dad)\s+of(?![\p{L}\p{N}])/iu,
   /(?<![\p{L}\p{N}])(?:yksi|kaksi|kolme|neljä|viisi|kuusi|\d+)\s+(?:lasta|lapsi)(?![\p{L}\p{N}])/iu,
   /(?<![\p{L}\p{N}])minulla\s+on\s+(?:\p{L}+\s+)?lap\p{L}*/iu,
@@ -583,6 +663,19 @@ const PERSONAL_STATEMENTS: RegExp[] = [
     `${NB}(?:i\\s+(?:have|had|suffer(?:ed)?\\s+from|live\\s+with|am\\s+living\\s+with|am\\s+diagnosed(?:\\s+with)?|was\\s+diagnosed(?:\\s+with)?)|i['’]ve|my|diagnosed\\s+with|suffer(?:s|ing)?\\s+from|living\\s+with|lives\\s+with|minulla\\s+on|minulla\\s+oli|minun|sairastan|sairastin|sairastanut|jag\\s+har|jag\\s+lider\\s+av|min|mitt)\\s+(?:[\\p{L}\\p{N}]+\\s+){0,2}(?:${HEALTH_SRC})`,
     "iu",
   ),
+  // "I am deaf", "I am blind", "I'm a recovering alcoholic", "Kuuro.", "Jag är döv"
+  new RegExp(
+    `${NB}${ME}\\s+(?:(?:a|an|en|ett|recovering|totally|partly|partially|legally|hard)\\s+){0,2}(?:${HEALTH_SRC}|deaf|blind|döv|kuuro|sokea|dövstum|disabled|vammainen|sjuk|sairas|addict|invalid|in\\s+a\\s+wheelchair)(?![\\p{L}\\p{N}])`,
+    "iu",
+  ),
+  /^\s*(?:deaf|blind|kuuro|sokea|döv|hearing[\s-]impaired|vammainen|disabled)\s*[.!]?\s*$/iu,
+  new RegExp(`${NB}(?:i\\s+use|using|i\\s+rely\\s+on|käytän|jag\\s+använder)\\s+(?:a\\s+)?(?:wheelchair|pyörätuoli\\p{L}*|rullstol\\p{L}*|hearing\\s+aids?|kuulolaite\\p{L}*)`, "iu"),
+  // "Romani background", "I am Roma", "Roma origin"
+  new RegExp(`${NB}(?:romani?|roma|sami|saami|sámi)\\s+(?:background|origin|descent|heritage|minority|people|community)(?![\\p{L}\\p{N}])`, "iu"),
+  new RegExp(`${NB}${ME}\\s+(?:an?\\s+)?(?:roma|romani|sami|saami|sámi)(?![\\p{L}\\p{N}])`, "iu"),
+  // "I am retired", "Retired, 67, ..."
+  new RegExp(`${NB}${ME}\\s+(?:a\\s+)?(?:retired|pensioner|eläkkeellä|eläkeläinen|pensionerad|pensionär)`, "iu"),
+  /^\s*(?:retired|retiree)\s*(?:[,;.:!]|$)/iu,
   // gender, family status, nationality as "I am ..."
   new RegExp(`${NB}${ME}\\s+(?:an?\\s+|en\\s+|ett\\s+)?(?:male|female|man|woman|mies|nainen|kvinna|pojka|tyttö|poika|girl|boy|lady|gentleman)(?![\\p{L}\\p{N}])`, "iu"),
   new RegExp(
@@ -620,9 +713,22 @@ function isFamilyOnly(sentence: string): boolean {
   return term;
 }
 
+const NATIONALITY_WORD = new RegExp(`^(?:${NATIONALITY_SRC})$`, "iu");
+const HYPHEN_PAIR = /^\s*(\p{L}+)-(\p{L}+)\s*[.!]?\s*$/u;
+
+/** "Somali-Finnish." alone: two nationality words joined, which states an origin. In a sentence about work it is a language pair and stays. */
+function isNationalityPair(sentence: string): boolean {
+  const m = HYPHEN_PAIR.exec(sentence);
+  return m !== null && NATIONALITY_WORD.test(m[1]!) && NATIONALITY_WORD.test(m[2]!);
+}
+
+/** Health words inside compounds ("kuulovamma", "kehitysvammainen"): the sentence is about a condition. */
+const COMPOUND_HEALTH = new RegExp(`${BEFORE}\\p{L}{1,30}(?:vamma|vammai|sairaus|sairaudet)\\p{L}*`, "iu");
+
 function isProtectedSentence(s: string): boolean {
   PROTECTED_WORDS.lastIndex = 0;
   if (PROTECTED_WORDS.test(s)) return true;
+  if (isNationalityPair(s) || COMPOUND_HEALTH.test(s)) return true;
   return FAMILY_PHRASES.some((re) => re.test(s)) || PERSONAL_STATEMENTS.some((re) => re.test(s)) || isFamilyOnly(s);
 }
 
@@ -687,12 +793,21 @@ function forNameScan(line: string): string {
     .replace(URL, REDACTED)
     .replace(SOCIAL, REDACTED)
     .replace(DOMAIN_PATH, REDACTED)
+    .replace(DOMAIN_BARE, (m) => (NOT_A_DOMAIN.has(m.toLowerCase()) ? m : REDACTED))
     .split(REDACTED)
     .join(" | ");
 }
 
 /** "References: Matti ..." or "Referenser Anna ..." on one line: the reference's name and contacts follow. */
 const INLINE_REFERENCES = /^\s*(?:[-•*▪●]\s*)?(?:(?:references|referees|suosittelijat|referenser|referenspersoner)(?=[\s:–—-])|(?:reference|suosittelija)\s*[:–—-])\s*[:–—-]?\s*\S/iu;
+const ON_REQUEST = /(?:request|pyynnöstä|pyydettäessä|förfrågan|begäran|available|saatavilla|tillgänglig|none|n\/a|ei ole|inga)/iu;
+
+/** "References: available upon request": the label and nothing that names or reaches a person. */
+function isReferencesOnRequest(line: string): boolean {
+  const rest = line.replace(/^\s*(?:[-•*▪●]\s*)?\p{L}+\s*[:–—-]?\s*/u, "");
+  return rest.length <= 60 && !/[\d@]/.test(rest) && ON_REQUEST.test(rest) && !/\p{Lu}.*\p{Lu}/u.test(rest.replace(/^\p{Lu}/u, ""));
+}
+
 /** "Hobbies: running, reading": a dropped heading with its content on the same line. */
 const INLINE_DROP = new RegExp(
   `^\\s*(?:[-•*▪●]\\s*)?(?:${DROP_HEADINGS.filter((h) => !/reference|referee|suosittelij|referens/.test(h))
@@ -761,6 +876,8 @@ function dropLines(lines: string[], removed: CvRemoved): LineResult {
     }
     if (dropping === 0 && INLINE_REFERENCES.test(line)) {
       removed.section += 1;
+      // "References: available upon request" names nobody: that one line goes, the lines after it stay.
+      if (isReferencesOnRequest(line)) continue;
       dropping = MAX_SECTION_LINES;
       untilBlank = true;
       continue;
@@ -770,7 +887,9 @@ function dropLines(lines: string[], removed: CvRemoved): LineResult {
       continue;
     }
     if (dropping > 0) {
-      if (key !== null && KEEP_SET.has(key)) {
+      // "Skills: Python, SQL" ends a dropped section as well as a heading on a line of its own.
+      const inlineKey = headingKey(line.split(/[:：]/)[0]!);
+      if ((key !== null && KEEP_SET.has(key)) || (inlineKey !== null && /[:：]/.test(line) && KEEP_SET.has(inlineKey))) {
         dropping = 0;
         untilBlank = false;
       } else {
@@ -821,6 +940,33 @@ function removeName(text: string, allNames: string[], removed: CvRemoved): strin
     }
   }
   return out;
+}
+
+/**
+ * A word that looks like a handle or an address ("korhonen_k", "liisa-k92", "kor/honen") and holds a
+ * name word of four letters or more, in any case, goes whole. Names alone are removed by `removeName`.
+ */
+function removeNameInHandles(text: string, allNames: string[], removed: CvRemoved): string {
+  const parts = new Set<string>();
+  for (const name of [...new Set(allNames)].filter((n) => n.length <= MAX_NAME_LENGTH).slice(0, MAX_NAMES)) {
+    for (const t of nameTokens(name)) {
+      const f = fold(t).replace(/[^a-z]/g, "");
+      if (f.length >= 4) parts.add(f);
+    }
+  }
+  if (parts.size === 0) return text;
+  return text.replace(/[^\s]+/gu, (word) => {
+    const core = word.replace(/[.,;:!?)\]"”]+$/u, "");
+    if (!/[._#/@\d-]/.test(core) || core === REDACTED) return word;
+    const f = fold(core);
+    for (const p of parts) {
+      if (f.includes(p)) {
+        removed.name += 1;
+        return REDACTED + word.slice(core.length);
+      }
+    }
+    return word;
+  });
 }
 
 function dropProtectedSentences(text: string, removed: CvRemoved): string {
@@ -878,7 +1024,7 @@ function tidy(text: string): string {
 /** Remove personal data from CV text by fixed rules. Never throws; never logs. */
 export function anonymiseCv(input: string): AnonymisedCv {
   const removed = emptyRemoved();
-  const normalised = input.replace(/\r\n?/g, "\n").replace(INVISIBLE, "").normalize("NFC");
+  const normalised = input.replace(/\r\n?/g, "\n").replace(INVISIBLE, "").normalize("NFKC");
 
   // The email and profile link name the person best: read them before anything is removed,
   // from the whole text (a contact section is dropped later).
@@ -910,14 +1056,17 @@ export function anonymiseCv(input: string): AnonymisedCv {
   text = replaceCounting(text, URL, removed, "contact");
   text = replaceCounting(text, SOCIAL, removed, "contact");
   text = replaceCounting(text, DOMAIN_PATH, removed, "contact");
+  text = text.replace(DOMAIN_BARE, (m) => bareDomain(m, removed));
   text = replaceCounting(text, HANDLE, removed, "contact");
   text = replaceCounting(text, SOCIAL_LABEL, removed, "contact");
+  text = replaceCounting(text, SOCIAL_SPACE, removed, "contact");
   text = replaceCounting(text, STREET, removed, "contact");
   text = replaceCounting(text, STREET_EN, removed, "contact");
   text = replaceCounting(text, POSTAL_FI, removed, "contact");
   text = replaceCounting(text, POSTAL_SE, removed, "contact");
 
   text = removeName(text, names, removed);
+  text = removeNameInHandles(text, names, removed);
 
   text = stripNativeMarkers(text, removed);
   text = dropProtectedSentences(text, removed);
@@ -929,6 +1078,7 @@ export function anonymiseCv(input: string): AnonymisedCv {
 
   text = replaceCounting(text, COUNTRY, removed, "country");
   text = replaceCounting(text, DEMONYM_FI_SV, removed, "country");
+  text = replaceCounting(text, COUNTRY_FI_SV, removed, "country");
 
   return { text: tidy(text), removed };
 }
