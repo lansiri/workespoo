@@ -7,7 +7,7 @@ import { fmt } from "@/lib/i18n";
 import { useMessages, useUiLang } from "@/lib/i18n/client";
 import { formatWhen, meetErrorLine, rankedMessages } from "../messages-organiser";
 import type { CompanyApplicant, CompanyApplicants } from "../rank";
-import { EvidenceList, LevelStrip, LevelsBox, RatingsList } from "./RankedListView";
+import { CloseNote, EvidenceList, LevelStrip, LevelsBox, RatingsList } from "./RankedListView";
 import "./ranked.css";
 
 type M = (typeof rankedMessages)["en"];
@@ -110,6 +110,7 @@ function ApplicantCard({ a, job, token, m, lang }: { a: CompanyApplicant; job: J
         </span>
       </div>
       {a.moved ? <p className="we-rk-note" style={{ marginTop: 8 }}>{m.movedByOrganiser}</p> : null}
+      <CloseNote apart={a.closeToAbove} m={m} />
       <RatingsList ratings={a.ratings} requirements={job.requirements} m={m} lang={lang} testId="company-rating" aiNote={m.notAQuote} />
       <div className="we-rk-summary">
         <span className="we-rk-ai">

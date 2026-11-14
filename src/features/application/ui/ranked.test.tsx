@@ -50,6 +50,7 @@ const list = (over: Partial<RankedList> = {}): RankedList => ({
       liveDemo: false,
       position: 1,
       computedPosition: 1,
+      closeToAbove: null,
       points: 7,
       maxPoints: 9,
       pin: null,
@@ -68,6 +69,7 @@ const list = (over: Partial<RankedList> = {}): RankedList => ({
       liveDemo: true,
       position: 2,
       computedPosition: 1,
+      closeToAbove: 0,
       points: 7,
       maxPoints: 9,
       pin: { applicationId: "app_2", position: 2, reason: "Relevant shift pattern", at: "2026-11-14T11:00:00.000Z" },
@@ -145,6 +147,25 @@ describe("RankedListView", () => {
     expect(text(behind)).toContain(rankedMessages.en.companyPageStale);
   });
 
+  it("says when two neighbours are level, and nothing when they are further apart", () => {
+    const m = rankedMessages.en;
+    const shown = text(wrap(createElement(RankedListView, { jobId: "j", initial: list() })));
+    expect(shown).toContain(m.closeSame);
+    const apart = list();
+    apart.applicants[1]!.closeToAbove = 2;
+    expect(text(wrap(createElement(RankedListView, { jobId: "j", initial: apart })))).toContain(m.closeNear.replace("{n}", "2"));
+    apart.applicants[1]!.closeToAbove = 1;
+    expect(text(wrap(createElement(RankedListView, { jobId: "j", initial: apart })))).toContain(m.closeNearOne);
+    apart.applicants[1]!.closeToAbove = null;
+    expect(wrap(createElement(RankedListView, { jobId: "j", initial: apart }))).not.toContain("ranked-close");
+  });
+
+  it("shows each applicant's levels as marks next to the points, named for a screen reader", () => {
+    const shown = wrap(createElement(RankedListView, { jobId: "j", initial: list() }));
+    expect(shown.match(/data-testid="ranked-strip"/g)).toHaveLength(2);
+    expect(shown).toMatch(/aria-label="Levels, one mark per requirement: Forklift licence: Example close to this job; Inventory systems: Stated"/);
+  });
+
   it("cannot send a move without a reason", () => {
     const m = rankedMessages.en;
     expect(moveProblem(m, "1", "")).toBe(m.moveNeedReason);
@@ -180,6 +201,7 @@ const company = (over: Partial<CompanyApplicants["jobs"][number]> = {}): Company
           points: 7,
           maxPoints: 9,
           moved: true,
+          closeToAbove: null,
           ratings: [{ requirementId: "r1", level: 3, reason: loc("Described driving a forklift.") }],
           summary: loc("Gave examples."),
           intro: null,

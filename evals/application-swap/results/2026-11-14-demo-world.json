@@ -1,0 +1,2323 @@
+{
+ "at": "2026-11-14T14:21:45.410Z",
+ "summary": {
+  "total": 324,
+  "stayed": 296,
+  "movedByOne": 22,
+  "movedByMore": 6,
+  "up": 13,
+  "down": 15,
+  "perVariant": {
+   "baseline": {
+    "total": 108,
+    "stayed": 104,
+    "movedByOne": 3,
+    "movedByMore": 1,
+    "up": 1,
+    "down": 3
+   },
+   "en": {
+    "total": 24,
+    "stayed": 21,
+    "movedByOne": 2,
+    "movedByMore": 1,
+    "up": 1,
+    "down": 2
+   },
+   "sv": {
+    "total": 102,
+    "stayed": 93,
+    "movedByOne": 8,
+    "movedByMore": 1,
+    "up": 4,
+    "down": 5
+   },
+   "fi": {
+    "total": 90,
+    "stayed": 78,
+    "movedByOne": 9,
+    "movedByMore": 3,
+    "up": 7,
+    "down": 5
+   }
+  },
+  "applicationsWithBigMove": [
+   "app_ee4wcnp29b2t",
+   "app_jzmx6m98ztpx",
+   "app_ke80b653hnwl",
+   "app_yqptlppx7izr"
+  ],
+  "stayedShare": 0.9135802469135802
+ },
+ "results": [
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_163d0uspvctx",
+   "variant": "baseline",
+   "before": 1,
+   "after": 0
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_vc43ywe040dp",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_oecq8qidjrk6",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_btmdjd5g9hba",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_z9itud19d7oo",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_h94tlc7y0wll",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_163d0uspvctx",
+   "variant": "en",
+   "before": 1,
+   "after": 0
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_vc43ywe040dp",
+   "variant": "en",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_oecq8qidjrk6",
+   "variant": "en",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_btmdjd5g9hba",
+   "variant": "en",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_z9itud19d7oo",
+   "variant": "en",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_h94tlc7y0wll",
+   "variant": "en",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_163d0uspvctx",
+   "variant": "sv",
+   "before": 1,
+   "after": 0
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_vc43ywe040dp",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_oecq8qidjrk6",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_btmdjd5g9hba",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_z9itud19d7oo",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_m2ybjiwtnzr3",
+   "requirementId": "req_h94tlc7y0wll",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_163d0uspvctx",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_vc43ywe040dp",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_oecq8qidjrk6",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_btmdjd5g9hba",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_z9itud19d7oo",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_h94tlc7y0wll",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_163d0uspvctx",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_vc43ywe040dp",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_oecq8qidjrk6",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_btmdjd5g9hba",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_z9itud19d7oo",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_h94tlc7y0wll",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_163d0uspvctx",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_vc43ywe040dp",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_oecq8qidjrk6",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_btmdjd5g9hba",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_z9itud19d7oo",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_pbve9pzblxwi",
+   "requirementId": "req_h94tlc7y0wll",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_163d0uspvctx",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_vc43ywe040dp",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_oecq8qidjrk6",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_btmdjd5g9hba",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_z9itud19d7oo",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_h94tlc7y0wll",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_163d0uspvctx",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_vc43ywe040dp",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_oecq8qidjrk6",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_btmdjd5g9hba",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_z9itud19d7oo",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_h94tlc7y0wll",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_163d0uspvctx",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_vc43ywe040dp",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_oecq8qidjrk6",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_btmdjd5g9hba",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_z9itud19d7oo",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_v5zote2eft4j",
+   "requirementId": "req_h94tlc7y0wll",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_163d0uspvctx",
+   "variant": "baseline",
+   "before": 1,
+   "after": 1
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_vc43ywe040dp",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_oecq8qidjrk6",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_btmdjd5g9hba",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_z9itud19d7oo",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_h94tlc7y0wll",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_163d0uspvctx",
+   "variant": "fi",
+   "before": 1,
+   "after": 2
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_vc43ywe040dp",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_oecq8qidjrk6",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_btmdjd5g9hba",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_z9itud19d7oo",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_h94tlc7y0wll",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_163d0uspvctx",
+   "variant": "sv",
+   "before": 1,
+   "after": 1
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_vc43ywe040dp",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_oecq8qidjrk6",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_btmdjd5g9hba",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_z9itud19d7oo",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_7ulkwslybl40",
+   "requirementId": "req_h94tlc7y0wll",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_nu7vil3es3h5",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_qcanepviyy3z",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_mk18fxtn7em3",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_gm3y4y93z6sf",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_mdo3oj1164xh",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_5kymalfofubo",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_nu7vil3es3h5",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_qcanepviyy3z",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_mk18fxtn7em3",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_gm3y4y93z6sf",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_mdo3oj1164xh",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_5kymalfofubo",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_nu7vil3es3h5",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_qcanepviyy3z",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_mk18fxtn7em3",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_gm3y4y93z6sf",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_mdo3oj1164xh",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_hkeghzjvdjb2",
+   "requirementId": "req_5kymalfofubo",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_7a8nasiy2om0",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_4pngjc325jv2",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_u90r54ott79c",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_40u57xumdyer",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_nu9bv4o7k8b9",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_dkjs0lgbeyux",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_7a8nasiy2om0",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_4pngjc325jv2",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_u90r54ott79c",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_40u57xumdyer",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_nu9bv4o7k8b9",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_dkjs0lgbeyux",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_7a8nasiy2om0",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_4pngjc325jv2",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_u90r54ott79c",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_40u57xumdyer",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_nu9bv4o7k8b9",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_1ed9atm3igfk",
+   "requirementId": "req_dkjs0lgbeyux",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_7a8nasiy2om0",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_4pngjc325jv2",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_u90r54ott79c",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_40u57xumdyer",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_nu9bv4o7k8b9",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_dkjs0lgbeyux",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_7a8nasiy2om0",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_4pngjc325jv2",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_u90r54ott79c",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_40u57xumdyer",
+   "variant": "fi",
+   "before": 2,
+   "after": 0
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_nu9bv4o7k8b9",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_dkjs0lgbeyux",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_7a8nasiy2om0",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_4pngjc325jv2",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_u90r54ott79c",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_40u57xumdyer",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_nu9bv4o7k8b9",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_yqptlppx7izr",
+   "requirementId": "req_dkjs0lgbeyux",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_uo60yhgvrz2j",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_c5dl2h0h1v1r",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_zr4jpxovdbas",
+   "variant": "baseline",
+   "before": 1,
+   "after": 1
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_fx5vo7d2n82n",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_2szmrmaz1znc",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_yf8ljim3ly9j",
+   "variant": "baseline",
+   "before": 3,
+   "after": 2
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_uo60yhgvrz2j",
+   "variant": "fi",
+   "before": 2,
+   "after": 3
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_c5dl2h0h1v1r",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_zr4jpxovdbas",
+   "variant": "fi",
+   "before": 1,
+   "after": 1
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_fx5vo7d2n82n",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_2szmrmaz1znc",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_yf8ljim3ly9j",
+   "variant": "fi",
+   "before": 3,
+   "after": 2
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_uo60yhgvrz2j",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_c5dl2h0h1v1r",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_zr4jpxovdbas",
+   "variant": "sv",
+   "before": 1,
+   "after": 1
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_fx5vo7d2n82n",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_2szmrmaz1znc",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_68zamzrmxw05",
+   "requirementId": "req_yf8ljim3ly9j",
+   "variant": "sv",
+   "before": 3,
+   "after": 2
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_a3u97efwsicu",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_iye900ivhxm7",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_d1lepm7m4dn6",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_fu7ol3ldv3z0",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_kje7kdacxb9o",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_4jcimh6966ie",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_a3u97efwsicu",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_iye900ivhxm7",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_d1lepm7m4dn6",
+   "variant": "fi",
+   "before": 2,
+   "after": 3
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_fu7ol3ldv3z0",
+   "variant": "fi",
+   "before": 2,
+   "after": 3
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_kje7kdacxb9o",
+   "variant": "fi",
+   "before": 2,
+   "after": 3
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_4jcimh6966ie",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_a3u97efwsicu",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_iye900ivhxm7",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_d1lepm7m4dn6",
+   "variant": "sv",
+   "before": 2,
+   "after": 3
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_fu7ol3ldv3z0",
+   "variant": "sv",
+   "before": 2,
+   "after": 3
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_kje7kdacxb9o",
+   "variant": "sv",
+   "before": 2,
+   "after": 3
+  },
+  {
+   "applicationId": "app_jlghslcopnsi",
+   "requirementId": "req_4jcimh6966ie",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_a3u97efwsicu",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_iye900ivhxm7",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_d1lepm7m4dn6",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_fu7ol3ldv3z0",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_kje7kdacxb9o",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_4jcimh6966ie",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_a3u97efwsicu",
+   "variant": "en",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_iye900ivhxm7",
+   "variant": "en",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_d1lepm7m4dn6",
+   "variant": "en",
+   "before": 3,
+   "after": 2
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_fu7ol3ldv3z0",
+   "variant": "en",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_kje7kdacxb9o",
+   "variant": "en",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_4jcimh6966ie",
+   "variant": "en",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_a3u97efwsicu",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_iye900ivhxm7",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_d1lepm7m4dn6",
+   "variant": "sv",
+   "before": 3,
+   "after": 2
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_fu7ol3ldv3z0",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_kje7kdacxb9o",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_d5s3youxq5ra",
+   "requirementId": "req_4jcimh6966ie",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_nu7vil3es3h5",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_qcanepviyy3z",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_mk18fxtn7em3",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_gm3y4y93z6sf",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_mdo3oj1164xh",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_5kymalfofubo",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_nu7vil3es3h5",
+   "variant": "en",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_qcanepviyy3z",
+   "variant": "en",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_mk18fxtn7em3",
+   "variant": "en",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_gm3y4y93z6sf",
+   "variant": "en",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_mdo3oj1164xh",
+   "variant": "en",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_5kymalfofubo",
+   "variant": "en",
+   "before": 0,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_nu7vil3es3h5",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_qcanepviyy3z",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_mk18fxtn7em3",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_gm3y4y93z6sf",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_mdo3oj1164xh",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ke80b653hnwl",
+   "requirementId": "req_5kymalfofubo",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_jtep8j6prptw",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_84iuqbj54jo4",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_m5h2ekbba540",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_hw8gko0clqsw",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_53duznu77uz9",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_umlxp1gbhc6o",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_jtep8j6prptw",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_84iuqbj54jo4",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_m5h2ekbba540",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_hw8gko0clqsw",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_53duznu77uz9",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_umlxp1gbhc6o",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_jtep8j6prptw",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_84iuqbj54jo4",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_m5h2ekbba540",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_hw8gko0clqsw",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_53duznu77uz9",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mdrxrgpilyhq",
+   "requirementId": "req_umlxp1gbhc6o",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_dsjig5d8wj1l",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_js2s0f9snmb1",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_emc30rjjfhov",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_y91umzqxejz4",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_naip0vxuc7r4",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_uadqqzwgvr7y",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_dsjig5d8wj1l",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_js2s0f9snmb1",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_emc30rjjfhov",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_y91umzqxejz4",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_naip0vxuc7r4",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_uadqqzwgvr7y",
+   "variant": "fi",
+   "before": 3,
+   "after": 2
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_dsjig5d8wj1l",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_js2s0f9snmb1",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_emc30rjjfhov",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_y91umzqxejz4",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_naip0vxuc7r4",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_bq1bgmqixclv",
+   "requirementId": "req_uadqqzwgvr7y",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_nu7vil3es3h5",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_qcanepviyy3z",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_mk18fxtn7em3",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_gm3y4y93z6sf",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_mdo3oj1164xh",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_5kymalfofubo",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_nu7vil3es3h5",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_qcanepviyy3z",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_mk18fxtn7em3",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_gm3y4y93z6sf",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_mdo3oj1164xh",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_5kymalfofubo",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_nu7vil3es3h5",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_qcanepviyy3z",
+   "variant": "sv",
+   "before": 3,
+   "after": 2
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_mk18fxtn7em3",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_gm3y4y93z6sf",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_mdo3oj1164xh",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_6gxqtmsyr72p",
+   "requirementId": "req_5kymalfofubo",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_idlsep5jn7n3",
+   "variant": "baseline",
+   "before": 2,
+   "after": 0
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_sroja6gd05ti",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_dctd5mz312ba",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_s2w8bqycgpvg",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_eod39fbk2m14",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_4p2mfm8c6h8f",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_idlsep5jn7n3",
+   "variant": "fi",
+   "before": 2,
+   "after": 0
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_sroja6gd05ti",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_dctd5mz312ba",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_s2w8bqycgpvg",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_eod39fbk2m14",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_4p2mfm8c6h8f",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_idlsep5jn7n3",
+   "variant": "sv",
+   "before": 2,
+   "after": 0
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_sroja6gd05ti",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_dctd5mz312ba",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_s2w8bqycgpvg",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_eod39fbk2m14",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_ee4wcnp29b2t",
+   "requirementId": "req_4p2mfm8c6h8f",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_nu7vil3es3h5",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_qcanepviyy3z",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_mk18fxtn7em3",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_gm3y4y93z6sf",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_mdo3oj1164xh",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_5kymalfofubo",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_nu7vil3es3h5",
+   "variant": "en",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_qcanepviyy3z",
+   "variant": "en",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_mk18fxtn7em3",
+   "variant": "en",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_gm3y4y93z6sf",
+   "variant": "en",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_mdo3oj1164xh",
+   "variant": "en",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_5kymalfofubo",
+   "variant": "en",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_nu7vil3es3h5",
+   "variant": "fi",
+   "before": 2,
+   "after": 1
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_qcanepviyy3z",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_mk18fxtn7em3",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_gm3y4y93z6sf",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_mdo3oj1164xh",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_74ijg2xq0r46",
+   "requirementId": "req_5kymalfofubo",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_idlsep5jn7n3",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_sroja6gd05ti",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_dctd5mz312ba",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_s2w8bqycgpvg",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_eod39fbk2m14",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_4p2mfm8c6h8f",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_idlsep5jn7n3",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_sroja6gd05ti",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_dctd5mz312ba",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_s2w8bqycgpvg",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_eod39fbk2m14",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_4p2mfm8c6h8f",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_idlsep5jn7n3",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_sroja6gd05ti",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_dctd5mz312ba",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_s2w8bqycgpvg",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_eod39fbk2m14",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_mosohqhph54d",
+   "requirementId": "req_4p2mfm8c6h8f",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_idlsep5jn7n3",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_sroja6gd05ti",
+   "variant": "baseline",
+   "before": 2,
+   "after": 3
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_dctd5mz312ba",
+   "variant": "baseline",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_s2w8bqycgpvg",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_eod39fbk2m14",
+   "variant": "baseline",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_4p2mfm8c6h8f",
+   "variant": "baseline",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_idlsep5jn7n3",
+   "variant": "fi",
+   "before": 0,
+   "after": 2
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_sroja6gd05ti",
+   "variant": "fi",
+   "before": 2,
+   "after": 3
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_dctd5mz312ba",
+   "variant": "fi",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_s2w8bqycgpvg",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_eod39fbk2m14",
+   "variant": "fi",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_4p2mfm8c6h8f",
+   "variant": "fi",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_idlsep5jn7n3",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_sroja6gd05ti",
+   "variant": "sv",
+   "before": 2,
+   "after": 3
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_dctd5mz312ba",
+   "variant": "sv",
+   "before": 3,
+   "after": 3
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_s2w8bqycgpvg",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_eod39fbk2m14",
+   "variant": "sv",
+   "before": 2,
+   "after": 2
+  },
+  {
+   "applicationId": "app_jzmx6m98ztpx",
+   "requirementId": "req_4p2mfm8c6h8f",
+   "variant": "sv",
+   "before": 0,
+   "after": 0
+  }
+ ],
+ "failures": []
+}

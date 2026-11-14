@@ -55,6 +55,15 @@ export const LEVEL_ANCHORS_OWN: Record<UiLang, readonly [string, string, string,
   ],
 };
 
+/**
+ * How many points apart two neighbours on a list can be and still be read as level. Two points
+ * is one level on one must-have, which is what a second rating of the same answers was seen to
+ * change now and then (the swap check, `evals/application-swap`: 4 of 108 levels moved when the
+ * same words were rated again, 24 of 216 in another language). The lists say so next to such
+ * neighbours, so that nobody reads a difference into the order that the ratings cannot carry.
+ */
+export const CLOSE_POINTS = 2;
+
 /** The reason code writes for a level when the model's reason failed a check. */
 export const CODE_REASONS: readonly [LocalText, LocalText, LocalText, LocalText] = [
   {

@@ -22,6 +22,7 @@ import { screenAnswerSentence } from "./assess-protected";
 import { employerTerms, maskEmployer } from "@/lib/mask";
 import { companyFromToken } from "@/lib/session";
 import { LEFT_OUT, answersAbout, expandRefs, questionsAbout, toApplicationTurn } from "./assess-turns";
+import { CLOSE_POINTS } from "./levels";
 import { currentRequirementKinds } from "./requirements";
 import { applicantsSignature as signature, rankedListSignature } from "./signature";
 
@@ -92,6 +93,12 @@ export function orderApplicants(
   return result;
 }
 
+/** The points between two neighbours when they are close enough to be read as level, else null. */
+export function closeTo(above: number, own: number): number | null {
+  const apart = Math.abs(above - own);
+  return apart <= CLOSE_POINTS ? apart : null;
+}
+
 /** One applicant on the organiser's list. */
 export interface RankedApplicant {
   applicationId: string;
@@ -103,6 +110,8 @@ export interface RankedApplicant {
   position: number;
   /** Where the points alone would put them. */
   computedPosition: number;
+  /** Points between this applicant and the one above when they are within `CLOSE_POINTS` (0 = the same points); null when they are further apart or there is nobody above. */
+  closeToAbove: number | null;
   points: number;
   maxPoints: number;
   pin: PinnedPosition | null;
@@ -194,6 +203,7 @@ async function loadList(db: Db, jobId: string): Promise<RankedList | null> {
 
   const applicants: RankedApplicant[] = order.map((id, i) => {
     const s = byId.get(id)!;
+    const above = i > 0 ? byId.get(order[i - 1]!)! : null;
     return {
       applicationId: id,
       talentId: s.r.app.talentId,
@@ -202,6 +212,7 @@ async function loadList(db: Db, jobId: string): Promise<RankedList | null> {
       liveDemo: s.r.liveDemo,
       position: i + 1,
       computedPosition: computed.indexOf(id) + 1,
+      closeToAbove: above ? closeTo(above.points, s.points) : null,
       points: s.points,
       maxPoints: s.maxPoints,
       pin: pinOf.get(id) ?? null,
@@ -432,6 +443,8 @@ export async function evidenceForOrganiser(db: Db, applicationId: string): Promi
 
 /** One applicant as the company's page shows them. `revealed` is filled only after both sides agreed to meet. */
 export interface CompanyApplicant extends PublishedApplicant {
+  /** As on the organiser's list: points to the one above when within `CLOSE_POINTS`, else null. */
+  closeToAbove: number | null;
   intro: { id: string; status: string } | null;
   /** True when the company may ask to meet this person now. */
   canAsk: boolean;
@@ -491,7 +504,8 @@ export async function applicantsForCompany(db: Db, token: string): Promise<Compa
     const appById = new Map(applications.map((a) => [a.id, a]));
 
     const applicants: CompanyApplicant[] = [];
-    for (const a of approved.applicants) {
+    for (const [i, a] of approved.applicants.entries()) {
+      const above = i > 0 ? approved.applicants[i - 1]! : null;
       const intro = await latestIntroForPair(db, co.id, a.talentId);
       let revealed: CompanyApplicant["revealed"] = null;
       const app = appById.get(a.applicationId);
@@ -512,6 +526,7 @@ export async function applicantsForCompany(db: Db, token: string): Promise<Compa
         moved: a.moved,
         ratings: a.ratings.map((r) => ({ requirementId: r.requirementId, level: r.level, reason: { en: r.reason.en, fi: r.reason.fi, sv: r.reason.sv } })),
         summary: { en: a.summary.en, fi: a.summary.fi, sv: a.summary.sv },
+        closeToAbove: above ? closeTo(above.points, a.points) : null,
         intro: intro ? { id: intro.id, status: intro.status } : null,
         canAsk: !intro || OPEN_AGAIN.has(intro.status),
         revealed,

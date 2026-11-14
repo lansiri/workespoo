@@ -20,6 +20,7 @@ import {
   applicantsForCompany,
   applicationPoints,
   approveRanking,
+  closeTo,
   rankedListSignature,
   askToMeetApplicant,
   evidenceForOrganiser,
@@ -154,6 +155,28 @@ describe("the ranked list", () => {
     expect(await listJobsWithApplicants(db)).toEqual([
       { jobId: JOB, companyName: "Demo company c1", title: "Data engineer", applicants: 4, pendingAssessment: 0, approvedAt: null, changedSincePublished: true },
     ]);
+  });
+
+  it("marks neighbours within two points of each other as level", async () => {
+    expect(closeTo(24, 24)).toBe(0);
+    expect(closeTo(24, 22)).toBe(2);
+    expect(closeTo(22, 24)).toBe(2);
+    expect(closeTo(24, 21)).toBeNull();
+    // p1 15, p2 11, p3 5, p4 0: nobody is close.
+    expect((await rankedListForJob(db, JOB))!.applicants.map((a) => a.closeToAbove)).toEqual([null, null, null, null]);
+    // A fifth applicant one level below p1 on one must-have: 13 points, two from p1 and two from p2.
+    await addTalent(db, { id: "t_p5", handle: "Birch-p5" });
+    await addApplication(db, { id: "p5", talentId: "t_p5", jobId: JOB, companyId: "c1", needCardId: "n1", levels: { r1: 3, r2: 2, r3: 3 }, submittedAt: "2026-11-14T09:00:00.000Z" });
+    const list = (await rankedListForJob(db, JOB))!;
+    expect(list.applicants.map((a) => [a.applicationId, a.points, a.closeToAbove])).toEqual([
+      ["p1", 15, null],
+      ["p5", 13, 2],
+      ["p2", 11, 2],
+      ["p3", 5, null],
+      ["p4", 0, null],
+    ]);
+    await approveRanking(db, JOB);
+    expect((await applicantsForCompany(db, TOKEN))!.jobs[0].applicants.map((a) => a.closeToAbove)).toEqual([null, 2, 2, null, null]);
   });
 
   it("keeps a submitted application off the list and counts it as pending", async () => {
@@ -334,7 +357,7 @@ describe("the ranked list", () => {
       expect(text).not.toContain("I used Python");
       expect(text).not.toMatch(/inputMode|"lang"|interviewLang|displayName|contact"/);
       expect(Object.keys(j.applicants[0]).sort()).toEqual(
-        ["applicationId", "canAsk", "handle", "intro", "maxPoints", "moved", "points", "position", "ratings", "revealed", "summary", "talentId"].sort(),
+        ["applicationId", "canAsk", "closeToAbove", "handle", "intro", "maxPoints", "moved", "points", "position", "ratings", "revealed", "summary", "talentId"].sort(),
       );
       // Still the approved list after a later change.
       await moveApplicant(db, JOB, { applicationId: "p4", position: 4, reason: "Another" });

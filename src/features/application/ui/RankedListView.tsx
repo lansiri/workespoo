@@ -68,6 +68,17 @@ export function LevelStrip(props: {
   );
 }
 
+/** Said under an applicant who is within a couple of points of the one above: the order between the two is not a difference. */
+export function CloseNote({ apart, m }: { apart: number | null; m: M }) {
+  if (apart === null) return null;
+  const text = apart === 0 ? m.closeSame : apart === 1 ? m.closeNearOne : fmt(m.closeNear, { n: apart });
+  return (
+    <p className="we-rk-close" data-testid="ranked-close">
+      {text}
+    </p>
+  );
+}
+
 /** What the levels mean, from the anchors, and that nobody is left off by a rating. */
 export function LevelsBox({ m, lang }: { m: M; lang: UiLang }) {
   return (
@@ -200,6 +211,7 @@ function ApplicantCard(props: {
           </span>
         </span>
       </div>
+      <CloseNote apart={a.closeToAbove} m={m} />
       <RatingsList ratings={a.ratings} requirements={list.requirements} m={m} lang={lang} testId="ranked-rating" aiNote={m.aiLabel} />
       <div className="we-rk-summary">
         <span className="we-rk-ai">
