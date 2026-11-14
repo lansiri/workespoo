@@ -24,24 +24,24 @@ const en = {
     "Each note on your Signal Card points to sentences you said. You can change or remove any note, and nothing is used until you approve the card.",
   step3Title: "See real open jobs",
   step3Body:
-    "Real open jobs that relate to your notes light up as you talk, with the reasons. Companies see you only if you choose to join the pool.",
+    "Real open jobs that relate to your notes light up as you talk, with the reasons. Companies see you only if you join the pool or apply for one of their jobs. You can apply for a job of the event with a short job interview, which is rated against the ad's requirements.",
 
   gainTitle: "What companies and organisers get",
   companiesTitle: "Companies",
   companiesBody:
-    "Each morning, a short list of people worth a conversation, with the reasons, under neutral nicknames and in no particular order. A must-have in a job ad never removes anyone from the pool.",
+    "Each morning, a short list of people worth a conversation, with the reasons, under neutral nicknames and in no particular order. A must-have in a job ad never removes anyone from the pool. People who apply with a job interview come as a ranked list that an organiser has checked and approved.",
   organisersTitle: "Espoo organisers",
   organisersBody:
     "Every suggestion is drafted for review and approved one person at a time before a company sees it. Each decision goes to the audit log, and names stay hidden until both sides say yes.",
 
   notTitle: "What the AI does not do",
-  not1Title: "It takes notes. It does not score.",
-  not1Body: "No points, levels or percentages for you or your skills, and no comments on how you speak or feel.",
+  not1Title: "It takes notes. It does not score the conversation.",
+  not1Body: "Your conversation and your card get no points, levels or percentages, and there are no comments on how you speak or feel. Only a job interview you choose to take is rated, and you are told first.",
   not2Title: "It does not decide who is suggested.",
   not2Body: "A person approves every suggestion. One person at a time. No approve-all.",
   not3Title: "It cannot invent your words.",
   not3Body: "Your sentences are shown exactly as they were transcribed. The AI's wording is shown separately and labelled.",
-  nothingScored: "Nothing here is scored.",
+  nothingScored: "Your conversation is not scored.",
   how: "How this works",
   prototype: "Hackathon prototype, not an official City of Espoo service.",
 };
@@ -68,24 +68,24 @@ const fi: Strings = {
     "Jokainen Signaalikorttisi muistiinpano viittaa lauseisiin, jotka sanoit. Voit muuttaa tai poistaa minkä tahansa muistiinpanon, eikä mitään käytetä ennen kuin hyväksyt kortin.",
   step3Title: "Katso oikeat avoimet työt",
   step3Body:
-    "Muistiinpanoihisi liittyvät oikeat avoimet työpaikat syttyvät, kun puhut, perusteluineen. Yritykset näkevät sinut vain, jos päätät liittyä joukkoon.",
+    "Muistiinpanoihisi liittyvät oikeat avoimet työpaikat syttyvät, kun puhut, perusteluineen. Yritykset näkevät sinut vain, jos liityt joukkoon tai haet niiden työpaikkaa. Voit hakea tapahtuman työpaikkoja lyhyellä työhaastattelulla, joka arvioidaan ilmoituksen vaatimusten perusteella.",
 
   gainTitle: "Mitä yritykset ja järjestäjät saavat",
   companiesTitle: "Yritykset",
   companiesBody:
-    "Joka aamu lyhyen listan ihmisistä, joiden kanssa kannattaa jutella, perusteluineen, neutraalien lempinimien alla ja ilman erityistä järjestystä. Työpaikkailmoituksen pakollinen vaatimus ei koskaan poista ketään joukosta.",
+    "Joka aamu lyhyen listan ihmisistä, joiden kanssa kannattaa jutella, perusteluineen, neutraalien lempinimien alla ja ilman erityistä järjestystä. Työpaikkailmoituksen pakollinen vaatimus ei koskaan poista ketään joukosta. Työhaastattelulla hakeneet näkyvät yritykselle järjestykseen asetettuna listana, jonka Espoon järjestäjä on tarkistanut ja hyväksynyt.",
   organisersTitle: "Espoon järjestäjät",
   organisersBody:
     "Jokainen ehdotus valmistellaan tarkistettavaksi ja hyväksytään yksi ihminen kerrallaan, ennen kuin yritys näkee sen. Jokainen päätös kirjautuu lokiin, ja nimet pysyvät piilossa, kunnes molemmat sanovat kyllä.",
 
   notTitle: "Mitä tekoäly ei tee",
-  not1Title: "Se tekee muistiinpanoja. Se ei pisteytä.",
-  not1Body: "Ei pisteitä, tasoja eikä prosentteja sinulle tai taidoillesi, eikä kommentteja siitä, miten puhut tai miltä tuntuu.",
+  not1Title: "Se tekee muistiinpanoja. Se ei pisteytä keskustelua.",
+  not1Body: "Keskustelusi ja korttisi eivät saa pisteitä, tasoja eikä prosentteja, eikä sitä, miten puhut tai miltä sinusta tuntuu, kommentoida. Vain työhaastattelu, jonka itse valitset, arvioidaan, ja siitä kerrotaan ensin.",
   not2Title: "Se ei päätä, kenet ehdotetaan.",
   not2Body: "Ihminen hyväksyy jokaisen ehdotuksen. Yksi ihminen kerrallaan. Ei kaikkien hyväksymistä kerralla.",
   not3Title: "Se ei voi keksiä sanojasi.",
   not3Body: "Lauseesi näytetään täsmälleen niin kuin ne litteroitiin. Tekoälyn sanamuoto näytetään erikseen ja merkittynä.",
-  nothingScored: "Mitään ei pisteytetä.",
+  nothingScored: "Keskusteluasi ei pisteytetä.",
   how: "Näin tämä toimii",
   prototype: "Hackathon-prototyyppi, ei Espoon kaupungin virallinen palvelu.",
 };
@@ -110,24 +110,24 @@ const sv: Strings = {
     "Varje anteckning på ditt Signalkort hänvisar till meningar som du sa. Du kan ändra eller ta bort vilken anteckning som helst, och ingenting används innan du har godkänt kortet.",
   step3Title: "Se riktiga lediga jobb",
   step3Body:
-    "Riktiga lediga jobb som hänger ihop med dina anteckningar tänds medan du pratar, med skälen. Företagen ser dig bara om du väljer att gå med i gruppen.",
+    "Riktiga lediga jobb som hänger ihop med dina anteckningar tänds medan du pratar, med skälen. Företagen ser dig bara om du går med i gruppen eller söker ett av deras jobb. Du kan söka jobb på evenemanget med en kort jobbintervju, som bedöms mot annonsens krav.",
 
   gainTitle: "Vad företag och arrangörer får",
   companiesTitle: "Företag",
   companiesBody:
-    "Varje morgon en kort lista med personer det är värt att prata med, med skälen, under neutrala smeknamn och i ingen särskild ordning. Ett skall-krav i en annons tar aldrig bort någon ur gruppen.",
+    "Varje morgon en kort lista med personer det är värt att prata med, med skälen, under neutrala smeknamn och i ingen särskild ordning. Ett skall-krav i en annons tar aldrig bort någon ur gruppen. De som söker med en jobbintervju visas i en rangordnad lista som en arrangör har kontrollerat och godkänt.",
   organisersTitle: "Arrangörer i Esbo",
   organisersBody:
     "Varje förslag förbereds för granskning och godkänns en person i taget innan ett företag ser det. Varje beslut sparas i loggen, och namnen förblir dolda tills båda sidor har sagt ja.",
 
   notTitle: "Vad AI:n inte gör",
-  not1Title: "Den antecknar. Den poängsätter inte.",
-  not1Body: "Inga poäng, nivåer eller procent för dig eller dina färdigheter, och inga kommentarer om hur du pratar eller mår.",
+  not1Title: "Den antecknar. Den poängsätter inte samtalet.",
+  not1Body: "Ditt samtal och ditt kort får inga poäng, nivåer eller procent, och inga kommentarer om hur du pratar eller mår. Bara en jobbintervju som du själv väljer bedöms, och det får du veta först.",
   not2Title: "Den bestämmer inte vem som föreslås.",
   not2Body: "En människa godkänner varje förslag. En person i taget. Ingen godkänn alla.",
   not3Title: "Den kan inte hitta på dina ord.",
   not3Body: "Dina meningar visas exakt som de skrevs ut. AI:ns formulering visas separat och med etikett.",
-  nothingScored: "Inget här poängsätts.",
+  nothingScored: "Ditt samtal poängsätts inte.",
   how: "Så fungerar det här",
   prototype: "Hackathonprototyp, inte en officiell tjänst från Esbo stad.",
 };

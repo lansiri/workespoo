@@ -9,6 +9,8 @@ import { createTestDb, type TestDb } from "../../../../tests/helpers/db";
 import { HowItWorksView } from "./HowItWorksView";
 import { howTexts, pageContent, voiceSentence, type VoiceProcessor } from "./messages";
 import { loadStats, type HowStats } from "./stats";
+// The level names are the feature's own words; the page must use them exactly.
+import { LEVEL_NAMES } from "@/features/application/levels";
 
 const stats: HowStats = {
   openPostings: 12,
@@ -97,6 +99,45 @@ describe("How this works: text", () => {
       expect(pageContent(lang, "browser").sections[6].body).toContain("Kimi K3.1");
       expect(pageContent(lang, "browser").sections[6].body).toContain("Verda");
     }
+  });
+});
+
+describe("How this works: the job interview", () => {
+  const JOB = 8;
+  const langs = ["en", "fi", "sv"] as const;
+
+  it("has the job interview section at the same place in every language, after the limits and before the EU AI Act", () => {
+    const counts = langs.map((lang) => pageContent(lang, "browser").sections.length);
+    expect(new Set(counts).size).toBe(1);
+    expect(pageContent("en", "browser").sections[JOB - 1].heading).toBe("Limits we know about");
+    expect(pageContent("en", "browser").sections[JOB].heading).toBe("Applying for a job: the one thing that is rated");
+    expect(pageContent("en", "browser").sections[JOB + 1].heading).toBe("The EU AI Act");
+    for (const lang of langs) {
+      const s = pageContent(lang, "browser").sections[JOB];
+      expect(s.heading.length, lang).toBeGreaterThan(10);
+      expect(s.body, lang).not.toMatch(/\{\w+\}|\u2014/);
+    }
+  });
+
+  it.each(langs)("names the four levels in the words of the feature in %s", (lang) => {
+    const body = pageContent(lang, "browser").sections[JOB].body;
+    for (const name of LEVEL_NAMES[lang]) expect(body, name).toContain(name);
+  });
+
+  it.each(langs)("covers consent, same questions, code order, what the model never gets, the organiser, no removal, withdrawal and the word lists in %s", (lang) => {
+    const body = pageContent(lang, "browser").sections[JOB].body;
+    const must: Record<(typeof langs)[number], RegExp[]> = {
+      en: [/say yes/, /same questions/, /Code, not the AI/, /never given your name, your nickname or whether you spoke or typed/, /not told which language you chose/, /organiser is shown the answers/, /approve the list before the company/, /never removes anyone/, /withdraw/, /word lists/],
+      fi: [/vastaat kyllä/, /samat kysymykset/, /ohjelma, ei tekoäly/, /ei koskaan saa nimeäsi, nimimerkkiäsi eikä tietoa/, /Sille ei kerrota, minkä kielen valitsit/, /järjestäjä näkee jokaisen arvion taustalla olevat vastaukset/, /hyväksyy listan ennen kuin yritys/, /ei koskaan poista ketään/, /perua hakemuksen/, /sanalistoja/],
+      sv: [/säger ja/, /samma frågor/, /programmet, inte AI:n/, /aldrig ditt namn, ditt alias eller om du pratade/, /får inte veta vilket språk du valde/, /arrangör i Esbo ser svaren/, /godkänna listan innan företaget/, /tar aldrig bort någon/, /dra tillbaka/, /ordlistor/],
+    };
+    for (const re of must[lang]) expect(body, String(re)).toMatch(re);
+  });
+
+  it.each(langs)("keeps the general conversation unscored while pointing at the job interview in %s", (lang) => {
+    const notes = pageContent(lang, "browser").sections[1].body;
+    expect(notes).toMatch({ en: /In this conversation it does not score you/, fi: /Tässä keskustelussa se ei pisteytä sinua/, sv: /I det här samtalet poängsätter den dig inte/ }[lang]);
+    expect(notes).toMatch({ en: /job interview/, fi: /työhaastattelu/, sv: /jobbintervju/ }[lang]);
   });
 });
 
