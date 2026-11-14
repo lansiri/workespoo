@@ -44,7 +44,7 @@ function wrap(text, width = 78) {
   return lines.join("\n");
 }
 
-const BAR = 92; // height of the caption bar added under each 1280x628 clip, which makes a 1280x720 film
+const BAR = 92; // height of the caption bar added under each clip: 1600x808 becomes a 1600x900 film
 const parts = [];
 clips.forEach((clipFile, index) => {
   const mine = captions.filter((c) => c.clip === clipFile);
@@ -55,9 +55,10 @@ clips.forEach((clipFile, index) => {
     const wrapped = wrap(c.text);
     writeFileSync(textFile, wrapped);
     const lines = wrapped.split("\n").length;
-    const y = lines > 1 ? `h-${BAR}+16` : `h-${BAR}+32`;
+    const y = lines > 1 ? `h-${BAR}+10` : `h-${BAR}+28`;
+    // The type grows with the frame: 25 px at 1280 wide, 31 px at 1600.
     filters.push(
-      `drawtext=fontfile='${FONT}':textfile='${textFile}':fontcolor=white:fontsize=25:line_spacing=7:x=(w-text_w)/2:y=${y}:enable='between(t,${c.from.toFixed(2)},${c.to.toFixed(2)})'`,
+      `drawtext=fontfile='${FONT}':textfile='${textFile}':fontcolor=white:fontsize=w/51:line_spacing=7:x=(w-text_w)/2:y=${y}:enable='between(t,${c.from.toFixed(2)},${c.to.toFixed(2)})'`,
     );
   });
   const part = path.join(work, `part-${String(index).padStart(2, "0")}.mp4`);

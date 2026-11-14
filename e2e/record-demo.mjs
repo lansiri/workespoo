@@ -19,8 +19,10 @@ if (!base || !outArg || !PASSCODE) {
 }
 const out = path.resolve(outArg);
 mkdirSync(out, { recursive: true });
-// 628 high: make-video.mjs adds a 92 px caption bar underneath, which gives a 1280x720 film.
-const SIZE = { width: 1280, height: 628 };
+// 1600x808 by default: make-video.mjs adds a 92 px caption bar underneath, which gives a 1600x900 film
+// (16:9) in which the interview room has the height it was designed for. E2E_VIDEO_SIZE=1280x628 gives 1280x720.
+const [videoWidth, videoHeight] = (process.env.E2E_VIDEO_SIZE ?? "1600x808").split("x").map(Number);
+const SIZE = { width: videoWidth, height: videoHeight };
 const PITCH = "Demo company 03";
 const ANSWERS = [
   "For the last four years I've worked at a machine shop as the person who looks after our ERP system. I set up new items and work orders, and I wrote Python scripts that move production data from the machines into the ERP every night.",
