@@ -44,11 +44,12 @@ function wrap(text, width = 78) {
   return lines.join("\n");
 }
 
-const BAR = 92; // height of the caption bar in a 1280x720 frame
+const BAR = 92; // height of the caption bar added under each 1280x628 clip, which makes a 1280x720 film
 const parts = [];
 clips.forEach((clipFile, index) => {
   const mine = captions.filter((c) => c.clip === clipFile);
-  const filters = [`drawbox=x=0:y=ih-${BAR}:w=iw:h=${BAR}:color=0x10362F@0.94:t=fill`];
+  // The bar goes under the page, not over it: nothing on the screen is hidden by a caption.
+  const filters = [`pad=iw:ih+${BAR}:0:0:color=0x10362F`];
   mine.forEach((c, n) => {
     const textFile = path.join(work, `${index}-${n}.txt`);
     const wrapped = wrap(c.text);

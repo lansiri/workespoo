@@ -19,7 +19,8 @@ if (!base || !outArg || !PASSCODE) {
 }
 const out = path.resolve(outArg);
 mkdirSync(out, { recursive: true });
-const SIZE = { width: 1280, height: 720 };
+// 628 high: make-video.mjs adds a 92 px caption bar underneath, which gives a 1280x720 film.
+const SIZE = { width: 1280, height: 628 };
 const PITCH = "Demo company 03";
 const ANSWERS = [
   "For the last four years I've worked at a machine shop as the person who looks after our ERP system. I set up new items and work orders, and I wrote Python scripts that move production data from the machines into the ERP every night.",
