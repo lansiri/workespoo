@@ -2,7 +2,8 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vites
 import { eq } from "drizzle-orm";
 import type { PinnedPosition, RequirementKind } from "@/contracts";
 import type { Db } from "@/db/client";
-import { applicantRanking, application, auditLog, needCard, talentIdentity } from "@/db/schema";
+import { applicantRanking, application, auditLog, needCard, talent, talentIdentity } from "@/db/schema";
+import { deletePerson, deleteResidue } from "@/features/card/mydata";
 import { transitionIntro } from "@/features/intros/service";
 import { addCompany, addIntro, addNeed, addTalent, resetDb } from "@/features/picks/test-helpers";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
@@ -236,6 +237,31 @@ describe("the ranked list", () => {
     await expect(approveRanking(db, JOB, { seen })).rejects.toMatchObject({ status: 409, code: "list_changed" });
     const now = (await rankedListForJob(db, JOB))!;
     expect((await approveRanking(db, JOB, { seen: rankedListSignature(now) })).applicants).toHaveLength(3);
+  });
+
+  it("gives the organiser the company's page only once a list is approved", async () => {
+    expect((await rankedListForJob(db, JOB))!.companyPath).toBeNull();
+    await approveRanking(db, JOB);
+    expect((await rankedListForJob(db, JOB))!.companyPath).toBe(`/c/${TOKEN}/applicants`);
+  });
+
+  it("takes a person who deletes their data out of the stored approved list and the pins", async () => {
+    await moveApplicant(db, JOB, { applicationId: "p4", position: 1, reason: "Because" });
+    await moveApplicant(db, JOB, { applicationId: "p2", position: 2, reason: "Because" });
+    await approveRanking(db, JOB);
+    expect((await deletePerson(db, "t_p4")).deleted).toBe(true);
+    let [row] = await db.select().from(applicantRanking);
+    expect(row.pins.map((p) => p.applicationId)).toEqual(["p2"]);
+    expect(row.published!.applicants.map((a) => a.applicationId)).toEqual(["p2", "p1", "p3"]);
+    expect(JSON.stringify(row)).not.toContain("t_p4");
+
+    // The 24-hour purge deletes the person first and cleans up afterwards: the same result.
+    await db.delete(talent).where(eq(talent.id, "t_p2"));
+    await deleteResidue(db, ["t_p2"]);
+    [row] = await db.select().from(applicantRanking);
+    expect(row.pins).toEqual([]);
+    expect(row.published!.applicants.map((a) => a.applicationId)).toEqual(["p1", "p3"]);
+    expect((await applicantsForCompany(db, TOKEN))!.jobs[0].applicants.map((a) => [a.applicationId, a.position])).toEqual([["p1", 1], ["p3", 2]]);
   });
 
   it("refuses to approve when nobody is rated", async () => {

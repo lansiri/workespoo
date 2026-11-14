@@ -146,6 +146,59 @@ describe("checkAssessment", () => {
     expect(a.ratings[0]).toMatchObject({ level: 2, wording: "code", reason: CODE_REASONS[2] });
   });
 
+  it.each([
+    "The answer describes rebuilding a nightly import and the stock counts matching afterwards.",
+    "The answer describes a nightly import that matched the stock counts and fits the warehouse system.",
+    "The answer describes using Finnish with customers every day and writing release notes in English.",
+    "The person describes guiding patients with diabetes by phone every morning.",
+    "The answer says the top shelf picks were moved to a reach truck.",
+  ])("keeps the reason %s", (text) => {
+    const a = check({
+      ratings: [{ requirement: "R1", level: 2, evidence: ["T1.S1"], reason_en: text, reason_fi: "Vastaus kuvaa yöllisen tuonnin rakentamista.", reason_sv: "Svaret beskriver hur importen byggdes om." }],
+      ...SUMMARY,
+    })!;
+    expect(a.ratings[0]).toMatchObject({ level: 2, wording: "model" });
+    expect(a.ratings[0].reason.en).toBe(text);
+  });
+
+  it.each([
+    "The speaker describes rebuilding a nightly import.",
+    "The answer is typed in fluent English and describes an import.",
+    "The answer describes an import, as R2 also shows.",
+    "Puhuja kuvaa tuonnin rakentamista.",
+    "Svaret är skrivet på flytande svenska.",
+  ])("replaces the reason %s: it says how the person came across or uses a label", (text) => {
+    const a = check({
+      ratings: [{ requirement: "R1", level: 2, evidence: ["T1.S1"], reason_en: text, reason_fi: text, reason_sv: text }],
+      ...SUMMARY,
+    })!;
+    expect(a.ratings[0]).toMatchObject({ level: 2, wording: "code", reason: CODE_REASONS[2] });
+  });
+
+  it("replaces a summary that names requirements by their labels", () => {
+    const a = check({
+      ratings: [{ requirement: "R1", level: 2, evidence: ["T1.S1"], ...goodReasons("The answer describes rebuilding a nightly import.") }],
+      summary_en: "The answers gave concrete examples for R1 and did not speak to R3.",
+      summary_fi: "Yksi vaatimus.",
+      summary_sv: "Ett krav.",
+    })!;
+    expect(a.summary.en).toBe(CODE_SUMMARY.en.replace("{n}", "1").replace("{m}", "3"));
+  });
+
+  it("hides a country in what the assessor reads and keeps the sentence citable", () => {
+    const abroad = inputFrom([opening, turn(1, "r1", ["I ran the import team at a factory in Germany.", "I am from Syria."])]);
+    const [first, second] = abroad.requirements[0].sentences;
+    expect(first).toMatchObject({ label: "T1.S1", text: "I ran the import team at a factory in […].", leftOut: false });
+    expect(second).toMatchObject({ label: "T1.S2", text: "[left out]", leftOut: true });
+    const a = checkAssessment({
+      input: abroad,
+      output: { ratings: [{ requirement: "R1", level: 2, evidence: ["T1.S1"], ...goodReasons("The answer describes leading the people who handled imports at a plant.") }], ...SUMMARY },
+      employerTerms: [],
+      now: NOW,
+    })!;
+    expect(a.ratings[0]).toMatchObject({ level: 2, wording: "model" });
+  });
+
   it("returns null when the output matches none of the answered requirements", () => {
     expect(check({ ratings: [], ...SUMMARY })).toBeNull();
     expect(check({ ratings: [{ requirement: "R9", level: 3, evidence: ["T1.S1"], ...goodReasons("The answer describes imports.") }], ...SUMMARY })).toBeNull();

@@ -32,7 +32,7 @@ INPUT
 
 RULES FOR EVERY QUESTION
 1. One question per requirement, in the same order, each with its label.
-2. Ask for the person's own work: a time they did this, how they have done it, what they did themselves. Never a question that "yes" or "no" answers.
+2. Ask for the person's own work: a time they did this, how they have done it, what they did themselves. Never a question that "yes" or "no" answers. Never ask how they would do it in this job or how their experience fits it.
 3. Name one concrete thing from the requirement or its sentence in the ad (a task, a tool, a setting), so that it is clearly a question about this job and not about any job. Do not invent details that are not there.
 4. At most two sentences and 45 words. Plain words. Speak to the person as "you".
 5. A language requirement: ask how they have used that language at work. Never ask where or how they learned it, whether it is their first language, or where they are from.
@@ -79,7 +79,7 @@ INPUT
 
 DECIDE
 1. "evidence": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.
-2. "concrete": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement ("I have experience with X", "we always did X", "I am good at X") is not concrete.
+2. "concrete": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. The situation can be one occasion or work they did regularly in a named place ("on night shifts at the bakery I ran the oven line"). A general statement ("I have experience with X", "we always did X", "I am good at X") is not concrete.
 3. "missing": the one thing a follow-up could still bring out. "example": no specific situation. "own_part": a situation, but not what they did themselves. "result": what they did, but not what came of it. "none": nothing.
 4. "followUp": one question that asks for exactly that missing thing, about the same requirement. null when "missing" is "none", when a follow-up has already been asked, or when the person said they have not done this.
 
@@ -123,7 +123,7 @@ You rate the evidence in one job interview against the requirements of the job a
 
 INPUT
 - The job title.
-- Requirements labelled R1, R2, ... For each: the requirement, the sentence of the ad it came from when there is one, the questions that were asked, and the person's answers as labelled sentences like [T3.S2]. "[left out]" is a sentence you are not shown: ignore it. "(no answer)" means the person skipped the question or gave no answer.
+- Requirements labelled R1, R2, ... For each: the requirement, the sentence of the ad it came from when there is one, the questions that were asked, and the person's answers as labelled sentences like [T3.S2]. "[left out]" is a sentence you are not shown: ignore it. "[…]" is one word you are not shown: read the sentence without it. "(no answer)" means the person skipped the question or gave no answer.
 
 THE SCALE (exactly these four levels)
 0  Nothing in the answers speaks to this requirement.
@@ -143,10 +143,10 @@ FOR EACH REQUIREMENT RETURN
 - "requirement": its label.
 - "level": 0, 1, 2 or 3.
 - "evidence": up to 4 labels of the sentences the level rests on. Empty only at level 0.
-- "reason_en", "reason_fi", "reason_sv": the same single sentence in English, Finnish and Swedish, at most 30 words each, saying what the answers show for this requirement. Describe the evidence, for example: "The answer describes rebuilding a nightly import and the stock counts matching afterwards." Do not describe the person. Do not use words of praise or blame (strong, weak, good, poor, impressive, lacks, fails, only). Do not address the person. Do not quote.
+- "reason_en", "reason_fi", "reason_sv": the same single sentence in English, Finnish and Swedish, at most 30 words each, saying what the answers show for this requirement. Describe the evidence, for example: "The answer describes rebuilding a nightly import and the stock counts matching afterwards." Do not describe the person; if you must refer to them, say "the person", never "the speaker", "the candidate", "the applicant" or "the respondent". Do not use words of praise or blame (strong, weak, good, poor, impressive, lacks, fails, only). Do not address the person. Do not quote.
 
 ALSO RETURN
-- "summary_en", "summary_fi", "summary_sv": at most two sentences each: which requirements the answers gave concrete examples for, and which they did not speak to. Same rules as the reasons.
+- "summary_en", "summary_fi", "summary_sv": at most two sentences each: which requirements the answers gave concrete examples for, and which they did not speak to. Name each requirement in a few words, never by its label (R1). Same rules as the reasons.
 
 OUTPUT
 {"ratings":[{"requirement":"R1","level":2,"evidence":["T3.S1","T3.S2"],"reason_en":"...","reason_fi":"...","reason_sv":"..."}],"summary_en":"...","summary_fi":"...","summary_sv":"..."}

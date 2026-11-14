@@ -18,11 +18,14 @@ import { applicantRanking, application, applicationTurn, company, job, needCard,
 import { createIntroRequest, latestIntroForPair } from "@/features/intros";
 import { audit } from "@/lib/audit";
 import { HttpError } from "@/lib/http";
-import { findProtectedAnswer } from "./assess-protected";
+import { screenAnswerSentence } from "./assess-protected";
 import { employerTerms, maskEmployer } from "@/lib/mask";
 import { companyFromToken } from "@/lib/session";
 import { LEFT_OUT, answersAbout, expandRefs, questionsAbout, toApplicationTurn } from "./assess-turns";
 import { currentRequirementKinds } from "./requirements";
+import { applicantsSignature as signature, rankedListSignature } from "./signature";
+
+export { rankedListSignature };
 
 /**
  * Points, order, the organiser's moves and approval, and what each side sees of a job's
@@ -127,6 +130,8 @@ export interface RankedList {
   published: PublishedRanking | null;
   /** True when the order, the people or the points differ from the approved list. */
   changedSincePublished: boolean;
+  /** The company's private page with the approved list, for the organiser to open. Null before the first approval. */
+  companyPath: string | null;
 }
 
 /* ------------------------------------------------------------------------------------------
@@ -233,17 +238,8 @@ async function loadList(db: Db, jobId: string): Promise<RankedList | null> {
     pendingAssessment,
     published,
     changedSincePublished,
+    companyPath: published ? `/c/${ev.company.digestToken}/applicants` : null,
   };
-}
-
-/** People, order and points of a list, as one string to compare. */
-function signature(list: ReadonlyArray<{ applicationId: string; points: number; maxPoints: number }>): string {
-  return list.map((a) => `${a.applicationId}:${a.points}/${a.maxPoints}`).join("|");
-}
-
-/** What an organiser saw, as one string: the Need Card version, then people, order and points. Sent back with an approval so a changed list is refused. */
-export function rankedListSignature(list: { needCardVersion: number | null; applicants: ReadonlyArray<{ applicationId: string; points: number; maxPoints: number }> }): string {
-  return `${list.needCardVersion ?? "-"}#${signature(list.applicants)}`;
 }
 
 /** The list for one job, or null when the job is not one of the event's. Organiser only. */
@@ -412,7 +408,10 @@ async function buildEvidence(db: Db, app: ApplicationRow): Promise<ApplicationEv
         // A sentence with a protected detail is never shown, here as for the assessor.
         answers: answersAbout(turns, req.requirementId).map((t) => ({
           index: t.index,
-          sentences: t.sentences.map((s) => (findProtectedAnswer(s).length > 0 ? LEFT_OUT : s)),
+          sentences: t.sentences.map((s) => {
+            const screened = screenAnswerSentence(s);
+            return screened.leftOut ? LEFT_OUT : screened.text;
+          }),
         })),
         cited: expandRefs(rating?.evidence ?? []),
       };

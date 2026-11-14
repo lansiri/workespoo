@@ -70,6 +70,8 @@ const en = {
   errNothing: "There is nobody on the list to approve yet.",
   errGeneric: "Something went wrong, try again.",
   errChanged: "The list changed while you were reading it. Check it and approve again.",
+  companyPageLink: "Open the company's page with the approved list",
+  companyPageStale: "It shows the list as it was approved, until you approve again.",
 
   // Levels and requirements, shared by the organiser and the company
   levelLabel: "Level",
@@ -169,6 +171,8 @@ export const rankedMessages = {
     errNothing: "Listalla ei vielä ole ketään hyväksyttäväksi.",
     errGeneric: "Jokin meni pieleen, yritä uudelleen.",
     errChanged: "Lista muuttui sillä aikaa kun luit sitä. Tarkista se ja hyväksy uudelleen.",
+    companyPageLink: "Avaa yrityksen sivu, jolla hyväksytty lista näkyy",
+    companyPageStale: "Sivulla näkyy lista sellaisena kuin se hyväksyttiin, kunnes hyväksyt sen uudelleen.",
 
     levelLabel: "Taso",
     levelsTitle: "Mitä tasot tarkoittavat",
@@ -263,6 +267,8 @@ export const rankedMessages = {
     errNothing: "Det finns ingen på listan att godkänna ännu.",
     errGeneric: "Något gick fel, försök igen.",
     errChanged: "Listan ändrades medan du läste den. Kontrollera den och godkänn igen.",
+    companyPageLink: "Öppna företagets sida med den godkända listan",
+    companyPageStale: "Sidan visar listan som den godkändes, tills du godkänner igen.",
 
     levelLabel: "Nivå",
     levelsTitle: "Vad nivåerna betyder",

@@ -267,6 +267,11 @@ export function useJobInterview({ initial, onSentence }: UseJobInterviewOptions)
   useEffect(() => {
     onSentenceRef.current = onSentence;
   });
+  /** The question now on screen, for a skip to name. */
+  const currentRef = useRef<string | null>(null);
+  useEffect(() => {
+    currentRef.current = currentRequirementId(state);
+  }, [state]);
   const turnAbort = useRef<AbortController | null>(null);
   const lastAttempt = useRef<{ text: string; inputMode: InputMode; clientTurnId: string } | null>(null);
 
@@ -356,12 +361,19 @@ export function useJobInterview({ initial, onSentence }: UseJobInterviewOptions)
     turnAbort.current?.abort();
     const abort = new AbortController();
     turnAbort.current = abort;
+    const skipped = currentRef.current;
     dispatch({ type: "interrupt" });
     dispatch({ type: "skipping" });
     dispatch({ type: "sending", value: true });
     let ok = false;
     try {
-      const res = await fetch(`/api/application/${applicationId}/skip`, { method: "POST", signal: abort.signal });
+      // The question on screen goes along, so a skip that arrives late cannot skip the next one.
+      const res = await fetch(`/api/application/${applicationId}/skip`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(skipped ? { requirementId: skipped } : {}),
+        signal: abort.signal,
+      });
       ok = await consume(res, abort);
     } catch {
       ok = false;
@@ -380,7 +392,9 @@ export function useJobInterview({ initial, onSentence }: UseJobInterviewOptions)
     try {
       const res = await fetch(`/api/application/${applicationId}/stop`, { method: "POST" });
       if (!res.ok) throw new Error(String(res.status));
-      const turn = ApplicationTurn.parse(await res.json());
+      // The route answers `{ turn }`.
+      const body = (await res.json()) as { turn?: unknown };
+      const turn = ApplicationTurn.parse(body.turn ?? body);
       dispatch({ type: "event", event: { type: "turn.done", turn, ended: true } });
       return true;
     } catch {

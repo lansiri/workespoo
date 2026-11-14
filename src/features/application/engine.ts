@@ -21,7 +21,6 @@ import { audit } from "@/lib/audit";
 import { recordConsent } from "@/lib/consent";
 import { HttpError } from "@/lib/http";
 import { newId } from "@/lib/ids";
-import { findProtectedCard } from "@/lib/lexicon";
 import { chatJson } from "@/lib/llm";
 import { employerTerms, maskEmployer } from "@/lib/mask";
 import { enqueue } from "@/lib/queue";
@@ -50,6 +49,7 @@ import { questionsFor } from "./engine-questions";
 import { ASSESS_KIND } from "./jobs";
 import { bridgeFor, closingLine, deletedLine, openingLine, repairLine, scriptedFollowUp } from "./lines";
 import { buildTurnPrompt, followUpProblem } from "./prompts-interview";
+import { screenAnswerSentence } from "./assess-protected";
 import { applicationPoints, ownPosition } from "./rank";
 import { currentRequirementKinds, loadApplyContext, loadJobContext } from "./requirements";
 
@@ -419,10 +419,13 @@ async function* processAnswer(
 
   const state = cloneState(app.state);
   const noted: EvidenceRef[] = [];
-  if (output) {
+  // "I have not done that" is an answer, not evidence: the model marks it as not concrete with
+  // nothing missing, and nothing of it is noted.
+  const saidNotDone = output !== null && !output.concrete && output.missing === "none";
+  if (output && !saidNotDone) {
     const wanted = [...new Set(output.evidence)].filter((n) => n >= 1 && n <= sentences.length).sort((a, b) => a - b);
     for (const n of wanted) {
-      if (findProtectedCard(sentences[n - 1]!).length > 0) continue;
+      if (screenAnswerSentence(sentences[n - 1]!).leftOut) continue;
       noted.push({ turnIndex: answer.index, sentenceFrom: n, sentenceTo: n });
     }
     if (noted.length > 0) state.noted[current.requirementId] = [...(state.noted[current.requirementId] ?? []), ...noted];

@@ -26,7 +26,7 @@ INPUT
 
 RULES FOR EVERY QUESTION
 1. One question per requirement, in the same order, each with its label.
-2. Ask for the person's own work: a time they did this, how they have done it, what they did themselves. Never a question that "yes" or "no" answers.
+2. Ask for the person's own work: a time they did this, how they have done it, what they did themselves. Never a question that "yes" or "no" answers. Never ask how they would do it in this job or how their experience fits it.
 3. Name one concrete thing from the requirement or its sentence in the ad (a task, a tool, a setting), so that it is clearly a question about this job and not about any job. Do not invent details that are not there.
 4. At most two sentences and 45 words. Plain words. Speak to the person as "you".
 5. A language requirement: ask how they have used that language at work. Never ask where or how they learned it, whether it is their first language, or where they are from.
@@ -112,7 +112,7 @@ INPUT
 
 DECIDE
 1. "evidence": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.
-2. "concrete": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement ("I have experience with X", "we always did X", "I am good at X") is not concrete.
+2. "concrete": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. The situation can be one occasion or work they did regularly in a named place ("on night shifts at the bakery I ran the oven line"). A general statement ("I have experience with X", "we always did X", "I am good at X") is not concrete.
 3. "missing": the one thing a follow-up could still bring out. "example": no specific situation. "own_part": a situation, but not what they did themselves. "result": what they did, but not what came of it. "none": nothing, or the person said plainly that they have not done this (then "missing" is always "none").
 4. "followUp": one question that asks for exactly that missing thing, about the same requirement. null when "missing" is "none", when a follow-up has already been asked, or when the person said they have not done this.
 

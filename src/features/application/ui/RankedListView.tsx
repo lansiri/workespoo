@@ -8,6 +8,7 @@ import { useMessages, useUiLang } from "@/lib/i18n/client";
 import { LEVEL_ANCHORS, LEVEL_NAMES } from "../levels";
 import { formatWhen, moveProblem, rankedMessages } from "../messages-organiser";
 import type { ApplicationEvidence, RankedApplicant, RankedList } from "../rank";
+import { rankedListSignature } from "../signature";
 import "./ranked.css";
 
 type M = (typeof rankedMessages)["en"];
@@ -289,9 +290,13 @@ export function RankedListView({ jobId, initial, initialMoveOpenFor }: { jobId: 
     };
   }, [initial, jobId, apply]);
 
-  const errorLine = (code: string | null) => (code === "nothing_to_approve" ? m.errNothing : m.errGeneric);
+  const errorLine = (code: string | null) => (code === "nothing_to_approve" ? m.errNothing : code === "list_changed" ? m.errChanged : m.errGeneric);
 
-  /** Reloads just before approving; sends nothing when the list is not the one on screen. */
+  /**
+   * Reloads just before approving and sends nothing when the list is not the one on screen.
+   * What was on screen goes with the approval, so the server refuses (`list_changed`) if the
+   * list moved on in the moment between the reload and the approval.
+   */
   async function approve(): Promise<string | null> {
     if (!list) return m.errGeneric;
     setBusy(true);
@@ -300,7 +305,7 @@ export function RankedListView({ jobId, initial, initialMoveOpenFor }: { jobId: 
     if (fresh.state !== "ok" || !fresh.list) return m.errGeneric;
     apply(fresh);
     if (!sameRankedList(list, fresh.list)) return m.errChanged;
-    return post("approve", { expected: list.applicants.map((a) => a.applicationId) });
+    return post("approve", { seen: rankedListSignature(list) });
   }
 
   async function post(path: string, body?: unknown): Promise<string | null> {
@@ -312,7 +317,12 @@ export function RankedListView({ jobId, initial, initialMoveOpenFor }: { jobId: 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body ?? {}),
       });
-      if (!res.ok) return errorLine(await readCode(res));
+      if (!res.ok) {
+        const code = await readCode(res);
+        // The list on screen is no longer the list: show the new one next to the message.
+        if (code === "list_changed") await load();
+        return errorLine(code);
+      }
       await load();
       return null;
     } catch {
@@ -369,6 +379,14 @@ export function RankedListView({ jobId, initial, initialMoveOpenFor }: { jobId: 
       {error ? (
         <p className="we-rk-problem" role="alert">
           {error}
+        </p>
+      ) : null}
+      {list.companyPath ? (
+        <p className="we-rk-note">
+          <a href={list.companyPath} data-testid="ranked-company-link">
+            {m.companyPageLink}
+          </a>
+          {list.changedSincePublished ? ` ${m.companyPageStale}` : null}
         </p>
       ) : null}
 

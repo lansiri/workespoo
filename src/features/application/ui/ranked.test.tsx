@@ -79,6 +79,7 @@ const list = (over: Partial<RankedList> = {}): RankedList => ({
   pendingAssessment: 2,
   published: null,
   changedSincePublished: false,
+  companyPath: null,
   ...over,
 });
 
@@ -132,6 +133,16 @@ describe("RankedListView", () => {
     expect(text(wrap(createElement(RankedListView, { jobId: "j", initial: list({ published, changedSincePublished: true }) })))).toContain(
       "Changed since it was approved",
     );
+  });
+
+  it("links to the company's page once a list is approved, and says when it is behind", () => {
+    const published = { needCardVersion: 1, requirements: reqs, applicants: [], publishedAt: "2026-11-14T10:40:00.000Z" };
+    expect(wrap(createElement(RankedListView, { jobId: "j", initial: list() }))).not.toContain("ranked-company-link");
+    const approved = wrap(createElement(RankedListView, { jobId: "j", initial: list({ published, companyPath: "/c/tok/applicants" }) }));
+    expect(approved).toMatch(/<a href="\/c\/tok\/applicants"[^>]*data-testid="ranked-company-link"/);
+    expect(text(approved)).not.toContain(rankedMessages.en.companyPageStale);
+    const behind = wrap(createElement(RankedListView, { jobId: "j", initial: list({ published, companyPath: "/c/tok/applicants", changedSincePublished: true }) }));
+    expect(text(behind)).toContain(rankedMessages.en.companyPageStale);
   });
 
   it("cannot send a move without a reason", () => {

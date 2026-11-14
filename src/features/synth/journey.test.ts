@@ -289,9 +289,10 @@ describe("one person through the whole product", () => {
     expect(text).not.toContain(persona.name);
     expect(text).not.toContain(persona.email);
     expect(text).not.toContain(talentId);
-    // Whole words only, and not inside timestamps or the link token: ids are random letters and
-    // digits and may contain "38" by chance, and a clock reads 12:38 once an hour.
-    const prose = text.replaceAll(COMPANY_TOKEN, "").replace(/\d{4}-\d{2}-\d{2}T[\d:.]+Z?/g, "");
+    // Whole words only, and not inside timestamps, the link token or the person's handle: ids are
+    // random letters and digits and may contain "38" by chance, a clock reads 12:38 once an hour,
+    // and a handle is a made-up word with a random number ("Birch-38").
+    const prose = text.replaceAll(COMPANY_TOKEN, "").replaceAll(person.handle, "").replace(/\d{4}-\d{2}-\d{2}T[\d:.]+Z?/g, "");
     const escape = (w: string) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     for (const planted of persona.planted.flatMap((p) => [...p.tokens, ...p.alsoCheck])) {
       expect(prose, planted).not.toMatch(new RegExp(`(?<![\\p{L}\\p{N}_])${escape(planted)}(?![\\p{L}\\p{N}_])`, "iu"));

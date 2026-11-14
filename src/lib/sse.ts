@@ -6,8 +6,8 @@ const HEARTBEAT_MS = 15_000;
  * Stream server-sent events. The stream closes when `run` resolves or the client
  * disconnects (`signal` aborts). A comment line is sent every 15 seconds to keep proxies open.
  */
-export function sseResponse(
-  run: (send: (event: InterviewEvent) => void, signal: AbortSignal) => Promise<void>,
+export function sseResponse<E extends { readonly type: string } = InterviewEvent>(
+  run: (send: (event: E) => void, signal: AbortSignal) => Promise<void>,
 ): Response {
   const encoder = new TextEncoder();
   const abort = new AbortController();
@@ -32,11 +32,12 @@ export function sseResponse(
     start(controller) {
       controllerRef = controller;
       timer = setInterval(() => push(": keep-alive\n\n"), HEARTBEAT_MS);
-      const send = (event: InterviewEvent) => push(encodeSseEvent(event));
+      const send = (event: E) => push(encodeSseEvent(event));
       void run(send, abort.signal)
         .catch((err) => {
           console.error("[sse] run failed:", err instanceof Error ? err.message : String(err));
-          send({ type: "error", message: "Something went wrong", retryable: true });
+          // Both kinds of stream (the interview's and the job interview's) have this event.
+          push(encodeSseEvent({ type: "error", message: "Something went wrong", retryable: true }));
         })
         .finally(() => {
           if (closed) return;

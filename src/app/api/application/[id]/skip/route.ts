@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { ApplicationEvent } from "@/contracts";
 import { getDb } from "@/db/client";
 import { requireOwnApplication, skipApplicationQuestion } from "@/features/application";
 import { assertInterviewing } from "@/features/application/engine-store";
@@ -23,7 +24,7 @@ export const POST = route(async (request: Request, ctx: RouteContext<"/api/appli
   }
   const body = SkipBody.safeParse(parsed);
   await assertInterviewing(db, id);
-  return sseResponse(async (send, signal) => {
-    for await (const event of skipApplicationQuestion(db, id, { signal, requirementId: body.success ? body.data.requirementId : undefined })) send(event as never);
+  return sseResponse<ApplicationEvent>(async (send, signal) => {
+    for await (const event of skipApplicationQuestion(db, id, { signal, requirementId: body.success ? body.data.requirementId : undefined })) send(event);
   });
 });

@@ -1,4 +1,4 @@
-import { and, desc, eq, sql } from "drizzle-orm";
+import { and, desc, eq, inArray, sql } from "drizzle-orm";
 import {
   ApplicationPlan,
   ApplicationState,
@@ -234,4 +234,33 @@ export async function dropFromRanking(db: Db, jobId: string, applicationId: stri
     : row.published;
   if (pins.length === row.pins.length && published?.applicants.length === row.published?.applicants.length) return;
   await db.update(applicantRanking).set({ pins, published, updatedAt: new Date() }).where(eq(applicantRanking.jobId, jobId));
+}
+
+/**
+ * Takes people out of every approved list and every pin: called when a person deletes their
+ * data, when a live session is purged and when the demo is reset. An approved list is stored
+ * as a copy, so the cascade from the person does not reach it. Works before or after the
+ * person's rows are gone: an entry is dropped when it is theirs or when its application no
+ * longer exists.
+ */
+export async function dropPeopleFromRankings(db: Db, talentIds: readonly string[]): Promise<void> {
+  if (talentIds.length === 0) return;
+  const rows = await db.select().from(applicantRanking);
+  if (rows.length === 0) return;
+  const gone = new Set(talentIds);
+  const applications = await db.select({ id: application.id, talentId: application.talentId }).from(application).where(
+    inArray(
+      application.jobId,
+      rows.map((r) => r.jobId),
+    ),
+  );
+  const alive = new Set(applications.filter((a) => !gone.has(a.talentId)).map((a) => a.id));
+  for (const row of rows) {
+    const pins = row.pins.filter((p) => alive.has(p.applicationId));
+    const published = row.published
+      ? { ...row.published, applicants: row.published.applicants.filter((a) => !gone.has(a.talentId) && alive.has(a.applicationId)) }
+      : row.published;
+    if (pins.length === row.pins.length && published?.applicants.length === row.published?.applicants.length) continue;
+    await db.update(applicantRanking).set({ pins, published, updatedAt: new Date() }).where(eq(applicantRanking.jobId, row.jobId));
+  }
 }
