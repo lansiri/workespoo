@@ -9,7 +9,7 @@ import {
   type TurnRole,
 } from "@/contracts";
 import type { Db } from "@/db/client";
-import { application, applicationTurn } from "@/db/schema";
+import { applicantRanking, application, applicationTurn } from "@/db/schema";
 import { HttpError } from "@/lib/http";
 import { newId } from "@/lib/ids";
 
@@ -143,6 +143,16 @@ export function lastAnswer(turns: readonly TurnRow[]): TurnRow | null {
   return null;
 }
 
+/** The answer a "delete that" refers to: the person's previous turn, when that was a live answer. */
+export function previousAnswer(turns: readonly TurnRow[]): TurnRow | null {
+  for (let i = turns.length - 1; i >= 0; i--) {
+    const t = turns[i]!;
+    if (t.role !== "participant") continue;
+    return t.kind === "answer" && !t.removedAt ? t : null;
+  }
+  return null;
+}
+
 export function answersFor(turns: readonly TurnRow[], requirementId: string): TurnRow[] {
   return turns.filter((t) => t.role === "participant" && t.kind === "answer" && !t.removedAt && t.requirementId === requirementId);
 }
@@ -208,4 +218,20 @@ export async function withLock<T>(applicationId: string, fn: () => Promise<T>): 
   } finally {
     release();
   }
+}
+
+/**
+ * Removes one application from the stored ranking of its job: from the approved list and from
+ * the organiser's pins. Call it before the application is deleted, in the same transaction
+ * (withdrawing, deleting a person, the 24-hour purge). Does nothing when the job has no ranking.
+ */
+export async function dropFromRanking(db: Db, jobId: string, applicationId: string): Promise<void> {
+  const [row] = await db.select().from(applicantRanking).where(eq(applicantRanking.jobId, jobId));
+  if (!row) return;
+  const pins = row.pins.filter((p) => p.applicationId !== applicationId);
+  const published = row.published
+    ? { ...row.published, applicants: row.published.applicants.filter((a) => a.applicationId !== applicationId) }
+    : row.published;
+  if (pins.length === row.pins.length && published?.applicants.length === row.published?.applicants.length) return;
+  await db.update(applicantRanking).set({ pins, published, updatedAt: new Date() }).where(eq(applicantRanking.jobId, jobId));
 }

@@ -17,6 +17,7 @@ export {
   type EngineOptions,
   type OwnApplication,
 } from "./engine";
+export { dropFromRanking } from "./engine-store";
 export { assessApplication, buildAssessorInput, checkAssessment, type AssessorInput, type AssessorSentence } from "./assess";
 export {
   applicantsForCompany,

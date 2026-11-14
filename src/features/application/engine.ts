@@ -34,7 +34,8 @@ import {
   answersFor,
   findByClientTurnId,
   insertTurn,
-  lastAnswer,
+  dropFromRanking,
+  previousAnswer,
   loadApp,
   loadTurns,
   publicTurn,
@@ -107,7 +108,7 @@ export async function startApplication(
   if (existing) throw new HttpError(409, "already_applied", "You have already applied to this job");
 
   const lang = request.uiLang;
-  const questions = await questionsFor(db, ctx, lang, { signal: options?.signal });
+  const questions = await questionsFor(db, ctx, lang);
   const requirements: CoveredRequirement[] = ctx.covered.map((r, i) => ({
     requirementId: r.id,
     text: ctx.mask(r.text).slice(0, 200),
@@ -291,7 +292,7 @@ async function* processAnswer(
     if (app.status !== "interviewing") throw new HttpError(409, "not_interviewing", "This interview is not running");
     const text = request.text.trim().slice(0, TURN_MAX_STORED_CHARS);
     let check = preCheck(text);
-    if (check === "delete" && !lastAnswer(turns)) check = "empty";
+    if (check === "delete" && !previousAnswer(turns)) check = "empty";
     const current = app.plan.requirements[app.state.cursor];
     answer = await insertTurn(
       db,
@@ -319,7 +320,7 @@ async function* processAnswer(
   if (!current) return;
   let check = answer.kind === "answer" ? "none" : preCheck(answer.text);
   const before = turns.filter((t) => t.index < answer!.index);
-  if (check === "delete" && !lastAnswer(before)) check = "empty";
+  if (check === "delete" && !previousAnswer(before)) check = "empty";
   if (check === "none" && answer.kind !== "answer") check = "empty";
 
   if (check === "empty") {
@@ -353,7 +354,7 @@ async function* processAnswer(
   }
 
   if (check === "delete") {
-    const previous = lastAnswer(before)!;
+    const previous = previousAnswer(before)!;
     await blankAnswer(db, app, previous, turns);
     app = await requireApp(db, applicationId);
     const reqIndex = Math.max(0, plan.requirements.findIndex((r) => r.requirementId === previous.requirementId));
@@ -465,7 +466,7 @@ async function employerTermsOf(db: Db, app: AppRow): Promise<string[]> {
 export async function* skipApplicationQuestion(
   db: Db,
   applicationId: string,
-  options?: EngineOptions,
+  options?: EngineOptions & { requirementId?: string },
 ): AsyncGenerator<ApplicationEvent, void, void> {
   const release = await acquireLock(applicationId);
   try {
@@ -473,6 +474,8 @@ export async function* skipApplicationQuestion(
     if (app.status !== "interviewing") throw new HttpError(409, "not_interviewing", "This interview is not running");
     const current = app.plan.requirements[app.state.cursor];
     if (!current) throw new HttpError(409, "not_interviewing", "There is no question to skip");
+    // A repeated or late skip names a question that is no longer the current one: nothing to do.
+    if (options?.requirementId && options.requirementId !== current.requirementId) return;
     const turns = await loadTurns(db, applicationId);
     const state = settleCurrent(app.state, turns, current.requirementId, true);
     const { turn, ended } = await moveOn(db, app, state, nowOf(options));
@@ -569,6 +572,7 @@ export function withdrawApplication(db: Db, applicationId: string, options?: Eng
   return withLock(applicationId, async () => {
     const app = await requireApp(db, applicationId);
     await db.transaction(async (tx) => {
+      await dropFromRanking(tx, app.jobId, applicationId);
       await tx.delete(application).where(eq(application.id, applicationId)); // turns cascade
       await audit(tx, {
         actor: actorOf(app.talentId),

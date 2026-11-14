@@ -1,7 +1,7 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { eq } from "drizzle-orm";
 import type { ApplicationEvent, ApplicationTurnRequest, StartApplicationRequest } from "@/contracts";
-import { application, applicationTurn, consent, jobQueue } from "@/db/schema";
+import { applicantRanking, application, applicationTurn, consent, jobQueue } from "@/db/schema";
 import { listAudit } from "@/lib/audit";
 import { hasConsent } from "@/lib/consent";
 import { resetLlmState, setLlmFake, type LlmOptions } from "@/lib/llm";
@@ -35,6 +35,7 @@ import {
   submitApplicationTurn,
   withdrawApplication,
 } from "./engine";
+import { followUpProblem, questionProblem, TURN_SYSTEM } from "./prompts-interview";
 import { loadApp, loadTurns } from "./engine-store";
 import { APPLICATION_LINES } from "./lines";
 import { addTalent, EMPLOYER, seedJob } from "./test-support";
@@ -181,15 +182,17 @@ describe("startApplication", () => {
     expect(JSON.stringify(reqs)).not.toContain("Academic");
   });
 
-  it("uses scripted questions for everyone when the call fails, and tries the model again for the next person", async () => {
+  it("uses scripted questions for everyone when the call fails, and keeps that wording for the next person", async () => {
     installModel({ plan: () => { throw new Error("model down"); } });
     const seeded = await seedJob(t.db);
     const a = await startApplication(t.db, await person(), startRequest(seeded.jobId));
     expect((await loadApp(t.db, a.applicationId))!.plan.requirements.every((r) => r.wording === "code")).toBe(true);
     installModel();
     const b = await startApplication(t.db, await person(), startRequest(seeded.jobId));
-    expect(calls.plan).toHaveLength(1);
-    expect((await loadApp(t.db, b.applicationId))!.plan.requirements.every((r) => r.wording === "model")).toBe(true);
+    expect(calls.plan).toHaveLength(0);
+    expect((await loadApp(t.db, b.applicationId))!.plan.requirements.map((r) => r.question)).toEqual(
+      (await loadApp(t.db, a.applicationId))!.plan.requirements.map((r) => r.question),
+    );
   });
 
   it("writes the scripted lines in the interview's language", async () => {
@@ -254,6 +257,19 @@ describe("submitApplicationTurn", () => {
     const b = await begin();
     expect(done(await answer(b.applicationId, "I have not done that.")).turn.kind).toBe("question");
 
+    for (const bad of [
+      "How did you balance that with your family at the time?", "Miten perheesi suhtautui vuorotyöhön?", "Hur påverkade det din familj?",
+      "Which country did you grow up in?", "Where did you learn to speak Finnish at work?", "Missä opit suomen kielen?",
+      "Tell me about your military service.", "Kerro varusmiespalveluksestasi.", "Do you have a criminal record?", "What was your salary in that job?",
+      "Good, and what came of that change?", "Interesting. What was your own part in that?", "That sounds like a lot. What did you do yourself?",
+      "Hyvä, mikä oli oma osuutesi siinä?", "Bra, vad blev resultatet av det?",
+    ]) {
+      expect(followUpProblem(bad, [])).not.toBeNull();
+      expect(questionProblem(bad, [])).not.toBeNull();
+    }
+    for (const ok of ["What did you do yourself in that change?", "How have you used Finnish at work?"]) {
+      expect(followUpProblem(ok, [])).toBeNull();
+    }
     for (const bad of ["Great, how old were you then?", "Were you employed by Academic Work Finland Oy?", "Thanks, that was clear. Any example?"]) {
       installModel({ turn: () => ({ evidence: [1], concrete: false, missing: "example", followUp: bad }) });
       const c = await begin();
@@ -357,6 +373,30 @@ describe("submitApplicationTurn", () => {
     // with nothing to delete it is an empty answer
     const fresh = await begin();
     expect(done(await answer(fresh.applicationId, "delete that")).turn.kind).toBe("repair");
+  });
+
+  it("tells the model that 'missing' is none when the person has not done it, so the scripted follow-up is not asked", () => {
+    expect(TURN_SYSTEM).toContain('"missing" is always "none"');
+  });
+
+  it("'delete that' only removes the previous turn when it was a live answer", async () => {
+    const { applicationId } = await begin();
+    await answer(applicationId, "I booked goods in SAP.");
+    await answer(applicationId, "I received deliveries at the dock.");
+    expect(done(await answer(applicationId, "delete that")).turn.kind).toBe("question");
+    expect(done(await answer(applicationId, "delete that")).turn.kind).toBe("repair");
+    const turns = await loadTurns(t.db, applicationId);
+    expect(turns.filter((x) => x.removedAt)).toHaveLength(1);
+    expect(turns[1]!.removedAt).toBeNull();
+  });
+
+  it("skip names the question it skips and is a no-op when that question is no longer current", async () => {
+    const { applicationId } = await begin();
+    const reqs = (await loadApp(t.db, applicationId))!.plan.requirements;
+    await run(skipApplicationQuestion(t.db, applicationId, { requirementId: reqs[0]!.requirementId }));
+    const again = await run(skipApplicationQuestion(t.db, applicationId, { requirementId: reqs[0]!.requirementId }));
+    expect(again).toEqual([]);
+    expect(progressOf((await loadApp(t.db, applicationId))!)).toEqual(["skipped", "asked", "waiting"]);
   });
 
   it("stores what is already there and stops quietly when the request is aborted", async () => {
@@ -467,7 +507,17 @@ describe("skip, stop, remove, submit, withdraw", () => {
     await answer(applicationId, "I booked goods in SAP.");
     await stopApplicationInterview(t.db, applicationId);
     await submitApplication(t.db, applicationId);
+    const app0 = (await loadApp(t.db, applicationId))!;
+    const published = {
+      needCardVersion: 1, requirements: [], publishedAt: new Date().toISOString(),
+      applicants: [{ applicationId, talentId, handle: "h", position: 1, points: 0, maxPoints: 0, moved: false, ratings: [], summary: { en: "", fi: "", sv: "" } }],
+    };
+    const pins = [{ applicationId, position: 1, reason: "because", at: new Date().toISOString() }];
+    await t.db.insert(applicantRanking).values({ jobId: app0.jobId, companyId: app0.companyId, pins, published: published as never });
     await withdrawApplication(t.db, applicationId);
+    const [ranking] = await t.db.select().from(applicantRanking).where(eq(applicantRanking.jobId, app0.jobId));
+    expect(ranking!.pins).toEqual([]);
+    expect(ranking!.published!.applicants).toEqual([]);
     expect(await loadApp(t.db, applicationId)).toBeNull();
     expect(await t.db.select().from(applicationTurn).where(eq(applicationTurn.applicationId, applicationId))).toHaveLength(0);
     const [event] = await listAudit(t.db, { action: "application.withdrawn" as never, subjectId: applicationId });

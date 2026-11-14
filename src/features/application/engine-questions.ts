@@ -10,7 +10,7 @@ import type { JobContext } from "./requirements";
 /**
  * The questions of one job interview (prompt A). One set per Need Card id, version and
  * language, kept in `app_meta`, so every applicant gets the same wording. A failed or late
- * call gives scripted questions for everyone and is not stored: the next applicant tries again.
+ * call stores the scripted set, so the wording stays fixed for that version.
  */
 
 export interface PlannedQuestion {
@@ -53,14 +53,13 @@ const KEY = Symbol.for("workespoo.application.questions");
 const holder = globalThis as unknown as Record<symbol, Inflight | undefined>;
 
 /**
- * The question for each covered requirement, in the plan's order. `signal` aborts the model
- * call only for the caller that started it; others waiting on the same key get the result.
+ * The question for each covered requirement, in the plan's order. The model call is shared by
+ * every caller on the same key, so no caller's abort signal is passed into it: it runs on its own deadline.
  */
 export async function questionsFor(
   db: Db,
   ctx: JobContext,
   lang: UiLang,
-  options: { signal?: AbortSignal } = {},
 ): Promise<PlannedQuestion[]> {
   const key = questionsKey(ctx.card.id, ctx.card.version, lang);
   const stored = await readStored(db, key, ctx);
@@ -69,7 +68,7 @@ export async function questionsFor(
   const inflight = (holder[KEY] ??= new Map());
   const running = inflight.get(key);
   if (running) return running;
-  const promise = makeQuestions(db, ctx, lang, key, options.signal).finally(() => inflight.delete(key));
+  const promise = makeQuestions(db, ctx, lang, key).finally(() => inflight.delete(key));
   inflight.set(key, promise);
   return promise;
 }
@@ -79,7 +78,6 @@ async function makeQuestions(
   ctx: JobContext,
   lang: UiLang,
   key: string,
-  signal: AbortSignal | undefined,
 ): Promise<PlannedQuestion[]> {
   const fallback = scripted(ctx, lang);
   const prompt = buildPlanPrompt({
@@ -105,17 +103,14 @@ async function makeQuestions(
       temperature: 0.3,
       maxTokens: 700,
       deadlineMs: 25_000,
-      signal,
       db,
     });
     output = result.data;
   } catch {
     output = null;
   }
-  if (!output) return fallback;
-
   const byLabel = new Map<string, string>();
-  for (const q of output.questions) if (!byLabel.has(q.requirement)) byLabel.set(q.requirement, q.question.trim());
+  for (const q of output?.questions ?? []) if (!byLabel.has(q.requirement)) byLabel.set(q.requirement, q.question.trim());
   const questions = ctx.covered.map((r, i): PlannedQuestion => {
     const proposed = byLabel.get(`R${i + 1}`);
     if (proposed && questionProblem(proposed, ctx.terms) === null) {

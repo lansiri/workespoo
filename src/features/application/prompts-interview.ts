@@ -59,6 +59,31 @@ const REQUEST_START =
 /** Thanks and small praise the interviewer never gives; the lexicon's lists do not hold them. */
 const COMMENTARY = /\b(thanks?|thank you|kiitos|tack|nice|well done|got it|that'?s clear|good (?:answer|job|example))\b/i;
 
+/** An opening remark on what the person said ("Good, ...", "Interesting.", "That sounds like ..."). */
+const OPENING_REMARK =
+  /^[\s"'“”]*(?:good|great|ok(?:ay)?|interesting|i see|sounds|that sounds|right|alright|hyvä|selvä|kiinnostava\p{L}*|okei|bra|intressant|okej|jaha)(?![\p{L}])/iu;
+const SOUNDS = /(?<![\p{L}])(?:sounds|kuulostaa|låter)(?![\p{L}])/iu;
+
+/** Protected matters that prompts A and B forbid and lexicon list A does not hold. */
+const PROTECTED_TOPIC = new RegExp(
+  [
+    "(?<![\\p{L}])(?:family|perhe\\p{L}*|familj\\p{L}*)",
+    "grow(?:ing)?\\s+up|grew\\s+up|kasvoit\\p{L}*|kasvanut|växte\\s+upp|växt\\s+upp",
+    "learn\\p{L}*[^.?!]{0,50}(?:language|finnish|swedish|english|kieli\\p{L}*|suomen|ruotsin|englannin|språk|finska|svenska)",
+    "(?:opit|opiskelit|oppinut|opiskellut)[^.?!]{0,50}(?:kiel\\p{L}*|suomen|ruotsin|englannin)",
+    "lärde\\s+du[^.?!]{0,50}(?:språk|finska|svenska|engelska)",
+    "military|armeija\\p{L}*|varusmie\\p{L}*|asepalvelu\\p{L}*|siviilipalvelu\\p{L}*|värnplikt\\p{L}*|lumpen",
+    "criminal|rikos\\p{L}*|rikollis\\p{L}*|brott\\p{L}*|belastningsregister\\p{L}*",
+    "photo(?!shop)\\p{L}*|valokuva\\p{L}*|(?<![\\p{L}])foto\\p{L}*",
+    "salary|salaries|palkka\\p{L}*|palkan\\p{L}*|(?<![\\p{L}])lön(?:en|er)?(?![\\p{L}])|lönen\\p{L}*",
+  ].join("|"),
+  "iu",
+);
+
+function commentary(text: string): boolean {
+  return COMMENTARY.test(text) || OPENING_REMARK.test(text) || SOUNDS.test(text);
+}
+
 /** The terms of a masked employer found in `text`, or an empty list. */
 export function employerHit(text: string, terms: readonly string[]): boolean {
   return terms.length > 0 && maskEmployer(text, terms) !== text;
@@ -69,8 +94,8 @@ export function questionProblem(question: string, terms: readonly string[]): str
   const q = question.trim();
   if (q.length < 10 || q.length > 300) return "length";
   if (!q.includes("?") && !REQUEST_START.test(q)) return "not_a_question";
-  if (findProtectedQuestion(q).length > 0) return "protected";
-  if (findBannedEvaluative(q).length > 0 || COMMENTARY.test(q)) return "evaluative";
+  if (findProtectedQuestion(q).length > 0 || PROTECTED_TOPIC.test(q)) return "protected";
+  if (findBannedEvaluative(q).length > 0 || commentary(q)) return "evaluative";
   if (employerHit(q, terms)) return "employer";
   return null;
 }
@@ -88,7 +113,7 @@ INPUT
 DECIDE
 1. "evidence": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.
 2. "concrete": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement ("I have experience with X", "we always did X", "I am good at X") is not concrete.
-3. "missing": the one thing a follow-up could still bring out. "example": no specific situation. "own_part": a situation, but not what they did themselves. "result": what they did, but not what came of it. "none": nothing.
+3. "missing": the one thing a follow-up could still bring out. "example": no specific situation. "own_part": a situation, but not what they did themselves. "result": what they did, but not what came of it. "none": nothing, or the person said plainly that they have not done this (then "missing" is always "none").
 4. "followUp": one question that asks for exactly that missing thing, about the same requirement. null when "missing" is "none", when a follow-up has already been asked, or when the person said they have not done this.
 
 RULES FOR THE FOLLOW-UP
@@ -127,8 +152,8 @@ export function buildTurnPrompt(args: {
 export function followUpProblem(text: string, terms: readonly string[]): string | null {
   const t = text.trim();
   if (t.length < 8 || t.length > 240) return "length";
-  if (findProtectedQuestion(t).length > 0) return "protected";
-  if (findBannedEvaluative(t).length > 0 || COMMENTARY.test(t)) return "evaluative";
+  if (findProtectedQuestion(t).length > 0 || PROTECTED_TOPIC.test(t)) return "protected";
+  if (findBannedEvaluative(t).length > 0 || commentary(t)) return "evaluative";
   if (employerHit(t, terms)) return "employer";
   return null;
 }
