@@ -2,7 +2,7 @@ import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { escoConcept } from "@/db/schema";
 import type { LlmOptions } from "@/lib/llm";
 import { resetLlmState, setLlmFake } from "@/lib/llm/testing";
-import { createTestDb, type TestDb } from "../../../tests/helpers/db";
+import { createTestDb, type TestDb } from "../../tests/helpers/db";
 import { pickEscoLabels } from "./esco-pick";
 
 let t: TestDb;
@@ -41,6 +41,16 @@ describe("pickEscoLabels (prompt C)", () => {
     expect(text).toContain("i=1 | phrase: React | kind: tool");
     expect(out.get("a")?.uri).toBeTruthy();
     expect(out.get("b")).toBeNull(); // "React" with "react to mining emergencies" and a pick of 0
+  });
+
+  it("takes the purpose and the deadline from the caller, with the card's values as defaults", async () => {
+    const seen: LlmOptions[] = [];
+    setLlmFake((o) => {
+      seen.push(o);
+      return { picks: [] };
+    });
+    await pickEscoLabels(t.db, items, { purpose: "interview.esco_pick", deadlineMs: 10_000 });
+    expect(seen[0]).toMatchObject({ role: "analyst", purpose: "interview.esco_pick", deadlineMs: 10_000 });
   });
 
   it("choice 0, an out-of-range choice and a missing item all mean no label", async () => {

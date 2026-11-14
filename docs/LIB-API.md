@@ -200,6 +200,14 @@ export function escoTopMatch(db: Db, phrase: string, minSimilarity?: number): Pr
 export function escoByUris(db: Db, uris: string[]): Promise<Map<string, EscoRef>>;
 ```
 
+## `src/lib/esco-pick.ts`
+
+```ts
+/** Prompt C: one `analyst` call chooses ESCO labels among candidates for a batch of phrases (card synthesis, and the interview's live notes). Key to ref, null for none; a failed call falls back to `escoTopMatch`. */
+export function pickEscoLabels(db: Db, items: { key: string; phrase: string; kind: SignalKind }[],
+  opts?: { purpose?: string; deadlineMs?: number }): Promise<Map<string, EscoRef | null>>;
+```
+
 ## `src/lib/jobs-lit.ts`
 
 ```ts
