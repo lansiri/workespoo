@@ -86,6 +86,8 @@ export const InterviewState = z.object({
   lastExtracted: z.array(z.string()).optional(),
   /** Flags from the last two extractions, oldest first. Flag names only, never the text behind them. */
   recentFlags: z.array(z.array(InterviewFlag)).max(2).optional(),
+  /** Ids of the notes already offered to the live skill-label step: one attempt per note. */
+  escoAsked: z.array(z.string()).optional(),
 });
 export type InterviewState = z.infer<typeof InterviewState>;
 

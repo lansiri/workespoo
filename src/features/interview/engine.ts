@@ -489,7 +489,7 @@ export async function settleInterview(
   timeoutMs = SETTLE_DEFAULT_TIMEOUT_MS,
 ): Promise<void> {
   void db;
-  await waitForPending(interviewId, timeoutMs, ["work", "finish"]);
+  await waitForPending(interviewId, timeoutMs, ["work", "finish", "label"]);
 }
 
 /* ------------------------------------------------------------------------------------------

@@ -17,18 +17,21 @@ import {
 } from "@/contracts";
 import type { Db } from "@/db/client";
 import { signal as signalTable } from "@/db/schema";
+import { and, eq, isNull, ne } from "drizzle-orm";
 import { audit } from "@/lib/audit";
 import { escoTopMatch } from "@/lib/esco";
+import { pickEscoLabels } from "@/lib/esco-pick";
 import { jobsLitForSignals } from "@/lib/jobs-lit";
 import { chatJson } from "@/lib/llm";
 import { findProtectedCard, stripQualityWords } from "@/lib/lexicon";
 import { publishEvent } from "./events";
 import { buildExtractorPrompt, safeNote } from "./prompts";
-import { withLock } from "./runtime";
+import { track, withLock } from "./runtime";
 import { loadInterview, loadSignalRows, loadTurns, mutateState, readState, rowToSignal } from "./store";
 
 export const EXTRACTOR_DEADLINE_MS = 20_000;
 export const MAX_LIVE_SIGNALS = 20;
+export const LIVE_ESCO_PICK_DEADLINE_MS = 10_000;
 export const DEDUPE_TRIGRAM_THRESHOLD = 0.8;
 const SIGNAL_ID_RE = /^s\d+$/;
 const LABEL_RE = /^T\d+\.S\d+(-S?\d+)?$/;
@@ -307,6 +310,7 @@ async function extractTurn(db: Db, interviewId: string, turnIndex: number): Prom
   if (result.data === null) return;
   const output = result.data;
 
+  let toLabel: LabelItem[] = [];
   await withLock(`${interviewId}#extract`, async () => {
     const freshRows = await loadSignalRows(db, row.talentId);
     const freshTurns = await loadTurns(db, interviewId);
@@ -404,5 +408,79 @@ async function extractTurn(db: Db, interviewId: string, turnIndex: number): Prom
         detail: { interviewId, count: merged.protectedDropped, source: "extractor" },
       });
     }
+
+    toLabel = await claimNotesToLabel(db, interviewId);
   });
+
+  // After everything above is stored and published. The label call is its own kind of work: the
+  // end of the interview and the removal of an answer do not wait for it.
+  if (toLabel.length > 0) track(interviewId, chooseLabels(db, row.talentId, interviewId, toLabel), "label");
+}
+
+/* Live skill labels ------------------------------------------------------------------------ */
+
+type LabelItem = { key: string; phrase: string; kind: Signal["kind"] };
+
+/**
+ * This interview's notes that have no ESCO skill and were not offered before, recorded as
+ * offered now so a failed call is not repeated for the same notes. Nothing while the interview
+ * is closing or over: synthesis chooses the card's labels itself. Runs under the extraction lock.
+ */
+async function claimNotesToLabel(db: Db, interviewId: string): Promise<LabelItem[]> {
+  const row = await loadInterview(db, interviewId);
+  if (!row) return [];
+  const state = readState(row);
+  if (row.status !== "active" || state.stage === "closing" || state.stage === "synthesising") return [];
+  const asked = new Set(state.escoAsked ?? []);
+  const rows = await loadSignalRows(db, row.talentId);
+  const items = rows
+    .filter((s) => s.interviewId === interviewId && s.status !== "removed" && !s.escoUri && !asked.has(s.id))
+    .map((s) => ({ key: s.id, phrase: s.phrase, kind: s.kind }));
+  if (items.length === 0) return [];
+  await mutateState(db, interviewId, (st) => ({ ...st, escoAsked: [...(st.escoAsked ?? []), ...items.map((i) => i.key)] }));
+  return items;
+}
+
+/** One model call for the batch, then write what came back and light the board again. Never throws. */
+async function chooseLabels(db: Db, talentId: string, interviewId: string, items: LabelItem[]): Promise<void> {
+  try {
+    const picked = await pickEscoLabels(db, items, { purpose: "interview.esco_pick", deadlineMs: LIVE_ESCO_PICK_DEADLINE_MS });
+    if (![...picked.values()].some((v) => v)) return;
+    await withLock(`${interviewId}#extract`, async () => {
+      const row = await loadInterview(db, interviewId);
+      if (!row) return;
+      const state = readState(row);
+      // A label that arrives after the interview has closed is dropped.
+      if (row.status !== "active" || state.stage === "closing" || state.stage === "synthesising") return;
+      let written = 0;
+      for (const item of items) {
+        const esco = picked.get(item.key);
+        if (!esco) continue;
+        const [updated] = await db
+          .update(signalTable)
+          .set({ escoUri: esco.uri, escoLabelEn: esco.labelEn, escoLabelFi: esco.labelFi, updatedAt: new Date() })
+          .where(
+            and(
+              eq(signalTable.talentId, talentId),
+              eq(signalTable.id, item.key),
+              eq(signalTable.interviewId, interviewId),
+              ne(signalTable.status, "removed"),
+              isNull(signalTable.escoUri),
+            ),
+          )
+          .returning();
+        if (!updated) continue;
+        written++;
+        await publishEvent(db, interviewId, { type: "signal.updated", signal: toSignalPublic(rowToSignal(updated)) });
+      }
+      if (written === 0) return;
+      const notes = (await loadSignalRows(db, talentId))
+        .filter((s) => s.status !== "removed")
+        .map((s) => ({ phrase: s.phrase, escoUri: s.escoUri }));
+      const lit = await jobsLitForSignals(db, notes, { sampleSize: 3 }).catch(() => null);
+      if (lit) await publishEvent(db, interviewId, { type: "jobs.lit", count: lit.count, sample: lit.sample });
+    });
+  } catch (error) {
+    console.error("[interview] live skill labels failed:", error instanceof Error ? error.message : String(error));
+  }
 }

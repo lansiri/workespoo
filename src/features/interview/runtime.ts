@@ -74,7 +74,8 @@ export async function withLock<T>(interviewId: string, fn: () => Promise<T>): Pr
   }
 }
 
-export type WorkKind = "work" | "finish";
+/** `label` is the live skill-label call: `settleInterview` waits for it, finishing and removing an answer do not. */
+export type WorkKind = "work" | "finish" | "label";
 
 /** Track background work so `settleInterview` can wait for it. The promise never rejects. */
 export function track(interviewId: string, work: Promise<unknown>, kind: WorkKind = "work"): void {
