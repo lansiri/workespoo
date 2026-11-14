@@ -200,7 +200,7 @@ export function ConsentForm() {
             />
           )}
         </Field>
-        <CvUpload enabled={consentInterview} onText={(text) => setCvText(text.slice(0, CV_MAX_CHARS))} />
+        <CvUpload enabled={consentInterview} current={cvText} limit={CV_MAX_CHARS} onText={setCvText} />
 
         {failed ? <ErrorState testId="start-error" message={m.startError} action={{ label: e.retry, onClick: () => void start() }} /> : null}
 

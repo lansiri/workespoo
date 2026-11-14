@@ -14,17 +14,21 @@ const LABEL = "[\\p{L}\\p{N}](?:[\\p{L}\\p{N}-]*[\\p{L}\\p{N}])?";
 const DOT_WORD = "\\s*[\\(\\[\\{]\\s*(?:dot|piste)\\s*[\\)\\]\\}]\\s*";
 
 /** Plain addresses: name@example.fi */
-const EMAIL = /[\p{L}\p{N}._%+'-]+@[\p{L}\p{N}-]+(?:\.[\p{L}\p{N}-]+)+/gu;
+/** A match starts only at the start of a run of local-part characters, so a long run of letters is read once, not from every position. */
+const EMAIL_LOCAL = "[\\p{L}\\p{N}._%+'-]+";
+const EMAIL_DOMAIN = "@[\\p{L}\\p{N}-]+(?:\\.[\\p{L}\\p{N}-]+)+";
+/** After a domain another address may follow at once ("a@b.fi_c@d.fi"): it is part of the same match, so it is found in the same pass. */
+const EMAIL = new RegExp(`(?<![\\p{L}\\p{N}._%+'-])${EMAIL_LOCAL}${EMAIL_DOMAIN}(?:[_%+']${EMAIL_LOCAL}${EMAIL_DOMAIN})*`, "gu");
 
 /** name(at)example.fi, name [at] example [dot] fi, name (ät) example.fi */
 const EMAIL_BRACKET_AT = new RegExp(
-  `[\\p{L}\\p{N}._%+'-]+\\s*[\\(\\[\\{]\\s*(?:at|ät|a)\\s*[\\)\\]\\}]\\s*${LABEL}(?:(?:\\.|${DOT_WORD})${LABEL})+`,
+  `(?<![\\p{L}\\p{N}._%+'-])[\\p{L}\\p{N}._%+'-]+\\s*[\\(\\[\\{]\\s*(?:at|ät|a)\\s*[\\)\\]\\}]\\s*${LABEL}(?:(?:\\.|${DOT_WORD})${LABEL})+`,
   "giu",
 );
 
 /** name at example dot fi (needs "dot" or "piste" before a short TLD so ordinary prose is safe) */
 const EMAIL_WORD_AT = new RegExp(
-  `[\\p{L}\\p{N}._%+'-]+\\s+(?:at|ät)\\s+${LABEL}(?:\\s+(?:dot|piste)\\s+${LABEL})*\\s+(?:dot|piste)\\s+\\p{L}{2,4}(?![\\p{L}\\p{N}])`,
+  `(?<![\\p{L}\\p{N}._%+'-])[\\p{L}\\p{N}._%+'-]+\\s+(?:at|ät)\\s+${LABEL}(?:\\s+(?:dot|piste)\\s+${LABEL})*\\s+(?:dot|piste)\\s+\\p{L}{2,4}(?![\\p{L}\\p{N}])`,
   "giu",
 );
 
