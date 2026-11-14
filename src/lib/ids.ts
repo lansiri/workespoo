@@ -2,7 +2,7 @@ import { randomBytes, randomInt } from "node:crypto";
 
 export type IdPrefix =
   | "tal" | "int" | "trn" | "job" | "co" | "nc" | "req" | "jm" | "dig" | "pick"
-  | "intro" | "ag" | "ev" | "con" | "ntf" | "note";
+  | "intro" | "ag" | "ev" | "con" | "ntf" | "note" | "app" | "apt";
 
 const ALPHABET = "abcdefghijklmnopqrstuvwxyz0123456789";
 

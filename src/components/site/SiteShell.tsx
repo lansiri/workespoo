@@ -14,6 +14,7 @@ export function shellNav(audience: ShellAudience, lang: UiLang): NavItem[] {
     return [
       { key: "overview", label: m.navOverview, href: "/organiser" },
       { key: "review", label: m.navReview, href: "/organiser/review" },
+      { key: "applicants", label: m.navApplicants, href: "/organiser/applicants" },
       { key: "exposure", label: m.navExposure, href: "/organiser/exposure" },
       { key: "audit", label: m.navAudit, href: "/organiser/audit" },
     ];
@@ -22,6 +23,7 @@ export function shellNav(audience: ShellAudience, lang: UiLang): NavItem[] {
     { key: "interview", label: m.navInterview, href: "/interview" },
     { key: "card", label: m.navCard, href: "/card" },
     { key: "matches", label: m.navMatches, href: "/matches" },
+    { key: "apply", label: m.navApply, href: "/apply" },
     { key: "how", label: m.navHow, href: "/how-it-works" },
   ];
 }

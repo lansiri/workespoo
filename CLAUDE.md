@@ -1,6 +1,6 @@
 # WorkEspoo
 
-Hackathon build for Junction 2026, City of Espoo challenge "Rethinking Recruitment". An AI interviewer turns a short conversation into a **Signal Card** (skills backed by the person's own words), shows matched real open jobs, and drafts **Daily Picks** for companies that an Espoo organiser approves before anything is sent.
+Hackathon build for Junction 2026, City of Espoo challenge "Rethinking Recruitment". An AI interviewer turns a short conversation into a **Signal Card** (skills backed by the person's own words), shows matched real open jobs, and drafts **Daily Picks** for companies that an Espoo organiser approves before anything is sent. A person can then choose one job of the event and take a **job interview** whose questions come from that job's ad; the applicants for the job are rated against the ad and ranked, and an organiser checks the order before the company sees it.
 
 Read in this order before writing code:
 
@@ -20,10 +20,10 @@ Live site: https://workespoo.aichat.fi (VPS 2.29.206.251). The app is built and 
 1. **No Anthropic SDK or Anthropic API in app code.** Every model call goes through the gateway in `src/lib/llm` (OpenAI-compatible endpoints: NVIDIA Nemotron, DeepSeek or Kimi on Verda).
 2. **No secrets in the repo.** Keys live in `/opt/workespoo/env/.env` on the VPS and in an untracked `.env.local`. Never print a key in logs or reports.
 3. **People data is synthetic.** A live demo session needs explicit consent and is purged after 24 hours.
-4. **Nothing about a person is scored, ranked or levelled.** No match percentages, no strength levels on skills, no ordering of picks by quality. The interviewer elicits and takes notes; it never evaluates or comments on emotion.
+4. **One thing about a person is rated, and only with their knowledge: a job application.** A person who chooses a job and takes its job interview is told beforehand that the answers will be rated against the ad's requirements and that the applicants for that job will be ranked. The model rates the evidence for each requirement and writes reasons that point at the person's own sentences; code computes the order from those ratings; the person sees their own ratings and reasons. Everything else stays unscored and unordered: no levels on the Signal Card, no match percentages in the job feed, Daily Picks in no particular order. The interviewer never evaluates out loud and never comments on emotion. (The owner decided this on 14 November 2026; until then nothing was rated at all. See `docs/LEAD-DECISIONS.md`.)
 5. **Evidence is cited by reference.** The model points at a turn and sentence index; code renders the text from the stored transcript. Model-written text is never presented as a quote.
-6. **Protected attributes and their proxies are never stored or shown**: age, gender, nationality, ethnicity, religion, health, family status, photo. Names stay off cards. Original quotes, interview language and input mode are hidden from companies until both sides opt in.
-7. **A human approves every pick individually** before a digest is published. There is no "approve all". Must-have requirements never filter anyone out of the pool.
+6. **Protected attributes and their proxies are never stored or shown**: age, gender, nationality, ethnicity, religion, health, family status, photo. Names stay off cards. Original quotes, interview language and input mode are hidden from companies until both sides opt in. A rating never uses any of them: the assessor reads the job interview's answers without name, nickname, interview language or input mode, and a sentence that carries a protected detail is left out of what it reads.
+7. **A human approves every pick individually** before a digest is published. There is no "approve all". Must-have requirements never filter anyone out of the pool. A ranked list of applicants reaches a company only after an organiser has checked it: the organiser can move a person, with a reason, and approves the list. A rating never removes anyone: every applicant stays on the list.
 8. **Job ingestion drops personal data**: recruiter names, emails and phone numbers, including those inside description text.
 9. **No voice, tone or emotion analysis.** Audio is never stored.
 
@@ -52,6 +52,7 @@ Your training data is probably older than these versions. Check `docs/PATTERNS.m
 | `src/features/jobs/`, `src/features/needs/`, `src/app/api/jobs/`, `src/app/api/needs/`, `src/app/(company)/c/[token]/need/`, `src/app/dev/s2/` | Stream S2 |
 | `src/features/matching/`, `src/features/picks/`, `src/features/intros/`, `src/app/api/matches/`, `src/app/api/picks/`, `src/app/api/digests/`, `src/app/api/intros/`, `src/app/api/organiser/`, `src/app/(organiser)/`, `src/app/(talent)/matches/`, `src/app/(company)/c/[token]/page.tsx`, `src/app/dev/s3/` | Stream S3 |
 | `src/features/voice/`, `src/app/api/voice/`, `src/app/dev/voice/`, `src/features/synth/`, `seed/`, `evals/` | Stream S4 |
+| `src/features/application/`, `src/app/api/application/`, `src/app/api/organiser/applicants/`, `src/app/(talent)/apply/`, `src/app/(room)/apply/`, `src/app/(organiser)/organiser/applicants/`, `src/app/(company)/c/[token]/applicants/` | Stream S5 (job interviews and ranked applicants, `docs/specs/job-interview.md`) |
 
 Route groups in parentheses do not appear in URLs: `src/app/(talent)/card/page.tsx` serves `/card`.
 

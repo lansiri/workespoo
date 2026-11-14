@@ -1034,14 +1034,14 @@ button.we-chip { cursor: pointer; }
   .we-talk-row .we-type-box, .we-talk-row .we-type-answer { width: 100%; max-width: 520px; }
 }
 .we-menu-sheet { max-width: calc(100vw - 32px); }
-/* Organiser bar carries five long labels: fold the nav behind Menu until there is room (Finnish needs about 1360 px). */
-@media (min-width: 761px) and (max-width: 1360px) {
+/* Organiser bar carries six long labels: fold the nav behind Menu until there is room (Finnish needs about 1480 px). */
+@media (min-width: 761px) and (max-width: 1480px) {
   .we-aud-organiser .we-mainnav { display: none; }
   .we-aud-organiser .we-menu { display: block; }
   .we-aud-organiser .we-menu-btn { display: grid; }
 }
-/* Every other bar: four links, the language switcher and the logo need about 1000 px in Finnish. Below that the links go behind Menu, so the bar never runs past the window. */
-@media (min-width: 761px) and (max-width: 1000px) {
+/* Every other bar: five links, the language switcher and the logo need about 1140 px in Finnish. Below that the links go behind Menu, so the bar never runs past the window. */
+@media (min-width: 761px) and (max-width: 1140px) {
   .we-mainnav { display: none; }
   .we-menu { display: block; }
   .we-menu-btn { display: grid; }
