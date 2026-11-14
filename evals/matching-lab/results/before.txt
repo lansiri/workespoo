@@ -1,0 +1,363 @@
+
+=== warehouse-worker (the first real run, 14 Nov)
+  signal [skill] warehouse logistics -> (no ESCO label)
+  signal [skill] order picking -> (no ESCO label)
+  signal [skill] receiving incoming goods -> (no ESCO label)
+  signal [tool] warehouse management system -> use a warehouse management system
+  signal [tool] SAP -> SAP R3
+  signal [tool] Excel -> (no ESCO label)
+  signal [skill] reach truck operation -> (no ESCO label)
+  14 postings in the feed; first 12:
+   1. ServiceNow Developer & Administrator | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+   2. Project / Program Manager, Carve-out | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+   3. Control Software Engineer (Embedded Software) | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+   4. Ohjelmistokehittäjä (full-stack) energiasektorille, Espoo | Academic Work Finland Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+   5. Senior IT Architect / Strategic Advisor | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+   6. Verification Lead | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+   7. Senior Electrical Design Engineer | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+   8. Software Developer (full-stack) for energy sector, Espoo | Academic Work Finland Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+   9. Raportointiasiantuntija, Tiedolla johtamisen yksikkö, Espoo | Länsi-Uudenmaan hyvinvointialue | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+  10. Teamcenter Technical Lead / PLM Technical Architect | Academic Work Finland Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+  11. Trukkikuski syksyn rengaslogistiikkaan | Mestarit Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+  12. Kehityspäällikkö, mobiiliteknologiat | Erillisverkot / Espoo, Jyväskylä, Tampere, Kuopio, Turku, Oulu | MPS Consulting Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+
+=== practical-nurse (lähihoitaja)
+  signal [domain] elderly care -> (no ESCO label)
+  signal [skill] medication administration -> (no ESCO label)
+  signal [skill] patient hygiene and daily care -> (no ESCO label)
+  signal [skill] wound care -> carry out wound care
+  signal [skill] patient records -> (no ESCO label)
+  0 postings in the feed; first 0:
+
+=== cleaner (p11 and everyday case)
+  signal [skill] perform cleaning duties -> perform cleaning duties
+  signal [tool] operate floor cleaning equipment -> operate floor cleaning equipment
+  signal [skill] handle chemical cleaning agents -> handle chemical cleaning agents
+  signal [skill] sort waste -> sort waste
+  signal [skill] maintain inventory of cleaning supplies -> maintain inventory of cleaning supplies
+  40 postings in the feed; first 12:
+   1. Kotisiivous | Omenasiivous | Espoo
+      links: direct=3 ess=5 opt=2 text=false role=false
+   2. Supersiivooja, kouluttaja ja esimies | Omenasiivous Oy | Espoo
+      links: direct=3 ess=5 opt=2 text=false role=false
+   3. Siivouskeikkoja kalenterisi täytteeksi - aikataulusi mukaan | Arkinen Oy | Espoo
+      links: direct=3 ess=3 opt=2 text=false role=false
+   4. Kotisiivooja Espoon tiimiin (osa-aikainen) | Sivina Kotipalvelut Oy | Espoo
+      links: direct=3 ess=3 opt=1 text=false role=false
+   5. siivooja | Astera Oy | Espoo
+      links: direct=2 ess=5 opt=0 text=false role=false
+   6. Kotisiivous | Omenasiivous Oy | Espoo
+      links: direct=1 ess=5 opt=1 text=false role=false
+   7. Muuttosiivouskeikkoja kalenterisi täytteeksi - aikataulujesi mukaan | Suvin Muuttosiivouspalvelu / TRIO Group Oy | Espoo
+      links: direct=1 ess=3 opt=2 text=false role=false
+   8. Lähihoitaja lapsiperheiden kotipalveluun | AINA-kotipalvelut | Espoo
+      links: direct=1 ess=3 opt=2 text=false role=false
+   9. Tarvittaessa töihin kutsuttava toimistosiivooja, Tapiola | ISS Palvelut Oy | Espoo
+      links: direct=0 ess=5 opt=0 text=false role=false
+  10. Toimistosiivooja arki-iltoihin 16-22, Tapiola | ISS Palvelut Oy | Espoo
+      links: direct=0 ess=5 opt=0 text=false role=false
+  11. Kokoaikainen siivooja, Espoo | Luotea | Espoo
+      links: direct=0 ess=5 opt=0 text=false role=false
+  12. Laitoshuoltaja (sisäinen sijainen) | HUS Helsingin yliopistollinen sairaala | Espoo
+      links: direct=0 ess=5 opt=0 text=false role=false
+
+=== cook (p10)
+  signal [skill] use cooking techniques -> use cooking techniques
+  signal [skill] comply with food safety and hygiene -> comply with food safety and hygiene
+  signal [skill] order supplies -> order supplies
+  signal [skill] store raw food materials -> store raw food materials
+  signal [skill] control of expenses -> control of expenses
+  40 postings in the feed; first 12:
+   1. Kokki, Tasteat Oy, Espoo | Tasteat Oy | Espoo
+      links: direct=3 ess=5 opt=0 text=false role=false
+   2. Lounaskokki, Espoo | StaffMill Oy | Espoo
+      links: direct=2 ess=5 opt=0 text=true role=false
+   3. ASIAN CUISINE CHEF | Natural Finland Group Oy | Espoo
+      links: direct=1 ess=5 opt=0 text=true role=false
+   4. Ravintolan työntekijä / Kotipizza Westend | Bite & Beans OY | Espoo
+      links: direct=1 ess=5 opt=0 text=true role=false
+   5. Ravintolakokki | SANARJA Oy | Espoo
+      links: direct=1 ess=5 opt=0 text=true role=false
+   6. Keittiömestari | Restaurants By Spoon Oy | Espoo
+      links: direct=1 ess=4 opt=1 text=true role=false
+   7. Yrittäjä Boneless -ravintolaketjuun Espooseen | Ketjufi Yrittäjärekrytointipalvelut Oy | Espoo
+      links: direct=2 ess=3 opt=0 text=true role=false
+   8. Kokki - Hook, Tapiola | YES Your Excellent Staff Oy | Espoo
+      links: direct=0 ess=5 opt=0 text=true role=false
+   9. Kokki Espooseen Tapiolaan | Compass Group Finland | Espoo
+      links: direct=0 ess=5 opt=0 text=true role=false
+  10. Kokki Espooseen | Sodexo Oy | Espoo
+      links: direct=0 ess=5 opt=0 text=true role=false
+  11. Kokki keikkatyöhön Pääkaupunkiseudulle ja lähialueille | Barona Palvelut Oy | Espoo
+      links: direct=0 ess=5 opt=0 text=true role=false
+  12. Kokkeja keikkatyöhön, pääkaupunkiseutu, Staffpoint Horeca | StaffPoint Oy | Espoo
+      links: direct=0 ess=5 opt=0 text=true role=false
+
+=== data-engineer (Python, SQL, data pipelines)
+  signal [tool] Python -> Python (computer programming)
+  signal [tool] SQL -> SQL
+  signal [skill] data pipelines -> (no ESCO label)
+  signal [domain] data warehouse -> data warehouse
+  signal [tool] Airflow -> (no ESCO label)
+  27 postings in the feed; first 12:
+   1. Junioriohjelmistokehittäjä, harjoittelija tai opinnäytetyöntekijä — Rust ja tekoälysovellukset | Advaun Oy | Espoo
+      links: direct=1 ess=1 opt=2 text=true role=false
+   2. Product Engineer – moniosaaja AI-vetoisiin kehityshankkeisiin | Gabria Oy | Espoo
+      links: direct=0 ess=2 opt=2 text=false role=false
+   3. Koodaaja | ePubQuiz Oy | Espoo
+      links: direct=1 ess=0 opt=2 text=false role=false
+   4. Raportointiasiantuntija, Tiedolla johtamisen yksikkö, Espoo | Länsi-Uudenmaan hyvinvointialue | Espoo
+      links: direct=0 ess=1 opt=1 text=true role=false
+   5. Data Scientist / Engineer, Espoo | Academic Work Finland Oy | Espoo
+      links: direct=0 ess=1 opt=1 text=true role=false
+   6. ServiceNow Developer & Administrator | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=2 text=true role=false
+   7. Project / Program Manager, Carve-out | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=2 text=true role=false
+   8. Control Software Engineer (Embedded Software) | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=2 text=true role=false
+   9. Ohjelmistokehittäjä (full-stack) energiasektorille, Espoo | Academic Work Finland Oy | Espoo
+      links: direct=0 ess=0 opt=2 text=true role=false
+  10. Senior IT Architect / Strategic Advisor | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=2 text=true role=false
+  11. Power Platform -kehittäjä | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=2 text=true role=false
+  12. Software Developer (full-stack) for energy sector, Espoo | Academic Work Finland Oy | Espoo
+      links: direct=0 ess=0 opt=2 text=true role=false
+
+=== web-developer (React, TypeScript)
+  signal [tool] React -> (no ESCO label)
+  signal [tool] TypeScript -> TypeScript
+  signal [skill] web application development -> Rapid application development
+  signal [tool] REST API -> (no ESCO label)
+  signal [tool] CSS -> CSS
+  23 postings in the feed; first 12:
+   1. Sales and Marketing Professionals | Sansaino Oy | Espoo
+      links: direct=0 ess=0 opt=2 text=true role=false
+   2. ServiceNow Developer & Administrator | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+   3. Project / Program Manager, Carve-out | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+   4. Control Software Engineer (Embedded Software) | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+   5. Viestintäkoordinaattori, Helsinki | Academic Work Finland Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+   6. Ohjelmistokehittäjä (full-stack) energiasektorille, Espoo | Academic Work Finland Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+   7. Senior IT Architect / Strategic Advisor | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+   8. Verification Lead | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+   9. Senior Electrical Design Engineer | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+  10. Koodaaja | ePubQuiz Oy | Espoo
+      links: direct=0 ess=0 opt=2 text=false role=false
+  11. FullStack Developer (Java, SpringBoot), Wärtsilä | Academic Work Finland Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+  12. Software Developer (full-stack) for energy sector, Espoo | Academic Work Finland Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+
+=== sales-assistant (shop sales)
+  signal [skill] customer service -> customer service
+  signal [tool] cash register operation -> operate cash register
+  signal [skill] product display -> organise product display
+  signal [skill] stock replenishment -> (no ESCO label)
+  signal [skill] upselling -> (no ESCO label)
+  40 postings in the feed; first 12:
+   1. Joulukuusen myyjä, 10 paikkaa, Lännen Joulukuusikauppa Oy, Helsinki, Espoo, Vantaa | Lännen Joulukuusikauppa Oy | Espoo
+      links: direct=2 ess=2 opt=0 text=true role=false
+   2. Kaupan osaaja, Hyllyttäjä, Pääkaupunkiseutu | Joblink Oy | Espoo
+      links: direct=1 ess=2 opt=0 text=true role=false
+   3. Myyntiedustaja / Itsenäinen yrittäjä | Storybound Oy | Espoo
+      links: direct=0 ess=3 opt=1 text=true role=false
+   4. Palvelutiskimyyjä, Pääkaupunkiseutu | Joblink Oy | Espoo
+      links: direct=1 ess=2 opt=0 text=true role=false
+   5. Ajanvaraaja, Taloturva Group Oy, Helsinki | Taloturva Group Oy | Espoo
+      links: direct=1 ess=1 opt=1 text=true role=false
+   6. ALUEMYYNTIPÄÄLLIKKÖ | TEKNINEN MYYNTI | PROSEC Safety Systems | Espoo
+      links: direct=0 ess=3 opt=1 text=false role=false
+   7. Myyntikumppani ja kääntäjä. | M.K. Trade Solutions | Espoo
+      links: direct=0 ess=3 opt=1 text=false role=false
+   8. Kirjanpitäjä ja asiakaspalvelu | Taloasema HMJ Isännöinti Oy | Espoo
+      links: direct=1 ess=1 opt=0 text=true role=false
+   9. AJANVARAAJA / BUUKKARI B2B | PROSEC Safety Systems | Espoo
+      links: direct=0 ess=3 opt=0 text=false role=false
+  10. KotiAvustajat - yrittäjä | KotiAvustajat | Espoo
+      links: direct=1 ess=1 opt=0 text=true role=false
+  11. Asiakaspalvelija rakennuskonevuokraamoon, Espoo | Visio Henkilöstöratkaisut Uusimaa Oy | Espoo
+      links: direct=0 ess=2 opt=0 text=true role=false
+  12. Kokoaikainen sisustusmyyjä | Cobello oy | Espoo
+      links: direct=0 ess=2 opt=0 text=true role=false
+
+=== electrician (installation electrician)
+  signal [skill] electrical installation -> (no ESCO label)
+  signal [skill] wiring -> repair wiring
+  signal [knowledge] electrical safety regulations -> electrical safety regulations
+  signal [skill] reading electrical wiring diagrams -> electrical wiring diagrams
+  signal [skill] test electrical equipment -> test electrical equipment
+  40 postings in the feed; first 12:
+   1. Ajoneuvon insinööri ja sähköajoneuvo asentaja | Rekkanova Oy | Espoo
+      links: direct=2 ess=3 opt=2 text=true role=false
+   2. Sähköasentaja (vakituinen) – Helsingin seutu | Nurmijärven Sähköasennus Oy | Espoo
+      links: direct=1 ess=3 opt=2 text=false role=false
+   3. Projektipäällikkö talotekniikan sähköhankkeisiin | Insinööritoimisto Planmax Oy | Espoo
+      links: direct=1 ess=2 opt=1 text=true role=false
+   4. Sähkösuunnittelija, sähköinen talotekniikka | Insinööritoimisto Planmax Oy | Espoo
+      links: direct=1 ess=2 opt=1 text=true role=false
+   5. Etsimme Tekijöitä Reissutyöhön, PK-Seutu | Visio Sähkö Oy | Espoo
+      links: direct=0 ess=2 opt=2 text=true role=false
+   6. Huoltopäällikkö, rakennusautomaatio, Vantaa | Caverion Suomi Oy | Espoo
+      links: direct=0 ess=2 opt=2 text=true role=false
+   7. Sähköasentaja datakeskusprojekteihin | MPM Group Oy | Espoo
+      links: direct=1 ess=1 opt=2 text=false role=false
+   8. Sähköinsinööri/Sähkötyönjohtaja datakeskushankkeet | Aaltovoima Oy | Espoo
+      links: direct=0 ess=2 opt=1 text=true role=false
+   9. Nuorempi Datakeskusasentaja (Suomi & ulkomaat) | Visio Sähkö Oy | Espoo
+      links: direct=0 ess=2 opt=2 text=false role=false
+  10. Huoltoasentaja (sähkö) | Wulff Works Oy | Espoo
+      links: direct=0 ess=2 opt=2 text=false role=false
+  11. Sähköaseman suunnittelija | Klario Oy | Espoo
+      links: direct=0 ess=2 opt=2 text=false role=false
+  12. Asentaja datakeskuksiin | Visio Sähkö Oy | Espoo
+      links: direct=0 ess=2 opt=2 text=false role=false
+
+=== accountant (p13 and everyday case)
+  signal [skill] manage the general ledger -> manage the general ledger
+  signal [skill] accounting entries -> accounting entries
+  signal [skill] financial statements -> financial statements
+  signal [tool] use accounting systems -> use accounting systems
+  signal [knowledge] tax legislation -> tax legislation
+  signal [tool] Excel -> (no ESCO label)
+  19 postings in the feed; first 12:
+   1. Kirjanpitäjä ja asiakaspalvelu | Taloasema HMJ Isännöinti Oy | Espoo
+      links: direct=3 ess=5 opt=1 text=true role=false
+   2. Kiinteistökirjanpitäjä - kirjanpitäjä (As Oy) | Maijasto Oy | Espoo
+      links: direct=1 ess=5 opt=0 text=true role=false
+   3. Asiakaspalvelun ja taloushallinnon ihmemies, bittiviidakon Tarzan (tai Jane) | Omenasiivous Oy | Espoo
+      links: direct=0 ess=3 opt=2 text=false role=false
+   4. Taloushallinnon asiantuntija, Vantaa | Academic Work Finland Oy | Espoo
+      links: direct=0 ess=3 opt=0 text=true role=false
+   5. Talous- ja hallintokoordinaattori, EnviroProcess Oy, Kerava | Academic Work Finland Oy | Espoo
+      links: direct=0 ess=3 opt=0 text=true role=false
+   6. Assistant Controller, Capman Real Estate, Jyväskylä | Academic Work Finland Oy | Espoo
+      links: direct=0 ess=2 opt=1 text=true role=false
+   7. Talous- ja hallintopäällikkö | Kehitysvammaliitto ry | Espoo
+      links: direct=0 ess=1 opt=0 text=true role=false
+   8. Yrittäjä Boneless -ravintolaketjuun Espooseen | Ketjufi Yrittäjärekrytointipalvelut Oy | Espoo
+      links: direct=0 ess=1 opt=1 text=false role=false
+   9. Rahoitusasiantuntija | FSG Financial Services Group Oy | Espoo
+      links: direct=0 ess=0 opt=1 text=true role=false
+  10. Vakuutusmeklari | Vakuutio Oy | Espoo
+      links: direct=0 ess=0 opt=2 text=false role=false
+  11. Project / Program Manager, Carve-out | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=0 text=true role=false
+  12. Project Director, Data Centers | Eltel Networks Oy | Espoo
+      links: direct=0 ess=0 opt=0 text=true role=false
+
+=== bus-driver (city bus)
+  signal [skill] drive a bus -> (no ESCO label)
+  signal [skill] passenger safety -> (no ESCO label)
+  signal [skill] follow driving routes and timetables -> (no ESCO label)
+  signal [skill] customer service -> customer service
+  signal [skill] ticket sales -> (no ESCO label)
+  34 postings in the feed; first 12:
+   1. Ajanvaraaja, Taloturva Group Oy, Helsinki | Taloturva Group Oy | Espoo
+      links: direct=1 ess=1 opt=1 text=true role=false
+   2. Kirjanpitäjä ja asiakaspalvelu | Taloasema HMJ Isännöinti Oy | Espoo
+      links: direct=1 ess=1 opt=0 text=true role=false
+   3. Vuoropäällikkö, Starbucks, Helsingin päärautatieasema, SSP Finland | Select Service Partner Finland | Espoo
+      links: direct=1 ess=0 opt=0 text=true role=false
+   4. Barista, Starbucks, Helsingin päärautatieasema, SSP Finland | Select Service Partner Finland | Espoo
+      links: direct=1 ess=0 opt=0 text=true role=false
+   5. Keikkatyöntekijä, Image Wear (pääkaupunkiseutu) | Worknow Oy | Espoo
+      links: direct=1 ess=0 opt=0 text=true role=false
+   6. A la carte -tarjoilija, Helsinki | YES Your Excellent Staff Oy | Espoo
+      links: direct=1 ess=0 opt=0 text=true role=false
+   7. Yrittäjä – haluatko lisätuloja oman yritystoimintasi rinnalle? | Siivous-, piha- ja kotipalvelu | Uusimaa | Sevalia Oy | Espoo
+      links: direct=1 ess=0 opt=0 text=true role=false
+   8. Parturi, Helsinki | StaffMill Oy | Espoo
+      links: direct=1 ess=0 opt=0 text=true role=false
+   9. Asiakasneuvoja | Suomen Seniorihoiva | Espoo
+      links: direct=1 ess=0 opt=0 text=true role=false
+  10. Kaupan osaaja, Hyllyttäjä, Pääkaupunkiseutu | Joblink Oy | Espoo
+      links: direct=1 ess=0 opt=0 text=true role=false
+  11. Trimmaaja | Kuonola Oy | Espoo
+      links: direct=1 ess=0 opt=0 text=true role=false
+  12. Myyntiedustaja / Itsenäinen yrittäjä | Storybound Oy | Espoo
+      links: direct=0 ess=1 opt=1 text=true role=false
+
+=== tile-fitter (p14)
+  signal [skill] lay tiles -> lay tiles
+  signal [skill] plan tiling -> plan tiling
+  signal [skill] apply tile adhesive -> apply tile adhesive
+  signal [skill] fill tile joints -> fill tile joints
+  signal [skill] cut tiles -> cut tiles
+  16 postings in the feed; first 12:
+   1. Laatoittaja- ja vesieristystyöt | VinRom rakennus Oy | Espoo
+      links: direct=1 ess=5 opt=0 text=false role=false
+   2. Laatoittajaa | Latva Saneeraus ja Rakennus Oy | Espoo
+      links: direct=1 ess=5 opt=0 text=false role=false
+   3. Rakennustyöntekijöitä PK-seudulle | Wulff Works Oy | Espoo
+      links: direct=0 ess=5 opt=1 text=false role=false
+   4. Saneerausalan ammattilainen Uudellemaalle | KT-Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=5 opt=0 text=true role=false
+   5. Puurakenne timpuri / Laatoittaja | Terracolor Oy | Espoo
+      links: direct=0 ess=5 opt=0 text=true role=false
+   6. Laatoittaja | Huiput ei Hosu Oy | Espoo
+      links: direct=0 ess=5 opt=0 text=false role=false
+   7. Laatoittaja | Helsingin Kylpyhuoneremontti oy | Espoo
+      links: direct=0 ess=5 opt=0 text=false role=false
+   8. Laatoittajia Espooseen | Suomen Henkilöstöasiantuntijat Oy | Espoo
+      links: direct=0 ess=5 opt=0 text=false role=false
+   9. Project / Program Manager, Carve-out | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=0 text=true role=false
+  10. Senior IT Architect / Strategic Advisor | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=0 text=true role=false
+  11. Verification Lead | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: direct=0 ess=0 opt=0 text=true role=false
+  12. Commodity Pricing Manager | Gasum Oyj | Espoo
+      links: direct=0 ess=0 opt=0 text=true role=false
+
+=== early-years-teacher (p09)
+  signal [skill] support children's wellbeing -> support children's wellbeing
+  signal [skill] teach kindergarten class content -> teach kindergarten class content
+  signal [skill] monitor children's physical development -> monitor children's physical development
+  signal [skill] maintain relations with children's parents -> maintain relations with children's parents
+  signal [skill] teamwork principles -> teamwork principles
+  40 postings in the feed; first 12:
+   1. Lärare inom småbarnspedagogik till Barnavårdsföreningen Daghemmet Anna i Esbo | Barnavårdsföreningen i Finland r.f. | Espoo
+      links: direct=2 ess=4 opt=1 text=false role=false
+   2. Iltapäiväkerhon ohjaajia Suur-Espoonlahden alueelle | Viikarit iltapäivätoiminta | Espoo
+      links: direct=2 ess=1 opt=3 text=true role=false
+   3. Sijaisia varhaiskasvatukseen | Peikkometsän Liikuntapäiväkoti Järvenperä Oy | Espoo
+      links: direct=1 ess=3 opt=1 text=true role=false
+   4. Varhaiskasvatuksen opettaja, Perkkaan päiväkoti | Espoon kaupunki | Espoo
+      links: direct=0 ess=4 opt=1 text=true role=false
+   5. Varhaiskasvatuksen opettaja, Perkkaan päiväkoti | Espoon kaupunki | Espoo
+      links: direct=0 ess=4 opt=1 text=true role=false
+   6. Varhaiskasvatuksen opettaja, Kiltakallion lastentalo | Espoon kaupunki | Espoo
+      links: direct=0 ess=4 opt=1 text=true role=false
+   7. Varhaiskasvatuksen opettaja, Lintuvaaran päiväkoti | Espoon kaupunki | Espoo
+      links: direct=0 ess=4 opt=1 text=true role=false
+   8. Varhaiskasvatuksen opettaja, Leppäviidan päiväkoti | Espoon kaupunki | Espoo
+      links: direct=0 ess=4 opt=1 text=true role=false
+   9. Varhaiskasvatuksen opettaja, Maakirjan päiväkoti | Espoon kaupunki | Espoo
+      links: direct=0 ess=4 opt=1 text=true role=false
+  10. Varhaiskasvatuksen opettaja, Painiityn päiväkoti | Espoon kaupunki | Espoo
+      links: direct=0 ess=4 opt=1 text=true role=false
+  11. Varhaiskasvatuksen opettaja, Ymmerstan päiväkoti | Espoon kaupunki | Espoo
+      links: direct=0 ess=4 opt=1 text=true role=false
+  12. Varhaiskasvatuksen opettaja, Ymmerstan päiväkoti | Espoon kaupunki | Espoo
+      links: direct=0 ess=4 opt=1 text=true role=false
