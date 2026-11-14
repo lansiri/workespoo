@@ -3,7 +3,7 @@ import { asc, eq } from "drizzle-orm";
 import type { InterviewEvent, StartInterviewRequest } from "@/contracts";
 import { escoConcept, interviewEvent, job, jobSkill, llmCall, signal, talent, turn } from "@/db/schema";
 import { listAudit } from "@/lib/audit";
-import { hasConsent } from "@/lib/consent";
+import { activeConsentTextVersion, CONSENT_TEXT_VERSION, hasConsent, VOICE_OWN_SERVER_TEXT_VERSION } from "@/lib/consent";
 import { FALLBACK_QUESTIONS, INTERVIEW_LINES } from "@/lib/i18n/content/interview-lines";
 import { findProtectedQuestion } from "@/lib/lexicon";
 import { resetLlmState, setLlmFake, type LlmOptions } from "@/lib/llm";
@@ -110,7 +110,14 @@ describe("startInterview", () => {
     const subject = { subjectType: "talent" as const, subjectId: r.talentId };
     expect(await hasConsent(t.db, { ...subject, kind: "interview" })).toBe(true);
     expect(await hasConsent(t.db, { ...subject, kind: "voice_vendor" })).toBe(true);
+    expect(await activeConsentTextVersion(t.db, { ...subject, kind: "voice_vendor" })).toBe(CONSENT_TEXT_VERSION);
     expect(await hasConsent(t.db, { ...subject, kind: "live_demo" })).toBe(true);
+    // The own-server voice wording is recorded as such, so the room can hold the interview to it.
+    const own = await startInterview(t.db, request({ consent: { interview: true, voiceVendor: true, voiceOwnServer: true, liveDemo: true } }));
+    expect(await activeConsentTextVersion(t.db, { subjectType: "talent", subjectId: own.talentId, kind: "voice_vendor" })).toBe(VOICE_OWN_SERVER_TEXT_VERSION);
+    // Without the voice box ticked the flag means nothing.
+    const none = await startInterview(t.db, request({ consent: { interview: true, voiceVendor: false, voiceOwnServer: true, liveDemo: true } }));
+    expect(await activeConsentTextVersion(t.db, { subjectType: "talent", subjectId: none.talentId, kind: "voice_vendor" })).toBeNull();
     const row = (await loadInterview(t.db, r.interviewId))!;
     expect(readState(row)).toMatchObject({ stage: "awaiting_answer", questionsAsked: 1, uiLang: "en" });
     expect(readState(row).coverage.recent_work).toBe("asked");

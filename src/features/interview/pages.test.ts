@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { I18nProvider } from "@/lib/i18n/client";
 import type { UiLang } from "@/contracts";
-import { ConsentForm, canStartInterview, voiceConsentText, voiceServiceName } from "./ConsentForm";
+import { ConsentForm, canStartInterview, voiceConsentRequest, voiceConsentText, voiceServiceName } from "./ConsentForm";
 import { interviewMessages } from "./messages";
 import { consentCopy } from "@/lib/i18n/content";
 import { fmt } from "@/lib/i18n";
@@ -77,6 +77,17 @@ describe("interview pages (server render)", () => {
       expect(voiceConsentText({ adapter: "elevenlabs", processor: "ElevenLabs" }, copy, browserName)).toContain("ElevenLabs");
       expect(voiceConsentText(null, copy, browserName)).toBe(fmt(copy.checkVoice, { processor: "" }));
     }
+  });
+
+  it("10. the start request says which voice wording was agreed to", () => {
+    const server = { adapter: "server", processor: "WorkEspoo's own server" } as const;
+    expect(voiceConsentRequest(server, true)).toEqual({ voiceVendor: true, voiceOwnServer: true });
+    expect(voiceConsentRequest({ adapter: "browser", processor: "x" }, true)).toEqual({ voiceVendor: true });
+    expect(voiceConsentRequest({ adapter: "elevenlabs", processor: "ElevenLabs" }, true)).toEqual({ voiceVendor: true });
+    // Not ticked, voice off, or the configuration not loaded: no voice consent at all.
+    expect(voiceConsentRequest(server, false)).toEqual({ voiceVendor: false });
+    expect(voiceConsentRequest({ adapter: "none", processor: "none" }, true)).toEqual({ voiceVendor: false });
+    expect(voiceConsentRequest(null, true)).toEqual({ voiceVendor: false });
   });
 
   it("11. the start page has the CV text area with its note, in three languages", () => {

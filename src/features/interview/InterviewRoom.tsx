@@ -69,18 +69,41 @@ export function mascotStateOf(p: { ended: boolean; listening: boolean; speaking:
  * composes the kit's pieces: the transcript, the interviewer with the person's own words under
  * it, the notes and the jobs. Voice is used only when the person ticked the voice consent box.
  */
-export function InterviewRoom(props: { initial: InterviewInitial; mode: InterviewMode; voiceConsented: boolean }) {
+export function InterviewRoom(props: {
+  initial: InterviewInitial;
+  mode: InterviewMode;
+  voiceConsented: boolean;
+  /** The person agreed to the own-server voice wording: their speech goes to our server or nowhere. */
+  voiceOwnServer?: boolean;
+}) {
   const { initial, voiceConsented } = props;
   const m = useMessages(interviewMessages);
   const c = useMessages(interviewCopy);
   const e = useMessages(errorCopy);
   const uiLang = useUiLang();
-  const voice = useVoice({ lang: uiLang });
+  const voice = useVoice({ lang: uiLang, only: props.voiceOwnServer ? "server" : undefined });
   const voiceOn = voiceConsented && voice.status !== "unavailable";
   // Once the microphone has been refused, the rest of the session stays in text mode.
   const [micBlocked, setMicBlocked] = useState(false);
   if (voice.error?.code === "mic-denied" && !micBlocked) setMicBlocked(true);
   const talkShown = voiceOn && !micBlocked;
+
+  /* A phone plays the interviewer's voice only after one touch or key press has unlocked it. With
+     our own recogniser, preparing asks for nothing (the microphone is opened by the talk button,
+     never here), so it is done at the first touch anywhere in the room: a person who types their
+     first answer still hears the reply to it. */
+  const prepareVoice = voice.prepare;
+  const ownRecogniser = voice.adapterId === "server";
+  useEffect(() => {
+    if (!voiceOn || !ownRecogniser) return;
+    const unlock = () => void prepareVoice();
+    window.addEventListener("pointerdown", unlock, { once: true, capture: true });
+    window.addEventListener("keydown", unlock, { once: true, capture: true });
+    return () => {
+      window.removeEventListener("pointerdown", unlock, { capture: true });
+      window.removeEventListener("keydown", unlock, { capture: true });
+    };
+  }, [voiceOn, ownRecogniser, prepareVoice]);
   const [failedAction, setFailedAction] = useState<"send" | "other">("send");
 
   const interview = useInterview({

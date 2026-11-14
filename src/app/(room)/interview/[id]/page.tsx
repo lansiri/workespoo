@@ -5,7 +5,7 @@ import { InterviewRoom } from "@/features/interview/InterviewRoom";
 import { RoomChromeProvider, RoomProgress, RoomStopButton } from "@/features/interview/RoomChrome";
 import { SessionEnded } from "@/features/interview/SessionEnded";
 import { loadInterviewView } from "@/features/interview/views";
-import { hasConsent } from "@/lib/consent";
+import { activeConsentTextVersion, VOICE_OWN_SERVER_TEXT_VERSION } from "@/lib/consent";
 import { getSession } from "@/lib/session";
 
 export const dynamic = "force-dynamic";
@@ -24,8 +24,11 @@ export default async function InterviewPage(props: PageProps<"/interview/[id]">)
       </SiteShell>
     );
   }
-  // Voice goes to a third-party vendor, so only the recorded consent counts, never the URL.
-  const voiceConsented = await hasConsent(getDb(), { subjectType: "talent", subjectId: talentId, kind: "voice_vendor" });
+  // Only the recorded consent counts for voice, never the URL. The grant also says which wording
+  // the person agreed to: under the own-server wording their speech goes to our server or nowhere.
+  const voiceWording = await activeConsentTextVersion(getDb(), { subjectType: "talent", subjectId: talentId, kind: "voice_vendor" });
+  const voiceConsented = voiceWording !== null;
+  const voiceOwnServer = voiceWording === VOICE_OWN_SERVER_TEXT_VERSION;
   const { interviewId, ended, transcript, signals, coverage } = view;
   const asked = transcript.filter((l) => l.role === "interviewer").length;
   // This page sits outside the talent layout so that it can fill the top bar itself
@@ -37,6 +40,7 @@ export default async function InterviewPage(props: PageProps<"/interview/[id]">)
           initial={{ interviewId, ended, transcript, signals, coverage }}
           mode={view.mode}
           voiceConsented={voiceConsented}
+          voiceOwnServer={voiceOwnServer}
         />
       </SiteShell>
     </RoomChromeProvider>

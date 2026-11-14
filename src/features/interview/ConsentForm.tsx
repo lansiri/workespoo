@@ -9,6 +9,7 @@ import { Button, ChoiceCard, ErrorState, Field, InterviewerMascot, PrototypeLine
 import { fmt, UI_LANGS, UI_LANG_NAMES } from "@/lib/i18n";
 import { useMessages, useUiLang } from "@/lib/i18n/client";
 import { consentCopy, errorCopy } from "@/lib/i18n/content";
+import { requestMicPermission } from "@/features/voice/micMeter";
 import { interviewMessages } from "./messages";
 
 const CV_MAX_CHARS = 20000;
@@ -32,6 +33,17 @@ export function voiceConsentText(
 ): string {
   if (voice?.adapter === "server") return copy.checkVoiceServer;
   return fmt(copy.checkVoice, { processor: voiceServiceName(voice, browserName) });
+}
+
+/**
+ * What the start request says about voice: whether the person ticked the box, and whether the
+ * text beside it was the own-server wording. The server stores that with the consent, and the
+ * interview then never uses another speech service for this person.
+ */
+export function voiceConsentRequest(voice: VoiceConfig | null, ticked: boolean): { voiceVendor: boolean; voiceOwnServer?: true } {
+  const available = voice !== null && voice.adapter !== "none";
+  if (!available || !ticked) return { voiceVendor: false };
+  return voice.adapter === "server" ? { voiceVendor: true, voiceOwnServer: true } : { voiceVendor: true };
 }
 
 /** Consent, mode choice and start. No name is asked for here. */
@@ -72,6 +84,9 @@ export function ConsentForm() {
   async function start() {
     setBusy(true);
     setFailed(false);
+    // Ask for the microphone at this click, so the first hold of the talk button is not lost to
+    // the browser's permission question. A refusal changes nothing here: the room offers typing.
+    if (voiceAvailable && consentVoice) void requestMicPermission().catch(() => {});
     try {
       const res = await fetch("/api/interview", {
         method: "POST",
@@ -79,7 +94,7 @@ export function ConsentForm() {
         body: JSON.stringify({
           mode,
           uiLang: lang,
-          consent: { interview: true, voiceVendor: voiceAvailable && consentVoice, liveDemo: consentLiveDemo },
+          consent: { interview: true, ...voiceConsentRequest(voice, consentVoice), liveDemo: consentLiveDemo },
           ...(cvText.trim() !== "" ? { cvText: cvText.trim().slice(0, CV_MAX_CHARS) } : {}),
         }),
       });

@@ -218,6 +218,12 @@ export const StartInterviewRequest = z.object({
   consent: z.object({
     interview: z.literal(true),
     voiceVendor: z.boolean(),
+    /**
+     * True when the voice consent the person ticked was the own-server wording ("audio goes to
+     * WorkEspoo's own server ... no other company receives it"). Recorded with the grant, and
+     * from then on that person's speech is never sent to any other speech service.
+     */
+    voiceOwnServer: z.boolean().optional(),
     liveDemo: z.boolean(),
   }),
   /** Optional CV text. It only seeds questions, is untrusted, and is discarded after the session. */

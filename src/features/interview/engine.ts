@@ -19,7 +19,7 @@ import type { Db } from "@/db/client";
 import { talent, turn as turnTable, interview as interviewTable } from "@/db/schema";
 import { synthesiseCard } from "@/features/card";
 import { audit } from "@/lib/audit";
-import { recordConsent } from "@/lib/consent";
+import { CONSENT_TEXT_VERSION, recordConsent, VOICE_OWN_SERVER_TEXT_VERSION } from "@/lib/consent";
 import { getEnv } from "@/lib/env";
 import { HttpError } from "@/lib/http";
 import {
@@ -129,7 +129,12 @@ export async function startInterview(db: Db, request: StartInterviewRequest): Pr
 
   await recordConsent(db, { subjectType: "talent", subjectId: talentId, kind: "interview" });
   if (request.consent.voiceVendor) {
-    await recordConsent(db, { subjectType: "talent", subjectId: talentId, kind: "voice_vendor" });
+    // Which of the two voice wordings the person agreed to is part of the grant.
+    await recordConsent(
+      db,
+      { subjectType: "talent", subjectId: talentId, kind: "voice_vendor" },
+      request.consent.voiceOwnServer ? VOICE_OWN_SERVER_TEXT_VERSION : CONSENT_TEXT_VERSION,
+    );
   }
   if (request.consent.liveDemo) {
     await recordConsent(db, { subjectType: "talent", subjectId: talentId, kind: "live_demo" });

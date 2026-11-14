@@ -7,13 +7,15 @@ import { createServerAdapter } from "./adapters/server";
 import { useElevenLabsAdapter } from "./adapters/elevenlabs";
 import { Latest } from "./latest";
 import { VoiceController, type VoiceState } from "./controller";
-import { selectAdapterId, type AdapterOverride } from "./select";
+import { selectAdapterId, type AdapterOverride, type RunnableAdapterId } from "./select";
 
 export interface UseVoiceOptions {
   /** Interview language: "en", "fi" or "sv". Used for recognition and speech. */
   lang?: string;
   /** Initial manual override (the test page changes it with `setOverride`). */
   override?: AdapterOverride;
+  /** The one adapter this person's consent allows (see `selectAdapterId`). Nothing else is ever used. */
+  only?: RunnableAdapterId;
 }
 
 const OFF: VoiceState = {
@@ -88,7 +90,7 @@ export function useVoice(options: UseVoiceOptions = {}) {
     return () => abort.abort();
   }, []);
 
-  const adapterId = selectAdapterId(config, override);
+  const adapterId = selectAdapterId(config, override, options.only);
   // The browser adapter starts on our server when the config says so and moves to
   // speechSynthesis for good if the server answers 503; `lastEngine` shows which one spoke.
   const speakingEngine: SpeakingEngine | null =
