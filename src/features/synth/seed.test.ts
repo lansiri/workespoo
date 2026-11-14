@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { loadJobFixtures } from "../../../fixtures/load";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
-import { auditLog, company, digest, eventCompany, interview, llmCall, matchEvent, needCard, pick, talent } from "@/db/schema";
+import { appMeta, auditLog, company, digest, eventCompany, interview, llmCall, matchEvent, needCard, pick, talent } from "@/db/schema";
 import { createFakeEngine } from "./fake-engine";
 import { loadPersonas } from "./persona";
 import { mkdtempSync, readFileSync, readdirSync, rmSync } from "node:fs";
@@ -11,7 +11,7 @@ import path from "node:path";
 import { setLlmFake } from "@/lib/llm";
 import { TOKEN_PLACEHOLDER, hasSnapshot, restoreDemoSnapshot, snapshotDemo } from "./snapshot";
 import { assertNoDemoEvent } from "./script-db";
-import { DEMO_EVENT_ID, MAX_FAILED_INTERVIEW_CALLS, helsinkiDay, resetDemo, seedDemo, type SeedSummary } from "./seed";
+import { DEMO_EVENT_ID, DEMO_MAX_PICKS_PER_DAY, MAX_FAILED_INTERVIEW_CALLS, helsinkiDay, resetDemo, seedDemo, type SeedSummary } from "./seed";
 
 const personas = loadPersonas();
 const NOW = new Date("2026-11-25T08:00:00Z");
@@ -33,6 +33,13 @@ describe("seedDemo (against the fake engine)", () => {
     expect(event.endsAt.toISOString()).toBe("2026-11-26T14:00:00.000Z"); // 16:00
     // 180 minutes in 20-minute slots: 9 per company.
     expect((event.endsAt.getTime() - event.startsAt.getTime()) / 60000 / (event.slotMinutes + event.bufferMinutes)).toBe(9);
+  });
+
+  it("sets the demo event's daily cap per person to the number of companies, and a reset removes it", async () => {
+    const key = `settings:${DEMO_EVENT_ID}:maxPicksPerDay`;
+    const [row] = await t.db.select().from(appMeta).where(eq(appMeta.key, key));
+    expect(row.value).toBe(DEMO_MAX_PICKS_PER_DAY);
+    expect(DEMO_MAX_PICKS_PER_DAY).toBe(8);
   });
 
   it("creates masked demo companies with tokens, event rows and the pitch company as 03", async () => {
@@ -145,6 +152,7 @@ describe("seedDemo (against the fake engine)", () => {
       { id: "tal_real", handle: "Real-01", synthetic: false, liveDemo: false },
     ]);
     await resetDemo(t.db);
+    expect(await t.db.select().from(appMeta).where(eq(appMeta.key, `settings:${DEMO_EVENT_ID}:maxPicksPerDay`))).toHaveLength(0);
     expect((await t.db.select().from(talent)).map((p) => p.id)).toEqual(["tal_real"]);
     expect(await t.db.select().from(company)).toHaveLength(0);
     expect(await t.db.select().from(matchEvent)).toHaveLength(0);

@@ -26,6 +26,15 @@ export const DEMO_EVENT_DATE = "2026-11-26";
 export const DEMO_EVENT_STARTS = new Date("2026-11-26T11:00:00Z");
 export const DEMO_EVENT_ENDS = new Date("2026-11-26T14:00:00Z");
 export const DEMO_COMPANIES_KEY = "seed:demo-companies";
+/**
+ * The picks setting "nobody is suggested to more than N companies a day", for the demo event
+ * (read by the picks feature from `settings:<eventId>:<key>`; default 3). The demo turns on one
+ * company's list being drafted live, last, with a newcomer on it. With the default, a newcomer
+ * who relates to four of the eight demo companies was left off exactly that list. In the demo
+ * event the cap is the number of companies, so nobody is left off a list by it.
+ */
+export const DEMO_MAX_PICKS_PER_DAY = 8;
+export const demoSettingKey = (key: string) => `settings:${DEMO_EVENT_ID}:${key}`;
 const pad = (n: number) => String(n).padStart(2, "0");
 export const demoCompanyId = (number: number) => `co_demo${pad(number)}`;
 export const demoCompanyName = (number: number) => `Demo company ${pad(number)}`;
@@ -117,7 +126,7 @@ export async function resetDemo(db: Db): Promise<void> {
     }
     await tx.delete(company).where(like(company.id, "co_demo%"));
     await tx.delete(matchEvent).where(eq(matchEvent.id, DEMO_EVENT_ID));
-    await tx.delete(appMeta).where(eq(appMeta.key, DEMO_COMPANIES_KEY));
+    await tx.delete(appMeta).where(or(eq(appMeta.key, DEMO_COMPANIES_KEY), like(appMeta.key, `settings:${DEMO_EVENT_ID}:%`)));
   });
 }
 
@@ -155,6 +164,12 @@ export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummar
       target: matchEvent.id,
       set: { name: "Espoo TalentMatch demo day (prototype)", date: DEMO_EVENT_DATE, startsAt: DEMO_EVENT_STARTS, endsAt: DEMO_EVENT_ENDS, slotMinutes: 15, bufferMinutes: 5, maxMeetingsPerTalent: 4 },
     });
+
+  // The demo event's own picks setting (see DEMO_MAX_PICKS_PER_DAY).
+  await db
+    .insert(appMeta)
+    .values({ key: demoSettingKey("maxPicksPerDay"), value: DEMO_MAX_PICKS_PER_DAY })
+    .onConflictDoUpdate({ target: appMeta.key, set: { value: DEMO_MAX_PICKS_PER_DAY } });
 
   // 2. The masked companies: choose once, then keep.
   const [stored] = await db.select().from(appMeta).where(eq(appMeta.key, DEMO_COMPANIES_KEY));
