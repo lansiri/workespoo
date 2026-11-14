@@ -512,3 +512,10 @@ describe("anonymiseCv: References as one line", () => {
     expect(out).toContain("Built tools");
   });
 });
+
+describe("warmCvAnonymiser", () => {
+  it("runs the rules once without throwing, so the server can call it at start", async () => {
+    const { warmCvAnonymiser } = await import("./cv-anonymise");
+    expect(() => warmCvAnonymiser()).not.toThrow();
+  });
+});

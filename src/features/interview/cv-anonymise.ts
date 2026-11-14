@@ -1086,3 +1086,30 @@ export function anonymiseCv(input: string): AnonymisedCv {
 function countMarkers(text: string): number {
   return text.split(REDACTED).length - 1;
 }
+
+/**
+ * The rules above are a hundred-odd patterns, some of them long lists, and the first time they
+ * run in a process they are compiled: about two seconds on the server's Node, during which that
+ * process answers nobody. `src/instrumentation.ts` calls this once when the server starts, so
+ * that the wait falls there and not on the first person who brings a CV, or on whoever is in
+ * the middle of an interview at that moment. The text is made up and touches every kind of rule.
+ */
+export function warmCvAnonymiser(): void {
+  anonymiseCv(
+    [
+      "Curriculum Vitae",
+      "Alex Demo",
+      "alex.demo@example.test +358 40 000 0000 linkedin.com/in/alexdemo",
+      "Esimerkkikatu 1 A 2, 02100 Espoo",
+      "Born 12.3.1988, married, two children. Nationality: Finnish. Mother tongue: Finnish.",
+      "Syntynyt 1988, naimisissa. Kansalaisuus: Suomi. Äidinkieli: suomi. Varusmiespalvelus 2008.",
+      "Född 1988, gift. Nationalitet: finsk. Modersmål: svenska.",
+      "Work experience",
+      "2021-2025 ERP specialist, machine shop, Espoo. I am 37 and my name is Alex Demo.",
+      "Wrote Python scripts that move production data into the ERP every night.",
+      "Languages: English (fluent), Finnish (native), Swedish (basic)",
+      "Hobbies: running",
+      "References: Matti Meikalainen, CEO, +358 50 111 2222",
+    ].join("\n"),
+  );
+}
