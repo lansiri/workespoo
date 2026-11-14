@@ -8,7 +8,7 @@
  * the persona sheet, send, then assess directly (no queue). A run that did not end assessed is
  * deleted and reported, never left half-done.
  */
-import { and, eq, inArray, ne } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import type { ApplicationPlan } from "@/contracts";
 import type { Db } from "@/db/client";
 import { application, eligibility, needCard, talent } from "@/db/schema";
@@ -68,6 +68,11 @@ export type ApplicationOptions = {
   /** The answer to one question. Defaults to the model-played candidate. */
   answer?: typeof answerJobQuestion;
   log?: (line: string) => void;
+  /**
+   * Run only the applications to these demo company numbers. Who applies where is still chosen
+   * over every company, so a limited run makes the same choice as a full one.
+   */
+  onlyCompanies?: readonly number[];
 };
 
 /** Read who is eligible for each company's job from the rows the seed already made. */
@@ -155,22 +160,23 @@ export async function runSimulatedApplications(
   options: ApplicationOptions,
 ): Promise<ApplicationsReport> {
   const log = options.log ?? (() => {});
-  const plan = chooseApplicants(await eligiblePeople(db, companies, personas));
+  const chosen = chooseApplicants(await eligiblePeople(db, companies, personas));
+  const plan = options.onlyCompanies ? chosen.filter((a) => options.onlyCompanies!.includes(a.companyNumber)) : chosen;
   const report: ApplicationsReport = { planned: plan.length, assessed: 0, failed: [] };
-  const planned = [...plan.map((p) => p.talentId), ""];
-  // A run that was killed half-way leaves an application that is not assessed: remove it and run it again.
-  await db.delete(application).where(and(inArray(application.talentId, planned), ne(application.status, "assessed")));
-  const present = new Set(
-    (await db.select({ talentId: application.talentId, jobId: application.jobId }).from(application).where(inArray(application.talentId, planned))).map((r) => `${r.talentId}:${r.jobId}`),
-  );
   for (const a of plan) {
     const persona = personas.find((p) => p.id === a.personaId);
     if (!persona) continue;
-    // Idempotent: an application that is already there is kept as it is.
-    if (present.has(`${a.talentId}:${a.jobId}`)) {
+    const [existing] = await db
+      .select({ id: application.id, status: application.status })
+      .from(application)
+      .where(and(eq(application.talentId, a.talentId), eq(application.jobId, a.jobId)));
+    // Idempotent: an application that is already assessed is kept as it is.
+    if (existing?.status === "assessed") {
       report.assessed++;
       continue;
     }
+    // A run that was killed half-way leaves an application that is not assessed: remove it and run it again.
+    if (existing) await db.delete(application).where(eq(application.id, existing.id));
     try {
       await runSimulatedApplication(db, persona, a, options);
       report.assessed++;

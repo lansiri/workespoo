@@ -84,8 +84,8 @@ Lead-owned. Streams implement exactly these paths. Phase 2 pages are unstyled bu
 | `/apply` | `apply-job` (with `data-job-id`), `apply-start`, `apply-continue`, `apply-open` |
 | `/apply/[id]` | start: `apply-consent`, `apply-language`, `apply-begin`; room: `interviewer-text`, `answer-input`, `send-answer`, `talk-button`, `apply-requirement` (with `data-requirement-id` and `data-progress`), `apply-skip`, `apply-stop`; review: `apply-review`, `apply-answer`, `apply-remove-answer`, `apply-send`; result: `apply-result`, `apply-rating` (with `data-requirement-id` and `data-level`), `apply-points`, `apply-position`, `apply-withdraw` |
 | `/organiser/applicants` | `applicants-job` (with `data-job-id`) |
-| `/organiser/applicants/[jobId]` | `ranked-applicant` (with `data-application-id` and `data-position`), `ranked-points`, `ranked-rating`, `ranked-evidence`, `ranked-move`, `ranked-move-position`, `ranked-move-reason`, `ranked-move-confirm`, `ranked-unpin`, `ranked-approve`, `ranked-status` |
-| `/c/[token]/applicants` | `company-applicant` (with `data-position`), `company-rating`, `ask-to-meet`; `applicants-link` on `/c/[token]` |
+| `/organiser/applicants/[jobId]` | `ranked-applicant` (with `data-application-id` and `data-position`), `ranked-points`, `ranked-rating`, `ranked-read-answers`, `ranked-evidence`, `ranked-move`, `ranked-move-position`, `ranked-move-reason`, `ranked-move-confirm`, `ranked-unpin`, `ranked-approve`, `ranked-status` (with `data-state`), `ranked-pinned`, `ranked-company-link` |
+| `/c/[token]/applicants` | `company-applicant` (with `data-position`), `company-rating`, `ask-to-meet`, `ask-to-meet-send`, `intro-status` (with `data-status`), `revealed-name`; `applicants-link` on `/c/[token]` |
 | `/matches` | `job-match`, `match-reason`, `not-mentioned`, `job-link`, `source-attribution`, `intro-request`, `intro-accept`, `intro-decline`, `intro-status` |
 | `/organiser` | `passcode-input`, `passcode-submit`, `reset-demo`, `reset-demo-confirm` |
 | `/organiser/audit` | `audit-row` (with `data-action`), `audit-filter` |

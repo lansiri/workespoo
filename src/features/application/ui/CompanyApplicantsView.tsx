@@ -67,7 +67,7 @@ function AskToMeet({ token, applicant, jobTitle, m }: { token: string; applicant
               <Button variant="ghost" onClick={() => setOpen(false)}>
                 {m.askCancel}
               </Button>
-              <Button variant="primary" onClick={() => void send()} disabled={busy}>
+              <Button variant="primary" data-testid="ask-to-meet-send" onClick={() => void send()} disabled={busy}>
                 {m.askSend}
               </Button>
             </>
@@ -117,7 +117,7 @@ function ApplicantCard({ a, job, token, m, lang }: { a: CompanyApplicant; job: J
       {a.revealed ? (
         <section className="we-rk-reveal" aria-label={m.revealedTitle}>
           <h3>{m.revealedTitle}</h3>
-          <p>
+          <p data-testid="revealed-name">
             {m.revealedName}: {a.revealed.displayName}
           </p>
           {a.revealed.contact ? (
@@ -130,7 +130,11 @@ function ApplicantCard({ a, job, token, m, lang }: { a: CompanyApplicant; job: J
         </section>
       ) : (
         <div className="we-rk-actions" style={{ flexDirection: "column" }}>
-          {line ? <p className="we-rk-note">{line}</p> : null}
+          {line ? (
+            <p className="we-rk-note" data-testid="intro-status" data-status={a.intro?.status}>
+              {line}
+            </p>
+          ) : null}
           {a.canAsk ? <AskToMeet token={token} applicant={a} jobTitle={job.title} m={m} /> : null}
         </div>
       )}

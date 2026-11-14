@@ -184,7 +184,7 @@ function ApplicantCard(props: {
       ) : null}
 
       <div className="we-rk-actions">
-        <Button variant="ghost" onClick={() => void toggleEvidence()} aria-expanded={evidence !== null && evidence !== "failed"}>
+        <Button variant="ghost" data-testid="ranked-read-answers" onClick={() => void toggleEvidence()} aria-expanded={evidence !== null && evidence !== "failed"}>
           {evidence && evidence !== "failed" ? m.hideAnswers : m.readAnswers}
         </Button>
         <Button variant="ghost" data-testid="ranked-move" onClick={() => setMoving((v) => !v)} aria-expanded={moving}>

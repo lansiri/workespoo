@@ -259,12 +259,58 @@ describe("checkAssessment", () => {
     expect(protectedReason.ratings[0].wording).toBe("code");
   });
 
-  it("replaces an empty reason in one language", () => {
+  it("replaces only the language in which a reason is empty or fails a check of wording", () => {
     const a = check({
-      ratings: [{ requirement: "R1", level: 2, evidence: ["T1.S1"], reason_en: "The answer describes an import.", reason_fi: "", reason_sv: "Svar." }],
+      ratings: [{ requirement: "R1", level: 2, evidence: ["T1.S1"], reason_en: "The answer describes an import.", reason_fi: "", reason_sv: "Svaret visar samma sak som R2." }],
       ...SUMMARY,
     })!;
-    expect(a.ratings[0].wording).toBe("code");
+    expect(a.ratings[0]).toMatchObject({
+      wording: "model",
+      reason: { en: "The answer describes an import.", fi: CODE_REASONS[2].fi, sv: CODE_REASONS[2].sv },
+    });
+  });
+
+  it("replaces all three languages when one of them judges the person", () => {
+    const a = check({
+      ratings: [{ requirement: "R1", level: 2, evidence: ["T1.S1"], reason_en: "The answer describes an import.", reason_fi: "Vastaus kuvaa tuontia.", reason_sv: "Svaret saknar ett exempel." }],
+      ...SUMMARY,
+    })!;
+    expect(a.ratings[0]).toMatchObject({ wording: "code", reason: CODE_REASONS[2] });
+  });
+
+  it("replaces all three languages when one of them says something about the person", () => {
+    const a = check({
+      ratings: [{ requirement: "R1", level: 2, evidence: ["T1.S1"], reason_en: "The answer describes an import.", reason_fi: "Kolmen lapsen äiti kuvaa tuontia.", reason_sv: "Svaret beskriver en import." }],
+      ...SUMMARY,
+    })!;
+    expect(a.ratings[0]).toMatchObject({ wording: "code", reason: CODE_REASONS[2] });
+  });
+
+  it("keeps a description that shares a few words with the answer, and replaces one that repeats the person's own sentence", () => {
+    const said = inputFrom([opening, turn(1, "r1", ["I do not have an example of using English technical documentation in my work.", "I rebuilt the nightly import with a queue."])]);
+    const rate = (text: string) =>
+      checkAssessment({
+        input: said,
+        output: { ratings: [{ requirement: "R1", level: 1, evidence: ["T1.S1"], reason_en: text, reason_fi: "Vastaus kuvaa tuontia.", reason_sv: "Svaret beskriver importen." }], ...SUMMARY },
+        employerTerms: [],
+        now: NOW,
+      })!.ratings[0];
+    expect(rate("The answers give no example of using English technical documentation at work.").reason.en).toContain("English technical documentation");
+    expect(rate("The answer says I rebuilt the nightly import with care.").reason.en).toBe(CODE_REASONS[1].en);
+    expect(rate("The answer says there is no example of using English technical documentation in my work.").reason.en).toBe(CODE_REASONS[1].en);
+  });
+
+  it.each([
+    "Vastaus kuvaa hälytyksen lisäämistä, minkä jälkeen mittareiden puuttuvat lukemat katosivat aamuraportista.",
+    "Vastaus kuvaa muutokset, joiden ansiosta tiimi sai täydelliset mittauslukemat aamuraporttiinsa.",
+    "Svaret beskriver en larmkontroll, varefter saknade mätarvärden försvann från morgonrapporten.",
+    "The answer describes mentoring two junior developers through their first release.",
+  ])("keeps the description %s", (text) => {
+    const a = check({
+      ratings: [{ requirement: "R1", level: 2, evidence: ["T1.S1"], reason_en: text, reason_fi: text, reason_sv: text }],
+      ...SUMMARY,
+    })!;
+    expect(a.ratings[0]).toMatchObject({ level: 2, wording: "model" });
   });
 
   it("rates a requirement without answers as not answered, whatever the model said", () => {
