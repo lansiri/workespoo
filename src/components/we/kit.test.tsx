@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import {
   AiDisclosure, ApproveBox, Button, CompanyPickCard, CompanyViewSwitch, DataControls, DecisionControls, Dialog, EmptyState, ErrorState, HoldToTalk,
-  IntroRequest, InterviewerLine, JobPostingCard, JobsLit, KeysBar, LoadingState, MaskedDemoBanner, NotMentionedList, OrganiserPickCard,
+  IntroRequest, InterviewerLine, splitLead, JobPostingCard, JobsLit, KeysBar, LoadingState, MaskedDemoBanner, NotMentionedList, OrganiserPickCard,
   OwnWordsMark, PageShell, PersonHandle, PoolConsent, PoolEvidenceLine, PublishBox, ReasonLine, ReasonList, RequirementList, RequirementQuestion,
   SignalCard, SkillRow, Slot, Sticker, SyntheticTag, Tag, Toast, Transcript, TypeAnswer, WordsBox, Field, Input, ChoiceCard,
   type ReasonText, type SkillRowData, type SkillRowText,
@@ -286,5 +286,31 @@ describe("RequirementList full mode", () => {
     expect(described).toEqual(ids);
     // the sentence itself is not in the page until it is asked for
     expect(html).not.toContain('data-testid="posting-sentence"');
+  });
+});
+
+describe("InterviewerLine lead-in", () => {
+  const opening =
+    "Hei, olen WorkEspoon tekoälyhaastattelija. Kysyn kolme lyhyttä kysymystä ja kirjaan vastauksistasi muistiinpanoja. Lopuksi tarkistat ne, muutat mitä haluat ja hyväksyt ne itse. Aloitetaan: millaista työtä olet tehnyt viime aikoina?";
+
+  it("sets a long turn's question apart from its lead-in", () => {
+    expect(splitLead(opening)).toEqual({
+      lead: "Hei, olen WorkEspoon tekoälyhaastattelija. Kysyn kolme lyhyttä kysymystä ja kirjaan vastauksistasi muistiinpanoja. Lopuksi tarkistat ne, muutat mitä haluat ja hyväksyt ne itse.",
+      question: "Aloitetaan: millaista työtä olet tehnyt viime aikoina?",
+    });
+    const html = renderToStaticMarkup(<InterviewerLine label="Haastattelija · tekoäly" text={opening} />);
+    expect(html).toContain("we-iv-lead");
+    expect(html).toContain("we-iv-question");
+  });
+
+  it("keeps a short line, or one that does not end in a question, as one block", () => {
+    expect(splitLead("Tell me about a normal day at work last week. What did you do?").lead).toBe("");
+    expect(splitLead(`${opening.slice(0, -1)}.`).lead).toBe("");
+  });
+
+  it("mutes the words not yet spoken across the lead-in and the question", () => {
+    const html = renderToStaticMarkup(<InterviewerLine label="AI" text={opening} spokenWords={27} />);
+    // 22 words in the lead-in: 5 of the question's 7 are spoken
+    expect(html).toContain('<span class="we-unspoken">viime aikoina?</span>');
   });
 });

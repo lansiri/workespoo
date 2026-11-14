@@ -227,6 +227,8 @@ export function JobInterviewRoom(props: { initial: JobInterviewInitial; voiceCon
   const speaking = voiceOn && voice.status === "speaking";
   const listening = voiceOn && voice.status === "listening";
   const transcribing = voiceOn && voice.status === "transcribing";
+  // While the talk button is held (and until the recogniser is done), the input field shows the words heard.
+  const hearing = listening || transcribing;
 
   /* what the top bar shows, and what its Stop button does */
   const publish = usePublishChrome();
@@ -296,7 +298,6 @@ export function JobInterviewRoom(props: { initial: JobInterviewInitial; voiceCon
     ? m.roomBadgeFinished
     : { idle: m.roomBadgeIdle, listening: m.roomBadgeListening, thinking: m.roomBadgeThinking, speaking: m.roomBadgeSpeaking }[mascotState];
   const talkState = interview.ended ? "done" : listening ? "listening" : mascotState === "thinking" ? "disabled" : "ready";
-  const typedLive = canAnswer && draft.trim() !== "";
   const voiceProblem = interview.ended
     ? null
     : micBlocked
@@ -337,10 +338,10 @@ export function JobInterviewRoom(props: { initial: JobInterviewInitial; voiceCon
                 {e.modelSlow}
               </p>
             ) : null}
-            {listening || transcribing || typedLive ? (
-              <WordsBox mode="live" label={m.roomWordsLive} text={listening || transcribing ? voice.partial || "…" : draft} />
-            ) : lastAnswer ? (
+            {/* The middle shows an answer once it is sent; typing and speaking stay in the input field. */}
+            {lastAnswer ? (
               <WordsBox
+                key={answers.length}
                 mode="said"
                 label={fmt(m.roomWordsSaid, { n: answers.length })}
                 hint={m.roomWordsHint}
@@ -367,6 +368,9 @@ export function JobInterviewRoom(props: { initial: JobInterviewInitial; voiceCon
                 <span className="we-sr-only" aria-hidden="true" data-testid="voice-status">
                   {voice.status}
                 </span>
+                <span className="we-sr-only" aria-hidden="true" data-testid="voice-partial">
+                  {voice.partial}
+                </span>
                 <span className="we-sr-only" aria-hidden="true" data-testid="voice-final">
                   {voice.finalTranscript}
                 </span>
@@ -381,7 +385,7 @@ export function JobInterviewRoom(props: { initial: JobInterviewInitial; voiceCon
               </div>
             ) : (
               <InterviewControls
-                typing={typing}
+                typing={typing || hearing}
                 talk={
                   talkShown ? (
                     <HoldToTalk
@@ -401,10 +405,12 @@ export function JobInterviewRoom(props: { initial: JobInterviewInitial; voiceCon
                 orLabel={m.roomOr}
                 typeBox={
                   <TypeAnswer
-                    value={draft}
+                    value={hearing ? voice.partial : draft}
                     onChange={setDraft}
                     onSend={submit}
                     sending={interview.sending}
+                    listening={hearing}
+                    listeningPlaceholder={m.roomBadgeListening}
                     placeholder={c.textPlaceholder}
                     sendLabel={c.send}
                     sendingLabel={m.roomSending}
