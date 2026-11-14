@@ -4,6 +4,12 @@ on:
   push:
   pull_request:
 
+# One run per branch at a time: a newer push replaces the run of the push before it, so a batch
+# of pushes does not leave a red run behind for a commit that the next push already repaired.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   check:
     runs-on: ubuntu-latest
