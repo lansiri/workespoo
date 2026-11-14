@@ -55,6 +55,7 @@ Lead-owned. Streams implement exactly these paths. Phase 2 pages are unstyled bu
 | `GET /api/voice/config` | S4 | `VoiceConfig` |
 | `POST /api/voice/token` | S4 | `VoiceTokenResponse` (single-use speech-to-text token) |
 | `POST /api/voice/tts` | S4 | `TtsRequest`; streams audio |
+| `POST /api/voice/stt` | S4 | A stretch of speech as raw 16 kHz mono 16-bit PCM in the body; answers `SttResponse`. Needs a talent session with voice consent (or an organiser session). The audio is held in memory only (`docs/research/voice-stt.md`) |
 | `GET /api/health` | lead | Exists |
 
 ## Test ids on the golden path
@@ -62,8 +63,8 @@ Lead-owned. Streams implement exactly these paths. Phase 2 pages are unstyled bu
 | Page | Test ids |
 |---|---|
 | every page (header) | `language-switcher`, `lang-en`, `lang-fi`, `lang-sv`, `site-logo` |
-| `/interview` | `consent-interview`, `consent-voice`, `consent-live-demo`, `mode-express`, `mode-full`, `cv-text` (optional pasted CV), `start-interview` |
-| `/interview/[id]` | `interviewer-text` (latest interviewer line), `transcript`, `answer-input`, `send-answer`, `talk-button`, `signal-chip` (one per signal, with `data-signal-id`), `jobs-lit-count`, `interview-done`, `go-to-card`, `turn-remove` (removes one of the person's own answers) |
+| `/interview` | `consent-interview`, `consent-voice`, `consent-live-demo`, `interview-language`, `mode-express`, `mode-full`, `cv-text` (optional pasted CV), `start-interview` |
+| `/interview/[id]` | `interviewer-text` (latest interviewer line), `transcript`, `answer-input`, `send-answer`, `talk-button` (with `data-state`), `voice-status`, `voice-partial` (the words so far while the button is held), `voice-final`, `signal-chip` (one per signal, with `data-signal-id`), `jobs-lit-count`, `interview-done`, `go-to-card`, `turn-remove` (removes one of the person's own answers) |
 | `/card` | `card-headline`, `card-signal` (with `data-signal-id`), `signal-quote`, `signal-rendering`, `signal-remove`, `approve-card`, `card-approved`, `pool-opt-in`, `go-to-matches`, `export-data`, `delete-data`, `delete-data-confirm` |
 | `/matches` | `job-match`, `match-reason`, `not-mentioned`, `job-link`, `source-attribution`, `intro-request`, `intro-accept`, `intro-decline`, `intro-status` |
 | `/organiser` | `passcode-input`, `passcode-submit`, `reset-demo`, `reset-demo-confirm` |
