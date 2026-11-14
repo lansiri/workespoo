@@ -14,6 +14,8 @@ const en = {
   cvHelp:
     "Before the AI processes the text, our server removes your name, contact details, dates and other personal details. This is done by fixed rules, not by AI. The text is used only to choose questions and is not kept. Please review it carefully and make sure that nothing that could identify you remains.",
   cvUpload: "Upload a PDF",
+  linkedinButton: "Use my LinkedIn profile",
+  linkedinSoon: "Coming soon: we are waiting for a partnership with LinkedIn.",
   cvUploadNeedsConsent: "Tick the first box above to upload a file.",
   cvReading: "Reading the PDF…",
   cvReadDone: "We removed {list}. Check the text below and change or delete anything before you start. The file itself is not saved.",
@@ -123,6 +125,8 @@ export const interviewMessages = {
     cvHelp:
       "Ennen kuin tekoäly käsittelee tekstin, palvelimemme poistaa siitä nimesi, yhteystietosi, päivämäärät ja muut henkilötiedot. Poisto tehdään kiinteillä säännöillä, ei tekoälyllä. Tekstiä käytetään vain kysymysten valitsemiseen, eikä sitä säilytetä. Tarkista teksti huolellisesti ja varmista, ettei siihen jää tietoja, joista sinut voitaisiin tunnistaa.",
     cvUpload: "Lataa PDF",
+    linkedinButton: "Käytä LinkedIn-profiiliani",
+    linkedinSoon: "Tulossa pian: odotamme kumppanuutta LinkedInin kanssa.",
     cvUploadNeedsConsent: "Rastita ensin ylin ruutu, niin voit ladata tiedoston.",
     cvReading: "Luetaan PDF:ää…",
     cvReadDone: "Poistimme: {list}. Tarkista alla oleva teksti ja muuta tai poista mitä haluat ennen aloittamista. Itse tiedostoa ei tallenneta.",
@@ -229,6 +233,8 @@ export const interviewMessages = {
     cvHelp:
       "Innan AI:n behandlar texten tar vår server bort ditt namn, dina kontaktuppgifter, datum och andra personuppgifter. Detta sker med fasta regler, inte med AI. Texten används bara för att välja frågor och sparas inte. Granska texten noggrant och se till att inga uppgifter som kan identifiera dig finns kvar.",
     cvUpload: "Ladda upp en PDF",
+    linkedinButton: "Använd min LinkedIn-profil",
+    linkedinSoon: "Kommer snart: vi väntar på ett samarbete med LinkedIn.",
     cvUploadNeedsConsent: "Kryssa i den första rutan ovan för att ladda upp en fil.",
     cvReading: "Läser PDF:en…",
     cvReadDone: "Vi tog bort {list}. Kontrollera texten nedan och ändra eller ta bort det du vill innan du börjar. Själva filen sparas inte.",
