@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { VoiceConfig } from "@/contracts/voice";
 import { createBrowserAdapter, type SpeechEngine } from "./adapters/browser";
+import { createServerAdapter } from "./adapters/server";
 import { useElevenLabsAdapter } from "./adapters/elevenlabs";
 import { Latest } from "./latest";
 import { VoiceController, type VoiceState } from "./controller";
@@ -63,6 +64,13 @@ export function useVoice(options: UseVoiceOptions = {}) {
       onSpeechEngine: setLastEngine,
     }),
   );
+  const [server] = useState(() =>
+    createServerAdapter({
+      onFirstAudio,
+      speech: () => (liveConfig.get()?.tts === "server" ? "server" : "browser"),
+      onSpeechEngine: setLastEngine,
+    }),
+  );
 
   useEffect(() => {
     const abort = new AbortController();
@@ -86,7 +94,7 @@ export function useVoice(options: UseVoiceOptions = {}) {
   const speakingEngine: SpeakingEngine | null =
     adapterId === "elevenlabs"
       ? "elevenlabs"
-      : adapterId === "browser"
+      : adapterId === "browser" || adapterId === "server"
         ? (lastEngine ?? (config?.tts === "server" ? "server" : "browser"))
         : null;
 
@@ -94,7 +102,13 @@ export function useVoice(options: UseVoiceOptions = {}) {
   useEffect(() => {
     if (!configLoaded) return;
     const adapter =
-      adapterId === "elevenlabs" ? elevenlabs : adapterId === "browser" ? browser : null;
+      adapterId === "elevenlabs"
+        ? elevenlabs
+        : adapterId === "browser"
+          ? browser
+          : adapterId === "server"
+            ? server
+            : null;
     const next = new VoiceController({ adapter });
     liveController.set(next);
     // eslint-disable-next-line react-hooks/set-state-in-effect -- the controller is created from loaded config
@@ -103,7 +117,7 @@ export function useVoice(options: UseVoiceOptions = {}) {
       next.dispose();
       if (liveController.get() === next) liveController.set(null);
     };
-  }, [configLoaded, adapterId, elevenlabs, browser, liveController]);
+  }, [configLoaded, adapterId, elevenlabs, browser, server, liveController]);
 
   const subscribe = useCallback(
     (cb: () => void) => (controller ? controller.subscribe(cb) : () => {}),

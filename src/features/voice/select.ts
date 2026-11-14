@@ -1,7 +1,7 @@
 import type { VoiceConfig } from "@/contracts/voice";
 
 /** The adapters this build can actually run. `http` in the contract has no implementation yet. */
-export type RunnableAdapterId = "elevenlabs" | "browser";
+export type RunnableAdapterId = "elevenlabs" | "browser" | "server";
 export type AdapterOverride = "auto" | RunnableAdapterId;
 
 /**
@@ -17,5 +17,6 @@ export function selectAdapterId(
   if (!config) return null;
   if (config.adapter === "none") return null;
   if (override !== "auto") return override;
-  return config.adapter === "elevenlabs" ? "elevenlabs" : "browser";
+  if (config.adapter === "elevenlabs") return "elevenlabs";
+  return config.adapter === "server" ? "server" : "browser";
 }

@@ -227,3 +227,33 @@ describe("browser adapter with browser speech", () => {
     await b;
   });
 });
+
+describe("browser adapter level meter", () => {
+  const startMeter = vi.fn();
+  beforeEach(async () => {
+    startMeter.mockReset();
+    startMeter.mockImplementation(async () => ({ stop() {} }));
+    const mod = await import("../micMeter");
+    vi.spyOn(mod, "startMicMeter").mockImplementation(startMeter);
+  });
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it("starts the meter off Android", async () => {
+    vi.stubGlobal("navigator", { userAgent: "Mozilla/5.0 (X11; Linux x86_64) Firefox", language: "en" });
+    const { adapter } = setup({ engine: "browser" });
+    await adapter.startListening({ onError: () => {}, onLevel: () => {} });
+    expect(startMeter).toHaveBeenCalledTimes(1);
+    await adapter.stopListening();
+  });
+
+  it("does not start the meter on Android, where a second stream silences the recogniser", async () => {
+    vi.stubGlobal("navigator", { userAgent: "Mozilla/5.0 (Linux; Android 14; Pixel 8)", language: "en" });
+    const { adapter } = setup({ engine: "browser" });
+    await adapter.startListening({ onError: () => {}, onLevel: () => {} });
+    expect(startMeter).not.toHaveBeenCalled();
+    expect(FakeRecognition.last).not.toBeNull();
+    await adapter.stopListening();
+  });
+});

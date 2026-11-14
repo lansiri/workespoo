@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { selectAdapterId } from "./select";
 
-const cfg = (adapter: "elevenlabs" | "browser" | "http" | "none") => ({ adapter, processor: "x" });
+const cfg = (adapter: "elevenlabs" | "browser" | "server" | "http" | "none") => ({ adapter, processor: "x" });
 
 describe("selectAdapterId", () => {
   it("follows the server config", () => {
@@ -19,5 +19,10 @@ describe("selectAdapterId", () => {
   });
   it("falls back to the browser for an adapter we have not built", () => {
     expect(selectAdapterId(cfg("http"))).toBe("browser");
+  });
+  it("runs the server adapter when the config says server, and for a manual override", () => {
+    expect(selectAdapterId(cfg("server"))).toBe("server");
+    expect(selectAdapterId(cfg("browser"), "server")).toBe("server");
+    expect(selectAdapterId(cfg("none"), "server")).toBeNull();
   });
 });

@@ -106,7 +106,11 @@ export class VoiceController {
 
     const handlers: ListenHandlers = {
       onPartial: (text) => {
-        if (run === this.pressRun && this.state.status === "listening") this.set({ partial: text });
+        // The answers to the last segments arrive after the button is released.
+        const { status } = this.state;
+        if (run === this.pressRun && (status === "listening" || status === "transcribing")) {
+          this.set({ partial: text });
+        }
       },
       onLevel: (level) => {
         if (run === this.pressRun) this.set({ inputLevel: level });

@@ -15,6 +15,11 @@ export default function VoiceDevClient({ m }: { m: VoiceDevMessages }) {
   };
   const [lang, setLang] = useState("en");
   const voice = useVoice({ lang });
+  const LISTEN_LABEL: Record<NonNullable<typeof voice.adapterId>, string> = {
+    elevenlabs: m.engineElevenlabs,
+    server: m.listenServer,
+    browser: m.listenBrowser,
+  };
   const [text, setText] = useState("Hello. This is a voice test. How does it sound?");
   const [lastFinal, setLastFinal] = useState("");
 
@@ -40,6 +45,7 @@ export default function VoiceDevClient({ m }: { m: VoiceDevMessages }) {
           <option value="auto">{m.autoFromServer}</option>
           <option value="elevenlabs">elevenlabs</option>
           <option value="browser">browser</option>
+          <option value="server">server</option>
         </select>
       </label>{" "}
       <label>
@@ -50,6 +56,12 @@ export default function VoiceDevClient({ m }: { m: VoiceDevMessages }) {
           <option value="sv">sv</option>
         </select>
       </label>
+      <p>
+        {m.listensWith}:{" "}
+        <b data-testid="voice-listener">
+          {voice.adapterId ? LISTEN_LABEL[voice.adapterId] : m.voiceOff}
+        </b>
+      </p>
       <p>
         {m.speaksWith}:{" "}
         <b data-testid="voice-engine">
