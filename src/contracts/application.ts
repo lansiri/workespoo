@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { EvidenceRef, Id, InputMode, IsoDateTime, SentenceLabel, UiLang } from "./common";
+import { EvidenceRef, Id, InputMode, IsoDateTime, UiLang } from "./common";
 import { TurnRole } from "./interview";
 import { RequirementCategory, RequirementKind } from "./needs";
 
@@ -186,24 +186,30 @@ export type ApplicationAssessment = z.infer<typeof ApplicationAssessment>;
 /** Requirements are labelled R1, R2, ... for models, in the plan's order. */
 export const RequirementLabel = z.string().regex(/^R\d+$/);
 
+/*
+ * These schemas describe the shape of what a model returns and are deliberately wider than
+ * what is used. Code then keeps what holds (a question of 10 to 300 characters, the first four
+ * references that resolve, a follow-up of 8 to 240 characters) and replaces the rest one by
+ * one. A schema as tight as the rule would throw away a whole answer, and with it a person's
+ * assessment, for one sentence that ran a few characters long.
+ */
+
 /** `application.plan`: the wording of the question for each covered requirement. */
 export const ApplicationPlanOutput = z.object({
-  questions: z
-    .array(z.object({ requirement: RequirementLabel, question: z.string().min(10).max(300) }))
-    .max(APPLICATION_MAX_REQUIREMENTS),
+  questions: z.array(z.object({ requirement: RequirementLabel, question: z.string().max(1000) })).max(24),
 });
 export type ApplicationPlanOutput = z.infer<typeof ApplicationPlanOutput>;
 
 /** `application.turn`: read one answer, decide whether one more question is worth asking. */
 export const ApplicationTurnOutput = z.object({
   /** Sentence numbers (1-based) of this answer that speak to the requirement. */
-  evidence: z.array(z.number().int().min(1)).max(12),
+  evidence: z.array(z.number().int().min(1)).max(80),
   /** True when the answer holds a concrete example of the person's own work for this requirement. */
   concrete: z.boolean(),
   /** What a follow-up could still bring out. */
   missing: z.enum(["none", "example", "own_part", "result"]),
   /** One follow-up question in the interview's language, or null when nothing more is needed. */
-  followUp: z.string().max(240).nullable(),
+  followUp: z.string().max(1000).nullable(),
 });
 export type ApplicationTurnOutput = z.infer<typeof ApplicationTurnOutput>;
 
@@ -214,17 +220,17 @@ export const ApplicationAssessOutput = z.object({
       z.object({
         requirement: RequirementLabel,
         level: RatingLevel,
-        /** Labels of the person's sentences, like `T3.S2`. */
-        evidence: z.array(SentenceLabel).max(4),
-        reason_en: z.string().max(300),
-        reason_fi: z.string().max(300),
-        reason_sv: z.string().max(300),
+        /** Labels of the person's sentences, like `T3.S2`. Code keeps the first four that resolve. */
+        evidence: z.array(z.string().max(40)).max(40),
+        reason_en: z.string().max(2000),
+        reason_fi: z.string().max(2000),
+        reason_sv: z.string().max(2000),
       }),
     )
-    .max(APPLICATION_MAX_REQUIREMENTS),
-  summary_en: z.string().max(400),
-  summary_fi: z.string().max(400),
-  summary_sv: z.string().max(400),
+    .max(24),
+  summary_en: z.string().max(3000),
+  summary_fi: z.string().max(3000),
+  summary_sv: z.string().max(3000),
 });
 export type ApplicationAssessOutput = z.infer<typeof ApplicationAssessOutput>;
 

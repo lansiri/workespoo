@@ -111,6 +111,8 @@ const SWEDISH_PRONOUNS = /(?<![\p{L}\p{N}])(?:han|hon|hans|henne|honom)(?![\p{L}
  */
 const BLAME = /(?<![\p{L}\p{N}])(?:weak|poor|lacks?|lacking|fails?|failed|only|heikk\p{L}*|huono\p{L}*|puuttuu|puutteelli\p{L}*|epäonnistu\p{L}*|vain|ainoastaan|svag\p{L}*|dålig\p{L}*|saknar|saknas|misslyck\p{L}*|bara|endast)(?![\p{L}\p{N}])/iu;
 const QUOTE_MARKS = /["“”„«»]/u;
+/** A reason is one sentence of about 30 words and a summary two: longer than this is not what was asked for, and the stored text holds 500. */
+const MAX_WRITTEN = 420;
 /** Copied wording: this many of the person's words in a row, whatever they are. */
 const RUN = 8;
 /** Copied speech: this many in a row when the person speaks of themselves in them ("I rebuilt the nightly import"). */
@@ -173,6 +175,7 @@ const REQUIREMENT_LABEL = /(?<![\p{L}\p{N}])R\d+(?![\p{L}\p{N}])/u;
  */
 export function writtenProblem(text: string, terms: readonly string[], runs: ReadonlySet<string>): string | null {
   if (text.trim().length === 0) return "empty";
+  if (text.length > MAX_WRITTEN) return "long";
   const judged = findReasonJudgement(text, { pronouns: true }).filter((hit) => !WORK_WORDS.has(hit));
   // About the person.
   if (findProtectedWritten(text).length > 0) return "protected";

@@ -199,6 +199,22 @@ describe("checkAssessment", () => {
     expect(a.ratings[0]).toMatchObject({ level: 2, wording: "model" });
   });
 
+  it("keeps an assessment whose model cited too much or wrote too long: the first four references, and the code's sentence for the long text", () => {
+    const many = inputFrom([opening, turn(1, "r1", ["One.", "Two.", "Three.", "Four.", "Five.", "Six."])]);
+    const long = `The answer describes ${"a nightly import and a morning check, ".repeat(14)}and more.`;
+    const a = checkAssessment({
+      input: many,
+      output: {
+        ratings: [{ requirement: "R1", level: 2, evidence: ["T1.S1", "T1.S2", "nonsense", "T1.S3", "T1.S4", "T1.S5", "T1.S6"], reason_en: long, reason_fi: "Vastaus kuvaa yöllistä tuontia.", reason_sv: "Svaret beskriver en nattlig import." }],
+        ...SUMMARY,
+      },
+      employerTerms: [],
+      now: NOW,
+    })!;
+    expect(a.ratings[0].evidence).toHaveLength(4);
+    expect(a.ratings[0]).toMatchObject({ level: 2, wording: "model", reason: { en: CODE_REASONS[2].en, fi: "Vastaus kuvaa yöllistä tuontia." } });
+  });
+
   it("returns null when the output matches none of the answered requirements", () => {
     expect(check({ ratings: [], ...SUMMARY })).toBeNull();
     expect(check({ ratings: [{ requirement: "R9", level: 3, evidence: ["T1.S1"], ...goodReasons("The answer describes imports.") }], ...SUMMARY })).toBeNull();
