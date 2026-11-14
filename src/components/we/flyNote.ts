@@ -52,6 +52,8 @@ export function flyNote(sourceEl: Element | null, targetEl: HTMLElement | null, 
       flyer.classList.remove("we-pending");
       flyer.removeAttribute("data-pending");
       flyer.removeAttribute("id");
+      // The clone is a picture of the chip, not a second chip: pages and tests that look for chips must not count it.
+      flyer.removeAttribute("data-testid");
       flyer.setAttribute("aria-hidden", "true");
       flyer.setAttribute("tabindex", "-1");
       flyer.classList.add("we-flyer", "we-fresh");

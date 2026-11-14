@@ -17,6 +17,8 @@ export type WordsBoxProps =
       /** Sentence indexes that became notes. */
       cited: number[];
       sweep?: boolean;
+      /** Sentence indexes to show highlighted (a note chip is hovered or focused). */
+      highlight?: number[];
       className?: string;
     };
 
@@ -55,7 +57,7 @@ export function WordsBox(props: WordsBoxProps) {
           <Fragment key={i}>
             {i > 0 ? " " : null}
             {cited.has(i) ? (
-              <OwnWordsMark turn={props.answerNumber} sentence={i} sweep={props.sweep}>
+              <OwnWordsMark turn={props.answerNumber} sentence={i} sweep={props.sweep} highlighted={props.highlight?.includes(i)}>
                 {s}
               </OwnWordsMark>
             ) : (

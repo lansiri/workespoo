@@ -138,8 +138,8 @@ export function useVoice(options: UseVoiceOptions = {}) {
     [controller],
   );
   const speakSentences = useCallback(
-    (texts: string[], speakLang?: string) =>
-      controller?.speakSentences(texts, speakLang ?? lang) ?? Promise.resolve(),
+    (texts: string[], speakLang?: string, speakOptions?: { append?: boolean }) =>
+      controller?.speakSentences(texts, speakLang ?? lang, speakOptions) ?? Promise.resolve(),
     [controller, lang],
   );
   const cancelSpeech = useCallback(() => controller?.cancelSpeech(), [controller]);

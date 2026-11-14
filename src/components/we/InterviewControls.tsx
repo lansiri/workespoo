@@ -21,7 +21,8 @@ export function InterviewControls({
   /** Phone: the type box is open above the talk button. */
   typing?: boolean;
   jobsMini?: ReactNode;
-  talk: ReactNode;
+  /** Leave out when voice is not available: the type box is then the only input and takes the whole row. */
+  talk?: ReactNode;
   orLabel: string;
   typeBox?: ReactNode;
   typeButton?: ReactNode;
@@ -31,11 +32,11 @@ export function InterviewControls({
   return (
     <div className={cx("we-iv-controls", done && "we-done", className)} data-testid={done ? "interview-done" : "interview-controls"}>
       {done ? null : jobsMini}
-      <div className={cx("we-talk-row", typing && "we-typing")}>
+      <div className={cx("we-talk-row", typing && "we-typing", !talk && !done && "we-text-only")}>
         {talk}
         {done ? null : (
           <>
-            <span className="we-or">{orLabel}</span>
+            {talk ? <span className="we-or">{orLabel}</span> : null}
             <div className="we-type-slot">{typeBox}</div>
             {typeButton}
           </>

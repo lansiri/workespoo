@@ -104,6 +104,68 @@ describe("VoiceController", () => {
     expect(c.getState().status).toBe("idle");
   });
 
+  it("append: a later sentence joins the reply instead of cutting it off, and idle comes only after the last one", async () => {
+    const f = fakeAdapter();
+    const c = new VoiceController({ adapter: f.adapter });
+    const first = c.speakSentences(["One."], "en", { append: true });
+    const second = c.speakSentences(["Two."], "en", { append: true });
+    const third = c.speakSentences(["Three."], "en", { append: true });
+    expect(f.adapter.speak).toHaveBeenCalledTimes(3);
+    expect(f.adapter.cancelSpeech).toHaveBeenCalledTimes(1); // only the one before the first sentence
+    f.speaks[0].resolve();
+    await first;
+    expect(c.getState().status).toBe("speaking");
+    f.speaks[1].resolve();
+    await second;
+    expect(c.getState().status).toBe("speaking");
+    f.speaks[2].resolve();
+    await third;
+    expect(c.getState().status).toBe("idle");
+  });
+
+  it("append with nothing playing starts speech; without append a new reply replaces the old one", async () => {
+    const f = fakeAdapter();
+    const c = new VoiceController({ adapter: f.adapter });
+    const old = c.speakSentences(["Old one.", "Old two."], "en");
+    const fresh = c.speakSentences(["New."], "en"); // no append: silences the old reply
+    expect(f.adapter.cancelSpeech).toHaveBeenCalledTimes(2);
+    expect(c.getState().status).toBe("speaking");
+    f.speaks.splice(0).forEach((d) => d.resolve());
+    await Promise.all([old, fresh]);
+    expect(c.getState().status).toBe("idle");
+  });
+
+  it("cancelSpeech, and pressing talk, silence an appended reply at once", async () => {
+    const f = fakeAdapter();
+    const c = new VoiceController({ adapter: f.adapter });
+    const a = c.speakSentences(["One."], "en", { append: true });
+    const b = c.speakSentences(["Two."], "en", { append: true });
+    c.cancelSpeech();
+    expect(c.getState().status).toBe("idle");
+    await Promise.all([a, b]);
+    expect(c.getState().status).toBe("idle");
+    const d = c.speakSentences(["Three."], "en", { append: true });
+    await c.pressTalk();
+    expect(c.getState().status).toBe("listening");
+    await d;
+    expect(c.getState().status).toBe("listening");
+  });
+
+  it("a failed sentence in an appended reply ends the whole reply in an error", async () => {
+    let n = 0;
+    const f = fakeAdapter({
+      speak: vi.fn(() => {
+        n += 1;
+        return n === 1 ? Promise.reject(new VoiceError("unavailable")) : new Promise<void>(() => {});
+      }),
+    });
+    const c = new VoiceController({ adapter: f.adapter });
+    await c.speakSentences(["One."], "en", { append: true });
+    expect(c.getState().status).toBe("error");
+    void c.speakSentences(["Two."], "en", { append: true });
+    expect(c.getState().status).toBe("speaking");
+  });
+
   it("cancelSpeech returns to idle and a stale run does not overwrite later state", async () => {
     const f = fakeAdapter();
     const c = new VoiceController({ adapter: f.adapter });

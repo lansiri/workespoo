@@ -62,8 +62,12 @@ export function initialUiState(initial: InterviewInitial): InterviewUiState {
 /** Events are applied idempotently, so replaying the whole stream after a reconnect is safe. */
 export function reduce(state: InterviewUiState, action: Action): InterviewUiState {
   switch (action.type) {
-    case "participant":
-      return { ...state, transcript: [...state.transcript, { index: -1, role: "participant", text: action.text }], sendFailed: false };
+    case "participant": {
+      // A retry after a failed send replaces the failed attempt's line instead of repeating it.
+      const last = state.transcript.at(-1);
+      const base = state.sendFailed && last?.role === "participant" && last.index < 0 ? state.transcript.slice(0, -1) : state.transcript;
+      return { ...state, transcript: [...base, { index: -1, role: "participant", text: action.text }], sendFailed: false };
+    }
     case "sending":
       return { ...state, sending: action.value };
     case "sendFailed":

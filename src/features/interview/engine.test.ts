@@ -658,6 +658,24 @@ describe("jobs light up", () => {
   });
 });
 
+describe("jobs light up by mention", () => {
+  it("counts a posting that mentions a note in so many words and names the note on the sample", async () => {
+    await t.db.insert(job).values({
+      id: "job_lit_m1", source: "tmt", sourceId: "litm1", url: "https://x.example/m1", title: "Stock room assistant", employerName: "Acme",
+      municipality: "Espoo", municipalityCode: "049", description: "You are good at forklift driving and keep the stock room tidy.",
+    });
+    installFake({
+      extract: () => ({ lang: "en", signals: [{ ref: "new", phrase: "Forklift driving", kind: "skill", evidence: ["T1.S1"], hasExample: false }], coverage: { recent_work: "covered" }, flags: [], note: "" }),
+    });
+    const { interviewId } = await startInterview(t.db, request());
+    await say(interviewId, WORK);
+    await settleInterview(t.db, interviewId);
+    const lit = (await eventsOf(interviewId)).find((e) => e.type === "jobs.lit") as Extract<InterviewEvent, { type: "jobs.lit" }>;
+    expect(lit.count).toBeGreaterThanOrEqual(1);
+    expect(lit.sample.find((j) => j.id === "job_lit_m1")?.mention).toBe("Forklift driving");
+  });
+});
+
 describe("review fixes", () => {
   it("a retry after a dropped reply stream gets the reply, with one stored answer", async () => {
     let release!: () => void;

@@ -28,6 +28,8 @@ export type InterviewerMascotProps = {
   badgeLabel: string;
   /** When the interview is over the badge shows its own label ("Interview finished") with the idle shape. */
   finished?: boolean;
+  /** Draw the mascot alone, without the badge (a decoration beside a title, not a state). */
+  hideBadge?: boolean;
   /** Change this number each time a note lands: the head pops once (1.22, 520 ms spring). */
   catchKey?: number;
   className?: string;
@@ -37,7 +39,7 @@ export type InterviewerMascotProps = {
  * The AI interviewer: the brand Cheer W exactly (W stroke 40, sun head r28 at 120,56 in a 240 box).
  * It has no face in any state. State shows by shape (ring, discs, arcs, pencil) plus the worded badge.
  */
-export function InterviewerMascot({ state, level = 0.35, size, badgeLabel, finished, catchKey = 0, className }: InterviewerMascotProps) {
+export function InterviewerMascot({ state, level = 0.35, size, badgeLabel, finished, hideBadge, catchKey = 0, className }: InterviewerMascotProps) {
   const lvl = Math.max(0, Math.min(1, level));
   const headRef = useRef<SVGGElement>(null);
   useEffect(() => {
@@ -82,7 +84,7 @@ export function InterviewerMascot({ state, level = 0.35, size, badgeLabel, finis
           </g>
         </g>
       </svg>
-      <StateBadge state={shownState} label={badgeLabel} />
+      {hideBadge ? null : <StateBadge state={shownState} label={badgeLabel} />}
     </div>
   );
 }

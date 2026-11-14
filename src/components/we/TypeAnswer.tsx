@@ -34,7 +34,7 @@ export function TypeAnswer({ value, onChange, onSend, sending, error, retryLabel
         <label className="we-sr-only" htmlFor={id}>
           {placeholder}
         </label>
-        <input id={id} autoComplete="off" value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} disabled={sending} data-testid="answer-input" />
+        <input id={id} autoComplete="off" value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} aria-busy={sending || undefined} data-testid="answer-input" />
         <Button type="submit" variant="primary" disabled={!value.trim() || sending} data-testid="send-answer">
           {sending ? sendingLabel : sendLabel}
         </Button>

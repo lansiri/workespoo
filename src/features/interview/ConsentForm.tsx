@@ -5,10 +5,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { VoiceConfig } from "@/contracts/voice";
 import type { InterviewMode, UiLang } from "@/contracts";
-import { Button } from "@/components/ui/button";
+import { Button, ChoiceCard, ErrorState, Field, InterviewerMascot, PrototypeLine, Select, Textarea } from "@/components/we";
 import { fmt, UI_LANGS, UI_LANG_NAMES } from "@/lib/i18n";
 import { useMessages, useUiLang } from "@/lib/i18n/client";
-import { consentCopy } from "@/lib/i18n/content";
+import { consentCopy, errorCopy } from "@/lib/i18n/content";
 import { interviewMessages } from "./messages";
 
 const CV_MAX_CHARS = 20000;
@@ -28,6 +28,7 @@ export function voiceServiceName(voice: VoiceConfig | null, browserName: string)
 export function ConsentForm() {
   const m = useMessages(interviewMessages);
   const c = useMessages(consentCopy);
+  const e = useMessages(errorCopy);
   const uiLang = useUiLang();
   const router = useRouter();
 
@@ -82,135 +83,108 @@ export function ConsentForm() {
   }
 
   return (
-    <main className="mx-auto max-w-2xl space-y-6 p-6">
-      <h1 className="text-2xl font-semibold">{c.title}</h1>
-      <p>{c.intro}</p>
-      <ul className="list-disc space-y-1 pl-6">
-        <li>{c.pointAi}</li>
-        <li>{c.pointReview}</li>
-        <li>{c.pointPrivate}</li>
-        <li>{c.pointDontShare}</li>
-        <li>{m.modelLine}</li>
-      </ul>
-      <p>
-        <Link href="/how-it-works">{c.linkHow}</Link>
-      </p>
-
+    <div className="we-consent-wrap">
       <form
-        className="space-y-5"
-        onSubmit={(e) => {
-          e.preventDefault();
+        className="we-consent-card"
+        onSubmit={(ev) => {
+          ev.preventDefault();
           if (canStart) void start();
         }}
       >
-        <fieldset className="space-y-3">
-          <label className="flex items-start gap-2">
-            <input
+        <span className="we-tape" aria-hidden="true" />
+        <header className="we-consent-head">
+          <InterviewerMascot state="idle" badgeLabel="" hideBadge />
+          <div>
+            <h1>{c.title}</h1>
+            <p>{c.intro}</p>
+          </div>
+        </header>
+
+        <ul className="we-points">
+          <li className="we-lead">{c.pointAi}</li>
+          <li>{c.pointReview}</li>
+          <li>{c.pointPrivate}</li>
+          <li>{c.pointDontShare}</li>
+          <li>{m.modelLine}</li>
+        </ul>
+        <p className="we-consent-link">
+          <Link href="/how-it-works">{c.linkHow}</Link>
+        </p>
+
+        <fieldset className="we-consent-section">
+          <legend className="we-sr-only">{m.consentLegend}</legend>
+          <div className="we-consent-form-stack">
+            <ChoiceCard
               type="checkbox"
+              title={c.checkInterview}
               data-testid="consent-interview"
               checked={consentInterview}
-              onChange={(e) => setConsentInterview(e.target.checked)}
+              onChange={(ev) => setConsentInterview(ev.target.checked)}
             />
-            <span>{c.checkInterview}</span>
-          </label>
-          {voiceAvailable ? (
-            <label className="flex items-start gap-2">
-              <input
+            {voiceAvailable ? (
+              <ChoiceCard
                 type="checkbox"
+                title={fmt(c.checkVoice, { processor: voiceService })}
+                help={c.checkVoiceHelp}
                 data-testid="consent-voice"
                 checked={consentVoice}
-                onChange={(e) => setConsentVoice(e.target.checked)}
+                onChange={(ev) => setConsentVoice(ev.target.checked)}
               />
-              <span>
-                {fmt(c.checkVoice, { processor: voiceService })} <em>{c.checkVoiceHelp}</em>
-              </span>
-            </label>
-          ) : null}
-          <label className="flex items-start gap-2">
-            <input
+            ) : null}
+            <ChoiceCard
               type="checkbox"
+              title={c.checkLiveDemo}
               data-testid="consent-live-demo"
               checked={consentLiveDemo}
-              onChange={(e) => setConsentLiveDemo(e.target.checked)}
+              onChange={(ev) => setConsentLiveDemo(ev.target.checked)}
             />
-            <span>{c.checkLiveDemo}</span>
-          </label>
+          </div>
         </fieldset>
 
-        <div className="space-y-1">
-          <label htmlFor="cv-text" className="font-medium">
-            {m.cvLabel}
-          </label>
-          <p className="text-sm">{m.cvHelp}</p>
-          <textarea
-            id="cv-text"
-            data-testid="cv-text"
-            value={cvText}
-            onChange={(e) => setCvText(e.target.value)}
-            rows={5}
-            maxLength={CV_MAX_CHARS}
-            className="block w-full rounded-md border px-2 py-1"
-          />
-        </div>
+        <Field className="we-consent-field" label={c.language} hint={c.languageHelp}>
+          {({ id, describedBy }) => (
+            <Select id={id} aria-describedby={describedBy} data-testid="interview-language" value={lang} onChange={(ev) => setLang(ev.target.value as UiLang)}>
+              {UI_LANGS.map((code) => (
+                <option key={code} value={code}>
+                  {UI_LANG_NAMES[code]}
+                </option>
+              ))}
+            </Select>
+          )}
+        </Field>
 
-        <fieldset className="space-y-2">
-          <legend className="font-medium">{m.modeTitle}</legend>
-          <label className="flex items-start gap-2">
-            <input
-              type="radio"
-              name="mode"
-              data-testid="mode-express"
-              checked={mode === "express"}
-              onChange={() => setMode("express")}
-            />
-            <span>
-              <strong>{m.modeExpress}</strong> {m.modeExpressHelp}
-            </span>
-          </label>
-          <label className="flex items-start gap-2">
-            <input
-              type="radio"
-              name="mode"
-              data-testid="mode-full"
-              checked={mode === "full"}
-              onChange={() => setMode("full")}
-            />
-            <span>
-              <strong>{m.modeFull}</strong> {m.modeFullHelp}
-            </span>
-          </label>
+        <fieldset className="we-consent-section">
+          <legend>{m.modeTitle}</legend>
+          <div className="we-choice-grid">
+            <ChoiceCard type="radio" name="mode" title={m.modeExpress} help={m.modeExpressHelp} data-testid="mode-express" checked={mode === "express"} onChange={() => setMode("express")} />
+            <ChoiceCard type="radio" name="mode" title={m.modeFull} help={m.modeFullHelp} data-testid="mode-full" checked={mode === "full"} onChange={() => setMode("full")} />
+          </div>
         </fieldset>
 
-        <div className="space-y-1">
-          <label htmlFor="interview-lang" className="font-medium">
-            {c.language}
-          </label>
-          <select
-            id="interview-lang"
-            data-testid="interview-language"
-            value={lang}
-            onChange={(e) => setLang(e.target.value as UiLang)}
-            className="block rounded-md border px-2 py-1"
-          >
-            {UI_LANGS.map((code) => (
-              <option key={code} value={code}>
-                {UI_LANG_NAMES[code]}
-              </option>
-            ))}
-          </select>
-          <p className="text-sm">{c.languageHelp}</p>
-        </div>
+        <Field className="we-consent-field" label={m.cvLabel} hint={m.cvHelp}>
+          {({ id, describedBy }) => (
+            <Textarea
+              id={id}
+              aria-describedby={describedBy}
+              data-testid="cv-text"
+              value={cvText}
+              onChange={(ev) => setCvText(ev.target.value)}
+              rows={5}
+              maxLength={CV_MAX_CHARS}
+            />
+          )}
+        </Field>
 
-        {failed ? (
-          <p role="alert" data-testid="start-error">
-            {m.startError}
-          </p>
-        ) : null}
-        <Button type="submit" data-testid="start-interview" disabled={!canStart}>
-          {busy ? m.starting : c.start}
-        </Button>
+        {failed ? <ErrorState testId="start-error" message={m.startError} action={{ label: e.retry, onClick: () => void start() }} /> : null}
+
+        <div className="we-consent-start">
+          {!canStart && !busy ? <p className="we-start-reason">{m.startReason}</p> : null}
+          <Button type="submit" variant="primary" size="lg" data-testid="start-interview" disabled={!canStart}>
+            {busy ? m.starting : c.start}
+          </Button>
+        </div>
       </form>
-      <p className="text-sm">{c.prototype}</p>
-    </main>
+      <PrototypeLine>{c.prototype}</PrototypeLine>
+    </div>
   );
 }

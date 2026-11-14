@@ -19,7 +19,7 @@ import type { Db } from "@/db/client";
 import { signal as signalTable } from "@/db/schema";
 import { audit } from "@/lib/audit";
 import { escoTopMatch } from "@/lib/esco";
-import { jobsLitForSkillUris } from "@/lib/jobs-lit";
+import { jobsLitForSignals } from "@/lib/jobs-lit";
 import { chatJson } from "@/lib/llm";
 import { findProtectedCard, stripQualityWords } from "@/lib/lexicon";
 import { publishEvent } from "./events";
@@ -386,14 +386,12 @@ async function extractTurn(db: Db, interviewId: string, turnIndex: number): Prom
     if (coverageChanged) await publishEvent(db, interviewId, { type: "coverage.updated", areas: next.coverage });
 
     if (merged.created.length > 0) {
-      const uris = [
-        ...new Set(
-          [...known, ...merged.created]
-            .filter((s) => s.status !== "removed" && s.esco)
-            .map((s) => s.esco!.uri),
-        ),
-      ];
-      const lit = await jobsLitForSkillUris(db, uris, { sampleSize: 3 }).catch(() => null);
+      // The person's notes by phrase and ESCO uri: a posting that mentions a note in so many words
+      // lights up too, and says which one (`mention` on each sample posting).
+      const notes = [...known, ...merged.created]
+        .filter((s) => s.status !== "removed")
+        .map((s) => ({ phrase: s.phrase, escoUri: s.esco?.uri ?? null }));
+      const lit = await jobsLitForSignals(db, notes, { sampleSize: 3 }).catch(() => null);
       if (lit) await publishEvent(db, interviewId, { type: "jobs.lit", count: lit.count, sample: lit.sample });
     }
 

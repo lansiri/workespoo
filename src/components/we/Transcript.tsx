@@ -11,12 +11,17 @@ export type TranscriptTurn = {
   sentences: string[];
   /** For person turns: "You · answer 2". For AI turns: "Interviewer · AI". */
   label: string;
+  /** The turn's own index in the stored conversation. Given to `onRemoveTurn` and set as `data-turn-index`. */
+  index?: number;
+  /** Person turns only: false hides the remove button for this turn (default true when `onRemoveTurn` is set). */
+  removable?: boolean;
 };
 
 export type TranscriptProps = {
   turns: TranscriptTurn[];
   /** Cited sentence indexes per turn index. */
   cited?: Record<number, number[]>;
+  /** Gets the turn's `index` when it has one, else its position in `turns`. */
   onRemoveTurn?: (turnIndex: number) => void;
   /** Index of the turn whose sentences should be highlighted (chip hovered or focused). */
   highlightTurn?: number | null;
@@ -75,8 +80,8 @@ export function Transcript({ turns, cited = {}, onRemoveTurn, highlightTurn, hig
                       )}
                     </Fragment>
                   ))}
-                  {t.speaker === "person" && onRemoveTurn ? (
-                    <button type="button" className="we-rm" data-testid="turn-remove" onClick={() => onRemoveTurn(ti)}>
+                  {t.speaker === "person" && onRemoveTurn && t.removable !== false ? (
+                    <button type="button" className="we-rm" data-testid="turn-remove" data-turn-index={t.index ?? ti} onClick={() => onRemoveTurn(t.index ?? ti)}>
                       {text.remove}
                     </button>
                   ) : null}
@@ -87,7 +92,7 @@ export function Transcript({ turns, cited = {}, onRemoveTurn, highlightTurn, hig
         )}
       </div>
       <p className="we-convo-legend">
-        <span className="we-mk">{text.legendMarked}</span>
+        <span className="we-mk">{text.legendMarked}</span>{" "}
         <span>{text.legendRest}</span>
       </p>
     </section>

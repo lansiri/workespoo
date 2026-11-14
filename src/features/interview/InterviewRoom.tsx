@@ -1,192 +1,404 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
+import {
+  AiDisclosure,
+  HoldToTalk,
+  InterviewControls,
+  InterviewLayout,
+  InterviewerLine,
+  InterviewerMascot,
+  JobsLit,
+  JobsMini,
+  NotesList,
+  Transcript,
+  TypeAnswer,
+  TypeInsteadButton,
+  WordsBox,
+  flyNote,
+  type JobsLitText,
+  type MascotState,
+  type NoteItem,
+  type TranscriptTurn,
+} from "@/components/we";
 import { fmt } from "@/lib/i18n";
 import { useMessages, useUiLang } from "@/lib/i18n/client";
-import { interviewCopy } from "@/lib/i18n/content";
-import { PushToTalkButton } from "@/features/voice/PushToTalkButton";
+import { errorCopy, interviewCopy } from "@/lib/i18n/content";
+import { splitSentences } from "@/lib/sentences";
 import { useVoice } from "@/features/voice/useVoice";
-import type { InterviewMode } from "@/contracts";
+import type { InterviewMode, SignalPublic } from "@/contracts";
 import { preCheck } from "./commands";
 import { detectLang, isUiLang } from "./lang";
 import { interviewMessages } from "./messages";
+import { useRoomChromePublisher } from "./RoomChrome";
 import { useInterview, type InterviewInitial } from "./useInterview";
+import type { TranscriptLine } from "./views";
+
+/** After this long without a reply the line "This is taking longer than usual" appears. */
+export const SLOW_REPLY_MS = 6000;
 
 /**
- * The live interview page, unstyled. Everything stateful lives in `useInterview`; this file
- * only lays the pieces out. Voice is used only when the person ticked the voice consent box.
+ * The sentences of each of the person's answers that became notes, by turn index. Notes carry
+ * their evidence as references (turn index, sentence numbers from 1); code turns them into the
+ * 0-based sentence positions the marks use. No text from the model is involved.
+ */
+export function citedSentences(signals: readonly Pick<SignalPublic, "evidence">[]): Map<number, number[]> {
+  const byTurn = new Map<number, Set<number>>();
+  for (const s of signals) {
+    for (const ref of s.evidence) {
+      const set = byTurn.get(ref.turnIndex) ?? new Set<number>();
+      for (let n = ref.sentenceFrom; n <= ref.sentenceTo; n++) set.add(n - 1);
+      byTurn.set(ref.turnIndex, set);
+    }
+  }
+  return new Map([...byTurn].map(([turn, set]) => [turn, [...set].sort((a, b) => a - b)]));
+}
+
+/** Which of the room's four looks the interviewer has. It shows what the AI is doing, never a feeling. */
+export function mascotStateOf(p: { ended: boolean; listening: boolean; speaking: boolean; waiting: boolean }): MascotState {
+  if (p.ended) return "idle";
+  if (p.listening) return "listening";
+  if (p.speaking) return "speaking";
+  if (p.waiting) return "thinking";
+  return "idle";
+}
+
+/**
+ * The live interview. Everything stateful lives in `useInterview` (and the voice hook); this file
+ * composes the kit's pieces: the transcript, the interviewer with the person's own words under
+ * it, the notes and the jobs. Voice is used only when the person ticked the voice consent box.
  */
 export function InterviewRoom(props: { initial: InterviewInitial; mode: InterviewMode; voiceConsented: boolean }) {
-  const { initial, mode, voiceConsented } = props;
+  const { initial, voiceConsented } = props;
   const m = useMessages(interviewMessages);
   const c = useMessages(interviewCopy);
+  const e = useMessages(errorCopy);
   const uiLang = useUiLang();
   const voice = useVoice({ lang: uiLang });
   const voiceOn = voiceConsented && voice.status !== "unavailable";
+  // Once the microphone has been refused, the rest of the session stays in text mode.
+  const [micBlocked, setMicBlocked] = useState(false);
+  if (voice.error?.code === "mic-denied" && !micBlocked) setMicBlocked(true);
+  const talkShown = voiceOn && !micBlocked;
+  const [failedAction, setFailedAction] = useState<"send" | "other">("send");
 
   const interview = useInterview({
     initial,
     onSentence: (sentence) => {
       if (!voiceOn) return;
       const detected = detectLang(sentence);
-      void voice.speakSentences([sentence], isUiLang(detected) ? detected : uiLang);
+      // Each sentence joins the end of the reply being spoken, so the whole reply is heard.
+      void voice.speakSentences([sentence], isUiLang(detected) ? detected : uiLang, { append: true });
     },
   });
   const [draft, setDraft] = useState("");
+  const [typing, setTyping] = useState(false);
+  const [catchKey, setCatchKey] = useState(0);
+  const [highlight, setHighlight] = useState<{ turnIndex: number; sentences: number[] } | null>(null);
+  const lastText = useRef<{ text: string; mode: "text" | "voice" } | null>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const chipEls = useRef<Record<string, HTMLElement | null>>({});
 
-  const asked = interview.transcript.filter((l) => l.role === "interviewer" && l.index >= 0).length;
-  const total = mode === "express" ? m.progressTotalExpress : m.progressTotalFull;
-  const areas = Object.values(interview.coverage);
-  const touched = areas.filter((s) => s !== "open").length;
   const canAnswer = !interview.ended;
+  const waiting = interview.sending && interview.streaming === null;
+  const speaking = voiceOn && voice.status === "speaking";
+  const listening = voiceOn && voice.status === "listening";
 
+  /* what the top bar shows, and what its Stop button does */
+  const asked = interview.transcript.filter((l) => l.role === "interviewer" && l.index >= 0).length;
+  const publish = useRoomChromePublisher();
+  const { stop: stopInterview } = interview;
+  const cancelSpeech = voice.cancelSpeech;
+  const stop = useCallback(() => {
+    cancelSpeech();
+    setFailedAction("other");
+    void stopInterview();
+  }, [cancelSpeech, stopInterview]);
+  useEffect(() => {
+    publish({ asked, finished: interview.ended, stoppable: canAnswer, stop });
+  }, [publish, asked, interview.ended, canAnswer, stop]);
+
+  /* "This is taking longer than usual" after a few seconds of waiting for the reply */
+  const [slow, setSlow] = useState(false);
+  useEffect(() => {
+    if (!waiting) return;
+    const id = window.setTimeout(() => setSlow(true), SLOW_REPLY_MS);
+    return () => {
+      window.clearTimeout(id);
+      setSlow(false);
+    };
+  }, [waiting]);
+
+  /* A new answer silences the interviewer at once; the reply's sentences then queue up in full. */
+  async function sendAnswer(text: string, inputMode: "text" | "voice") {
+    lastText.current = { text, mode: inputMode };
+    setFailedAction("send");
+    voice.clearError();
+    cancelSpeech();
+    return interview.send(text, inputMode);
+  }
   function submit() {
     const text = draft.trim();
     if (!text || !canAnswer) return;
     setDraft("");
-    void interview.send(text, "text");
+    void sendAnswer(text, "text");
   }
 
+  /* The person's answers, their sentences and which of them became notes */
+  const lines = interview.transcript;
+  const answers = lines.filter((l): l is TranscriptLine => l.role === "participant");
+  const cited = citedSentences(interview.signals);
+  const answerNumber = (turnIndex: number) => answers.findIndex((l) => l.index === turnIndex) + 1;
+  const lastAnswer = answers.at(-1) ?? null;
+
+  const turns: TranscriptTurn[] = lines.map((l) => ({
+    speaker: l.role === "interviewer" ? "ai" : "person",
+    sentences: splitSentences(l.text),
+    label: l.role === "interviewer" ? m.interviewerAi : fmt(m.turnYou, { n: answers.indexOf(l) + 1 }),
+    index: l.index,
+    removable: canAnswer && l.index > 0 && preCheck(l.text) !== "delete",
+  }));
+  const citedByPosition: Record<number, number[]> = {};
+  lines.forEach((l, pos) => {
+    const marks = l.role === "participant" ? cited.get(l.index) : undefined;
+    if (marks) citedByPosition[pos] = marks;
+  });
+  const highlightPosition = highlight ? lines.findIndex((l) => l.role === "participant" && l.index === highlight.turnIndex) : -1;
+
+  /* Notes: where they came from, which are from the latest answer, and their arrival */
+  const freshTurn = lastAnswer && lastAnswer.index >= 0 ? lastAnswer.index : null;
+  const [seenIds, setSeenIds] = useState<Set<string>>(() => new Set(initial.signals.map((s) => s.id)));
+  const [pendingIds, setPendingIds] = useState<string[]>([]);
+  const arrived = interview.signals.filter((s) => !seenIds.has(s.id)).map((s) => s.id);
+  if (arrived.length > 0) {
+    setSeenIds(new Set([...seenIds, ...arrived]));
+    setPendingIds((p) => [...p, ...arrived]);
+  }
+  const launched = useRef(new Set<string>());
+  useEffect(() => {
+    const todo = pendingIds.filter((id) => !launched.current.has(id));
+    todo.forEach((id, i) => {
+      launched.current.add(id);
+      const ref = interview.signals.find((s) => s.id === id)?.evidence[0];
+      const mark = ref ? stageRef.current?.querySelector(`.we-words .we-mk[data-sentence="${ref.sentenceFrom - 1}"]`) : null;
+      void flyNote(mark ?? null, chipEls.current[id] ?? null, 150 + i * 450, { onCatch: () => setCatchKey((k) => k + 1) }).then(() =>
+        setPendingIds((p) => p.filter((x) => x !== id)),
+      );
+    });
+  }, [pendingIds, interview.signals]);
+
+  const notes: NoteItem[] = interview.signals.map((s) => {
+    const from = s.evidence[0]?.turnIndex;
+    const n = from === undefined ? 0 : answerNumber(from);
+    return {
+      id: s.id,
+      label: s.phrase,
+      group: s.kind,
+      refLabel: n > 0 ? fmt(m.noteRef, { n }) : undefined,
+      fresh: freshTurn !== null && s.evidence.some((r) => r.turnIndex === freshTurn),
+      pending: pendingIds.includes(s.id),
+    };
+  });
+
+  /* Jobs: the count, and the neutral "+N new" for the last rise */
+  const jobCount = interview.jobsLit.count;
+  const [jobsSeen, setJobsSeen] = useState<{ count: number; delta?: number }>({ count: jobCount });
+  if (jobsSeen.count !== jobCount) setJobsSeen({ count: jobCount, delta: jobCount > jobsSeen.count ? jobCount - jobsSeen.count : undefined });
+  const delta = jobsSeen.delta;
+  const deltaLabel = delta ? fmt(m.jobsDelta, { n: delta }) : undefined;
+  const jobsText: JobsLitText = {
+    sticker: m.jobsSticker,
+    countLabel: m.jobsCountLabel,
+    emptyLine: m.jobsEmptyLine,
+    source: m.jobsSource,
+    mentionsLabel: m.jobsMentions,
+    more: m.jobsMore,
+    error: "",
+    mini: m.jobsMini,
+    miniEmpty: m.jobsEmptyLine,
+  };
+  const tiles = interview.jobsLit.sample.map((j) => ({ id: j.id, title: j.title, employer: j.employerName, place: j.municipality, mentions: j.mention ?? undefined }));
+
+  /* The interviewer */
+  const mascotState = mascotStateOf({ ended: interview.ended, listening, speaking, waiting: waiting || (voiceOn && voice.status === "transcribing") });
+  const badge = interview.ended
+    ? m.badgeFinished
+    : { idle: m.badgeIdle, listening: m.badgeListening, thinking: m.badgeThinking, speaking: m.badgeSpeaking }[mascotState];
+  const talkState = interview.ended ? "done" : listening ? "listening" : mascotState === "thinking" ? "disabled" : "ready";
+  const typedLive = canAnswer && draft.trim() !== "";
+
+  const voiceProblem = interview.ended
+    ? null
+    : micBlocked
+      ? e.micDenied
+      : voice.error?.code === "unsupported"
+        ? e.micUnsupported
+        : voice.error && voice.status === "error"
+          ? e.voiceFailed
+          : null;
+
+  const doneTalk = interview.cardReady ? (
+    <HoldToTalk state="done" label={m.checkNotes} doneHref="/card" />
+  ) : interview.cardProblem === "retry" ? (
+    <p className="we-iv-done-note">
+      {m.notesFailed} <Link href="/card">{m.checkNotes}</Link>
+    </p>
+  ) : interview.cardProblem === "none" ? (
+    <p className="we-iv-done-note">{m.noNotes}</p>
+  ) : (
+    <p className="we-iv-done-note" role="status">
+      {c.preparing} <Link href="/card">{m.checkNotes}</Link>
+    </p>
+  );
+
   return (
-    <main className="mx-auto max-w-2xl space-y-6 p-6">
-      <h1 className="text-2xl font-semibold">{m.roomHeading}</h1>
-      <p className="text-sm">{c.aiDisclosure}</p>
-
-      <section aria-live="polite" className="space-y-1">
-        <h2 className="text-sm font-medium">{m.interviewerSays}</h2>
-        <p data-testid="interviewer-text" className="text-lg">
-          {interview.interviewerLine}
-          {interview.sending && interview.streaming === null ? ` ${c.thinking}` : ""}
-        </p>
-      </section>
-
-      {canAnswer ? (
-        <section className="space-y-2">
-          <label htmlFor="answer" className="text-sm font-medium">
-            {m.answerLabel}
-          </label>
-          <Textarea
-            id="answer"
-            data-testid="answer-input"
-            value={draft}
-            placeholder={c.textPlaceholder}
-            onChange={(e) => setDraft(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                submit();
-              }
+    <div ref={stageRef}>
+      <InterviewLayout
+        stageLabel={m.interviewer}
+        convo={
+          <Transcript
+            turns={turns}
+            cited={citedByPosition}
+            highlightTurn={highlightPosition >= 0 ? highlightPosition : null}
+            highlightSentences={highlight?.sentences ?? []}
+            onRemoveTurn={(index) => {
+              setFailedAction("other");
+              void interview.removeTurn(index);
             }}
+            text={{ title: m.transcriptTitle, onlyYou: m.transcriptOnlyYou, empty: m.transcriptEmpty, remove: c.removeAnswer, legendMarked: m.legendMarked, legendRest: m.legendRest }}
           />
-          <div className="flex flex-wrap items-center gap-2">
-            <Button type="button" data-testid="send-answer" disabled={draft.trim() === ""} onClick={submit}>
-              {c.send}
-            </Button>
-            {voiceOn ? (
-              <PushToTalkButton
-                status={voice.status}
-                onPress={() => void voice.pressTalk()}
-                onRelease={() =>
-                  void voice.releaseTalk().then((transcript) => {
-                    if (transcript.trim()) void interview.send(transcript, "voice");
-                  })
-                }
-              />
+        }
+        stage={
+          <>
+            <h1 className="we-sr-only">{m.roomHeading}</h1>
+            <AiDisclosure tag={m.aiTag}>{c.aiDisclosure}</AiDisclosure>
+            <InterviewerMascot
+              state={mascotState}
+              level={voice.inputLevel}
+              badgeLabel={badge}
+              finished={interview.ended}
+              catchKey={catchKey}
+            />
+            <InterviewerLine label={m.interviewerAi} text={interview.interviewerLine} />
+            {slow ? (
+              <p className="we-iv-slow" role="status">
+                {e.modelSlow}
+              </p>
             ) : null}
-            <Button type="button" variant="outline" data-testid="skip-question" onClick={() => void interview.send("skip", "text")}>
-              {c.skip}
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              data-testid="stop-interview"
-              onClick={() => {
-                if (window.confirm(c.stopConfirm)) void interview.stop();
-              }}
-            >
-              {c.stop}
-            </Button>
-          </div>
-          {voiceOn && voice.partial ? <p className="text-sm">{voice.partial}</p> : null}
-          {interview.sendFailed ? (
-            <p role="alert" data-testid="send-failed">
-              {m.sendFailed}
-            </p>
-          ) : null}
-        </section>
-      ) : null}
-
-      {interview.reconnecting ? <p role="status">{m.connectionLost}</p> : null}
-
-      {interview.ended ? (
-        <section data-testid="interview-done" className="space-y-2">
-          <p className="font-medium">{m.doneTitle}</p>
-          {interview.cardReady ? (
-            <Link href="/card" data-testid="go-to-card">
-              {m.goToCard}
-            </Link>
-          ) : interview.cardProblem === "retry" ? (
-            <p>
-              {m.notesFailed} <Link href="/card">{m.goToCard}</Link>
-            </p>
-          ) : interview.cardProblem === "none" ? (
-            <p>{m.noNotes}</p>
-          ) : (
-            <p role="status">{c.preparing}</p>
-          )}
-        </section>
-      ) : null}
-
-      <section className="space-y-2">
-        <h2 className="font-medium">{c.notesTitle}</h2>
-        <p className="text-sm">{c.notesHelp}</p>
-        {interview.signals.length === 0 ? (
-          <p className="text-sm">{m.noSignalsYet}</p>
-        ) : (
-          <ul className="flex flex-wrap gap-2">
-            {interview.signals.map((s) => (
-              <li key={s.id} data-testid="signal-chip" data-signal-id={s.id} className="rounded-full border px-3 py-1 text-sm">
-                {s.phrase}
-              </li>
-            ))}
-          </ul>
-        )}
-        <p className="text-sm" data-testid="jobs-lit-count">
-          {fmt(c.jobsLit, { count: interview.jobsLit.count })}
-        </p>
-        <p className="text-sm" data-testid="coverage-hint">
-          {fmt(c.progress, { n: Math.min(asked, 99), total })} · {fmt(m.coverageHint, { done: touched, total: areas.length || 7 })}
-        </p>
-        <progress value={touched} max={areas.length || 7} aria-hidden="true" />
-      </section>
-
-      <section className="space-y-2">
-        <h2 className="font-medium">{m.transcriptTitle}</h2>
-        <ol data-testid="transcript" className="space-y-2">
-          {interview.transcript.map((line, i) => (
-            <li key={`${line.role}-${line.index}-${i}`} data-role={line.role}>
-              <strong>{line.role === "interviewer" ? m.interviewer : m.you}:</strong> {line.text}
-              {line.role === "participant" && line.index > 0 && canAnswer && preCheck(line.text) !== "delete" ? (
+            {listening || typedLive ? (
+              <WordsBox mode="live" label={m.wordsLive} text={listening ? voice.partial || "…" : draft} />
+            ) : lastAnswer ? (
+              <WordsBox
+                mode="said"
+                label={fmt(m.wordsSaid, { n: answers.length })}
+                hint={m.wordsHint}
+                answerNumber={answers.length}
+                sentences={splitSentences(lastAnswer.text)}
+                cited={cited.get(lastAnswer.index) ?? []}
+                highlight={highlight && highlight.turnIndex === lastAnswer.index ? highlight.sentences : undefined}
+                sweep
+              />
+            ) : (
+              <WordsBox mode="empty" emptyText={m.wordsEmpty} />
+            )}
+            {voiceProblem ? (
+              <p className="we-inline-error we-iv-alert" role="alert">
+                {voiceProblem}
+              </p>
+            ) : null}
+            {interview.reconnecting ? (
+              <p className="we-inline-error we-iv-alert" role="status">
+                {e.network}
+              </p>
+            ) : null}
+            {voiceOn ? (
+              <>
+                <span className="we-sr-only" aria-hidden="true" data-testid="voice-status">
+                  {voice.status}
+                </span>
+                <span className="we-sr-only" aria-hidden="true" data-testid="voice-final">
+                  {voice.finalTranscript}
+                </span>
+              </>
+            ) : null}
+            <InterviewControls
+              done={interview.ended}
+              typing={typing}
+              jobsMini={<JobsMini count={jobCount || undefined} delta={delta} deltaLabel={deltaLabel} text={jobsText} locale={uiLang} />}
+              talk={
+                interview.ended ? (
+                  doneTalk
+                ) : talkShown ? (
+                  <HoldToTalk
+                    state={talkState}
+                    level={voice.inputLevel}
+                    label={talkState === "listening" ? c.release : c.hold}
+                    describedBy="iv-noisy-hint"
+                    onStart={() => void voice.pressTalk()}
+                    onRelease={() =>
+                      void voice.releaseTalk().then((transcript) => {
+                        if (transcript.trim()) void sendAnswer(transcript, "voice");
+                      })
+                    }
+                  />
+                ) : undefined
+              }
+              orLabel={m.orLabel}
+              typeBox={
+                <TypeAnswer
+                  value={draft}
+                  onChange={setDraft}
+                  onSend={submit}
+                  sending={interview.sending}
+                  placeholder={c.textPlaceholder}
+                  sendLabel={c.send}
+                  sendingLabel={m.sending}
+                  error={interview.sendFailed ? (failedAction === "send" ? m.sendFailed : e.save) : undefined}
+                  retryLabel={failedAction === "send" ? e.retry : undefined}
+                  onRetry={
+                    failedAction === "send"
+                      ? () => {
+                          const last = lastText.current;
+                          if (last) void sendAnswer(last.text, last.mode);
+                        }
+                      : undefined
+                  }
+                />
+              }
+              typeButton={talkShown ? <TypeInsteadButton label={c.switchText} pressed={typing} onClick={() => setTyping((v) => !v)} /> : undefined}
+              hints={
                 <>
-                  {" "}
-                  <button
-                    type="button"
-                    data-testid="turn-remove"
-                    data-turn-index={line.index}
-                    className="text-sm underline"
-                    onClick={() => void interview.removeTurn(line.index)}
-                  >
-                    {c.removeAnswer}
+                  {talkShown ? <span id="iv-noisy-hint">{c.hintNoisy}</span> : <span />}
+                  <button type="button" data-testid="skip-question" disabled={waiting} onClick={() => void sendAnswer("skip", "text")}>
+                    {c.skip}
                   </button>
                 </>
-              ) : null}
-            </li>
-          ))}
-        </ol>
-      </section>
-    </main>
+              }
+            />
+          </>
+        }
+        notes={
+          <>
+            <NotesList
+              notes={notes}
+              text={{ title: c.notesTitle, help: c.notesHelp, empty: m.notesEmpty, newLabel: m.notesNew, noted: m.notesNoted }}
+              chipRef={(id, el) => {
+                chipEls.current[id] = el;
+              }}
+              onHover={(note, on) => {
+                const ref = interview.signals.find((s) => s.id === note.id)?.evidence[0];
+                setHighlight(on && ref ? { turnIndex: ref.turnIndex, sentences: range(ref.sentenceFrom - 1, ref.sentenceTo - 1) } : null);
+              }}
+            />
+            <JobsLit count={jobCount || undefined} delta={delta} deltaLabel={deltaLabel} tiles={tiles} text={jobsText} locale={uiLang} />
+          </>
+        }
+      />
+    </div>
   );
+}
+
+function range(from: number, to: number): number[] {
+  return Array.from({ length: Math.max(0, to - from + 1) }, (_, i) => from + i);
 }

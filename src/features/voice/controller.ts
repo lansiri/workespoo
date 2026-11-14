@@ -40,6 +40,8 @@ export class VoiceController {
   private prepared: Promise<void> | null = null;
   /** Bumped whenever speech is cancelled or replaced, so stale completions are ignored. */
   private speechRun = 0;
+  /** Sentences handed to the adapter in the current speech run that have not finished yet. */
+  private speechPending = 0;
   /** Bumped per press, so a late start or stop from an older press is ignored. */
   private pressRun = 0;
   private starting: Promise<void> | null = null;
@@ -162,25 +164,40 @@ export class VoiceController {
     }
   }
 
-  /** Queue sentences for speech. Ignored while capturing; returns when speech ends or is cancelled. */
-  async speakSentences(texts: string[], lang: string): Promise<void> {
+  /**
+   * Queue sentences for speech. Ignored while capturing; returns when speech ends or is cancelled.
+   * By default the sentences replace whatever is still playing. With `append` they join the end of
+   * a reply that is already being spoken (the interviewer's reply arrives sentence by sentence, and
+   * each one must not cut off the one before); when nothing is playing they simply start.
+   * `cancelSpeech`, a talk press, or a call without `append` silences everything queued at once.
+   */
+  async speakSentences(texts: string[], lang: string, options: { append?: boolean } = {}): Promise<void> {
     const adapter = this.adapter;
     const clean = texts.map((t) => t.trim()).filter(Boolean);
     if (!adapter || clean.length === 0) return;
     const { status } = this.state;
     if (status === "listening" || status === "transcribing" || status === "unavailable") return;
 
-    const run = ++this.speechRun;
-    adapter.cancelSpeech(); // a new reply replaces whatever is still playing
+    const appending = options.append === true && status === "speaking" && this.speechPending > 0;
+    if (!appending) {
+      this.speechRun += 1;
+      this.speechPending = 0;
+      adapter.cancelSpeech(); // a new reply replaces whatever is still playing
+    }
+    const run = this.speechRun;
+    this.speechPending += clean.length;
     this.set({ status: "speaking", error: null });
 
     const results = await Promise.allSettled(clean.map((t) => adapter.speak(t, { lang })));
     if (run !== this.speechRun) return; // cancelled or replaced meanwhile
+    this.speechPending = Math.max(0, this.speechPending - clean.length);
     const failed = results.find((r) => r.status === "rejected");
     if (failed) {
+      this.speechRun += 1; // sentences still queued behind the failed one are stale now
+      this.speechPending = 0;
       adapter.cancelSpeech();
       this.set({ status: "error", error: toVoiceError((failed as PromiseRejectedResult).reason) });
-    } else {
+    } else if (this.speechPending === 0) {
       this.set({ status: "idle" });
     }
   }
@@ -188,6 +205,7 @@ export class VoiceController {
   cancelSpeech(): void {
     if (!this.adapter) return;
     this.speechRun += 1;
+    this.speechPending = 0;
     this.adapter.cancelSpeech();
     if (this.state.status === "speaking") this.set({ status: "idle" });
   }
