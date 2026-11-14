@@ -1,6 +1,6 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import type { ApplicationEvent, ApplicationTurn } from "@/contracts";
-import { initialJobState, readApplicationSse, reduceJob, currentRequirementId, type JobInterviewInitial, type JobInterviewState } from "./useJobInterview";
+import { fetchOwnApplication, initialJobState, readApplicationSse, reduceJob, currentRequirementId, type JobInterviewInitial, type JobInterviewState } from "./useJobInterview";
 
 const REQS = ["r1", "r2", "r3"];
 
@@ -202,5 +202,35 @@ describe("readApplicationSse", () => {
 
   it("throws when the response is not ok", async () => {
     await expect(readApplicationSse(new Response("no", { status: 500 }), () => {})).rejects.toThrow();
+  });
+});
+
+describe("delete that", () => {
+  it("synced replaces the removed answer and its noted marks with the server's picture", () => {
+    const t1 = turn({ index: 1, role: "participant", text: "I worked at the clinic." });
+    const start = initialJobState(initial({ turns: [t1] }));
+    const noted = { ...start, noted: { r1: [{ turnIndex: 1, sentenceFrom: 0, sentenceTo: 0 }] } };
+    const next = reduceJob(noted, {
+      type: "synced",
+      application: {
+        status: "interviewing",
+        turns: [{ ...t1, text: "", removedAt: "2026-11-14T10:01:00Z" }],
+        state: { cursor: 0, followUps: {}, progress: { r1: "asked", r2: "waiting", r3: "waiting" }, noted: {} },
+      },
+    });
+    expect(next.turns[0].text).toBe("");
+    expect(next.noted).toEqual({});
+    expect(next.progress.r1).toBe("asked");
+  });
+
+  it("fetchOwnApplication reads the own-application route", async () => {
+    const fetchMock = vi.fn(async () => new Response(JSON.stringify({ turns: [], state: {}, status: "interviewing" })));
+    vi.stubGlobal("fetch", fetchMock);
+    try {
+      await fetchOwnApplication("app-1");
+      expect(fetchMock).toHaveBeenCalledWith("/api/application/app-1", { cache: "no-store" });
+    } finally {
+      vi.unstubAllGlobals();
+    }
   });
 });

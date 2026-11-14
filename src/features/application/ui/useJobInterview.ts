@@ -9,6 +9,7 @@
 import { useCallback, useEffect, useReducer, useRef } from "react";
 import { ApplicationEvent, ApplicationTurn } from "@/contracts/application";
 import type { OwnApplication } from "../engine";
+import { preCheck } from "@/lib/commands";
 import type { EvidenceRef, InputMode, RequirementProgress } from "@/contracts";
 
 export type JobInterviewInitial = Pick<OwnApplication, "id" | "plan" | "state" | "turns" | "status">;
@@ -241,6 +242,13 @@ export async function readApplicationSse(response: Response, onEvent: (event: Ap
 
 const MAX_SEND_ATTEMPTS = 3;
 
+/** The server's own picture of the interview. Throws when it cannot be read. */
+export async function fetchOwnApplication(applicationId: string): Promise<Pick<OwnApplication, "turns" | "state" | "status">> {
+  const own = await fetch(`/api/application/${applicationId}`, { cache: "no-store" });
+  if (!own.ok) throw new Error(String(own.status));
+  return (await own.json()) as Pick<OwnApplication, "turns" | "state" | "status">;
+}
+
 export type UseJobInterviewOptions = {
   initial: JobInterviewInitial;
   /** Called once per sentence of the interviewer's next line as it arrives (for text-to-speech). */
@@ -303,6 +311,14 @@ export function useJobInterview({ initial, onSentence }: UseJobInterviewOptions)
           delivered = await consume(res, abort);
         } catch {
           if (abort.signal.aborted) break;
+        }
+      }
+      if (delivered && !abort.signal.aborted && preCheck(attempt.text) === "delete") {
+        // "Delete that": the server removed the previous answer, but no event says so. Take its picture.
+        try {
+          dispatch({ type: "synced", application: await fetchOwnApplication(applicationId) });
+        } catch {
+          /* the next reload shows the server's picture */
         }
       }
       if (turnAbort.current === abort) {
@@ -383,10 +399,7 @@ export function useJobInterview({ initial, onSentence }: UseJobInterviewOptions)
           body: JSON.stringify({ turnIndex }),
         });
         if (!res.ok) throw new Error(String(res.status));
-        const own = await fetch(`/api/application/${applicationId}`, { cache: "no-store" });
-        if (!own.ok) throw new Error(String(own.status));
-        const body = (await own.json()) as Pick<OwnApplication, "turns" | "state" | "status">;
-        dispatch({ type: "synced", application: body });
+        dispatch({ type: "synced", application: await fetchOwnApplication(applicationId) });
         return true;
       } catch {
         dispatch({ type: "actionFailed", value: true });
