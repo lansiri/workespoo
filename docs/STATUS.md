@@ -2,61 +2,59 @@
 
 Updated by the lead. Times are Helsinki time.
 
-## Now (Sat 14 Nov, 03:15)
+## Now (Sat 14 Nov, 05:30)
 
-**Every feature is built, reviewed twice and merged. The product runs end to end on the live site with the real model. The designed interface is being built on top of the working pages, and the demo world is being generated with the real model.**
+**The designed product is live and demo-ready. The three-minute demo runs as an automated test against the live site with the real model, and passes.**
 
 | Item | State |
 |---|---|
-| Live site https://workespoo.aichat.fi | serving main (commit af2baf1): working pages in the shared site shell with the language switcher, still unstyled inside; the front page is the coming-soon page until the designed front door replaces it |
-| Server | hardened, key-only SSH, firewall, TLS, push-to-deploy with rollback; image 1.9 GB; 2 cores, 4 GB |
-| Model | `kimi-k3-1-pro` on Verda for all three roles. **Limit: 40 requests a minute for the whole key.** The provider was unreachable for 24 minutes at 02:04 (its domain served a parking page); the gateway now treats an empty answer as a failure and moves on |
-| Voice | Works without any key: the server speaks with Piper in English, Finnish and Swedish (0.2 to 0.65 s per sentence, measured on the server). The browser listens (Chrome). An ElevenLabs key would only improve how it sounds |
-| Live database | 1,338 Espoo postings, 15,152 ESCO skills, 3,117 occupations, 24,682 occupation-to-skill links |
-| Tests on main | 1,341 passing |
+| Live site https://workespoo.aichat.fi | serving main: every screen in the designed interface, in English, Finnish and Swedish |
+| Demo world on the live site | 15 simulated people (each interviewed by the real interviewer), 8 demo companies built from real open Espoo postings, picks waiting for the organiser; the pitch company (03) is left for the live run. "Reset demo" on the organiser's overview restores it in a few seconds without a model |
+| Golden path | `e2e/golden-path.spec.ts`: reset, interview, card, picks, organiser decisions, company page, the Finnish question, ask to meet, mutual yes, audit trail. Passed on the live site in 1.1 minutes |
+| Demo script | `docs/specs/demo-script.md`, rewritten to what is built and rehearsed |
+| Server | hardened, key-only SSH, firewall, TLS, push-to-deploy with rollback; 2 cores, 4 GB |
+| Model | `kimi-k3-1-pro` on Verda for all three roles. **Limit: 40 requests a minute for the whole key, one provider** |
+| Voice | The server speaks with Piper in English, Finnish and Swedish (0.2 to 0.65 s per sentence). The browser listens (Chrome). No key needed |
+| Live database | 1,338 Espoo postings, 18,269 ESCO concepts, 24,682 occupation-to-skill links |
+| Tests on main | 1,396 passing |
+| GitHub mirror | up to date (private) |
 
-## Built and merged
+## What changed tonight after the screens were built
 
-| Part | What is in it |
-|---|---|
-| Model gateway | one request budget shared by web and worker, live calls first, a deadline on every call, retries, an audit row per call |
-| Interview | AI interviewer in three languages, a note per answer pointing at the person's sentence, CV as a source of questions only, removing an answer, consent and the 24-hour purge |
-| Signal Card | notes with the person's own words by reference, edit and approve, a rewrite before a company sees an edited phrase, ESCO labels chosen among candidates, export and delete |
-| Need Cards | drafted from real postings, requirements as must or nice, questions back to the employer (for example whether Finnish is needed from day one), refusal of origin requirements |
-| Matching and job feed | real open jobs related to the person's notes, with a reason per job and what was not mentioned |
-| Picks and introductions | daily drafts per company, one-by-one organiser approval with reasons for removal, publishing, ask to meet, accept, mutual reveal, audit log, exposure page, demo reset |
-| Synthetic world | 15 personas, a simulator that goes through the real interview, the seed, a snapshot for resetting, an evaluation report |
-| Design | "Clear signal" design system (`docs/design/DESIGN.md`), prototypes for every screen, a kit of 36 components (`/dev/design`) |
+| Found by | What it was | Now |
+|---|---|---|
+| The seed with the real model | A network cut left interviews made only of scripted questions, and the seed accepted them | The seed rejects an interview in which the model did not answer, and does it again |
+| The real cards | Nobody had a work language, so a language requirement's pool evidence read "0 of N" | Simulated people declare how they want to work on the card, as a person does |
+| The real cards | The jobs board in the interview stayed empty for nurses, teachers, cooks and customer service | Skill labels are chosen during the conversation; a nurse's first answer now lights 19 open jobs |
+| The real picks | Almost every drafted pick had no reasons (a similarity asked in the wrong direction) | Reasons follow the rule that made the person eligible |
+| The demo companies | Six of eight related to nobody in the pool | Re-picked from real postings the pool relates to; every company has people |
+| The golden path | After the last decision the review jumped to another company, hiding Publish | The review stays with the company |
+| The golden path | A live demo participant was tagged "Synthetic person" | Tagged "Live demo: a real person" |
+| The golden path | Picks on a published list showed "out of date" after the company edited its need | Only a suggestion still waiting can be out of date |
+| Looking at the repository | The snapshot would have held working private links | Links are made again at every restore; none is stored |
 
 ## Running now
 
 | Task | What it does |
 |---|---|
-| Interview room screen | the designed room: orb, transcript, notes appearing, jobs lighting up; also fixes speech cutting itself off |
-| Signal Card and My matches screens | the designed card review and job feed |
-| Organiser screens | review queue, audit log, exposure, settings |
-| Company screens | the daily picks page and the Need Card editor |
-| Site pages | the front door (keeps the joke), how it works, consent, not-found |
-| Demo world | 15 simulated interviews with the real model in the lab database, then a snapshot that resets the live demo without a model |
-
-Each screen group is one builder, then three reviewers who open the screens in a browser (looks, product rules and accessibility, behaviour), a fixer and a re-check.
+| Evaluation | 20 simulated interviews with the real model against the interview rubric; the report goes to `evals/` |
 
 ## Next
 
-1. Merge the screens, deploy, restore the demo world on the server.
-2. Golden-path test on the live site, the three-minute demo script updated to what is built, a backup video.
-3. Evaluation report from 20 simulated interviews; pitch notes; demo freeze.
+1. Evaluation report and pitch notes (`docs/PITCH.md`).
+2. A silent backup video of the golden path.
+3. Demo freeze: a tag on the commit that passed, and no deploy after it without a new golden-path run.
 
 ## Waiting on the owner
 
-1. **Model capacity.** 40 requests a minute is enough for one or two people talking at once, not for a room of judges trying it together, and tonight the only provider was down for 24 minutes. A second provider (an NVIDIA key, or another OpenAI-compatible endpoint) or a higher limit would remove both risks.
-2. **GitHub mirror.** The connection here uploads at about 0.9 Mbit/s, and pushing the 44 MB of design screenshots to GitHub starved everything else twice. The mirror is 61 commits behind; the server holds everything. It will be pushed in small steps when the machine is quiet.
-3. Try voice at `/dev/voice` in Chrome (hold to talk). Only a person can judge how it sounds.
-4. Is the deadline Sunday 10:00, and what does the submission need (video, repository link, slides)?
+1. **Model capacity and a second provider.** One provider with 40 requests a minute carries everything. It is enough for the demo and for one or two people at once, not for a room trying it together, and the provider was unreachable for 24 minutes last night. An NVIDIA key or any other OpenAI-compatible endpoint can be added as a fallback with two lines of configuration.
+2. **Try the voice** at `/interview` in Chrome with "Use my voice" ticked. Only a person can judge how it sounds and whether the hall allows it. Typing always works.
+3. **Deadline and submission.** Is it Sunday 10:00, and what does the submission need (video, repository link, slides)? The repository is private; say if it should be public.
+4. **Finnish and Swedish wording** were written by the builders; the Swedish in particular wants a native reader before the event.
 5. After the event: rotate the Verda key, since it was pasted into the chat.
 
 ## Gates
 
 - [x] Gate 1: live URL over HTTPS, deploy and rollback proven, streamed model turn from the server, 1,000+ Espoo postings and ESCO in the database, voice round trip from the server.
-- [x] Gate 2 (path): the full path works end to end with the real model on unstyled pages. Open: the evaluation report from 20 simulated interviews.
-- [ ] Gate 3: styled product, golden-path test green on the live site, backup video, demo freeze
+- [x] Gate 2: the full path works end to end with the real model. Open: the evaluation report (running).
+- [x] Gate 3 (product): styled product, golden-path test green on the live site. Open: backup video, demo freeze.
