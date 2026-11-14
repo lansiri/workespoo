@@ -24,7 +24,7 @@ The organiser decides every suggestion, one person at a time. There is no approv
 
 ## Try it
 
-1. Open https://workespoo.aichat.fi and press **Start the conversation**. Type, or speak in Chrome. English, Finnish and Swedish work.
+1. Open https://workespoo.aichat.fi and press **Start the conversation**. Type, or hold the button and speak; speaking works in current browsers on phones and computers. English, Finnish and Swedish work.
 2. Check your notes on the card, approve it, and see open jobs in Espoo that relate to it.
 3. The organiser's and the company's sides need the organiser passcode; the three-minute walk through all of it is in [`docs/specs/demo-script.md`](docs/specs/demo-script.md).
 
@@ -46,14 +46,14 @@ Whoever starts an interview on the live site is a live demo session: it needs co
 4. A person approves their own card before anything uses it, and can download or delete everything.
 5. A human approves every pick individually. Must-have requirements never filter anyone out of the pool.
 6. Job ingestion drops personal data, including contact details inside description text.
-7. No voice, tone or emotion analysis. Audio is never stored.
+7. No voice, tone or emotion analysis. Audio is never stored: speech is turned into text on our own server and dropped, and no outside speech service hears it.
 8. The app never calls a closed model API: every model call goes through one gateway to an OpenAI-compatible endpoint (today the open-weight Kimi K3.1 served by Verda from Finland).
 
 The public page [`/how-it-works`](https://workespoo.aichat.fi/how-it-works) says the same in plain words, in three languages.
 
 ## How it is built
 
-One TypeScript package, four containers on one small server (2 cores, 4 GB).
+One TypeScript package and a speech model, five containers on one small server (2 cores, 4 GB).
 
 | Piece | Choice |
 |---|---|
@@ -61,7 +61,7 @@ One TypeScript package, four containers on one small server (2 cores, 4 GB).
 | Worker | The same code as a second process: ingestion, Need Card drafting, matching, daily drafts, the 24-hour purge |
 | Database | Postgres 17 with `pg_trgm`; Drizzle for schema and migrations; PGlite for tests |
 | Model gateway | `src/lib/llm`: three roles (live, analyst, bulk) as priorities under one shared rate limit, a deadline on every call, JSON validated with Zod, an audit row per call |
-| Voice | The browser listens (push to talk); the server speaks with Piper in English, Finnish and Swedish. No key needed |
+| Voice | Hold to talk: the browser sends the audio to our own server, where an open speech model (Parakeet TDT 0.6b v3 on sherpa-onnx, in its own container with no route to the internet) turns it into text and drops it. The server speaks with Piper. English, Finnish and Swedish, no key and no outside speech service ([measurements](docs/research/voice-stt.md)) |
 | Proxy and deploy | Caddy with automatic TLS; `git push` to the server builds, migrates, swaps and rolls back on a failed health check |
 
 ```
@@ -79,8 +79,9 @@ docs/            specs, decisions, the design system, the demo script, pitch not
 
 | Command | What it does |
 |---|---|
-| `npm run check` | type check, lint and about 1,400 unit tests (Vitest, in-process Postgres) |
+| `npm run check` | type check, lint and about 1,500 unit tests (Vitest, in-process Postgres) |
 | `npx playwright test golden-path` | the whole demo against a real deployment with the real model (see the demo script for the environment it needs) |
+| `npx playwright test voice` | spoken answers in English, Finnish and Swedish through a browser whose microphone is a recording, by mouse and by finger |
 | `npm run sim -- --n 15 --db` | simulated interviews against the interview rubric; reports are in [`evals/`](evals/) |
 | `npm run seed` | builds the demo world; `--snapshot` saves it, `--reset` restores it without a model |
 
@@ -99,8 +100,9 @@ docs/            specs, decisions, the design system, the demo script, pitch not
 - One model provider with 40 requests a minute carries everything. It is enough for a demo and a few people at once.
 - Recruitment is a high-risk use under the EU AI Act. The design assumes those obligations apply; no conformity assessment has been done.
 - The Finnish and Swedish wording was written by the builders and wants a native reader.
+- Speech recognition gets about one word in five wrong on read Finnish and Swedish sentences (one in fifteen in English), mostly names and compounds. The person sees the text and checks every note; there is no step to correct a spoken answer before it is sent.
 - Not built: the event agenda, email delivery, an organiser adding a person by hand, and a test that swaps names and languages to check that picks do not change.
 
 ## Sources and credits
 
-Job postings: Lähde: Työmarkkinatorin asiakastietojärjestelmä (Job Market Finland). Skills taxonomy: ESCO, European Commission. Speech: Piper with the voices en_GB-cori, fi_FI-harri and sv_SE-nst.
+Job postings: Lähde: Työmarkkinatorin asiakastietojärjestelmä (Job Market Finland). Skills taxonomy: ESCO, European Commission. Speech recognition: Parakeet TDT 0.6b v3 by NVIDIA (CC BY 4.0), run with sherpa-onnx; measured on FLEURS recordings (CC BY 4.0). The interviewer's voice: Piper with the voices en_GB-cori, fi_FI-harri and sv_SE-nst.

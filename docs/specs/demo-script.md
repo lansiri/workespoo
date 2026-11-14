@@ -9,7 +9,7 @@ The pitch company is **Demo company 03**: a real open Espoo posting for a techni
 1. Open `/organiser`, sign in with the passcode, press **Reset demo**, then **Yes, reset the demo**. It restores 15 simulated people and 8 demo companies from the snapshot in a few seconds, without calling a model, and makes new private links for the companies.
 2. Open **Today's review**. Seven companies are listed with suggestions waiting; Demo company 03 is not there yet. That is intended: its list is drafted live in step 4.
 3. Tabs, left to right:
-   - **T1 Person**: the front page `/`, in English. In Chrome, with the microphone allowed, if you will speak; typing always works.
+   - **T1 Person**: the front page `/`, in English. Any current browser, a phone included, with the microphone allowed if you will speak; typing always works.
    - **T2 Organiser**: `/organiser/review`.
    - **T3 Organiser audit**: `/organiser/audit`.
    The company's page is opened from T2 in step 6, with the link that publishing produces.
@@ -46,6 +46,8 @@ A setting worth knowing: the product does not suggest one person to more than th
 | What happens | What to do |
 |---|---|
 | The microphone or the hall is hopeless | Type the same answers. Voice changes nothing downstream, and nothing records whether a person spoke or typed. |
+| A spoken answer comes out wrong | Names and rare words are sometimes misheard. Remove that answer in the conversation on the left and say or type it again. |
+| Holding the button does nothing the first time | The browser asked for the microphone and the press was lost to that question. Allow it and hold again. |
 | The interviewer asks a plain scripted question | The model did not answer inside six seconds and the interview went on without it. Keep answering; the notes still come. |
 | Notes or the card take long | The card takes 15 to 30 seconds after the last answer. Use the wait: "the person will now check every note before anyone sees it". "Check my notes" appears next to "Preparing your notes…". |
 | Step 4 shows reasons in plainer words | The model was slow and code wrote the reasons ("The card describes …, which relates to …"). Carry on. |

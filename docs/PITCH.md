@@ -38,8 +38,8 @@ The interviewer is the front door: it asks about real work, follows up on what w
 
 **Responsible and feasible (20%)**
 - The rules are in the code, not on a slide: a note without a sentence behind it is dropped; a company payload cannot carry a name, a quote, the interview language or whether the person spoke or typed; a list cannot be published while one person is undecided; there is no approve-all.
-- Open-weight model (Kimi K3.1) served by Verda from Finland. No audio is stored and nothing analyses voice or emotion.
-- One small server (2 cores, 4 GB) runs the whole thing: web, worker, database and the speech engine.
+- Open-weight model (Kimi K3.1) served by Verda from Finland. Speech is turned into text on our own server by an open model, so no outside speech service hears a person; no audio is stored and nothing analyses voice or emotion.
+- One small server (2 cores, 4 GB) runs the whole thing: web, worker, database, and both speech engines (listening and speaking).
 
 ## The demo in one breath
 
@@ -64,8 +64,10 @@ A person talks for a minute, approves their card, and sees real jobs. The organi
 | Need Card from a posting | about 18 s | 47 drafts in the same run |
 | Model calls per full interview | about 15, plus one per answer for skill labels | usage report of the seed |
 | The whole demo as an automated test | 1.1 minutes on the live site | `e2e/golden-path.spec.ts`, 14 November |
-| Automated tests | 1,396 passing | `npm run check` |
-| Speech on the server | 0.2 to 0.65 s per sentence, three languages | measured on the server |
+| Automated tests | 1,514 passing | `npm run check` |
+| The interviewer's voice, made on the server | 0.2 to 0.65 s per sentence, three languages | measured on the server |
+| Speech to text on the server | 6 s of speech in 0.7 s, 18 s in 1.8 s; words appear while the person is still talking | 25 recordings per language through the running service, 14 November (`docs/research/voice-stt.md`) |
+| Words heard wrong in read sentences | about 22% in Finnish and Swedish, 7% in English, mostly names and compounds | the same recordings (FLEURS) |
 
 ## What the evaluation shows
 
@@ -94,6 +96,8 @@ Twenty simulated interviews with the real model (15 in each persona's own mode a
 **Is it legal under the AI Act?** Recruitment is a high-risk use. We designed as if the obligations apply now: human oversight on every suggestion, logging, transparency to the person, no emotion recognition. We have not done a conformity assessment, and Espoo's lawyers would need to confirm the timeline.
 
 **Could Espoo run this?** The job data comes from the website's own endpoints today; production needs the official Työmarkkinatori API, which Espoo as an employment authority can onboard to. The model can be any OpenAI-compatible endpoint, so it can move to the city's own provider. Before real people: a data protection impact assessment, a native check of the Finnish and Swedish wording, and a second model provider.
+
+**Where does my voice go?** To this server and nowhere else. The browser sends the audio a few seconds at a time; a speech model in its own container, with no route to the internet, turns it into text; the audio is dropped. Nothing about the voice is analysed, and neither audio nor whether someone spoke or typed is kept.
 
 **What breaks under load?** One model key allows 40 requests a minute for everything. That carries the demo and a couple of people at once, not a hall of judges together. The fix is configuration (a higher limit or a second provider), not code.
 
