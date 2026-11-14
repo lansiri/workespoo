@@ -81,7 +81,8 @@ async function failedInterviewCalls(db: Db, run: SimulatedRun): Promise<number> 
   const rows = await db
     .select({ id: llmCall.id })
     .from(llmCall)
-    .where(and(gte(llmCall.at, run.timing.startedAt), lte(llmCall.at, run.timing.endedAt), like(llmCall.purpose, "interview.%"), eq(llmCall.ok, false)));
+    // The interviewer's reply and the note-taking only: the skill-label call after them is extra and may fail quietly.
+    .where(and(gte(llmCall.at, run.timing.startedAt), lte(llmCall.at, run.timing.endedAt), inArray(llmCall.purpose, ["interview.live", "interview.extract"]), eq(llmCall.ok, false)));
   return rows.length;
 }
 
