@@ -5,6 +5,7 @@
 export { synthesiseCard } from "./synthesis";
 export {
   cardForPerson,
+  cardPageView,
   cardForCompany,
   cardForOrganiser,
   cardForCompanyRevealed,

@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { SignalId, type EscoRef, type Signal, type SignalCard } from "@/contracts";
 import type { Db } from "@/db/client";
-import { signal as signalTable, talent } from "@/db/schema";
+import { talent } from "@/db/schema";
 import { audit } from "@/lib/audit";
-import { escoTopMatch } from "@/lib/esco";
 import { chatJson } from "@/lib/llm";
 import { findBannedEvaluative, findProtectedCard, findSpeechCue, stripQualityWords } from "@/lib/lexicon";
 import { defineJob, enqueue, type JobDefinition } from "@/lib/queue";
 import { fallbackRendering, MAX_RENDERING_WORDS, refreshAggregates, textProblem } from "./checks";
+import { pickEscoLabels } from "./esco-pick";
 import { RENDERING_RULES } from "./synthesis";
 import { latestInterview, loadCard, loadTranscript, quotesFor, saveCard } from "./store";
 
@@ -143,12 +143,10 @@ export async function renderSignal(db: Db, payload: RenderPayload): Promise<"app
   else if (textProblem(item.text, sources, MAX_RENDERING_WORDS) || NOT_ENGLISH.test(item.text)) return giveUp();
   else text = item.text;
 
-  let esco: EscoRef | null = null;
-  try {
-    esco = await escoTopMatch(db, phrase);
-  } catch {
-    esco = null;
-  }
+  // Prompt C for the rewritten phrase. An unchanged phrase keeps the label it had.
+  const picked = (await pickEscoLabels(db, [{ key: signalId, phrase, kind: start.target.kind }])).get(signalId) ?? null;
+  const labelFor = (previous: Signal): EscoRef | null =>
+    picked ?? (previous.phrase.toLowerCase() === phrase.toLowerCase() ? previous.esco : null);
 
   return db.transaction(async (tx) => {
     await tx.select({ id: talent.id }).from(talent).where(eq(talent.id, talentId)).for("update");
@@ -156,24 +154,40 @@ export async function renderSignal(db: Db, payload: RenderPayload): Promise<"app
     const targets = await matching(tx, own);
     if (targets.length === 0) return "kept";
 
-    for (const { card: now, target } of targets) {
-      const signals: Signal[] = now.signals.map((s) => (s.id === signalId ? { ...s, phrase, esco: esco ?? s.esco } : s));
+    const apply = (now: SignalCard): SignalCard => {
+      const signals: Signal[] = now.signals.map((s) => (s.id === signalId ? { ...s, phrase, esco: labelFor(s) } : s));
       const items = [...now.companyView.items.filter((i) => i.signalId !== signalId), { signalId, text, stale: false }];
-      const card: SignalCard = refreshAggregates({ ...now, signals, companyView: { ...now.companyView, items } });
-      await saveCard(tx, talentId, card);
-      if (card.status === "approved") {
-        await tx
-          .update(signalTable)
-          .set({ phrase, escoUri: esco?.uri ?? target.esco?.uri ?? null, escoLabelEn: (esco ?? target.esco)?.labelEn ?? null, escoLabelFi: (esco ?? target.esco)?.labelFi ?? null })
-          .where(and(eq(signalTable.talentId, talentId), eq(signalTable.id, signalId)));
-      }
+      return refreshAggregates({ ...now, signals, companyView: { ...now.companyView, items } });
+    };
+
+    const draft = targets.find((x) => x.card.status === "draft");
+    const approved = targets.find((x) => x.card.status === "approved");
+    let version: number;
+    if (draft) {
+      await saveCard(tx, talentId, apply(draft.card));
+      version = draft.card.version;
+    } else if (approved && !(await loadCard(tx, talentId, "draft"))) {
+      // The person approved while the model was working. What companies read is what the person
+      // approved: the approved card and the signal rows stay as they are, and the rewrite waits in
+      // a new draft (copied from the approved card) for the person to look at and approve.
+      const copy: SignalCard = {
+        ...approved.card,
+        version: approved.card.version + 1,
+        status: "draft",
+        approvedAt: null,
+        signals: approved.card.signals.map((s) => ({ ...s, status: "proposed" as const })),
+      };
+      await saveCard(tx, talentId, apply(copy));
+      version = copy.version;
+    } else {
+      return "kept";
     }
     await audit(tx, {
       actor: "agent:analyst",
       action: "card.signal_edited",
       subjectType: "signal_card",
       subjectId: talentId,
-      detail: { signalId, version: Math.max(...targets.map((x) => x.card.version)), rendered: true },
+      detail: { signalId, version, rendered: true, ...(draft ? {} : { newDraft: true }) },
     });
     return "applied";
   });

@@ -30,6 +30,7 @@ export const cardMessages = {
     deleteFailed: "We couldn't delete your data. Please try again.",
     seeMatches: "See jobs that fit your card",
     draftNotice: "You have changes that aren't approved yet.",
+    reworded: "An edit has been reworded for companies. Please check the text below before you approve. Companies still see your approved card.",
     noEscoShort: "No ESCO match",
   },
   fi: {
@@ -60,6 +61,7 @@ export const cardMessages = {
     deleteFailed: "Tietojen poistaminen ei onnistunut. Yritä uudelleen.",
     seeMatches: "Katso korttiisi sopivat työpaikat",
     draftNotice: "Sinulla on muutoksia, joita ei ole vielä hyväksytty.",
+    reworded: "Muokkaus on kirjoitettu yrityksille uudelleen. Tarkista teksti alla ennen hyväksymistä. Yritykset näkevät edelleen hyväksymäsi kortin.",
     noEscoShort: "Ei ESCO-vastinetta",
   },
   sv: {
@@ -90,6 +92,7 @@ export const cardMessages = {
     deleteFailed: "Vi kunde inte radera dina uppgifter. Försök igen.",
     seeMatches: "Se jobb som passar ditt kort",
     draftNotice: "Du har ändringar som inte är godkända än.",
+    reworded: "En ändring har skrivits om för företag. Kontrollera texten nedan innan du godkänner. Företag ser fortfarande ditt godkända kort.",
     noEscoShort: "Ingen ESCO-motsvarighet",
   },
 } satisfies Messages<{
@@ -120,5 +123,6 @@ export const cardMessages = {
   notShownYet: string;
   rewriting: string;
   draftNotice: string;
+  reworded: string;
   noEscoShort: string;
 }>;

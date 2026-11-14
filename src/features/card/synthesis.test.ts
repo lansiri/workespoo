@@ -6,6 +6,9 @@ import { listAudit } from "@/lib/audit";
 import type { LlmOptions } from "@/lib/llm";
 import { resetLlmState, setLlmFake } from "@/lib/llm/testing";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
+import { findProtectedCard } from "@/lib/lexicon";
+import { approveCard } from "./approval";
+import { cardForCompany, cardForOrganiser } from "./projections";
 import { loadCard } from "./store";
 import { SENTENCES, seedEsco, seedInterview } from "./test-helpers";
 import { RENDERING_RULES, synthesiseCard } from "./synthesis";
@@ -44,12 +47,19 @@ const live = [
   { id: "s4", phrase: "Filing supplier claims", hasExample: true, evidence: [{ turnIndex: 3, sentenceFrom: 1, sentenceTo: 2 }] },
 ];
 
+async function expectNothingProtectedForCompanies() {
+  await approveCard(t.db, TALENT);
+  const company = JSON.stringify(await cardForCompany(t.db, TALENT));
+  const organiser = JSON.stringify(await cardForOrganiser(t.db, TALENT));
+  for (const text of [company, organiser]) expect(findProtectedCard(text)).toEqual([]);
+}
+
 describe("synthesiseCard", () => {
   it("stores a draft with ids, ESCO grounding, company view and an audit event", async () => {
     await seedInterview(t.db, { liveSignals: live });
     let seen: LlmOptions | undefined;
     setLlmFake((o) => {
-      seen = o;
+      if (o.purpose === "card.synthesis") seen = o;
       return good();
     });
     const r = await synthesiseCard(t.db, INTERVIEW);
@@ -119,11 +129,83 @@ describe("synthesiseCard", () => {
     setLlmFake(() => out);
     await synthesiseCard(t.db, INTERVIEW);
     const card = (await loadCard(t.db, TALENT, "draft"))!;
-    expect(JSON.stringify(card)).not.toMatch(/Nigeria|Lagos|bookkeeping/i);
+    expect(JSON.stringify(card)).not.toMatch(/Nigeria|Lagos/i);
+    // "Bookkeeping" is clean; only the model's sentence named a country, so the signal stays with a code-built sentence.
+    expect(card.signals.map((s) => s.phrase)).toContain("Bookkeeping");
+    expect(card.companyView.items.find((i) => i.text.includes("bookkeeping"))?.text).toBe("They list bookkeeping as a skill.");
     const events = await listAudit(t.db, { action: "card.protected_dropped" });
-    expect(events).toHaveLength(2);
+    expect(events).toHaveLength(1);
     expect(JSON.stringify(events.map((e) => e.detail))).not.toMatch(/Nigeria|Lagos/i);
     expect(events[0].detail).toEqual({ where: "signal", interviewId: INTERVIEW });
+  });
+
+  it("keeps the person's evidence when only the model's rendering hits the word list, with the code-built sentence", async () => {
+    await seedInterview(t.db);
+    const out = good();
+    out.signals[0].rendering = "They diagnosed why the handheld scanners lost their connection.";
+    setLlmFake(() => out);
+    await synthesiseCard(t.db, INTERVIEW);
+    const card = (await loadCard(t.db, TALENT, "draft"))!;
+    const first = card.signals[0];
+    expect(first.phrase).toBe("Receiving and checking goods");
+    expect(first.evidence).toEqual([
+      { turnIndex: 1, sentenceFrom: 1, sentenceTo: 1 },
+      { turnIndex: 3, sentenceFrom: 2, sentenceTo: 2 },
+    ]);
+    expect(card.companyView.items.find((i) => i.signalId === first.id)?.text).toBe("They list receiving and checking goods as a skill.");
+    expect(await listAudit(t.db, { action: "card.protected_dropped" })).toHaveLength(0);
+    const [event] = await listAudit(t.db, { action: "card.synthesised" });
+    expect(event.detail).toMatchObject({ signals: 4, droppedProtected: 0, salvaged: 1 });
+    await expectNothingProtectedForCompanies();
+  });
+
+  it("a phrase that hits the word list takes the clean phrase of its source signal; with none it is dropped", async () => {
+    await seedInterview(t.db, {
+      liveSignals: [
+        { id: "s1", phrase: "Fixing scanner connections", hasExample: true },
+        { id: "s2", phrase: "Fixing", hasExample: true },
+        { id: "s3", phrase: "Diagnosed network faults", hasExample: true },
+      ],
+    });
+    const out = good();
+    out.signals = [
+      { phrase: "Diagnosed scanner faults", kind: "skill", evidence: ["T1.S2"], from: ["s1", "s2"], rendering: "They found the cause of scanner faults." },
+      { phrase: "Diagnosed network faults", kind: "skill", evidence: ["T3.S2"], from: ["s3"], rendering: "They found network faults." },
+      { phrase: "Diagnosed pallet problems", kind: "skill", evidence: ["T3.S1"], from: [], rendering: "They found pallet problems." },
+    ];
+    setLlmFake(() => out);
+    await synthesiseCard(t.db, INTERVIEW);
+    const card = (await loadCard(t.db, TALENT, "draft"))!;
+    expect(card.signals.map((s) => [s.id, s.phrase])).toEqual([["s4", "Fixing scanner connections"]]);
+    expect(card.signals[0].evidence).toEqual([{ turnIndex: 1, sentenceFrom: 2, sentenceTo: 2 }]);
+    expect(card.companyView.items[0].text).toBe("They list fixing scanner connections as a skill.");
+    expect(await listAudit(t.db, { action: "card.protected_dropped" })).toHaveLength(2);
+    const [event] = await listAudit(t.db, { action: "card.synthesised" });
+    expect(event.detail).toMatchObject({ signals: 1, droppedProtected: 2, salvaged: 1 });
+    await expectNothingProtectedForCompanies();
+  });
+
+  it("asks prompt C once for the whole card and maps the choice; choice 0 leaves a signal without a label", async () => {
+    await seedInterview(t.db, { liveSignals: live });
+    let picks = 0;
+    setLlmFake((o) => {
+      if (o.purpose !== "card.esco_pick") return good();
+      picks++;
+      const text = o.messages[1].content;
+      const blocks = text.split("\n\n");
+      const choose = (phrase: string, label: string) => {
+        const block = blocks.find((b) => b.includes(`phrase: ${phrase} `))!;
+        const i = Number(/^i=(\d+)/.exec(block)![1]);
+        const lines = block.split("\n").slice(1);
+        return { i, choice: lines.findIndex((l) => l.endsWith(label)) + 1 };
+      };
+      return { picks: [choose("Filing supplier claims", "manage supplier claims"), { i: 99, choice: 1 }] };
+    });
+    await synthesiseCard(t.db, INTERVIEW);
+    expect(picks).toBe(1);
+    const card = (await loadCard(t.db, TALENT, "draft"))!;
+    expect(card.signals.find((s) => s.phrase === "Filing supplier claims")?.esco?.labelEn).toBe("manage supplier claims");
+    expect(card.signals.find((s) => s.phrase === "SAP")?.esco ?? null).toBeNull(); // no pick for SAP: no label
   });
 
   it("falls back to code-built headline and summary when they name a country", async () => {
@@ -216,7 +298,7 @@ describe("synthesiseCard", () => {
     await seedInterview(t.db);
     let seen: LlmOptions | undefined;
     setLlmFake((o) => {
-      seen = o;
+      if (o.purpose === "card.synthesis") seen = o;
       return good();
     });
     await synthesiseCard(t.db, INTERVIEW);
@@ -255,8 +337,8 @@ describe("synthesiseCard", () => {
   it("falls back to the live signals after two invalid outputs and audits it", async () => {
     await seedInterview(t.db, { liveSignals: live });
     let calls = 0;
-    setLlmFake(() => {
-      calls++;
+    setLlmFake((o) => {
+      if (o.purpose === "card.synthesis") calls++;
       return "not json at all";
     });
     const r = await synthesiseCard(t.db, INTERVIEW);

@@ -1,12 +1,12 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { eq } from "drizzle-orm";
-import { auditLog, jobQueue, signal as signalTable, talent } from "@/db/schema";
+import { auditLog, escoConcept, jobQueue, signal as signalTable, talent } from "@/db/schema";
 import type { LlmOptions } from "@/lib/llm";
 import { resetLlmState, setLlmFake } from "@/lib/llm/testing";
 import { runReadyJobs } from "@/lib/queue";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
 import { jobs } from "./jobs";
-import { cardForCompany, cardForOrganiser, cardForPerson } from "./projections";
+import { cardForCompany, cardForOrganiser, cardForPerson, cardPageView } from "./projections";
 import { RENDER_SYSTEM_PROMPT, renderSignal } from "./render";
 import { editCard } from "./review";
 import { approveCard } from "./approval";
@@ -49,8 +49,8 @@ describe("renderSignal (prompt B)", () => {
     await edit();
     let seen: LlmOptions | undefined;
     setLlmFake((o) => {
-      seen = o;
-      return good;
+      if (o.purpose === "card.render") seen = o;
+      return o.purpose === "card.esco_pick" ? { picks: [] } : good;
     });
     expect(await renderSignal(t.db, { talentId: TALENT, signalId: "s2", cardVersion: 1 })).toBe("applied");
     expect(seen).toMatchObject({ role: "analyst", purpose: "card.render", deadlineMs: 15_000 });
@@ -127,16 +127,86 @@ describe("renderSignal (prompt B)", () => {
     expect((await cardForCompany(t.db, TALENT))!.signals.map((s) => s.id)).toEqual(["s1", "s2"]); // approved v1 unchanged
   });
 
-  it("approval never waits: a pending rewrite is approved with the previous text and applies later to the approved card", async () => {
+  it("approval never waits, and a rewrite that lands after approval never changes the approved card: it goes into a new draft", async () => {
     await edit();
     await approveCard(t.db, TALENT);
-    expect(JSON.stringify(await cardForCompany(t.db, TALENT))).not.toContain("Toimittaja");
-    setLlmFake(() => good);
+    const companyBefore = JSON.stringify(await cardForCompany(t.db, TALENT));
+    const organiserBefore = JSON.stringify(await cardForOrganiser(t.db, TALENT));
+    const rowsBefore = JSON.stringify(await t.db.select().from(signalTable).orderBy(signalTable.id));
+    expect(companyBefore).not.toContain("Toimittaja");
+    expect(await loadCard(t.db, TALENT, "draft")).toBeNull();
+    setLlmFake((o) => (o.purpose === "card.esco_pick" ? { picks: [{ i: 0, choice: 1 }] } : good));
     expect(await renderSignal(t.db, { talentId: TALENT, signalId: "s2", cardVersion: 1 })).toBe("applied");
+    // what companies and the organiser read, and the signal rows, are exactly as approved
+    expect(JSON.stringify(await cardForCompany(t.db, TALENT))).toBe(companyBefore);
+    expect(JSON.stringify(await cardForOrganiser(t.db, TALENT))).toBe(organiserBefore);
+    expect(JSON.stringify(await t.db.select().from(signalTable).orderBy(signalTable.id))).toBe(rowsBefore);
+    // the rewrite waits in the next version, as a draft
+    const draft = (await loadCard(t.db, TALENT, "draft"))!;
+    expect(draft).toMatchObject({ version: 2, status: "draft", approvedAt: null });
+    expect(draft.signals.find((s) => s.id === "s2")).toMatchObject({ phrase: "Handling supplier claims", phraseOwn: OWN, status: "proposed" });
+    expect(draft.companyView.items.find((i) => i.signalId === "s2")).toEqual({ signalId: "s2", text: good.items[0].text, stale: false });
+    const page = (await cardPageView(t.db, TALENT))!;
+    expect(page).toMatchObject({ status: "draft", hasApprovedVersion: true, reworded: ["s2"] });
+    // approving the draft publishes it
+    await approveCard(t.db, TALENT);
     const company = (await cardForCompany(t.db, TALENT))!;
     expect(company.signals.find((s) => s.id === "s2")).toMatchObject({ phrase: "Handling supplier claims", rendering: good.items[0].text });
     expect((await t.db.select().from(signalTable).where(eq(signalTable.id, "s2")))[0].phrase).toBe("Handling supplier claims");
     expect(JSON.stringify(company)).not.toContain("Toimittaja");
+    expect((await cardPageView(t.db, TALENT))!.reworded).toEqual([]);
+  });
+
+  it("a draft of new agent signals from a later interview is not shown as reworded", async () => {
+    await approveCard(t.db, TALENT);
+    const approved = (await loadCard(t.db, TALENT, "approved"))!;
+    await saveCard(t.db, TALENT, {
+      ...approved,
+      version: approved.version + 1,
+      status: "draft",
+      approvedAt: null,
+      signals: [...approved.signals, signal({ id: "s4", phrase: "Customer service" }), signal({ id: "s5", phrase: "Cash handling" })],
+      companyView: {
+        ...approved.companyView,
+        items: [...approved.companyView.items, { signalId: "s4", text: "They served customers.", stale: false }, { signalId: "s5", text: "They handled cash.", stale: false }],
+      },
+    });
+    expect((await cardPageView(t.db, TALENT))!.reworded).toEqual([]);
+  });
+
+  it("a signal with no previous text stays out of the company view until the person approves the draft that holds its rewrite", async () => {
+    const d0 = (await loadCard(t.db, TALENT, "draft"))!;
+    await saveCard(t.db, TALENT, { ...d0, companyView: { ...d0.companyView, items: d0.companyView.items.filter((i) => i.signalId !== "s3") } });
+    await edit("s3", "Hitsaus");
+    await approveCard(t.db, TALENT);
+    setLlmFake(() => ({ items: [{ i: 0, phrase: "Welding", text: "They welded steel parts for a manufacturer." }] }));
+    expect(await renderSignal(t.db, { talentId: TALENT, signalId: "s3", cardVersion: 1 })).toBe("applied");
+    expect((await cardForCompany(t.db, TALENT))!.signals.map((s) => s.id)).toEqual(["s1", "s2"]);
+    expect((await cardForOrganiser(t.db, TALENT))!.signals.map((s) => s.id)).toEqual(["s1", "s2"]);
+    expect((await cardPageView(t.db, TALENT))!.reworded).toEqual(["s3"]);
+    await approveCard(t.db, TALENT);
+    expect((await cardForCompany(t.db, TALENT))!.signals.map((s) => s.id)).toEqual(["s1", "s2", "s3"]);
+  });
+
+  it("the prompt C pick for a rewritten phrase is one analyst call with candidates only; choice 0 gives no label, and 'React' never gets 'react to mining emergencies'", async () => {
+    await t.db.insert(escoConcept).values({ uri: "http://data.europa.eu/esco/skill/test-react", type: "skill", labelEn: "react to mining emergencies", labelFi: null });
+    await edit("s2", "Reactin käyttö");
+    let picks = 0;
+    let seen: LlmOptions | undefined;
+    setLlmFake((o) => {
+      if (o.purpose === "card.esco_pick") {
+        picks++;
+        seen = o;
+        return { picks: [{ i: 0, choice: 0 }] };
+      }
+      return { items: [{ i: 0, phrase: "React", text: "They built web pages with React." }] };
+    });
+    expect(await renderSignal(t.db, { talentId: TALENT, signalId: "s2", cardVersion: 1 })).toBe("applied");
+    expect(picks).toBe(1);
+    expect(seen).toMatchObject({ role: "analyst", temperature: 0, maxTokens: 400, deadlineMs: 15_000 });
+    expect(seen?.messages[1].content).toContain("1. react to mining emergencies");
+    expect(seen?.messages[1].content).not.toContain("Once a truck");
+    expect((await rendered()).signal.esco).toBeNull();
   });
 
   it("a rewrite that lands after approval and a later edit also reaches the new draft", async () => {

@@ -147,3 +147,33 @@ export async function cardForCompanyRevealed(
     inputModes: [...modes].sort(),
   });
 }
+
+/** What the card page gets: the person's card plus the notes whose company text changed since approval. */
+export type CardPageView = CardForPerson & { reworded: string[] };
+
+/**
+ * Ids of notes in the draft whose phrase or company text differs from the approved card (or that
+ * the approved card does not show), and whose rewrite has finished. The page tells the person
+ * that these were reworded for companies and need a look before approving.
+ */
+export async function cardPageView(db: Db, talentId: string): Promise<CardPageView | null> {
+  const base = await cardForPerson(db, talentId);
+  if (!base) return null;
+  let reworded: string[] = [];
+  if (base.status === "draft" && base.hasApprovedVersion) {
+    const [draft, approved] = await Promise.all([loadCard(db, talentId, "draft"), loadCard(db, talentId, "approved")]);
+    if (draft && approved) {
+      const before = new Map(approved.signals.map((s) => [s.id, s]));
+      reworded = draft.signals
+        .filter((s) => {
+          const item = draft.companyView.items.find((i) => i.signalId === s.id);
+          // Only the person's own edits are reworded; a new agent note from a later interview is not.
+          if (s.status === "removed" || !item || item.stale || s.phraseOwn === null) return false;
+          const was = before.get(s.id);
+          return !was || was.phrase !== s.phrase || renderingOf(approved, s.id) !== item.text;
+        })
+        .map((s) => s.id);
+    }
+  }
+  return { ...base, reworded };
+}
