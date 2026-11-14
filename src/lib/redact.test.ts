@@ -233,3 +233,21 @@ describe("review fixes", () => {
     }
   });
 });
+
+describe("redactContacts: time", () => {
+  const n = 300_000;
+  it("a long run of letters without @ is read once, not from every position", () => {
+    redactContacts("warm up");
+    for (const text of ["a".repeat(n), `${"a".repeat(n)} (at) b`, `${"a".repeat(n)} at b`, "a.b".repeat(n / 3), "a-".repeat(n / 2)]) {
+      const t = performance.now();
+      redactContacts(text);
+      expect(performance.now() - t).toBeLessThan(500);
+    }
+  });
+  it("addresses next to such a run are still found", () => {
+    expect(redactContacts(`${"a".repeat(1000)} jane.doe@example.fi`)).toBe(`${"a".repeat(1000)} ${R}`);
+    expect(redactContacts("x jane.doe@example.fi, o'neil@example.co.uk; first+tag@sub.example.fi")).toBe(`x ${R}, ${R}; ${R}`);
+    expect(redactContacts("etunimi.sukunimi (at) espoo.fi")).toBe(R);
+    expect(redactContacts("etunimi at firma dot fi")).toBe(R);
+  });
+});
