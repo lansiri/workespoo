@@ -35,6 +35,7 @@ import { FALLBACK_QUESTIONS, INTERVIEW_LINES, GENERIC_PROBE } from "@/lib/i18n/c
 import { newHandle, newId } from "@/lib/ids";
 import { splitSentences } from "@/lib/sentences";
 import type { SeedDeps } from "./deps";
+import { createFakeApplications } from "./fake-applications";
 import { detectLang } from "./metrics";
 import { loadPersonas, type Persona } from "./persona";
 import { seededHash } from "./prng";
@@ -46,6 +47,8 @@ export type FakeEngineOptions = {
   injectIntoHeadline?: (persona: Persona) => string;
   /** Ask a probe after the tools answer in full mode (exercises the probe path). */
   probeAfterTools?: boolean;
+  /** Also stand in for the application feature, so the seed makes simulated applications. */
+  applications?: boolean;
 };
 
 type Plan = Array<{ kind: "question" | "probe"; target: Turn["target"] }>;
@@ -213,7 +216,25 @@ export function createFakeEngine(db: Db, options: FakeEngineOptions = {}): SeedD
         lang: j.lang,
         status: "draft",
         droppedSentences: [],
-        requirements: [],
+        // With the applications stand-in on, the card holds two requirements, so there is something to ask about.
+        requirements: options.applications
+          ? [
+              { text: `Own work as a ${j.title.slice(0, 80)}`, kind: "must" as const },
+              { text: "Working with other people", kind: "nice" as const },
+            ].map((r, i) => ({
+              id: `req_${id.slice(3)}_${i + 1}`,
+              text: r.text,
+              kind: r.kind,
+              category: "experience" as const,
+              escoSkillUris: [],
+              postingSentence: null,
+              source: "agent" as const,
+              languageCode: null,
+              statutory: "none" as const,
+              question: null,
+              pool: null,
+            }))
+          : [],
         confirmedAt: null,
       };
       if (existing[0]) await db.update(needCard).set({ companyId, body, version: body.version }).where(eq(needCard.id, id));
@@ -318,5 +339,6 @@ export function createFakeEngine(db: Db, options: FakeEngineOptions = {}): SeedD
       .onConflictDoUpdate({ target: [signalCard.talentId, signalCard.status], set: { body, version: body.version } });
   }
 
+  if (options.applications) deps.applications = createFakeApplications(db);
   return deps;
 }

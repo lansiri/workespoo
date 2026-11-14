@@ -1,11 +1,11 @@
 /**
- * `npm run seed [-- --reset] [--rebuild] [--snapshot] [--companies 8|12] [--pitch-job <jobId>] [--personas <n>] [--mode express|full] [--fake] [--pglite]`
+ * `npm run seed [-- --reset] [--rebuild] [--snapshot] [--companies 8|12] [--pitch-job <jobId>] [--personas <n>] [--mode express|full] [--no-applications] [--fake] [--pglite]`
  *
  * Builds the demo: the event on Thursday 26 November 2026, masked "Demo company NN" companies
  * from real postings, their Need Cards, the simulated pool, eligibility, and yesterday's digest
  * history. Idempotent. `--snapshot` writes the generated rows to seed/snapshot after a seed.
  * `--reset` restores that snapshot with no model call (people, interviews, cards, Need Cards,
- * eligibility) and rebuilds only the date-dependent digests. Without a snapshot, or with
+ * eligibility, simulated applications) and rebuilds only the date-dependent digests. Without a snapshot, or with
  * `--rebuild`, it removes the demo state and runs the whole pipeline again. `--fake` and
  * `--pglite` use an in-memory database, save nothing and always rebuild.
  */
@@ -31,6 +31,7 @@ async function main() {
       "pitch-job": { type: "string" },
       personas: { type: "string" },
       mode: { type: "string" },
+      "no-applications": { type: "boolean", default: false },
       fake: { type: "boolean", default: false },
       pglite: { type: "boolean", default: false },
     },
@@ -48,13 +49,13 @@ async function main() {
   const opened = await openDb(values.fake || values.pglite);
   try {
     if (opened.memory) console.error("In-memory database: nothing is saved. Use it to rehearse, not to prepare the demo.");
-    const deps = values.fake ? createFakeEngine(opened.db, { personas }) : realSeedDeps();
+    const deps = values.fake ? createFakeEngine(opened.db, { personas, applications: true }) : realSeedDeps();
     const log = (line: string) => console.error(`  ${line}`);
     const restore = values.reset && !values.rebuild && !opened.memory && hasSnapshot();
     if (values.reset && !restore) log(opened.memory || values.rebuild ? "reset: rebuilding the whole pipeline" : "reset: no snapshot in seed/snapshot, rebuilding the whole pipeline (this calls the model)");
     const summary = restore
       ? (log("reset: restoring seed/snapshot, no model calls"), await restoreDemoSnapshot(opened.db, { deps, personas, appUrl: env.APP_URL, log }))
-      : await seedDemo(opened.db, { deps, personas, companies, pitchJobId: values["pitch-job"], mode, reset: values.reset, appUrl: env.APP_URL, log });
+      : await seedDemo(opened.db, { deps, personas, companies, pitchJobId: values["pitch-job"], mode, applications: !values["no-applications"], reset: values.reset, appUrl: env.APP_URL, log });
     if (values.snapshot) {
       if (opened.memory) throw new Error("--snapshot needs the real database: leave out --fake and --pglite");
       const counts = await snapshotDemo(opened.db);
@@ -65,6 +66,9 @@ async function main() {
     console.log(`\nEvent ${summary.event.id}: Thursday 26 November 2026, 13:00-16:00, 9 slots per company`);
     console.log(`People: ${summary.personas.created} interviewed now, ${summary.personas.kept} kept from an earlier run (all synthetic)`);
     console.log(`Eligibility rows: ${summary.eligibilityRows}; queue jobs run: ${summary.queueJobsRun}`);
+    if (summary.applications) {
+      console.log(`Applications: ${summary.applications.assessed} of ${summary.applications.planned} assessed${summary.applications.failed.length ? `, ${summary.applications.failed.length} left out` : ""}`);
+    }
     console.log(`Yesterday (${summary.yesterday.date}): ${summary.yesterday.digests} published digests, ${summary.yesterday.picks} picks`);
     console.log(`Today (${summary.today.date}): ${summary.today.digests} drafted digests, ${summary.today.picks} picks; Demo company 03 ${summary.today.pitchLeftUndrafted ? "left undrafted" : "ALREADY DRAFTED"}`);
     console.log("\nDemo companies:");

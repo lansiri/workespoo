@@ -17,7 +17,7 @@ import { getTableColumns, getTableName, type SQL } from "drizzle-orm";
 import type { PgTable } from "drizzle-orm/pg-core";
 import type { Db } from "@/db/client";
 import {
-  appMeta, company, consent, eligibility, eventCompany, interview, interviewEvent, jobMatch, matchEvent,
+  appMeta, application, applicationTurn, company, consent, eligibility, eventCompany, interview, interviewEvent, jobMatch, matchEvent,
   needCard, signal, signalCard, talent, talentIdentity, talentLanguage, turn,
 } from "@/db/schema";
 import { newToken } from "@/lib/ids";
@@ -27,7 +27,7 @@ export const SNAPSHOT_DIR = path.resolve(process.cwd(), "seed/snapshot");
 const MANIFEST = "manifest.json";
 const VERSION = 1;
 
-type Ids = { talents: string[]; interviews: string[]; companies: string[]; needs: string[] };
+type Ids = { talents: string[]; interviews: string[]; companies: string[]; needs: string[]; applications: string[] };
 type TableSpec = { table: PgTable; where: (ids: Ids) => SQL | undefined };
 
 // Parents first: this is also the insertion order on restore.
@@ -46,6 +46,9 @@ const TABLES: TableSpec[] = [
   { table: interviewEvent, where: (i) => inArray(interviewEvent.interviewId, [...i.interviews, ""]) },
   { table: jobMatch, where: (i) => inArray(jobMatch.talentId, [...i.talents, ""]) },
   { table: eligibility, where: (i) => inArray(eligibility.needCardId, [...i.needs, ""]) },
+  // Applications of simulated people. `applicant_ranking` is left out on purpose: after a reset no list is approved.
+  { table: application, where: (i) => inArray(application.talentId, [...i.talents, ""]) },
+  { table: applicationTurn, where: (i) => inArray(applicationTurn.applicationId, [...i.applications, ""]) },
   { table: consent, where: (i) => or(inArray(consent.subjectId, [...i.talents, ...i.companies, ""])) },
   { table: appMeta, where: () => eq(appMeta.key, DEMO_COMPANIES_KEY) },
 ];
@@ -77,7 +80,8 @@ async function collectIds(db: Db): Promise<Ids> {
   const companies = (await db.select({ id: company.id }).from(company).where(like(company.id, "co_demo%"))).map((r) => r.id);
   const interviews = talents.length ? (await db.select({ id: interview.id }).from(interview).where(inArray(interview.talentId, talents))).map((r) => r.id) : [];
   const needs = companies.length ? (await db.select({ id: needCard.id }).from(needCard).where(inArray(needCard.companyId, companies))).map((r) => r.id) : [];
-  return { talents, interviews, companies, needs };
+  const applications = talents.length ? (await db.select({ id: application.id }).from(application).where(inArray(application.talentId, talents))).map((r) => r.id) : [];
+  return { talents, interviews, companies, needs, applications };
 }
 
 /** Write the generated demo state to `dir`. Returns the row count per table. */
@@ -119,7 +123,10 @@ export async function loadSnapshotRows(db: Db, dir: string = SNAPSHOT_DIR): Prom
   await db.transaction(async (tx) => {
     await resetDemo(tx as unknown as Db);
     for (const spec of TABLES) {
-      const rows = (JSON.parse(readFileSync(path.join(dir, `${nameOf(spec.table)}.json`), "utf8")) as Record<string, unknown>[]).map((r) => withFreshTokens(revive(spec.table, r)));
+      // A snapshot made before applications existed has no file for them: that is no applications, not an error.
+      const file = path.join(dir, `${nameOf(spec.table)}.json`);
+      const stored = existsSync(file) ? (JSON.parse(readFileSync(file, "utf8")) as Record<string, unknown>[]) : [];
+      const rows = stored.map((r) => withFreshTokens(revive(spec.table, r)));
       counts[nameOf(spec.table)] = rows.length;
       for (let i = 0; i < rows.length; i += 200) await tx.insert(spec.table).values(rows.slice(i, i + 200) as never);
     }
