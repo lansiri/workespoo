@@ -284,6 +284,13 @@ export function MatchesView() {
               {m.editCard}
             </Button>
           </section>
+          <section className="we-box" data-testid="apply-rail-link">
+            <h3>{m.railApplyTitle}</h3>
+            <p>{m.railApplyBody}</p>
+            <Button variant="ghost" href="/apply">
+              {m.railApplyLink}
+            </Button>
+          </section>
           <section className="we-box">
             <h3>{m.railHowTitle}</h3>
             <p>{m.railHowBody}</p>
