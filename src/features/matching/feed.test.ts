@@ -80,6 +80,8 @@ describe("retrieval", () => {
     // Masked demo company: gone.
     await addMaskedCompany(t.db, "co_demo");
     await addNeed(t.db, { id: "nc_demo", jobId: mobileId, companyId: "co_demo", requirements: [req("r1", "Anything")] });
+    // Gone from the stored feed at once, before anything is computed again.
+    expect(await feedTitles("tal_sw")).not.toContain("Mobile Developer");
     await computeFeed(t.db, "tal_sw", { now: NOW });
     expect(await feedTitles("tal_sw")).not.toContain("Mobile Developer");
     await t.db.delete(needCard);

@@ -421,7 +421,14 @@ export async function feedForTalent(
     .select({ m: jobMatch, j: job })
     .from(jobMatch)
     .innerJoin(job, eq(job.id, jobMatch.jobId))
-    .where(and(eq(jobMatch.talentId, talentId)));
+    .where(
+      and(
+        eq(jobMatch.talentId, talentId),
+        // A posting that became a masked company's after this feed was computed leaves the feed
+        // at once: its employer's name must not be readable next to the masked company.
+        sql`NOT EXISTS (SELECT 1 FROM need_card nc JOIN company c ON c.id = nc.company_id WHERE nc.job_id = ${jobMatch.jobId} AND c.masked)`,
+      ),
+    );
   return rows
     .sort((a, b) => a.m.feedPosition - b.m.feedPosition || a.j.id.localeCompare(b.j.id))
     .map(({ m, j }) => ({
