@@ -31,6 +31,10 @@ describe("consent", () => {
     expect(rows.filter((r) => r.withdrawnAt === null)).toHaveLength(1);
   });
 
+  it("names the wording version that mentions the own-server speech text", () => {
+    expect(CONSENT_TEXT_VERSION).toBe("2026-11-v2");
+  });
+
   it("keeps kinds and subjects separate; withdrawing nothing is fine", async () => {
     await withdrawConsent(t.db, { ...c, kind: "pool" });
     await recordConsent(t.db, { ...c, kind: "pool" });

@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { I18nProvider } from "@/lib/i18n/client";
 import type { UiLang } from "@/contracts";
-import { ConsentForm, canStartInterview, voiceServiceName } from "./ConsentForm";
+import { ConsentForm, canStartInterview, voiceConsentText, voiceServiceName } from "./ConsentForm";
 import { interviewMessages } from "./messages";
 import { consentCopy } from "@/lib/i18n/content";
 import { fmt } from "@/lib/i18n";
@@ -64,6 +64,19 @@ describe("interview pages (server render)", () => {
     expect(voiceServiceName(browser, interviewMessages.en.voiceProcessorBrowser)).toBe("your browser's speech service");
     expect(voiceServiceName({ adapter: "elevenlabs", processor: "ElevenLabs" }, "x")).toBe("ElevenLabs");
     expect(voiceServiceName(null, "x")).toBe("");
+  });
+
+  it("9. the voice consent uses the own-server text for the server adapter and the old one otherwise", () => {
+    for (const lang of ["en", "fi", "sv"] as const) {
+      const copy = consentCopy[lang];
+      const browserName = interviewMessages[lang].voiceProcessorBrowser;
+      expect(voiceConsentText({ adapter: "server", processor: "WorkEspoo's own server" }, copy, browserName)).toBe(copy.checkVoiceServer);
+      expect(voiceConsentText({ adapter: "browser", processor: "x" }, copy, browserName)).toBe(
+        fmt(copy.checkVoice, { processor: browserName }),
+      );
+      expect(voiceConsentText({ adapter: "elevenlabs", processor: "ElevenLabs" }, copy, browserName)).toContain("ElevenLabs");
+      expect(voiceConsentText(null, copy, browserName)).toBe(fmt(copy.checkVoice, { processor: "" }));
+    }
   });
 
   it("11. the start page has the CV text area with its note, in three languages", () => {

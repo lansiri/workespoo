@@ -7,7 +7,7 @@ import { audit } from "@/lib/audit";
 import { auditLog, job, llmCall } from "@/db/schema";
 import { createTestDb, type TestDb } from "../../../../tests/helpers/db";
 import { HowItWorksView } from "./HowItWorksView";
-import { howTexts, pageContent, type VoiceProcessor } from "./messages";
+import { howTexts, pageContent, voiceSentence, type VoiceProcessor } from "./messages";
 import { loadStats, type HowStats } from "./stats";
 
 const stats: HowStats = {
@@ -21,6 +21,16 @@ const stats: HowStats = {
 
 const render = (lang: UiLang, s: HowStats | null = stats, voice: VoiceProcessor = "browser") =>
   renderToStaticMarkup(createElement(HowItWorksView, { lang, voice, stats: s }));
+
+describe("How this works: server speech", () => {
+  it.each(["en", "fi", "sv"] as const)("says the audio goes to our own server in %s", (lang) => {
+    const body = pageContent(lang, "server").sections[6].body;
+    expect(body).toMatch(/WorkEspoo/);
+    expect(body).toContain(voiceSentence(lang, "server"));
+    expect(voiceSentence(lang, "server")).not.toBe(voiceSentence(lang, "browser"));
+    expect(body).not.toMatch(/\{\w+\}/);
+  });
+});
 
 describe("How this works: text", () => {
   it.each(["en", "fi", "sv"] as const)("renders every section in %s", (lang) => {
