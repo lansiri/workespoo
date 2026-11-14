@@ -1,5 +1,6 @@
 import type { CvUploadError, CvUploadResponse } from "@/contracts";
 import { CV_PDF_MAX_BYTES, looksLikePdf, readCvPdf } from "@/features/interview/cv-pdf";
+import { warmCvAnonymiser } from "@/features/interview/cv-anonymise";
 import { clientKey, createRateLimiter } from "@/features/interview/cv-rate-limit";
 
 export const dynamic = "force-dynamic";
@@ -28,6 +29,16 @@ function fail(error: CvUploadError, retryAfter = 2): Response {
   const res = reply({ error: { code: error } }, STATUS[error]);
   if (error === "busy") res.headers.set("retry-after", String(retryAfter));
   return res;
+}
+
+/**
+ * The start-up warm-up (see `src/instrumentation.ts`): runs the anonymiser's patterns once in
+ * this bundle, so that their compilation is paid when the server starts. Afterwards it costs a
+ * couple of milliseconds, takes no input and says nothing.
+ */
+export async function GET(): Promise<Response> {
+  warmCvAnonymiser();
+  return new Response(null, { status: 204, headers: { "cache-control": "no-store" } });
 }
 
 /**

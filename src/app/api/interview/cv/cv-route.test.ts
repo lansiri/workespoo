@@ -13,7 +13,7 @@ vi.mock("@/features/interview/cv-pdf", async (orig) => {
   };
 });
 
-import { POST } from "./route";
+import { GET, POST } from "./route";
 
 const PDF = new TextEncoder().encode("%PDF-1.4");
 let nextClient = 0;
@@ -82,5 +82,14 @@ describe("POST /api/interview/cv", () => {
     const a = { "x-forwarded-for": "198.51.100.9" };
     for (let i = 0; i < 30; i++) expect((await POST(upload(new TextEncoder().encode("junk"), a))).status).toBe(415);
     expect((await POST(upload(PDF, a))).status).toBe(422);
+  });
+});
+
+describe("GET /api/interview/cv", () => {
+  it("is the start-up warm-up: it runs the anonymiser once, takes nothing and says nothing", async () => {
+    const res = await GET();
+    expect(res.status).toBe(204);
+    expect(res.headers.get("cache-control")).toBe("no-store");
+    expect(await res.text()).toBe("");
   });
 });
