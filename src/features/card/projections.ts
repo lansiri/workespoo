@@ -167,7 +167,8 @@ export async function cardPageView(db: Db, talentId: string): Promise<CardPageVi
       reworded = draft.signals
         .filter((s) => {
           const item = draft.companyView.items.find((i) => i.signalId === s.id);
-          if (s.status === "removed" || !item || item.stale) return false;
+          // Only the person's own edits are reworded; a new agent note from a later interview is not.
+          if (s.status === "removed" || !item || item.stale || s.phraseOwn === null) return false;
           const was = before.get(s.id);
           return !was || was.phrase !== s.phrase || renderingOf(approved, s.id) !== item.text;
         })

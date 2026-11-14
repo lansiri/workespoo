@@ -157,6 +157,23 @@ describe("renderSignal (prompt B)", () => {
     expect((await cardPageView(t.db, TALENT))!.reworded).toEqual([]);
   });
 
+  it("a draft of new agent signals from a later interview is not shown as reworded", async () => {
+    await approveCard(t.db, TALENT);
+    const approved = (await loadCard(t.db, TALENT, "approved"))!;
+    await saveCard(t.db, TALENT, {
+      ...approved,
+      version: approved.version + 1,
+      status: "draft",
+      approvedAt: null,
+      signals: [...approved.signals, signal({ id: "s4", phrase: "Customer service" }), signal({ id: "s5", phrase: "Cash handling" })],
+      companyView: {
+        ...approved.companyView,
+        items: [...approved.companyView.items, { signalId: "s4", text: "They served customers.", stale: false }, { signalId: "s5", text: "They handled cash.", stale: false }],
+      },
+    });
+    expect((await cardPageView(t.db, TALENT))!.reworded).toEqual([]);
+  });
+
   it("a signal with no previous text stays out of the company view until the person approves the draft that holds its rewrite", async () => {
     const d0 = (await loadCard(t.db, TALENT, "draft"))!;
     await saveCard(t.db, TALENT, { ...d0, companyView: { ...d0.companyView, items: d0.companyView.items.filter((i) => i.signalId !== "s3") } });
