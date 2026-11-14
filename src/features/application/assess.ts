@@ -379,3 +379,14 @@ export async function assessApplication(db: Db, applicationId: string, options?:
   });
   return stored ? assessment : null;
 }
+
+/**
+ * Starts the rating now, in this process, without making the caller wait: the person who just
+ * sent an application sees their ratings in the time one model call takes, whatever the
+ * worker is busy with. A failure is logged and left to the queued job, which tries again.
+ */
+export function assessSoon(db: Db, applicationId: string): void {
+  void assessApplication(db, applicationId).catch((error: unknown) => {
+    console.error("[application] the first rating attempt failed; the queued job will try again:", error instanceof Error ? error.message : String(error));
+  });
+}

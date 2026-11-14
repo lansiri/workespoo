@@ -5,6 +5,7 @@ import { applicantRanking, application, applicationTurn, consent, jobQueue } fro
 import { listAudit } from "@/lib/audit";
 import { hasConsent } from "@/lib/consent";
 import { resetLlmState, setLlmFake, type LlmOptions } from "@/lib/llm";
+import { ASSESS_QUEUE_DELAY_MS } from "./jobs";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
 
 const h = vi.hoisted(() => ({ approved: new Set<string>(), sessionTalent: undefined as string | undefined }));
@@ -491,6 +492,8 @@ describe("skip, stop, remove, submit, withdraw", () => {
     const queued = await t.db.select().from(jobQueue).where(eq(jobQueue.dedupeKey, `application.assess:${ok.applicationId}`));
     expect(queued).toHaveLength(1);
     expect(queued[0]).toMatchObject({ kind: "application.assess", payload: { applicationId: ok.applicationId } });
+    // The queued rating is the safety net: it waits, because the sender starts the rating at once.
+    expect(queued[0]!.runAfter.getTime() - app.submittedAt!.getTime()).toBe(ASSESS_QUEUE_DELAY_MS);
     const [event] = await listAudit(t.db, { action: "application.submitted" as never, subjectId: ok.applicationId });
     expect(event?.detail).toMatchObject({ talentId: ok.talentId });
     void talentId;

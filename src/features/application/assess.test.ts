@@ -1,4 +1,4 @@
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { eq } from "drizzle-orm";
 import { APPLICATION_RUBRIC_VERSION, type ApplicationPlan, type ApplicationTurn } from "@/contracts";
 import { application, auditLog, llmCall } from "@/db/schema";
@@ -6,7 +6,7 @@ import type { Db } from "@/db/client";
 import { resetLlmState, setLlmFake } from "@/lib/llm/testing";
 import { addCompany, addNeed, addTalent, resetDb } from "@/features/picks/test-helpers";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
-import { assessApplication, buildAssessorInput, checkAssessment, type AssessorInput } from "./assess";
+import { assessApplication, assessSoon, buildAssessorInput, checkAssessment, type AssessorInput } from "./assess";
 import { CODE_REASONS, CODE_SUMMARY, NOT_ANSWERED_REASON } from "./levels";
 import { assessUserMessage } from "./prompts-assess";
 import { REQS, addApplication, planFor } from "./rank-fixtures";
@@ -435,6 +435,22 @@ describe("assessApplication", () => {
     const [row] = await db.select().from(application).where(eq(application.id, "a1"));
     expect(row.status).toBe("submitted");
     expect(row.assessment).toBeNull();
+  });
+
+  it("assessSoon rates without making the caller wait, and a failure is left to the queued job", async () => {
+    fakeGood();
+    await addApplication(db, { id: "a1", talentId: "t1", jobId: "job_n1", companyId: "c1", needCardId: "n1" });
+    expect(assessSoon(db, "a1")).toBeUndefined();
+    await expect.poll(async () => (await db.select().from(application).where(eq(application.id, "a1")))[0]?.status, { timeout: 5_000 }).toBe("assessed");
+
+    setLlmFake(() => "this is not json at all");
+    await addTalent(db, { id: "t2" });
+    await addApplication(db, { id: "a2", talentId: "t2", jobId: "job_n1", companyId: "c1", needCardId: "n1" });
+    const logged = vi.spyOn(console, "error").mockImplementation(() => {});
+    assessSoon(db, "a2");
+    await expect.poll(() => logged.mock.calls.length, { timeout: 5_000 }).toBeGreaterThan(0);
+    logged.mockRestore();
+    expect((await db.select().from(application).where(eq(application.id, "a2")))[0]?.status).toBe("submitted");
   });
 
   it("leaves an application that was not sent alone", async () => {

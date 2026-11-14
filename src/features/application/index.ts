@@ -19,7 +19,7 @@ export {
 } from "./engine";
 export { dropFromRanking, dropPeopleFromRankings } from "./engine-store";
 export { QUESTIONS_KEY_PREFIX } from "./engine-questions";
-export { assessApplication, buildAssessorInput, checkAssessment, type AssessorInput, type AssessorSentence } from "./assess";
+export { assessApplication, assessSoon, buildAssessorInput, checkAssessment, type AssessorInput, type AssessorSentence } from "./assess";
 export {
   applicantsForCompany,
   applicationPoints,

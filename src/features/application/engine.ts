@@ -46,7 +46,7 @@ import {
   type TurnRow,
 } from "./engine-store";
 import { questionsFor } from "./engine-questions";
-import { ASSESS_KIND } from "./jobs";
+import { ASSESS_KIND, ASSESS_QUEUE_DELAY_MS } from "./jobs";
 import { bridgeFor, closingLine, deletedLine, openingLine, repairLine, scriptedFollowUp } from "./lines";
 import { buildTurnPrompt, followUpProblem } from "./prompts-interview";
 import { screenAnswerSentence } from "./assess-protected";
@@ -545,7 +545,8 @@ export function removeApplicationAnswer(db: Db, applicationId: string, turnIndex
 /**
  * Sends the application (status `review`, at least one answer that is not removed): status
  * `submitted`, `submittedAt`, audit `application.submitted`, and the `application.assess`
- * job is enqueued with the application id as its dedupe key.
+ * job is enqueued with the application id as its dedupe key, to run after
+ * `ASSESS_QUEUE_DELAY_MS` (the sender starts the rating at once, see `assessSoon`).
  */
 export function submitApplication(db: Db, applicationId: string, options?: EngineOptions): Promise<void> {
   return withLock(applicationId, async () => {
@@ -564,8 +565,9 @@ export function submitApplication(db: Db, applicationId: string, options?: Engin
         subjectId: applicationId,
         detail: { talentId: app.talentId, jobId: app.jobId, answers: answers.length },
       });
+      // In the same transaction: an application is never sent without its rating being queued.
+      await enqueue(tx, ASSESS_KIND, { applicationId }, { dedupeKey: `${ASSESS_KIND}:${applicationId}`, runAfter: new Date(at.getTime() + ASSESS_QUEUE_DELAY_MS) });
     });
-    await enqueue(db, ASSESS_KIND, { applicationId }, { dedupeKey: `${ASSESS_KIND}:${applicationId}` });
   });
 }
 
