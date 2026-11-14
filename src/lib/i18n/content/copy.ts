@@ -79,7 +79,7 @@ export const consentCopy = {
       "Det används bara för att föreslå högst två frågor och raderas sedan. Anteckningarna bygger på det du själv berättar.",
     linkHow: "Så fungerar det",
     start: "Starta samtalet",
-    prototype: "Prototyp från ett hackathon, inte en officiell tjänst från Esbo stad.",
+    prototype: "Hackathonprototyp, inte en officiell tjänst från Esbo stad.",
   },
 } satisfies Messages<typeof consentEn>;
 
@@ -133,7 +133,7 @@ export const interviewCopy = {
     preparing: "Valmistelen muistiinpanojasi…",
   },
   sv: {
-    aiDisclosure: "Du pratar med en AI. Den antecknar, och du går igenom och godkänner anteckningarna i slutet.",
+    aiDisclosure: "Du pratar med en AI. Den gör anteckningar som du granskar och godkänner i slutet.",
     hold: "Håll in och prata",
     release: "Släpp för att skicka",
     listening: "Lyssnar…",
