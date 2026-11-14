@@ -149,3 +149,14 @@ E2E_BASE_URL=https://workespoo.aichat.fi E2E_ORGANISER_PASSCODE=... npx playwrig
 - `job-interview` runs the five-minute journey without Daily Picks: a general interview and an approved card, the event's jobs, the start screen that says the answers are rated and checked by an organiser, a job interview of one to six requirements with at most one follow-up each, review and sending, the person's own levels and points (and no position before an approval), the organiser's list with every simulated applicant plus the newcomer and the person's own words behind a rating, a move that cannot be confirmed without a reason, approval, the company's list in order with no name and none of the person's words, ask to meet, the person's position and their yes, and only then the name and the answers on the company's page. It fails on any server error and when a step of the audit trail (`application.started`, `application.submitted`, `application.assessed`, `ranking.moved`, `ranking.approved`) is missing. It allows itself 15 minutes, most of it the model. It passed against the live site on 14 November at 15:39 in 1.6 minutes.
 - `E2E_CHROMIUM_PATH` points them at a locally installed Chromium when Playwright's own download does not match.
 - Without `E2E_ORGANISER_PASSCODE` both are skipped, so the ordinary check never touches a live site.
+
+## The backup video
+
+`e2e/record-demo.mjs` records the three-minute pitch (steps 1 to 9 above) as six clips, one browser window per role, and `e2e/make-video.mjs` joins them into a silent 1600x900 film with captions. The two waits for the model (the card and the rating, about 20 seconds each) are kept in the recording and played eight times faster in the film; their captions say so.
+
+```
+E2E_CHROMIUM_PATH=... E2E_ORGANISER_PASSCODE=... node e2e/record-demo.mjs http://localhost:4920 out/pitch
+node e2e/make-video.mjs out/pitch out/workespoo-demo-backup-v2.mp4
+```
+
+`--journey golden` (before the base URL) records the earlier journey with Daily Picks instead. Recording resets the demo first and last, so never point it at a site that someone is using.
