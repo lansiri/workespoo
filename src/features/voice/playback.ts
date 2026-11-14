@@ -5,6 +5,8 @@ export interface AudioLike {
   src: string;
   onended: (() => void) | null;
   onerror: ((event?: unknown) => void) | null;
+  /** Seconds played so far. Read to notice a clip that has stopped moving. */
+  readonly currentTime?: number;
   play(): Promise<void>;
   pause(): void;
 }
@@ -22,7 +24,12 @@ export interface PlaybackOptions {
   createAudio?: () => AudioLike;
   createObjectURL?: (blob: Blob) => string;
   revokeObjectURL?: (url: string) => void;
-  /** Builds a level meter for the audio element. Return null when unavailable. */
+  /**
+   * Builds a level meter for the audio element. There is none unless one is passed in: a meter
+   * routes the element's sound through a Web Audio context, and then the interviewer is only
+   * heard while that context stays awake, which a phone does not promise (it suspends audio
+   * contexts when the microphone or another app takes over).
+   */
   createMeter?: (audio: AudioLike) => OutputMeter | null;
   /** Called once per burst of sentences: milliseconds from the first request to the first sound. */
   onFirstAudio?: (ms: number) => void;
@@ -34,6 +41,17 @@ export interface PlaybackOptions {
    */
   maxConcurrentFetches?: number;
 }
+
+/**
+ * A clip that is playing is looked at twice a second. A phone can pause it without telling us
+ * (another sound takes over, the microphone is released, the page goes to the background), and
+ * then `ended` never comes and every later sentence would wait behind it for ever. After one
+ * second without progress the element is asked to play again; after four the clip is given up,
+ * so the next sentence is spoken.
+ */
+const STALL_CHECK_MS = 500;
+const STALL_NUDGE_CHECKS = 2;
+const STALL_SKIP_CHECKS = 8;
 
 // A header-only 8 kHz mono WAV. Playing it inside a tap unlocks the element on iOS.
 const SILENT_WAV =
@@ -80,7 +98,7 @@ export class PlaybackQueue {
     this.createAudio = options.createAudio ?? (() => new Audio() as unknown as AudioLike);
     this.createUrl = options.createObjectURL ?? ((b) => URL.createObjectURL(b));
     this.revokeUrl = options.revokeObjectURL ?? ((u) => URL.revokeObjectURL(u));
-    this.createMeter = options.createMeter ?? defaultMeter;
+    this.createMeter = options.createMeter;
     this.onFirstAudio = options.onFirstAudio;
     this.now = options.now ?? (() => performance.now());
     this.maxFetches = options.maxConcurrentFetches ?? Infinity;
@@ -218,6 +236,7 @@ export class PlaybackQueue {
 
     const audio = this.getAudio();
     const url = this.createUrl(blob);
+    let watch: ReturnType<typeof setInterval> | undefined;
     try {
       await new Promise<void>((resolve, reject) => {
         let done = false;
@@ -230,6 +249,21 @@ export class PlaybackQueue {
           resolve();
         };
         this.current = { finish };
+        let lastTime: number | undefined;
+        let still = 0;
+        watch = setInterval(() => {
+          if (done) return;
+          const t = audio.currentTime;
+          if (typeof t !== "number") return; // not a media element: nothing to watch
+          if (t !== lastTime) {
+            lastTime = t;
+            still = 0;
+            return;
+          }
+          still += 1;
+          if (still === STALL_NUDGE_CHECKS) void audio.play().catch(() => {});
+          else if (still >= STALL_SKIP_CHECKS) finish();
+        }, STALL_CHECK_MS);
         audio.onended = finish;
         audio.onerror = () => {
           if (done) return;
@@ -257,36 +291,9 @@ export class PlaybackQueue {
         );
       });
     } finally {
+      if (watch) clearInterval(watch);
       this.revokeUrl(url);
       if (item.generation === this.generation && this.pending <= 1) this.playing = false;
     }
   }
-}
-
-/** Level meter over the shared audio element, using Web Audio. Browser only. */
-function defaultMeter(audio: AudioLike): OutputMeter | null {
-  if (typeof window === "undefined" || !(audio instanceof HTMLMediaElement)) return null;
-  const Ctx: typeof AudioContext | undefined =
-    window.AudioContext ??
-    (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-  if (!Ctx) return null;
-  const ctx = new Ctx();
-  const analyser = ctx.createAnalyser();
-  analyser.fftSize = 512;
-  const source = ctx.createMediaElementSource(audio);
-  source.connect(analyser);
-  analyser.connect(ctx.destination);
-  const data = new Uint8Array(analyser.fftSize);
-  return {
-    getLevel() {
-      analyser.getByteTimeDomainData(data);
-      let sum = 0;
-      for (const v of data) {
-        const d = (v - 128) / 128;
-        sum += d * d;
-      }
-      return Math.min(1, Math.sqrt(sum / data.length) * 3);
-    },
-    resume: () => ctx.resume(),
-  };
 }

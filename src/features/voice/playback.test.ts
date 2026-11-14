@@ -181,4 +181,101 @@ describe("PlaybackQueue", () => {
     );
     await expect(q.enqueue("x", "en")).rejects.toMatchObject({ code: "unavailable", status: 503 });
   });
+
+  describe("a clip that stops moving", () => {
+    /** An element with a clock, like the real one: `currentTime` only moves when the test moves it. */
+    class ClockedAudio extends FakeAudio {
+      currentTime = 0;
+    }
+    function clocked() {
+      const audio = new ClockedAudio();
+      const q = new PlaybackQueue({
+        fetch: (async (_url: string, init: RequestInit) =>
+          new Response(new Blob([(JSON.parse(init.body as string) as { text: string }).text]), { status: 200 })) as unknown as typeof fetch,
+        createAudio: () => audio,
+        createObjectURL: (b) => `blob:${b.size}`,
+        revokeObjectURL: () => {},
+        now: () => 0,
+      });
+      return { q, audio };
+    }
+
+    it("is asked to play again after a second, and is given up after four so the next sentence plays", async () => {
+      vi.useFakeTimers();
+      try {
+        const { q, audio } = clocked();
+        const first = q.enqueue("one", "en");
+        const second = q.enqueue("three", "en");
+        await vi.advanceTimersByTimeAsync(0);
+        expect(audio.played).toEqual(["blob:3"]);
+
+        // Progress for a second, then the phone pauses the clip without a word.
+        audio.currentTime = 0.4;
+        await vi.advanceTimersByTimeAsync(500);
+        audio.currentTime = 0.9;
+        await vi.advanceTimersByTimeAsync(500);
+        expect(audio.play).toHaveBeenCalledTimes(1);
+
+        await vi.advanceTimersByTimeAsync(1000);
+        expect(audio.play).toHaveBeenCalledTimes(2); // the nudge
+        expect(audio.played).toEqual(["blob:3", "blob:3"]);
+
+        await vi.advanceTimersByTimeAsync(3000);
+        await first; // given up: resolved, not rejected
+        await vi.advanceTimersByTimeAsync(0);
+        expect(audio.played[audio.played.length - 1]).toBe("blob:5"); // the next sentence is playing
+
+        audio.end();
+        await second;
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+
+    it("is left alone while it keeps moving, and after it has ended", async () => {
+      vi.useFakeTimers();
+      try {
+        const { q, audio } = clocked();
+        const done = q.enqueue("one", "en");
+        await vi.advanceTimersByTimeAsync(0);
+        for (let i = 1; i <= 12; i += 1) {
+          audio.currentTime = i * 0.5;
+          await vi.advanceTimersByTimeAsync(500);
+        }
+        expect(audio.play).toHaveBeenCalledTimes(1);
+        audio.end();
+        await done;
+        await vi.advanceTimersByTimeAsync(10_000);
+        expect(audio.play).toHaveBeenCalledTimes(1);
+        expect(vi.getTimerCount()).toBe(0);
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+
+    it("a nudge that works lets the clip finish normally", async () => {
+      vi.useFakeTimers();
+      try {
+        const { q, audio } = clocked();
+        const done = q.enqueue("one", "en");
+        await vi.advanceTimersByTimeAsync(0);
+        await vi.advanceTimersByTimeAsync(1500); // never started moving: nudged
+        expect(audio.play).toHaveBeenCalledTimes(2);
+        audio.currentTime = 0.3; // it plays now
+        await vi.advanceTimersByTimeAsync(500);
+        audio.currentTime = 0.8;
+        await vi.advanceTimersByTimeAsync(500);
+        audio.end();
+        await done;
+        expect(audio.play).toHaveBeenCalledTimes(2);
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+
+    it("has no level meter unless one is passed in", () => {
+      const { q } = clocked();
+      expect(q.getOutputLevel()).toBeNull();
+    });
+  });
 });
