@@ -51,7 +51,7 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
       },
       {
         heading: "Your data",
-        body: "We do not store audio. {voice} Your text is processed by {model}. A CV, if you paste one, is only used to choose up to two questions and is not kept. Live demo sessions are deleted after 24 hours. You can download your data or delete it at any time.",
+        body: "We do not store audio. {voice} Your text is processed by {model}. A CV, if you paste one or upload a PDF, first has your name, contact details, dates and other personal details removed by fixed rules in code, not by AI. You see the result and can change it. It is then only used to choose up to two questions and is not kept, and the file itself is never saved. Live demo sessions are deleted after 24 hours. You can download your data or delete it at any time.",
       },
       {
         heading: "Limits we know about",
@@ -100,7 +100,7 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
       },
       {
         heading: "Tietosi",
-        body: "Emme tallenna ääntä. {voice} Tekstiäsi käsittelee {model}. Jos liität mukaan CV:n, sitä käytetään vain enintään kahden kysymyksen valitsemiseen, eikä sitä säilytetä. Livedemon istunnot poistetaan 24 tunnin kuluttua. Voit ladata tietosi tai poistaa ne milloin tahansa.",
+        body: "Emme tallenna ääntä. {voice} Tekstiäsi käsittelee {model}. Jos liität CV:n tai lataat PDF:n, siitä poistetaan ensin nimesi, yhteystietosi, päivämäärät ja muut henkilötiedot koodiin kirjoitetuilla säännöillä, ei tekoälyllä. Näet tuloksen ja voit muuttaa sitä. Sen jälkeen sitä käytetään vain enintään kahden kysymyksen valitsemiseen, eikä sitä säilytetä. Itse tiedostoa ei tallenneta koskaan. Livedemon istunnot poistetaan 24 tunnin kuluttua. Voit ladata tietosi tai poistaa ne milloin tahansa.",
       },
       {
         heading: "Rajoitukset, jotka tiedämme",
@@ -149,7 +149,7 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
       },
       {
         heading: "Dina uppgifter",
-        body: "Vi sparar inte ljud. {voice} Din text behandlas av {model}. Om du klistrar in ett CV används det bara för att välja högst två frågor, och det sparas inte. Sessioner i livedemon raderas efter 24 timmar. Du kan ladda ner dina uppgifter eller radera dem när som helst.",
+        body: "Vi sparar inte ljud. {voice} Din text behandlas av {model}. Om du klistrar in ett CV eller laddar upp en PDF tas ditt namn, dina kontaktuppgifter, datum och andra personuppgifter först bort med fasta regler i kod, inte med AI. Du ser resultatet och kan ändra det. Sedan används det bara för att välja högst två frågor och sparas inte, och själva filen sparas aldrig. Sessioner i livedemon raderas efter 24 timmar. Du kan ladda ner dina uppgifter eller radera dem när som helst.",
       },
       {
         heading: "Begränsningar vi känner till",

@@ -10,6 +10,7 @@ import { fmt, UI_LANGS, UI_LANG_NAMES } from "@/lib/i18n";
 import { useMessages, useUiLang } from "@/lib/i18n/client";
 import { consentCopy, errorCopy } from "@/lib/i18n/content";
 import { requestMicPermission } from "@/features/voice/micMeter";
+import { CvUpload } from "./CvUpload";
 import { interviewMessages } from "./messages";
 
 const CV_MAX_CHARS = 20000;
@@ -199,6 +200,7 @@ export function ConsentForm() {
             />
           )}
         </Field>
+        <CvUpload enabled={consentInterview} onText={(text) => setCvText(text.slice(0, CV_MAX_CHARS))} />
 
         {failed ? <ErrorState testId="start-error" message={m.startError} action={{ label: e.retry, onClick: () => void start() }} /> : null}
 

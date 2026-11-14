@@ -27,6 +27,7 @@ Lead-owned. Streams implement exactly these paths. Phase 2 pages are unstyled bu
 | Method and path | Stream | Notes |
 |---|---|---|
 | `POST /api/interview` | S1 | `StartInterviewRequest` to `StartInterviewResponse`; sets the talent session cookie |
+| `POST /api/interview/cv` | S1 | Raw PDF body (max 2 MB, 10 pages) to `CvUploadResponse` `{ text, removed }`: the text layer, anonymised by code. Nothing stored or logged; `cache-control: no-store`. Errors `CvUploadError`: 413, 415, 422, 429 |
 | `POST /api/interview/[id]/turn` | S1 | `TurnRequest`; server-sent events: `turn.delta`, `turn.done` |
 | `GET /api/interview/[id]/events` | S1 | Server-sent events: signals, coverage, `jobs.lit`, `interview.completed`, `card.ready`. Supports `Last-Event-ID`. |
 | `POST /api/interview/[id]/stop` | S1 | Ends the interview early |
@@ -63,7 +64,7 @@ Lead-owned. Streams implement exactly these paths. Phase 2 pages are unstyled bu
 | Page | Test ids |
 |---|---|
 | every page (header) | `language-switcher`, `lang-en`, `lang-fi`, `lang-sv`, `site-logo` |
-| `/interview` | `consent-interview`, `consent-voice`, `consent-live-demo`, `interview-language`, `mode-express`, `mode-full`, `cv-text` (optional pasted CV), `start-interview` |
+| `/interview` | `consent-interview`, `consent-voice`, `consent-live-demo`, `interview-language`, `mode-express`, `mode-full`, `cv-text` (optional pasted CV), `cv-upload` (file input), `cv-upload-button`, `cv-upload-status`, `cv-upload-error`, `start-interview` |
 | `/interview/[id]` | `interviewer-text` (latest interviewer line), `transcript`, `answer-input`, `send-answer`, `talk-button` (with `data-state`), `voice-status`, `voice-partial` (the words so far while the button is held), `voice-final`, `signal-chip` (one per signal, with `data-signal-id`), `jobs-lit-count`, `interview-done`, `go-to-card`, `turn-remove` (removes one of the person's own answers) |
 | `/card` | `card-headline`, `card-signal` (with `data-signal-id`), `signal-quote`, `signal-rendering`, `signal-remove`, `approve-card`, `card-approved`, `pool-opt-in`, `go-to-matches`, `export-data`, `delete-data`, `delete-data-confirm` |
 | `/matches` | `job-match`, `match-reason`, `not-mentioned`, `job-link`, `source-attribution`, `intro-request`, `intro-accept`, `intro-decline`, `intro-status` |

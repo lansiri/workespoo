@@ -1,14 +1,15 @@
 /**
  * CV seeds (docs/specs/prompts/cv-seed.md). The CV is untrusted text that only chooses up to two
- * questions. It is held in memory for one model call and is never stored, logged or passed on:
- * only the validated seeds leave this file. A failed or late call means no seeds.
+ * questions. It is anonymised by code (`cv-anonymise.ts`), held in memory for one model call and
+ * never stored, logged or passed on: only the validated seeds leave this file. A failed or late
+ * call means no seeds.
  */
 import { z } from "zod";
 import { CvSeed } from "@/contracts";
 import type { Db } from "@/db/client";
 import { chatJson } from "@/lib/llm";
 import { findBannedEvaluative, findProtectedCard, findProtectedQuestion } from "@/lib/lexicon";
-import { redactContacts } from "@/lib/redact";
+import { anonymiseCv } from "./cv-anonymise";
 
 export const CV_SEED_DEADLINE_MS = 8000;
 export const CV_MAX_MODEL_CHARS = 12_000;
@@ -38,11 +39,14 @@ RULES
 OUTPUT FORMAT
 {"seeds":[{"topic":"...","question":"..."}]}`;
 
-/** Contacts and links out, whitespace collapsed, truncated; `>>>` cannot close the data block. */
+/**
+ * Anonymised by code first (name, contacts, ids, dates, personal sections, protected sentences),
+ * then whitespace collapsed and truncated; `>>>` cannot close the data block. Pasted text and
+ * text read from a PDF both pass here, so the model never sees a CV that skipped anonymisation.
+ */
 export function prepareCvText(cvText: string): string {
-  return redactContacts(cvText)
-    .replace(/\b(?:https?:\/\/|www\.)\S+/gi, "[removed]")
-    .replace(/\s+/g, " ")
+  return anonymiseCv(cvText)
+    .text.replace(/\s+/g, " ")
     .trim()
     .slice(0, CV_MAX_MODEL_CHARS)
     .replace(/>>>/g, "> > >");

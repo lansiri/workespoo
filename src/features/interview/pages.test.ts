@@ -93,8 +93,13 @@ describe("interview pages (server render)", () => {
   it("11. the start page has the CV text area with its note, in three languages", () => {
     const en = render(createElement(ConsentForm), "en");
     expect(en).toContain('data-testid="cv-text"');
-    expect(en).toContain("Paste your CV if you like.");
+    expect(en).toContain("Paste your CV or upload a PDF, if you like.");
+    expect(en).toContain("removes your name, contact details, dates and personal details by fixed rules, not by AI");
     expect(en).toContain("It is only used to choose questions and is not kept.");
+    // The PDF upload is there, and waits for the interview consent before it can be used.
+    expect(en).toContain('data-testid="cv-upload"');
+    expect(en).toMatch(/data-testid="cv-upload-button"[^>]*disabled|disabled[^>]*data-testid="cv-upload-button"/);
+    expect(en).toContain("Tick the first box above to upload a file.");
     expect(render(createElement(ConsentForm), "fi")).toContain("Liitä CV tähän");
     expect(render(createElement(ConsentForm), "sv")).toContain("Klistra in ditt CV");
   });
