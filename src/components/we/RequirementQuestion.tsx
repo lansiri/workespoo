@@ -16,6 +16,10 @@ export type RequirementQuestionProps = {
   answered?: string;
   /** Inline error, for example when the answer could not be saved. */
   error?: string;
+  /** Disables the four answers (a save is running, or the card can no longer be changed). */
+  disabled?: boolean;
+  /** Longest wording the company can type. */
+  rewordMaxLength?: number;
   onAnswer?: (choice: QuestionChoice, text?: string) => void;
   text: {
     /** "A question about {requirement}" */
@@ -26,6 +30,8 @@ export type RequirementQuestionProps = {
     remove: string;
     rewordLabel: string;
     save: string;
+    /** Label of the way back from rewording to the four answers. Left out: no way back. */
+    cancel?: string;
   };
   /** One column (narrow rails). */
   narrow?: boolean;
@@ -55,23 +61,35 @@ export function RequirementQuestion(p: RequirementQuestionProps) {
           <label className="we-sr-only" htmlFor={`${uid}-rw`}>
             {t.rewordLabel}
           </label>
-          <Input id={`${uid}-rw`} value={value} onChange={(e) => setValue(e.target.value)} data-testid="question-reword-input" />
-          <Button variant="primary" disabled={value.trim().length < 2} onClick={() => p.onAnswer?.("reworded", value.trim())} data-testid="question-reword-save">
+          <Input id={`${uid}-rw`} value={value} onChange={(e) => setValue(e.target.value)} maxLength={p.rewordMaxLength} data-testid="question-reword-input" />
+          <Button variant="primary" disabled={p.disabled || value.trim().length < 2} onClick={() => p.onAnswer?.("reworded", value.trim())} data-testid="question-reword-save">
             {t.save}
           </Button>
+          {t.cancel ? (
+            <Button
+              variant="ghost"
+              onClick={() => {
+                setRewording(false);
+                setValue(p.requirement);
+              }}
+              data-testid="question-reword-cancel"
+            >
+              {t.cancel}
+            </Button>
+          ) : null}
         </div>
       ) : (
         <div className="we-q-actions" data-testid="question-controls">
-          <Button variant="ghost" onClick={() => p.onAnswer?.("keep")} data-testid="question-answer-keep">
+          <Button variant="ghost" disabled={p.disabled} onClick={() => p.onAnswer?.("keep")} data-testid="question-answer-keep">
             {t.keep}
           </Button>
-          <Button variant="ghost" onClick={() => p.onAnswer?.("make_nice")} data-testid="question-answer-make_nice">
+          <Button variant="ghost" disabled={p.disabled} onClick={() => p.onAnswer?.("make_nice")} data-testid="question-answer-make_nice">
             {t.makeNice}
           </Button>
-          <Button variant="ghost" onClick={() => setRewording(true)} data-testid="question-answer-reworded">
+          <Button variant="ghost" disabled={p.disabled} onClick={() => setRewording(true)} data-testid="question-answer-reworded">
             {t.reword}
           </Button>
-          <Button variant="ghost" onClick={() => p.onAnswer?.("remove")} data-testid="question-answer-remove">
+          <Button variant="ghost" disabled={p.disabled} onClick={() => p.onAnswer?.("remove")} data-testid="question-answer-remove">
             {t.remove}
           </Button>
         </div>

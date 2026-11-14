@@ -67,7 +67,12 @@ describe("CompanyDigestView", () => {
   it("shows no percentage and no digits besides the handle, the company number, dates and requirement texts (CV4)", () => {
     let t = text(render(data([basePick()])));
     expect(t).not.toContain("%");
-    t = t.replace(/\d{4}-\d{2}-\d{2}/g, "").replace(/Maple-\d+/g, "").replace(/Demo company \d+/g, "");
+    // The count in the page's lead line and the written-out dates are the only numbers besides the handle.
+    t = t
+      .replace(/\b1 person\b/, "")
+      .replace(/\w+day \d{1,2} \w+/g, "")
+      .replace(/Maple-\d+/g, "")
+      .replace(/Demo company \d+/g, "");
     expect(t).not.toMatch(/\d/);
   });
 
@@ -75,7 +80,7 @@ describe("CompanyDigestView", () => {
     const before = render(data([basePick({ intro: { id: "i1", status: "awaiting_talent", expiresAt: "2026-11-23T08:00:00.000Z" }, canAsk: false })]));
     expect(before).not.toContain("revealed-name");
     expect(before).not.toContain("revealed-quote");
-    expect(text(before)).toContain("Request sent. Waiting for the person to answer (until 2026-11-23).");
+    expect(text(before)).toContain("Request sent. Waiting for the person to answer (until Monday 23 November).");
     expect(before).not.toContain('data-testid="ask-to-meet"');
 
     const after = render(
@@ -98,6 +103,22 @@ describe("CompanyDigestView", () => {
     expect(text(after)).toContain("You both agreed to meet.");
   });
 
+  it("offers a new request after one closed, shows no Withdraw, and keeps the status test id", () => {
+    const html = render(data([basePick({ intro: { id: "i1", status: "expired", expiresAt: "2026-11-23T08:00:00.000Z" }, canAsk: true })]));
+    expect(html).toContain('data-testid="ask-to-meet"');
+    expect(html).toContain('data-status="expired"');
+    expect(text(html)).toContain("No answer before Monday 23 November. The request has closed.");
+    const waiting = render(data([basePick({ intro: { id: "i1", status: "awaiting_talent", expiresAt: "2026-11-23T08:00:00.000Z" }, canAsk: false })]));
+    expect(waiting).toContain('data-status="awaiting_talent"');
+    expect(text(waiting)).not.toContain("Withdraw");
+  });
+
+  it("lists requests in the meetings box by handle only", () => {
+    const html = text(render(data([basePick({ intro: { id: "i1", status: "awaiting_talent", expiresAt: "2026-11-23T08:00:00.000Z" }, canAsk: false })]))).replace(/ ([,.])/g, "$1");
+    expect(html).toContain("Waiting for the person to answer: Maple-001, until Monday 23 November.");
+    expect(text(render(data([basePick()])))).toContain("When you ask to meet someone");
+  });
+
   it("marks a request the person made", () => {
     expect(text(render(data([basePick({ askedByPerson: true })])))).toContain("This person asked to meet you");
   });
@@ -111,9 +132,11 @@ describe("CompanyDigestView", () => {
   });
 
   it("speaks Finnish and Swedish", () => {
-    expect(text(render(data([basePick()]), "fi"))).toContain("Ei mainittu ei tarkoita, että puuttuu.");
-    expect(text(render(data([basePick()]), "sv"))).toContain("Inte nämnt betyder inte att det saknas.");
-    expect(text(render(data([basePick()]), "fi"))).toContain("Alla olevat henkilöt ovat synteettisiä.");
+    expect(text(render(data([basePick()]), "fi"))).toContain("Mainitsematta jääminen ei tarkoita puutetta.");
+    expect(text(render(data([basePick()]), "fi"))).toContain("Ei missään erityisessä järjestyksessä");
+    expect(text(render(data([basePick()]), "sv"))).toContain("Att något inte nämndes betyder inte att det saknas.");
+    expect(text(render(data([basePick()]), "sv"))).toContain("I ingen särskild ordning");
+    expect(text(render(data([basePick()]), "fi"))).toContain("Alla olevat ihmiset ovat synteettisiä.");
   });
 
   it("renders a neutral expiry page that says nothing about why", () => {

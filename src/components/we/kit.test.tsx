@@ -226,3 +226,18 @@ describe("matches, picks and the organiser", () => {
     expect(html).not.toMatch(/<img|avatar/i);
   });
 });
+
+describe("RequirementList full mode", () => {
+  it("ties each 'show the sentence' button to its own requirement text", () => {
+    const reqText = { must: "Must-have", nice: "Nice-to-have", fromPosting: "From your posting", addedByYou: "Added by you", showSentence: "Show the sentence", hideSentence: "Hide the sentence", edit: "Edit", save: "Save", cancel: "Cancel", statutory: "Set by law", kindGroup: "Kind" };
+    const html = renderToStaticMarkup(
+      <RequirementList mode="full" text={reqText} requirements={[{ id: "r1", text: "Fluent Finnish", kind: "must", postingSentence: "Suomen kieli." }, { id: "r2", text: "Forklift licence", kind: "nice", postingSentence: "Kortti." }]} />,
+    );
+    const ids = [...html.matchAll(/<h3 id="([^"]+)"/g)].map((m) => m[1]);
+    const described = [...html.matchAll(/aria-describedby="([^"]+)"/g)].map((m) => m[1]);
+    expect(ids).toHaveLength(2);
+    expect(described).toEqual(ids);
+    // the sentence itself is not in the page until it is asked for
+    expect(html).not.toContain('data-testid="posting-sentence"');
+  });
+});

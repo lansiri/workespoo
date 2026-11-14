@@ -33,7 +33,7 @@ export type ReasonLineProps = {
   /** Feed only: the person's sentence, rendered by code from the transcript. */
   ownWords?: { refLabel: string; text: string };
   /** Company only, after both sides agreed. */
-  revealedQuote?: string;
+  revealedQuote?: string | string[];
   text: ReasonText;
   className?: string;
 };
@@ -84,13 +84,15 @@ export function ReasonLine(p: ReasonLineProps) {
           ) : null}
         </span>
       ) : null}
-      {p.variant === "company" && p.revealedQuote ? (
-        <span className="we-revealed-q" data-testid="revealed-quote">
-          <span className="we-label">{p.text.revealedLabel}</span>
-          <q>{p.revealedQuote}</q>
-          <small>{p.text.revealedNote}</small>
-        </span>
-      ) : null}
+      {p.variant === "company"
+        ? (Array.isArray(p.revealedQuote) ? p.revealedQuote : p.revealedQuote ? [p.revealedQuote] : []).map((quote, i) => (
+            <span className="we-revealed-q" key={i} data-testid="revealed-quote">
+              <span className="we-label">{p.text.revealedLabel}</span>
+              <q>{quote}</q>
+              <small>{p.text.revealedNote}</small>
+            </span>
+          ))
+        : null}
     </>
   );
   return (

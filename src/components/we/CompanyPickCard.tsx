@@ -15,6 +15,8 @@ export type CompanyPickIntro =
   | { status: "talent" }
   | { status: "declined" }
   | { status: "expired"; text: string }
+  /** Any other state of the request, as one plain line (withdrawn, waiting for an organiser, cancelled). */
+  | { status: "note"; text: string }
   | { status: "revealed"; name: string; contact: string; slot?: { time: string; place: string } };
 
 export type CompanyPickCardProps = {
@@ -33,7 +35,16 @@ export type CompanyPickCardProps = {
   reasons: ReactNode;
   notMentioned?: ReactNode;
   intro: CompanyPickIntro;
-  onAsk?: () => void;
+  /** Overrides `data-status` on the action row, for the page's own status vocabulary. */
+  statusKey?: string;
+  /** False when the page has no way to withdraw a request: the Withdraw button is left out. Default true. */
+  canWithdraw?: boolean;
+  /** Shown under the actions when sending the request failed. */
+  askError?: ReactNode;
+  /** A request is being sent: the dialog stays open with Send disabled, and the Ask button waits. */
+  busy?: boolean;
+  /** May return a promise: the dialog closes when it settles. */
+  onAsk?: () => void | Promise<void>;
   onWithdraw?: () => void;
   onAccept?: () => void;
   onDecline?: () => void;
@@ -106,10 +117,10 @@ export function CompanyPickCard(p: CompanyPickCardProps) {
       </p>
       {p.reasons}
       {p.notMentioned}
-      <div className="we-act" data-testid="intro-status" data-status={p.intro.status}>
+      <div className="we-act" data-testid="intro-status" data-status={p.statusKey ?? p.intro.status}>
         {p.intro.status === "none" ? (
           <>
-            <Button variant="primary" onClick={() => setConfirming(true)} data-testid="ask-to-meet">
+            <Button variant="primary" size="lg" disabled={p.busy} onClick={() => setConfirming(true)} data-testid="ask-to-meet">
               {t.ask}
             </Button>
             <span className="we-src">{t.askNote}</span>
@@ -121,9 +132,11 @@ export function CompanyPickCard(p: CompanyPickCardProps) {
               <Icon name="clock" />
               <span>{p.intro.waiting}</span>
             </span>
-            <Button variant="quiet" onClick={p.onWithdraw}>
-              {t.withdraw}
-            </Button>
+            {p.canWithdraw === false ? null : (
+              <Button variant="quiet" onClick={p.onWithdraw}>
+                {t.withdraw}
+              </Button>
+            )}
           </>
         ) : null}
         {p.intro.status === "talent" ? (
@@ -137,9 +150,14 @@ export function CompanyPickCard(p: CompanyPickCardProps) {
           </>
         ) : null}
         {p.intro.status === "declined" ? <span className="we-src">{t.declined}</span> : null}
-        {p.intro.status === "expired" ? <span className="we-src">{p.intro.text}</span> : null}
+        {p.intro.status === "expired" || p.intro.status === "note" ? <span className="we-src">{p.intro.text}</span> : null}
       </div>
-      {confirming ? (
+      {p.askError ? (
+        <p className="we-inline-error" role="alert" data-testid="ask-to-meet-error">
+          {p.askError}
+        </p>
+      ) : null}
+      {confirming && p.intro.status === "none" ? (
         <Dialog
           title={t.confirmTitle}
           onClose={() => setConfirming(false)}
@@ -151,9 +169,11 @@ export function CompanyPickCard(p: CompanyPickCardProps) {
               </Button>
               <Button
                 variant="primary"
-                onClick={() => {
+                disabled={p.busy}
+                aria-busy={p.busy || undefined}
+                onClick={async () => {
+                  await p.onAsk?.();
                   setConfirming(false);
-                  p.onAsk?.();
                 }}
                 data-testid="ask-to-meet-send"
               >

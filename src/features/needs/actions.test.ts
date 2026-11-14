@@ -284,8 +284,9 @@ describe("the page", () => {
       expect(html).toContain('data-testid="question-answer-make_nice"');
       expect(html).toContain('data-testid="pool-evidence"');
       expect(html).toContain('data-testid="confirm-need"');
-      expect(html).toContain('data-testid="posting-sentence"');
-      expect(html).toContain("<strong>" + e.normal + "</strong>");
+      // the posting sentence opens from a button on the row; it is not in the page until asked for
+      expect(html).toContain("aria-expanded");
+      expect(html).toContain("<b>" + e.normal + "</b>");
       expect(html).toContain(e.wording);
       expect(html).toContain(e.notLack);
       expect(html).toContain(e.statutory);
@@ -303,7 +304,7 @@ describe("the page", () => {
     // the question that is not shown is not in the page at all
     expect(en).not.toContain("'calm'");
     // as-of time
-    expect(en).toContain("as of");
+    expect(en).toContain("As of");
   });
 
   it("words the whole-pool and language cases exactly, and the empty pool", async () => {
@@ -323,7 +324,7 @@ describe("the page", () => {
     const text = html.replace(/<[^>]+>/g, "").replace(/&#x27;/g, "'");
     expect(text).toContain("(2 of them by naming it as a work language.)");
     expect(text).toContain("Nobody in the pool relates to this role yet. Across the whole pool of 40, 3 speak to this requirement.");
-    expect(html).toContain("<strong>3</strong>");
+    expect(html).toContain("<b>3</b>");
     expect(text).toContain("Nobody has joined the pool yet");
   });
 });

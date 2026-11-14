@@ -21,6 +21,13 @@ type NeedMessages = {
   categoryOther: string;
   sourcePosting: string;
   sourceCompany: string;
+  showSentence: string;
+  hideSentence: string;
+  editLabel: string;
+  cancelLabel: string;
+  kindGroup: string;
+  questionLabel: string;
+  answeredRemove: string;
   statutoryNote: string;
   poolAsOf: string;
   poolNormal: string;
@@ -85,8 +92,15 @@ export const needMessages = {
     categoryOther: "Other",
     sourcePosting: "From your posting",
     sourceCompany: "Added by you",
+    showSentence: "Show the sentence",
+    hideSentence: "Hide the sentence",
+    editLabel: "Edit",
+    cancelLabel: "Cancel",
+    kindGroup: "Kind of requirement",
+    questionLabel: "A question about {requirement}",
+    answeredRemove: "You removed this requirement.",
     statutoryNote: "Set by law or regulation. Not questioned here; the employer checks it at hiring.",
-    poolAsOf: "as of {time}",
+    poolAsOf: "As of {time}",
     poolNormal:
       "**{speakTo} of {relevant}** people in the pool whose cards relate to this role speak to this. A hard filter on it would set aside **{exclude}**. They did not mention it in a short conversation; that does not mean they lack it. No filter is applied.",
     poolSelfDeclared: "({selfDeclaredOnly} of them by naming it as a work language.)",
@@ -131,7 +145,7 @@ export const needMessages = {
   fi: {
     bannerLead: "{name}.",
     bannerBody:
-      "Perustuu todelliseen julkiseen työpaikkailmoitukseen. Työnantajan nimi on piilotettu. Alla olevat henkilöt ovat synteettisiä.",
+      "Perustuu oikeaan julkiseen työpaikkailmoitukseen. Työnantajan nimi on piilotettu. Alla olevat ihmiset ovat synteettisiä.",
     bannerPrototype: "WorkEspoo on hackathon-prototyyppi, ei Espoon kaupungin virallinen palvelu.",
     yourNeed: "Tarpeenne",
     draftedFrom: "Laadittu julkisesta työpaikkailmoituksestanne {date}",
@@ -139,7 +153,7 @@ export const needMessages = {
     statusConfirmed: "Vahvistettu {date}",
     statusStale: "Vanhentunut",
     intro:
-      "Välttämättömät vaatimukset eivät koskaan poista ketään ehdotuksistanne. Se, mitä keskustelussa ei käsitelty, näytetään merkinnällä 'ei mainittu', jotta voitte kysyä siitä tapaamisessa.",
+      "Pakolliset vaatimukset eivät koskaan poista ketään ehdotuksistasi. Se, mitä keskustelussa ei käsitelty, näytetään merkinnällä 'ei mainittu', jotta voitte kysyä siitä tapaamisessa.",
     noRequirements: "Ilmoituksesta ei löytynyt vaatimuksia. Tarkistakaa ilmoitus.",
     kindMust: "Välttämätön",
     kindNice: "Eduksi",
@@ -151,9 +165,16 @@ export const needMessages = {
     categoryOther: "Muu",
     sourcePosting: "Ilmoituksestanne",
     sourceCompany: "Lisännyt te",
+    showSentence: "Näytä lause",
+    hideSentence: "Piilota lause",
+    editLabel: "Muokkaa",
+    cancelLabel: "Peruuta",
+    kindGroup: "Vaatimuksen laji",
+    questionLabel: "Kysymys: {requirement}",
+    answeredRemove: "Poistitte tämän vaatimuksen.",
     statutoryNote:
       "Laissa tai määräyksissä säädetty. Siitä ei kysytä tässä; työnantaja tarkistaa sen palkattaessa.",
-    poolAsOf: "tilanne {time}",
+    poolAsOf: "Tilanne {time}",
     poolNormal:
       "Poolin henkilöistä, joiden kortit liittyvät tähän tehtävään, **{speakTo}/{relevant}** kertoo tähän liittyvästä osaamisesta. Tiukka suodatin sulkisi pois **{exclude}** henkilöä. He eivät maininneet asiaa lyhyessä keskustelussa; se ei tarkoita, ettei heillä sitä ole. Suodatinta ei käytetä.",
     poolSelfDeclared: "({selfDeclaredOnly} heistä ilmoittamalla sen työkielekseen.)",
@@ -198,7 +219,7 @@ export const needMessages = {
   sv: {
     bannerLead: "{name}.",
     bannerBody:
-      "Baserat på en verklig offentlig annons. Arbetsgivarens namn är dolt. Personerna nedan är syntetiska.",
+      "Bygger på en verklig offentlig platsannons. Arbetsgivarens namn är dolt. Personerna nedan är syntetiska.",
     bannerPrototype: "WorkEspoo är en hackathon-prototyp, inte en officiell tjänst från Esbo stad.",
     yourNeed: "Ert behov",
     draftedFrom: "Skrivet utifrån er offentliga annons den {date}",
@@ -206,9 +227,9 @@ export const needMessages = {
     statusConfirmed: "Bekräftat {date}",
     statusStale: "Föråldrat",
     intro:
-      "Krav tar aldrig bort någon från era förslag. Det som samtalet inte berörde visas som 'inte nämnt', så att ni kan fråga om det när ni träffas.",
+      "Skall-krav tar aldrig bort någon från dina förslag. Det som samtalet inte berörde visas som 'inte nämnt', så att ni kan fråga om det när ni träffas.",
     noRequirements: "Inga krav hittades i annonsen. Kontrollera annonsen.",
-    kindMust: "Krav",
+    kindMust: "Skall-krav",
     kindNice: "Meriterande",
     categorySkill: "Kompetens",
     categoryLanguage: "Språk",
@@ -218,9 +239,16 @@ export const needMessages = {
     categoryOther: "Övrigt",
     sourcePosting: "Från er annons",
     sourceCompany: "Tillagt av er",
+    showSentence: "Visa meningen",
+    hideSentence: "Dölj meningen",
+    editLabel: "Redigera",
+    cancelLabel: "Avbryt",
+    kindGroup: "Typ av krav",
+    questionLabel: "En fråga om {requirement}",
+    answeredRemove: "Ni tog bort det här kravet.",
     statutoryNote:
       "Fastställt i lag eller föreskrift. Vi frågar inte om det här; arbetsgivaren kontrollerar det vid anställning.",
-    poolAsOf: "per {time}",
+    poolAsOf: "Per {time}",
     poolNormal:
       "Av de personer i poolen vars kort rör den här rollen berättar **{speakTo} av {relevant}** om något som hör till detta. Ett strikt filter skulle sålla bort **{exclude}**. De nämnde det inte i ett kort samtal; det betyder inte att de saknar det. Inget filter tillämpas.",
     poolSelfDeclared: "({selfDeclaredOnly} av dem genom att ange det som arbetsspråk.)",

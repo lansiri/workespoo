@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useId, useState, type ReactNode } from "react";
 import { cx } from "./cx";
 import { Button } from "./Button";
 import { Input } from "./FormFields";
@@ -44,6 +44,7 @@ export type RequirementListProps = {
 
 /** Requirements of a Need Card with kind, category and source. Compact for the rail, full on the Need Card page. */
 export function RequirementList({ requirements, mode, editable, onEdit, onToggleKind, text, className }: RequirementListProps) {
+  const uid = useId();
   const [editing, setEditing] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
   const [shown, setShown] = useState<string | null>(null);
@@ -85,7 +86,7 @@ export function RequirementList({ requirements, mode, editable, onEdit, onToggle
               </div>
             ) : (
               <>
-                <h3 data-testid="requirement-text">{r.text}</h3>
+                <h3 id={`${uid}-t-${r.id}`} data-testid="requirement-text">{r.text}</h3>
                 {editable ? (
                   <Button
                     variant="quiet"
@@ -123,13 +124,13 @@ export function RequirementList({ requirements, mode, editable, onEdit, onToggle
             ) : null}
             <span className="we-src">{r.addedByYou ? text.addedByYou : text.fromPosting}</span>
             {r.postingSentence ? (
-              <button type="button" className="we-linkbtn" aria-expanded={shown === r.id} onClick={() => setShown(shown === r.id ? null : r.id)}>
+              <button type="button" className="we-linkbtn" aria-expanded={shown === r.id} aria-describedby={`${uid}-t-${r.id}`} aria-controls={shown === r.id ? `${uid}-s-${r.id}` : undefined} onClick={() => setShown(shown === r.id ? null : r.id)}>
                 {shown === r.id ? text.hideSentence : text.showSentence}
               </button>
             ) : null}
           </div>
           {r.postingSentence && shown === r.id ? (
-            <p className="we-posting-sentence" data-testid="posting-sentence">
+            <p id={`${uid}-s-${r.id}`} className="we-posting-sentence" data-testid="posting-sentence">
               <q>{r.postingSentence}</q>
             </p>
           ) : null}
