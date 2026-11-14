@@ -7,7 +7,9 @@
 # reservations. A misbehaving worker is capped at 768 MB. The image build runs
 # inside dockerd, outside these limits, so db, web and caddy get a negative
 # oom_score_adj: if memory runs out the kernel kills the build (or the worker)
-# first, not the database or the site.
+# first, not the database or the site. The speech model (`stt`) holds about
+# 1.6 GB and is the first to go: it restarts in three seconds, and voice falls
+# back to typing meanwhile.
 name: workespoo
 
 x-logging: &logging
@@ -73,6 +75,12 @@ services:
       # their own requests, so they split the budget: most of it goes to the process that
       # talks to people. Override in the env file with LLM_RPM_SHARE_WEB / _WORKER.
       LLM_RPM_SHARE: ${LLM_RPM_SHARE_WEB:-0.7}
+      # Speech to text on our own server (the `stt` service). Unset or unreachable: the
+      # browser's own speech recognition is used instead.
+      STT_URL: ws://stt:6006
+    networks:
+      - default
+      - stt
     expose:
       - "3000"
     healthcheck:
@@ -93,6 +101,39 @@ services:
       LLM_LIVE_RESERVE_RPM: "0"
       LLM_LIVE_RESERVE_SLOTS: "0"
     mem_limit: 768m
+
+  # Speech to text (docs/research/voice-stt.md): the web container sends a person's audio here
+  # and gets text back. The audio is held in memory for the second or two it takes and dropped.
+  # This container has no volume, a read-only file system, no secrets (no env file) and sits on a
+  # network with no route to the internet, shared with `web` only.
+  stt:
+    build:
+      context: ./infra/stt
+    # The tag names the runtime and the model. Change it when infra/stt/Dockerfile changes.
+    image: workespoo-stt:sherpa-2.0.1-parakeet-tdt-0.6b-v3-int8
+    restart: unless-stopped
+    logging: *logging
+    init: true
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    networks:
+      - stt
+    expose:
+      - "6006"
+    healthcheck:
+      test: ["CMD", "node", "-e", "const w=new WebSocket('ws://127.0.0.1:6006');w.onopen=()=>{w.send('Done');process.exit(0)};w.onerror=()=>process.exit(1);setTimeout(()=>process.exit(1),4000)"]
+      interval: 30s
+      timeout: 6s
+      retries: 3
+      start_period: 20s
+    # The model holds about 1.6 GB. Above the ceiling the container is killed and starts again.
+    mem_limit: 2200m
+    oom_score_adj: 300
+    # When everything is busy at once, the site and the database come first.
+    cpu_shares: 512
 
   caddy:
     image: caddy:2
@@ -124,6 +165,12 @@ services:
       # `up`/redeploys; never `docker compose down -v` (see infra/README.md).
       - caddy-data:/data
       - caddy-config:/config
+
+networks:
+  default: {}
+  # No gateway to the outside: nothing on this network can reach the internet.
+  stt:
+    internal: true
 
 volumes:
   db-data:

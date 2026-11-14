@@ -121,6 +121,20 @@ if ! dc build web; then
   fail "build failed; ${PREV:-nothing} left running"
 fi
 
+# The speech-to-text image changes only when infra/stt changes; its tag in compose.yaml says
+# which runtime and model it holds. Build it when that tag is missing (the first time, this
+# downloads the model, about 500 MB). A commit without the service has nothing to build.
+stt_image=$(dc config --images 2>/dev/null | grep -m1 '^workespoo-stt:' || true)
+if [[ -n "$stt_image" ]]; then
+  if ! docker image inspect "$stt_image" >/dev/null 2>&1; then
+    log "--- build $stt_image ---"
+    if ! dc build stt; then
+      restore_prev_checkout
+      fail "speech image build failed; ${PREV:-nothing} left running"
+    fi
+  fi
+fi
+
 log "--- database ---"
 if ! dc up -d --wait db; then
   restore_prev_checkout
