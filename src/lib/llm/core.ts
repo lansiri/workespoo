@@ -54,6 +54,13 @@ export function buildMeta(s: CallState, ok: boolean, error: string | null): LlmM
 }
 
 class TimeoutMarker extends Error {}
+/**
+ * The provider answered, and the answer held no text at all. None of this product's prompts
+ * has an empty answer as a valid outcome, so it is a provider fault: retried, then the next
+ * provider. Seen for real on 14 Nov, when the provider's domain served a parking page with
+ * HTTP 200 for 24 minutes and every call "succeeded" with nothing in it.
+ */
+class EmptyAnswer extends Error {}
 class AbortMarker extends Error {}
 
 type Classified = { kind: "retry" | "next"; status?: number; retryAfterMs?: number; message: string; timedOut?: boolean };
@@ -83,6 +90,7 @@ export function redact(text: string): string {
 function classify(e: unknown, entry: RoleEntry): Classified {
   const who = `${entry.provider}:${entry.model}`;
   if (e instanceof TimeoutMarker) return { kind: "next", message: `${who} timed out`, timedOut: true };
+  if (e instanceof EmptyAnswer) return { kind: "retry", message: `${who} returned an empty answer` };
   const status = (e as { status?: unknown } | null)?.status;
   if (typeof status === "number") {
     const code = (e as { code?: unknown }).code;
@@ -294,6 +302,7 @@ export async function* runReal(opts: LlmOptions, internal: Internal, state: Call
             }
             yield text;
           }
+          if (!yielded) throw new EmptyAnswer();
           state.meta = buildMeta(state, true, null);
           return;
         } catch (e) {

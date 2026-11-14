@@ -335,6 +335,50 @@ describe("a live call never waits behind background calls", () => {
   });
 });
 
+describe("an answer with no text", () => {
+  it("is retried on the same provider, and the retry's answer is returned", async () => {
+    const f = install({ verda: [{ text: "" }, { text: "ok" }] });
+    const r = await clock.settle(chatText(analyst));
+    expect(r.text).toBe("ok");
+    expect(r.meta).toMatchObject({ ok: true, provider: "verda", attempts: 2 });
+    expect(f.calls).toHaveLength(2);
+  });
+
+  it("is retried for a stream that ends before any text", async () => {
+    install({ verda: [{ pieces: [] }, { pieces: ["a", "b"] }] });
+    const s = chatStream(live);
+    const got: string[] = [];
+    await clock.settle((async () => { for await (const t of s) got.push(t); })());
+    expect(got.join("")).toBe("ab");
+    expect(await s.meta).toMatchObject({ ok: true, attempts: 2 });
+  });
+
+  it("counts an answer that is only a think block as empty", async () => {
+    install({ verda: [{ text: "<think>hidden</think>" }, { text: "ok" }] });
+    const r = await clock.settle(chatText(analyst));
+    expect(r.text).toBe("ok");
+    expect(r.meta.attempts).toBe(2);
+  });
+
+  it("moves to the next provider after the retries", async () => {
+    configure({ LLM_ANALYST: "verda:vmodel,nvidia:n1", NVIDIA_API_KEY: "nvapi-SECRETKEY-1234567890" });
+    const f = install({ verda: [{ text: "" }, { text: "" }, { text: "" }], nvidia: [{ text: "ok" }] });
+    const r = await clock.settle(chatText(analyst));
+    expect(r.meta.provider).toBe("nvidia");
+    expect(f.calls.map((c) => c.provider)).toEqual(["verda", "verda", "verda", "nvidia"]);
+  });
+
+  it("fails as a provider error when every provider answers with nothing, never as an empty success", async () => {
+    const f = install({ verda: [{ text: "" }, { text: "" }, { text: "" }] });
+    const err = await clock.settle(failure(chatText(analyst)));
+    expect(err).toBeInstanceOf(LlmError);
+    expect(err!.reason).toBe("provider_error");
+    expect(err!.message).toContain("returned an empty answer");
+    expect(err!.meta.ok).toBe(false);
+    expect(f.calls).toHaveLength(3);
+  });
+});
+
 describe("abort and the fake", () => {
   it("aborting a call that is queued leaves no waiter behind", async () => {
     configure({ LLM_MAX_CONCURRENCY: "1", LLM_LIVE_RESERVE_SLOTS: "0", VERDA_MAX_RPM: "0" });

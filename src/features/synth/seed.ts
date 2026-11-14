@@ -187,8 +187,27 @@ export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummar
       continue;
     }
     for (const stale of taken.filter((t) => t.personaKey === persona.id)) await db.delete(talent).where(eq(talent.id, stale.id));
-    interviewRuns.push(await runSimulatedInterview(db, persona, options.mode ?? persona.interviewMode, { deps, log }));
-    created++;
+    // An interview can fail when the model stops answering half-way: a network cut leaves a card
+    // with no notes, and that cannot be approved. Try twice, then go on without this person and
+    // say so. The seed is idempotent, so a second run fills the gap.
+    let run: SimulatedRun | null = null;
+    let lastError = "";
+    for (let attempt = 1; attempt <= 2 && !run; attempt++) {
+      try {
+        run = await runSimulatedInterview(db, persona, options.mode ?? persona.interviewMode, { deps, log });
+      } catch (error) {
+        lastError = error instanceof Error ? error.message : String(error);
+        log(`  interview ${attempt} of 2 failed for ${persona.id}: ${lastError.slice(0, 160)}`);
+        // The simulator labels its person at once, so what the failed attempt left is found by the persona key.
+        await db.delete(talent).where(and(eq(talent.synthetic, true), eq(talent.personaKey, persona.id)));
+      }
+    }
+    if (run) {
+      interviewRuns.push(run);
+      created++;
+    } else {
+      warnings.push(`${persona.id} is not in the pool: ${lastError.slice(0, 160)}. Run the seed again to add them`);
+    }
   }
 
   // 5. Background work the approvals queued, then eligibility for every demo need.

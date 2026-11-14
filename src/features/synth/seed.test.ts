@@ -151,6 +151,48 @@ describe("seedDemo (against the fake engine)", () => {
   });
 });
 
+describe("seedDemo when an interview fails", () => {
+  it("tries the interview twice, removes what a failed attempt left, and goes on without a person who fails both times", async () => {
+    const own = await createTestDb();
+    try {
+      await loadJobFixtures(own.db);
+      const some = personas.slice(0, 4);
+      const fake = createFakeEngine(own.db, { personas: some });
+      // The first person's card cannot be approved once, the second person's never (what a
+      // network cut during the interview looks like: a card with no notes).
+      const failuresLeft: Record<string, number> = { [some[0].id]: 1, [some[1].id]: 2 };
+      const flaky: typeof fake = {
+        ...fake,
+        approveCard: async (...args: Parameters<typeof fake.approveCard>) => {
+          const [row] = await own.db.select().from(talent).where(eq(talent.id, args[1]));
+          const key = row?.personaKey ?? "";
+          if ((failuresLeft[key] ?? 0) > 0) {
+            failuresLeft[key]--;
+            throw new Error("Keep at least one note to approve");
+          }
+          return fake.approveCard(...args);
+        },
+      };
+      const lines: string[] = [];
+      const summary = await seedDemo(own.db, { deps: flaky, personas: some, now: () => NOW, appUrl: "https://example.test", log: (l) => lines.push(l) });
+
+      expect(summary.personas).toEqual({ created: 3, kept: 0 });
+      expect(lines.filter((l) => l.includes("failed for"))).toHaveLength(3);
+      const people = await own.db.select().from(talent);
+      expect(people.map((p) => p.personaKey).sort()).toEqual([some[0].id, some[2].id, some[3].id].sort());
+      for (const p of people) expect(p).toMatchObject({ synthetic: true, inPool: true });
+      expect(summary.warnings.filter((w) => w.startsWith(`${some[1].id} is not in the pool`))).toHaveLength(1);
+
+      // The next run adds the person who was left out and keeps the others.
+      const second = await seedDemo(own.db, { deps: fake, personas: some, now: () => NOW, appUrl: "https://example.test" });
+      expect(second.personas).toEqual({ created: 1, kept: 3 });
+      expect((await own.db.select().from(talent)).filter((p) => p.inPool)).toHaveLength(4);
+    } finally {
+      await own.close();
+    }
+  }, 120_000);
+});
+
 describe("snapshot and restore", () => {
   it("restores the generated state without any model or interview call, and rebuilds the digests", async () => {
     await resetDemo(t.db);
