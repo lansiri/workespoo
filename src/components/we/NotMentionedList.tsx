@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { cx } from "./cx";
 
 export type NotMentionedItem = { text: string; statutory?: boolean };
@@ -11,6 +14,7 @@ export function NotMentionedList({
   audience,
   text,
   className,
+  limit,
 }: {
   items: NotMentionedItem[] | null;
   audience: "person" | "organiser" | "company";
@@ -25,9 +29,16 @@ export function NotMentionedList({
     suffix?: string;
     /** "Requirements not read yet." when items is null. */
     notRead: string;
+    /** "+{n} more" */
+    more?: string;
+    /** "Show fewer" */
+    less?: string;
   };
   className?: string;
+  /** Show only this many pills, with a toggle for the rest. Needs text.more and text.less. */
+  limit?: number;
 }) {
+  const [open, setOpen] = useState(false);
   const testId = audience === "person" ? "not-mentioned" : "pick-not-mentioned";
   if (items === null) {
     return (
@@ -41,12 +52,19 @@ export function NotMentionedList({
     <div className={cx("we-nm", className)} data-testid={testId}>
       <span className="we-label">{text.label}</span>
       <ul>
-        {items.map((it, i) => (
+        {(limit && !open ? items.slice(0, limit) : items).map((it, i) => (
           <li key={i}>
             {it.text}
             {it.statutory ? <small> {text.statutory}</small> : null}
           </li>
         ))}
+        {limit && items.length > limit && text.more && text.less ? (
+          <li style={{ border: 0, background: "none", padding: 0 }}>
+            <button type="button" className="we-more" aria-expanded={open} onClick={() => setOpen(!open)}>
+              {open ? text.less : text.more.replace("{n}", String(items.length - limit))}
+            </button>
+          </li>
+        ) : null}
       </ul>
       <p className="we-fine">
         {text.fine}

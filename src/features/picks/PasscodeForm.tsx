@@ -2,8 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button, Field, Input } from "@/components/we";
 import { useMessages } from "@/lib/i18n/client";
 import { organiserMessages } from "./messages";
 
@@ -32,24 +31,33 @@ export function PasscodeForm() {
   }
 
   return (
-    <form onSubmit={submit} className="flex max-w-sm flex-col gap-3">
-      <label htmlFor="passcode" className="text-sm font-medium">
-        {m.passcode}
-      </label>
-      <Input
-        id="passcode"
-        type="password"
-        autoComplete="current-password"
-        value={passcode}
-        onChange={(e) => setPasscode(e.target.value)}
-        data-testid="passcode-input"
-      />
+    <form onSubmit={submit}>
+      <Field label={m.passcode}>
+        {({ id, describedBy }) => (
+          <Input
+            id={id}
+            type="password"
+            autoComplete="current-password"
+            value={passcode}
+            invalid={failed}
+            aria-describedby={failed ? "passcode-error" : describedBy}
+            onChange={(e) => setPasscode(e.target.value)}
+            data-testid="passcode-input"
+          />
+        )}
+      </Field>
       {failed ? (
-        <p role="alert" data-testid="passcode-error">
+        <p id="passcode-error" className="we-err" role="alert" data-testid="passcode-error">
           {m.signInFailed}
         </p>
       ) : null}
-      <Button type="submit" disabled={busy || passcode.length === 0} data-testid="passcode-submit">
+      <Button
+        type="submit"
+        variant="primary"
+        block
+        disabled={busy || passcode.length === 0}
+        data-testid="passcode-submit"
+      >
         {m.signIn}
       </Button>
     </form>

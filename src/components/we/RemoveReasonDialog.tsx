@@ -15,11 +15,14 @@ export type RemoveReasonDialogProps = {
   reasons: RemoveReason[];
   otherCode?: string;
   noteLabel: string;
+  noteMaxLength?: number;
   /** "Remove Harbour-90" */
   confirmLabel: string;
   cancelLabel: string;
   onConfirm: (v: { reasonCode: string; note: string }) => void;
   onCancel: () => void;
+  /** A message from the server about this removal (for example about the note). Announced as an alert. */
+  notice?: string;
   /** Draw in the page flow instead of over a scrim (gallery, tests). */
   inline?: boolean;
   /** Start with this reason chosen (gallery only). The real flow never preselects. */
@@ -71,6 +74,11 @@ export function RemoveReasonDialog(p: RemoveReasonDialogProps) {
     >
       <div onKeyDown={onKeyDown}>
         <p>{p.help}</p>
+        {p.notice ? (
+          <p className="we-modal-notice" role="alert">
+            {p.notice}
+          </p>
+        ) : null}
         <ol>
           {p.reasons.map((r, i) => (
             <li key={r.code}>
@@ -86,7 +94,7 @@ export function RemoveReasonDialog(p: RemoveReasonDialogProps) {
         <label className="we-sr-only" htmlFor={`we-remove-note-${uid}`}>
           {p.noteLabel}
         </label>
-        <textarea id={`we-remove-note-${uid}`} className="we-textarea" placeholder={p.noteLabel} value={note} onChange={(e) => setNote(e.target.value)} data-testid="pick-remove-note" />
+        <textarea id={`we-remove-note-${uid}`} className="we-textarea" placeholder={p.noteLabel} maxLength={p.noteMaxLength} value={note} onChange={(e) => setNote(e.target.value)} data-testid="pick-remove-note" />
       </div>
     </Dialog>
   );

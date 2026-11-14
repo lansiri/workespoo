@@ -45,6 +45,10 @@ export type QueuePick = {
 export type QueueNeed = {
   needCardId: string;
   title: string;
+  /** The Need Card's one-line summary, employer name masked. Empty when the card could not be read. */
+  summary: string;
+  /** The need's own requirements, employer name masked. About the job, not about any person. */
+  requirements: Array<{ id: string; text: string; kind: "must" | "nice" }>;
   /** True when nobody was eligible for this need. */
   nobodyRelates: boolean;
   picks: QueuePick[];
@@ -173,6 +177,8 @@ export async function buildReviewQueue(db: Db, opts: { now?: Date } = {}): Promi
       return {
         needCardId: needId,
         title: need ? mask(need.title) : needId,
+        summary: need ? mask(need.summary) : "",
+        requirements: need ? need.requirements.map((r) => ({ id: r.id, text: mask(r.text), kind: r.kind })) : [],
         nobodyRelates: d.emptyNeeds.includes(needId),
         picks: queuePicks,
       };

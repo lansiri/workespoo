@@ -13,6 +13,8 @@ export type DecisionControlsProps = {
   onApprove?: () => void;
   onRemove?: () => void;
   onUndo?: () => void;
+  /** The digest is published: the decision is shown and cannot be undone. */
+  readOnly?: boolean;
   text: {
     approve: string;
     remove: string;
@@ -31,7 +33,7 @@ export type DecisionControlsProps = {
 };
 
 /** Approve or remove one person. Two identical ghost buttons side by side, so nothing nudges. No approve-all. */
-export function DecisionControls({ status, reason, approveDisabled, onApprove, onRemove, onUndo, text, keys = { approve: "A", remove: "R", undo: "U" }, className }: DecisionControlsProps) {
+export function DecisionControls({ status, reason, approveDisabled, onApprove, onRemove, onUndo, readOnly, text, keys = { approve: "A", remove: "R", undo: "U" }, className }: DecisionControlsProps) {
   if (status === "undecided") {
     return (
       <div className={cx("we-acts", className)}>
@@ -52,9 +54,11 @@ export function DecisionControls({ status, reason, approveDisabled, onApprove, o
         {status === "approved" ? text.approved : text.removed}
       </span>
       {status === "approved" ? <span className="we-why">{text.approvedNote}</span> : reason ? <span className="we-why">{reason}</span> : null}
-      <Button variant="quiet" kbd={keys.undo} onClick={onUndo} data-testid="pick-undo">
-        {text.undo}
-      </Button>
+      {readOnly ? null : (
+        <Button variant="quiet" kbd={keys.undo} onClick={onUndo} data-testid="pick-undo">
+          {text.undo}
+        </Button>
+      )}
     </div>
   );
 }

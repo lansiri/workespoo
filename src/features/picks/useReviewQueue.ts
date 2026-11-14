@@ -27,6 +27,27 @@ async function call<T>(path: string, init?: RequestInit): Promise<T> {
 
 export type FlatPick = { pick: QueuePick; digest: QueueDigest };
 
+/** The handle a pick is listed under. */
+export function pickHandle(p: QueuePick): string {
+  return p.card?.handle ?? p.id;
+}
+
+/**
+ * People are listed A to Z by nickname, and by nothing else: the server's seeded shuffle is replaced here
+ * so the order on screen is the order the page says it is. Keyboard movement follows the same order.
+ */
+export function alphabetical(queue: ReviewQueue): ReviewQueue {
+  const byHandle = (a: QueuePick, b: QueuePick) => {
+    const x = pickHandle(a);
+    const y = pickHandle(b);
+    return x < y ? -1 : x > y ? 1 : a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
+  };
+  return {
+    ...queue,
+    digests: queue.digests.map((d) => ({ ...d, needs: d.needs.map((n) => ({ ...n, picks: [...n.picks].sort(byHandle) })) })),
+  };
+}
+
 /**
  * State and actions of the review queue, kept out of the markup. One decision per call:
  * there is no function here that acts on more than one pick.
@@ -38,17 +59,30 @@ export function useReviewQueue(messages: (typeof organiserMessages)["en"]) {
   const [removing, setRemoving] = useState<Removing | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  // The company the page is showing. Keys act only on picks and digests of this company.
+  const [shownDigestId, setShownDigestId] = useState<string | null>(null);
+  // Set by moves the person made, so the page scrolls only for those.
+  const [scrollToId, setScrollToId] = useState<string | null>(null);
   const [helpOpen, setHelpOpen] = useState(false);
-  const stateRef = useRef<{ queue: ReviewQueue | null; selectedId: string | null; removing: Removing | null; busy: boolean }>({
+  const stateRef = useRef<{
+    queue: ReviewQueue | null;
+    selectedId: string | null;
+    removing: Removing | null;
+    busy: boolean;
+    helpOpen: boolean;
+    shownDigestId: string | null;
+  }>({
     queue: null,
     selectedId: null,
     removing: null,
     busy: false,
+    helpOpen: false,
+    shownDigestId: null,
   });
 
   const load = useCallback(async () => {
     try {
-      const q = await call<ReviewQueue>("/api/picks/queue");
+      const q = alphabetical(await call<ReviewQueue>("/api/picks/queue"));
       setQueue(q);
       setLoadError(false);
       return q;
@@ -62,7 +96,7 @@ export function useReviewQueue(messages: (typeof organiserMessages)["en"]) {
     let cancelled = false;
     call<ReviewQueue>("/api/picks/queue").then(
       (q) => {
-        if (!cancelled) setQueue(q);
+        if (!cancelled) setQueue(alphabetical(q));
       },
       () => {
         if (!cancelled) setLoadError(true);
@@ -87,7 +121,7 @@ export function useReviewQueue(messages: (typeof organiserMessages)["en"]) {
         : (flat.find((f) => f.pick.status === "suggested")?.pick.id ?? flat[0].pick.id);
 
   useEffect(() => {
-    stateRef.current = { queue, selectedId, removing, busy };
+    stateRef.current = { queue, selectedId, removing, busy, helpOpen, shownDigestId };
   });
 
   const fail = useCallback(
@@ -104,12 +138,17 @@ export function useReviewQueue(messages: (typeof organiserMessages)["en"]) {
   );
 
   const move = useCallback(
-    (delta: number) => {
-      const { selectedId: current } = stateRef.current;
-      if (flat.length === 0) return;
-      const i = Math.max(0, flat.findIndex((f) => f.pick.id === current));
-      setSelectedId(flat[Math.min(flat.length - 1, Math.max(0, i + delta))].pick.id);
+    (delta: number): boolean => {
+      const { selectedId: current, shownDigestId: shown } = stateRef.current;
+      const here = shown ? flat.filter((f) => f.digest.id === shown) : flat;
+      if (here.length === 0) return false;
+      const i = Math.max(0, here.findIndex((f) => f.pick.id === current));
+      const next = here[Math.min(here.length - 1, Math.max(0, i + delta))].pick.id;
+      if (next === current) return false;
+      setSelectedId(next);
+      setScrollToId(next);
       setRemoving(null);
+      return true;
     },
     [flat],
   );
@@ -122,7 +161,10 @@ export function useReviewQueue(messages: (typeof organiserMessages)["en"]) {
       const at = list.findIndex((p) => p.id === decidedId);
       const after = [...list.slice(at + 1), ...list.slice(0, Math.max(at, 0))];
       const next = after.find((p) => p.status === "suggested");
-      if (next) setSelectedId(next.id);
+      if (next) {
+        setSelectedId(next.id);
+        setScrollToId(next.id);
+      }
     },
     [load],
   );
@@ -151,19 +193,30 @@ export function useReviewQueue(messages: (typeof organiserMessages)["en"]) {
     [decide],
   );
   const undo = useCallback((pickId: string) => decide({ pickId, decision: "undo" }, pickId, false), [decide]);
-  const startRemove = useCallback((pickId: string) => setRemoving({ pickId, code: null, note: "" }), []);
+  const startRemove = useCallback((pickId: string) => {
+    setNotice(null);
+    setRemoving({ pickId, code: null, note: "" });
+  }, []);
   const cancelRemove = useCallback(() => setRemoving(null), []);
-  const chooseCode = useCallback((code: RemoveReasonCode) => setRemoving((r) => (r ? { ...r, code } : r)), []);
-  const setNote = useCallback((note: string) => setRemoving((r) => (r ? { ...r, note, warned: false } : r)), []);
-  const confirmRemove = useCallback(() => {
-    const r = stateRef.current.removing;
-    if (!r || !r.code) return;
-    void decide(
-      { pickId: r.pickId, decision: "remove", reasonCode: r.code, ...(r.note.trim() ? { note: r.note.trim() } : {}), ...(r.warned ? { confirmProtected: true } : {}) },
-      r.pickId,
-      true,
-    );
-  }, [decide]);
+  /**
+   * The reason dialog owns its fields and hands them over here. When the server warned about the note and the
+   * same note is confirmed again, that is the second confirmation; an edited note starts over.
+   */
+  const confirmRemove = useCallback(
+    (v: { reasonCode: RemoveReasonCode; note: string }) => {
+      const r = stateRef.current.removing;
+      if (!r) return;
+      const note = v.note.trim();
+      const second = Boolean(r.warned) && r.note === note;
+      setRemoving({ ...r, code: v.reasonCode, note, warned: second });
+      void decide(
+        { pickId: r.pickId, decision: "remove", reasonCode: v.reasonCode, ...(note ? { note } : {}), ...(second ? { confirmProtected: true } : {}) },
+        r.pickId,
+        true,
+      );
+    },
+    [decide],
+  );
 
   const publish = useCallback(
     async (digestId: string) => {
@@ -210,8 +263,13 @@ export function useReviewQueue(messages: (typeof organiserMessages)["en"]) {
       const target = event.target as HTMLElement | null;
       const typing =
         target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target instanceof HTMLSelectElement;
-      const { selectedId: id, removing: rm, queue: q } = stateRef.current;
-      const selected = flat.find((f) => f.pick.id === id);
+      const { selectedId: id, removing: rm, queue: q, helpOpen: help, shownDigestId: shown } = stateRef.current;
+      // The reason dialog and the key list are modal: they take the keys while open.
+      if (rm !== null) return;
+      if (help && event.key !== "?") return;
+      // A pick that is not on screen is never the target of a key.
+      const found = flat.find((f) => f.pick.id === id);
+      const selected = found && (!shown || found.digest.id === shown) ? found : undefined;
       const inReview = selected?.digest.status === "draft";
       const action = keyAction({
         key: event.key,
@@ -221,10 +279,12 @@ export function useReviewQueue(messages: (typeof organiserMessages)["en"]) {
         canUndo: Boolean(selected && inReview && selected.pick.status !== "suggested"),
       });
       if (!action) return;
-      if (action.type !== "approve" && action.type !== "undo" && action.type !== "publish") event.preventDefault();
+      if (action.type !== "approve" && action.type !== "undo" && action.type !== "publish" && action.type !== "move")
+        event.preventDefault();
       switch (action.type) {
         case "move":
-          move(action.delta);
+          // Arrow keys keep scrolling the page unless they moved the selection.
+          if (move(action.delta)) event.preventDefault();
           break;
         case "approve":
           if (selected) void approve(selected.pick.id);
@@ -236,33 +296,26 @@ export function useReviewQueue(messages: (typeof organiserMessages)["en"]) {
           if (selected) void undo(selected.pick.id);
           break;
         case "publish": {
-          const digestId = selected?.digest.id ?? q?.digests[0]?.id;
+          const digestId = shown ?? selected?.digest.id ?? q?.digests[0]?.id;
           if (digestId) void publish(digestId);
           break;
         }
         case "help":
           setHelpOpen((open) => !open);
           break;
-        case "chooseCode":
-          chooseCode(action.code);
-          break;
-        case "confirmRemove":
-          confirmRemove();
-          break;
-        case "cancelRemove":
-          cancelRemove();
-          break;
       }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [flat, move, approve, undo, publish, startRemove, cancelRemove, confirmRemove, chooseCode]);
+  }, [flat, move, approve, undo, publish, startRemove]);
 
   return {
     queue,
     loadError,
     selectedId,
     setSelectedId,
+    setShownDigestId,
+    scrollToId,
     removing,
     notice,
     busy,
@@ -272,10 +325,9 @@ export function useReviewQueue(messages: (typeof organiserMessages)["en"]) {
     undo,
     startRemove,
     cancelRemove,
-    chooseCode,
-    setNote,
     confirmRemove,
     publish,
     runDaily,
+    reload: load,
   };
 }

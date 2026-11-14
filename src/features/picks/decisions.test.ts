@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
-import { auditLog, digest, pick, talentIdentity } from "@/db/schema";
+import { auditLog, digest, needCard, pick, talentIdentity } from "@/db/schema";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
 
 vi.mock("@/features/card", async () => {
@@ -238,6 +238,28 @@ describe("review queue payload", () => {
     expect(p.requirements.map((r) => [r.id, r.touched])).toEqual([["req_1", true], ["req_2", true], ["req_3", false]]);
     expect(p.basis).toEqual({ lastDrafted: null, seedPrefix: expect.stringMatching(/^[0-9a-f]{8}$/) });
     expect(p.card?.handle).toMatch(/^Maple-/);
+  });
+
+  it("gives the need's summary and requirements with the employer's name masked", async () => {
+    await world(["tal_a"]);
+    const [row] = await t.db.select().from(needCard).where(eq(needCard.id, "nc_1"));
+    const body = {
+      ...row.body,
+      summary: "Acme Robotics builds and runs data pipelines.",
+      requirements: row.body.requirements.map((r) => (r.id === "req_2" ? { ...r, text: "SQL queries for Acme Robotics", kind: "nice" as const } : r)),
+    };
+    await t.db.update(needCard).set({ body }).where(eq(needCard.id, "nc_1"));
+
+    const q = await buildReviewQueue(t.db, { now: NOW });
+    const need = q.digests[0].needs[0];
+    expect(need.summary).toBe("the company builds and runs data pipelines.");
+    expect(need.requirements).toEqual([
+      { id: "req_1", text: "Python programming", kind: "must" },
+      { id: "req_2", text: "SQL queries for the company", kind: "nice" },
+      { id: "req_3", text: "Fluent Finnish", kind: "must" },
+    ]);
+    // About the job only, and never the employer's name anywhere in what the organiser's browser receives.
+    expect(JSON.stringify(q)).not.toMatch(/acme/i);
   });
 
   it("carries no quote, name, contact, interview language, input mode or score", async () => {

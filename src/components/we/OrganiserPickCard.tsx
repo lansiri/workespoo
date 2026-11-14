@@ -9,7 +9,7 @@ export type OrganiserPickCardProps = {
   /** The company-view summary, 14 px. */
   summary: string;
   /** "Why today: Not suggested to anyone for 3 days" */
-  whyToday: string;
+  whyToday?: string;
   /** "This person asked to meet you", for talent-initiated requests. */
   origin?: string;
   /** "Synthetic person" */
@@ -42,7 +42,7 @@ export function OrganiserPickCard(p: OrganiserPickCardProps) {
       <div className="we-hd">
         <PersonHandle handle={p.handle} size="sm" ariaLabel={p.handleAria} />
         <p>{p.summary}</p>
-        <span className="we-why-today">{p.whyToday}</span>
+        {p.whyToday ? <span className="we-why-today">{p.whyToday}</span> : null}
         {p.syntheticLabel ? <SyntheticTag>{p.syntheticLabel}</SyntheticTag> : null}
         {p.origin ? <p className="we-origin">{p.origin}</p> : null}
       </div>
