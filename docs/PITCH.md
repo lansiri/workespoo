@@ -72,7 +72,7 @@ A person talks for a minute, approves their card, chooses the pitch company's jo
 | Deciding on a follow-up in the job interview | about 1 s | prompt lab, 14 November |
 | Rating one job interview | 12 to 18 s, after the person sends it | prompt lab, 14 November |
 | The golden path (the demo without the job interview) as an automated test | 1.1 minutes on the live site | `e2e/golden-path.spec.ts`, 14 November |
-| Automated tests | 1,830 passing | `npm run check` on main, 14 November afternoon |
+| Automated tests | 2,175 passing | `npm run check` on main, 14 November evening (on Node 20; ten tests that read a PDF need Node 22 and run in CI and in a container) |
 | The interviewer's voice, made on the server | 0.2 to 0.65 s per sentence, three languages | measured on the server |
 | Speech to text on the server | 6 s of speech in 0.7 s, 18 s in 1.8 s; words appear while the person is still talking | 25 recordings per language through the running service, 14 November (`docs/research/voice-stt.md`) |
 | Words heard wrong in read sentences | about 22% in Finnish and Swedish, 7% in English, mostly names and compounds | the same recordings (FLEURS) |
