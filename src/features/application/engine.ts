@@ -46,7 +46,7 @@ import {
   type TurnRow,
 } from "./engine-store";
 import { questionsFor } from "./engine-questions";
-import { ASSESS_KIND, ASSESS_QUEUE_DELAY_MS } from "./jobs";
+import { ASSESS_KIND, ASSESS_MAX_ATTEMPTS, ASSESS_QUEUE_DELAY_MS } from "./jobs";
 import { bridgeFor, closingLine, deletedLine, openingLine, repairLine, scriptedFollowUp } from "./lines";
 import { buildTurnPrompt, followUpProblem } from "./prompts-interview";
 import { screenAnswerSentence } from "./assess-protected";
@@ -566,7 +566,7 @@ export function submitApplication(db: Db, applicationId: string, options?: Engin
         detail: { talentId: app.talentId, jobId: app.jobId, answers: answers.length },
       });
       // In the same transaction: an application is never sent without its rating being queued.
-      await enqueue(tx, ASSESS_KIND, { applicationId }, { dedupeKey: `${ASSESS_KIND}:${applicationId}`, runAfter: new Date(at.getTime() + ASSESS_QUEUE_DELAY_MS) });
+      await enqueue(tx, ASSESS_KIND, { applicationId }, { dedupeKey: `${ASSESS_KIND}:${applicationId}`, runAfter: new Date(at.getTime() + ASSESS_QUEUE_DELAY_MS), maxAttempts: ASSESS_MAX_ATTEMPTS });
     });
   });
 }

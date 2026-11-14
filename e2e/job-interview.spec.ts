@@ -76,6 +76,15 @@ const THINK_MS = 2_000;
 
 const tid = (scope: Page | Locator, id: string) => scope.locator(`[data-testid="${id}"]`);
 
+/**
+ * With E2E_VIEWPORT=390x844 the person and the company use a phone-sized touch screen (the
+ * organiser keeps a desk). The journey is the same: nothing in it may need a wide window.
+ */
+const PHONE = (() => {
+  const [width, height] = (process.env.E2E_VIEWPORT ?? "").split("x").map(Number);
+  return width && height ? { viewport: { width, height }, hasTouch: true, isMobile: true } : {};
+})();
+
 /** With E2E_SHOTS=<directory> the journey leaves a picture of every screen there. */
 const SHOTS = process.env.E2E_SHOTS ?? "";
 async function shot(page: Page, name: string): Promise<void> {
@@ -135,8 +144,8 @@ test.describe("job interview", () => {
       });
 
     const organiserContext = await browser.newContext();
-    const talentContext = await browser.newContext();
-    const companyContext = await browser.newContext();
+    const talentContext = await browser.newContext(PHONE);
+    const companyContext = await browser.newContext(PHONE);
     watch(organiserContext, "organiser");
     watch(talentContext, "talent");
     watch(companyContext, "company");

@@ -11,6 +11,11 @@ export const ASSESS_KIND = "application.assess";
  * net. It finds the application already rated, or rates it when the first attempt failed.
  */
 export const ASSESS_QUEUE_DELAY_MS = 45_000;
+/**
+ * A person is waiting for this, and a model that is down for a few minutes must not leave an
+ * application unrated for good: the queue tries more often than its usual three times.
+ */
+export const ASSESS_MAX_ATTEMPTS = 8;
 
 export const jobs: JobDefinition[] = [
   defineJob(ASSESS_KIND, AssessApplicationPayload, async (payload, ctx) => {

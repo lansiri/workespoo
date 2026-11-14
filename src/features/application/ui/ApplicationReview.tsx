@@ -146,6 +146,8 @@ export function ApplicationReview({ application }: { application: OwnApplication
 
 /** How often the page asks whether the rating is ready. */
 export const POLL_MS = 2000;
+/** A rating takes about 20 seconds. After this long the page says that it is slow, and that nothing is lost. */
+export const SLOW_AFTER_MS = 60_000;
 
 /** The person's own application as the API gives it, or null when it could not be read. */
 export async function fetchOwnApplication(id: string, signal?: AbortSignal): Promise<OwnApplication | null> {
@@ -167,6 +169,13 @@ export function ApplicationSent({ application }: { application: OwnApplication }
   const m = useMessages(applyMessages);
   const [current, setCurrent] = useState<OwnApplication>(application);
   const assessed = current.status === "assessed" && current.assessment !== null;
+  const [slow, setSlow] = useState(false);
+
+  useEffect(() => {
+    if (assessed) return;
+    const id = window.setTimeout(() => setSlow(true), SLOW_AFTER_MS);
+    return () => window.clearTimeout(id);
+  }, [assessed]);
 
   useEffect(() => {
     if (assessed) return;
@@ -193,6 +202,11 @@ export function ApplicationSent({ application }: { application: OwnApplication }
       <p className="we-ap-working" role="status">
         {m.sentWorking}
       </p>
+      {slow ? (
+        <p className="we-ap-fine" style={{ marginTop: 10 }} data-testid="apply-sent-slow">
+          {m.sentSlow}
+        </p>
+      ) : null}
       <p className="we-ap-fine" style={{ marginTop: 16 }}>
         {m.resultOrganiser}
       </p>

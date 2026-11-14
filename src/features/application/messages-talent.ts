@@ -118,6 +118,7 @@ const en = {
   sentTitle: "Your application was sent",
   sentBody: "An AI is now rating your answers against each thing the ad asks for. This page updates by itself when the ratings are ready.",
   sentWorking: "Rating in progress…",
+  sentSlow: "This is taking longer than usual. Your application is sent and nothing is lost. The ratings will show here when they are ready, and you can come back to this page later.",
 
   /* Result */
   resultTitle: "Your application: {title}",
@@ -255,6 +256,7 @@ export const applyMessages: Messages<typeof en> = {
     sentTitle: "Hakemuksesi on lähetetty",
     sentBody: "Tekoäly arvioi nyt vastauksesi jokaista ilmoituksen vaatimusta vasten. Sivu päivittyy itsestään, kun arviot ovat valmiit.",
     sentWorking: "Arviointi on kesken…",
+    sentSlow: "Tämä kestää tavallista pidempään. Hakemuksesi on lähetetty eikä mitään ole kadonnut. Arviot näkyvät tässä, kun ne ovat valmiit, ja voit palata tälle sivulle myöhemmin.",
 
     resultTitle: "Hakemuksesi: {title}",
     resultSummary: "Yhteenveto",
@@ -387,6 +389,7 @@ export const applyMessages: Messages<typeof en> = {
     sentTitle: "Din ansökan har skickats",
     sentBody: "En AI bedömer nu dina svar mot varje krav i annonsen. Sidan uppdateras av sig själv när bedömningarna är klara.",
     sentWorking: "Bedömningen pågår…",
+    sentSlow: "Det här tar längre tid än vanligt. Din ansökan är skickad och ingenting har gått förlorat. Bedömningarna visas här när de är klara, och du kan komma tillbaka till den här sidan senare.",
 
     resultTitle: "Din ansökan: {title}",
     resultSummary: "Sammanfattning",
