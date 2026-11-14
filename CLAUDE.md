@@ -52,7 +52,7 @@ Your training data is probably older than these versions. Check `docs/PATTERNS.m
 | `src/features/jobs/`, `src/features/needs/`, `src/app/api/jobs/`, `src/app/api/needs/`, `src/app/(company)/c/[token]/need/`, `src/app/dev/s2/` | Stream S2 |
 | `src/features/matching/`, `src/features/picks/`, `src/features/intros/`, `src/app/api/matches/`, `src/app/api/picks/`, `src/app/api/digests/`, `src/app/api/intros/`, `src/app/api/organiser/`, `src/app/(organiser)/`, `src/app/(talent)/matches/`, `src/app/(company)/c/[token]/page.tsx`, `src/app/dev/s3/` | Stream S3 |
 | `src/features/voice/`, `src/app/api/voice/`, `src/app/dev/voice/`, `src/features/synth/`, `seed/`, `evals/` | Stream S4 |
-| `src/features/application/`, `src/app/api/application/`, `src/app/api/organiser/applicants/`, `src/app/(talent)/apply/`, `src/app/(room)/apply/`, `src/app/(organiser)/organiser/applicants/`, `src/app/(company)/c/[token]/applicants/` | Stream S5 (job interviews and ranked applicants, `docs/specs/job-interview.md`) |
+| `src/features/application/`, `src/app/api/application/`, `src/app/api/organiser/applicants/`, `src/app/api/applicants/`, `src/app/(talent)/apply/`, `src/app/(room)/apply/`, `src/app/(organiser)/organiser/applicants/`, `src/app/(company)/c/[token]/applicants/` | Stream S5 (job interviews and ranked applicants, `docs/specs/job-interview.md`) |
 
 Route groups in parentheses do not appear in URLs: `src/app/(talent)/card/page.tsx` serves `/card`.
 
