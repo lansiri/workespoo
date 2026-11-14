@@ -12,8 +12,8 @@
 .we-rk-job p { font-size: 14px; color: var(--muted-ink); margin-top: 2px; }
 
 .we-rk-reqs { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 6px; }
-.we-rk-reqs li { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
-.we-rk-kind { font-size: 12px; font-weight: 600; color: var(--pine); background: var(--pine-50); border: 1px solid var(--pine-100); padding: 2px 8px; border-radius: var(--r-pill); white-space: nowrap; }
+.we-rk-reqs li { display: flex; gap: 8px; align-items: baseline; }
+.we-rk-kind { flex: none; font-size: 12px; font-weight: 600; color: var(--pine); background: var(--pine-50); border: 1px solid var(--pine-100); padding: 2px 8px; border-radius: var(--r-pill); white-space: nowrap; }
 
 .we-rk-bar { display: flex; gap: 12px 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; background: var(--pine-50); border: 1px solid var(--pine-100); border-radius: var(--r-lg); padding: 14px 18px; margin: 20px 0; }
 .we-rk-status { font-weight: 600; }
