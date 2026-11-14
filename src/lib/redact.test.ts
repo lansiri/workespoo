@@ -233,3 +233,34 @@ describe("review fixes", () => {
     }
   });
 });
+
+describe("redactContacts: time", () => {
+  const n = 300_000;
+  it("a long run of letters without @ is read once, not from every position", () => {
+    redactContacts("warm up");
+    for (const text of ["a".repeat(n), `${"a".repeat(n)} (at) b`, `${"a".repeat(n)} at b`, "a.b".repeat(n / 3), "a-".repeat(n / 2)]) {
+      const t = process.cpuUsage(); // CPU time, so that a busy machine does not matter
+      redactContacts(text);
+      const spent = process.cpuUsage(t);
+      expect((spent.user + spent.system) / 1000).toBeLessThan(1000);
+    }
+  });
+  it("addresses next to such a run are still found", () => {
+    expect(redactContacts(`${"a".repeat(1000)} jane.doe@example.fi`)).toBe(`${"a".repeat(1000)} ${R}`);
+    expect(redactContacts("x jane.doe@example.fi, o'neil@example.co.uk; first+tag@sub.example.fi")).toBe(`x ${R}, ${R}; ${R}`);
+    expect(redactContacts("etunimi.sukunimi (at) espoo.fi")).toBe(R);
+    expect(redactContacts("etunimi at firma dot fi")).toBe(R);
+  });
+  it("two addresses glued together are both found", () => {
+    expect(redactContacts("Contact a@b.fi_matti.meikalainen@firma.fi today")).toBe(`Contact ${R} today`);
+    expect(redactContacts("jobs@a.fi+matti.m@b.fi")).toBe(R);
+    expect(redactContacts("x@y.fi'liisa@z.fi")).toBe(R);
+  });
+  it("a long chain of glued addresses and a long run with underscores take linear time", () => {
+    const t = process.cpuUsage();
+    redactContacts("a@b.fi_".repeat(40_000));
+    redactContacts("ab.cd_".repeat(40_000));
+    const spent = process.cpuUsage(t);
+    expect((spent.user + spent.system) / 1000).toBeLessThan(1500);
+  });
+});

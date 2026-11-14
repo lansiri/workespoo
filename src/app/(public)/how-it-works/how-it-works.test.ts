@@ -82,6 +82,26 @@ describe("How this works: text", () => {
     expect(pageContent("en", "browser").sections[7].heading).toBe("Limits we know about");
   });
 
+  it("says what is true about a CV and what the data sentence ends with, in three languages", () => {
+    const data = (lang: UiLang) => pageContent(lang, "browser").sections[6].body;
+    expect(data("en")).toContain("download your data or delete it at any time, job applications and their ratings included.");
+    expect(data("fi")).toContain("milloin tahansa, myös työhakemukset ja niiden arviot.");
+    expect(data("sv")).toContain("när som helst, även jobbansökningar och deras bedömningar.");
+    expect(data("en")).toContain("(not AI) that try to remove your name");
+    expect(data("en")).toContain("text you paste goes through them when you start");
+    expect(data("fi")).toContain("(ei tekoäly), jotka yrittävät");
+    expect(data("fi")).toContain("liittämäsi teksti käy ne läpi, kun aloitat");
+    expect(data("sv")).toContain("(inte AI) som försöker");
+    expect(data("sv")).toContain("text du klistrar in går genom dem när du börjar");
+    expect(data("en")).toContain("try to remove your name");
+    expect(data("en")).toContain("can miss some");
+    expect(data("fi")).toContain("yrittävät poistaa nimesi");
+    expect(data("fi")).toContain("voivat jättää jotakin huomaamatta");
+    expect(data("sv")).toContain("försöker ta bort ditt namn");
+    expect(data("sv")).toContain("kan missa något");
+    for (const lang of ["en", "fi", "sv"] as const) expect(data(lang)).not.toContain("\u2014");
+  });
+
   it("says the interviewer's voice is made on our own server where there is one", () => {
     expect(pageContent("en", "browser").sections[6].body).toContain("made on our own server");
     expect(pageContent("fi", "browser").sections[6].body).toContain("oma palvelimemme");

@@ -1,7 +1,15 @@
 import type { CvUploadError, CvUploadResponse } from "@/contracts";
-import { CV_PDF_MAX_BYTES, readCvPdf } from "@/features/interview/cv-pdf";
+import { CV_PDF_MAX_BYTES, looksLikePdf, readCvPdf } from "@/features/interview/cv-pdf";
+import { warmCvAnonymiser } from "@/features/interview/cv-anonymise";
+import { clientKey, createRateLimiter } from "@/features/interview/cv-rate-limit";
 
 export const dynamic = "force-dynamic";
+
+/**
+ * Twenty readable-looking uploads a minute per client address; the endpoint needs no session.
+ * Many people can share one venue address, and the concurrency cap already protects the process.
+ */
+const allow = createRateLimiter({ limit: 20, windowMs: 60_000, maxKeys: 5_000 });
 
 const STATUS: Record<CvUploadError, number> = {
   too_large: 413,
@@ -17,10 +25,20 @@ function reply(body: unknown, status: number): Response {
   return Response.json(body, { status, headers: { "cache-control": "no-store" } });
 }
 
-function fail(error: CvUploadError): Response {
+function fail(error: CvUploadError, retryAfter = 2): Response {
   const res = reply({ error: { code: error } }, STATUS[error]);
-  if (error === "busy") res.headers.set("retry-after", "2");
+  if (error === "busy") res.headers.set("retry-after", String(retryAfter));
   return res;
+}
+
+/**
+ * The start-up warm-up (see `src/instrumentation.ts`): runs the anonymiser's patterns once in
+ * this bundle, so that their compilation is paid when the server starts. Afterwards it costs a
+ * couple of milliseconds, takes no input and says nothing.
+ */
+export async function GET(): Promise<Response> {
+  warmCvAnonymiser();
+  return new Response(null, { status: 204, headers: { "cache-control": "no-store" } });
 }
 
 /**
@@ -38,6 +56,11 @@ export async function POST(req: Request): Promise<Response> {
     return reply({ error: { code: "invalid_request" } }, 400);
   }
   if (bytes === "too_large") return fail("too_large");
+
+  // Charged only now: requests that are not a PDF or are too large cost the parser nothing.
+  if (bytes.length === 0 || !looksLikePdf(bytes)) return fail("not_pdf");
+  const wait = allow(clientKey(req.headers));
+  if (wait > 0) return fail("busy", wait);
 
   const result = await readCvPdf(bytes);
   if (!result.ok) return fail(result.error);

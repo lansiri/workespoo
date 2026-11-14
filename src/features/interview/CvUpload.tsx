@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CvUploadError, CvUploadResponse, type CvRemovedKind } from "@/contracts";
 import { Button } from "@/components/we";
 import { fmt } from "@/lib/i18n";
@@ -42,6 +42,19 @@ export function cvRemovedSummary(removed: Partial<Record<CvRemovedKind, number>>
   return fmt(m.cvReadDone, { list });
 }
 
+/**
+ * What the CV box holds after a file is read. A box with text in it is never overwritten: the
+ * file's text goes after it with an empty line between, as far as the box's limit allows.
+ * `appended` says that the person's own text was kept; `fitted` is false when nothing could be added.
+ */
+export function mergeCvText(current: string, uploaded: string, limit: number): { text: string; appended: boolean; fitted: boolean } {
+  if (current.trim() === "") return { text: uploaded.slice(0, limit), appended: false, fitted: true };
+  const head = current.replace(/\s+$/, "");
+  const room = limit - head.length - 2;
+  if (room <= 0 || uploaded.trim() === "") return { text: current, appended: true, fitted: false };
+  return { text: `${head}\n\n${uploaded.slice(0, room)}`, appended: true, fitted: true };
+}
+
 /** What the server's error answer means for the person. */
 export function cvErrorText(body: unknown, m: M): string {
   const code = (body as { error?: { code?: unknown } } | null)?.error?.code;
@@ -53,11 +66,27 @@ type Status = { kind: "idle" } | { kind: "reading" } | { kind: "done"; text: str
 
 /**
  * Upload a CV as PDF. The server reads its text, removes personal data by fixed rules and sends
- * the text back; it lands in the CV box, where the person can check and change it before
- * starting. Only that text is ever sent on, and only when they press start.
+ * the text back; it lands in the CV box (after anything already written there), where the
+ * person can check and change it before starting. Only that text is ever sent on, and only when they press start.
  */
-export function CvUpload({ enabled, onText }: { enabled: boolean; onText: (text: string) => void }) {
+export function CvUpload({
+  enabled,
+  current,
+  limit,
+  onText,
+}: {
+  enabled: boolean;
+  /** What is in the CV box now, so that an upload is added after it and never replaces it. */
+  current: string;
+  limit: number;
+  onText: (text: string) => void;
+}) {
   const m = useMessages(interviewMessages);
+  // The box can change while a file is being read: the answer is merged with what is there when it arrives.
+  const currentRef = useRef(current);
+  useEffect(() => {
+    currentRef.current = current;
+  }, [current]);
   const input = useRef<HTMLInputElement>(null);
   const [status, setStatus] = useState<Status>({ kind: "idle" });
 
@@ -73,8 +102,10 @@ export function CvUpload({ enabled, onText }: { enabled: boolean; onText: (text:
       if (!res.ok) return setStatus({ kind: "error", text: cvErrorText(json, m) });
       const parsed = CvUploadResponse.safeParse(json);
       if (!parsed.success) return setStatus({ kind: "error", text: m.cvErrorFailed });
-      onText(parsed.data.text);
-      setStatus({ kind: "done", text: cvRemovedSummary(parsed.data.removed, m) });
+      const merged = mergeCvText(currentRef.current, parsed.data.text, limit);
+      if (merged.fitted) onText(merged.text);
+      const note = !merged.appended ? "" : merged.fitted ? ` ${m.cvAddedAfter}` : ` ${m.cvNoRoom}`;
+      setStatus({ kind: "done", text: `${cvRemovedSummary(parsed.data.removed, m)}${note}` });
     } catch {
       setStatus({ kind: "error", text: m.cvErrorFailed });
     }
