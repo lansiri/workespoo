@@ -142,36 +142,48 @@ describe("anonymiseCv leaves ordinary work wording alone", () => {
 // ---------- hostile input: time grows with the length, not with its square ----------
 
 describe("anonymiseCv time on hostile text", () => {
-  const N = 100_000;
-  const shapes: Record<string, string> = {
-    "letters without @": "a".repeat(N),
-    "capital letters": "A".repeat(N),
-    "capitalised words": "Ab ".repeat(N / 3),
-    "dotted labels": "a.".repeat(N / 2),
-    "hyphenated labels": "a-".repeat(N / 2),
-    dashes: "-".repeat(N),
-    "inner spaces": `a${" ".repeat(N)}b`,
-    "digits and spaces": "1 ".repeat(N / 2),
-    "removed markers": "[removed] ".repeat(N / 10),
-    "marker then separators": `[removed]${", ".repeat(N / 2)}`,
-    "open brackets": "( ".repeat(N / 2),
-    "@ signs": "@".repeat(N),
-    "language names": "English ".repeat(N / 8),
-    "many Name: lines": "Name: Abc Def\n".repeat(N / 14),
-    "one very long capitalised word": `Aino\n${"A".repeat(N)}`,
-    "years": "2019 ".repeat(N / 5),
-    "first person": "I am ".repeat(N / 5),
+  /** One repeated shape, `n` characters long. */
+  const shapes: Record<string, (n: number) => string> = {
+    "letters without @": (n) => "a".repeat(n),
+    "capital letters": (n) => "A".repeat(n),
+    "capitalised words": (n) => "Ab ".repeat(n / 3),
+    "dotted labels": (n) => "a.".repeat(n / 2),
+    "hyphenated labels": (n) => "a-".repeat(n / 2),
+    dashes: (n) => "-".repeat(n),
+    "inner spaces": (n) => `a${" ".repeat(n)}b`,
+    "digits and spaces": (n) => "1 ".repeat(n / 2),
+    "removed markers": (n) => "[removed] ".repeat(n / 10),
+    "marker then separators": (n) => `[removed]${", ".repeat(n / 2)}`,
+    "open brackets": (n) => "( ".repeat(n / 2),
+    "@ signs": (n) => "@".repeat(n),
+    "language names": (n) => "English ".repeat(n / 8),
+    "many Name: lines": (n) => "Name: Abc Def\n".repeat(n / 14),
+    "one very long capitalised word": (n) => `Aino\n${"A".repeat(n)}`,
+    years: (n) => "2019 ".repeat(n / 5),
+    "first person": (n) => "I am ".repeat(n / 5),
   };
+
+  /** CPU time of this process in milliseconds, not the clock: a busy machine does not make a linear pattern look slow. */
+  function cpuMs(run: () => void): number {
+    const t = process.cpuUsage();
+    run();
+    const spent = process.cpuUsage(t);
+    return (spent.user + spent.system) / 1000;
+  }
 
   it("warm up (the first call compiles the patterns)", () => {
     anonymiseCv("x");
   });
 
-  it.each(Object.entries(shapes))("%s", (_name, text) => {
-    const t = performance.now();
-    const out = anonymiseCv(text);
-    expect(typeof out.text).toBe("string");
-    expect(performance.now() - t).toBeLessThan(2500);
+  // Four times the text may take about four times as long. A pattern that restarts at every position
+  // takes sixteen times as long, and on 20,000 characters of the old pattern that was seconds.
+  it.each(Object.entries(shapes))("%s", (_name, make) => {
+    const small = cpuMs(() => anonymiseCv(make(20_000)));
+    const large = cpuMs(() => {
+      const out = anonymiseCv(make(80_000));
+      expect(typeof out.text).toBe("string");
+    });
+    expect(large).toBeLessThan(9 * small + 400);
   });
 });
 

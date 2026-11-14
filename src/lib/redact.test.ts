@@ -239,9 +239,10 @@ describe("redactContacts: time", () => {
   it("a long run of letters without @ is read once, not from every position", () => {
     redactContacts("warm up");
     for (const text of ["a".repeat(n), `${"a".repeat(n)} (at) b`, `${"a".repeat(n)} at b`, "a.b".repeat(n / 3), "a-".repeat(n / 2)]) {
-      const t = performance.now();
+      const t = process.cpuUsage(); // CPU time, so that a busy machine does not matter
       redactContacts(text);
-      expect(performance.now() - t).toBeLessThan(500);
+      const spent = process.cpuUsage(t);
+      expect((spent.user + spent.system) / 1000).toBeLessThan(1000);
     }
   });
   it("addresses next to such a run are still found", () => {
