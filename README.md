@@ -4,7 +4,7 @@ A prototype for Junction 2026, City of Espoo challenge "Rethinking Recruitment".
 
 Registration for a matchmaking event becomes a short conversation with an AI interviewer instead of a CV form. Everything after it rests on what the person said: the real open jobs they are shown, and the short lists of people an Espoo organiser approves for each company. That conversation is not scored, and those lists are in no particular order.
 
-A person can then choose one job of the event and take a job interview whose questions come from that job's ad. This is the one thing that is rated, and the person is told so before starting: an AI rates the evidence in the answers for each requirement, code puts the applicants in order, and an organiser checks the order before the company sees it. Names stay hidden until both sides say yes. The job interview is on the live site since [[DEPLOYED-AT]].
+A person can then choose one job of the event and take a job interview whose questions come from that job's ad. This is the one thing that is rated, and the person is told so before starting: an AI rates the evidence in the answers for each requirement, code puts the applicants in order, and an organiser checks the order before the company sees it. Names stay hidden until both sides say yes. The job interview is on the live site since Saturday 14 November, 15:37.
 
 ![The interview room: the person's words, the notes taken from them, and real open jobs](docs/img/interview-room.jpg)
 
@@ -41,7 +41,7 @@ Whoever starts an interview on the live site is a live demo session: it needs co
 |---|---|
 | The postings: about 1,300 open Espoo jobs from Job Market Finland (Työmarkkinatori), refreshed every six hours, with recruiter names, emails and phone numbers removed at ingestion | The people in the demo: 15 synthetic personas. Each was interviewed by the real interviewer and went through the real pipeline, and each is labelled "Synthetic person" |
 | The model calls: every interview, card, Need Card and job interview rating in the demo was made by the real model | The companies: 8 real postings shown as "Demo company 01" to "08" with the employer's name hidden, because no employer was asked |
-| The job applications in the demo world ([[APPLICATIONS-COUNT]]): made through the real job interview and rated by the real model | Who answers them: a model playing each persona from its sheet. The pitch company's job has four simulated applicants, so a person on stage becomes the fifth |
+| The job applications in the demo world (18 applications by 11 of the 15 simulated people: four at the pitch company's job, one to four at each of the others): made through the real job interview and rated by the real model | Who answers them: a model playing each persona from its sheet. The pitch company's job has four simulated applicants, so a person on stage becomes the fifth |
 | Matching through the ESCO skills taxonomy, the review queue, the ranked lists, mutual consent, the audit log | Email: nothing is sent; a company's list is a private link. Event agenda and meeting slots are not built |
 
 ## Rules the code enforces
@@ -58,7 +58,7 @@ Whoever starts an interview on the live site is a live demo session: it needs co
 10. No voice, tone or emotion analysis. Audio is never stored: speech is turned into text on our own server and dropped, and no outside speech service hears it.
 11. The app never calls a closed model API: every model call goes through one gateway to an OpenAI-compatible endpoint (today the open-weight Kimi K3.1 served by Verda from Finland).
 
-The public page [`/how-it-works`](https://workespoo.aichat.fi/how-it-works) describes the conversation, the card and the picks in three languages; its sentence that the AI does not rate answers must be limited to the conversation before the job interview goes live (see `docs/STATUS.md`). The job interview's start screen says what is rated, who reads the answers and what the company sees, before the person agrees.
+The public page [`/how-it-works`](https://workespoo.aichat.fi/how-it-works) describes the conversation, the card, the picks and the job interview in three languages: what is rated and what is not, what the model is never given, and what the checks cannot guarantee. The job interview's start screen says what is rated, who reads the answers and what the company sees, before the person agrees.
 
 ## How it is built
 

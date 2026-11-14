@@ -1,6 +1,6 @@
 # Pitch notes
 
-For the Junction 2026 jury: City of Espoo, "Rethinking Recruitment". Judging is impact 45%, innovation and user experience 35%, responsible and feasible execution 20%. The live demo is in `docs/specs/demo-script.md`; this page is what to say around it and how to answer questions. Every number here was measured on the build or in the prompt lab named next to it; where something is not built or not checked, it says so. The job interview and the ranked applicants are on the live site since [[DEPLOYED-AT]].
+For the Junction 2026 jury: City of Espoo, "Rethinking Recruitment". Judging is impact 45%, innovation and user experience 35%, responsible and feasible execution 20%. The live demo is in `docs/specs/demo-script.md`; this page is what to say around it and how to answer questions. Every number here was measured on the build or in the prompt lab named next to it; where something is not built or not checked, it says so. The job interview and the ranked applicants are on the live site since Saturday 14 November, 15:37.
 
 ## One line
 
@@ -55,7 +55,7 @@ A person talks for a minute, approves their card, chooses the pitch company's jo
 |---|---|
 | The postings: 1,338 open Espoo jobs, ingested from Työmarkkinatori every six hours, with recruiter names, emails and phone numbers removed at ingestion | The people: 15 synthetic personas. Each was interviewed by the real interviewer and went through the real pipeline, and each is labelled "Synthetic person" |
 | The model calls: every interview, card and Need Card in the demo world was made by the real model. Reasons on the lists of picks that are restored with the demo are written by code; the list drafted live is worded by the model | The companies: 8 real postings shown as "Demo company 01" to "08" with the employer's name hidden, because no employer was asked |
-| The job applications in the demo world ([[APPLICATIONS-COUNT]]): made through the real job interview and rated by the real model | Who answers them: a model playing each persona from its sheet, told to say so plainly when the persona has not done something. The pitch company's job has four simulated applicants, so the person on stage becomes the fifth |
+| The job applications in the demo world (18 applications by 11 of the 15 simulated people: four at the pitch company's job, one to four at each of the others): made through the real job interview and rated by the real model | Who answers them: a model playing each persona from its sheet, told to say so plainly when the persona has not done something. The pitch company's job has four simulated applicants, so the person on stage becomes the fifth |
 | The matching, the review queue, the ranked lists, the mutual consent, the audit log | Email: nothing is sent. A company's list is a private link |
 | Whoever starts an interview on the site: a live demo session with consent, deleted after 24 hours | The event agenda and meeting slots: not built |
 
@@ -72,7 +72,7 @@ A person talks for a minute, approves their card, chooses the pitch company's jo
 | Deciding on a follow-up in the job interview | about 1 s | prompt lab, 14 November |
 | Rating one job interview | 12 to 18 s, after the person sends it | prompt lab, 14 November |
 | The golden path (the demo without the job interview) as an automated test | 1.1 minutes on the live site | `e2e/golden-path.spec.ts`, 14 November |
-| Automated tests | 1,816 passing | `npm run check` on main, 14 November afternoon |
+| Automated tests | 1,830 passing | `npm run check` on main, 14 November afternoon |
 | The interviewer's voice, made on the server | 0.2 to 0.65 s per sentence, three languages | measured on the server |
 | Speech to text on the server | 6 s of speech in 0.7 s, 18 s in 1.8 s; words appear while the person is still talking | 25 recordings per language through the running service, 14 November (`docs/research/voice-stt.md`) |
 | Words heard wrong in read sentences | about 22% in Finnish and Swedish, 7% in English, mostly names and compounds | the same recordings (FLEURS) |
@@ -130,7 +130,7 @@ These are small numbers: six cases. The larger check is the language swap (`eval
 
 **Where does my voice go?** To this server and nowhere else. The browser sends the audio a few seconds at a time; a speech model in its own container, with no route to the internet, turns it into text; the audio is dropped. Nothing about the voice is analysed, and neither audio nor whether someone spoke or typed is kept. It has been tested with recordings through a real browser, by mouse and by finger, but not yet with a real voice on a real phone.
 
-**What breaks under load?** One model key allows 40 requests a minute for everything. That carries the demo and a couple of people at once, not a hall of judges together. Rating a job interview is one call after the person sends it; it waits in the queue behind live calls. The fix is configuration (a higher limit or a second provider), not code.
+**What breaks under load?** One model key allows 40 requests a minute for everything. That carries the demo and a couple of people at once, not a hall of judges together. Rating a job interview is one model call that starts the moment the person sends it (19.8 seconds on the live site in the test run); if it fails, a queued job tries again. The fix is configuration (a higher limit or a second provider), not code.
 
 **What would you build next?** The event day (agenda and slots), the name-and-language swap test for picks, validating the rating scale and weights with employers, the organiser's "add a person" action, and email delivery of lists.
 

@@ -4,7 +4,7 @@ Updated by the lead. Times are Helsinki time.
 
 ## Now (Sat 14 Nov, afternoon)
 
-**Job interviews and ranked applicants are built, reviewed and merged on main. Deployed: [[DEPLOYED-AT]].** The owner decided at 12:50 that applicants to a job are rated and ranked (`docs/LEAD-DECISIONS.md`, the newest entry; `docs/specs/job-interview.md`). Everything else stays as it was: the general interview is not scored, the Signal Card has no levels, the job feed has no match percentages, Daily Picks are in no particular order and approved one by one.
+**Job interviews and ranked applicants are live since 15:37 (commit `e630836`), and on GitHub.** The owner decided at 12:50 that applicants to a job are rated and ranked (`docs/LEAD-DECISIONS.md`, the newest entry; `docs/specs/job-interview.md`). Everything else stays as it was: the general interview is not scored, the Signal Card has no levels, the job feed has no match percentages, Daily Picks are in no particular order and approved one by one.
 
 ### What was built
 
@@ -18,7 +18,7 @@ Updated by the lead. Times are Helsinki time.
 | The person's result | Levels, reasons, the sentences they rest on, points, and after an approval "You are number N of M on the list the company sees". Withdraw deletes the application and its answers and takes the person off the list, the approved one included; the audit log keeps its ids and any organiser's reason, never the answers |
 | Organiser | **Applicants** in the organiser's menu: per job the ranked list, the answers behind each rating, a move that needs a written reason, approval of the exact list seen (refused if it changed meanwhile), and a link to the company's page |
 | Company | `/c/[token]/applicants`: the approved order with levels and reasons, "Position set by the organiser" on a moved person, no name and no own words until both agree to meet; **Ask to meet** uses the existing introduction flow |
-| Demo world | Simulated people have applied through the real feature with the real model ([[APPLICATIONS-COUNT]]). The pitch company (03) has four simulated applicants, so the person on stage becomes the fifth. "Reset demo" restores them without a model |
+| Demo world | Simulated people have applied through the real feature with the real model (18 applications by 11 of the 15 simulated people: four at the pitch company's job, one to four at each of the others). The pitch company (03) has four simulated applicants, so the person on stage becomes the fifth. "Reset demo" restores them without a model |
 | Audit | `application.started`, `application.submitted`, `application.assessed`, `application.withdrawn`, `ranking.moved`, `ranking.unpinned`, `ranking.approved`; ids, counts, positions and the organiser's reason, never answers, levels or reasons |
 
 ### What was verified, and how
@@ -27,17 +27,19 @@ Updated by the lead. Times are Helsinki time.
 |---|---|
 | Prompt lab before the build was accepted | 84 real model calls over the three prompts (`evals/prompt-lab/application-*`). Assessment: 12 runs over 6 cases, all valid; 60 of 60 ratings at the level the scale's anchors call for; both runs of every case gave identical levels (temperature 0); broken English got the same levels as the same content in clean English (2 of 2 cases, both runs); Finnish the same as English (1 case, both runs); a sentence that was left out was never cited (6 of 6) |
 | Timing in the lab | Rating one job interview 12 to 18 s; deciding on a follow-up about 1 s; wording a job's questions 4 to 12 s, once per job and language |
-| Unit tests | `npm run check` on main: 1,816 passing, 3 skipped |
+| Unit tests | `npm run check` on main: 1,830 passing, 3 skipped |
 | Reviews | Found and fixed before merging: the protected check now works in three languages and leaves a sentence out only when the person speaks about themselves, while a country or nationality word in a work sentence is hidden and the sentence kept; reasons are checked for remarks about the person and how they came across; a failed assessment stores nothing; the organiser approves the list that was on screen and is refused if it moved on; withdrawal, "delete my data" and the 24-hour purge take the person out of the approved list and the pins |
-| The journey as a test | `e2e/job-interview.spec.ts`: choose a job, consent, job interview, review and send, own ratings, the organiser's list with the answers behind a rating, a move with a reason, approval, the company's list without names, ask to meet, the person's place and yes, the name only after that, the audit trail. On the live site: [[DEPLOYED-AT]] |
+| The journey as a test | `e2e/job-interview.spec.ts`: choose a job, consent, job interview, review and send, own ratings, the organiser's list with the answers behind a rating, a move with a reason, approval, the company's list without names, ask to meet, the person's place and yes, the name only after that, the audit trail. On the live site at 15:39: passed in 1.6 minutes. After it `golden-path` passed in 1.4 minutes and `voice` 6 of 6 |
+| On the live site, the model calls of that run | The rating: one call, 19.8 s, started when the application was sent (the queued job that backs it up found it done and made no second call). Deciding on a follow-up: 0.7 to 1.1 s. No call to word the questions: they came from the snapshot, so the person was asked what the simulated applicants were asked |
+| The demo world's ratings | 107 of the 108 reasons are in the model's own words; one was replaced by the code's sentence. When the four applications to the pitch company's job were rated a second time, 2 of their 24 levels moved, each by one level: a rating is not perfectly steady from run to run, which is one reason an organiser checks the list |
 
 ### Not done
 
-1. Before deploying: rewrite the sentences on the public page `/how-it-works` (`src/lib/i18n/content/how-it-works.ts`, three languages) that say the AI does not score or rate answers, so that they speak of the conversation only and name the job interview as the one thing rated; the consent page does not mention the job interview yet either (the job interview's own start screen says what is rated). Then deploy, and run `golden-path` and `job-interview` on the live site: [[DEPLOYED-AT]].
+1. Done at 15:37: the public page `/how-it-works` now limits "does not score" to the conversation and has a section on the job interview, in three languages; deployed; `job-interview`, `golden-path` and `voice` passed on the live site.
 2. The language swap check (`evals/application-swap`, run by hand): [[SWAP-CHECK]].
 3. The backup video again, with the job interview in it: [[VIDEO]].
 4. **Still not checked by anyone: a real phone and a real voice.**
-5. The Finnish line above the organiser's ranked list says the AI gave the points; the English and Swedish say the points come from the AI's ratings (code computes them). Fix the Finnish in `src/features/application/messages-organiser.ts` (`orderLine`).
+5. Done: the line above the organiser's ranked list now says in all three languages that the points are counted from the AI's ratings.
 6. Approving a ranked list checks that it is the list on screen, not that the organiser opened anyone's answers; reading them rests on the organiser.
 
 Known limits, also in the README and the pitch notes: the protected-detail screening is word lists in three languages and can miss an unusual phrasing; reasons are model-written and checked by word lists, with an organiser as the last check; the simulated applicants are played by a model from persona sheets; the level scale and the weights are a first version nobody has validated with employers; an EU AI Act high-risk system needs a conformity assessment, a fundamental rights impact assessment and validation on real applicants, none of which this prototype has.
@@ -116,4 +118,4 @@ Waiting for a result: the language swap check of the job interview, run by hand 
 - [x] Gate 1: live URL over HTTPS, deploy and rollback proven, streamed model turn from the server, 1,000+ Espoo postings and ESCO in the database, voice round trip from the server.
 - [x] Gate 2: the full path works end to end with the real model. Evaluation reports in `evals/`.
 - [x] Gate 3: styled product, golden-path test green on the live site, backup video, demo freeze (tag `demo-freeze-2026-11-14`).
-- [ ] Gate 4: the `/how-it-works` sentences limited to the conversation, job interviews live, `job-interview` and `golden-path` green on the live site, the swap check read, the backup video recorded again. Deployed: [[DEPLOYED-AT]]; swap check: [[SWAP-CHECK]]; video: [[VIDEO]].
+- [ ] Gate 4: the `/how-it-works` sentences limited to the conversation, job interviews live, `job-interview` and `golden-path` green on the live site, the swap check read, the backup video recorded again. Deployed: 15:37, commit `e630836`, both journeys green on the live site; swap check: [[SWAP-CHECK]]; video: [[VIDEO]].
