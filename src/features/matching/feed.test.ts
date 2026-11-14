@@ -433,6 +433,8 @@ describe("the payload for /matches", () => {
     expect(item.attribution).toBe("Lähde: Työmarkkinatorin asiakastietojärjestelmä (Job Market Finland)");
     expect(item.url).toMatch(/^http/);
     expect(item.reasons[0].rendering).toContain(skills[0].label);
+    // The note as it stands on the person's own card, for the "From your card" cell.
+    expect(item.reasons[0].phrase).toBe(skills[0].label);
     expect(item.reasons[0].quote).toBe("I build apps.");
     expect(item.reasons[0].postingSentence).toBeTruthy();
     expect(payload.intros.map((i) => i.id)).toEqual(["intro_1"]);

@@ -95,9 +95,10 @@ function JobCard({ item, m, locale }: { item: MatchItem; m: M; locale: string })
                 // Index, not text: the wording may be refined in place without remounting the row.
                 key={`${r.signalId}-${i}`}
                 variant="feed"
-                // Model-written wording (English only) stays out of the feed; the person's own words are the evidence.
-                cardText=""
-                cardKind="rendering"
+                // The note as it stands on the person's own card. Model-written sentences (English
+                // only) stay out of the feed; the person's own words are the evidence.
+                cardText={r.phrase ?? ""}
+                cardKind="phrase"
                 postingSentence={r.postingSentence}
                 postingFallback={`${m.foundHeading}: ${found}`}
                 ownWords={r.quote ? { text: r.quote } : undefined}

@@ -23,6 +23,8 @@ export type MatchItem = {
   reasons: Array<{
     text: string;
     signalId: string;
+    /** The note's own short phrase on the person's approved card (their wording when they edited it). */
+    phrase: string | null;
     /** The labelled English rendering from the card, when there is one. */
     rendering: string | null;
     /** The person's own words, rendered by code from their transcript. */
@@ -127,9 +129,14 @@ async function quotesFor(
 export async function matchesPayload(db: Db, talentId: string): Promise<MatchesPayload> {
   const feed = await feedForTalent(db, talentId);
   let renderings = new Map<string, string>();
+  let phrases = new Map<string, string>();
   try {
     const card = await getApprovedCard(db, talentId);
-    if (card) renderings = new Map(card.companyView.items.map((i) => [i.signalId, i.text]));
+    if (card) {
+      renderings = new Map(card.companyView.items.map((i) => [i.signalId, i.text]));
+      // The person's own page: their wording of a note when they edited it, else the note's phrase.
+      phrases = new Map(card.signals.filter((sig) => sig.status !== "removed").map((sig) => [sig.id, sig.phraseOwn ?? sig.phrase]));
+    }
   } catch {
     // The card feature is not available: reasons show without renderings.
   }
@@ -174,6 +181,7 @@ export async function matchesPayload(db: Db, talentId: string): Promise<MatchesP
     reasons: match.reasons.map((r) => ({
       text: r.text,
       signalId: r.signalId,
+      phrase: phrases.get(r.signalId) ?? null,
       rendering: renderings.get(r.signalId) ?? null,
       quote: r.evidence
         ? (quotes.get(`${r.signalId}|${r.evidence.turnIndex}|${r.evidence.sentenceFrom}|${r.evidence.sentenceTo}`) ?? null)
