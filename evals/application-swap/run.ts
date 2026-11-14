@@ -41,6 +41,9 @@ async function translate(db: Db, texts: string[], from: UiLang, to: UiLang): Pro
     schema: Translated,
     maxTokens: 4000,
     temperature: 0,
+    // A whole interview is some twenty texts: the role's usual 30 seconds are not enough for it.
+    timeoutMs: 150_000,
+    deadlineMs: 150_000,
     db,
     messages: [
       {
