@@ -116,6 +116,13 @@ export function CompanyDigestView(props: { data: CompanyPageData; token: string;
               </Button>
             </section>
           ))}
+          <section className="we-box" aria-labelledby="applicants-link-title">
+            <h3 id="applicants-link-title">{m.applicantsLinkTitle}</h3>
+            <p>{m.applicantsLinkBody}</p>
+            <Button variant="ghost" block href={`/c/${token}/applicants`} data-testid="applicants-link">
+              {m.applicantsLinkOpen}
+            </Button>
+          </section>
           <MeetingsBox picks={allPicks} m={m} lang={lang} />
         </aside>
       </div>
