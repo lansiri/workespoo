@@ -15,6 +15,15 @@ export const siteMessages = {
     devHeading: "Dev test pages",
     navLabel: "Main",
     language: "Language",
+    navOverview: "Overview",
+    navReview: "Today's review",
+    navExposure: "Exposure",
+    navAudit: "Audit log",
+    forCompanies: "For companies",
+    menu: "Menu",
+    logoLabel: "WorkEspoo, front page",
+    prototypePill: "Prototype: synthetic people, masked companies",
+    footerOrganisers: "For organisers",
   },
   fi: {
     navInterview: "Haastattelu",
@@ -29,6 +38,15 @@ export const siteMessages = {
     devHeading: "Kehittäjien testisivut",
     navLabel: "Päävalikko",
     language: "Kieli",
+    navOverview: "Yleiskuva",
+    navReview: "Päivän tarkistus",
+    navExposure: "Näkyvyys",
+    navAudit: "Tapahtumaloki",
+    forCompanies: "Yrityksille",
+    menu: "Valikko",
+    logoLabel: "WorkEspoo, etusivu",
+    prototypePill: "Prototyyppi: synteettiset henkilöt, peitetyt yritykset",
+    footerOrganisers: "Järjestäjille",
   },
   sv: {
     navInterview: "Intervju",
@@ -43,6 +61,15 @@ export const siteMessages = {
     devHeading: "Testsidor för utvecklare",
     navLabel: "Huvudmeny",
     language: "Språk",
+    navOverview: "Översikt",
+    navReview: "Dagens granskning",
+    navExposure: "Synlighet",
+    navAudit: "Händelselogg",
+    forCompanies: "För företag",
+    menu: "Meny",
+    logoLabel: "WorkEspoo, startsida",
+    prototypePill: "Prototyp: syntetiska personer, maskerade företag",
+    footerOrganisers: "För arrangörer",
   },
 } satisfies Messages<{
   navInterview: string;
@@ -56,4 +83,13 @@ export const siteMessages = {
   devHeading: string;
   navLabel: string;
   language: string;
+  navOverview: string;
+  navReview: string;
+  navExposure: string;
+  navAudit: string;
+  forCompanies: string;
+  menu: string;
+  logoLabel: string;
+  prototypePill: string;
+  footerOrganisers: string;
 }>;

@@ -6,7 +6,6 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { I18nProvider } from "@/lib/i18n/client";
 import { getUiLang } from "@/lib/i18n/server";
-import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { brandFont } from "@/components/brand/fonts";
 
@@ -45,7 +44,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className="min-h-full flex flex-col">
         <I18nProvider lang={lang}>
           <TooltipProvider>
-            <SiteHeader lang={lang} />
             <div className="flex-1">{children}</div>
             <SiteFooter lang={lang} />
           </TooltipProvider>

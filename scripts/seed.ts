@@ -1,5 +1,5 @@
 /**
- * `npm run seed [-- --reset] [--rebuild] [--snapshot] [--companies 8|12] [--pitch-job <jobId>] [--mode express|full] [--fake] [--pglite]`
+ * `npm run seed [-- --reset] [--rebuild] [--snapshot] [--companies 8|12] [--pitch-job <jobId>] [--personas <n>] [--mode express|full] [--fake] [--pglite]`
  *
  * Builds the demo: the event on Thursday 26 November 2026, masked "Demo company NN" companies
  * from real postings, their Need Cards, the simulated pool, eligibility, and yesterday's digest
@@ -29,6 +29,7 @@ async function main() {
       snapshot: { type: "boolean", default: false },
       companies: { type: "string", default: "8" },
       "pitch-job": { type: "string" },
+      personas: { type: "string" },
       mode: { type: "string" },
       fake: { type: "boolean", default: false },
       pglite: { type: "boolean", default: false },
@@ -37,7 +38,11 @@ async function main() {
   const companies = Number.parseInt(values.companies ?? "8", 10);
   if (companies !== 8 && companies !== 12) throw new Error("--companies must be 8 or 12");
   const mode = values.mode === undefined ? undefined : InterviewMode.parse(values.mode);
-  const personas = loadPersonas();
+  // `--personas 5` builds the world from the first five people only: for a rehearsal, or to get
+  // a usable world when the model is not answering and the rest have to wait.
+  const personaLimit = values.personas === undefined ? undefined : Number.parseInt(values.personas, 10);
+  if (personaLimit !== undefined && !(personaLimit >= 1)) throw new Error("--personas must be a number of at least 1");
+  const personas = loadPersonas().slice(0, personaLimit);
   const env = getEnv();
 
   const opened = await openDb(values.fake || values.pglite);

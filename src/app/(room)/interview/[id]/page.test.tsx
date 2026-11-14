@@ -27,7 +27,9 @@ afterAll(() => t.close());
 
 const props = (id: string, search: Record<string, string>) =>
   ({ params: Promise.resolve({ id }), searchParams: Promise.resolve(search) }) as never;
-const voiceOf = (el: unknown) => (el as { props: { voiceConsented: boolean } }).props.voiceConsented;
+// The page wraps the room in the site shell; the room is the shell's child.
+const voiceOf = (el: unknown) =>
+  (el as { props: { children: { props: { voiceConsented: boolean } } } }).props.children.props.voiceConsented;
 
 describe("interview page voice consent", () => {
   it("ignores ?voice=1 without a recorded voice_vendor consent", async () => {

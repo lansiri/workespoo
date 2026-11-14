@@ -5,7 +5,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { UiLang } from "@/contracts";
 import { audit } from "@/lib/audit";
 import { auditLog, job, llmCall } from "@/db/schema";
-import { createTestDb, type TestDb } from "../../../tests/helpers/db";
+import { createTestDb, type TestDb } from "../../../../tests/helpers/db";
 import { HowItWorksView } from "./HowItWorksView";
 import { howTexts, pageContent, type VoiceProcessor } from "./messages";
 import { loadStats, type HowStats } from "./stats";
