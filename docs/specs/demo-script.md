@@ -49,6 +49,7 @@ If time is short, stop after step 9 and say the three sentences over the "You bo
 | Step 4 shows reasons in plainer words | The model was slow and code wrote the reasons ("The card describes …, which relates to …"). Carry on. |
 | The model provider is down | Nothing new can be interviewed. Show the simulated people instead: open any of the seven other companies in the review queue, decide, publish, open the link. If that is not enough, play the backup video. |
 | Someone in the audience used the site and the lists look different | Reset the demo (step 1 of "Before going on stage"). It takes a few seconds. |
+| Demo company 03 already has a list before you ran the picks | The worker drafts every company's list by itself once a day (06:00 Helsinki time), and it got there first. Reset the demo: after a reset on the same day it stays undrafted until you press the button. |
 
 ## Running it as a test
 
