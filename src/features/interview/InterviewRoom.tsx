@@ -104,6 +104,7 @@ export function InterviewRoom(props: { initial: InterviewInitial; mode: Intervie
   const waiting = interview.sending && interview.streaming === null;
   const speaking = voiceOn && voice.status === "speaking";
   const listening = voiceOn && voice.status === "listening";
+  const transcribing = voiceOn && voice.status === "transcribing";
 
   /* what the top bar shows, and what its Stop button does */
   const asked = interview.transcript.filter((l) => l.role === "interviewer" && l.index >= 0).length;
@@ -286,8 +287,12 @@ export function InterviewRoom(props: { initial: InterviewInitial; mode: Intervie
                 {e.modelSlow}
               </p>
             ) : null}
-            {listening || typedLive ? (
-              <WordsBox mode="live" label={m.wordsLive} text={listening ? voice.partial || "…" : draft} />
+            {listening || transcribing || typedLive ? (
+              <WordsBox
+                mode="live"
+                label={m.wordsLive}
+                text={listening || transcribing ? voice.partial || "…" : draft}
+              />
             ) : lastAnswer ? (
               <WordsBox
                 mode="said"

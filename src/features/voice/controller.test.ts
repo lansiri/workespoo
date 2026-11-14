@@ -40,6 +40,27 @@ function fakeAdapter(overrides: Partial<VoiceAdapter> = {}) {
 }
 
 describe("VoiceController", () => {
+  it("takes partial text while transcribing, for the current press only", async () => {
+    const stop = deferred<string>();
+    const { adapter, handlers } = fakeAdapter({ stopListening: vi.fn(() => stop.promise) });
+    const c = new VoiceController({ adapter });
+    await c.pressTalk();
+    const first = handlers();
+    first.onPartial?.("hel");
+    const released = c.releaseTalk();
+    expect(c.getState().status).toBe("transcribing");
+    first.onPartial?.("hello there");
+    expect(c.getState().partial).toBe("hello there");
+    stop.resolve("hello there");
+    await released;
+    expect(c.getState().partial).toBe("");
+    first.onPartial?.("late");
+    expect(c.getState().partial).toBe("");
+    await c.pressTalk();
+    first.onPartial?.("stale press");
+    expect(c.getState().partial).toBe("");
+  });
+
   it("is unavailable without an adapter and ignores input", async () => {
     const c = new VoiceController({ adapter: null });
     expect(c.getState().status).toBe("unavailable");
