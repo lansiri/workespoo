@@ -215,14 +215,66 @@ describe("server adapter listening", () => {
     await expect(stopped).resolves.toBe("");
   });
 
-  it("rejects mic-denied when the capture reported that", async () => {
-    const t = setup();
+  it("a capture that fails mid-press ends the press: microphone released, sending stopped, nothing kept", async () => {
+    let answer!: (r: Response) => void;
+    const t = setup({ answers: () => new Promise<Response>((resolve) => (answer = resolve)) });
     await t.adapter.startListening(t.handlers);
+    t.chunk(second(0.1)); // one segment on its way
+    await vi.advanceTimersByTimeAsync(0);
+    expect(t.calls).toHaveLength(1);
+
     t.capError(new VoiceError("mic-denied"));
+    // Reported once, with its own code, so the room can switch to typing for good.
+    expect(t.errors).toHaveLength(1);
+    expect(t.errors[0]).toMatchObject({ code: "mic-denied" });
+    // The controller is now in its error state and will not call stopListening: the adapter
+    // has already let the microphone go and stopped the request in flight.
+    expect(t.stopCapture).toHaveBeenCalledTimes(1);
+    expect(t.calls[0].signal.aborted).toBe(true);
+
+    // Whatever still arrives is ignored: no further request, no partial text.
+    t.chunk(second(0.2));
+    answer(new Response(JSON.stringify({ text: "late" }), { status: 200 }));
+    await vi.advanceTimersByTimeAsync(5000);
+    expect(t.calls).toHaveLength(1);
+    expect(t.partials).toEqual([]);
+    await expect(t.adapter.stopListening()).resolves.toBe("");
+  });
+
+  it("unlocks the capture context again at every press, still inside the gesture", async () => {
+    const t = setup();
+    const started = t.adapter.startListening(t.handlers);
+    // Before the first await of startListening: the microphone has not been asked for yet.
+    expect(t.unlockCapture).toHaveBeenCalledTimes(1);
+    await started;
     const stopped = t.adapter.stopListening();
-    const check = expect(stopped).rejects.toMatchObject({ code: "mic-denied" });
     await vi.advanceTimersByTimeAsync(200);
-    await check;
+    await stopped;
+    void t.adapter.startListening(t.handlers);
+    expect(t.unlockCapture).toHaveBeenCalledTimes(2);
+  });
+
+  it("a tap sends nothing; the shortest real answer is sent", async () => {
+    // 0.1 s held plus the 0.2 s tail: under 0.4 s in all, so it is a tap.
+    const tap = setup();
+    await tap.adapter.startListening(tap.handlers);
+    tap.chunk(second(0.5, 0.1));
+    const tapped = tap.adapter.stopListening();
+    tap.chunk(second(0.5, 0.2)); // the tail
+    await vi.advanceTimersByTimeAsync(200);
+    await expect(tapped).resolves.toBe("");
+    expect(tap.calls).toHaveLength(0);
+
+    // 0.3 s held plus the tail: half a second, a short word.
+    const word = setup();
+    await word.adapter.startListening(word.handlers);
+    word.chunk(second(0.5, 0.3));
+    const said = word.adapter.stopListening();
+    word.chunk(second(0.5, 0.2));
+    await vi.advanceTimersByTimeAsync(200);
+    await expect(said).resolves.toBe("t1");
+    expect(word.calls).toHaveLength(1);
+    expect(word.calls[0].body).toHaveLength(8000);
   });
 });
 

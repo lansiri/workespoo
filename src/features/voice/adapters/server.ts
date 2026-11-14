@@ -37,6 +37,12 @@ const MAX_RETRY_AFTER_MS = 3000;
 /** The longest stopListening waits for the answers, in all. */
 const STOP_LIMIT_MS = 25_000;
 const MIN_SAMPLES = STT_MIN_SECONDS * STT_SAMPLE_RATE;
+/**
+ * A press that captured less than this in all (the tail after release included) is a tap, not an
+ * answer: nothing is sent, so a stray touch cannot post half a syllable as the person's words.
+ * The shortest real answer, a single "yes" with the tail, is longer.
+ */
+const MIN_PRESS_SAMPLES = 0.4 * STT_SAMPLE_RATE;
 
 const defaultSleep = (ms: number, signal?: AbortSignal): Promise<void> =>
   new Promise<void>((resolve, reject) => {
@@ -99,6 +105,9 @@ interface Press {
   resampler: Resampler | null;
   rate: number;
   segmenter: Segmenter;
+  /** 16 kHz samples heard in this press so far, and whether any of it has been sent. */
+  heard: number;
+  sent: boolean;
   /** Answers in the order their segments were cut. */
   texts: string[];
   /** Requests run one after another through this chain, which never rejects. */
@@ -175,6 +184,7 @@ export function createServerAdapter(options: ServerAdapterOptions = {}): VoiceAd
 
   function enqueue(press: Press, segment: Float32Array): void {
     if (segment.length < MIN_SAMPLES) return;
+    press.sent = true;
     const body = toPcm16(segment);
     press.chain = press.chain.then(async () => {
       if (press.failure || press.abort.signal.aborted) return;
@@ -194,6 +204,7 @@ export function createServerAdapter(options: ServerAdapterOptions = {}): VoiceAd
 
   function feed(press: Press, samples16k: Float32Array): void {
     if (samples16k.length === 0) return;
+    press.heard += samples16k.length;
     for (const segment of press.segmenter.push(samples16k)) enqueue(press, segment);
   }
 
@@ -236,6 +247,13 @@ export function createServerAdapter(options: ServerAdapterOptions = {}): VoiceAd
     },
 
     async startListening(handlers: ListenHandlers) {
+      // Still inside the press: the capture context was suspended when the last press ended, and
+      // a phone only lets it start again from a gesture.
+      try {
+        unlockCapture();
+      } catch {
+        // never fatal
+      }
       if (current) drop(current);
       adapter.cancelSpeech();
       const press: Press = {
@@ -248,6 +266,8 @@ export function createServerAdapter(options: ServerAdapterOptions = {}): VoiceAd
         resampler: null,
         rate: 0,
         segmenter: createSegmenter({ sampleRate: STT_SAMPLE_RATE }),
+        heard: 0,
+        sent: false,
         texts: [],
         chain: Promise.resolve(),
         failure: null,
@@ -261,6 +281,11 @@ export function createServerAdapter(options: ServerAdapterOptions = {}): VoiceAd
           onError: (error) => {
             if (press.closed) return;
             press.captureError = toVoiceError(error);
+            // The press is over: the controller goes to its error state and will not call
+            // stopListening. Release the microphone, stop sending, forget what was heard.
+            drop(press);
+            press.texts = [];
+            if (current === press) current = null;
             handlers.onError(press.captureError);
           },
         });
@@ -317,7 +342,8 @@ export function createServerAdapter(options: ServerAdapterOptions = {}): VoiceAd
       press.closed = true;
       if (!press.disposed) {
         if (press.resampler) feed(press, press.resampler.flush());
-        enqueue(press, press.segmenter.flush());
+        const rest = press.segmenter.flush();
+        if (press.sent || press.heard >= MIN_PRESS_SAMPLES) enqueue(press, rest);
         const limit = new AbortController();
         const timedOut = await Promise.race([
           press.chain.then(() => false),

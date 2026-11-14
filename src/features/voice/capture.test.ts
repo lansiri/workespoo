@@ -270,13 +270,15 @@ describe("unlockCapture", () => {
     expect(() => unlockCapture({ AudioContextCtor: undefined })).not.toThrow();
   });
 
-  it("creates the context once and resumes it", () => {
+  it("creates the context once and asks it to resume every time", () => {
     class Ctx4 extends FakeContext {}
     const d = { AudioContextCtor: Ctx4 as unknown as typeof AudioContext };
     unlockCapture(d);
     unlockCapture(d);
     expect(FakeContext.count).toBe(1);
-    expect(FakeContext.last!.resumed).toBe(1);
+    // Asked again even though the state reads "running": a suspend from a capture that is still
+    // stopping may be on its way, and the later request wins.
+    expect(FakeContext.last!.resumed).toBe(2);
   });
 
   it("does not throw when the constructor throws", () => {

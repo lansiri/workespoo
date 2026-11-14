@@ -108,6 +108,9 @@ function userMediaFn(deps: CaptureDeps): CaptureDeps["getUserMedia"] {
 
 // The page's one capture context, and which contexts already have the worklet module loaded.
 let shared: { ctor: CtxCtor; ctx: AudioContext } | null = null;
+// Captures holding the microphone on that context right now. It is suspended when the last one
+// stops, never under a newer capture that started while an older one was still stopping.
+let live = 0;
 const workletLoaded = new WeakMap<object, Promise<void>>();
 
 function getContext(deps: CaptureDeps): AudioContext | undefined {
@@ -122,7 +125,8 @@ function getContext(deps: CaptureDeps): AudioContext | undefined {
 
 function resumeContext(ctx: AudioContext): void {
   try {
-    if (ctx.state === "running") return;
+    // Asked every time, even when the state reads "running": a suspend from a capture that is
+    // still stopping may be on its way, and the later request wins.
     Promise.resolve(ctx.resume()).catch(() => {});
   } catch {
     /* ignore */
@@ -207,6 +211,13 @@ export async function startMicCapture(
     throw toVoiceError(e);
   }
 
+  live += 1;
+  let counted = true;
+  const uncount = () => {
+    if (!counted) return;
+    counted = false;
+    live -= 1;
+  };
   let closed = false; // after this no chunk is delivered
   let stopping: Promise<void> | null = null;
   let errored = false;
@@ -265,10 +276,13 @@ export async function startMicCapture(
           /* ignore */
         }
       }
-      try {
-        await audio.suspend();
-      } catch {
-        /* ignore */
+      uncount();
+      if (live === 0) {
+        try {
+          await audio.suspend();
+        } catch {
+          /* ignore */
+        }
       }
     })();
     return stopping;
@@ -320,6 +334,7 @@ export async function startMicCapture(
     for (const t of tracks) t.addEventListener("ended", onEnded);
   } catch (e) {
     closed = true;
+    uncount();
     try {
       source?.disconnect();
       node?.disconnect();

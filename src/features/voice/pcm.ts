@@ -40,7 +40,9 @@ export function createResampler(fromRate: number, toRate: number = STT_SAMPLE_RA
 
   // Cut-off a little under half of the lower rate, in cycles per input sample.
   const cutoff = (0.45 * Math.min(from, to)) / from;
-  const half = Math.ceil(16 / (2 * cutoff)); // 16 lobes each side of the centre
+  // Eight lobes each side of the centre: about fifty multiplications per output sample at 48 kHz,
+  // light enough for a slow phone's main thread, and still far below what speech needs to lose.
+  const half = Math.ceil(8 / (2 * cutoff));
   const taps = 2 * half;
   const kernels = new Map<number, Float32Array>();
 

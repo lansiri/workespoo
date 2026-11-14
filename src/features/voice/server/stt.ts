@@ -243,7 +243,10 @@ export class SttClient {
             throw new SttFailedError("speech recognition connection failed");
           }
         }
-        await a.closed;
+        // Wait for the first socket to be gone before opening a second one, but not past an abort
+        // or the time limit: the slot is held until the socket has closed in any case.
+        await this.closedOrCancelled(state, a.closed);
+        if (state.error) throw state.error;
         await this.sleep(state, this.opts.retryDelayMs ?? RETRY_DELAY_MS);
         if (state.error) throw state.error;
       }
@@ -253,8 +256,21 @@ export class SttClient {
     }
   }
 
+  private closedOrCancelled(state: RunState, closed: Promise<void>): Promise<void> {
+    return new Promise((resolve) => {
+      if (state.error) return resolve();
+      const wake = () => {
+        state.listeners.delete(wake);
+        resolve();
+      };
+      state.listeners.add(wake);
+      void closed.then(wake, wake);
+    });
+  }
+
   private sleep(state: RunState, ms: number): Promise<void> {
     return new Promise((resolve) => {
+      if (state.error) return resolve();
       let cancelTimer = () => {};
       const wake = () => {
         state.listeners.delete(wake);

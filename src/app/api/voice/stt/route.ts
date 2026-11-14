@@ -45,7 +45,13 @@ export async function POST(req: Request) {
   const declared = Number(req.headers.get("content-length"));
   if (Number.isFinite(declared) && declared > MAX_BYTES) return json({ error: "too_large" }, 413);
 
-  const bytes = await readCapped(req);
+  let bytes: Uint8Array | "too_large";
+  try {
+    bytes = await readCapped(req);
+  } catch {
+    // The caller went away, or the connection broke, while the audio was still arriving.
+    return json({ error: req.signal.aborted ? "aborted" : "invalid_request" }, req.signal.aborted ? 499 : 400);
+  }
   if (bytes === "too_large") return json({ error: "too_large" }, 413);
   if (bytes.length === 0 || bytes.length % 2 !== 0) return json({ error: "invalid_request" }, 400);
 
@@ -54,7 +60,9 @@ export async function POST(req: Request) {
   const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.length);
   for (let i = 0; i < samples.length; i++) samples[i] = view.getInt16(i * 2, true);
 
-  const wait = sttAudioBudget.take(caller, samples.length / STT_SAMPLE_RATE);
+  // Every request counts as at least a second, so a flood of tiny ones is turned away as well.
+  const charged = Math.max(1, samples.length / STT_SAMPLE_RATE);
+  const wait = sttAudioBudget.take(caller, charged);
   if (wait > 0) {
     const res = json({ error: "voice_rate_limited" }, 429);
     res.headers.set("Retry-After", String(wait));
@@ -66,13 +74,15 @@ export async function POST(req: Request) {
     const body: SttResponse = { text };
     return json(body, 200);
   } catch (e) {
+    if (req.signal.aborted || (e instanceof Error && e.name === "AbortError")) {
+      return json({ error: "aborted" }, 499);
+    }
+    // Speech we could not turn into text is not held against the caller: they will send it again.
+    sttAudioBudget.refund(caller, charged);
     if (e instanceof SttBusyError) {
       const res = json({ error: "voice_busy" }, 429);
       res.headers.set("Retry-After", "1");
       return res;
-    }
-    if (req.signal.aborted || (e instanceof Error && e.name === "AbortError")) {
-      return json({ error: "aborted" }, 499);
     }
     return json({ error: "voice_upstream_failed" }, 502);
   }

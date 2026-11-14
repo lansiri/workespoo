@@ -112,6 +112,19 @@ export class AudioBudget {
     return 0;
   }
 
+  /** Gives back a charge that bought nothing (the recogniser was busy or failed). */
+  refund(caller: string, seconds: number): void {
+    const entries = this.callers.get(caller);
+    if (!entries) return;
+    for (let i = entries.length - 1; i >= 0; i--) {
+      if (entries[i].seconds === seconds) {
+        entries.splice(i, 1);
+        break;
+      }
+    }
+    if (entries.length === 0) this.callers.delete(caller);
+  }
+
   clear(): void {
     this.callers.clear();
   }
