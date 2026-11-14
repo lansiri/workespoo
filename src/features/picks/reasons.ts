@@ -31,9 +31,18 @@ export function approvedSignals(card: SignalCard): CardSignal[] {
 
 /**
  * Every (requirement, signal) pair where the requirement is one the card speaks to and the
- * signal is what made it so: the signal's ESCO skill is one of the requirement's, or its
- * phrase is trigram-similar to the requirement text (matching.md 3.1). A language
- * requirement that rests only on a self-declared work language has no signal, so it has no pair.
+ * signal is what made it so. This is the same rule as `touchingSignals` in the matching feature
+ * (matching.md 3.1), which decided that the requirement is touched, so a touched requirement
+ * always has the pair that touched it:
+ *
+ * - the signal phrase fits inside the requirement text: `word_similarity(phrase, text)`, in
+ *   that order and without regard to case, so "Python" speaks to "Strong Node.js or
+ *   TypeScript knowledge; Python, C# or Java interest";
+ * - for skill, experience and education requirements: the signal's ESCO skill is one of the
+ *   requirement's, or an essential skill of an occupation the requirement is grounded to.
+ *
+ * A language requirement that rests only on a self-declared work language has no signal, so it
+ * has no pair.
  */
 export async function computeAllowedPairs(
   db: Db,
@@ -41,24 +50,36 @@ export async function computeAllowedPairs(
   touched: ReadonlySet<string>,
   card: SignalCard,
 ): Promise<AllowedPair[]> {
-  const requirements = need.requirements.filter((r) => touched.has(r.id));
+  const requirements = need.requirements.filter((r) => touched.has(r.id) && r.category !== "language");
   const signals = approvedSignals(card);
   if (requirements.length === 0 || signals.length === 0) return [];
 
+  const usesUris = (r: Requirement) =>
+    (r.category === "skill" || r.category === "experience" || r.category === "education") && r.escoSkillUris.length > 0;
   const result = await db.execute(sql`
     select r.rid as rid, s.sid as sid
-    from jsonb_to_recordset(${JSON.stringify(requirements.map((r) => ({ rid: r.id, txt: r.text })))}::jsonb) as r(rid text, txt text)
-    cross join jsonb_to_recordset(${JSON.stringify(signals.map((s) => ({ sid: s.id, phrase: s.phrase })))}::jsonb) as s(sid text, phrase text)
-    where word_similarity(r.txt, s.phrase) >= ${TOUCH_SIMILARITY}::real`);
-  const byText = new Set(rowsOf<{ rid: string; sid: string }>(result).map((row) => `${row.rid}|${row.sid}`));
+    from jsonb_to_recordset(${JSON.stringify(
+      requirements.map((r) => ({ rid: r.id, txt: r.text, uris: usesUris(r) ? r.escoSkillUris : [] })),
+    )}::jsonb) as r(rid text, txt text, uris jsonb)
+    cross join jsonb_to_recordset(${JSON.stringify(
+      signals.map((s) => ({ sid: s.id, phrase: s.phrase, uri: s.esco?.uri ?? null })),
+    )}::jsonb) as s(sid text, phrase text, uri text)
+    where word_similarity(lower(s.phrase), lower(r.txt)) >= ${TOUCH_SIMILARITY}::real
+       or (s.uri is not null and (
+            s.uri in (select jsonb_array_elements_text(r.uris))
+            or exists (
+              select 1 from esco_occupation_skill eos
+              where eos.skill_uri = s.uri and eos.relation = 'essential'
+                and eos.occupation_uri in (select jsonb_array_elements_text(r.uris))
+            )
+          ))`);
+  const hit = new Set(rowsOf<{ rid: string; sid: string }>(result).map((row) => `${row.rid}|${row.sid}`));
 
+  // In the need's order, then the card's: the prompt and the code-rendered reasons follow it.
   const pairs: AllowedPair[] = [];
   for (const r of requirements) {
-    const uris = new Set(r.escoSkillUris);
     for (const s of signals) {
-      if ((s.esco && uris.has(s.esco.uri)) || byText.has(`${r.id}|${s.id}`)) {
-        pairs.push({ requirementId: r.id, signalId: s.id });
-      }
+      if (hit.has(`${r.id}|${s.id}`)) pairs.push({ requirementId: r.id, signalId: s.id });
     }
   }
   return pairs;
@@ -208,18 +229,23 @@ export function checkModelReasons(
   return reasons;
 }
 
+/** Who words a pick's reasons: the model (checked by code), or code alone with no model call. */
+export type ReasonWording = "model" | "code";
+
 /**
  * The reasons for one pick: the model words them from the allowed pairs, code checks every
- * one, and code renders them when the model is unavailable or nothing survives.
+ * one, and code renders them when the model is unavailable or nothing survives. With
+ * `wording: "code"` no model is asked (seeded demo history, which must not need one).
  */
 export async function writeReasons(
   db: Db,
   need: NeedCard,
   card: SignalCard,
   pairs: readonly AllowedPair[],
+  opts: { wording?: ReasonWording } = {},
 ): Promise<{ reasons: PickReason[]; source: "model" | "code" }> {
   if (pairs.length === 0) return { reasons: [], source: "code" };
-  if (llmConfigured("analyst")) {
+  if (opts.wording !== "code" && llmConfigured("analyst")) {
     try {
       const prompt = buildReasonPrompt(need, card, pairs);
       const result = await chatJson({

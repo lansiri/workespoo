@@ -391,6 +391,20 @@ describe("draftDailyDigests", () => {
     expect(p.body.reasons.map((r) => r.requirementId)).toEqual(["req_1"]);
   });
 
+  it("asks no model when the caller wants code-written reasons, and still gives every pick its reasons", async () => {
+    await world(["tal_a", "tal_b"]);
+    let n = 0;
+    setLlmFake(() => {
+      n++;
+      return { reasons: [] };
+    });
+    await draftDailyDigests(t.db, DATE, new Date(), { wording: "code" });
+    expect(n).toBe(0);
+    const picks = await t.db.select().from(pick);
+    expect(picks).toHaveLength(2);
+    for (const p of picks) expect(p.body.reasons.length).toBeGreaterThan(0);
+  });
+
   it("does not call the model again on an unchanged re-run", async () => {
     await world(["tal_a"]);
     let n = 0;

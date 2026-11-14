@@ -7,7 +7,7 @@ import { newId } from "@/lib/ids";
 import { DECLINE_COOLDOWN_DAYS, MODEL_CONCURRENCY, NO_EVENT_ID } from "./constants";
 import { isOutOfDate, outOfDateFlags } from "./freshness";
 import { sha256Hex } from "./hash";
-import { computeAllowedPairs, notMentionedIds, writeReasons } from "./reasons";
+import { computeAllowedPairs, notMentionedIds, writeReasons, type ReasonWording } from "./reasons";
 import { chooseHandful, type Candidate } from "./selection";
 import { DATE_RE, daysBefore, dayStart } from "./time";
 import { eventIdOf, getCurrentEvent, loadSettings, type PicksSettings } from "./settings";
@@ -202,7 +202,7 @@ async function loadHistory(
  * decisions. The person stays; the reasons are written again from the current need and card.
  * A pick whose person has no eligibility row for the current versions is left as it is.
  */
-async function refreshOutOfDate(db: Db, digestId: string, n: NeedRow, date: string, now: Date): Promise<void> {
+async function refreshOutOfDate(db: Db, digestId: string, n: NeedRow, date: string, now: Date, opts: { wording?: ReasonWording } = {}): Promise<void> {
   const undecided = await db
     .select({ id: pick.id, talentId: pick.talentId, needCardId: pick.needCardId, needCardVersion: pick.needCardVersion, cardVersion: pick.cardVersion })
     .from(pick)
@@ -221,7 +221,7 @@ async function refreshOutOfDate(db: Db, digestId: string, n: NeedRow, date: stri
       const e = eligible.get(p.talentId)!;
       const touched = new Set(e.touched);
       const pairs = await computeAllowedPairs(db, n.need, touched, e.card);
-      const { reasons } = await writeReasons(db, n.need, e.card, pairs);
+      const { reasons } = await writeReasons(db, n.need, e.card, pairs, opts);
       return { p, e, reasons, notMentioned: notMentionedIds(n.need, touched) };
     },
   );
@@ -270,7 +270,12 @@ async function mapPool<T, R>(items: readonly T[], size: number, fn: (item: T) =>
  * digest is never touched. A digest with decisions keeps its people and its decided picks;
  * only its undecided, out-of-date picks are refreshed (new reasons, new versions).
  */
-export async function draftDailyDigests(db: Db, date: string, now: Date = new Date()): Promise<{ digests: number; picks: number }> {
+export async function draftDailyDigests(
+  db: Db,
+  date: string,
+  now: Date = new Date(),
+  opts: { wording?: ReasonWording } = {},
+): Promise<{ digests: number; picks: number }> {
   if (!DATE_RE.test(date)) throw new Error(`draftDailyDigests: invalid date "${date}"`);
   const event = await getCurrentEvent(db);
   const eventId = eventIdOf(event);
@@ -302,7 +307,7 @@ export async function draftDailyDigests(db: Db, date: string, now: Date = new Da
     if (d.published) continue;
     if (d.locked) {
       // Under review: nobody is added or removed, but undecided picks whose card or need moved on get new reasons.
-      await refreshOutOfDate(db, d.row.id, n, date, now);
+      await refreshOutOfDate(db, d.row.id, n, date, now, opts);
       continue;
     }
     keptNeedIds.set(d.row.id, (keptNeedIds.get(d.row.id) ?? new Set()).add(n.rowId));
@@ -353,7 +358,7 @@ export async function draftDailyDigests(db: Db, date: string, now: Date = new Da
       const e = byTalent.get(c.talentId)!;
       const touched = new Set(e.touched);
       const pairs = await computeAllowedPairs(db, n.need, touched, e.card);
-      const { reasons } = await writeReasons(db, n.need, e.card, pairs);
+      const { reasons } = await writeReasons(db, n.need, e.card, pairs, opts);
       return { c, e, reasons, notMentioned: notMentionedIds(n.need, touched) };
     });
 

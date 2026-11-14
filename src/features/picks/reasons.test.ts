@@ -9,6 +9,7 @@ import {
   reasonTextAllowed,
   writeReasons,
 } from "./reasons";
+import { escoOccupationSkill } from "@/db/schema";
 import { addCompany, addNeed, addTalent, resetDb } from "./test-helpers";
 import { llmCalls } from "./test-llm";
 
@@ -71,6 +72,72 @@ describe("allowed pairs", () => {
     });
     const pairs = await computeAllowedPairs(t.db, need, new Set(["req_1"]), card);
     expect(pairs).toEqual([{ requirementId: "req_1", signalId: "s1" }]);
+  });
+});
+
+describe("allowed pairs follow the rule that decided the requirement is touched", () => {
+  const LONG = "Strong Node.js and/or TypeScript knowledge; Python, C#, or Java interest";
+
+  it("pairs a short note with a long requirement that names it, whatever the case", async () => {
+    await addCompany(t.db, { id: "co_1" });
+    const need = await addNeed(t.db, {
+      id: "nc_1",
+      companyId: "co_1",
+      requirements: [
+        { id: "req_1", text: LONG },
+        { id: "req_2", text: "A few years of hands-on full-stack software development experience", category: "experience" },
+        { id: "req_3", text: "Pass the security clearance required before starting", category: "authorisation" },
+      ],
+    });
+    const card = await addTalent(t.db, {
+      id: "tal_1",
+      signals: [
+        { id: "s1", phrase: "python" },
+        { id: "s2", phrase: "Software development" },
+        { id: "s3", phrase: "Monitoring vital signs and postoperative patients" },
+      ],
+    });
+    const pairs = await computeAllowedPairs(t.db, need, new Set(["req_1", "req_2", "req_3"]), card);
+    expect(pairs).toEqual([
+      { requirementId: "req_1", signalId: "s1" },
+      { requirementId: "req_2", signalId: "s2" },
+    ]);
+  });
+
+  it("pairs a note whose ESCO skill is essential to an occupation the requirement is grounded to", async () => {
+    await t.db.insert(escoOccupationSkill).values([
+      { occupationUri: "esco:occ:developer", skillUri: "esco:skill:git", relation: "essential" },
+      { occupationUri: "esco:occ:developer", skillUri: "esco:skill:drawing", relation: "optional" },
+    ]);
+    await addCompany(t.db, { id: "co_1" });
+    const need = await addNeed(t.db, {
+      id: "nc_1",
+      companyId: "co_1",
+      requirements: [
+        { id: "req_1", text: "Experience as a software developer", category: "experience", escoSkillUris: ["esco:occ:developer"] },
+        // ESCO links are read for skill, experience and education requirements only.
+        { id: "req_2", text: "Motivation to learn", category: "other", escoSkillUris: ["esco:occ:developer"] },
+      ],
+    });
+    const card = await addTalent(t.db, {
+      id: "tal_1",
+      signals: [
+        { id: "s1", phrase: "Keeping every change in version control", escoUri: "esco:skill:git" },
+        { id: "s2", phrase: "Sketching floor plans", escoUri: "esco:skill:drawing" },
+      ],
+    });
+    const pairs = await computeAllowedPairs(t.db, need, new Set(["req_1", "req_2"]), card);
+    expect(pairs).toEqual([{ requirementId: "req_1", signalId: "s1" }]);
+  });
+
+  it("gives the reasons something to say for a requirement touched by a short note", async () => {
+    await addCompany(t.db, { id: "co_1" });
+    const need = await addNeed(t.db, { id: "nc_1", companyId: "co_1", requirements: [{ id: "req_1", text: LONG, postingSentence: 0 }], sentences: [LONG] });
+    const card = await addTalent(t.db, { id: "tal_1", signals: [{ id: "s1", phrase: "Python", rendering: "They write Python jobs that load sensor readings (English rendering)." }] });
+    const pairs = await computeAllowedPairs(t.db, need, new Set(["req_1"]), card);
+    const reasons = codeReasons(need, card, pairs);
+    expect(reasons).toHaveLength(1);
+    expect(reasons[0]).toMatchObject({ requirementId: "req_1", signalId: "s1" });
   });
 });
 

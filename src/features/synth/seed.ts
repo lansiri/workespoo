@@ -314,7 +314,9 @@ export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummar
   let tPicks = 0;
   if (pitch) await db.update(company).set({ participating: false }).where(eq(company.id, pitch.companyId));
   try {
-    const drafted = await deps.draftDailyDigests(db, today);
+    // Code-written reasons: the seeded lists must not need a model, so a demo reset is quick and
+    // works when the provider is down. The pitch company's list is drafted live, with the model.
+    const drafted = await deps.draftDailyDigests(db, today, now(), { wording: "code" });
     tDigests = drafted.digests;
     tPicks = drafted.picks;
   } finally {
