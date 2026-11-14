@@ -200,7 +200,7 @@ export function ConsentForm() {
             />
           )}
         </Field>
-        <CvUpload enabled={consentInterview} onText={(text) => setCvText(text.slice(0, CV_MAX_CHARS))} />
+        <CvUpload enabled={consentInterview} current={cvText} limit={CV_MAX_CHARS} onText={setCvText} />
         {/* Reading a LinkedIn profile needs a partnership with LinkedIn: shown, but it does nothing yet. */}
         <div className="mt-2 flex flex-wrap items-center gap-3" data-testid="linkedin-fill">
           <Button type="button" variant="ghost" disabled aria-describedby="linkedin-fill-soon" data-testid="linkedin-fill-button">
