@@ -5,11 +5,11 @@ import { createTestDb, type TestDb } from "../../../tests/helpers/db";
 import { auditLog, company, digest, eventCompany, interview, llmCall, matchEvent, needCard, pick, talent } from "@/db/schema";
 import { createFakeEngine } from "./fake-engine";
 import { loadPersonas } from "./persona";
-import { mkdtempSync, rmSync } from "node:fs";
+import { mkdtempSync, readFileSync, readdirSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { setLlmFake } from "@/lib/llm";
-import { hasSnapshot, restoreDemoSnapshot, snapshotDemo } from "./snapshot";
+import { TOKEN_PLACEHOLDER, hasSnapshot, restoreDemoSnapshot, snapshotDemo } from "./snapshot";
 import { assertNoDemoEvent } from "./script-db";
 import { DEMO_EVENT_ID, MAX_FAILED_INTERVIEW_CALLS, helsinkiDay, resetDemo, seedDemo, type SeedSummary } from "./seed";
 
@@ -282,7 +282,18 @@ describe("snapshot and restore", () => {
         tokens: (await t.db.select().from(company)).map((c) => c.digestToken).sort(),
         needs: (await t.db.select().from(needCard)).map((n) => n.id).sort(),
       };
-      expect(after).toEqual(before); // same people, same company links, same Need Cards; the rehearsal presenter is gone
+      // Same people and the same Need Cards; the rehearsal presenter is gone.
+      expect({ talents: after.talents, needs: after.needs }).toEqual({ talents: before.talents, needs: before.needs });
+      // The private links are made again: the files hold no working token, and a restore never reuses one.
+      expect(after.tokens).toHaveLength(8);
+      expect(new Set(after.tokens).size).toBe(8);
+      for (const token of after.tokens) {
+        expect(token.length).toBeGreaterThanOrEqual(24);
+        expect(before.tokens).not.toContain(token);
+      }
+      const files = readdirSync(dir).map((f) => readFileSync(path.join(dir, f), "utf8")).join("\n");
+      for (const token of [...before.tokens, ...after.tokens]) expect(files).not.toContain(token);
+      expect(files).toContain(TOKEN_PLACEHOLDER);
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }

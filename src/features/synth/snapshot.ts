@@ -20,6 +20,7 @@ import {
   appMeta, company, consent, eligibility, eventCompany, interview, interviewEvent, jobMatch, matchEvent,
   needCard, signal, signalCard, talent, talentIdentity, talentLanguage, turn,
 } from "@/db/schema";
+import { newToken } from "@/lib/ids";
 import { DEMO_COMPANIES_KEY, DEMO_EVENT_ID, resetDemo, seedDemo, type SeedOptions, type SeedSummary } from "./seed";
 
 export const SNAPSHOT_DIR = path.resolve(process.cwd(), "seed/snapshot");
@@ -51,6 +52,26 @@ const TABLES: TableSpec[] = [
 
 const nameOf = (t: PgTable) => getTableName(t);
 
+/**
+ * Link tokens (a company's private link, an agenda link) open pages without a login, so the
+ * files in the repository must not hold working ones. The snapshot stores this marker instead,
+ * and a restore makes a fresh token for every marked field.
+ */
+export const TOKEN_PLACEHOLDER = "made-again-on-restore";
+const isTokenColumn = (key: string) => key.endsWith("Token");
+
+function withoutTokens(row: Record<string, unknown>): Record<string, unknown> {
+  const out: Record<string, unknown> = { ...row };
+  for (const key of Object.keys(out)) if (isTokenColumn(key) && typeof out[key] === "string") out[key] = TOKEN_PLACEHOLDER;
+  return out;
+}
+
+function withFreshTokens(row: Record<string, unknown>): Record<string, unknown> {
+  const out: Record<string, unknown> = { ...row };
+  for (const key of Object.keys(out)) if (isTokenColumn(key) && typeof out[key] === "string") out[key] = newToken();
+  return out;
+}
+
 async function collectIds(db: Db): Promise<Ids> {
   const talents = (await db.select({ id: talent.id }).from(talent).where(eq(talent.synthetic, true))).map((r) => r.id);
   const companies = (await db.select({ id: company.id }).from(company).where(like(company.id, "co_demo%"))).map((r) => r.id);
@@ -67,7 +88,7 @@ export async function snapshotDemo(db: Db, dir: string = SNAPSHOT_DIR): Promise<
   const counts: Record<string, number> = {};
   for (const spec of TABLES) {
     const q = db.select().from(spec.table as never) as unknown as { where: (w: SQL | undefined) => Promise<unknown[]> };
-    const rows = await q.where(spec.where(ids));
+    const rows = ((await q.where(spec.where(ids))) as Record<string, unknown>[]).map(withoutTokens);
     counts[nameOf(spec.table)] = rows.length;
     writeFileSync(path.join(dir, `${nameOf(spec.table)}.json`), `${JSON.stringify(rows, null, 1)}\n`);
   }
@@ -98,7 +119,7 @@ export async function loadSnapshotRows(db: Db, dir: string = SNAPSHOT_DIR): Prom
   await db.transaction(async (tx) => {
     await resetDemo(tx as unknown as Db);
     for (const spec of TABLES) {
-      const rows = (JSON.parse(readFileSync(path.join(dir, `${nameOf(spec.table)}.json`), "utf8")) as Record<string, unknown>[]).map((r) => revive(spec.table, r));
+      const rows = (JSON.parse(readFileSync(path.join(dir, `${nameOf(spec.table)}.json`), "utf8")) as Record<string, unknown>[]).map((r) => withFreshTokens(revive(spec.table, r)));
       counts[nameOf(spec.table)] = rows.length;
       for (let i = 0; i < rows.length; i += 200) await tx.insert(spec.table).values(rows.slice(i, i + 200) as never);
     }

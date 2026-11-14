@@ -1,0 +1,2154 @@
+[
+ {
+  "id": "nc_uyb94repx9n8",
+  "jobId": "job_tmt_e07c79d3e6d04a53919f649dfeba9e51",
+  "companyId": "co_demo03",
+  "version": 1,
+  "body": {
+   "id": "nc_uyb94repx9n8",
+   "lang": "fi",
+   "jobId": "job_tmt_e07c79d3e6d04a53919f649dfeba9e51",
+   "title": "Technical Specialist, Digital Systems & ERP",
+   "status": "draft",
+   "summary": "The role develops ERP, automation, digital production processes, and technical systems. It also involves integrations, user training, and broad development projects.",
+   "version": 1,
+   "companyId": "co_demo03",
+   "confirmedAt": null,
+   "requirements": [
+    {
+     "id": "req_163d0uspvctx",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 2,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:20.072Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Experience with ERP, software development, or technical systems development",
+     "source": "agent",
+     "category": "experience",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/397da142-ab35-48fe-b154-7c38f447adfb",
+      "http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97",
+      "http://data.europa.eu/esco/skill/0868eef3-2213-4572-9343-74931345a7d3"
+     ],
+     "postingSentence": 12
+    },
+    {
+     "id": "req_vc43ywe040dp",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:20.072Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Ability to grasp overall systems and develop processes",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/1e7ed56a-6d6b-422f-962e-38543d150755",
+      "http://data.europa.eu/esco/skill/397da142-ab35-48fe-b154-7c38f447adfb"
+     ],
+     "postingSentence": 13
+    },
+    {
+     "id": "req_oecq8qidjrk6",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:20.072Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Self-directed problem-solving approach",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting asks for a self-directed problem solver but does not describe the expected behaviour.",
+      "text": "What does 'self-directed problem solver' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 14
+    },
+    {
+     "id": "req_btmdjd5g9hba",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:20.072Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Motivation to see concrete results in production and daily work",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting seeks motivation to see concrete results without explaining how this is demonstrated.",
+      "text": "What does 'seeing concrete results in production and daily work' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 15
+    },
+    {
+     "id": "req_z9itud19d7oo",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 2,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:20.072Z",
+      "selfDeclaredOnly": 2,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Fluent Finnish",
+     "source": "agent",
+     "category": "language",
+     "question": {
+      "why": "The posting asks for fluent Finnish, while English is needed for technical material.",
+      "text": "Is Finnish needed from day one, or could someone start in English and build up Finnish on the job?",
+      "type": "language",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": "fi",
+     "escoSkillUris": [],
+     "postingSentence": 16
+    },
+    {
+     "id": "req_h94tlc7y0wll",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 3,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:20.072Z",
+      "selfDeclaredOnly": 3,
+      "hardFilterWouldExclude": 0
+     },
+     "text": "Ability to work with technical material in English",
+     "source": "agent",
+     "category": "language",
+     "question": null,
+     "statutory": "none",
+     "languageCode": "en",
+     "escoSkillUris": [],
+     "postingSentence": 16
+    },
+    {
+     "id": "req_9t8h8s971js0",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:20.072Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Experience in manufacturing or the fixed furniture sector",
+     "source": "agent",
+     "category": "experience",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/c6482540-4e20-42ab-9154-16deb6db7536"
+     ],
+     "postingSentence": 18
+    },
+    {
+     "id": "req_b00618a3uzre",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:20.072Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Knowledge of Python and SQL",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97"
+     ],
+     "postingSentence": 19
+    },
+    {
+     "id": "req_qbqqnzgcfe61",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:20.072Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Knowledge of Fusion 360, SketchUp, or CAD/CAM environments",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/a2b5dcf3-5b6a-453d-876c-cff540c0faf1"
+     ],
+     "postingSentence": 20
+    },
+    {
+     "id": "req_ofw4pb0uoncu",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:20.072Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Knowledge of Linux server environments and integrations",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/d0c6d77e-cb25-4770-bf77-2073fc5f7523",
+      "http://data.europa.eu/esco/skill/0868eef3-2213-4572-9343-74931345a7d3"
+     ],
+     "postingSentence": 21
+    },
+    {
+     "id": "req_rztu2qzhhlb2",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:20.072Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Knowledge of Odoo or another suitable program",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/397da142-ab35-48fe-b154-7c38f447adfb",
+      "http://data.europa.eu/esco/skill/0868eef3-2213-4572-9343-74931345a7d3"
+     ],
+     "postingSentence": 22
+    }
+   ],
+   "droppedSentences": []
+  },
+  "status": "draft",
+  "createdAt": "2026-11-14T00:39:11.620Z",
+  "updatedAt": "2026-11-14T01:49:20.072Z",
+  "confirmedAt": null
+ },
+ {
+  "id": "nc_jgpgnh8d4c69",
+  "jobId": "job_tmt_e7cf5a28562147d0bf82d7e243e9f4cf",
+  "companyId": "co_demo06",
+  "version": 1,
+  "body": {
+   "id": "nc_jgpgnh8d4c69",
+   "lang": "en",
+   "jobId": "job_tmt_e7cf5a28562147d0bf82d7e243e9f4cf",
+   "title": "Full-Stack Software Developer for the Energy Sector",
+   "status": "draft",
+   "summary": "Design, build, and maintain full-stack applications, integrations, cloud environments, and deployment pipelines. Work with an international team to deliver secure, reliable business-critical software.",
+   "version": 1,
+   "companyId": "co_demo06",
+   "confirmedAt": null,
+   "requirements": [
+    {
+     "id": "req_idlsep5jn7n3",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 3,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:24.719Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 0
+     },
+     "text": "A few years of hands-on full-stack software development experience",
+     "source": "agent",
+     "category": "experience",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97"
+     ],
+     "postingSentence": 20
+    },
+    {
+     "id": "req_sroja6gd05ti",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 3,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:24.719Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 0
+     },
+     "text": "Strong Node.js and/or TypeScript knowledge; Python, C#, or Java interest",
+     "source": "agent",
+     "category": "skill",
+     "question": {
+      "why": "The posting asks for strong knowledge of specific programming tools.",
+      "text": "Would experience with a comparable tool be enough, if the person learns Node.js and TypeScript on the job?",
+      "type": "tool",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97"
+     ],
+     "postingSentence": 21
+    },
+    {
+     "id": "req_dctd5mz312ba",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:24.719Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Experience with client-server architecture, backend APIs, and integration",
+     "source": "agent",
+     "category": "experience",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97",
+      "http://data.europa.eu/esco/skill/f84a433f-34f1-4083-b0a3-24802623509c"
+     ],
+     "postingSentence": 23
+    },
+    {
+     "id": "req_s2w8bqycgpvg",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:24.719Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Basic cloud, version control, CI/CD, and DevSecOps familiarity",
+     "source": "agent",
+     "category": "skill",
+     "question": {
+      "why": "The posting names specific cloud platforms alongside other development practices.",
+      "text": "Would experience with a comparable tool be enough, if the person learns AWS or Azure on the job?",
+      "type": "tool",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/9d2e926f-53d9-41f5-98f3-19dfaa687f3f"
+     ],
+     "postingSentence": 24
+    },
+    {
+     "id": "req_eod39fbk2m14",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 3,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:24.719Z",
+      "selfDeclaredOnly": 3,
+      "hardFilterWouldExclude": 0
+     },
+     "text": "Fluency in spoken and written English",
+     "source": "agent",
+     "category": "language",
+     "question": null,
+     "statutory": "none",
+     "languageCode": "en",
+     "escoSkillUris": [],
+     "postingSentence": 25
+    },
+    {
+     "id": "req_4p2mfm8c6h8f",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:24.719Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "University degree in computer science, engineering, mathematics, or related",
+     "source": "agent",
+     "category": "education",
+     "question": {
+      "why": "The posting requires a university degree in a technical or related field.",
+      "text": "Would hands-on experience in software development work instead of the degree?",
+      "type": "degree",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 26
+    },
+    {
+     "id": "req_hwnl3khh03yu",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:24.719Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Skilled agentic coding tool use, code understanding, and root-cause debugging",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/2522a6ce-3202-4ac8-9f5b-b9cb5a3a83a1",
+      "http://data.europa.eu/esco/skill/172020d1-e151-445b-8173-e2a5fb16fe51"
+     ],
+     "postingSentence": 27
+    },
+    {
+     "id": "req_p3ntnkj9fbjg",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:24.719Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Ability to deliver clean, maintainable, well-tested code using best practices",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97",
+      "http://data.europa.eu/esco/skill/2522a6ce-3202-4ac8-9f5b-b9cb5a3a83a1"
+     ],
+     "postingSentence": 29
+    },
+    {
+     "id": "req_6hlfdmlvk19l",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T01:49:24.719Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": null
+     },
+     "text": "Pass the security clearance required before starting",
+     "source": "agent",
+     "category": "authorisation",
+     "question": null,
+     "statutory": "clearance",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 31
+    }
+   ],
+   "droppedSentences": []
+  },
+  "status": "draft",
+  "createdAt": "2026-11-14T01:34:06.189Z",
+  "updatedAt": "2026-11-14T01:49:24.719Z",
+  "confirmedAt": null
+ },
+ {
+  "id": "nc_hvpjp4wzxq8s",
+  "jobId": "job_tmt_9a60f81e576f49b69597183bd0095710",
+  "companyId": "co_demo05",
+  "version": 2,
+  "body": {
+   "id": "nc_hvpjp4wzxq8s",
+   "lang": "en",
+   "jobId": "job_tmt_9a60f81e576f49b69597183bd0095710",
+   "title": "Electrical Solutions Engineer, Data Centers",
+   "status": "draft",
+   "summary": "Develop and evaluate electrical solutions for large-scale data center projects, supporting bids, suppliers, and project delivery. The role bridges engineering and construction through design reviews, technical coordination, and issue resolution.",
+   "version": 2,
+   "companyId": "co_demo05",
+   "confirmedAt": null,
+   "requirements": [
+    {
+     "id": "req_7a8nasiy2om0",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.326Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Energetic, solution-oriented, and effective in fast-moving projects",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting seeks an energetic, solution-oriented person who excels in fast-moving projects without a concrete example.",
+      "text": "What does 'excels in dynamic, fast-moving projects' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 23
+    },
+    {
+     "id": "req_4pngjc325jv2",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.326Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "B.Sc. or M.Sc. in Electrical Engineering or a related field",
+     "source": "agent",
+     "category": "education",
+     "question": {
+      "why": "The posting expects applicants to hold a degree in electrical engineering or a related field.",
+      "text": "Would hands-on experience in electrical engineering work instead of the degree?",
+      "type": "degree",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/3e40c7d0-0e36-4b33-bc33-0aa87eda0561"
+     ],
+     "postingSentence": 25
+    },
+    {
+     "id": "req_u90r54ott79c",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.326Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Understanding of electrical distribution systems and infrastructure projects",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/9bcff7ef-1f9e-4054-b8fa-3c640e491a11",
+      "http://data.europa.eu/esco/skill/3e40c7d0-0e36-4b33-bc33-0aa87eda0561"
+     ],
+     "postingSentence": 26
+    },
+    {
+     "id": "req_40u57xumdyer",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 2,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.326Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 0
+     },
+     "text": "Ability to review and evaluate technical solutions and documentation",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/f54c10e4-630d-4e50-95e9-4e9e268e8f12",
+      "http://data.europa.eu/esco/skill/209a5498-3449-4689-8ed9-bd08cab4fd78"
+     ],
+     "postingSentence": 27
+    },
+    {
+     "id": "req_nu9bv4o7k8b9",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.326Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Strong analytical and problem-solving skills",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting asks for strong analytical and problem-solving skills without describing a concrete situation.",
+      "text": "What does 'strong analytical and problem-solving skills' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 28
+    },
+    {
+     "id": "req_dkjs0lgbeyux",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.326Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Good communication skills and ability to work with multiple stakeholders",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting asks for good communication skills and stakeholder collaboration without giving a concrete example.",
+      "text": "What does 'good communication skills' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 29
+    },
+    {
+     "id": "req_xtcb9nx9j0u2",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.326Z",
+      "selfDeclaredOnly": 1,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Fluency in Finnish",
+     "source": "agent",
+     "category": "language",
+     "question": {
+      "why": "The posting requires fluent Finnish while treating English skills as an additional asset.",
+      "text": "Is Finnish needed from day one, or could someone start in English and build up Finnish on the job?",
+      "type": "language",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": "fi",
+     "escoSkillUris": [],
+     "postingSentence": 30
+    },
+    {
+     "id": "req_2nlp9si5i1y5",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 2,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.326Z",
+      "selfDeclaredOnly": 2,
+      "hardFilterWouldExclude": 0
+     },
+     "text": "English language skills",
+     "source": "agent",
+     "category": "language",
+     "question": null,
+     "statutory": "none",
+     "languageCode": "en",
+     "escoSkillUris": [],
+     "postingSentence": 30
+    }
+   ],
+   "droppedSentences": []
+  },
+  "status": "draft",
+  "createdAt": "2026-11-14T01:51:24.286Z",
+  "updatedAt": "2026-11-14T02:17:08.326Z",
+  "confirmedAt": null
+ },
+ {
+  "id": "nc_p6pvlvi6fcto",
+  "jobId": "job_tmt_43b541e11aaa48a4a3b68eaad3306ecd",
+  "companyId": "co_demo08",
+  "version": 2,
+  "body": {
+   "id": "nc_p6pvlvi6fcto",
+   "lang": "en",
+   "jobId": "job_tmt_43b541e11aaa48a4a3b68eaad3306ecd",
+   "title": "Verification Engineer – Hardware and Medical Device Testing",
+   "status": "draft",
+   "summary": "Hands-on verification of medical devices and hardware through mechanical, electronic, durability, and environmental testing. The role includes laboratory measurements, test documentation, result analysis, and collaboration with engineering teams.",
+   "version": 2,
+   "companyId": "co_demo08",
+   "confirmedAt": null,
+   "requirements": [
+    {
+     "id": "req_wxiipwayoaaj",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.503Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Hands-on professional experience testing physical devices or hardware",
+     "source": "agent",
+     "category": "experience",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/52b38e90-3d05-4042-a9e2-d19dec8dd7c1",
+      "http://data.europa.eu/esco/skill/d512d178-37a6-4eab-a660-412d2bb0824a"
+     ],
+     "postingSentence": 28
+    },
+    {
+     "id": "req_16l94k1k9nil",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.503Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Practical knowledge of hardware testing methods and physical test equipment",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/52b38e90-3d05-4042-a9e2-d19dec8dd7c1",
+      "http://data.europa.eu/esco/skill/d512d178-37a6-4eab-a660-412d2bb0824a"
+     ],
+     "postingSentence": 29
+    },
+    {
+     "id": "req_46fen6708woe",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.503Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Accurately document test results and communicate findings clearly",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/81a2db2c-7e55-44d0-9cd9-74c25147d7cd",
+      "http://data.europa.eu/esco/skill/20a8fe89-d4eb-4698-8521-8881c13377e0"
+     ],
+     "postingSentence": 30
+    },
+    {
+     "id": "req_oqy21yzos3fk",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.503Z",
+      "selfDeclaredOnly": 1,
+      "hardFilterWouldExclude": 0
+     },
+     "text": "Good written and spoken English communication skills",
+     "source": "agent",
+     "category": "language",
+     "question": null,
+     "statutory": "none",
+     "languageCode": "en",
+     "escoSkillUris": [],
+     "postingSentence": 31
+    },
+    {
+     "id": "req_l0if0p5cslxm",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.503Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Ability and willingness to work daily at the Helsinki laboratory",
+     "source": "agent",
+     "category": "other",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 32
+    },
+    {
+     "id": "req_oq4gnui1uc2x",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.503Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 0
+     },
+     "text": "Background in mechanical engineering, electronics, or a relevant technical field",
+     "source": "agent",
+     "category": "education",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/4134622c-c3fb-4a41-beb6-6d58ba5107db",
+      "http://data.europa.eu/esco/skill/209a5498-3449-4689-8ed9-bd08cab4fd78"
+     ],
+     "postingSentence": 33
+    },
+    {
+     "id": "req_p3imgi3g2l6i",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.503Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Experience testing small electronics or compact mechanical components",
+     "source": "agent",
+     "category": "experience",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/52b38e90-3d05-4042-a9e2-d19dec8dd7c1"
+     ],
+     "postingSentence": 35
+    },
+    {
+     "id": "req_0hclcv6uu2bb",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.503Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Systematic and detail-oriented working style",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting asks for a systematic and detail-oriented working style without giving a concrete example.",
+      "text": "What does 'systematic and detail-oriented' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 43
+    },
+    {
+     "id": "req_snt2i53cngmb",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.503Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Responsible and reliable, with ownership of work and reporting",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting asks for responsibility and reliability without describing how these qualities are demonstrated.",
+      "text": "What does 'responsible and reliable' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 44
+    },
+    {
+     "id": "req_4o6yqxekjn4i",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.503Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Collaborative and service-minded approach to supporting stakeholders",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting requests a collaborative and service-minded approach without a concrete workplace example.",
+      "text": "What does 'collaborative and service-minded' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 45
+    },
+    {
+     "id": "req_sorutz2s43ye",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.503Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Communicative and proactive in raising questions and issues",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting asks applicants to be communicative and proactive but does not give a concrete example.",
+      "text": "What does 'communicative and proactive' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 46
+    },
+    {
+     "id": "req_qe2jq7yr69ey",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.503Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Resilient and adaptable to changing priorities across projects",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting asks for resilience and adaptability without describing a specific situation where they are needed.",
+      "text": "What does 'resilient and adaptable' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 47
+    }
+   ],
+   "droppedSentences": []
+  },
+  "status": "draft",
+  "createdAt": "2026-11-14T01:55:54.233Z",
+  "updatedAt": "2026-11-14T02:17:08.503Z",
+  "confirmedAt": null
+ },
+ {
+  "id": "nc_pocgnfgt3lvr",
+  "jobId": "job_tmt_9f7e2a6793fc48ac983d6e0c4fc98560",
+  "companyId": "co_demo04",
+  "version": 2,
+  "body": {
+   "id": "nc_pocgnfgt3lvr",
+   "lang": "fi",
+   "jobId": "job_tmt_9f7e2a6793fc48ac983d6e0c4fc98560",
+   "title": "Mechanical Design Engineer",
+   "status": "draft",
+   "summary": "Design mechanical solutions for product development projects, from concept and technical implementation to manufacturing supervision or prototyping. Projects may involve steel structures, production equipment or precision mechanics.",
+   "version": 2,
+   "companyId": "co_demo04",
+   "confirmedAt": null,
+   "requirements": [
+    {
+     "id": "req_uo60yhgvrz2j",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.006Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Solution-focused approach and enthusiasm for new technologies",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting seeks a solution-focused designer who is enthusiastic about new technologies.",
+      "text": "What does 'solution-focused' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 11
+    },
+    {
+     "id": "req_c5dl2h0h1v1r",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.006Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Curious, proactive and practical problem-solving skills",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting describes curiosity, initiative and practical problem-solving as desired personal qualities.",
+      "text": "What does 'practical problem-solving' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 12
+    },
+    {
+     "id": "req_tjdbdurs4gkp",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.006Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Interest in learning new products, technologies and operating environments",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting says it values interest in learning new products, technologies and operating environments.",
+      "text": "What does 'interest in learning new technologies' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 13
+    },
+    {
+     "id": "req_zr4jpxovdbas",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.006Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Suitable technical higher education degree, such as mechanical engineering",
+     "source": "agent",
+     "category": "education",
+     "question": {
+      "why": "The posting asks for a suitable technical higher education degree.",
+      "text": "Would hands-on experience in mechanical engineering work instead of the degree?",
+      "type": "degree",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9"
+     ],
+     "postingSentence": 15
+    },
+    {
+     "id": "req_fx5vo7d2n82n",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.006Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Experience in mechanical design in product development or industry",
+     "source": "agent",
+     "category": "experience",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+      "http://data.europa.eu/esco/skill/87434439-c07d-48be-af34-b0cdd03121c4"
+     ],
+     "postingSentence": 16
+    },
+    {
+     "id": "req_2szmrmaz1znc",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.006Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Knowledge of 3D CAD and PDM/PLM systems, such as the company, SolidWorks or NX",
+     "source": "agent",
+     "category": "skill",
+     "question": {
+      "why": "The posting names several CAD products as examples of the expected system knowledge.",
+      "text": "Would experience with a comparable tool be enough, if the person learns the company, SolidWorks or NX on the job?",
+      "type": "tool",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/97965983-0da4-4902-9daf-d5cd2693ef73"
+     ],
+     "postingSentence": 17
+    },
+    {
+     "id": "req_yf8ljim3ly9j",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 2,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.006Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 0
+     },
+     "text": "Knowledge of materials, manufacturing methods and product structures",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/2964011e-f828-4c6c-b98b-51e984d66365",
+      "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9"
+     ],
+     "postingSentence": 19
+    },
+    {
+     "id": "req_8xn8epvc8fi1",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 2,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.006Z",
+      "selfDeclaredOnly": 2,
+      "hardFilterWouldExclude": 0
+     },
+     "text": "Good interaction and communication skills in Finnish",
+     "source": "agent",
+     "category": "language",
+     "question": {
+      "why": "The posting requires good interaction and communication skills in Finnish.",
+      "text": "Is Finnish needed from day one, or could someone start in English and build up Finnish on the job?",
+      "type": "language",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": "fi",
+     "escoSkillUris": [],
+     "postingSentence": 20
+    },
+    {
+     "id": "req_jyc9gqazloij",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 2,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.006Z",
+      "selfDeclaredOnly": 2,
+      "hardFilterWouldExclude": 0
+     },
+     "text": "Good interaction and communication skills in English",
+     "source": "agent",
+     "category": "language",
+     "question": null,
+     "statutory": "none",
+     "languageCode": "en",
+     "escoSkillUris": [],
+     "postingSentence": 20
+    },
+    {
+     "id": "req_qjzmbzllul0g",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.006Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Ability to work smoothly with customers, manufacturing and other stakeholders",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting asks for smooth cooperation with customers, manufacturing and other stakeholders.",
+      "text": "What does 'working smoothly with stakeholders' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 21
+    },
+    {
+     "id": "req_577r6ou6ohpa",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.006Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Practical design approach and genuine interest in developing new solutions",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting asks for a practical design approach and interest in developing new kinds of solutions.",
+      "text": "What does 'a practical approach to design' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 22
+    },
+    {
+     "id": "req_0bwbazf6esuo",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:08.006Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Strong collaboration skills, openness and an outgoing approach",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting says it values collaboration, openness and an outgoing approach.",
+      "text": "What does 'an outgoing approach' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 23
+    }
+   ],
+   "droppedSentences": []
+  },
+  "status": "draft",
+  "createdAt": "2026-11-14T01:58:42.405Z",
+  "updatedAt": "2026-11-14T02:17:08.006Z",
+  "confirmedAt": null
+ },
+ {
+  "id": "nc_nyapvx03ehau",
+  "jobId": "job_tmt_702a75ef8be2443e8d52f26dae3b9d20",
+  "companyId": "co_demo02",
+  "version": 2,
+  "body": {
+   "id": "nc_nyapvx03ehau",
+   "lang": "fi",
+   "jobId": "job_tmt_702a75ef8be2443e8d52f26dae3b9d20",
+   "title": "Home Care Coordinator",
+   "status": "draft",
+   "summary": "The role combines hands-on home care, customer needs assessments, service coordination, and sales and marketing. It also involves developing a new home care service and later supporting recruitment and staff induction.",
+   "version": 2,
+   "companyId": "co_demo02",
+   "confirmedAt": null,
+   "requirements": [
+    {
+     "id": "req_w9wo41ye9pby",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:07.905Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": null
+     },
+     "text": "Qualification as a practical nurse or registered nurse",
+     "source": "agent",
+     "category": "education",
+     "question": null,
+     "statutory": "licence",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 31
+    },
+    {
+     "id": "req_a3u97efwsicu",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:07.905Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Suitable experience in social and health care customer work",
+     "source": "agent",
+     "category": "experience",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/15a33d76-4640-438d-ae64-fdc0c1d3eebc",
+      "http://data.europa.eu/esco/skill/7a63f944-6948-4ae4-9c1f-d08e492535c9"
+     ],
+     "postingSentence": 31
+    },
+    {
+     "id": "req_d1lepm7m4dn6",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:07.905Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Independent and responsible approach to work",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting asks for an independent and responsible approach without describing a specific work situation.",
+      "text": "What does 'independent and responsible approach to work' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 33
+    },
+    {
+     "id": "req_fu7ol3ldv3z0",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:07.905Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Good interpersonal and organisational skills",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/d3eccb86-f02d-4950-bfbd-20b9510774a1",
+      "http://data.europa.eu/esco/skill/7110bf9f-b245-4adc-9159-5081013fd64d"
+     ],
+     "postingSentence": 34
+    },
+    {
+     "id": "req_kje7kdacxb9o",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:07.905Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Customer-oriented and solution-focused working style",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting requests a customer-oriented and solution-focused style without giving a concrete example.",
+      "text": "What does 'customer-oriented and solution-focused working style' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 35
+    },
+    {
+     "id": "req_4jcimh6966ie",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:07.905Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Interest in service sales, marketing and customer acquisition",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/81513fdf-5ea9-4375-9bc4-67ad959ac5de"
+     ],
+     "postingSentence": 36
+    },
+    {
+     "id": "req_ygln4466te3r",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:07.905Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Ability to plan and develop operations independently",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/d3eccb86-f02d-4950-bfbd-20b9510774a1"
+     ],
+     "postingSentence": 38
+    },
+    {
+     "id": "req_mw6nzee5id85",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:07.905Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Good information technology skills",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 39
+    },
+    {
+     "id": "req_14rkbqeovo7k",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:07.905Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Enthusiasm for learning and growing the service",
+     "source": "agent",
+     "category": "other",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 40
+    },
+    {
+     "id": "req_iye900ivhxm7",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:07.905Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Experience in home care, needs assessment, coordination or client responsibility",
+     "source": "agent",
+     "category": "experience",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/a28e8141-89ee-4b24-a3bb-1aebcc56c72d",
+      "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+      "http://data.europa.eu/esco/skill/91306a20-9b81-4f3d-97eb-f5368b607da7"
+     ],
+     "postingSentence": 41
+    },
+    {
+     "id": "req_3dzbgh2mkc16",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 2,
+      "computedAt": "2026-11-14T02:17:07.905Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Previous experience in sales or marketing",
+     "source": "agent",
+     "category": "experience",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 42
+    }
+   ],
+   "droppedSentences": []
+  },
+  "status": "draft",
+  "createdAt": "2026-11-14T02:01:00.608Z",
+  "updatedAt": "2026-11-14T02:17:07.905Z",
+  "confirmedAt": null
+ },
+ {
+  "id": "nc_tt1iyhhlyo8p",
+  "jobId": "job_tmt_9cf4bbbb865f443492a295fb0895cb70",
+  "companyId": "co_demo07",
+  "version": 2,
+  "body": {
+   "id": "nc_tt1iyhhlyo8p",
+   "lang": "fi",
+   "jobId": "job_tmt_9cf4bbbb865f443492a295fb0895cb70",
+   "title": "Head Chef",
+   "status": "draft",
+   "summary": "The role leads a small kitchen team across restaurant lunch and catering operations. It also develops lunch and catering offerings using fresh ingredients.",
+   "version": 2,
+   "companyId": "co_demo07",
+   "confirmedAt": null,
+   "requirements": [
+    {
+     "id": "req_dsjig5d8wj1l",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.419Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "At least 3 years as a head chef or shift supervisor",
+     "source": "agent",
+     "category": "experience",
+     "question": {
+      "why": "The posting requires prior head chef or shift supervisor experience for a set minimum period.",
+      "text": "Would someone who has done head chef or shift supervisor work, with fewer than 3 years, be worth a conversation?",
+      "type": "years",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+      "http://data.europa.eu/esco/skill/88b406d0-72e2-4087-be19-d5992d259473"
+     ],
+     "postingSentence": 5
+    },
+    {
+     "id": "req_js2s0f9snmb1",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.419Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Ability to independently lead a kitchen and a small team",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+      "http://data.europa.eu/esco/skill/538b91e8-565c-4483-bf97-6ff120e207a7",
+      "http://data.europa.eu/esco/skill/88b406d0-72e2-4087-be19-d5992d259473"
+     ],
+     "postingSentence": 6
+    },
+    {
+     "id": "req_emc30rjjfhov",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.419Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 0
+     },
+     "text": "Passion for hands-on kitchen work",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting emphasises passion for kitchen work without describing a specific capability.",
+      "text": "What does 'passion for hands-on kitchen work' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 7
+    },
+    {
+     "id": "req_y91umzqxejz4",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.419Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 0
+     },
+     "text": "Skill in making tasty food from scratch with fresh ingredients",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+      "http://data.europa.eu/esco/skill/4b15a965-9bb4-42f1-8e44-1024aeb0b08c",
+      "http://data.europa.eu/esco/skill/4cc3ae6a-c53e-4113-aced-41476cd22eb3"
+     ],
+     "postingSentence": 12
+    },
+    {
+     "id": "req_naip0vxuc7r4",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.419Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Developmental leadership and ability to inspire others",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting names developmental leadership as a strength without giving a concrete example.",
+      "text": "What does 'developmental leadership' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 13
+    },
+    {
+     "id": "req_uadqqzwgvr7y",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.419Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Broad professional expertise to develop the business and team",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+      "http://data.europa.eu/esco/skill/88b406d0-72e2-4087-be19-d5992d259473"
+     ],
+     "postingSentence": 13
+    },
+    {
+     "id": "req_sfrzinl2xtcc",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.419Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": null
+     },
+     "text": "Finnish food hygiene passport",
+     "source": "agent",
+     "category": "authorisation",
+     "question": null,
+     "statutory": "licence",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 28
+    },
+    {
+     "id": "req_gi77ljkm4mqe",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 1,
+      "computedAt": "2026-11-14T02:17:08.419Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": null
+     },
+     "text": "Passenger car driving licence",
+     "source": "agent",
+     "category": "authorisation",
+     "question": null,
+     "statutory": "licence",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 30
+    }
+   ],
+   "droppedSentences": [
+    5
+   ]
+  },
+  "status": "draft",
+  "createdAt": "2026-11-14T02:04:51.195Z",
+  "updatedAt": "2026-11-14T02:17:08.419Z",
+  "confirmedAt": null
+ },
+ {
+  "id": "nc_ncivfnx96sx2",
+  "jobId": "job_tmt_e3c5756883c74559b8e0c68f59971d31",
+  "companyId": "co_demo01",
+  "version": 2,
+  "body": {
+   "id": "nc_ncivfnx96sx2",
+   "lang": "fi",
+   "jobId": "job_tmt_e3c5756883c74559b8e0c68f59971d31",
+   "title": "Bookkeeper and Customer Service Officer",
+   "status": "draft",
+   "summary": "The role combines housing-company bookkeeping and charge monitoring with customer service across several channels. It also includes varied property-management office tasks and financial statement work during the spring.",
+   "version": 2,
+   "companyId": "co_demo01",
+   "confirmedAt": null,
+   "requirements": [
+    {
+     "id": "req_7w5cohovgohx",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 4,
+      "computedAt": "2026-11-14T02:17:07.579Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Experience and skill in independent bookkeeping",
+     "source": "agent",
+     "category": "experience",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/99b163e8-7815-43e2-83f3-a47f3076354c",
+      "http://data.europa.eu/esco/skill/880c54f9-866e-4f37-b5fa-25ef8a7d49b6",
+      "http://data.europa.eu/esco/skill/dc417e19-edb4-4401-883a-2375f67a162f"
+     ],
+     "postingSentence": 9
+    },
+    {
+     "id": "req_yqfk0vkok6xd",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 4,
+      "computedAt": "2026-11-14T02:17:07.579Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Financial statement preparation skills",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/60f51172-37c0-4933-a27a-cbf55dcd7580",
+      "http://data.europa.eu/esco/skill/4a460161-eaea-4fe2-bd0e-164ccc635be1"
+     ],
+     "postingSentence": 10
+    },
+    {
+     "id": "req_nu7vil3es3h5",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 3,
+      "relevant": 4,
+      "computedAt": "2026-11-14T02:17:07.579Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Fluent Excel skills",
+     "source": "agent",
+     "category": "skill",
+     "question": {
+      "why": "The posting asks for fluent use of Excel.",
+      "text": "Would experience with a comparable tool be enough, if the person learns Excel on the job?",
+      "type": "tool",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 11
+    },
+    {
+     "id": "req_krgsgj26swzr",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 4,
+      "computedAt": "2026-11-14T02:17:07.579Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Experience in housing-company accounting or property management",
+     "source": "agent",
+     "category": "experience",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/99b163e8-7815-43e2-83f3-a47f3076354c",
+      "http://data.europa.eu/esco/skill/880c54f9-866e-4f37-b5fa-25ef8a7d49b6"
+     ],
+     "postingSentence": 12
+    },
+    {
+     "id": "req_qcanepviyy3z",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 4,
+      "computedAt": "2026-11-14T02:17:07.579Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Willingness to learn and expand skills beyond routine bookkeeping",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting prioritises willingness to learn and broaden expertise beyond conventional bookkeeping.",
+      "text": "What does 'willingness to learn' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 14
+    },
+    {
+     "id": "req_mk18fxtn7em3",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 4,
+      "computedAt": "2026-11-14T02:17:07.579Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Customer service attitude and clear, friendly communication",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/15a33d76-4640-438d-ae64-fdc0c1d3eebc",
+      "http://data.europa.eu/esco/skill/0da516ee-e70e-4384-be13-f5ff80be8127",
+      "http://data.europa.eu/esco/skill/b7c8f418-08d5-45d6-b697-ab26c6ecbfb4"
+     ],
+     "postingSentence": 16
+    },
+    {
+     "id": "req_gm3y4y93z6sf",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 4,
+      "computedAt": "2026-11-14T02:17:07.579Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 4
+     },
+     "text": "Investigate questions and follow issues through to completion",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting expects unresolved questions to be investigated and handled through to completion.",
+      "text": "What does 'follow issues through to completion' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 17
+    },
+    {
+     "id": "req_mdo3oj1164xh",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 4,
+      "computedAt": "2026-11-14T02:17:07.579Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 4
+     },
+     "text": "Accuracy and responsibility",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting says accuracy and responsibility help someone succeed in the role.",
+      "text": "What does 'accuracy and responsibility' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 18
+    },
+    {
+     "id": "req_5kymalfofubo",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 4,
+      "computedAt": "2026-11-14T02:17:07.579Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 4
+     },
+     "text": "Confidence to take on varied tasks",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting asks the applicant to take on different tasks boldly.",
+      "text": "What does 'take on varied tasks boldly' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 18
+    },
+    {
+     "id": "req_44pizs0052wm",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 4,
+      "computedAt": "2026-11-14T02:17:07.579Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 4
+     },
+     "text": "Flexibility to switch between tasks during the day",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting expects flexible switching between tasks as daily priorities change.",
+      "text": "What does 'switch flexibly between tasks' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 18
+    },
+    {
+     "id": "req_i9gsor87vgo1",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 4,
+      "computedAt": "2026-11-14T02:17:07.579Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 4
+     },
+     "text": "Open attitude towards learning new things",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting calls for an open attitude towards learning in a varied and developing role.",
+      "text": "What does 'open attitude towards learning' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 19
+    },
+    {
+     "id": "req_6zh7zyl5cxex",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 4,
+      "computedAt": "2026-11-14T02:17:07.579Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 4
+     },
+     "text": "Suitability for the work community",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting identifies suitability for the work community as an important selection criterion.",
+      "text": "What does 'suitability for the work community' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 22
+    }
+   ],
+   "droppedSentences": []
+  },
+  "status": "draft",
+  "createdAt": "2026-11-14T02:07:04.509Z",
+  "updatedAt": "2026-11-14T02:17:07.579Z",
+  "confirmedAt": null
+ }
+]

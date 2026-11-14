@@ -1,0 +1,5121 @@
+[
+ {
+  "talentId": "tal_i210th809pqh",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Orbit-22",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s1",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+      "labelEn": "nursing science",
+      "labelFi": "hoitotiede"
+     },
+     "kind": "domain",
+     "phrase": "Surgical ward nursing",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s2",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Pre- and post-operative patient care",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s15",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/d3b74d50-7fc9-4051-9335-58d129a4a064",
+      "labelEn": "monitor basic patients signs",
+      "labelFi": "seurata potilaiden peruselintoimintoja"
+     },
+     "kind": "skill",
+     "phrase": "Monitoring vital signs and postoperative patients",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s4",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/fa01b6c3-82e0-43f1-af78-fd57f832e09a",
+      "labelEn": "monitor patients' medication",
+      "labelFi": "seurata potilaiden lääkitystä"
+     },
+     "kind": "skill",
+     "phrase": "Managing pain medication",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s5",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/c5ff50d7-97d3-401e-90ac-e5ae756a52de",
+      "labelEn": "monitoring health conditions of humans and animals",
+      "labelFi": "seurata ihmisten tai eläinten terveydentilaa"
+     },
+     "kind": "skill",
+     "phrase": "Changing dressings and monitoring complications",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s16",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Escalating complications and starting fluids",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s9",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/c1bd0ed6-053c-4703-981e-eaec5e57de18",
+      "labelEn": "maintaining or preparing medical documentation",
+      "labelFi": "ylläpitää tai laatia lääketieteellisiä asiakirjoja"
+     },
+     "kind": "skill",
+     "phrase": "Clinical documentation",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s10",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/53141450-2fa9-4890-a64e-7ffd4e1144be",
+      "labelEn": "use electronic health records management system",
+      "labelFi": "käyttää sähköistä potilastietojärjestelmää"
+     },
+     "kind": "tool",
+     "phrase": "Hospital patient records system",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s11",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Infusion pumps and patient monitors",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s12",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/fa845322-85c4-42cb-b230-c1d43d308f02",
+      "labelEn": "apply wound dressings",
+      "labelFi": "käyttää haavasidoksia"
+     },
+     "kind": "tool",
+     "phrase": "Wound dressings",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s13",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/5e13af88-67d3-46ed-af58-8a7b8ebe7b1f",
+      "labelEn": "perform venous cannulation",
+      "labelFi": "asettaa kanyyli laskimoon"
+     },
+     "kind": "skill",
+     "phrase": "Cannulation and blood sampling",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s14",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Early warning chart",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s17",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Coordinating postoperative mobility",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s18",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Explaining care to families",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "Surgical nursing, postoperative care and patient monitoring",
+   "approvedAt": "2026-11-14T01:41:43.175Z",
+   "lookingFor": {
+    "roles": [
+     "Surgical nursing",
+     "Acute care nursing"
+    ],
+    "workMode": "onsite",
+    "startFrom": "within_3_months",
+    "workLanguages": [
+     "English"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They list Surgical ward nursing as a skill.",
+      "stale": false,
+      "signalId": "s1"
+     },
+     {
+      "text": "They list Pre- and post-operative patient care as a skill.",
+      "stale": false,
+      "signalId": "s2"
+     },
+     {
+      "text": "They check vital signs and monitor changes in patients after surgery.",
+      "stale": false,
+      "signalId": "s15"
+     },
+     {
+      "text": "They list managing pain medication as a skill.",
+      "stale": false,
+      "signalId": "s4"
+     },
+     {
+      "text": "They list changing dressings and monitoring complications as a skill.",
+      "stale": false,
+      "signalId": "s5"
+     },
+     {
+      "text": "They call doctors when observations change and start fluids according to protocol.",
+      "stale": false,
+      "signalId": "s16"
+     },
+     {
+      "text": "They list Clinical documentation as a skill.",
+      "stale": false,
+      "signalId": "s9"
+     },
+     {
+      "text": "They list Hospital patient records system as a skill.",
+      "stale": false,
+      "signalId": "s10"
+     },
+     {
+      "text": "They list Infusion pumps and patient monitors as a skill.",
+      "stale": false,
+      "signalId": "s11"
+     },
+     {
+      "text": "They list Wound dressings as a skill.",
+      "stale": false,
+      "signalId": "s12"
+     },
+     {
+      "text": "They list Cannulation and blood sampling as a skill.",
+      "stale": false,
+      "signalId": "s13"
+     },
+     {
+      "text": "They list Early warning chart as a skill.",
+      "stale": false,
+      "signalId": "s14"
+     },
+     {
+      "text": "They work with physiotherapists to support patients who need to move early after surgery.",
+      "stale": false,
+      "signalId": "s17"
+     },
+     {
+      "text": "They explain patients' situations to visiting families in simple terms.",
+      "stale": false,
+      "signalId": "s18"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They provide pre- and post-operative care on a hospital surgical ward, monitor patients, manage prescribed pain medication and document care. They are seeking surgical or acute care nursing roles."
+   }
+  },
+  "approvedAt": "2026-11-14T01:41:43.175Z",
+  "updatedAt": "2026-11-14T01:41:43.166Z"
+ },
+ {
+  "talentId": "tal_uyk9usm3v0rb",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Lichen-83",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s5",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/d69e45d3-1f3f-4e6a-8933-82e949277811",
+      "labelEn": "cleaning interior and exterior of buildings",
+      "labelFi": "siivota rakennusten sisä- ja ulkotilat"
+     },
+     "kind": "skill",
+     "phrase": "School and office cleaning",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s4",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Avoiding heavy lifting",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s6",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Correcting floor cleaning processes",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s7",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Sharing cleaning procedure changes",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "School and office cleaning and process improvements",
+   "approvedAt": "2026-11-14T01:44:22.763Z",
+   "lookingFor": {
+    "roles": [
+     "Cleaning work"
+    ],
+    "workMode": "onsite",
+    "startFrom": "within_1_month",
+    "workLanguages": [
+     "suomi"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They list School and office cleaning as a skill.",
+      "stale": false,
+      "signalId": "s5"
+     },
+     {
+      "text": "They list avoiding heavy lifting as a skill.",
+      "stale": false,
+      "signalId": "s4"
+     },
+     {
+      "text": "They found the cause of a slippery cafeteria floor and corrected it by following detergent dosage instructions and adding a rinse cycle.",
+      "stale": false,
+      "signalId": "s6"
+     },
+     {
+      "text": "They informed other shifts about changes to the floor cleaning procedure.",
+      "stale": false,
+      "signalId": "s7"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They clean offices and schools, including classrooms, corridors and cafeterias. They adapt cleaning methods, correct detergent use and share procedure changes with other shifts."
+   }
+  },
+  "approvedAt": "2026-11-14T01:44:22.763Z",
+  "updatedAt": "2026-11-14T01:44:22.749Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Moss-18",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s1",
+     "esco": null,
+     "kind": "domain",
+     "phrase": "Early childhood education",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s2",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Leading a children's group",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s17",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/0779d482-4154-4fbb-9a22-d9fd89c39d67",
+      "labelEn": "organising, planning and scheduling work and activities",
+      "labelFi": "organisoida, suunnitella ja aikatauluttaa työtä ja toimintoja"
+     },
+     "kind": "skill",
+     "phrase": "Planning weekly activities",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s18",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Monitoring and documenting development",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s19",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Supporting children's group participation",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s7",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Visual daily schedules",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s9",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Pedagogical documentation",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s10",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Digital parent communication platform",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s11",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Pictures and signs as communication support",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s12",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Storybooks, songs and simple experiments",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s13",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+      "labelEn": "first aid",
+      "labelFi": "ensiapu"
+     },
+     "kind": "knowledge",
+     "phrase": "First aid certification",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s15",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Parent development meetings",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s16",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Collaboration with support specialists",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s20",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Organising children's scout camps",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "Early childhood education, activity planning and parent collaboration",
+   "approvedAt": "2026-11-14T01:43:11.570Z",
+   "lookingFor": {
+    "roles": [
+     "Kindergarten teacher",
+     "Preschool teacher"
+    ],
+    "workMode": "onsite",
+    "startFrom": "later",
+    "workLanguages": [
+     "svenska",
+     "finska"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They list Early childhood education as a skill.",
+      "stale": false,
+      "signalId": "s1"
+     },
+     {
+      "text": "They list leading a children's group as a skill.",
+      "stale": false,
+      "signalId": "s2"
+     },
+     {
+      "text": "They list planning weekly activities as a skill.",
+      "stale": false,
+      "signalId": "s17"
+     },
+     {
+      "text": "They list monitoring and documenting development as a skill.",
+      "stale": false,
+      "signalId": "s18"
+     },
+     {
+      "text": "They identified activity changes as a trigger and used a morning picture schedule to support a child's participation in group sessions.",
+      "stale": false,
+      "signalId": "s19"
+     },
+     {
+      "text": "They created a five-picture daily schedule with movable images so a child could follow and mark completed activities.",
+      "stale": false,
+      "signalId": "s7"
+     },
+     {
+      "text": "They list Pedagogical documentation as a skill.",
+      "stale": false,
+      "signalId": "s9"
+     },
+     {
+      "text": "They list Digital parent communication platform as a skill.",
+      "stale": false,
+      "signalId": "s10"
+     },
+     {
+      "text": "They list Pictures and signs as communication support as a skill.",
+      "stale": false,
+      "signalId": "s11"
+     },
+     {
+      "text": "They list Storybooks, songs and simple experiments as a skill.",
+      "stale": false,
+      "signalId": "s12"
+     },
+     {
+      "text": "They list first aid certification as a skill.",
+      "stale": false,
+      "signalId": "s13"
+     },
+     {
+      "text": "They list Parent development meetings as a skill.",
+      "stale": false,
+      "signalId": "s15"
+     },
+     {
+      "text": "They list Collaboration with support specialists as a skill.",
+      "stale": false,
+      "signalId": "s16"
+     },
+     {
+      "text": "They organise scout camps for children.",
+      "stale": false,
+      "signalId": "s20"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They lead a preschool group, plan activities, document children's development and work with parents and support specialists. They also use visual communication supports and organise scout camps for children."
+   }
+  },
+  "approvedAt": "2026-11-14T01:43:11.570Z",
+  "updatedAt": "2026-11-14T01:43:11.559Z"
+ },
+ {
+  "talentId": "tal_sabxh4xaga3o",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Kettle-47",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s1",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+      "labelEn": "use cooking techniques",
+      "labelFi": "käyttää ruoanvalmistusmenetelmiä"
+     },
+     "kind": "skill",
+     "phrase": "Restaurant cooking",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s2",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Lunch menu planning",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s3",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/210827e3-3129-45a2-8683-70399f3f561f",
+      "labelEn": "order supplies",
+      "labelFi": "tilata tarvikkeita"
+     },
+     "kind": "skill",
+     "phrase": "Ordering from suppliers",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s4",
+     "esco": null,
+     "kind": "domain",
+     "phrase": "Canteen kitchen work",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s5",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Adapting menus to late deliveries",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s6",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/dff0087d-25e4-40bf-979e-32fdf2445438",
+      "labelEn": "develop food waste reduction strategies",
+      "labelFi": "kehittää elintarvikejätteen vähentämisstrategioita"
+     },
+     "kind": "skill",
+     "phrase": "Avoiding food waste",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "Lunch cooking, menu planning and supplier orders",
+   "approvedAt": "2026-11-14T01:43:50.535Z",
+   "lookingFor": {
+    "roles": [
+     "Lunch cook",
+     "À la carte cook",
+     "Head cook"
+    ],
+    "workMode": "onsite",
+    "startFrom": "now",
+    "workLanguages": [
+     "English",
+     "Finnish"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They list Restaurant cooking as a skill.",
+      "stale": false,
+      "signalId": "s1"
+     },
+     {
+      "text": "They list Lunch menu planning as a skill.",
+      "stale": false,
+      "signalId": "s2"
+     },
+     {
+      "text": "They list ordering from suppliers as a skill.",
+      "stale": false,
+      "signalId": "s3"
+     },
+     {
+      "text": "They list Canteen kitchen work as a skill.",
+      "stale": false,
+      "signalId": "s4"
+     },
+     {
+      "text": "They replace planned dishes, update signage and inform servers when a supplier delivers late.",
+      "stale": false,
+      "signalId": "s5"
+     },
+     {
+      "text": "They reschedule unused ingredients for a later menu to avoid throwing food away.",
+      "stale": false,
+      "signalId": "s6"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They cook lunch in a canteen kitchen, plan weekly menus and order from suppliers. They adjust dishes when deliveries are late and reuse postponed ingredients to avoid waste."
+   }
+  },
+  "approvedAt": "2026-11-14T01:43:50.535Z",
+  "updatedAt": "2026-11-14T01:43:50.519Z"
+ },
+ {
+  "talentId": "tal_8ttxss4rfn1c",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Harbour-56",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s1",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/15a33d76-4640-438d-ae64-fdc0c1d3eebc",
+      "labelEn": "customer service",
+      "labelFi": "asiakaspalvelu"
+     },
+     "kind": "domain",
+     "phrase": "Online retail customer service",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s2",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/7de7e3f6-d222-4f08-b3f0-e2deff7ef798",
+      "labelEn": "providing information and support to the public and clients",
+      "labelFi": "tarjota tietoa ja tukea yleisölle ja asiakkaille"
+     },
+     "kind": "skill",
+     "phrase": "Chat, email and phone support",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s3",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Delivery and warranty issue handling",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s4",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/bb127774-3166-4541-ad4c-cc3070fd93c5",
+      "labelEn": "handle returns",
+      "labelFi": "käsitellä palautuksia"
+     },
+     "kind": "skill",
+     "phrase": "Returns and refunds",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s5",
+     "esco": null,
+     "kind": "knowledge",
+     "phrase": "Business studies",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s6",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Customer case documentation",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "Online retail customer service and issue resolution",
+   "approvedAt": "2026-11-14T01:48:48.260Z",
+   "lookingFor": {
+    "roles": [
+     "Customer service with more responsibility",
+     "Customer success"
+    ],
+    "workMode": "hybrid",
+    "startFrom": "within_1_month",
+    "workLanguages": [
+     "English",
+     "Finnish"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They list Online retail customer service as a skill.",
+      "stale": false,
+      "signalId": "s1"
+     },
+     {
+      "text": "They list Chat, email and phone support as a skill.",
+      "stale": false,
+      "signalId": "s2"
+     },
+     {
+      "text": "They list delivery and warranty issue handling as a skill.",
+      "stale": false,
+      "signalId": "s3"
+     },
+     {
+      "text": "They list Returns and refunds as a skill.",
+      "stale": false,
+      "signalId": "s4"
+     },
+     {
+      "text": "They list Business studies as a skill.",
+      "stale": false,
+      "signalId": "s5"
+     },
+     {
+      "text": "They explain resolutions to customers and record case notes so other agents can follow up.",
+      "stale": false,
+      "signalId": "s6"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They support an online electronics shop’s customers across chat, email and phone, handling deliveries, warranties, returns and refunds. They investigate tracking problems, coordinate solutions and document cases for other agents."
+   }
+  },
+  "approvedAt": "2026-11-14T01:48:48.260Z",
+  "updatedAt": "2026-11-14T01:48:48.254Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Ridge-65",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s1",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/ee5e2297-39cc-4ed6-89e5-d58016118a7f",
+      "labelEn": "pick orders for dispatching",
+      "labelFi": "suorittaa tilausten keräys lähetystä varten"
+     },
+     "kind": "skill",
+     "phrase": "Order picking",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s2",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/c80b2f08-ab07-4632-be78-68c6ec1f3b41",
+      "labelEn": "perform loading and unloading operations",
+      "labelFi": "suorittaa lastaamis- ja purkamistoimintoja"
+     },
+     "kind": "skill",
+     "phrase": "Truck loading and pallet handover",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s13",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Reach truck",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s4",
+     "esco": null,
+     "kind": "domain",
+     "phrase": "Tyre distribution warehouse",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s5",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Baking",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s6",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Grouping orders by aisle",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s14",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/fd79b3c4-e264-41b5-bada-49ba5f317588",
+      "labelEn": "use barcode scanning equipment",
+      "labelFi": "käyttää viivakoodiskanneria"
+     },
+     "kind": "tool",
+     "phrase": "Handheld barcode scanner",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s9",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Pallet jack",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s10",
+     "esco": null,
+     "kind": "knowledge",
+     "phrase": "Forklift licence",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s12",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Cycle count stock checks",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s15",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Stretch wrap machine and strapping",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s16",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/7ace7312-2775-4bfc-9705-3416a9f7b35b",
+      "labelEn": "provide staff training in warehouse management",
+      "labelFi": "tarjota henkilöstökoulutusta varastonhallinnasta"
+     },
+     "kind": "skill",
+     "phrase": "Training temporary warehouse workers",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s17",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Time planning",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s18",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/791fa659-3382-49f8-a8dd-505226d0da48",
+      "labelEn": "food hygiene rules",
+      "labelFi": "elintarvikehygieniaa koskevat määräykset"
+     },
+     "kind": "knowledge",
+     "phrase": "Food hygiene rules",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "Warehouse picking, reach truck operation and process improvement",
+   "approvedAt": "2026-11-14T01:45:40.267Z",
+   "lookingFor": {
+    "roles": [
+     "Logistics work",
+     "Warehouse team lead",
+     "Warehouse work with new systems"
+    ],
+    "workMode": "onsite",
+    "startFrom": "within_1_month",
+    "workLanguages": [
+     "English",
+     "Finnish"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They pick car tyre orders in a distribution warehouse.",
+      "stale": false,
+      "signalId": "s1"
+     },
+     {
+      "text": "They load trucks, hand pallets to drivers and discuss what is on each truck.",
+      "stale": false,
+      "signalId": "s2"
+     },
+     {
+      "text": "They list Reach truck as a skill.",
+      "stale": false,
+      "signalId": "s13"
+     },
+     {
+      "text": "They list Tyre distribution warehouse as a skill.",
+      "stale": false,
+      "signalId": "s4"
+     },
+     {
+      "text": "They list baking as a skill.",
+      "stale": false,
+      "signalId": "s5"
+     },
+     {
+      "text": "They tested grouping orders by aisle on paper and on their shift before the change was enabled on warehouse scanners.",
+      "stale": false,
+      "signalId": "s6"
+     },
+     {
+      "text": "They list Handheld barcode scanner as a skill.",
+      "stale": false,
+      "signalId": "s14"
+     },
+     {
+      "text": "They list Pallet jack as a skill.",
+      "stale": false,
+      "signalId": "s9"
+     },
+     {
+      "text": "They list forklift licence as a skill.",
+      "stale": false,
+      "signalId": "s10"
+     },
+     {
+      "text": "They list Cycle count stock checks as a skill.",
+      "stale": false,
+      "signalId": "s12"
+     },
+     {
+      "text": "They list Stretch wrap machine and strapping as a skill.",
+      "stale": false,
+      "signalId": "s15"
+     },
+     {
+      "text": "They show new temporary workers the warehouse system and safe stacking on their aisle.",
+      "stale": false,
+      "signalId": "s16"
+     },
+     {
+      "text": "They apply time planning learned through bakery work.",
+      "stale": false,
+      "signalId": "s17"
+     },
+     {
+      "text": "They know hygiene rules from their bakery work.",
+      "stale": false,
+      "signalId": "s18"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They pick tyre orders, load trucks and operate warehouse equipment. They also test picking improvements, check stock and show temporary workers the warehouse system and safe stacking."
+   }
+  },
+  "approvedAt": "2026-11-14T01:45:40.267Z",
+  "updatedAt": "2026-11-14T01:45:40.244Z"
+ },
+ {
+  "talentId": "tal_5t5ekr2w3ljb",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Anchor-29",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s15",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Bathroom and kitchen tiling",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s2",
+     "esco": null,
+     "kind": "domain",
+     "phrase": "Apartment bathroom renovations",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s5",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/885564e4-9818-44ac-a77d-ddfe30b34ed7",
+      "labelEn": "managing a business with great care",
+      "labelFi": "hoitaa liiketoimintaa huolellisesti"
+     },
+     "kind": "skill",
+     "phrase": "Running a tiling business",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s6",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Levelling floors for drainage",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s16",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/58edb789-d085-4e7d-8b6e-b70913bebfca",
+      "labelEn": "installing and assembling building fixtures",
+      "labelFi": "asentaa ja koota rakennusten kiinteitä kalusteita"
+     },
+     "kind": "skill",
+     "phrase": "Installing and testing waterproofing",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s14",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/8a169eb9-2cf1-4653-aa5c-af575c9836f9",
+      "labelEn": "types of tile adhesive",
+      "labelFi": "laattojen kiinnitysainetyypit"
+     },
+     "kind": "knowledge",
+     "phrase": "Selecting tile adhesives",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s17",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Coordinating work with tradespeople",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s18",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/5770f630-9b25-49f3-9d37-e93ec1799749",
+      "labelEn": "teaching and training",
+      "labelFi": "opettaa ja kouluttaa"
+     },
+     "kind": "skill",
+     "phrase": "Teaching tile layout planning",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s10",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/2973b3bc-5893-4b3d-8953-22ef677a162f",
+      "labelEn": "cutting technologies",
+      "labelFi": "leikkausteknologiat"
+     },
+     "kind": "tool",
+     "phrase": "Tile cutting tools",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s19",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/74052f13-4cae-4600-a4d3-8103004683f3",
+      "labelEn": "using hand tools",
+      "labelFi": "käyttää käsityökaluja"
+     },
+     "kind": "tool",
+     "phrase": "Tiling and levelling tools",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s12",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/16801a68-549b-4eaf-9531-f2d516a9380c",
+      "labelEn": "apply proofing membranes",
+      "labelFi": "asentaa vedenpitäviä kalvoja"
+     },
+     "kind": "tool",
+     "phrase": "Waterproofing membrane systems",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s13",
+     "esco": null,
+     "kind": "knowledge",
+     "phrase": "Wet room certification",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s20",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/d5e39a53-4f54-4d5f-9df3-b49664c9559d",
+      "labelEn": "occupational health",
+      "labelFi": "työterveys"
+     },
+     "kind": "knowledge",
+     "phrase": "Occupational safety card",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "Bathroom and kitchen tiling, waterproofing and renovations",
+   "approvedAt": "2026-11-14T01:48:13.806Z",
+   "lookingFor": {
+    "roles": [
+     "Renovation tiling",
+     "Tiling subcontracting"
+    ],
+    "workMode": "onsite",
+    "startFrom": "within_1_month",
+    "workLanguages": [
+     "English",
+     "Finnish"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They remove old tiles and lay, grout and seal new tiles in bathroom and kitchen renovations.",
+      "stale": false,
+      "signalId": "s15"
+     },
+     {
+      "text": "They list Apartment bathroom renovations as a skill.",
+      "stale": false,
+      "signalId": "s2"
+     },
+     {
+      "text": "They list running a tiling business as a skill.",
+      "stale": false,
+      "signalId": "s5"
+     },
+     {
+      "text": "They list levelling floors for drainage as a skill.",
+      "stale": false,
+      "signalId": "s6"
+     },
+     {
+      "text": "They install waterproofing membranes, test them with water and document wet room work under their certificate.",
+      "stale": false,
+      "signalId": "s16"
+     },
+     {
+      "text": "They list selecting tile adhesives as a skill.",
+      "stale": false,
+      "signalId": "s14"
+     },
+     {
+      "text": "They agree the order of bathroom work with plumbers and electricians.",
+      "stale": false,
+      "signalId": "s17"
+     },
+     {
+      "text": "They teach an employee to measure and plan tile layouts before cutting.",
+      "stale": false,
+      "signalId": "s18"
+     },
+     {
+      "text": "They list Tile cutting tools as a skill.",
+      "stale": false,
+      "signalId": "s10"
+     },
+     {
+      "text": "They list tiling and levelling tools as a skill.",
+      "stale": false,
+      "signalId": "s19"
+     },
+     {
+      "text": "They list waterproofing membrane systems as a skill.",
+      "stale": false,
+      "signalId": "s12"
+     },
+     {
+      "text": "They list Wet room certification as a skill.",
+      "stale": false,
+      "signalId": "s13"
+     },
+     {
+      "text": "They hold an occupational safety card.",
+      "stale": false,
+      "signalId": "s20"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They renovate bathrooms and kitchens, handling tile removal, floor levelling, waterproofing and installation. They run a small tiling business, coordinate with other trades and seek renovation or subcontracting work."
+   }
+  },
+  "approvedAt": "2026-11-14T01:48:13.806Z",
+  "updatedAt": "2026-11-14T01:48:13.799Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Basalt-36",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s21",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Managing bookkeeping",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s2",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/e2e15494-65b9-4af5-8b86-53fb51e7e022",
+      "labelEn": "manage accounts",
+      "labelFi": "hallinnoida tilejä"
+     },
+     "kind": "skill",
+     "phrase": "Accounts payable",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s22",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/22a173f5-868c-4d82-87e6-beed500ce070",
+      "labelEn": "prepare tax returns forms",
+      "labelFi": "laatia veroilmoituksia"
+     },
+     "kind": "skill",
+     "phrase": "Filing tax returns",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s23",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/dc417e19-edb4-4401-883a-2375f67a162f",
+      "labelEn": "manage the general ledger",
+      "labelFi": "huolehtia pääkirjasta"
+     },
+     "kind": "skill",
+     "phrase": "General ledger accounting",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s7",
+     "esco": null,
+     "kind": "knowledge",
+     "phrase": "Capitalizing improvement costs",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s8",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/e0701805-94ab-4c79-9624-39a7202cbe4f",
+      "labelEn": "perform asset depreciation",
+      "labelFi": "suorittaa omaisuuserien poistoja"
+     },
+     "kind": "skill",
+     "phrase": "Recalculating depreciation",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s9",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/60f51172-37c0-4933-a27a-cbf55dcd7580",
+      "labelEn": "prepare financial statements",
+      "labelFi": "laatia tilinpäätöksiä"
+     },
+     "kind": "skill",
+     "phrase": "Correcting financial statements",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s24",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/24e67151-ff7e-43e2-99c0-424a758278a4",
+      "labelEn": "liaise with auditors",
+      "labelFi": "olla yhteistyössä tilintarkastajien kanssa"
+     },
+     "kind": "skill",
+     "phrase": "Collaborating with auditors",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s25",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Excel",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s13",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/a0d79341-8398-4019-ad1b-27888ec35aaa",
+      "labelEn": "use accounting systems",
+      "labelFi": "käyttää kirjanpitojärjestelmiä"
+     },
+     "kind": "tool",
+     "phrase": "Property accounting system",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s14",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Approving electronic invoices",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s26",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/0f5bd097-ed76-47f7-8f44-93be67967b5f",
+      "labelEn": "explain financial jargon",
+      "labelFi": "selittää talousalan ammattikieltä"
+     },
+     "kind": "skill",
+     "phrase": "Explaining financial matters",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s27",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Training accounting colleagues",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s5",
+     "esco": null,
+     "kind": "domain",
+     "phrase": "Property sector",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "Property accounting, supplier ledgers, tax returns and audit support",
+   "approvedAt": "2026-11-14T01:47:04.022Z",
+   "lookingFor": {
+    "roles": [
+     "Bookkeeping",
+     "Accounting with customer contact",
+     "Mixed financial administration"
+    ],
+    "workMode": "onsite",
+    "startFrom": "within_3_months",
+    "workLanguages": [
+     "svenska",
+     "finska",
+     "engelska"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They list managing bookkeeping as a skill.",
+      "stale": false,
+      "signalId": "s21"
+     },
+     {
+      "text": "They list Accounts payable as a skill.",
+      "stale": false,
+      "signalId": "s2"
+     },
+     {
+      "text": "They list filing tax returns as a skill.",
+      "stale": false,
+      "signalId": "s22"
+     },
+     {
+      "text": "They manage the general ledger and know its routines well enough to train new colleagues.",
+      "stale": false,
+      "signalId": "s23"
+     },
+     {
+      "text": "They know when improvement costs must be capitalized rather than recorded as maintenance.",
+      "stale": false,
+      "signalId": "s7"
+     },
+     {
+      "text": "They recalculate depreciation, prepare new schedules and book differences according to the company's plan.",
+      "stale": false,
+      "signalId": "s8"
+     },
+     {
+      "text": "They correct accounting entries and write explanations for financial statement notes.",
+      "stale": false,
+      "signalId": "s9"
+     },
+     {
+      "text": "They prepare audit materials and work with an auditor on corrections and financial statements.",
+      "stale": false,
+      "signalId": "s24"
+     },
+     {
+      "text": "They list Excel as a skill.",
+      "stale": false,
+      "signalId": "s25"
+     },
+     {
+      "text": "They list Property accounting system as a skill.",
+      "stale": false,
+      "signalId": "s13"
+     },
+     {
+      "text": "They list approving electronic invoices as a skill.",
+      "stale": false,
+      "signalId": "s14"
+     },
+     {
+      "text": "They list explaining financial matters as a skill.",
+      "stale": false,
+      "signalId": "s26"
+     },
+     {
+      "text": "They have trained new colleagues in general ledger and supplier ledger work.",
+      "stale": false,
+      "signalId": "s27"
+     },
+     {
+      "text": "They list Property sector as a skill.",
+      "stale": false,
+      "signalId": "s5"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They handle bookkeeping, supplier ledgers, general ledger work and tax filings for property and housing companies. They also correct depreciation and financial statement entries, work with auditors and explain financial matters to boards and shareholders."
+   }
+  },
+  "approvedAt": "2026-11-14T01:47:04.022Z",
+  "updatedAt": "2026-11-14T01:47:04.012Z"
+ },
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Birch-27",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s1",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+      "labelEn": "develop software prototype",
+      "labelFi": "kehittää ohjelmiston prototyyppi"
+     },
+     "kind": "skill",
+     "phrase": "Software development",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s2",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/ccd0a1d9-afda-43d9-b901-96344886e14d",
+      "labelEn": "Python (computer programming)",
+      "labelFi": "Python (tietokoneohjelmointi)"
+     },
+     "kind": "tool",
+     "phrase": "Python",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s3",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/a8d07b5a-c1a1-42c6-9d53-db9c7a2ca996",
+      "labelEn": "PostgreSQL",
+      "labelFi": "PostgreSQL"
+     },
+     "kind": "tool",
+     "phrase": "PostgreSQL",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s4",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Maintaining nightly data import jobs",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s12",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Writing SQL data checks",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s13",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/744442ac-c157-4350-8be0-ce454df4f5c5",
+      "labelEn": "perform ICT troubleshooting",
+      "labelFi": "tehdä tieto- ja viestintätekniikan vianmääritystä"
+     },
+     "kind": "skill",
+     "phrase": "Troubleshooting data loading issues",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s8",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/cc7370dd-69fa-4c67-a96f-d4d135d38700",
+      "labelEn": "data quality assessment",
+      "labelFi": "tietojen laadunarviointi"
+     },
+     "kind": "skill",
+     "phrase": "Data quality monitoring",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s9",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "pandas",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s11",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Git and CI",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s14",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Validating supplier data files",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s15",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/548c3fbe-9eb1-4035-bc54-027fd5bc5315",
+      "labelEn": "working with others",
+      "labelFi": "työskennellä muiden kanssa"
+     },
+     "kind": "skill",
+     "phrase": "Working with operations users",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s16",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/6532ef3b-1685-4de7-a858-d31fdaa435ca",
+      "labelEn": "calibrate precision instrument",
+      "labelFi": "kalibroida tarkkuusmittauslaitteita"
+     },
+     "kind": "knowledge",
+     "phrase": "Sensor calibration",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s17",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Mentoring beginner programmers",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s18",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/c8ac1986-38fa-43b2-89dc-50a4beeb420e",
+      "labelEn": "electricity",
+      "labelFi": "sähkö"
+     },
+     "kind": "domain",
+     "phrase": "Electricity metering",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "Data engineering for electricity metering systems",
+   "approvedAt": "2026-11-14T01:27:55.567Z",
+   "lookingFor": {
+    "roles": [
+     "Data engineering",
+     "Backend development close to data"
+    ],
+    "workMode": "hybrid",
+    "startFrom": "within_1_month",
+    "workLanguages": [
+     "English"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They list Software development as a skill.",
+      "stale": false,
+      "signalId": "s1"
+     },
+     {
+      "text": "They use Python to maintain data import jobs and process sensor readings.",
+      "stale": false,
+      "signalId": "s2"
+     },
+     {
+      "text": "They list PostgreSQL as a skill.",
+      "stale": false,
+      "signalId": "s3"
+     },
+     {
+      "text": "They list maintaining nightly data import jobs as a skill.",
+      "stale": false,
+      "signalId": "s4"
+     },
+     {
+      "text": "They list writing SQL data checks as a skill.",
+      "stale": false,
+      "signalId": "s12"
+     },
+     {
+      "text": "They use loader logs to find the cause of missing readings and change the loading process to handle duplicate supplier batches.",
+      "stale": false,
+      "signalId": "s13"
+     },
+     {
+      "text": "They added a check that alerts when a meter stops providing readings.",
+      "stale": false,
+      "signalId": "s8"
+     },
+     {
+      "text": "They list pandas as a skill.",
+      "stale": false,
+      "signalId": "s9"
+     },
+     {
+      "text": "They list Git and CI as a skill.",
+      "stale": false,
+      "signalId": "s11"
+     },
+     {
+      "text": "They wrote file validation for timestamp order, expected units and duplicate meters.",
+      "stale": false,
+      "signalId": "s14"
+     },
+     {
+      "text": "They meet operations staff weekly to explain data changes and use their questions to decide what to fix next.",
+      "stale": false,
+      "signalId": "s15"
+     },
+     {
+      "text": "They completed a master's thesis on sensor calibration and studied physics, giving them a background in measurement data.",
+      "stale": false,
+      "signalId": "s16"
+     },
+     {
+      "text": "They volunteer on a beginners' coding course, helping participants with their first Python scripts.",
+      "stale": false,
+      "signalId": "s17"
+     },
+     {
+      "text": "They develop and maintain data processing for electricity meter readings.",
+      "stale": false,
+      "signalId": "s18"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They talked about Software development, Python and PostgreSQL."
+   }
+  },
+  "approvedAt": "2026-11-14T01:27:55.567Z",
+  "updatedAt": "2026-11-14T01:27:55.556Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Cedar-61",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s1",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Front-end development",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s2",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "React",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s3",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+      "labelEn": "TypeScript",
+      "labelFi": "TypeScript"
+     },
+     "kind": "tool",
+     "phrase": "TypeScript",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s18",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/d52382fe-f236-421f-95fe-34fe69d48dbd",
+      "labelEn": "collaborate with designers",
+      "labelFi": "tehdä yhteistyötä suunnittelijoiden kanssa"
+     },
+     "kind": "skill",
+     "phrase": "Collaborating with designers",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s19",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/6a322874-e32f-4cd8-9683-badce67a7f73",
+      "labelEn": "develop automated software tests",
+      "labelFi": "kehittää automaattisia ohjelmistotestejä"
+     },
+     "kind": "skill",
+     "phrase": "Writing software tests",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s6",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Screen reader testing",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s7",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Accessible form development",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s9",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Figma",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s10",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Playwright",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s12",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/71746a0b-e58d-4dc4-ad03-bd84082eae21",
+      "labelEn": "collect customer feedback on applications",
+      "labelFi": "kerätä asiakkaiden palautetta sovelluksista"
+     },
+     "kind": "skill",
+     "phrase": "Receiving customer feedback",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s13",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Accessibility advocacy",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s14",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/fae27053-8924-4bfd-b565-c9fe502044c9",
+      "labelEn": "system design",
+      "labelFi": "systeeminsuunnittelu"
+     },
+     "kind": "knowledge",
+     "phrase": "Design systems",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s15",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Maintaining open source component library",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s16",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Programming tutoring",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "Front-end development, accessibility and design collaboration",
+   "approvedAt": "2026-11-14T01:29:13.316Z",
+   "lookingFor": {
+    "roles": [
+     "Front-end developer",
+     "Full-stack developer"
+    ],
+    "workMode": "hybrid",
+    "startFrom": "now",
+    "workLanguages": [
+     "English",
+     "Finnish"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They build front-end screens and interface components for a software company that makes logistics tools.",
+      "stale": false,
+      "signalId": "s1"
+     },
+     {
+      "text": "They list React as a skill.",
+      "stale": false,
+      "signalId": "s2"
+     },
+     {
+      "text": "They list TypeScript as a skill.",
+      "stale": false,
+      "signalId": "s3"
+     },
+     {
+      "text": "They list collaborating with designers as a skill.",
+      "stale": false,
+      "signalId": "s18"
+     },
+     {
+      "text": "They write component tests and use Jest, Testing Library and Playwright to test interfaces and selected complete flows.",
+      "stale": false,
+      "signalId": "s19"
+     },
+     {
+      "text": "They use a screen reader to identify unannounced error messages and other accessibility problems in forms.",
+      "stale": false,
+      "signalId": "s6"
+     },
+     {
+      "text": "They rebuilt a date field with labels and keyboard focus handling, then added tests for its behaviour.",
+      "stale": false,
+      "signalId": "s7"
+     },
+     {
+      "text": "They list Figma as a skill.",
+      "stale": false,
+      "signalId": "s9"
+     },
+     {
+      "text": "They list Playwright as a skill.",
+      "stale": false,
+      "signalId": "s10"
+     },
+     {
+      "text": "They list receiving customer feedback as a skill.",
+      "stale": false,
+      "signalId": "s12"
+     },
+     {
+      "text": "They list Accessibility advocacy as a skill.",
+      "stale": false,
+      "signalId": "s13"
+     },
+     {
+      "text": "They list Design systems as a skill.",
+      "stale": false,
+      "signalId": "s14"
+     },
+     {
+      "text": "They list maintaining open source component library as a skill.",
+      "stale": false,
+      "signalId": "s15"
+     },
+     {
+      "text": "They list programming tutoring as a skill.",
+      "stale": false,
+      "signalId": "s16"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They build React and TypeScript interfaces, test accessibility with screen readers, and collaborate with designers. They also maintain an open source component library and seek front-end or full-stack product work."
+   }
+  },
+  "approvedAt": "2026-11-14T01:29:13.316Z",
+  "updatedAt": "2026-11-14T01:29:13.307Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Alder-38",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s1",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Back-end development",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s2",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+      "labelEn": "Java (computer programming)",
+      "labelFi": "Java (tietokoneohjelmointi)"
+     },
+     "kind": "tool",
+     "phrase": "Java",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s16",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Spring Boot",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s10",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/a8d07b5a-c1a1-42c6-9d53-db9c7a2ca996",
+      "labelEn": "PostgreSQL",
+      "labelFi": "PostgreSQL"
+     },
+     "kind": "tool",
+     "phrase": "PostgreSQL",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s17",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "IntelliJ",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s12",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Docker",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s18",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/f47a1998-0beb-43be-9f46-380aa4d183da",
+      "labelEn": "Jenkins (tools for software configuration management)",
+      "labelFi": "Jenkins (työkalut ohjelmiston kokoonpanon hallintaan)"
+     },
+     "kind": "tool",
+     "phrase": "Jenkins",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s19",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "JUnit",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s20",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Debugging duplicate invoice charges",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s7",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/43ae58b9-5e56-4524-b45a-b422777a0576",
+      "labelEn": "database",
+      "labelFi": "tietokanta"
+     },
+     "kind": "knowledge",
+     "phrase": "Database unique constraints",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s8",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Handling duplicate requests",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s13",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Collaborating with product owners",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s14",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Explaining bugs to support staff",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s15",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Onboarding new developers",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "Back-end development with Java, Spring Boot and PostgreSQL",
+   "approvedAt": "2026-11-14T01:35:06.270Z",
+   "lookingFor": {
+    "roles": [
+     "Back-end development"
+    ],
+    "workMode": "hybrid",
+    "startFrom": "within_3_months",
+    "workLanguages": [
+     "English",
+     "Finnish"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They list Back-end development as a skill.",
+      "stale": false,
+      "signalId": "s1"
+     },
+     {
+      "text": "They list Java as a skill.",
+      "stale": false,
+      "signalId": "s2"
+     },
+     {
+      "text": "They list spring Boot as a skill.",
+      "stale": false,
+      "signalId": "s16"
+     },
+     {
+      "text": "They list PostgreSQL as a skill.",
+      "stale": false,
+      "signalId": "s10"
+     },
+     {
+      "text": "They use IntelliJ in their daily development work.",
+      "stale": false,
+      "signalId": "s17"
+     },
+     {
+      "text": "They list Docker as a skill.",
+      "stale": false,
+      "signalId": "s12"
+     },
+     {
+      "text": "They list Jenkins as a skill.",
+      "stale": false,
+      "signalId": "s18"
+     },
+     {
+      "text": "They write tests with JUnit.",
+      "stale": false,
+      "signalId": "s19"
+     },
+     {
+      "text": "They reproduced duplicate invoice charges by sending identical requests quickly and found two threads creating invoices simultaneously.",
+      "stale": false,
+      "signalId": "s20"
+     },
+     {
+      "text": "They added a request identifier column and a unique database index to prevent duplicate invoices.",
+      "stale": false,
+      "signalId": "s7"
+     },
+     {
+      "text": "They made the service return an existing invoice when the same request identifier arrives again.",
+      "stale": false,
+      "signalId": "s8"
+     },
+     {
+      "text": "They list collaborating with product owners as a skill.",
+      "stale": false,
+      "signalId": "s13"
+     },
+     {
+      "text": "They list explaining bugs to support staff as a skill.",
+      "stale": false,
+      "signalId": "s14"
+     },
+     {
+      "text": "They list onboarding new developers as a skill.",
+      "stale": false,
+      "signalId": "s15"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They develop Java and Spring Boot services, investigate concurrency bugs, and use database constraints to prevent duplicate invoices. They also write JUnit tests, use Docker and Jenkins, explain issues to support staff, and help new developers learn the codebase."
+   }
+  },
+  "approvedAt": "2026-11-14T01:35:06.270Z",
+  "updatedAt": "2026-11-14T01:35:06.263Z"
+ },
+ {
+  "talentId": "tal_78jy75ig6iz8",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Spruce-14",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s1",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+      "labelEn": "manufacturing processes",
+      "labelFi": "valmistusprosessit"
+     },
+     "kind": "domain",
+     "phrase": "Plastics manufacturing",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s19",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/0f0698e7-04e4-4bf7-9af2-e3191147525a",
+      "labelEn": "optimise production processes parameters",
+      "labelFi": "optimoida tuotantoprosessin parametrit"
+     },
+     "kind": "skill",
+     "phrase": "Controlling production process parameters",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s4",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Laboratory sampling",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s20",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/334e3e49-fb02-4051-809a-f06adfdc1c40",
+      "labelEn": "troubleshoot",
+      "labelFi": "tunnistaa ongelmia"
+     },
+     "kind": "skill",
+     "phrase": "Troubleshooting production defects",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s10",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/7229b6dc-e2ef-44fe-b9a1-06b1c1075d8f",
+      "labelEn": "automatic control system",
+      "labelFi": "automaattinen valvontajärjestelmä"
+     },
+     "kind": "tool",
+     "phrase": "Process control system",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s11",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Excel",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s12",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/fe490d6c-851b-44a8-949b-808e24c2cc54",
+      "labelEn": "measure materials",
+      "labelFi": "mitata materiaaleja"
+     },
+     "kind": "skill",
+     "phrase": "Laboratory material measurements",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s13",
+     "esco": null,
+     "kind": "knowledge",
+     "phrase": "Chemical safety documentation",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s14",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/8fde007e-ea4c-48c2-84c5-752834acd31d",
+      "labelEn": "conducting studies, investigations and examinations",
+      "labelFi": "laata tutkimuksia ja selvityksiä"
+     },
+     "kind": "skill",
+     "phrase": "Investigating deviations and proposing corrections",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s15",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Moisture analyzer",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s16",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/1034004c-0347-4765-8794-b65d2c92b379",
+      "labelEn": "documenting and recording information",
+      "labelFi": "dokumentoida ja tallentaa tietoa"
+     },
+     "kind": "skill",
+     "phrase": "Recording and checking results",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s17",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Assessing workplace risks",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s21",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Reviewing deviation reports",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "Plastics process engineering, troubleshooting and laboratory testing",
+   "approvedAt": "2026-11-14T01:36:28.660Z",
+   "lookingFor": {
+    "roles": [
+     "Process engineer",
+     "Development engineer"
+    ],
+    "workMode": "hybrid",
+    "startFrom": "within_3_months",
+    "workLanguages": [
+     "suomi",
+     "englanti"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They list Plastics manufacturing as a skill.",
+      "stale": false,
+      "signalId": "s1"
+     },
+     {
+      "text": "They list controlling production process parameters as a skill.",
+      "stale": false,
+      "signalId": "s19"
+     },
+     {
+      "text": "They handle laboratory sampling and take samples from each batch for moisture measurement before melting.",
+      "stale": false,
+      "signalId": "s4"
+     },
+     {
+      "text": "They reviewed temperature logs and samples, identified moisture variation between raw material batches, proposed longer drying and instructed operators to measure moisture.",
+      "stale": false,
+      "signalId": "s20"
+     },
+     {
+      "text": "They list Process control system as a skill.",
+      "stale": false,
+      "signalId": "s10"
+     },
+     {
+      "text": "They list Excel as a skill.",
+      "stale": false,
+      "signalId": "s11"
+     },
+     {
+      "text": "They list Laboratory material measurements as a skill.",
+      "stale": false,
+      "signalId": "s12"
+     },
+     {
+      "text": "They list Chemical safety documentation as a skill.",
+      "stale": false,
+      "signalId": "s13"
+     },
+     {
+      "text": "They list investigating deviations and proposing corrections as a skill.",
+      "stale": false,
+      "signalId": "s14"
+     },
+     {
+      "text": "They use a moisture analyzer to measure batch samples before melting.",
+      "stale": false,
+      "signalId": "s15"
+     },
+     {
+      "text": "They record results in a table, check them against limits and send batches exceeding the limit for redrying.",
+      "stale": false,
+      "signalId": "s16"
+     },
+     {
+      "text": "They reviewed a colour mixing area, identified an incorrectly positioned dust extractor and proposed moving it.",
+      "stale": false,
+      "signalId": "s17"
+     },
+     {
+      "text": "They reviewed deviation reports with a quality engineer.",
+      "stale": false,
+      "signalId": "s21"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They work in plastics manufacturing, controlling process parameters, investigating defects and supporting laboratory testing. They use process control systems and Excel, and update chemical safety documents and risk assessments."
+   }
+  },
+  "approvedAt": "2026-11-14T01:36:28.660Z",
+  "updatedAt": "2026-11-14T01:36:28.650Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Granite-52",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s13",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/fc1a75bb-70e3-4005-881f-7709bf7b0ed4",
+      "labelEn": "monitor construction site",
+      "labelFi": "valvoa rakennustyömaata"
+     },
+     "kind": "skill",
+     "phrase": "Managing concrete-frame construction sites",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s2",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/66fdc34c-2326-4baa-b8ff-7a1d1015fe3a",
+      "labelEn": "planning and organising",
+      "labelFi": "suunnitella ja organisoida"
+     },
+     "kind": "skill",
+     "phrase": "Planning concrete pours and formwork",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s3",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/1b71f0d0-8e57-44dc-aaa0-3ee6fbb59991",
+      "labelEn": "check construction compliance",
+      "labelFi": "tarkastaa rakennusten määräystenmukaisuus"
+     },
+     "kind": "skill",
+     "phrase": "Checking construction against drawings",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s4",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/80274731-15ce-490a-8d5b-f55a36b976b0",
+      "labelEn": "prepare construction documents",
+      "labelFi": "valmistella rakennukseen liittyviä asiakirjoja"
+     },
+     "kind": "skill",
+     "phrase": "Construction quality documentation",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s6",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/190f64e1-b7b6-4c53-b20b-80f9215ef6ca",
+      "labelEn": "directing, supervising and coordinating projects",
+      "labelFi": "johtaa, valvoa ja koordinoida projekteja"
+     },
+     "kind": "skill",
+     "phrase": "Coordinating design corrections",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s7",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+      "labelEn": "construction methods",
+      "labelFi": "rakennusmenetelmät"
+     },
+     "kind": "domain",
+     "phrase": "Concrete-frame construction",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s8",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Revit",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s9",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "AutoCAD",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s10",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Excel",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s11",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/615cfc39-797f-4229-8e92-159fcf8f3030",
+      "labelEn": "building codes",
+      "labelFi": "rakentamismääräyskokoelma"
+     },
+     "kind": "knowledge",
+     "phrase": "Finnish building code",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s12",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/af1df253-5103-46d7-a757-b17bf5a4e581",
+      "labelEn": "operate surveying instruments",
+      "labelFi": "käyttää maanmittausvälineitä"
+     },
+     "kind": "tool",
+     "phrase": "Surveying instruments",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s14",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/f35f83b7-ee52-4904-a9c1-94b8507635c6",
+      "labelEn": "direct airport subcontractors",
+      "labelFi": "ohjata lentoaseman alihankkijoita"
+     },
+     "kind": "skill",
+     "phrase": "Leading site crews and subcontractors",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s15",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Site safety inspections",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s16",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Training site supervisors",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "Concrete-frame site management, quality and design coordination",
+   "approvedAt": "2026-11-14T01:37:42.079Z",
+   "lookingFor": {
+    "roles": [
+     "Site manager",
+     "Construction supervisor"
+    ],
+    "workMode": "onsite",
+    "startFrom": "within_3_months",
+    "workLanguages": [
+     "English",
+     "Finnish"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They list managing concrete-frame construction sites as a skill.",
+      "stale": false,
+      "signalId": "s13"
+     },
+     {
+      "text": "They plan concrete pours and formwork with site foremen.",
+      "stale": false,
+      "signalId": "s2"
+     },
+     {
+      "text": "They compare models and drawings with built work and identify mismatched openings before formwork is installed.",
+      "stale": false,
+      "signalId": "s3"
+     },
+     {
+      "text": "They list Construction quality documentation as a skill.",
+      "stale": false,
+      "signalId": "s4"
+     },
+     {
+      "text": "They document drawing discrepancies, contact designers and agree corrected openings before concrete is poured.",
+      "stale": false,
+      "signalId": "s6"
+     },
+     {
+      "text": "They list Concrete-frame construction as a skill.",
+      "stale": false,
+      "signalId": "s7"
+     },
+     {
+      "text": "They list Revit as a skill.",
+      "stale": false,
+      "signalId": "s8"
+     },
+     {
+      "text": "They list AutoCAD as a skill.",
+      "stale": false,
+      "signalId": "s9"
+     },
+     {
+      "text": "They list Excel as a skill.",
+      "stale": false,
+      "signalId": "s10"
+     },
+     {
+      "text": "They list Finnish building code as a skill.",
+      "stale": false,
+      "signalId": "s11"
+     },
+     {
+      "text": "They list surveying instruments as a skill.",
+      "stale": false,
+      "signalId": "s12"
+     },
+     {
+      "text": "They lead foremen, formwork carpenters and rebar fitters, and coordinate electrical and ventilation subcontractors.",
+      "stale": false,
+      "signalId": "s14"
+     },
+     {
+      "text": "They hold a site safety qualification and run weekly site safety walks.",
+      "stale": false,
+      "signalId": "s15"
+     },
+     {
+      "text": "They have trained engineers to become site supervisors.",
+      "stale": false,
+      "signalId": "s16"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They manage concrete-frame housing and office sites, plan pours and formwork, and lead crews and subcontractors. They check models and drawings, resolve design discrepancies, handle quality documents and run safety walks."
+   }
+  },
+  "approvedAt": "2026-11-14T01:37:42.079Z",
+  "updatedAt": "2026-11-14T01:37:41.863Z"
+ },
+ {
+  "talentId": "tal_mogxo04jdwwl",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Quartz-73",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s1",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+      "labelEn": "mechanical engineering",
+      "labelFi": "koneenrakennus"
+     },
+     "kind": "domain",
+     "phrase": "Mechanical design engineering",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s2",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/87434439-c07d-48be-af34-b0cdd03121c4",
+      "labelEn": "design engineering components",
+      "labelFi": "suunnitella teknisiä komponentteja"
+     },
+     "kind": "skill",
+     "phrase": "Component design",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s3",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/a432ffcd-b58d-4417-836c-ea3282b626ca",
+      "labelEn": "run simulations",
+      "labelFi": "toteuttaa simulaatioita"
+     },
+     "kind": "skill",
+     "phrase": "Flow and strength simulations",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s4",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/334e3e49-fb02-4051-809a-f06adfdc1c40",
+      "labelEn": "troubleshoot",
+      "labelFi": "tunnistaa ongelmia"
+     },
+     "kind": "skill",
+     "phrase": "Prototype troubleshooting in workshop",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s5",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/632843be-2872-47b4-a92e-352629f9bd88",
+      "labelEn": "analyse stress resistance of products",
+      "labelFi": "analysoida tuotteiden stressinkestävyyttä"
+     },
+     "kind": "skill",
+     "phrase": "Finite element stress analysis",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s6",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Redesigning cracked pump housings",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s7",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Checking flow after design changes",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s8",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Prototype pressure testing",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s9",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "SolidWorks",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s10",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Ansys",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s11",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/c3a03c5a-c260-4c26-9b9a-873abb396f4d",
+      "labelEn": "MATLAB",
+      "labelFi": "MATLAB"
+     },
+     "kind": "tool",
+     "phrase": "MATLAB",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s12",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "PDM revision management",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s13",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/23d7bd85-d8d5-4455-b64d-3b0998f2425d",
+      "labelEn": "measuring dimensions and related properties",
+      "labelFi": "mitata ulottuvuuksia ja niihin liittyviä ominaisuuksia"
+     },
+     "kind": "skill",
+     "phrase": "Dimensional inspection and CNC reading",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "Mechanical design engineering, Component design, Flow and strength simulations",
+   "approvedAt": "2026-11-14T01:39:05.464Z",
+   "lookingFor": {
+    "roles": [
+     "mechanical design engineer",
+     "simulation engineer"
+    ],
+    "workMode": "hybrid",
+    "startFrom": "within_3_months",
+    "workLanguages": [
+     "English",
+     "Finnish"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They list Mechanical design engineering as a skill.",
+      "stale": false,
+      "signalId": "s1"
+     },
+     {
+      "text": "They list Component design as a skill.",
+      "stale": false,
+      "signalId": "s2"
+     },
+     {
+      "text": "They list Flow and strength simulations as a skill.",
+      "stale": false,
+      "signalId": "s3"
+     },
+     {
+      "text": "They list Prototype troubleshooting in workshop as a skill.",
+      "stale": false,
+      "signalId": "s4"
+     },
+     {
+      "text": "They list Finite element stress analysis as a skill.",
+      "stale": false,
+      "signalId": "s5"
+     },
+     {
+      "text": "They list redesigning cracked pump housings as a skill.",
+      "stale": false,
+      "signalId": "s6"
+     },
+     {
+      "text": "They list checking flow after design changes as a skill.",
+      "stale": false,
+      "signalId": "s7"
+     },
+     {
+      "text": "They list Prototype pressure testing as a skill.",
+      "stale": false,
+      "signalId": "s8"
+     },
+     {
+      "text": "They list SolidWorks as a skill.",
+      "stale": false,
+      "signalId": "s9"
+     },
+     {
+      "text": "They list Ansys as a skill.",
+      "stale": false,
+      "signalId": "s10"
+     },
+     {
+      "text": "They list MATLAB as a skill.",
+      "stale": false,
+      "signalId": "s11"
+     },
+     {
+      "text": "They list PDM revision management as a skill.",
+      "stale": false,
+      "signalId": "s12"
+     },
+     {
+      "text": "They list Dimensional inspection and CNC reading as a skill.",
+      "stale": false,
+      "signalId": "s13"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They talked about Mechanical design engineering, Component design and Flow and strength simulations."
+   }
+  },
+  "approvedAt": "2026-11-14T01:39:05.464Z",
+  "updatedAt": "2026-11-14T01:39:05.457Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Pine-39",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s1",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/99a09006-31f4-41d3-b3aa-feb2aeff730b",
+      "labelEn": "specialist nursing care",
+      "labelFi": "erikoissairaanhoito"
+     },
+     "kind": "domain",
+     "phrase": "Home care nursing",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s2",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/1fd57242-267e-46df-bd8c-849fdd593a50",
+      "labelEn": "administer prescribed medication",
+      "labelFi": "annostella lääkemääräyksen mukaisia lääkkeitä"
+     },
+     "kind": "skill",
+     "phrase": "Administering medication",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s16",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/1c6736c2-77de-419c-9b84-8932e15abc21",
+      "labelEn": "carry out wound care",
+      "labelFi": "hoitaa haavaa"
+     },
+     "kind": "skill",
+     "phrase": "Wound care",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s4",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/e99ddf41-6085-4b91-9de8-8bf251af9ced",
+      "labelEn": "monitor patient's health condition",
+      "labelFi": "valvoa potilaan terveyden tilaa"
+     },
+     "kind": "skill",
+     "phrase": "Monitoring patient condition",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s17",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/fa01b6c3-82e0-43f1-af78-fd57f832e09a",
+      "labelEn": "monitor patients' medication",
+      "labelFi": "seurata potilaiden lääkitystä"
+     },
+     "kind": "skill",
+     "phrase": "Reviewing medication lists",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 3,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s8",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Coordinating medication changes",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s18",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/1034004c-0347-4765-8794-b65d2c92b379",
+      "labelEn": "documenting and recording information",
+      "labelFi": "dokumentoida ja tallentaa tietoa"
+     },
+     "kind": "skill",
+     "phrase": "Documenting and sharing care information",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s19",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Home care software",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s14",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Patient monitoring devices",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s15",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Injections and laboratory samples",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s20",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+      "labelEn": "coordinate care",
+      "labelFi": "koordinoida hoitoa"
+     },
+     "kind": "skill",
+     "phrase": "Coordinating client care",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s21",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Advising practical nurses",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s22",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/f98e06f5-a09a-4356-b6a8-d55a7d3c5356",
+      "labelEn": "implement nursing care",
+      "labelFi": "toteuttaa sairaanhoitoa"
+     },
+     "kind": "knowledge",
+     "phrase": "Dementia care",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s23",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+      "labelEn": "first aid",
+      "labelFi": "ensiapu"
+     },
+     "kind": "skill",
+     "phrase": "First aid instruction",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "Home care nursing, medication management and first aid",
+   "approvedAt": "2026-11-14T01:40:23.845Z",
+   "lookingFor": {
+    "roles": [
+     "Home care nurse",
+     "Home hospital nurse",
+     "Health centre nurse"
+    ],
+    "workMode": "onsite",
+    "startFrom": "within_1_month",
+    "workLanguages": [
+     "suomi"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They list Home care nursing as a skill.",
+      "stale": false,
+      "signalId": "s1"
+     },
+     {
+      "text": "They list administering medication as a skill.",
+      "stale": false,
+      "signalId": "s2"
+     },
+     {
+      "text": "They list Wound care as a skill.",
+      "stale": false,
+      "signalId": "s16"
+     },
+     {
+      "text": "They list monitoring patient condition as a skill.",
+      "stale": false,
+      "signalId": "s4"
+     },
+     {
+      "text": "They review medicines, their effects and clients' actual use, identify side effects, and correct outdated lists for doctors.",
+      "stale": false,
+      "signalId": "s17"
+     },
+     {
+      "text": "They contact doctors about medication concerns and support changes by providing corrected medication lists.",
+      "stale": false,
+      "signalId": "s8"
+     },
+     {
+      "text": "They document care and share incidents and changes with relatives and colleagues during handovers.",
+      "stale": false,
+      "signalId": "s18"
+     },
+     {
+      "text": "They list Home care software as a skill.",
+      "stale": false,
+      "signalId": "s19"
+     },
+     {
+      "text": "They list Patient monitoring devices as a skill.",
+      "stale": false,
+      "signalId": "s14"
+     },
+     {
+      "text": "They list Injections and laboratory samples as a skill.",
+      "stale": false,
+      "signalId": "s15"
+     },
+     {
+      "text": "They collaborate with doctors, physiotherapists and relatives on client care.",
+      "stale": false,
+      "signalId": "s20"
+     },
+     {
+      "text": "They advise practical nurses on wound care and medicines.",
+      "stale": false,
+      "signalId": "s21"
+     },
+     {
+      "text": "They have completed training in supporting people with dementia.",
+      "stale": false,
+      "signalId": "s22"
+     },
+     {
+      "text": "They teach first aid courses for members of a local association as a volunteer.",
+      "stale": false,
+      "signalId": "s23"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They provide home nursing, including medication, wound care, monitoring and care coordination. They also review medicines, advise colleagues and teach first aid."
+   }
+  },
+  "approvedAt": "2026-11-14T01:40:23.845Z",
+  "updatedAt": "2026-11-14T01:40:23.630Z"
+ }
+]

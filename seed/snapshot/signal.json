@@ -1,0 +1,4445 @@
+[
+ {
+  "talentId": "tal_78jy75ig6iz8",
+  "id": "s1",
+  "interviewId": "int_whogmkj9671z",
+  "phrase": "Plastics manufacturing",
+  "phraseOwn": null,
+  "kind": "domain",
+  "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+  "escoLabelEn": "manufacturing processes",
+  "escoLabelFi": "valmistusprosessit",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:36:28.650Z",
+  "updatedAt": "2026-11-14T01:36:28.650Z"
+ },
+ {
+  "talentId": "tal_78jy75ig6iz8",
+  "id": "s19",
+  "interviewId": "int_whogmkj9671z",
+  "phrase": "Controlling production process parameters",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/0f0698e7-04e4-4bf7-9af2-e3191147525a",
+  "escoLabelEn": "optimise production processes parameters",
+  "escoLabelFi": "optimoida tuotantoprosessin parametrit",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:36:28.650Z",
+  "updatedAt": "2026-11-14T01:36:28.650Z"
+ },
+ {
+  "talentId": "tal_78jy75ig6iz8",
+  "id": "s4",
+  "interviewId": "int_whogmkj9671z",
+  "phrase": "Laboratory sampling",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   },
+   {
+    "turnIndex": 9,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:36:28.650Z",
+  "updatedAt": "2026-11-14T01:36:28.650Z"
+ },
+ {
+  "talentId": "tal_78jy75ig6iz8",
+  "id": "s20",
+  "interviewId": "int_whogmkj9671z",
+  "phrase": "Troubleshooting production defects",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/334e3e49-fb02-4051-809a-f06adfdc1c40",
+  "escoLabelEn": "troubleshoot",
+  "escoLabelFi": "tunnistaa ongelmia",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:36:28.650Z",
+  "updatedAt": "2026-11-14T01:36:28.650Z"
+ },
+ {
+  "talentId": "tal_78jy75ig6iz8",
+  "id": "s10",
+  "interviewId": "int_whogmkj9671z",
+  "phrase": "Process control system",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/7229b6dc-e2ef-44fe-b9a1-06b1c1075d8f",
+  "escoLabelEn": "automatic control system",
+  "escoLabelFi": "automaattinen valvontajärjestelmä",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:36:28.650Z",
+  "updatedAt": "2026-11-14T01:36:28.650Z"
+ },
+ {
+  "talentId": "tal_78jy75ig6iz8",
+  "id": "s11",
+  "interviewId": "int_whogmkj9671z",
+  "phrase": "Excel",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:36:28.650Z",
+  "updatedAt": "2026-11-14T01:36:28.650Z"
+ },
+ {
+  "talentId": "tal_78jy75ig6iz8",
+  "id": "s12",
+  "interviewId": "int_whogmkj9671z",
+  "phrase": "Laboratory material measurements",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/fe490d6c-851b-44a8-949b-808e24c2cc54",
+  "escoLabelEn": "measure materials",
+  "escoLabelFi": "mitata materiaaleja",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:36:28.650Z",
+  "updatedAt": "2026-11-14T01:36:28.650Z"
+ },
+ {
+  "talentId": "tal_78jy75ig6iz8",
+  "id": "s13",
+  "interviewId": "int_whogmkj9671z",
+  "phrase": "Chemical safety documentation",
+  "phraseOwn": null,
+  "kind": "knowledge",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:36:28.650Z",
+  "updatedAt": "2026-11-14T01:36:28.650Z"
+ },
+ {
+  "talentId": "tal_78jy75ig6iz8",
+  "id": "s14",
+  "interviewId": "int_whogmkj9671z",
+  "phrase": "Investigating deviations and proposing corrections",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/8fde007e-ea4c-48c2-84c5-752834acd31d",
+  "escoLabelEn": "conducting studies, investigations and examinations",
+  "escoLabelFi": "laata tutkimuksia ja selvityksiä",
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 3,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:36:28.650Z",
+  "updatedAt": "2026-11-14T01:36:28.650Z"
+ },
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "id": "s1",
+  "interviewId": "int_tyc8b9ril3y5",
+  "phrase": "Software development",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+  "escoLabelEn": "develop software prototype",
+  "escoLabelFi": "kehittää ohjelmiston prototyyppi",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:27:55.556Z",
+  "updatedAt": "2026-11-14T01:27:55.556Z"
+ },
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "id": "s2",
+  "interviewId": "int_tyc8b9ril3y5",
+  "phrase": "Python",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/ccd0a1d9-afda-43d9-b901-96344886e14d",
+  "escoLabelEn": "Python (computer programming)",
+  "escoLabelFi": "Python (tietokoneohjelmointi)",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:27:55.556Z",
+  "updatedAt": "2026-11-14T01:27:55.556Z"
+ },
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "id": "s3",
+  "interviewId": "int_tyc8b9ril3y5",
+  "phrase": "PostgreSQL",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/a8d07b5a-c1a1-42c6-9d53-db9c7a2ca996",
+  "escoLabelEn": "PostgreSQL",
+  "escoLabelFi": "PostgreSQL",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:27:55.556Z",
+  "updatedAt": "2026-11-14T01:27:55.556Z"
+ },
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "id": "s4",
+  "interviewId": "int_tyc8b9ril3y5",
+  "phrase": "Maintaining nightly data import jobs",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 11,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:27:55.556Z",
+  "updatedAt": "2026-11-14T01:27:55.556Z"
+ },
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "id": "s12",
+  "interviewId": "int_tyc8b9ril3y5",
+  "phrase": "Writing SQL data checks",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 1,
+    "sentenceTo": 4,
+    "sentenceFrom": 4
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:27:55.556Z",
+  "updatedAt": "2026-11-14T01:27:55.556Z"
+ },
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "id": "s13",
+  "interviewId": "int_tyc8b9ril3y5",
+  "phrase": "Troubleshooting data loading issues",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/744442ac-c157-4350-8be0-ce454df4f5c5",
+  "escoLabelEn": "perform ICT troubleshooting",
+  "escoLabelFi": "tehdä tieto- ja viestintätekniikan vianmääritystä",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 4,
+    "sentenceFrom": 4
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:27:55.556Z",
+  "updatedAt": "2026-11-14T01:27:55.556Z"
+ },
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "id": "s8",
+  "interviewId": "int_tyc8b9ril3y5",
+  "phrase": "Data quality monitoring",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/cc7370dd-69fa-4c67-a96f-d4d135d38700",
+  "escoLabelEn": "data quality assessment",
+  "escoLabelFi": "tietojen laadunarviointi",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:27:55.556Z",
+  "updatedAt": "2026-11-14T01:27:55.556Z"
+ },
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "id": "s9",
+  "interviewId": "int_tyc8b9ril3y5",
+  "phrase": "pandas",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:27:55.556Z",
+  "updatedAt": "2026-11-14T01:27:55.556Z"
+ },
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "id": "s11",
+  "interviewId": "int_tyc8b9ril3y5",
+  "phrase": "Git and CI",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:27:55.556Z",
+  "updatedAt": "2026-11-14T01:27:55.556Z"
+ },
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "id": "s14",
+  "interviewId": "int_tyc8b9ril3y5",
+  "phrase": "Validating supplier data files",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 11,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:27:55.556Z",
+  "updatedAt": "2026-11-14T01:27:55.556Z"
+ },
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "id": "s15",
+  "interviewId": "int_tyc8b9ril3y5",
+  "phrase": "Working with operations users",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/548c3fbe-9eb1-4035-bc54-027fd5bc5315",
+  "escoLabelEn": "working with others",
+  "escoLabelFi": "työskennellä muiden kanssa",
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 3,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:27:55.556Z",
+  "updatedAt": "2026-11-14T01:27:55.556Z"
+ },
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "id": "s16",
+  "interviewId": "int_tyc8b9ril3y5",
+  "phrase": "Sensor calibration",
+  "phraseOwn": null,
+  "kind": "knowledge",
+  "escoUri": "http://data.europa.eu/esco/skill/6532ef3b-1685-4de7-a858-d31fdaa435ca",
+  "escoLabelEn": "calibrate precision instrument",
+  "escoLabelFi": "kalibroida tarkkuusmittauslaitteita",
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:27:55.556Z",
+  "updatedAt": "2026-11-14T01:27:55.556Z"
+ },
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "id": "s17",
+  "interviewId": "int_tyc8b9ril3y5",
+  "phrase": "Mentoring beginner programmers",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:27:55.556Z",
+  "updatedAt": "2026-11-14T01:27:55.556Z"
+ },
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "id": "s18",
+  "interviewId": "int_tyc8b9ril3y5",
+  "phrase": "Electricity metering",
+  "phraseOwn": null,
+  "kind": "domain",
+  "escoUri": "http://data.europa.eu/esco/skill/c8ac1986-38fa-43b2-89dc-50a4beeb420e",
+  "escoLabelEn": "electricity",
+  "escoLabelFi": "sähkö",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:27:55.556Z",
+  "updatedAt": "2026-11-14T01:27:55.556Z"
+ },
+ {
+  "talentId": "tal_78jy75ig6iz8",
+  "id": "s15",
+  "interviewId": "int_whogmkj9671z",
+  "phrase": "Moisture analyzer",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:36:28.650Z",
+  "updatedAt": "2026-11-14T01:36:28.650Z"
+ },
+ {
+  "talentId": "tal_78jy75ig6iz8",
+  "id": "s16",
+  "interviewId": "int_whogmkj9671z",
+  "phrase": "Recording and checking results",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/1034004c-0347-4765-8794-b65d2c92b379",
+  "escoLabelEn": "documenting and recording information",
+  "escoLabelFi": "dokumentoida ja tallentaa tietoa",
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:36:28.650Z",
+  "updatedAt": "2026-11-14T01:36:28.650Z"
+ },
+ {
+  "talentId": "tal_78jy75ig6iz8",
+  "id": "s17",
+  "interviewId": "int_whogmkj9671z",
+  "phrase": "Assessing workplace risks",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 11,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:36:28.650Z",
+  "updatedAt": "2026-11-14T01:36:28.650Z"
+ },
+ {
+  "talentId": "tal_78jy75ig6iz8",
+  "id": "s21",
+  "interviewId": "int_whogmkj9671z",
+  "phrase": "Reviewing deviation reports",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:36:28.650Z",
+  "updatedAt": "2026-11-14T01:36:28.650Z"
+ },
+ {
+  "talentId": "tal_i210th809pqh",
+  "id": "s1",
+  "interviewId": "int_g5c966tjew5l",
+  "phrase": "Surgical ward nursing",
+  "phraseOwn": null,
+  "kind": "domain",
+  "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+  "escoLabelEn": "nursing science",
+  "escoLabelFi": "hoitotiede",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:41:43.166Z",
+  "updatedAt": "2026-11-14T01:41:43.166Z"
+ },
+ {
+  "talentId": "tal_i210th809pqh",
+  "id": "s2",
+  "interviewId": "int_g5c966tjew5l",
+  "phrase": "Pre- and post-operative patient care",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:41:43.166Z",
+  "updatedAt": "2026-11-14T01:41:43.166Z"
+ },
+ {
+  "talentId": "tal_i210th809pqh",
+  "id": "s15",
+  "interviewId": "int_g5c966tjew5l",
+  "phrase": "Monitoring vital signs and postoperative patients",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/d3b74d50-7fc9-4051-9335-58d129a4a064",
+  "escoLabelEn": "monitor basic patients signs",
+  "escoLabelFi": "seurata potilaiden peruselintoimintoja",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:41:43.166Z",
+  "updatedAt": "2026-11-14T01:41:43.166Z"
+ },
+ {
+  "talentId": "tal_i210th809pqh",
+  "id": "s4",
+  "interviewId": "int_g5c966tjew5l",
+  "phrase": "Managing pain medication",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/fa01b6c3-82e0-43f1-af78-fd57f832e09a",
+  "escoLabelEn": "monitor patients' medication",
+  "escoLabelFi": "seurata potilaiden lääkitystä",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 9,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:41:43.166Z",
+  "updatedAt": "2026-11-14T01:41:43.166Z"
+ },
+ {
+  "talentId": "tal_i210th809pqh",
+  "id": "s5",
+  "interviewId": "int_g5c966tjew5l",
+  "phrase": "Changing dressings and monitoring complications",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/c5ff50d7-97d3-401e-90ac-e5ae756a52de",
+  "escoLabelEn": "monitoring health conditions of humans and animals",
+  "escoLabelFi": "seurata ihmisten tai eläinten terveydentilaa",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 1,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:41:43.166Z",
+  "updatedAt": "2026-11-14T01:41:43.166Z"
+ },
+ {
+  "talentId": "tal_i210th809pqh",
+  "id": "s16",
+  "interviewId": "int_g5c966tjew5l",
+  "phrase": "Escalating complications and starting fluids",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:41:43.166Z",
+  "updatedAt": "2026-11-14T01:41:43.166Z"
+ },
+ {
+  "talentId": "tal_i210th809pqh",
+  "id": "s9",
+  "interviewId": "int_g5c966tjew5l",
+  "phrase": "Clinical documentation",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/c1bd0ed6-053c-4703-981e-eaec5e57de18",
+  "escoLabelEn": "maintaining or preparing medical documentation",
+  "escoLabelFi": "ylläpitää tai laatia lääketieteellisiä asiakirjoja",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 4,
+    "sentenceFrom": 4
+   },
+   {
+    "turnIndex": 9,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:41:43.166Z",
+  "updatedAt": "2026-11-14T01:41:43.166Z"
+ },
+ {
+  "talentId": "tal_i210th809pqh",
+  "id": "s10",
+  "interviewId": "int_g5c966tjew5l",
+  "phrase": "Hospital patient records system",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/53141450-2fa9-4890-a64e-7ffd4e1144be",
+  "escoLabelEn": "use electronic health records management system",
+  "escoLabelFi": "käyttää sähköistä potilastietojärjestelmää",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:41:43.166Z",
+  "updatedAt": "2026-11-14T01:41:43.166Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "id": "s2",
+  "interviewId": "int_3x0gy2m73r5q",
+  "phrase": "Planning concrete pours and formwork",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/66fdc34c-2326-4baa-b8ff-7a1d1015fe3a",
+  "escoLabelEn": "planning and organising",
+  "escoLabelFi": "suunnitella ja organisoida",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:37:41.863Z",
+  "updatedAt": "2026-11-14T01:37:41.863Z"
+ },
+ {
+  "talentId": "tal_i210th809pqh",
+  "id": "s11",
+  "interviewId": "int_g5c966tjew5l",
+  "phrase": "Infusion pumps and patient monitors",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:41:43.166Z",
+  "updatedAt": "2026-11-14T01:41:43.166Z"
+ },
+ {
+  "talentId": "tal_i210th809pqh",
+  "id": "s12",
+  "interviewId": "int_g5c966tjew5l",
+  "phrase": "Wound dressings",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/fa845322-85c4-42cb-b230-c1d43d308f02",
+  "escoLabelEn": "apply wound dressings",
+  "escoLabelFi": "käyttää haavasidoksia",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:41:43.166Z",
+  "updatedAt": "2026-11-14T01:41:43.166Z"
+ },
+ {
+  "talentId": "tal_i210th809pqh",
+  "id": "s13",
+  "interviewId": "int_g5c966tjew5l",
+  "phrase": "Cannulation and blood sampling",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/5e13af88-67d3-46ed-af58-8a7b8ebe7b1f",
+  "escoLabelEn": "perform venous cannulation",
+  "escoLabelFi": "asettaa kanyyli laskimoon",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:41:43.166Z",
+  "updatedAt": "2026-11-14T01:41:43.166Z"
+ },
+ {
+  "talentId": "tal_i210th809pqh",
+  "id": "s14",
+  "interviewId": "int_g5c966tjew5l",
+  "phrase": "Early warning chart",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:41:43.166Z",
+  "updatedAt": "2026-11-14T01:41:43.166Z"
+ },
+ {
+  "talentId": "tal_i210th809pqh",
+  "id": "s17",
+  "interviewId": "int_g5c966tjew5l",
+  "phrase": "Coordinating postoperative mobility",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:41:43.166Z",
+  "updatedAt": "2026-11-14T01:41:43.166Z"
+ },
+ {
+  "talentId": "tal_i210th809pqh",
+  "id": "s18",
+  "interviewId": "int_g5c966tjew5l",
+  "phrase": "Explaining care to families",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:41:43.166Z",
+  "updatedAt": "2026-11-14T01:41:43.166Z"
+ },
+ {
+  "talentId": "tal_8ttxss4rfn1c",
+  "id": "s3",
+  "interviewId": "int_pndjw12sje3w",
+  "phrase": "Delivery and warranty issue handling",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:48.254Z",
+  "updatedAt": "2026-11-14T01:48:48.254Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "id": "s13",
+  "interviewId": "int_3x0gy2m73r5q",
+  "phrase": "Managing concrete-frame construction sites",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/fc1a75bb-70e3-4005-881f-7709bf7b0ed4",
+  "escoLabelEn": "monitor construction site",
+  "escoLabelFi": "valvoa rakennustyömaata",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:37:41.863Z",
+  "updatedAt": "2026-11-14T01:37:41.863Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "id": "s3",
+  "interviewId": "int_3x0gy2m73r5q",
+  "phrase": "Checking construction against drawings",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/1b71f0d0-8e57-44dc-aaa0-3ee6fbb59991",
+  "escoLabelEn": "check construction compliance",
+  "escoLabelFi": "tarkastaa rakennusten määräystenmukaisuus",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   },
+   {
+    "turnIndex": 11,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:37:41.863Z",
+  "updatedAt": "2026-11-14T01:37:41.863Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "id": "s4",
+  "interviewId": "int_3x0gy2m73r5q",
+  "phrase": "Construction quality documentation",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/80274731-15ce-490a-8d5b-f55a36b976b0",
+  "escoLabelEn": "prepare construction documents",
+  "escoLabelFi": "valmistella rakennukseen liittyviä asiakirjoja",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:37:41.863Z",
+  "updatedAt": "2026-11-14T01:37:41.863Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "id": "s6",
+  "interviewId": "int_3x0gy2m73r5q",
+  "phrase": "Coordinating design corrections",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/190f64e1-b7b6-4c53-b20b-80f9215ef6ca",
+  "escoLabelEn": "directing, supervising and coordinating projects",
+  "escoLabelFi": "johtaa, valvoa ja koordinoida projekteja",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 11,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   },
+   {
+    "turnIndex": 11,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:37:41.863Z",
+  "updatedAt": "2026-11-14T01:37:41.863Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "id": "s7",
+  "interviewId": "int_3x0gy2m73r5q",
+  "phrase": "Concrete-frame construction",
+  "phraseOwn": null,
+  "kind": "domain",
+  "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+  "escoLabelEn": "construction methods",
+  "escoLabelFi": "rakennusmenetelmät",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   },
+   {
+    "turnIndex": 3,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:37:41.863Z",
+  "updatedAt": "2026-11-14T01:37:41.863Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "id": "s1",
+  "interviewId": "int_w94ewgaboztp",
+  "phrase": "Front-end development",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   },
+   {
+    "turnIndex": 11,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:29:13.307Z",
+  "updatedAt": "2026-11-14T01:29:13.307Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "id": "s2",
+  "interviewId": "int_w94ewgaboztp",
+  "phrase": "React",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:29:13.307Z",
+  "updatedAt": "2026-11-14T01:29:13.307Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "id": "s3",
+  "interviewId": "int_w94ewgaboztp",
+  "phrase": "TypeScript",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+  "escoLabelEn": "TypeScript",
+  "escoLabelFi": "TypeScript",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:29:13.307Z",
+  "updatedAt": "2026-11-14T01:29:13.307Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "id": "s18",
+  "interviewId": "int_w94ewgaboztp",
+  "phrase": "Collaborating with designers",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/d52382fe-f236-421f-95fe-34fe69d48dbd",
+  "escoLabelEn": "collaborate with designers",
+  "escoLabelFi": "tehdä yhteistyötä suunnittelijoiden kanssa",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 7,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:29:13.307Z",
+  "updatedAt": "2026-11-14T01:29:13.307Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "id": "s19",
+  "interviewId": "int_w94ewgaboztp",
+  "phrase": "Writing software tests",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/6a322874-e32f-4cd8-9683-badce67a7f73",
+  "escoLabelEn": "develop automated software tests",
+  "escoLabelFi": "kehittää automaattisia ohjelmistotestejä",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   },
+   {
+    "turnIndex": 11,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:29:13.307Z",
+  "updatedAt": "2026-11-14T01:29:13.307Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "id": "s6",
+  "interviewId": "int_w94ewgaboztp",
+  "phrase": "Screen reader testing",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 4,
+    "sentenceFrom": 4
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:29:13.307Z",
+  "updatedAt": "2026-11-14T01:29:13.307Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "id": "s8",
+  "interviewId": "int_3x0gy2m73r5q",
+  "phrase": "Revit",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:37:41.863Z",
+  "updatedAt": "2026-11-14T01:37:41.863Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "id": "s9",
+  "interviewId": "int_3x0gy2m73r5q",
+  "phrase": "AutoCAD",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:37:41.863Z",
+  "updatedAt": "2026-11-14T01:37:41.863Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "id": "s7",
+  "interviewId": "int_w94ewgaboztp",
+  "phrase": "Accessible form development",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:29:13.307Z",
+  "updatedAt": "2026-11-14T01:29:13.307Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "id": "s9",
+  "interviewId": "int_w94ewgaboztp",
+  "phrase": "Figma",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:29:13.307Z",
+  "updatedAt": "2026-11-14T01:29:13.307Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "id": "s10",
+  "interviewId": "int_w94ewgaboztp",
+  "phrase": "Playwright",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:29:13.307Z",
+  "updatedAt": "2026-11-14T01:29:13.307Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "id": "s12",
+  "interviewId": "int_w94ewgaboztp",
+  "phrase": "Receiving customer feedback",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/71746a0b-e58d-4dc4-ad03-bd84082eae21",
+  "escoLabelEn": "collect customer feedback on applications",
+  "escoLabelFi": "kerätä asiakkaiden palautetta sovelluksista",
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:29:13.307Z",
+  "updatedAt": "2026-11-14T01:29:13.307Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "id": "s13",
+  "interviewId": "int_w94ewgaboztp",
+  "phrase": "Accessibility advocacy",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:29:13.307Z",
+  "updatedAt": "2026-11-14T01:29:13.307Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "id": "s14",
+  "interviewId": "int_w94ewgaboztp",
+  "phrase": "Design systems",
+  "phraseOwn": null,
+  "kind": "knowledge",
+  "escoUri": "http://data.europa.eu/esco/skill/fae27053-8924-4bfd-b565-c9fe502044c9",
+  "escoLabelEn": "system design",
+  "escoLabelFi": "systeeminsuunnittelu",
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   },
+   {
+    "turnIndex": 11,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:29:13.307Z",
+  "updatedAt": "2026-11-14T01:29:13.307Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "id": "s15",
+  "interviewId": "int_w94ewgaboztp",
+  "phrase": "Maintaining open source component library",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:29:13.307Z",
+  "updatedAt": "2026-11-14T01:29:13.307Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "id": "s16",
+  "interviewId": "int_w94ewgaboztp",
+  "phrase": "Programming tutoring",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:29:13.307Z",
+  "updatedAt": "2026-11-14T01:29:13.307Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "id": "s10",
+  "interviewId": "int_3x0gy2m73r5q",
+  "phrase": "Excel",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:37:41.863Z",
+  "updatedAt": "2026-11-14T01:37:41.863Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "id": "s11",
+  "interviewId": "int_3x0gy2m73r5q",
+  "phrase": "Finnish building code",
+  "phraseOwn": null,
+  "kind": "knowledge",
+  "escoUri": "http://data.europa.eu/esco/skill/615cfc39-797f-4229-8e92-159fcf8f3030",
+  "escoLabelEn": "building codes",
+  "escoLabelFi": "rakentamismääräyskokoelma",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:37:41.863Z",
+  "updatedAt": "2026-11-14T01:37:41.863Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "id": "s12",
+  "interviewId": "int_3x0gy2m73r5q",
+  "phrase": "Surveying instruments",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/af1df253-5103-46d7-a757-b17bf5a4e581",
+  "escoLabelEn": "operate surveying instruments",
+  "escoLabelFi": "käyttää maanmittausvälineitä",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:37:41.863Z",
+  "updatedAt": "2026-11-14T01:37:41.863Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "id": "s14",
+  "interviewId": "int_3x0gy2m73r5q",
+  "phrase": "Leading site crews and subcontractors",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/f35f83b7-ee52-4904-a9c1-94b8507635c6",
+  "escoLabelEn": "direct airport subcontractors",
+  "escoLabelFi": "ohjata lentoaseman alihankkijoita",
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:37:41.863Z",
+  "updatedAt": "2026-11-14T01:37:41.863Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "id": "s15",
+  "interviewId": "int_3x0gy2m73r5q",
+  "phrase": "Site safety inspections",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:37:41.863Z",
+  "updatedAt": "2026-11-14T01:37:41.863Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "id": "s16",
+  "interviewId": "int_3x0gy2m73r5q",
+  "phrase": "Training site supervisors",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:37:41.863Z",
+  "updatedAt": "2026-11-14T01:37:41.863Z"
+ },
+ {
+  "talentId": "tal_8ttxss4rfn1c",
+  "id": "s4",
+  "interviewId": "int_pndjw12sje3w",
+  "phrase": "Returns and refunds",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/bb127774-3166-4541-ad4c-cc3070fd93c5",
+  "escoLabelEn": "handle returns",
+  "escoLabelFi": "käsitellä palautuksia",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:48.254Z",
+  "updatedAt": "2026-11-14T01:48:48.254Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "id": "s6",
+  "interviewId": "int_ibgj3thvm7dq",
+  "phrase": "Grouping orders by aisle",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 11,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:45:40.244Z",
+  "updatedAt": "2026-11-14T01:45:40.244Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "id": "s14",
+  "interviewId": "int_ibgj3thvm7dq",
+  "phrase": "Handheld barcode scanner",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/fd79b3c4-e264-41b5-bada-49ba5f317588",
+  "escoLabelEn": "use barcode scanning equipment",
+  "escoLabelFi": "käyttää viivakoodiskanneria",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:45:40.244Z",
+  "updatedAt": "2026-11-14T01:45:40.244Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "id": "s9",
+  "interviewId": "int_ibgj3thvm7dq",
+  "phrase": "Pallet jack",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:45:40.244Z",
+  "updatedAt": "2026-11-14T01:45:40.244Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "id": "s10",
+  "interviewId": "int_ibgj3thvm7dq",
+  "phrase": "Forklift licence",
+  "phraseOwn": null,
+  "kind": "knowledge",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:45:40.244Z",
+  "updatedAt": "2026-11-14T01:45:40.244Z"
+ },
+ {
+  "talentId": "tal_mogxo04jdwwl",
+  "id": "s3",
+  "interviewId": "int_y9viihp9qr2k",
+  "phrase": "Flow and strength simulations",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/a432ffcd-b58d-4417-836c-ea3282b626ca",
+  "escoLabelEn": "run simulations",
+  "escoLabelFi": "toteuttaa simulaatioita",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:39:05.457Z",
+  "updatedAt": "2026-11-14T01:39:05.457Z"
+ },
+ {
+  "talentId": "tal_mogxo04jdwwl",
+  "id": "s4",
+  "interviewId": "int_y9viihp9qr2k",
+  "phrase": "Prototype troubleshooting in workshop",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/334e3e49-fb02-4051-809a-f06adfdc1c40",
+  "escoLabelEn": "troubleshoot",
+  "escoLabelFi": "tunnistaa ongelmia",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:39:05.457Z",
+  "updatedAt": "2026-11-14T01:39:05.457Z"
+ },
+ {
+  "talentId": "tal_mogxo04jdwwl",
+  "id": "s5",
+  "interviewId": "int_y9viihp9qr2k",
+  "phrase": "Finite element stress analysis",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/632843be-2872-47b4-a92e-352629f9bd88",
+  "escoLabelEn": "analyse stress resistance of products",
+  "escoLabelFi": "analysoida tuotteiden stressinkestävyyttä",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:39:05.457Z",
+  "updatedAt": "2026-11-14T01:39:05.457Z"
+ },
+ {
+  "talentId": "tal_mogxo04jdwwl",
+  "id": "s6",
+  "interviewId": "int_y9viihp9qr2k",
+  "phrase": "Redesigning cracked pump housings",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:39:05.457Z",
+  "updatedAt": "2026-11-14T01:39:05.457Z"
+ },
+ {
+  "talentId": "tal_mogxo04jdwwl",
+  "id": "s7",
+  "interviewId": "int_y9viihp9qr2k",
+  "phrase": "Checking flow after design changes",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:39:05.457Z",
+  "updatedAt": "2026-11-14T01:39:05.457Z"
+ },
+ {
+  "talentId": "tal_mogxo04jdwwl",
+  "id": "s8",
+  "interviewId": "int_y9viihp9qr2k",
+  "phrase": "Prototype pressure testing",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   },
+   {
+    "turnIndex": 3,
+    "sentenceTo": 4,
+    "sentenceFrom": 4
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:39:05.457Z",
+  "updatedAt": "2026-11-14T01:39:05.457Z"
+ },
+ {
+  "talentId": "tal_mogxo04jdwwl",
+  "id": "s9",
+  "interviewId": "int_y9viihp9qr2k",
+  "phrase": "SolidWorks",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:39:05.457Z",
+  "updatedAt": "2026-11-14T01:39:05.457Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "id": "s12",
+  "interviewId": "int_ibgj3thvm7dq",
+  "phrase": "Cycle count stock checks",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 4,
+    "sentenceFrom": 4
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:45:40.244Z",
+  "updatedAt": "2026-11-14T01:45:40.244Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "id": "s15",
+  "interviewId": "int_ibgj3thvm7dq",
+  "phrase": "Stretch wrap machine and strapping",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:45:40.244Z",
+  "updatedAt": "2026-11-14T01:45:40.244Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "id": "s1",
+  "interviewId": "int_46dupziq8h10",
+  "phrase": "Back-end development",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:35:06.263Z",
+  "updatedAt": "2026-11-14T01:35:06.263Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "id": "s2",
+  "interviewId": "int_46dupziq8h10",
+  "phrase": "Java",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+  "escoLabelEn": "Java (computer programming)",
+  "escoLabelFi": "Java (tietokoneohjelmointi)",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:35:06.263Z",
+  "updatedAt": "2026-11-14T01:35:06.263Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "id": "s16",
+  "interviewId": "int_46dupziq8h10",
+  "phrase": "Spring Boot",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:35:06.263Z",
+  "updatedAt": "2026-11-14T01:35:06.263Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "id": "s10",
+  "interviewId": "int_46dupziq8h10",
+  "phrase": "PostgreSQL",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/a8d07b5a-c1a1-42c6-9d53-db9c7a2ca996",
+  "escoLabelEn": "PostgreSQL",
+  "escoLabelFi": "PostgreSQL",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:35:06.263Z",
+  "updatedAt": "2026-11-14T01:35:06.263Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "id": "s17",
+  "interviewId": "int_46dupziq8h10",
+  "phrase": "IntelliJ",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:35:06.263Z",
+  "updatedAt": "2026-11-14T01:35:06.263Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "id": "s12",
+  "interviewId": "int_46dupziq8h10",
+  "phrase": "Docker",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:35:06.263Z",
+  "updatedAt": "2026-11-14T01:35:06.263Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "id": "s18",
+  "interviewId": "int_46dupziq8h10",
+  "phrase": "Jenkins",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/f47a1998-0beb-43be-9f46-380aa4d183da",
+  "escoLabelEn": "Jenkins (tools for software configuration management)",
+  "escoLabelFi": "Jenkins (työkalut ohjelmiston kokoonpanon hallintaan)",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:35:06.263Z",
+  "updatedAt": "2026-11-14T01:35:06.263Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "id": "s19",
+  "interviewId": "int_46dupziq8h10",
+  "phrase": "JUnit",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 4,
+    "sentenceFrom": 4
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:35:06.263Z",
+  "updatedAt": "2026-11-14T01:35:06.263Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "id": "s20",
+  "interviewId": "int_46dupziq8h10",
+  "phrase": "Debugging duplicate invoice charges",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:35:06.263Z",
+  "updatedAt": "2026-11-14T01:35:06.263Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "id": "s7",
+  "interviewId": "int_46dupziq8h10",
+  "phrase": "Database unique constraints",
+  "phraseOwn": null,
+  "kind": "knowledge",
+  "escoUri": "http://data.europa.eu/esco/skill/43ae58b9-5e56-4524-b45a-b422777a0576",
+  "escoLabelEn": "database",
+  "escoLabelFi": "tietokanta",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   },
+   {
+    "turnIndex": 9,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:35:06.263Z",
+  "updatedAt": "2026-11-14T01:35:06.263Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "id": "s8",
+  "interviewId": "int_46dupziq8h10",
+  "phrase": "Handling duplicate requests",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   },
+   {
+    "turnIndex": 9,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:35:06.263Z",
+  "updatedAt": "2026-11-14T01:35:06.263Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "id": "s13",
+  "interviewId": "int_46dupziq8h10",
+  "phrase": "Collaborating with product owners",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:35:06.263Z",
+  "updatedAt": "2026-11-14T01:35:06.263Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "id": "s14",
+  "interviewId": "int_46dupziq8h10",
+  "phrase": "Explaining bugs to support staff",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:35:06.263Z",
+  "updatedAt": "2026-11-14T01:35:06.263Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "id": "s15",
+  "interviewId": "int_46dupziq8h10",
+  "phrase": "Onboarding new developers",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:35:06.263Z",
+  "updatedAt": "2026-11-14T01:35:06.263Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "id": "s21",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "phrase": "Managing bookkeeping",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   },
+   {
+    "turnIndex": 11,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:47:04.012Z",
+  "updatedAt": "2026-11-14T01:47:04.012Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "id": "s2",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "phrase": "Accounts payable",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/e2e15494-65b9-4af5-8b86-53fb51e7e022",
+  "escoLabelEn": "manage accounts",
+  "escoLabelFi": "hallinnoida tilejä",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:47:04.012Z",
+  "updatedAt": "2026-11-14T01:47:04.012Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "id": "s22",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "phrase": "Filing tax returns",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/22a173f5-868c-4d82-87e6-beed500ce070",
+  "escoLabelEn": "prepare tax returns forms",
+  "escoLabelFi": "laatia veroilmoituksia",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:47:04.012Z",
+  "updatedAt": "2026-11-14T01:47:04.012Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "id": "s23",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "phrase": "General ledger accounting",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/dc417e19-edb4-4401-883a-2375f67a162f",
+  "escoLabelEn": "manage the general ledger",
+  "escoLabelFi": "huolehtia pääkirjasta",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   },
+   {
+    "turnIndex": 11,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:47:04.012Z",
+  "updatedAt": "2026-11-14T01:47:04.012Z"
+ },
+ {
+  "talentId": "tal_8ttxss4rfn1c",
+  "id": "s5",
+  "interviewId": "int_pndjw12sje3w",
+  "phrase": "Business studies",
+  "phraseOwn": null,
+  "kind": "knowledge",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 4,
+    "sentenceFrom": 4
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:48.254Z",
+  "updatedAt": "2026-11-14T01:48:48.254Z"
+ },
+ {
+  "talentId": "tal_8ttxss4rfn1c",
+  "id": "s6",
+  "interviewId": "int_pndjw12sje3w",
+  "phrase": "Customer case documentation",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 4,
+    "sentenceFrom": 4
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:48.254Z",
+  "updatedAt": "2026-11-14T01:48:48.254Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "id": "s1",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "phrase": "Early childhood education",
+  "phraseOwn": null,
+  "kind": "domain",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:11.559Z",
+  "updatedAt": "2026-11-14T01:43:11.559Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "id": "s2",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "phrase": "Leading a children's group",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:11.559Z",
+  "updatedAt": "2026-11-14T01:43:11.559Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "id": "s17",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "phrase": "Planning weekly activities",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/0779d482-4154-4fbb-9a22-d9fd89c39d67",
+  "escoLabelEn": "organising, planning and scheduling work and activities",
+  "escoLabelFi": "organisoida, suunnitella ja aikatauluttaa työtä ja toimintoja",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   },
+   {
+    "turnIndex": 7,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:11.559Z",
+  "updatedAt": "2026-11-14T01:43:11.559Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "id": "s18",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "phrase": "Monitoring and documenting development",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:11.559Z",
+  "updatedAt": "2026-11-14T01:43:11.559Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "id": "s19",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "phrase": "Supporting children's group participation",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:11.559Z",
+  "updatedAt": "2026-11-14T01:43:11.559Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "id": "s7",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "phrase": "Visual daily schedules",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   },
+   {
+    "turnIndex": 11,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:11.559Z",
+  "updatedAt": "2026-11-14T01:43:11.559Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "id": "s9",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "phrase": "Pedagogical documentation",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:11.559Z",
+  "updatedAt": "2026-11-14T01:43:11.559Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "id": "s10",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "phrase": "Digital parent communication platform",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:11.559Z",
+  "updatedAt": "2026-11-14T01:43:11.559Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "id": "s11",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "phrase": "Pictures and signs as communication support",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:11.559Z",
+  "updatedAt": "2026-11-14T01:43:11.559Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "id": "s12",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "phrase": "Storybooks, songs and simple experiments",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:11.559Z",
+  "updatedAt": "2026-11-14T01:43:11.559Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "id": "s13",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "phrase": "First aid certification",
+  "phraseOwn": null,
+  "kind": "knowledge",
+  "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+  "escoLabelEn": "first aid",
+  "escoLabelFi": "ensiapu",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:11.559Z",
+  "updatedAt": "2026-11-14T01:43:11.559Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "id": "s15",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "phrase": "Parent development meetings",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:11.559Z",
+  "updatedAt": "2026-11-14T01:43:11.559Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "id": "s16",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "phrase": "Collaboration with support specialists",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:11.559Z",
+  "updatedAt": "2026-11-14T01:43:11.559Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "id": "s20",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "phrase": "Organising children's scout camps",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:11.559Z",
+  "updatedAt": "2026-11-14T01:43:11.559Z"
+ },
+ {
+  "talentId": "tal_mogxo04jdwwl",
+  "id": "s1",
+  "interviewId": "int_y9viihp9qr2k",
+  "phrase": "Mechanical design engineering",
+  "phraseOwn": null,
+  "kind": "domain",
+  "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+  "escoLabelEn": "mechanical engineering",
+  "escoLabelFi": "koneenrakennus",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:39:05.457Z",
+  "updatedAt": "2026-11-14T01:39:05.457Z"
+ },
+ {
+  "talentId": "tal_mogxo04jdwwl",
+  "id": "s2",
+  "interviewId": "int_y9viihp9qr2k",
+  "phrase": "Component design",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/87434439-c07d-48be-af34-b0cdd03121c4",
+  "escoLabelEn": "design engineering components",
+  "escoLabelFi": "suunnitella teknisiä komponentteja",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:39:05.457Z",
+  "updatedAt": "2026-11-14T01:39:05.457Z"
+ },
+ {
+  "talentId": "tal_mogxo04jdwwl",
+  "id": "s10",
+  "interviewId": "int_y9viihp9qr2k",
+  "phrase": "Ansys",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:39:05.457Z",
+  "updatedAt": "2026-11-14T01:39:05.457Z"
+ },
+ {
+  "talentId": "tal_mogxo04jdwwl",
+  "id": "s11",
+  "interviewId": "int_y9viihp9qr2k",
+  "phrase": "MATLAB",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/c3a03c5a-c260-4c26-9b9a-873abb396f4d",
+  "escoLabelEn": "MATLAB",
+  "escoLabelFi": "MATLAB",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:39:05.457Z",
+  "updatedAt": "2026-11-14T01:39:05.457Z"
+ },
+ {
+  "talentId": "tal_mogxo04jdwwl",
+  "id": "s12",
+  "interviewId": "int_y9viihp9qr2k",
+  "phrase": "PDM revision management",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:39:05.457Z",
+  "updatedAt": "2026-11-14T01:39:05.457Z"
+ },
+ {
+  "talentId": "tal_mogxo04jdwwl",
+  "id": "s13",
+  "interviewId": "int_y9viihp9qr2k",
+  "phrase": "Dimensional inspection and CNC reading",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/23d7bd85-d8d5-4455-b64d-3b0998f2425d",
+  "escoLabelEn": "measuring dimensions and related properties",
+  "escoLabelFi": "mitata ulottuvuuksia ja niihin liittyviä ominaisuuksia",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:39:05.457Z",
+  "updatedAt": "2026-11-14T01:39:05.457Z"
+ },
+ {
+  "talentId": "tal_sabxh4xaga3o",
+  "id": "s1",
+  "interviewId": "int_rohszk2tt337",
+  "phrase": "Restaurant cooking",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+  "escoLabelEn": "use cooking techniques",
+  "escoLabelFi": "käyttää ruoanvalmistusmenetelmiä",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:50.519Z",
+  "updatedAt": "2026-11-14T01:43:50.519Z"
+ },
+ {
+  "talentId": "tal_sabxh4xaga3o",
+  "id": "s2",
+  "interviewId": "int_rohszk2tt337",
+  "phrase": "Lunch menu planning",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:50.519Z",
+  "updatedAt": "2026-11-14T01:43:50.519Z"
+ },
+ {
+  "talentId": "tal_sabxh4xaga3o",
+  "id": "s3",
+  "interviewId": "int_rohszk2tt337",
+  "phrase": "Ordering from suppliers",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/210827e3-3129-45a2-8683-70399f3f561f",
+  "escoLabelEn": "order supplies",
+  "escoLabelFi": "tilata tarvikkeita",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:50.519Z",
+  "updatedAt": "2026-11-14T01:43:50.519Z"
+ },
+ {
+  "talentId": "tal_sabxh4xaga3o",
+  "id": "s4",
+  "interviewId": "int_rohszk2tt337",
+  "phrase": "Canteen kitchen work",
+  "phraseOwn": null,
+  "kind": "domain",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:50.519Z",
+  "updatedAt": "2026-11-14T01:43:50.519Z"
+ },
+ {
+  "talentId": "tal_sabxh4xaga3o",
+  "id": "s5",
+  "interviewId": "int_rohszk2tt337",
+  "phrase": "Adapting menus to late deliveries",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:50.519Z",
+  "updatedAt": "2026-11-14T01:43:50.519Z"
+ },
+ {
+  "talentId": "tal_sabxh4xaga3o",
+  "id": "s6",
+  "interviewId": "int_rohszk2tt337",
+  "phrase": "Avoiding food waste",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/dff0087d-25e4-40bf-979e-32fdf2445438",
+  "escoLabelEn": "develop food waste reduction strategies",
+  "escoLabelFi": "kehittää elintarvikejätteen vähentämisstrategioita",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:43:50.519Z",
+  "updatedAt": "2026-11-14T01:43:50.519Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "id": "s16",
+  "interviewId": "int_ibgj3thvm7dq",
+  "phrase": "Training temporary warehouse workers",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/7ace7312-2775-4bfc-9705-3416a9f7b35b",
+  "escoLabelEn": "provide staff training in warehouse management",
+  "escoLabelFi": "tarjota henkilöstökoulutusta varastonhallinnasta",
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:45:40.244Z",
+  "updatedAt": "2026-11-14T01:45:40.244Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "id": "s17",
+  "interviewId": "int_ibgj3thvm7dq",
+  "phrase": "Time planning",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:45:40.244Z",
+  "updatedAt": "2026-11-14T01:45:40.244Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "id": "s18",
+  "interviewId": "int_ibgj3thvm7dq",
+  "phrase": "Food hygiene rules",
+  "phraseOwn": null,
+  "kind": "knowledge",
+  "escoUri": "http://data.europa.eu/esco/skill/791fa659-3382-49f8-a8dd-505226d0da48",
+  "escoLabelEn": "food hygiene rules",
+  "escoLabelFi": "elintarvikehygieniaa koskevat määräykset",
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:45:40.244Z",
+  "updatedAt": "2026-11-14T01:45:40.244Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "id": "s1",
+  "interviewId": "int_5hsabxbuyfp6",
+  "phrase": "Home care nursing",
+  "phraseOwn": null,
+  "kind": "domain",
+  "escoUri": "http://data.europa.eu/esco/skill/99a09006-31f4-41d3-b3aa-feb2aeff730b",
+  "escoLabelEn": "specialist nursing care",
+  "escoLabelFi": "erikoissairaanhoito",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   },
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:40:23.630Z",
+  "updatedAt": "2026-11-14T01:40:23.630Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "id": "s2",
+  "interviewId": "int_5hsabxbuyfp6",
+  "phrase": "Administering medication",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/1fd57242-267e-46df-bd8c-849fdd593a50",
+  "escoLabelEn": "administer prescribed medication",
+  "escoLabelFi": "annostella lääkemääräyksen mukaisia lääkkeitä",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:40:23.630Z",
+  "updatedAt": "2026-11-14T01:40:23.630Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "id": "s16",
+  "interviewId": "int_5hsabxbuyfp6",
+  "phrase": "Wound care",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/1c6736c2-77de-419c-9b84-8932e15abc21",
+  "escoLabelEn": "carry out wound care",
+  "escoLabelFi": "hoitaa haavaa",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:40:23.630Z",
+  "updatedAt": "2026-11-14T01:40:23.630Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "id": "s4",
+  "interviewId": "int_5hsabxbuyfp6",
+  "phrase": "Monitoring patient condition",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/e99ddf41-6085-4b91-9de8-8bf251af9ced",
+  "escoLabelEn": "monitor patient's health condition",
+  "escoLabelFi": "valvoa potilaan terveyden tilaa",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 7,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:40:23.630Z",
+  "updatedAt": "2026-11-14T01:40:23.630Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "id": "s17",
+  "interviewId": "int_5hsabxbuyfp6",
+  "phrase": "Reviewing medication lists",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/fa01b6c3-82e0-43f1-af78-fd57f832e09a",
+  "escoLabelEn": "monitor patients' medication",
+  "escoLabelFi": "seurata potilaiden lääkitystä",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 11,
+    "sentenceTo": 3,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:40:23.630Z",
+  "updatedAt": "2026-11-14T01:40:23.630Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "id": "s8",
+  "interviewId": "int_5hsabxbuyfp6",
+  "phrase": "Coordinating medication changes",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   },
+   {
+    "turnIndex": 11,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:40:23.630Z",
+  "updatedAt": "2026-11-14T01:40:23.630Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "id": "s18",
+  "interviewId": "int_5hsabxbuyfp6",
+  "phrase": "Documenting and sharing care information",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/1034004c-0347-4765-8794-b65d2c92b379",
+  "escoLabelEn": "documenting and recording information",
+  "escoLabelFi": "dokumentoida ja tallentaa tietoa",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 3,
+    "sentenceTo": 4,
+    "sentenceFrom": 4
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:40:23.630Z",
+  "updatedAt": "2026-11-14T01:40:23.630Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "id": "s19",
+  "interviewId": "int_5hsabxbuyfp6",
+  "phrase": "Home care software",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:40:23.630Z",
+  "updatedAt": "2026-11-14T01:40:23.630Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "id": "s14",
+  "interviewId": "int_5hsabxbuyfp6",
+  "phrase": "Patient monitoring devices",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:40:23.630Z",
+  "updatedAt": "2026-11-14T01:40:23.630Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "id": "s15",
+  "interviewId": "int_5hsabxbuyfp6",
+  "phrase": "Injections and laboratory samples",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 4,
+    "sentenceFrom": 4
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:40:23.630Z",
+  "updatedAt": "2026-11-14T01:40:23.630Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "id": "s20",
+  "interviewId": "int_5hsabxbuyfp6",
+  "phrase": "Coordinating client care",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+  "escoLabelEn": "coordinate care",
+  "escoLabelFi": "koordinoida hoitoa",
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:40:23.630Z",
+  "updatedAt": "2026-11-14T01:40:23.630Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "id": "s21",
+  "interviewId": "int_5hsabxbuyfp6",
+  "phrase": "Advising practical nurses",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:40:23.630Z",
+  "updatedAt": "2026-11-14T01:40:23.630Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "id": "s22",
+  "interviewId": "int_5hsabxbuyfp6",
+  "phrase": "Dementia care",
+  "phraseOwn": null,
+  "kind": "knowledge",
+  "escoUri": "http://data.europa.eu/esco/skill/f98e06f5-a09a-4356-b6a8-d55a7d3c5356",
+  "escoLabelEn": "implement nursing care",
+  "escoLabelFi": "toteuttaa sairaanhoitoa",
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:40:23.630Z",
+  "updatedAt": "2026-11-14T01:40:23.630Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "id": "s23",
+  "interviewId": "int_5hsabxbuyfp6",
+  "phrase": "First aid instruction",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+  "escoLabelEn": "first aid",
+  "escoLabelFi": "ensiapu",
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:40:23.630Z",
+  "updatedAt": "2026-11-14T01:40:23.630Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "id": "s7",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "phrase": "Capitalizing improvement costs",
+  "phraseOwn": null,
+  "kind": "knowledge",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:47:04.012Z",
+  "updatedAt": "2026-11-14T01:47:04.012Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "id": "s8",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "phrase": "Recalculating depreciation",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/e0701805-94ab-4c79-9624-39a7202cbe4f",
+  "escoLabelEn": "perform asset depreciation",
+  "escoLabelFi": "suorittaa omaisuuserien poistoja",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 9,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:47:04.012Z",
+  "updatedAt": "2026-11-14T01:47:04.012Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "id": "s9",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "phrase": "Correcting financial statements",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/60f51172-37c0-4933-a27a-cbf55dcd7580",
+  "escoLabelEn": "prepare financial statements",
+  "escoLabelFi": "laatia tilinpäätöksiä",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 9,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:47:04.012Z",
+  "updatedAt": "2026-11-14T01:47:04.012Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "id": "s24",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "phrase": "Collaborating with auditors",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/24e67151-ff7e-43e2-99c0-424a758278a4",
+  "escoLabelEn": "liaise with auditors",
+  "escoLabelFi": "olla yhteistyössä tilintarkastajien kanssa",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   },
+   {
+    "turnIndex": 7,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:47:04.012Z",
+  "updatedAt": "2026-11-14T01:47:04.012Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "id": "s25",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "phrase": "Excel",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:47:04.012Z",
+  "updatedAt": "2026-11-14T01:47:04.012Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "id": "s13",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "phrase": "Property accounting system",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/a0d79341-8398-4019-ad1b-27888ec35aaa",
+  "escoLabelEn": "use accounting systems",
+  "escoLabelFi": "käyttää kirjanpitojärjestelmiä",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:47:04.012Z",
+  "updatedAt": "2026-11-14T01:47:04.012Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "id": "s14",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "phrase": "Approving electronic invoices",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:47:04.012Z",
+  "updatedAt": "2026-11-14T01:47:04.012Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "id": "s26",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "phrase": "Explaining financial matters",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/0f5bd097-ed76-47f7-8f44-93be67967b5f",
+  "escoLabelEn": "explain financial jargon",
+  "escoLabelFi": "selittää talousalan ammattikieltä",
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:47:04.012Z",
+  "updatedAt": "2026-11-14T01:47:04.012Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "id": "s27",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "phrase": "Training accounting colleagues",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 11,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:47:04.012Z",
+  "updatedAt": "2026-11-14T01:47:04.012Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "id": "s5",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "phrase": "Property sector",
+  "phraseOwn": null,
+  "kind": "domain",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:47:04.012Z",
+  "updatedAt": "2026-11-14T01:47:04.012Z"
+ },
+ {
+  "talentId": "tal_uyk9usm3v0rb",
+  "id": "s5",
+  "interviewId": "int_39b3yjlmwqar",
+  "phrase": "School and office cleaning",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/d69e45d3-1f3f-4e6a-8933-82e949277811",
+  "escoLabelEn": "cleaning interior and exterior of buildings",
+  "escoLabelFi": "siivota rakennusten sisä- ja ulkotilat",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:44:22.749Z",
+  "updatedAt": "2026-11-14T01:44:22.749Z"
+ },
+ {
+  "talentId": "tal_uyk9usm3v0rb",
+  "id": "s4",
+  "interviewId": "int_39b3yjlmwqar",
+  "phrase": "Avoiding heavy lifting",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:44:22.749Z",
+  "updatedAt": "2026-11-14T01:44:22.749Z"
+ },
+ {
+  "talentId": "tal_uyk9usm3v0rb",
+  "id": "s6",
+  "interviewId": "int_39b3yjlmwqar",
+  "phrase": "Correcting floor cleaning processes",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:44:22.749Z",
+  "updatedAt": "2026-11-14T01:44:22.749Z"
+ },
+ {
+  "talentId": "tal_uyk9usm3v0rb",
+  "id": "s7",
+  "interviewId": "int_39b3yjlmwqar",
+  "phrase": "Sharing cleaning procedure changes",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 4,
+    "sentenceFrom": 4
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:44:22.749Z",
+  "updatedAt": "2026-11-14T01:44:22.749Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "id": "s1",
+  "interviewId": "int_ibgj3thvm7dq",
+  "phrase": "Order picking",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/ee5e2297-39cc-4ed6-89e5-d58016118a7f",
+  "escoLabelEn": "pick orders for dispatching",
+  "escoLabelFi": "suorittaa tilausten keräys lähetystä varten",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   },
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:45:40.244Z",
+  "updatedAt": "2026-11-14T01:45:40.244Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "id": "s2",
+  "interviewId": "int_ibgj3thvm7dq",
+  "phrase": "Truck loading and pallet handover",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/c80b2f08-ab07-4632-be78-68c6ec1f3b41",
+  "escoLabelEn": "perform loading and unloading operations",
+  "escoLabelFi": "suorittaa lastaamis- ja purkamistoimintoja",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   },
+   {
+    "turnIndex": 7,
+    "sentenceTo": 4,
+    "sentenceFrom": 4
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:45:40.244Z",
+  "updatedAt": "2026-11-14T01:45:40.244Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "id": "s13",
+  "interviewId": "int_ibgj3thvm7dq",
+  "phrase": "Reach truck",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:45:40.244Z",
+  "updatedAt": "2026-11-14T01:45:40.244Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "id": "s4",
+  "interviewId": "int_ibgj3thvm7dq",
+  "phrase": "Tyre distribution warehouse",
+  "phraseOwn": null,
+  "kind": "domain",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:45:40.244Z",
+  "updatedAt": "2026-11-14T01:45:40.244Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "id": "s5",
+  "interviewId": "int_ibgj3thvm7dq",
+  "phrase": "Baking",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 9,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:45:40.244Z",
+  "updatedAt": "2026-11-14T01:45:40.244Z"
+ },
+ {
+  "talentId": "tal_5t5ekr2w3ljb",
+  "id": "s15",
+  "interviewId": "int_5s6cl21g9ljr",
+  "phrase": "Bathroom and kitchen tiling",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:13.799Z",
+  "updatedAt": "2026-11-14T01:48:13.799Z"
+ },
+ {
+  "talentId": "tal_5t5ekr2w3ljb",
+  "id": "s2",
+  "interviewId": "int_5s6cl21g9ljr",
+  "phrase": "Apartment bathroom renovations",
+  "phraseOwn": null,
+  "kind": "domain",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:13.799Z",
+  "updatedAt": "2026-11-14T01:48:13.799Z"
+ },
+ {
+  "talentId": "tal_5t5ekr2w3ljb",
+  "id": "s5",
+  "interviewId": "int_5s6cl21g9ljr",
+  "phrase": "Running a tiling business",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/885564e4-9818-44ac-a77d-ddfe30b34ed7",
+  "escoLabelEn": "managing a business with great care",
+  "escoLabelFi": "hoitaa liiketoimintaa huolellisesti",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:13.799Z",
+  "updatedAt": "2026-11-14T01:48:13.799Z"
+ },
+ {
+  "talentId": "tal_5t5ekr2w3ljb",
+  "id": "s6",
+  "interviewId": "int_5s6cl21g9ljr",
+  "phrase": "Levelling floors for drainage",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 11,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:13.799Z",
+  "updatedAt": "2026-11-14T01:48:13.799Z"
+ },
+ {
+  "talentId": "tal_5t5ekr2w3ljb",
+  "id": "s16",
+  "interviewId": "int_5s6cl21g9ljr",
+  "phrase": "Installing and testing waterproofing",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/58edb789-d085-4e7d-8b6e-b70913bebfca",
+  "escoLabelEn": "installing and assembling building fixtures",
+  "escoLabelFi": "asentaa ja koota rakennusten kiinteitä kalusteita",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   },
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:13.799Z",
+  "updatedAt": "2026-11-14T01:48:13.799Z"
+ },
+ {
+  "talentId": "tal_5t5ekr2w3ljb",
+  "id": "s14",
+  "interviewId": "int_5s6cl21g9ljr",
+  "phrase": "Selecting tile adhesives",
+  "phraseOwn": null,
+  "kind": "knowledge",
+  "escoUri": "http://data.europa.eu/esco/skill/8a169eb9-2cf1-4653-aa5c-af575c9836f9",
+  "escoLabelEn": "types of tile adhesive",
+  "escoLabelFi": "laattojen kiinnitysainetyypit",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:13.799Z",
+  "updatedAt": "2026-11-14T01:48:13.799Z"
+ },
+ {
+  "talentId": "tal_5t5ekr2w3ljb",
+  "id": "s17",
+  "interviewId": "int_5s6cl21g9ljr",
+  "phrase": "Coordinating work with tradespeople",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:13.799Z",
+  "updatedAt": "2026-11-14T01:48:13.799Z"
+ },
+ {
+  "talentId": "tal_5t5ekr2w3ljb",
+  "id": "s18",
+  "interviewId": "int_5s6cl21g9ljr",
+  "phrase": "Teaching tile layout planning",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/5770f630-9b25-49f3-9d37-e93ec1799749",
+  "escoLabelEn": "teaching and training",
+  "escoLabelFi": "opettaa ja kouluttaa",
+  "evidence": [
+   {
+    "turnIndex": 7,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:13.799Z",
+  "updatedAt": "2026-11-14T01:48:13.799Z"
+ },
+ {
+  "talentId": "tal_5t5ekr2w3ljb",
+  "id": "s10",
+  "interviewId": "int_5s6cl21g9ljr",
+  "phrase": "Tile cutting tools",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/2973b3bc-5893-4b3d-8953-22ef677a162f",
+  "escoLabelEn": "cutting technologies",
+  "escoLabelFi": "leikkausteknologiat",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:13.799Z",
+  "updatedAt": "2026-11-14T01:48:13.799Z"
+ },
+ {
+  "talentId": "tal_5t5ekr2w3ljb",
+  "id": "s19",
+  "interviewId": "int_5s6cl21g9ljr",
+  "phrase": "Tiling and levelling tools",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/74052f13-4cae-4600-a4d3-8103004683f3",
+  "escoLabelEn": "using hand tools",
+  "escoLabelFi": "käyttää käsityökaluja",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   },
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:13.799Z",
+  "updatedAt": "2026-11-14T01:48:13.799Z"
+ },
+ {
+  "talentId": "tal_5t5ekr2w3ljb",
+  "id": "s12",
+  "interviewId": "int_5s6cl21g9ljr",
+  "phrase": "Waterproofing membrane systems",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/16801a68-549b-4eaf-9531-f2d516a9380c",
+  "escoLabelEn": "apply proofing membranes",
+  "escoLabelFi": "asentaa vedenpitäviä kalvoja",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:13.799Z",
+  "updatedAt": "2026-11-14T01:48:13.799Z"
+ },
+ {
+  "talentId": "tal_5t5ekr2w3ljb",
+  "id": "s13",
+  "interviewId": "int_5s6cl21g9ljr",
+  "phrase": "Wet room certification",
+  "phraseOwn": null,
+  "kind": "knowledge",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 9,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:13.799Z",
+  "updatedAt": "2026-11-14T01:48:13.799Z"
+ },
+ {
+  "talentId": "tal_5t5ekr2w3ljb",
+  "id": "s20",
+  "interviewId": "int_5s6cl21g9ljr",
+  "phrase": "Occupational safety card",
+  "phraseOwn": null,
+  "kind": "knowledge",
+  "escoUri": "http://data.europa.eu/esco/skill/d5e39a53-4f54-4d5f-9df3-b49664c9559d",
+  "escoLabelEn": "occupational health",
+  "escoLabelFi": "työterveys",
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:13.799Z",
+  "updatedAt": "2026-11-14T01:48:13.799Z"
+ },
+ {
+  "talentId": "tal_8ttxss4rfn1c",
+  "id": "s1",
+  "interviewId": "int_pndjw12sje3w",
+  "phrase": "Online retail customer service",
+  "phraseOwn": null,
+  "kind": "domain",
+  "escoUri": "http://data.europa.eu/esco/skill/15a33d76-4640-438d-ae64-fdc0c1d3eebc",
+  "escoLabelEn": "customer service",
+  "escoLabelFi": "asiakaspalvelu",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:48.254Z",
+  "updatedAt": "2026-11-14T01:48:48.254Z"
+ },
+ {
+  "talentId": "tal_8ttxss4rfn1c",
+  "id": "s2",
+  "interviewId": "int_pndjw12sje3w",
+  "phrase": "Chat, email and phone support",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/7de7e3f6-d222-4f08-b3f0-e2deff7ef798",
+  "escoLabelEn": "providing information and support to the public and clients",
+  "escoLabelFi": "tarjota tietoa ja tukea yleisölle ja asiakkaille",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T01:48:48.254Z",
+  "updatedAt": "2026-11-14T01:48:48.254Z"
+ }
+]

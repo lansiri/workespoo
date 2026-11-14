@@ -1,0 +1,1410 @@
+[
+ {
+  "needCardId": "nc_uyb94repx9n8",
+  "needCardVersion": 1,
+  "talentId": "tal_mogxo04jdwwl",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_z9itud19d7oo",
+   "req_h94tlc7y0wll"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.592Z"
+ },
+ {
+  "needCardId": "nc_uyb94repx9n8",
+  "needCardVersion": 1,
+  "talentId": "tal_43fbkeofwipr",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_z9itud19d7oo"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.592Z"
+ },
+ {
+  "needCardId": "nc_uyb94repx9n8",
+  "needCardVersion": 1,
+  "talentId": "tal_l06hdipu1bdb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_z9itud19d7oo"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.592Z"
+ },
+ {
+  "needCardId": "nc_uyb94repx9n8",
+  "needCardVersion": 1,
+  "talentId": "tal_sabxh4xaga3o",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_z9itud19d7oo",
+   "req_h94tlc7y0wll"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.592Z"
+ },
+ {
+  "needCardId": "nc_uyb94repx9n8",
+  "needCardVersion": 1,
+  "talentId": "tal_uyk9usm3v0rb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_z9itud19d7oo"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.592Z"
+ },
+ {
+  "needCardId": "nc_uyb94repx9n8",
+  "needCardVersion": 1,
+  "talentId": "tal_obsixyk2osql",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_z9itud19d7oo",
+   "req_h94tlc7y0wll"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.592Z"
+ },
+ {
+  "needCardId": "nc_uyb94repx9n8",
+  "needCardVersion": 1,
+  "talentId": "tal_5t5ekr2w3ljb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_z9itud19d7oo",
+   "req_h94tlc7y0wll"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.592Z"
+ },
+ {
+  "needCardId": "nc_uyb94repx9n8",
+  "needCardVersion": 1,
+  "talentId": "tal_tqhpbpuo02i6",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_163d0uspvctx",
+   "req_z9itud19d7oo",
+   "req_h94tlc7y0wll"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.592Z"
+ },
+ {
+  "needCardId": "nc_uyb94repx9n8",
+  "needCardVersion": 1,
+  "talentId": "tal_8ttxss4rfn1c",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_z9itud19d7oo",
+   "req_h94tlc7y0wll"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.592Z"
+ },
+ {
+  "needCardId": "nc_uyb94repx9n8",
+  "needCardVersion": 1,
+  "talentId": "tal_97f6wdepp3e2",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_z9itud19d7oo",
+   "req_h94tlc7y0wll"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.592Z"
+ },
+ {
+  "needCardId": "nc_uyb94repx9n8",
+  "needCardVersion": 1,
+  "talentId": "tal_78jy75ig6iz8",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_z9itud19d7oo",
+   "req_h94tlc7y0wll",
+   "req_9t8h8s971js0"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.592Z"
+ },
+ {
+  "needCardId": "nc_uyb94repx9n8",
+  "needCardVersion": 1,
+  "talentId": "tal_j54cox1yp9f0",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_z9itud19d7oo",
+   "req_h94tlc7y0wll"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.592Z"
+ },
+ {
+  "needCardId": "nc_pocgnfgt3lvr",
+  "needCardVersion": 2,
+  "talentId": "tal_78jy75ig6iz8",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_yf8ljim3ly9j",
+   "req_8xn8epvc8fi1",
+   "req_jyc9gqazloij",
+   "req_qjzmbzllul0g"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.887Z"
+ },
+ {
+  "needCardId": "nc_jgpgnh8d4c69",
+  "needCardVersion": 1,
+  "talentId": "tal_5t5ekr2w3ljb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_eod39fbk2m14"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.542Z"
+ },
+ {
+  "needCardId": "nc_jgpgnh8d4c69",
+  "needCardVersion": 1,
+  "talentId": "tal_tqhpbpuo02i6",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_idlsep5jn7n3",
+   "req_sroja6gd05ti",
+   "req_eod39fbk2m14"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.542Z"
+ },
+ {
+  "needCardId": "nc_jgpgnh8d4c69",
+  "needCardVersion": 1,
+  "talentId": "tal_8ttxss4rfn1c",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_eod39fbk2m14"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.542Z"
+ },
+ {
+  "needCardId": "nc_jgpgnh8d4c69",
+  "needCardVersion": 1,
+  "talentId": "tal_97f6wdepp3e2",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_idlsep5jn7n3",
+   "req_sroja6gd05ti",
+   "req_eod39fbk2m14"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.542Z"
+ },
+ {
+  "needCardId": "nc_jgpgnh8d4c69",
+  "needCardVersion": 1,
+  "talentId": "tal_78jy75ig6iz8",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_eod39fbk2m14"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.542Z"
+ },
+ {
+  "needCardId": "nc_jgpgnh8d4c69",
+  "needCardVersion": 1,
+  "talentId": "tal_j54cox1yp9f0",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_eod39fbk2m14"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.542Z"
+ },
+ {
+  "needCardId": "nc_uyb94repx9n8",
+  "needCardVersion": 1,
+  "talentId": "tal_i210th809pqh",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_h94tlc7y0wll"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.592Z"
+ },
+ {
+  "needCardId": "nc_uyb94repx9n8",
+  "needCardVersion": 1,
+  "talentId": "tal_4thrbmb9cwbr",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_163d0uspvctx",
+   "req_h94tlc7y0wll",
+   "req_b00618a3uzre"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.592Z"
+ },
+ {
+  "needCardId": "nc_jgpgnh8d4c69",
+  "needCardVersion": 1,
+  "talentId": "tal_mogxo04jdwwl",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_eod39fbk2m14"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.542Z"
+ },
+ {
+  "needCardId": "nc_jgpgnh8d4c69",
+  "needCardVersion": 1,
+  "talentId": "tal_43fbkeofwipr",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.542Z"
+ },
+ {
+  "needCardId": "nc_jgpgnh8d4c69",
+  "needCardVersion": 1,
+  "talentId": "tal_i210th809pqh",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_eod39fbk2m14"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.542Z"
+ },
+ {
+  "needCardId": "nc_jgpgnh8d4c69",
+  "needCardVersion": 1,
+  "talentId": "tal_l06hdipu1bdb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.542Z"
+ },
+ {
+  "needCardId": "nc_jgpgnh8d4c69",
+  "needCardVersion": 1,
+  "talentId": "tal_sabxh4xaga3o",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_eod39fbk2m14"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.542Z"
+ },
+ {
+  "needCardId": "nc_jgpgnh8d4c69",
+  "needCardVersion": 1,
+  "talentId": "tal_uyk9usm3v0rb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.542Z"
+ },
+ {
+  "needCardId": "nc_jgpgnh8d4c69",
+  "needCardVersion": 1,
+  "talentId": "tal_ht9k4vwpbm2x",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_eod39fbk2m14"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.542Z"
+ },
+ {
+  "needCardId": "nc_jgpgnh8d4c69",
+  "needCardVersion": 1,
+  "talentId": "tal_obsixyk2osql",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_eod39fbk2m14"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.542Z"
+ },
+ {
+  "needCardId": "nc_nyapvx03ehau",
+  "needCardVersion": 2,
+  "talentId": "tal_i210th809pqh",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.289Z"
+ },
+ {
+  "needCardId": "nc_ncivfnx96sx2",
+  "needCardVersion": 2,
+  "talentId": "tal_43fbkeofwipr",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:19.988Z"
+ },
+ {
+  "needCardId": "nc_ncivfnx96sx2",
+  "needCardVersion": 2,
+  "talentId": "tal_i210th809pqh",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:19.988Z"
+ },
+ {
+  "needCardId": "nc_ncivfnx96sx2",
+  "needCardVersion": 2,
+  "talentId": "tal_l06hdipu1bdb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:19.988Z"
+ },
+ {
+  "needCardId": "nc_ncivfnx96sx2",
+  "needCardVersion": 2,
+  "talentId": "tal_sabxh4xaga3o",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:19.988Z"
+ },
+ {
+  "needCardId": "nc_ncivfnx96sx2",
+  "needCardVersion": 2,
+  "talentId": "tal_ht9k4vwpbm2x",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:19.988Z"
+ },
+ {
+  "needCardId": "nc_ncivfnx96sx2",
+  "needCardVersion": 2,
+  "talentId": "tal_5t5ekr2w3ljb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:19.988Z"
+ },
+ {
+  "needCardId": "nc_ncivfnx96sx2",
+  "needCardVersion": 2,
+  "talentId": "tal_4thrbmb9cwbr",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:19.988Z"
+ },
+ {
+  "needCardId": "nc_ncivfnx96sx2",
+  "needCardVersion": 2,
+  "talentId": "tal_tqhpbpuo02i6",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:19.988Z"
+ },
+ {
+  "needCardId": "nc_ncivfnx96sx2",
+  "needCardVersion": 2,
+  "talentId": "tal_8ttxss4rfn1c",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_mk18fxtn7em3"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:19.988Z"
+ },
+ {
+  "needCardId": "nc_ncivfnx96sx2",
+  "needCardVersion": 2,
+  "talentId": "tal_97f6wdepp3e2",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:19.988Z"
+ },
+ {
+  "needCardId": "nc_ncivfnx96sx2",
+  "needCardVersion": 2,
+  "talentId": "tal_78jy75ig6iz8",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_nu7vil3es3h5"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:19.988Z"
+ },
+ {
+  "needCardId": "nc_ncivfnx96sx2",
+  "needCardVersion": 2,
+  "talentId": "tal_j54cox1yp9f0",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_nu7vil3es3h5"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:19.988Z"
+ },
+ {
+  "needCardId": "nc_nyapvx03ehau",
+  "needCardVersion": 2,
+  "talentId": "tal_mogxo04jdwwl",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.289Z"
+ },
+ {
+  "needCardId": "nc_nyapvx03ehau",
+  "needCardVersion": 2,
+  "talentId": "tal_43fbkeofwipr",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_iye900ivhxm7"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.289Z"
+ },
+ {
+  "needCardId": "nc_uyb94repx9n8",
+  "needCardVersion": 1,
+  "talentId": "tal_ht9k4vwpbm2x",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_z9itud19d7oo",
+   "req_h94tlc7y0wll"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.592Z"
+ },
+ {
+  "needCardId": "nc_jgpgnh8d4c69",
+  "needCardVersion": 1,
+  "talentId": "tal_4thrbmb9cwbr",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_idlsep5jn7n3",
+   "req_sroja6gd05ti",
+   "req_eod39fbk2m14"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.542Z"
+ },
+ {
+  "needCardId": "nc_ncivfnx96sx2",
+  "needCardVersion": 2,
+  "talentId": "tal_mogxo04jdwwl",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:19.988Z"
+ },
+ {
+  "needCardId": "nc_nyapvx03ehau",
+  "needCardVersion": 2,
+  "talentId": "tal_sabxh4xaga3o",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.289Z"
+ },
+ {
+  "needCardId": "nc_nyapvx03ehau",
+  "needCardVersion": 2,
+  "talentId": "tal_uyk9usm3v0rb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.289Z"
+ },
+ {
+  "needCardId": "nc_nyapvx03ehau",
+  "needCardVersion": 2,
+  "talentId": "tal_ht9k4vwpbm2x",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.289Z"
+ },
+ {
+  "needCardId": "nc_nyapvx03ehau",
+  "needCardVersion": 2,
+  "talentId": "tal_obsixyk2osql",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.289Z"
+ },
+ {
+  "needCardId": "nc_nyapvx03ehau",
+  "needCardVersion": 2,
+  "talentId": "tal_5t5ekr2w3ljb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.289Z"
+ },
+ {
+  "needCardId": "nc_nyapvx03ehau",
+  "needCardVersion": 2,
+  "talentId": "tal_4thrbmb9cwbr",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.289Z"
+ },
+ {
+  "needCardId": "nc_nyapvx03ehau",
+  "needCardVersion": 2,
+  "talentId": "tal_tqhpbpuo02i6",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.289Z"
+ },
+ {
+  "needCardId": "nc_nyapvx03ehau",
+  "needCardVersion": 2,
+  "talentId": "tal_97f6wdepp3e2",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.289Z"
+ },
+ {
+  "needCardId": "nc_nyapvx03ehau",
+  "needCardVersion": 2,
+  "talentId": "tal_78jy75ig6iz8",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.289Z"
+ },
+ {
+  "needCardId": "nc_nyapvx03ehau",
+  "needCardVersion": 2,
+  "talentId": "tal_j54cox1yp9f0",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.289Z"
+ },
+ {
+  "needCardId": "nc_pocgnfgt3lvr",
+  "needCardVersion": 2,
+  "talentId": "tal_43fbkeofwipr",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_8xn8epvc8fi1"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.887Z"
+ },
+ {
+  "needCardId": "nc_pocgnfgt3lvr",
+  "needCardVersion": 2,
+  "talentId": "tal_i210th809pqh",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_jyc9gqazloij"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.887Z"
+ },
+ {
+  "needCardId": "nc_pocgnfgt3lvr",
+  "needCardVersion": 2,
+  "talentId": "tal_l06hdipu1bdb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_8xn8epvc8fi1"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.887Z"
+ },
+ {
+  "needCardId": "nc_pocgnfgt3lvr",
+  "needCardVersion": 2,
+  "talentId": "tal_sabxh4xaga3o",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_8xn8epvc8fi1",
+   "req_jyc9gqazloij"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.887Z"
+ },
+ {
+  "needCardId": "nc_pocgnfgt3lvr",
+  "needCardVersion": 2,
+  "talentId": "tal_uyk9usm3v0rb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_8xn8epvc8fi1"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.887Z"
+ },
+ {
+  "needCardId": "nc_pocgnfgt3lvr",
+  "needCardVersion": 2,
+  "talentId": "tal_ht9k4vwpbm2x",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_8xn8epvc8fi1",
+   "req_jyc9gqazloij"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.887Z"
+ },
+ {
+  "needCardId": "nc_pocgnfgt3lvr",
+  "needCardVersion": 2,
+  "talentId": "tal_obsixyk2osql",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_8xn8epvc8fi1",
+   "req_jyc9gqazloij"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.887Z"
+ },
+ {
+  "needCardId": "nc_pocgnfgt3lvr",
+  "needCardVersion": 2,
+  "talentId": "tal_5t5ekr2w3ljb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_8xn8epvc8fi1",
+   "req_jyc9gqazloij"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.887Z"
+ },
+ {
+  "needCardId": "nc_pocgnfgt3lvr",
+  "needCardVersion": 2,
+  "talentId": "tal_4thrbmb9cwbr",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_jyc9gqazloij"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.887Z"
+ },
+ {
+  "needCardId": "nc_pocgnfgt3lvr",
+  "needCardVersion": 2,
+  "talentId": "tal_tqhpbpuo02i6",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_8xn8epvc8fi1",
+   "req_jyc9gqazloij"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.887Z"
+ },
+ {
+  "needCardId": "nc_pocgnfgt3lvr",
+  "needCardVersion": 2,
+  "talentId": "tal_8ttxss4rfn1c",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_8xn8epvc8fi1",
+   "req_jyc9gqazloij"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.887Z"
+ },
+ {
+  "needCardId": "nc_pocgnfgt3lvr",
+  "needCardVersion": 2,
+  "talentId": "tal_97f6wdepp3e2",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_8xn8epvc8fi1",
+   "req_jyc9gqazloij"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.887Z"
+ },
+ {
+  "needCardId": "nc_pocgnfgt3lvr",
+  "needCardVersion": 2,
+  "talentId": "tal_j54cox1yp9f0",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_8xn8epvc8fi1",
+   "req_jyc9gqazloij"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.887Z"
+ },
+ {
+  "needCardId": "nc_hvpjp4wzxq8s",
+  "needCardVersion": 2,
+  "talentId": "tal_mogxo04jdwwl",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_xtcb9nx9j0u2",
+   "req_2nlp9si5i1y5"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.173Z"
+ },
+ {
+  "needCardId": "nc_hvpjp4wzxq8s",
+  "needCardVersion": 2,
+  "talentId": "tal_43fbkeofwipr",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_xtcb9nx9j0u2"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.173Z"
+ },
+ {
+  "needCardId": "nc_hvpjp4wzxq8s",
+  "needCardVersion": 2,
+  "talentId": "tal_i210th809pqh",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_40u57xumdyer",
+   "req_2nlp9si5i1y5"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.173Z"
+ },
+ {
+  "needCardId": "nc_hvpjp4wzxq8s",
+  "needCardVersion": 2,
+  "talentId": "tal_l06hdipu1bdb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_xtcb9nx9j0u2"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.173Z"
+ },
+ {
+  "needCardId": "nc_hvpjp4wzxq8s",
+  "needCardVersion": 2,
+  "talentId": "tal_sabxh4xaga3o",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_xtcb9nx9j0u2",
+   "req_2nlp9si5i1y5"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.173Z"
+ },
+ {
+  "needCardId": "nc_hvpjp4wzxq8s",
+  "needCardVersion": 2,
+  "talentId": "tal_uyk9usm3v0rb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_xtcb9nx9j0u2"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.173Z"
+ },
+ {
+  "needCardId": "nc_hvpjp4wzxq8s",
+  "needCardVersion": 2,
+  "talentId": "tal_ht9k4vwpbm2x",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_xtcb9nx9j0u2",
+   "req_2nlp9si5i1y5"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.173Z"
+ },
+ {
+  "needCardId": "nc_hvpjp4wzxq8s",
+  "needCardVersion": 2,
+  "talentId": "tal_obsixyk2osql",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_xtcb9nx9j0u2",
+   "req_2nlp9si5i1y5"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.173Z"
+ },
+ {
+  "needCardId": "nc_hvpjp4wzxq8s",
+  "needCardVersion": 2,
+  "talentId": "tal_5t5ekr2w3ljb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_xtcb9nx9j0u2",
+   "req_2nlp9si5i1y5"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.173Z"
+ },
+ {
+  "needCardId": "nc_hvpjp4wzxq8s",
+  "needCardVersion": 2,
+  "talentId": "tal_4thrbmb9cwbr",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_2nlp9si5i1y5"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.173Z"
+ },
+ {
+  "needCardId": "nc_hvpjp4wzxq8s",
+  "needCardVersion": 2,
+  "talentId": "tal_tqhpbpuo02i6",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_xtcb9nx9j0u2",
+   "req_2nlp9si5i1y5"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.173Z"
+ },
+ {
+  "needCardId": "nc_hvpjp4wzxq8s",
+  "needCardVersion": 2,
+  "talentId": "tal_8ttxss4rfn1c",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_xtcb9nx9j0u2",
+   "req_2nlp9si5i1y5"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.173Z"
+ },
+ {
+  "needCardId": "nc_hvpjp4wzxq8s",
+  "needCardVersion": 2,
+  "talentId": "tal_97f6wdepp3e2",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_xtcb9nx9j0u2",
+   "req_2nlp9si5i1y5"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.173Z"
+ },
+ {
+  "needCardId": "nc_hvpjp4wzxq8s",
+  "needCardVersion": 2,
+  "talentId": "tal_78jy75ig6iz8",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_xtcb9nx9j0u2",
+   "req_2nlp9si5i1y5"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.173Z"
+ },
+ {
+  "needCardId": "nc_hvpjp4wzxq8s",
+  "needCardVersion": 2,
+  "talentId": "tal_j54cox1yp9f0",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_40u57xumdyer",
+   "req_xtcb9nx9j0u2",
+   "req_2nlp9si5i1y5"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.173Z"
+ },
+ {
+  "needCardId": "nc_tt1iyhhlyo8p",
+  "needCardVersion": 2,
+  "talentId": "tal_mogxo04jdwwl",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.832Z"
+ },
+ {
+  "needCardId": "nc_tt1iyhhlyo8p",
+  "needCardVersion": 2,
+  "talentId": "tal_43fbkeofwipr",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.832Z"
+ },
+ {
+  "needCardId": "nc_tt1iyhhlyo8p",
+  "needCardVersion": 2,
+  "talentId": "tal_i210th809pqh",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.832Z"
+ },
+ {
+  "needCardId": "nc_tt1iyhhlyo8p",
+  "needCardVersion": 2,
+  "talentId": "tal_l06hdipu1bdb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.832Z"
+ },
+ {
+  "needCardId": "nc_tt1iyhhlyo8p",
+  "needCardVersion": 2,
+  "talentId": "tal_sabxh4xaga3o",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_emc30rjjfhov",
+   "req_y91umzqxejz4"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.832Z"
+ },
+ {
+  "needCardId": "nc_tt1iyhhlyo8p",
+  "needCardVersion": 2,
+  "talentId": "tal_uyk9usm3v0rb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.832Z"
+ },
+ {
+  "needCardId": "nc_tt1iyhhlyo8p",
+  "needCardVersion": 2,
+  "talentId": "tal_ht9k4vwpbm2x",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_sfrzinl2xtcc"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.832Z"
+ },
+ {
+  "needCardId": "nc_tt1iyhhlyo8p",
+  "needCardVersion": 2,
+  "talentId": "tal_obsixyk2osql",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.832Z"
+ },
+ {
+  "needCardId": "nc_tt1iyhhlyo8p",
+  "needCardVersion": 2,
+  "talentId": "tal_5t5ekr2w3ljb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.832Z"
+ },
+ {
+  "needCardId": "nc_tt1iyhhlyo8p",
+  "needCardVersion": 2,
+  "talentId": "tal_4thrbmb9cwbr",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.832Z"
+ },
+ {
+  "needCardId": "nc_tt1iyhhlyo8p",
+  "needCardVersion": 2,
+  "talentId": "tal_tqhpbpuo02i6",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.832Z"
+ },
+ {
+  "needCardId": "nc_tt1iyhhlyo8p",
+  "needCardVersion": 2,
+  "talentId": "tal_8ttxss4rfn1c",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.832Z"
+ },
+ {
+  "needCardId": "nc_tt1iyhhlyo8p",
+  "needCardVersion": 2,
+  "talentId": "tal_97f6wdepp3e2",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.832Z"
+ },
+ {
+  "needCardId": "nc_tt1iyhhlyo8p",
+  "needCardVersion": 2,
+  "talentId": "tal_78jy75ig6iz8",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.832Z"
+ },
+ {
+  "needCardId": "nc_tt1iyhhlyo8p",
+  "needCardVersion": 2,
+  "talentId": "tal_j54cox1yp9f0",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:21.832Z"
+ },
+ {
+  "needCardId": "nc_p6pvlvi6fcto",
+  "needCardVersion": 2,
+  "talentId": "tal_mogxo04jdwwl",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_oqy21yzos3fk",
+   "req_oq4gnui1uc2x"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:22.357Z"
+ },
+ {
+  "needCardId": "nc_p6pvlvi6fcto",
+  "needCardVersion": 2,
+  "talentId": "tal_43fbkeofwipr",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:22.357Z"
+ },
+ {
+  "needCardId": "nc_p6pvlvi6fcto",
+  "needCardVersion": 2,
+  "talentId": "tal_i210th809pqh",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_oqy21yzos3fk"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:22.357Z"
+ },
+ {
+  "needCardId": "nc_p6pvlvi6fcto",
+  "needCardVersion": 2,
+  "talentId": "tal_l06hdipu1bdb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:22.357Z"
+ },
+ {
+  "needCardId": "nc_p6pvlvi6fcto",
+  "needCardVersion": 2,
+  "talentId": "tal_sabxh4xaga3o",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_oqy21yzos3fk"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:22.357Z"
+ },
+ {
+  "needCardId": "nc_p6pvlvi6fcto",
+  "needCardVersion": 2,
+  "talentId": "tal_uyk9usm3v0rb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:22.357Z"
+ },
+ {
+  "needCardId": "nc_p6pvlvi6fcto",
+  "needCardVersion": 2,
+  "talentId": "tal_ht9k4vwpbm2x",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_oqy21yzos3fk"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:22.357Z"
+ },
+ {
+  "needCardId": "nc_p6pvlvi6fcto",
+  "needCardVersion": 2,
+  "talentId": "tal_obsixyk2osql",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_oqy21yzos3fk"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:22.357Z"
+ },
+ {
+  "needCardId": "nc_p6pvlvi6fcto",
+  "needCardVersion": 2,
+  "talentId": "tal_5t5ekr2w3ljb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_oqy21yzos3fk"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:22.357Z"
+ },
+ {
+  "needCardId": "nc_p6pvlvi6fcto",
+  "needCardVersion": 2,
+  "talentId": "tal_4thrbmb9cwbr",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_oqy21yzos3fk"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:22.357Z"
+ },
+ {
+  "needCardId": "nc_p6pvlvi6fcto",
+  "needCardVersion": 2,
+  "talentId": "tal_tqhpbpuo02i6",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_oqy21yzos3fk"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:22.357Z"
+ },
+ {
+  "needCardId": "nc_p6pvlvi6fcto",
+  "needCardVersion": 2,
+  "talentId": "tal_8ttxss4rfn1c",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_oqy21yzos3fk"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:22.357Z"
+ },
+ {
+  "needCardId": "nc_p6pvlvi6fcto",
+  "needCardVersion": 2,
+  "talentId": "tal_97f6wdepp3e2",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_oqy21yzos3fk"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:22.357Z"
+ },
+ {
+  "needCardId": "nc_p6pvlvi6fcto",
+  "needCardVersion": 2,
+  "talentId": "tal_78jy75ig6iz8",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_oqy21yzos3fk"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:22.357Z"
+ },
+ {
+  "needCardId": "nc_p6pvlvi6fcto",
+  "needCardVersion": 2,
+  "talentId": "tal_j54cox1yp9f0",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [
+   "req_oqy21yzos3fk"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:22.357Z"
+ },
+ {
+  "needCardId": "nc_ncivfnx96sx2",
+  "needCardVersion": 2,
+  "talentId": "tal_uyk9usm3v0rb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:19.988Z"
+ },
+ {
+  "needCardId": "nc_ncivfnx96sx2",
+  "needCardVersion": 2,
+  "talentId": "tal_obsixyk2osql",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_7w5cohovgohx",
+   "req_yqfk0vkok6xd",
+   "req_nu7vil3es3h5",
+   "req_krgsgj26swzr",
+   "req_qcanepviyy3z"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:19.988Z"
+ },
+ {
+  "needCardId": "nc_nyapvx03ehau",
+  "needCardVersion": 2,
+  "talentId": "tal_l06hdipu1bdb",
+  "cardVersion": 1,
+  "eligible": false,
+  "touchedRequirementIds": [],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.289Z"
+ },
+ {
+  "needCardId": "nc_nyapvx03ehau",
+  "needCardVersion": 2,
+  "talentId": "tal_8ttxss4rfn1c",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_a3u97efwsicu"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.289Z"
+ },
+ {
+  "needCardId": "nc_pocgnfgt3lvr",
+  "needCardVersion": 2,
+  "talentId": "tal_mogxo04jdwwl",
+  "cardVersion": 1,
+  "eligible": true,
+  "touchedRequirementIds": [
+   "req_zr4jpxovdbas",
+   "req_fx5vo7d2n82n",
+   "req_2szmrmaz1znc",
+   "req_yf8ljim3ly9j",
+   "req_8xn8epvc8fi1",
+   "req_jyc9gqazloij"
+  ],
+  "exclusion": null,
+  "computedAt": "2026-11-14T02:20:20.887Z"
+ }
+]

@@ -1,0 +1,560 @@
+[
+ {
+  "id": "int_tyc8b9ril3y5",
+  "talentId": "tal_4thrbmb9cwbr",
+  "mode": "full",
+  "lang": "en",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [
+    "s5"
+   ],
+   "uiLang": "en",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "covered",
+    "beyond": "covered",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Target role is covered; ask about preferred data engineering tasks and how hybrid availability fits.",
+   "startedAt": "2026-11-14T01:26:31.952Z",
+   "flagCounts": {
+    "protected_info": 1
+   },
+   "probesUsed": 1,
+   "repairsInRow": 0,
+   "lastExtracted": [
+    "s20"
+   ],
+   "questionsAsked": 7
+  },
+  "startedAt": "2026-11-14T01:26:31.952Z",
+  "completedAt": "2026-11-14T01:26:54.643Z"
+ },
+ {
+  "id": "int_3x0gy2m73r5q",
+  "talentId": "tal_j54cox1yp9f0",
+  "mode": "full",
+  "lang": "en",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [
+    "s5"
+   ],
+   "uiLang": "en",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "covered",
+    "beyond": "covered",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Target role and site setting are clear; ask about preferred project size and responsibilities.",
+   "startedAt": "2026-11-14T01:36:28.821Z",
+   "flagCounts": {
+    "protected_info": 1
+   },
+   "probesUsed": 1,
+   "repairsInRow": 0,
+   "lastExtracted": [],
+   "questionsAsked": 7
+  },
+  "startedAt": "2026-11-14T01:36:28.821Z",
+  "completedAt": "2026-11-14T01:36:48.206Z"
+ },
+ {
+  "id": "int_46dupziq8h10",
+  "talentId": "tal_97f6wdepp3e2",
+  "mode": "full",
+  "lang": "en",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [
+    "s1"
+   ],
+   "uiLang": "en",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "covered",
+    "beyond": "covered",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Back-end work in a larger team is covered; ask about preferred projects and responsibilities.",
+   "startedAt": "2026-11-14T01:34:06.381Z",
+   "flagCounts": {
+    "protected_info": 2
+   },
+   "probesUsed": 1,
+   "repairsInRow": 0,
+   "lastExtracted": [
+    "s1"
+   ],
+   "questionsAsked": 6
+  },
+  "startedAt": "2026-11-14T01:34:06.381Z",
+  "completedAt": "2026-11-14T01:34:22.563Z"
+ },
+ {
+  "id": "int_y9viihp9qr2k",
+  "talentId": "tal_mogxo04jdwwl",
+  "mode": "full",
+  "lang": "en",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [
+    "s4"
+   ],
+   "uiLang": "en",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "covered",
+    "beyond": "covered",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Target role and industries are clear; ask about preferred responsibilities and how hybrid work fits their needs.",
+   "startedAt": "2026-11-14T01:37:42.949Z",
+   "flagCounts": {
+    "protected_info": 1
+   },
+   "probesUsed": 1,
+   "repairsInRow": 0,
+   "lastExtracted": [],
+   "questionsAsked": 7
+  },
+  "startedAt": "2026-11-14T01:37:42.949Z",
+  "completedAt": "2026-11-14T01:38:02.441Z"
+ },
+ {
+  "id": "int_w94ewgaboztp",
+  "talentId": "tal_tqhpbpuo02i6",
+  "mode": "full",
+  "lang": "en",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [
+    "s5"
+   ],
+   "uiLang": "en",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "covered",
+    "beyond": "covered",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Keyboard testing and job preferences covered; ask how they raised the modal issue and helped resolve it with others.",
+   "startedAt": "2026-11-14T01:27:55.739Z",
+   "flagCounts": {
+    "protected_info": 1
+   },
+   "probesUsed": 1,
+   "repairsInRow": 0,
+   "lastExtracted": [
+    "s17"
+   ],
+   "questionsAsked": 7
+  },
+  "startedAt": "2026-11-14T01:27:55.739Z",
+  "completedAt": "2026-11-14T01:28:17.652Z"
+ },
+ {
+  "id": "int_whogmkj9671z",
+  "talentId": "tal_78jy75ig6iz8",
+  "mode": "full",
+  "lang": "fi",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [
+    "s4",
+    "s3"
+   ],
+   "uiLang": "fi",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "covered",
+    "beyond": "open",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Risk assessment example and target role covered; ask about development methods and scope of process improvement work.",
+   "startedAt": "2026-11-14T01:35:06.394Z",
+   "flagCounts": {},
+   "probesUsed": 2,
+   "repairsInRow": 0,
+   "lastExtracted": [
+    "s18"
+   ],
+   "questionsAsked": 7
+  },
+  "startedAt": "2026-11-14T01:35:06.394Z",
+  "completedAt": "2026-11-14T01:35:25.805Z"
+ },
+ {
+  "id": "int_g5c966tjew5l",
+  "talentId": "tal_i210th809pqh",
+  "mode": "full",
+  "lang": "en",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [
+    "s5"
+   ],
+   "uiLang": "en",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "covered",
+    "beyond": "covered",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Next role preferences covered: surgical or acute care nursing, full-time shifts, two-month start; ask about preferred unit or duties.",
+   "startedAt": "2026-11-14T01:40:24.638Z",
+   "flagCounts": {},
+   "probesUsed": 1,
+   "repairsInRow": 0,
+   "lastExtracted": [
+    "s1",
+    "s19",
+    "s20"
+   ],
+   "questionsAsked": 6
+  },
+  "startedAt": "2026-11-14T01:40:24.638Z",
+  "completedAt": "2026-11-14T01:40:48.462Z"
+ },
+ {
+  "id": "int_wq6ggxdm2ndj",
+  "talentId": "tal_l06hdipu1bdb",
+  "mode": "full",
+  "lang": "sv",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [
+    "s5"
+   ],
+   "uiLang": "sv",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "covered",
+    "beyond": "covered",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Target roles and substitute timing are covered; ask which daily tasks they want in the preschool role.",
+   "startedAt": "2026-11-14T01:41:43.323Z",
+   "flagCounts": {
+    "protected_info": 1
+   },
+   "probesUsed": 1,
+   "repairsInRow": 0,
+   "lastExtracted": [
+    "s1"
+   ],
+   "questionsAsked": 7
+  },
+  "startedAt": "2026-11-14T01:41:43.323Z",
+  "completedAt": "2026-11-14T01:42:06.650Z"
+ },
+ {
+  "id": "int_39b3yjlmwqar",
+  "talentId": "tal_uyk9usm3v0rb",
+  "mode": "express",
+  "lang": "fi",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [],
+   "uiLang": "fi",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "covered",
+    "beyond": "open",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Cleaning work and preferred shifts covered; ask which machines they have used and for a recent work example.",
+   "startedAt": "2026-11-14T01:43:50.738Z",
+   "flagCounts": {
+    "protected_info": 2
+   },
+   "probesUsed": 0,
+   "repairsInRow": 0,
+   "lastExtracted": [
+    "s9",
+    "s10"
+   ],
+   "questionsAsked": 3
+  },
+  "startedAt": "2026-11-14T01:43:50.738Z",
+  "completedAt": "2026-11-14T01:43:57.490Z"
+ },
+ {
+  "id": "int_ibgj3thvm7dq",
+  "talentId": "tal_ht9k4vwpbm2x",
+  "mode": "full",
+  "lang": "en",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [
+    "s5"
+   ],
+   "uiLang": "en",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "covered",
+    "beyond": "covered",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Goals and availability covered; ask which warehouse systems interest them and whether reach-truck work should continue.",
+   "startedAt": "2026-11-14T01:44:22.980Z",
+   "flagCounts": {
+    "protected_info": 1
+   },
+   "probesUsed": 1,
+   "repairsInRow": 0,
+   "lastExtracted": [],
+   "questionsAsked": 7
+  },
+  "startedAt": "2026-11-14T01:44:22.980Z",
+  "completedAt": "2026-11-14T01:44:42.101Z"
+ },
+ {
+  "id": "int_5hsabxbuyfp6",
+  "talentId": "tal_43fbkeofwipr",
+  "mode": "full",
+  "lang": "fi",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [
+    "s4"
+   ],
+   "uiLang": "fi",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "covered",
+    "beyond": "covered",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Target role, settings and medication and wound care interests are covered; ask about preferred duties and team collaboration.",
+   "startedAt": "2026-11-14T01:39:05.626Z",
+   "flagCounts": {
+    "protected_info": 2
+   },
+   "probesUsed": 1,
+   "repairsInRow": 0,
+   "lastExtracted": [
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "questionsAsked": 7
+  },
+  "startedAt": "2026-11-14T01:39:05.626Z",
+  "completedAt": "2026-11-14T01:39:26.276Z"
+ },
+ {
+  "id": "int_u8d6q3pnfmbb",
+  "talentId": "tal_obsixyk2osql",
+  "mode": "full",
+  "lang": "sv",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [
+    "s4"
+   ],
+   "uiLang": "sv",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "covered",
+    "beyond": "covered",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Bookkeeping goal and customer contact preference are clear; ask about availability timing and preferred tasks next.",
+   "startedAt": "2026-11-14T01:45:40.792Z",
+   "flagCounts": {
+    "protected_info": 1
+   },
+   "probesUsed": 1,
+   "repairsInRow": 0,
+   "lastExtracted": [],
+   "questionsAsked": 7
+  },
+  "startedAt": "2026-11-14T01:45:40.792Z",
+  "completedAt": "2026-11-14T01:46:03.829Z"
+ },
+ {
+  "id": "int_rohszk2tt337",
+  "talentId": "tal_sabxh4xaga3o",
+  "mode": "express",
+  "lang": "en",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [],
+   "uiLang": "en",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "open",
+    "beyond": "open",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Cooking and head cook goals covered; ask about daytime hours and availability preferences.",
+   "startedAt": "2026-11-14T01:43:11.783Z",
+   "flagCounts": {
+    "protected_info": 1
+   },
+   "probesUsed": 0,
+   "repairsInRow": 0,
+   "lastExtracted": [
+    "s9",
+    "s10"
+   ],
+   "questionsAsked": 3
+  },
+  "startedAt": "2026-11-14T01:43:11.783Z",
+  "completedAt": "2026-11-14T01:43:19.493Z"
+ },
+ {
+  "id": "int_pndjw12sje3w",
+  "talentId": "tal_8ttxss4rfn1c",
+  "mode": "express",
+  "lang": "en",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [],
+   "uiLang": "en",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "open",
+    "beyond": "covered",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Customer service and customer success interests covered; ask what bigger-customer tasks and responsibility they want.",
+   "startedAt": "2026-11-14T01:48:13.940Z",
+   "flagCounts": {
+    "protected_info": 1
+   },
+   "probesUsed": 0,
+   "repairsInRow": 0,
+   "lastExtracted": [
+    "s10",
+    "s11"
+   ],
+   "questionsAsked": 3
+  },
+  "startedAt": "2026-11-14T01:48:13.940Z",
+  "completedAt": "2026-11-14T01:48:20.565Z"
+ },
+ {
+  "id": "int_5s6cl21g9ljr",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "mode": "full",
+  "lang": "en",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [
+    "s5"
+   ],
+   "uiLang": "en",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "covered",
+    "beyond": "covered",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Levelling example and tools covered; ask about preferred renovation tasks and subcontracting scope.",
+   "startedAt": "2026-11-14T01:47:04.824Z",
+   "flagCounts": {
+    "protected_info": 1
+   },
+   "probesUsed": 1,
+   "repairsInRow": 0,
+   "lastExtracted": [],
+   "questionsAsked": 7
+  },
+  "startedAt": "2026-11-14T01:47:04.824Z",
+  "completedAt": "2026-11-14T01:47:23.878Z"
+ }
+]

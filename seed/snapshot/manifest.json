@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "tables": {
+    "event": 1,
+    "company": 8,
+    "event_company": 8,
+    "need_card": 8,
+    "talent": 15,
+    "talent_identity": 15,
+    "interview": 15,
+    "turn": 197,
+    "signal": 181,
+    "talent_language": 27,
+    "signal_card": 15,
+    "interview_event": 559,
+    "job_match": 233,
+    "eligibility": 120,
+    "consent": 45,
+    "app_meta": 1
+  }
+}

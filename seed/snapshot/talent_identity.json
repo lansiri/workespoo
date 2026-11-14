@@ -1,0 +1,92 @@
+[
+ {
+  "talentId": "tal_4thrbmb9cwbr",
+  "displayName": "Tomás Ribeiro (synthetic)",
+  "contact": "tomas.ribeiro@example.invalid",
+  "createdAt": "2026-11-14T01:27:55.486Z"
+ },
+ {
+  "talentId": "tal_tqhpbpuo02i6",
+  "displayName": "Nadia Haddad (synthetic)",
+  "contact": "nadia.haddad@example.invalid",
+  "createdAt": "2026-11-14T01:29:13.241Z"
+ },
+ {
+  "talentId": "tal_97f6wdepp3e2",
+  "displayName": "Mikael Strand (synthetic)",
+  "contact": "mikael.strand@example.invalid",
+  "createdAt": "2026-11-14T01:35:06.204Z"
+ },
+ {
+  "talentId": "tal_78jy75ig6iz8",
+  "displayName": "Henna Kärkkäinen (synthetic)",
+  "contact": "henna.karkkainen@example.invalid",
+  "createdAt": "2026-11-14T01:36:28.579Z"
+ },
+ {
+  "talentId": "tal_j54cox1yp9f0",
+  "displayName": "Marek Nowicki (synthetic)",
+  "contact": "marek.nowicki@example.invalid",
+  "createdAt": "2026-11-14T01:37:41.333Z"
+ },
+ {
+  "talentId": "tal_mogxo04jdwwl",
+  "displayName": "Emre Kaya (synthetic)",
+  "contact": "emre.kaya@example.invalid",
+  "createdAt": "2026-11-14T01:39:05.399Z"
+ },
+ {
+  "talentId": "tal_43fbkeofwipr",
+  "displayName": "Sari Koskinen (synthetic)",
+  "contact": "sari.koskinen@example.invalid",
+  "createdAt": "2026-11-14T01:40:23.574Z"
+ },
+ {
+  "talentId": "tal_i210th809pqh",
+  "displayName": "Anna Petrenko (synthetic)",
+  "contact": "anna.petrenko@example.invalid",
+  "createdAt": "2026-11-14T01:41:43.094Z"
+ },
+ {
+  "talentId": "tal_l06hdipu1bdb",
+  "displayName": "Elin Söderström (synthetic)",
+  "contact": "elin.soderstrom@example.invalid",
+  "createdAt": "2026-11-14T01:43:11.449Z"
+ },
+ {
+  "talentId": "tal_sabxh4xaga3o",
+  "displayName": "Daniel Okoye (synthetic)",
+  "contact": "daniel.okoye@example.invalid",
+  "createdAt": "2026-11-14T01:43:50.452Z"
+ },
+ {
+  "talentId": "tal_uyk9usm3v0rb",
+  "displayName": "Raili Heikkinen (synthetic)",
+  "contact": "raili.heikkinen@example.invalid",
+  "createdAt": "2026-11-14T01:44:22.691Z"
+ },
+ {
+  "talentId": "tal_ht9k4vwpbm2x",
+  "displayName": "Mehdi Karimi (synthetic)",
+  "contact": "mehdi.karimi@example.invalid",
+  "createdAt": "2026-11-14T01:45:40.139Z"
+ },
+ {
+  "talentId": "tal_obsixyk2osql",
+  "displayName": "Marianne Holmström (synthetic)",
+  "contact": "marianne.holmstrom@example.invalid",
+  "createdAt": "2026-11-14T01:47:03.952Z"
+ },
+ {
+  "talentId": "tal_5t5ekr2w3ljb",
+  "displayName": "Georgi Petrov (synthetic)",
+  "contact": "georgi.petrov@example.invalid",
+  "createdAt": "2026-11-14T01:48:13.736Z"
+ },
+ {
+  "talentId": "tal_8ttxss4rfn1c",
+  "displayName": "Linh Nguyen (synthetic)",
+  "contact": "linh.nguyen@example.invalid",
+  "createdAt": "2026-11-14T01:48:48.211Z"
+ }
+]

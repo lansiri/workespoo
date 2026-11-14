@@ -1,0 +1,15 @@
+[
+ {
+  "id": "ev_demo2026",
+  "name": "Espoo TalentMatch demo day (prototype)",
+  "date": "2026-11-26",
+  "format": "hybrid",
+  "place": "Demo venue, Espoo",
+  "startsAt": "2026-11-26T11:00:00.000Z",
+  "endsAt": "2026-11-26T14:00:00.000Z",
+  "slotMinutes": 15,
+  "bufferMinutes": 5,
+  "maxMeetingsPerTalent": 4,
+  "createdAt": "2026-11-14T00:37:37.017Z"
+ }
+]

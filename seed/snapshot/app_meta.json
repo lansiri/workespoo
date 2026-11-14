@@ -1,0 +1,90 @@
+[
+ {
+  "key": "seed:demo-companies",
+  "value": [
+   {
+    "tags": [
+     "finnish posting",
+     "ISCO 43"
+    ],
+    "jobId": "job_tmt_e3c5756883c74559b8e0c68f59971d31",
+    "title": "Kirjanpitäjä ja asiakaspalvelu",
+    "number": 1,
+    "companyId": "co_demo01"
+   },
+   {
+    "tags": [
+     "care",
+     "ISCO 32"
+    ],
+    "jobId": "job_tmt_702a75ef8be2443e8d52f26dae3b9d20",
+    "title": "Kotipalvelun koordinaattori – tule mukaan rakentamaan uutta palvelutoimintaa!",
+    "number": 2,
+    "companyId": "co_demo02"
+   },
+   {
+    "tags": [
+     "pitch",
+     "finnish requirement",
+     "ISCO 25"
+    ],
+    "jobId": "job_tmt_e07c79d3e6d04a53919f649dfeba9e51",
+    "title": "Tekninen asiantuntija, Digital Systems & ERP Specialist",
+    "number": 3,
+    "companyId": "co_demo03"
+   },
+   {
+    "tags": [
+     "finnish requirement",
+     "ISCO 21"
+    ],
+    "jobId": "job_tmt_9f7e2a6793fc48ac983d6e0c4fc98560",
+    "title": "Mekaniikkasuunnittelija",
+    "number": 4,
+    "companyId": "co_demo04"
+   },
+   {
+    "tags": [
+     "english",
+     "ISCO 21"
+    ],
+    "jobId": "job_tmt_9a60f81e576f49b69597183bd0095710",
+    "title": "Electrical Solutions Engineer, Data Centers",
+    "number": 5,
+    "companyId": "co_demo05"
+   },
+   {
+    "tags": [
+     "english",
+     "licence or clearance",
+     "ISCO 25"
+    ],
+    "jobId": "job_tmt_e7cf5a28562147d0bf82d7e243e9f4cf",
+    "title": "Software Developer (full-stack) for energy sector, Espoo",
+    "number": 6,
+    "companyId": "co_demo06"
+   },
+   {
+    "tags": [
+     "service",
+     "ISCO 34"
+    ],
+    "jobId": "job_tmt_9cf4bbbb865f443492a295fb0895cb70",
+    "title": "Keittiömestari",
+    "number": 7,
+    "companyId": "co_demo07"
+   },
+   {
+    "tags": [
+     "english",
+     "ISCO 21"
+    ],
+    "jobId": "job_tmt_43b541e11aaa48a4a3b68eaad3306ecd",
+    "title": "Verification Engineer – Hardware & Medical Device Testing, Helsinki",
+    "number": 8,
+    "companyId": "co_demo08"
+   }
+  ],
+  "updatedAt": "2026-11-14T00:37:37.456Z"
+ }
+]

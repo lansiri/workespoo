@@ -1,0 +1,407 @@
+[
+ {
+  "id": "con_x9jq0clg2gc0",
+  "subjectType": "talent",
+  "subjectId": "tal_4thrbmb9cwbr",
+  "kind": "interview",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:26:32.072Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_3ls2ts2jhi7g",
+  "subjectType": "talent",
+  "subjectId": "tal_4thrbmb9cwbr",
+  "kind": "live_demo",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:26:32.146Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_xogyj9grgnxf",
+  "subjectType": "talent",
+  "subjectId": "tal_4thrbmb9cwbr",
+  "kind": "pool",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:27:55.633Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_zp4wox9ljk6u",
+  "subjectType": "talent",
+  "subjectId": "tal_tqhpbpuo02i6",
+  "kind": "interview",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:27:55.767Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_5vj7l6j201vs",
+  "subjectType": "talent",
+  "subjectId": "tal_tqhpbpuo02i6",
+  "kind": "live_demo",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:27:55.784Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_ls88n6q887kh",
+  "subjectType": "talent",
+  "subjectId": "tal_tqhpbpuo02i6",
+  "kind": "pool",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:29:13.392Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_ymylyqznlkle",
+  "subjectType": "talent",
+  "subjectId": "tal_97f6wdepp3e2",
+  "kind": "interview",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:34:06.411Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_oqathw1k7pzo",
+  "subjectType": "talent",
+  "subjectId": "tal_97f6wdepp3e2",
+  "kind": "live_demo",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:34:06.431Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_h6w5fm3gw3vk",
+  "subjectType": "talent",
+  "subjectId": "tal_97f6wdepp3e2",
+  "kind": "pool",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:35:06.319Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_hsjknt034ezd",
+  "subjectType": "talent",
+  "subjectId": "tal_78jy75ig6iz8",
+  "kind": "interview",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:35:06.413Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_hqq74alu96pg",
+  "subjectType": "talent",
+  "subjectId": "tal_78jy75ig6iz8",
+  "kind": "live_demo",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:35:06.427Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_xw5xg1avno15",
+  "subjectType": "talent",
+  "subjectId": "tal_78jy75ig6iz8",
+  "kind": "pool",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:36:28.733Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_rbhknvlgvez2",
+  "subjectType": "talent",
+  "subjectId": "tal_j54cox1yp9f0",
+  "kind": "interview",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:36:28.845Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_d3gqbsssc80k",
+  "subjectType": "talent",
+  "subjectId": "tal_j54cox1yp9f0",
+  "kind": "live_demo",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:36:28.862Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_q6uxz6eq2d4z",
+  "subjectType": "talent",
+  "subjectId": "tal_j54cox1yp9f0",
+  "kind": "pool",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:37:42.412Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_pvzigdytuy92",
+  "subjectType": "talent",
+  "subjectId": "tal_mogxo04jdwwl",
+  "kind": "interview",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:37:42.971Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_fancipmjctkp",
+  "subjectType": "talent",
+  "subjectId": "tal_mogxo04jdwwl",
+  "kind": "live_demo",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:37:42.985Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_2ay87cx0pksh",
+  "subjectType": "talent",
+  "subjectId": "tal_mogxo04jdwwl",
+  "kind": "pool",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:39:05.533Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_52t09iojoy1d",
+  "subjectType": "talent",
+  "subjectId": "tal_43fbkeofwipr",
+  "kind": "interview",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:39:05.647Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_nszebu0ljxiv",
+  "subjectType": "talent",
+  "subjectId": "tal_43fbkeofwipr",
+  "kind": "live_demo",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:39:05.663Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_1nxaiutwx4j5",
+  "subjectType": "talent",
+  "subjectId": "tal_43fbkeofwipr",
+  "kind": "pool",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:40:24.128Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_etih3ognuoc7",
+  "subjectType": "talent",
+  "subjectId": "tal_i210th809pqh",
+  "kind": "interview",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:40:24.667Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_x7l7wf283sdg",
+  "subjectType": "talent",
+  "subjectId": "tal_i210th809pqh",
+  "kind": "live_demo",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:40:24.683Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_y9f8i0snmt81",
+  "subjectType": "talent",
+  "subjectId": "tal_i210th809pqh",
+  "kind": "pool",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:41:43.244Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_owixudvak92v",
+  "subjectType": "talent",
+  "subjectId": "tal_l06hdipu1bdb",
+  "kind": "interview",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:41:43.347Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_mcc1bykwyxw1",
+  "subjectType": "talent",
+  "subjectId": "tal_l06hdipu1bdb",
+  "kind": "live_demo",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:41:43.362Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_loz2exrsgue2",
+  "subjectType": "talent",
+  "subjectId": "tal_l06hdipu1bdb",
+  "kind": "pool",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:43:11.665Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_95e2zlslo5xm",
+  "subjectType": "talent",
+  "subjectId": "tal_sabxh4xaga3o",
+  "kind": "interview",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:43:11.820Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_t3joq5arn396",
+  "subjectType": "talent",
+  "subjectId": "tal_sabxh4xaga3o",
+  "kind": "live_demo",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:43:11.878Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_3vk5kbuwkqsx",
+  "subjectType": "talent",
+  "subjectId": "tal_sabxh4xaga3o",
+  "kind": "pool",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:43:50.607Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_hj4tvw561rzi",
+  "subjectType": "talent",
+  "subjectId": "tal_uyk9usm3v0rb",
+  "kind": "interview",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:43:50.790Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_awaa600ugz3s",
+  "subjectType": "talent",
+  "subjectId": "tal_uyk9usm3v0rb",
+  "kind": "live_demo",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:43:50.817Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_ll5radythuwz",
+  "subjectType": "talent",
+  "subjectId": "tal_uyk9usm3v0rb",
+  "kind": "pool",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:44:22.850Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_mw42cocnibvt",
+  "subjectType": "talent",
+  "subjectId": "tal_ht9k4vwpbm2x",
+  "kind": "interview",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:44:23.016Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_h40omj5xhmen",
+  "subjectType": "talent",
+  "subjectId": "tal_ht9k4vwpbm2x",
+  "kind": "live_demo",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:44:23.037Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_mbub03cmoilh",
+  "subjectType": "talent",
+  "subjectId": "tal_ht9k4vwpbm2x",
+  "kind": "pool",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:45:40.397Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_rfrsbg06jgu3",
+  "subjectType": "talent",
+  "subjectId": "tal_obsixyk2osql",
+  "kind": "interview",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:45:40.821Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_11uoxrul4xzs",
+  "subjectType": "talent",
+  "subjectId": "tal_obsixyk2osql",
+  "kind": "live_demo",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:45:40.838Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_c4yq7k1f1q2b",
+  "subjectType": "talent",
+  "subjectId": "tal_obsixyk2osql",
+  "kind": "pool",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:47:04.291Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_vlv23nkyrma4",
+  "subjectType": "talent",
+  "subjectId": "tal_5t5ekr2w3ljb",
+  "kind": "interview",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:47:04.857Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_95z0dqsy12ma",
+  "subjectType": "talent",
+  "subjectId": "tal_5t5ekr2w3ljb",
+  "kind": "live_demo",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:47:04.871Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_i50o5ep9h725",
+  "subjectType": "talent",
+  "subjectId": "tal_5t5ekr2w3ljb",
+  "kind": "pool",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:48:13.859Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_n5i3qirgtzoi",
+  "subjectType": "talent",
+  "subjectId": "tal_8ttxss4rfn1c",
+  "kind": "interview",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:48:13.968Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_kupq3c6ccmmx",
+  "subjectType": "talent",
+  "subjectId": "tal_8ttxss4rfn1c",
+  "kind": "live_demo",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:48:13.990Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_987rfrq9t8xe",
+  "subjectType": "talent",
+  "subjectId": "tal_8ttxss4rfn1c",
+  "kind": "pool",
+  "textVersion": "2026-11-v1",
+  "grantedAt": "2026-11-14T01:48:48.301Z",
+  "withdrawnAt": null
+ }
+]

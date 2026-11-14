@@ -1,0 +1,90 @@
+[
+ {
+  "id": "co_demo06",
+  "displayName": "Demo company 06",
+  "realName": "Academic Work Finland Oy",
+  "businessId": "2756351-6",
+  "source": "posting",
+  "masked": true,
+  "participating": true,
+  "digestToken": "made-again-on-restore",
+  "createdAt": "2026-11-14T00:37:37.400Z"
+ },
+ {
+  "id": "co_demo01",
+  "displayName": "Demo company 01",
+  "realName": "Taloasema HMJ Isännöinti Oy",
+  "businessId": "2787518-1",
+  "source": "posting",
+  "masked": true,
+  "participating": true,
+  "digestToken": "made-again-on-restore",
+  "createdAt": "2026-11-14T00:37:37.299Z"
+ },
+ {
+  "id": "co_demo02",
+  "displayName": "Demo company 02",
+  "realName": "Lauttasaaren vanhustentalosäätiö sr",
+  "businessId": "0116663-5",
+  "source": "posting",
+  "masked": true,
+  "participating": true,
+  "digestToken": "made-again-on-restore",
+  "createdAt": "2026-11-14T00:37:37.321Z"
+ },
+ {
+  "id": "co_demo04",
+  "displayName": "Demo company 04",
+  "realName": "Creo Center Oy",
+  "businessId": "2264292-8",
+  "source": "posting",
+  "masked": true,
+  "participating": true,
+  "digestToken": "made-again-on-restore",
+  "createdAt": "2026-11-14T00:37:37.364Z"
+ },
+ {
+  "id": "co_demo05",
+  "displayName": "Demo company 05",
+  "realName": "Eltel Networks Oy",
+  "businessId": "1548234-8",
+  "source": "posting",
+  "masked": true,
+  "participating": true,
+  "digestToken": "made-again-on-restore",
+  "createdAt": "2026-11-14T00:37:37.383Z"
+ },
+ {
+  "id": "co_demo07",
+  "displayName": "Demo company 07",
+  "realName": "Restaurants By Spoon Oy",
+  "businessId": "3270058-9",
+  "source": "posting",
+  "masked": true,
+  "participating": true,
+  "digestToken": "made-again-on-restore",
+  "createdAt": "2026-11-14T00:37:37.418Z"
+ },
+ {
+  "id": "co_demo08",
+  "displayName": "Demo company 08",
+  "realName": "Academic Work Finland Oy",
+  "businessId": "2756351-6",
+  "source": "posting",
+  "masked": true,
+  "participating": true,
+  "digestToken": "made-again-on-restore",
+  "createdAt": "2026-11-14T00:37:37.437Z"
+ },
+ {
+  "id": "co_demo03",
+  "displayName": "Demo company 03",
+  "realName": "Handy Hand Oy",
+  "businessId": "2769797-9",
+  "source": "posting",
+  "masked": true,
+  "participating": true,
+  "digestToken": "made-again-on-restore",
+  "createdAt": "2026-11-14T00:37:37.344Z"
+ }
+]

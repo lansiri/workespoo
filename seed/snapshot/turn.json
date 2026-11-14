@@ -1,0 +1,3660 @@
+[
+ {
+  "id": "trn_dk1uogql0l8a",
+  "interviewId": "int_w94ewgaboztp",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hi, I'm an AI interviewer for WorkEspoo. I'll ask a few short questions, about four minutes, and take notes. At the end you'll check the notes, change anything and approve them yourself. To start: what kind of work have you been doing recently?",
+  "sentences": [
+   "Hi, I'm an AI interviewer for WorkEspoo.",
+   "I'll ask a few short questions, about four minutes, and take notes.",
+   "At the end you'll check the notes, change anything and approve them yourself.",
+   "To start: what kind of work have you been doing recently?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:27:55.739Z"
+ },
+ {
+  "id": "trn_0h9tnitfmydn",
+  "interviewId": "int_w94ewgaboztp",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "I finished my degree here a year ago, and since then I've been a front-end developer at a software company that makes tools for logistics. I build the screens in React and TypeScript, and I sit with a designer to check that they work as drawn. I have dyslexia, so I've got a habit of building checks into everything I do, which is probably why I like writing tests.",
+  "sentences": [
+   "I finished my degree here a year ago, and since then I've been a front-end developer at a software company that makes tools for logistics.",
+   "I build the screens in React and TypeScript, and I sit with a designer to check that they work as drawn.",
+   "I have dyslexia, so I've got a habit of building checks into everything I do, which is probably why I like writing tests."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:27:55.845Z"
+ },
+ {
+  "id": "trn_7c42b9pagxmg",
+  "interviewId": "int_w94ewgaboztp",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "A customer complained that the booking form was impossible to use with a screen reader. I went through it with a screen reader myself and found that the error messages were not announced and the date picker trapped the keyboard. I rebuilt the date field with proper labels and focus handling, and wrote tests for it. The customer's accessibility audit passed on the next round.",
+  "sentences": [
+   "A customer complained that the booking form was impossible to use with a screen reader.",
+   "I went through it with a screen reader myself and found that the error messages were not announced and the date picker trapped the keyboard.",
+   "I rebuilt the date field with proper labels and focus handling, and wrote tests for it.",
+   "The customer's accessibility audit passed on the next round."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:27:57.131Z"
+ },
+ {
+  "id": "trn_w0ijzi6z2doy",
+  "interviewId": "int_w94ewgaboztp",
+  "index": 11,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "For the design system I built a button, a text field and a modal, each with documented keyboard behaviour. The modal was the hard one: focus has to stay inside it and go back to the trigger when it closes. I tested it by tabbing through it until nothing escaped.",
+  "sentences": [
+   "For the design system I built a button, a text field and a modal, each with documented keyboard behaviour.",
+   "The modal was the hard one: focus has to stay inside it and go back to the trigger when it closes.",
+   "I tested it by tabbing through it until nothing escaped."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:28:12.560Z"
+ },
+ {
+  "id": "trn_gpzkps0u2suq",
+  "interviewId": "int_5hsabxbuyfp6",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "tools",
+  "text": "Käytän asiakastietojärjestelmää, mobiilisovellusta kotikäynneillä ja lääkkeenjako-ohjelmaa. Mittareista verenpainemittari, verensokerimittari ja happisaturaatiomittari ovat jokapäiväisiä. Haavanhoidossa tunnen eri sidostyypit ja osaan valita niistä sopivan. Annan myös pistoksia ja otan laboratorionäytteitä.",
+  "sentences": [
+   "Käytän asiakastietojärjestelmää, mobiilisovellusta kotikäynneillä ja lääkkeenjako-ohjelmaa.",
+   "Mittareista verenpainemittari, verensokerimittari ja happisaturaatiomittari ovat jokapäiväisiä.",
+   "Haavanhoidossa tunnen eri sidostyypit ja osaan valita niistä sopivan.",
+   "Annan myös pistoksia ja otan laboratorionäytteitä."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:39:10.364Z"
+ },
+ {
+  "id": "trn_gsd5nc5ie17p",
+  "interviewId": "int_5hsabxbuyfp6",
+  "index": 7,
+  "role": "participant",
+  "kind": "answer",
+  "target": "people",
+  "text": "Meillä on kotihoidon tiimi, jossa on kuusi hoitajaa ja lähihoitajaa, ja toimin usein ensimmäisenä arvioijana, kun jonkun asiakkaan vointi huononee. Teen yhteistyötä lääkärin, fysioterapeutin ja omaisten kanssa. Lähihoitajat kysyvät minulta neuvoa haavoista ja lääkkeistä.",
+  "sentences": [
+   "Meillä on kotihoidon tiimi, jossa on kuusi hoitajaa ja lähihoitajaa, ja toimin usein ensimmäisenä arvioijana, kun jonkun asiakkaan vointi huononee.",
+   "Teen yhteistyötä lääkärin, fysioterapeutin ja omaisten kanssa.",
+   "Lähihoitajat kysyvät minulta neuvoa haavoista ja lääkkeistä."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:39:14.088Z"
+ },
+ {
+  "id": "trn_fxxx43yo00xz",
+  "interviewId": "int_5hsabxbuyfp6",
+  "index": 9,
+  "role": "participant",
+  "kind": "answer",
+  "target": "beyond",
+  "text": "Olen käynyt muistisairaan kohtaamisen koulutuksen, ja olen vapaaehtoisena ensiapuopettajana paikallisessa yhdistyksessä. Vedän kerran kuussa ensiapukurssin yhdistyksen jäsenille.",
+  "sentences": [
+   "Olen käynyt muistisairaan kohtaamisen koulutuksen, ja olen vapaaehtoisena ensiapuopettajana paikallisessa yhdistyksessä.",
+   "Vedän kerran kuussa ensiapukurssin yhdistyksen jäsenille."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:39:17.438Z"
+ },
+ {
+  "id": "trn_xfkjb76ojjjz",
+  "interviewId": "int_5hsabxbuyfp6",
+  "index": 11,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "Lääkelistan läpikäynnissä katsoin jokaisen lääkkeen vaikutukset ja haittavaikutukset ja kysyin asiakkaalta, mitä hän oikeasti ottaa. Puolet lääkkeistä oli muuttunut viime vuoden aikana ilman että lista oli päivittynyt. Korjasin listan ja vein sen lääkärille.",
+  "sentences": [
+   "Lääkelistan läpikäynnissä katsoin jokaisen lääkkeen vaikutukset ja haittavaikutukset ja kysyin asiakkaalta, mitä hän oikeasti ottaa.",
+   "Puolet lääkkeistä oli muuttunut viime vuoden aikana ilman että lista oli päivittynyt.",
+   "Korjasin listan ja vein sen lääkärille."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:39:20.911Z"
+ },
+ {
+  "id": "trn_tgb4vepsv5em",
+  "interviewId": "int_5hsabxbuyfp6",
+  "index": 13,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "Etsin sairaanhoitajan työtä, mielellään kotihoidosta tai kotisairaanhoidosta tai terveysasemalta. Työkieli on suomi. Haluan jatkaa lääkehoidon ja haavanhoidon parissa, mutta iltavuorot sopivat huonosti, koska olen kolmen lapsen äiti, joten päivävuoro olisi hyvä. Voin aloittaa kuukauden päästä.",
+  "sentences": [
+   "Etsin sairaanhoitajan työtä, mielellään kotihoidosta tai kotisairaanhoidosta tai terveysasemalta.",
+   "Työkieli on suomi.",
+   "Haluan jatkaa lääkehoidon ja haavanhoidon parissa, mutta iltavuorot sopivat huonosti, koska olen kolmen lapsen äiti, joten päivävuoro olisi hyvä.",
+   "Voin aloittaa kuukauden päästä."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:39:24.152Z"
+ },
+ {
+  "id": "trn_qlu29bz9z1gz",
+  "interviewId": "int_g5c966tjew5l",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Thanks, that's clear. Could you describe one specific situation where you noticed a complication and handled it yourself?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Could you describe one specific situation where you noticed a complication and handled it yourself?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:40:26.130Z"
+ },
+ {
+  "id": "trn_wvlyyo6j5n4m",
+  "interviewId": "int_g5c966tjew5l",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "tools",
+  "text": "We use the hospital patient system for notes and medication, infusion pumps, monitors for blood pressure and oxygen, and wound dressings of different types. I do cannulation and take blood samples. I use the early warning chart to decide when to call a doctor.",
+  "sentences": [
+   "We use the hospital patient system for notes and medication, infusion pumps, monitors for blood pressure and oxygen, and wound dressings of different types.",
+   "I do cannulation and take blood samples.",
+   "I use the early warning chart to decide when to call a doctor."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:40:32.372Z"
+ },
+ {
+  "id": "trn_aetv8yb9f7ct",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "index": 9,
+  "role": "participant",
+  "kind": "answer",
+  "target": "beyond",
+  "text": "Under studierna gjorde jag praktik i en förskola med många flerspråkiga barn, och jag har varit scoutledare i fyra år. Med scouterna ordnar jag läger för barn i åldern sju till tio.",
+  "sentences": [
+   "Under studierna gjorde jag praktik i en förskola med många flerspråkiga barn, och jag har varit scoutledare i fyra år.",
+   "Med scouterna ordnar jag läger för barn i åldern sju till tio."
+  ],
+  "sentencesOriginal": null,
+  "lang": "sv",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:41:58.042Z"
+ },
+ {
+  "id": "trn_h8140t040yir",
+  "interviewId": "int_w94ewgaboztp",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Could you tell me about one specific task you handled yourself?",
+  "sentences": [
+   "Could you tell me about one specific task you handled yourself?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:27:57.078Z"
+ },
+ {
+  "id": "trn_g87s4vndge1x",
+  "interviewId": "int_w94ewgaboztp",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "tools",
+  "text": "React and TypeScript, mostly. Figma to read the designs. Jest and Testing Library for tests, and Playwright for a few full flows. For accessibility I use a screen reader and the browser's audit tools. Git, of course, and code review every day.",
+  "sentences": [
+   "React and TypeScript, mostly.",
+   "Figma to read the designs.",
+   "Jest and Testing Library for tests, and Playwright for a few full flows.",
+   "For accessibility I use a screen reader and the browser's audit tools.",
+   "Git, of course, and code review every day."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:28:00.800Z"
+ },
+ {
+  "id": "trn_dnj55e5q0d7k",
+  "interviewId": "int_w94ewgaboztp",
+  "index": 7,
+  "role": "participant",
+  "kind": "answer",
+  "target": "people",
+  "text": "A team of six: three developers, a designer, a tester and a product owner. I work most closely with the designer, and the product owner brings customer feedback to me directly. I'm the one who usually looks at accessibility in the team, since I raised it in the first place.",
+  "sentences": [
+   "A team of six: three developers, a designer, a tester and a product owner.",
+   "I work most closely with the designer, and the product owner brings customer feedback to me directly.",
+   "I'm the one who usually looks at accessibility in the team, since I raised it in the first place."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:28:04.441Z"
+ },
+ {
+  "id": "trn_p35hr106ruth",
+  "interviewId": "int_w94ewgaboztp",
+  "index": 9,
+  "role": "participant",
+  "kind": "answer",
+  "target": "beyond",
+  "text": "During my studies I did a course project on design systems, and I still maintain a small open source component library that I started there. I also tutored first-year students in programming for two semesters.",
+  "sentences": [
+   "During my studies I did a course project on design systems, and I still maintain a small open source component library that I started there.",
+   "I also tutored first-year students in programming for two semesters."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:28:09.518Z"
+ },
+ {
+  "id": "trn_10i77mco2irv",
+  "interviewId": "int_w94ewgaboztp",
+  "index": 10,
+  "role": "interviewer",
+  "kind": "probe",
+  "target": "example",
+  "text": "Could you share one concrete example of writing software tests, perhaps from your component library?",
+  "sentences": [
+   "Could you share one concrete example of writing software tests, perhaps from your component library?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:28:12.509Z"
+ },
+ {
+  "id": "trn_kv5ur94e3r62",
+  "interviewId": "int_w94ewgaboztp",
+  "index": 13,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "Front-end or full-stack work, ideally in a product company, with some design collaboration. English is fine for work and I'm studying Finnish in the evenings; I can already follow meetings. Hybrid or remote, available right away.",
+  "sentences": [
+   "Front-end or full-stack work, ideally in a product company, with some design collaboration.",
+   "English is fine for work and I'm studying Finnish in the evenings; I can already follow meetings.",
+   "Hybrid or remote, available right away."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:28:15.736Z"
+ },
+ {
+  "id": "trn_tst7njsa30oa",
+  "interviewId": "int_w94ewgaboztp",
+  "index": 14,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Thank you, that's all my questions. Your notes are ready: check them, change or remove anything, and approve only what you're happy with.",
+  "sentences": [
+   "Thank you, that's all my questions.",
+   "Your notes are ready: check them, change or remove anything, and approve only what you're happy with."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:28:17.618Z"
+ },
+ {
+  "id": "trn_gaf2pygvau28",
+  "interviewId": "int_g5c966tjew5l",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "I work on a surgical ward at a hospital, as a registered nurse. I take care of patients before and after operations: I check vital signs, manage pain medication, change dressings and watch for complications. I trained and worked ten years in Kyiv in Ukraine, on a city hospital's surgical ward, managing pain medication and changing dressings, and I have worked here for two years after validating my qualification.",
+  "sentences": [
+   "I work on a surgical ward at a hospital, as a registered nurse.",
+   "I take care of patients before and after operations: I check vital signs, manage pain medication, change dressings and watch for complications.",
+   "I trained and worked ten years in Kyiv in Ukraine, on a city hospital's surgical ward, managing pain medication and changing dressings,",
+   "and I have worked here for two years after validating my qualification."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:40:24.742Z"
+ },
+ {
+  "id": "trn_gvl1ii3wpwwj",
+  "interviewId": "int_g5c966tjew5l",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "One night a patient after surgery had low blood pressure and was getting confused. I saw the numbers were changing, called the doctor right away and started fluids, as the protocol says. Bleeding was found and he went back to the operating room. I wrote down the times and what I saw, so the team had the full picture.",
+  "sentences": [
+   "One night a patient after surgery had low blood pressure and was getting confused.",
+   "I saw the numbers were changing, called the doctor right away and started fluids, as the protocol says.",
+   "Bleeding was found and he went back to the operating room.",
+   "I wrote down the times and what I saw, so the team had the full picture."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:40:26.210Z"
+ },
+ {
+  "id": "trn_0kkbh00ts418",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "index": 11,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "Bildkartan hade fem bilder: ankomst, samling, utelek, mat och vila. Jag satte fast dem med kardborreband så att han själv fick flytta en bild när vi var klara med något. Det gav honom en känsla av att veta vad som skulle hända härnäst.",
+  "sentences": [
+   "Bildkartan hade fem bilder: ankomst, samling, utelek, mat och vila.",
+   "Jag satte fast dem med kardborreband så att han själv fick flytta en bild när vi var klara med något.",
+   "Det gav honom en känsla av att veta vad som skulle hända härnäst."
+  ],
+  "sentencesOriginal": null,
+  "lang": "sv",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:42:01.244Z"
+ },
+ {
+  "id": "trn_k4g7v02orws6",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "index": 13,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "Jag söker jobb som barnträdgårdslärare eller förskollärare, gärna på svenska, men finska går också bra. Jag är gravid och väntar barn i maj, så jag skulle gärna ta en vikarietjänst som barnträdgårdslärare fram till våren och börja på riktigt efter föräldraledigheten.",
+  "sentences": [
+   "Jag söker jobb som barnträdgårdslärare eller förskollärare, gärna på svenska, men finska går också bra.",
+   "Jag är gravid och väntar barn i maj, så jag skulle gärna ta en vikarietjänst som barnträdgårdslärare fram till våren och börja på riktigt efter föräldraledigheten."
+  ],
+  "sentencesOriginal": null,
+  "lang": "sv",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:42:04.326Z"
+ },
+ {
+  "id": "trn_huv7p5i6pdo2",
+  "interviewId": "int_rohszk2tt337",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Thanks, that's clear. Could you describe one specific lunch service or menu-planning task you handled yourself in the canteen kitchen?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Could you describe one specific lunch service or menu-planning task you handled yourself in the canteen kitchen?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:43:12.933Z"
+ },
+ {
+  "id": "trn_7nm8yqglvqj7",
+  "interviewId": "int_rohszk2tt337",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "I want to keep cooking, lunch or à la carte, or head cook in a smaller place. English is my kitchen language, and I can manage basic Finnish with suppliers and the team. Daytime hours suit me best. I can start whenever the right place comes up.",
+  "sentences": [
+   "I want to keep cooking, lunch or à la carte, or head cook in a smaller place.",
+   "English is my kitchen language, and I can manage basic Finnish with suppliers and the team.",
+   "Daytime hours suit me best.",
+   "I can start whenever the right place comes up."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:43:17.264Z"
+ },
+ {
+  "id": "trn_re8xu3wf90ku",
+  "interviewId": "int_rohszk2tt337",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Thank you, that's all my questions. Your notes are ready: check them, change or remove anything, and approve only what you're happy with.",
+  "sentences": [
+   "Thank you, that's all my questions.",
+   "Your notes are ready: check them, change or remove anything, and approve only what you're happy with."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:43:19.436Z"
+ },
+ {
+  "id": "trn_kiguk3fpr061",
+  "interviewId": "int_w94ewgaboztp",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "tools",
+  "text": "Thanks, that's clear. Which tools, software or methods did you use to rebuild the date field and test it?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Which tools, software or methods did you use to rebuild the date field and test it?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:28:00.751Z"
+ },
+ {
+  "id": "trn_a63s7s79c0ei",
+  "interviewId": "int_w94ewgaboztp",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "people",
+  "text": "Thanks, that's clear. Who did you work with on this fix, and what was your own part compared with theirs?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Who did you work with on this fix, and what was your own part compared with theirs?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:28:04.384Z"
+ },
+ {
+  "id": "trn_vnzlx9am4ng0",
+  "interviewId": "int_w94ewgaboztp",
+  "index": 8,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "beyond",
+  "text": "Is there something you can do from studies, volunteering or an earlier job that you'd like noted?",
+  "sentences": [
+   "Is there something you can do from studies, volunteering or an earlier job that you'd like noted?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:28:09.468Z"
+ },
+ {
+  "id": "trn_dxkeeudjynzi",
+  "interviewId": "int_w94ewgaboztp",
+  "index": 12,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "Could you describe one accessibility issue you raised yourself and how you helped resolve it?",
+  "sentences": [
+   "Could you describe one accessibility issue you raised yourself and how you helped resolve it?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:28:15.684Z"
+ },
+ {
+  "id": "trn_lndjpmpga9um",
+  "interviewId": "int_g5c966tjew5l",
+  "index": 7,
+  "role": "participant",
+  "kind": "answer",
+  "target": "people",
+  "text": "A ward team of about twenty nurses and assistants, and doctors on rounds. I work closely with the physiotherapist for patients who need to move early after surgery. I also talk with patients' families when they come to visit and explain what is happening, in simple words. My part is the care for my six patients in each shift.",
+  "sentences": [
+   "A ward team of about twenty nurses and assistants, and doctors on rounds.",
+   "I work closely with the physiotherapist for patients who need to move early after surgery.",
+   "I also talk with patients' families when they come to visit and explain what is happening, in simple words.",
+   "My part is the care for my six patients in each shift."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:40:39.308Z"
+ },
+ {
+  "id": "trn_4eprqq9j7zqx",
+  "interviewId": "int_g5c966tjew5l",
+  "index": 9,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "For pain medication I ask the patient to tell me the pain on the ten-point scale every few hours, give the prescribed dose and ask again after forty minutes. If it is still high, I call the doctor, and I write the numbers so the next shift can see how the night went.",
+  "sentences": [
+   "For pain medication I ask the patient to tell me the pain on the ten-point scale every few hours, give the prescribed dose and ask again after forty minutes.",
+   "If it is still high, I call the doctor, and I write the numbers so the next shift can see how the night went."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:40:42.607Z"
+ },
+ {
+  "id": "trn_hi93ghp2ytmb",
+  "interviewId": "int_g5c966tjew5l",
+  "index": 11,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "I'd like to stay in surgical or acute care nursing. English is my work language now and I'm learning Finnish, so I can manage simple conversations with patients. Full time, shift work is okay. I can start in two months.",
+  "sentences": [
+   "I'd like to stay in surgical or acute care nursing.",
+   "English is my work language now and I'm learning Finnish, so I can manage simple conversations with patients.",
+   "Full time, shift work is okay.",
+   "I can start in two months."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:40:46.357Z"
+ },
+ {
+  "id": "trn_2i6q9ey5rhnw",
+  "interviewId": "int_g5c966tjew5l",
+  "index": 12,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Thank you, that's all my questions. Your notes are ready: check them, change or remove anything, and approve only what you're happy with.",
+  "sentences": [
+   "Thank you, that's all my questions.",
+   "Your notes are ready: check them, change or remove anything, and approve only what you're happy with."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:40:48.433Z"
+ },
+ {
+  "id": "trn_ex9mk6e0o7g1",
+  "interviewId": "int_rohszk2tt337",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "I've cooked in restaurants for thirty years, the last six as the lunch cook in a canteen kitchen in Espoo, around two hundred portions a day. I plan the lunch menu a week ahead, cook, and order from the suppliers. I'm 58 and had a knee operation last year, so I keep a chair nearby for the long prep, but I'm back to full days.",
+  "sentences": [
+   "I've cooked in restaurants for thirty years, the last six as the lunch cook in a canteen kitchen in Espoo, around two hundred portions a day.",
+   "I plan the lunch menu a week ahead, cook, and order from the suppliers.",
+   "I'm 58 and had a knee operation last year, so I keep a chair nearby for the long prep, but I'm back to full days."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:43:11.955Z"
+ },
+ {
+  "id": "trn_vzu51ock6dba",
+  "interviewId": "int_rohszk2tt337",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "Last month the fish supplier delivered late on the day we had salmon on the menu. I had two hours, so I switched to a chicken dish I could prepare fast, changed the sign, told the servers and cooked a double batch of rice. We served on time, and the salmon went on the next day's menu with a different sauce, so nothing was thrown away.",
+  "sentences": [
+   "Last month the fish supplier delivered late on the day we had salmon on the menu.",
+   "I had two hours, so I switched to a chicken dish I could prepare fast, changed the sign, told the servers and cooked a double batch of rice.",
+   "We served on time, and the salmon went on the next day's menu with a different sauce, so nothing was thrown away."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:43:13.012Z"
+ },
+ {
+  "id": "trn_814gdfw54bz2",
+  "interviewId": "int_39b3yjlmwqar",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hei, olen WorkEspoon tekoälyhaastattelija. Kysyn kolme lyhyttä kysymystä ja kirjaan vastauksistasi muistiinpanoja. Lopuksi tarkistat ne, muutat mitä haluat ja hyväksyt ne itse. Aloitetaan: millaista työtä olet tehnyt viime aikoina?",
+  "sentences": [
+   "Hei, olen WorkEspoon tekoälyhaastattelija.",
+   "Kysyn kolme lyhyttä kysymystä ja kirjaan vastauksistasi muistiinpanoja.",
+   "Lopuksi tarkistat ne, muutat mitä haluat ja hyväksyt ne itse.",
+   "Aloitetaan: millaista työtä olet tehnyt viime aikoina?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:43:50.738Z"
+ },
+ {
+  "id": "trn_9bu4a1vedptz",
+  "interviewId": "int_39b3yjlmwqar",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "Olen siivonnut toimistoja ja kouluja yli kolmekymmentä vuotta, nyt viimeiset kuusi vuotta isossa koulussa Espoossa. Teen iltavuoroa, ja minulla on oma alue: luokkahuoneet, käytävät ja ruokala. Olen 61 ja minulla on ollut selkävaivoja, joten olen oppinut siivoamaan niin, ettei raskaita nostoja tule.",
+  "sentences": [
+   "Olen siivonnut toimistoja ja kouluja yli kolmekymmentä vuotta, nyt viimeiset kuusi vuotta isossa koulussa Espoossa.",
+   "Teen iltavuoroa, ja minulla on oma alue: luokkahuoneet, käytävät ja ruokala.",
+   "Olen 61 ja minulla on ollut selkävaivoja, joten olen oppinut siivoamaan niin, ettei raskaita nostoja tule."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:43:50.942Z"
+ },
+ {
+  "id": "trn_qd4572w711pl",
+  "interviewId": "int_39b3yjlmwqar",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "Viime keväänä ruokalan lattia oli liukas joka aamu, vaikka se pestiin illalla. Huomasin, että pesuaineen annostus oli liian suuri eikä sitä huuhdeltu pois. Pienensin annostusta ohjeen mukaan ja lisäsin huuhtelukierroksen, ja lattia oli kuiva ja siisti aamulla. Kerroin muutoksesta myös muille vuoroille.",
+  "sentences": [
+   "Viime keväänä ruokalan lattia oli liukas joka aamu, vaikka se pestiin illalla.",
+   "Huomasin, että pesuaineen annostus oli liian suuri eikä sitä huuhdeltu pois.",
+   "Pienensin annostusta ohjeen mukaan ja lisäsin huuhtelukierroksen, ja lattia oli kuiva ja siisti aamulla.",
+   "Kerroin muutoksesta myös muille vuoroille."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:43:52.360Z"
+ },
+ {
+  "id": "trn_ttkaf5alzk7p",
+  "interviewId": "int_ibgj3thvm7dq",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "tools",
+  "text": "Reach truck and pallet jack, with the forklift licence. A handheld barcode scanner connected to the warehouse system. Stretch wrap machine and strapping. I also check stock counts with the cycle count list on Fridays.",
+  "sentences": [
+   "Reach truck and pallet jack, with the forklift licence.",
+   "A handheld barcode scanner connected to the warehouse system.",
+   "Stretch wrap machine and strapping.",
+   "I also check stock counts with the cycle count list on Fridays."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:44:27.189Z"
+ },
+ {
+  "id": "trn_od6yk41vn7qm",
+  "interviewId": "int_46dupziq8h10",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hi, I'm an AI interviewer for WorkEspoo. I'll ask a few short questions, about four minutes, and take notes. At the end you'll check the notes, change anything and approve them yourself. To start: what kind of work have you been doing recently?",
+  "sentences": [
+   "Hi, I'm an AI interviewer for WorkEspoo.",
+   "I'll ask a few short questions, about four minutes, and take notes.",
+   "At the end you'll check the notes, change anything and approve them yourself.",
+   "To start: what kind of work have you been doing recently?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:34:06.381Z"
+ },
+ {
+  "id": "trn_0mx7j8vc46r4",
+  "interviewId": "int_46dupziq8h10",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "Before that I spent twenty years in a print shop, so this is my second career. For about four years I've worked as a back-end developer for a company that sells subscription software to small shops. I'm 45 with two kids, which is part of why I wanted to build Java services with Spring instead of doing shift work.",
+  "sentences": [
+   "Before that I spent twenty years in a print shop, so this is my second career.",
+   "For about four years I've worked as a back-end developer for a company that sells subscription software to small shops.",
+   "I'm 45 with two kids, which is part of why I wanted to build Java services with Spring instead of doing shift work."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:34:06.505Z"
+ },
+ {
+  "id": "trn_2auimo71z7f2",
+  "interviewId": "int_46dupziq8h10",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "We had an invoice service that sometimes charged shops twice. I reproduced it on my laptop by sending the same request twice, quickly, and saw that two threads were creating the invoice at the same moment. I added a unique key in the database and made the service handle a duplicate calmly. In the three months since, there's been no double charge.",
+  "sentences": [
+   "We had an invoice service that sometimes charged shops twice.",
+   "I reproduced it on my laptop by sending the same request twice, quickly, and saw that two threads were creating the invoice at the same moment.",
+   "I added a unique key in the database and made the service handle a duplicate calmly.",
+   "In the three months since, there's been no double charge."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:34:07.675Z"
+ },
+ {
+  "id": "trn_vuvrg5l4cwj5",
+  "interviewId": "int_whogmkj9671z",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hei, olen WorkEspoon tekoälyhaastattelija. Kysyn muutaman lyhyen kysymyksen, siihen menee noin neljä minuuttia, ja kirjaan vastauksistasi muistiinpanoja. Lopuksi tarkistat ne, muutat mitä haluat ja hyväksyt ne itse. Aloitetaan: millaista työtä olet tehnyt viime aikoina?",
+  "sentences": [
+   "Hei, olen WorkEspoon tekoälyhaastattelija.",
+   "Kysyn muutaman lyhyen kysymyksen, siihen menee noin neljä minuuttia, ja kirjaan vastauksistasi muistiinpanoja.",
+   "Lopuksi tarkistat ne, muutat mitä haluat ja hyväksyt ne itse.",
+   "Aloitetaan: millaista työtä olet tehnyt viime aikoina?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:35:06.394Z"
+ },
+ {
+  "id": "trn_spu35n5m3nq1",
+  "interviewId": "int_whogmkj9671z",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "Olen työskennellyt prosessi-insinöörinä muovituotteita valmistavassa tehtaassa neljä vuotta. Vastaan lähinnä siitä, että tuotantolinjan prosessiparametrit pysyvät kunnossa ja että hukka pienenee. Palasin töihin viime keväänä, kun olin ollut vuoden äitiyslomalla, ja otin silloin hoitaakseni myös laboratorion näytteenoton.",
+  "sentences": [
+   "Olen työskennellyt prosessi-insinöörinä muovituotteita valmistavassa tehtaassa neljä vuotta.",
+   "Vastaan lähinnä siitä, että tuotantolinjan prosessiparametrit pysyvät kunnossa ja että hukka pienenee.",
+   "Palasin töihin viime keväänä, kun olin ollut vuoden äitiyslomalla, ja otin silloin hoitaakseni myös laboratorion näytteenoton."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:35:06.476Z"
+ },
+ {
+  "id": "trn_7sty6uo9plpd",
+  "interviewId": "int_whogmkj9671z",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Voisitko kertoa yhdestä tehtävästä, jonka hoidit itse?",
+  "sentences": [
+   "Voisitko kertoa yhdestä tehtävästä, jonka hoidit itse?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:35:07.657Z"
+ },
+ {
+  "id": "trn_1s5prcyskv24",
+  "interviewId": "int_whogmkj9671z",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "Syksyllä linjan toinen suulake alkoi tuottaa tasaisesti viallista tavaraa, eikä kukaan tiennyt miksi. Kävin läpi lämpötilalokit ja otin näytteitä eri kohdista, ja huomasin että raaka-aineen kosteus vaihteli erien välillä. Ehdotin kuivaukseen lisäaikaa ja ohjeistin käyttäjät mittaamaan kosteuden ennen jokaista erää. Hylkäysmäärä putosi noin puoleen parissa viikossa.",
+  "sentences": [
+   "Syksyllä linjan toinen suulake alkoi tuottaa tasaisesti viallista tavaraa, eikä kukaan tiennyt miksi.",
+   "Kävin läpi lämpötilalokit ja otin näytteitä eri kohdista, ja huomasin että raaka-aineen kosteus vaihteli erien välillä.",
+   "Ehdotin kuivaukseen lisäaikaa ja ohjeistin käyttäjät mittaamaan kosteuden ennen jokaista erää.",
+   "Hylkäysmäärä putosi noin puoleen parissa viikossa."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:35:07.699Z"
+ },
+ {
+  "id": "trn_8e0ex1hy1fyt",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hej, jag är en AI-intervjuare för WorkEspoo. Jag ställer några korta frågor, det tar ungefär fyra minuter, och jag antecknar under tiden. I slutet går du igenom anteckningarna, ändrar det du vill och godkänner dem själv. Vi börjar så här: vad har du arbetat med den senaste tiden?",
+  "sentences": [
+   "Hej, jag är en AI-intervjuare för WorkEspoo.",
+   "Jag ställer några korta frågor, det tar ungefär fyra minuter, och jag antecknar under tiden.",
+   "I slutet går du igenom anteckningarna, ändrar det du vill och godkänner dem själv.",
+   "Vi börjar så här: vad har du arbetat med den senaste tiden?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:41:43.323Z"
+ },
+ {
+  "id": "trn_wjewmibkrnsx",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "Jag har jobbat som barnträdgårdslärare på ett svenskspråkigt daghem i Esbo i två år, sedan jag blev klar med utbildningen. Jag leder en grupp på tjugo barn tillsammans med två barnskötare. Vi planerar veckans program, jag följer med barnens utveckling och skriver ner det inför samtalen med föräldrarna.",
+  "sentences": [
+   "Jag har jobbat som barnträdgårdslärare på ett svenskspråkigt daghem i Esbo i två år, sedan jag blev klar med utbildningen.",
+   "Jag leder en grupp på tjugo barn tillsammans med två barnskötare.",
+   "Vi planerar veckans program, jag följer med barnens utveckling och skriver ner det inför samtalen med föräldrarna."
+  ],
+  "sentencesOriginal": null,
+  "lang": "sv",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:41:43.461Z"
+ },
+ {
+  "id": "trn_7u1sjdup7hvh",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "En pojke i gruppen ville aldrig delta i samlingen, utan satt för sig själv och bråkade ibland med de andra. Jag började lägga märke till när det hände och såg att det alltid var när vi bytte aktivitet. Så jag gjorde en bildkarta för dagen och gick igenom den med honom på morgonen. Efter några veckor kunde han vara med i samlingen, och bråken blev färre.",
+  "sentences": [
+   "En pojke i gruppen ville aldrig delta i samlingen, utan satt för sig själv och bråkade ibland med de andra.",
+   "Jag började lägga märke till när det hände och såg att det alltid var när vi bytte aktivitet.",
+   "Så jag gjorde en bildkarta för dagen och gick igenom den med honom på morgonen.",
+   "Efter några veckor kunde han vara med i samlingen, och bråken blev färre."
+  ],
+  "sentencesOriginal": null,
+  "lang": "sv",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:41:45.127Z"
+ },
+ {
+  "id": "trn_2d1r05xxhlmn",
+  "interviewId": "int_rohszk2tt337",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hi, I'm an AI interviewer for WorkEspoo. I'll ask three short questions and take notes, and at the end you'll check the notes, change anything and approve them yourself. To start: what kind of work have you been doing recently?",
+  "sentences": [
+   "Hi, I'm an AI interviewer for WorkEspoo.",
+   "I'll ask three short questions and take notes, and at the end you'll check the notes, change anything and approve them yourself.",
+   "To start: what kind of work have you been doing recently?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:43:11.783Z"
+ },
+ {
+  "id": "trn_voe0sfmr1xk8",
+  "interviewId": "int_46dupziq8h10",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Thanks, that's clear. Could you describe one specific Java service or task you built yourself with Spring?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Could you describe one specific Java service or task you built yourself with Spring?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:34:07.597Z"
+ },
+ {
+  "id": "trn_pfozifvgbkvl",
+  "interviewId": "int_46dupziq8h10",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "tools",
+  "text": "Java and Spring Boot, PostgreSQL, and Maven for builds. IntelliJ every day. Docker for running things locally, and Jenkins for the pipeline that runs our tests. I write the tests with JUnit. I'm okay with JavaScript but I don't do much front-end.",
+  "sentences": [
+   "Java and Spring Boot, PostgreSQL, and Maven for builds.",
+   "IntelliJ every day.",
+   "Docker for running things locally, and Jenkins for the pipeline that runs our tests.",
+   "I write the tests with JUnit.",
+   "I'm okay with JavaScript but I don't do much front-end."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:34:11.065Z"
+ },
+ {
+  "id": "trn_vbhfwl9le7ok",
+  "interviewId": "int_46dupziq8h10",
+  "index": 7,
+  "role": "participant",
+  "kind": "answer",
+  "target": "people",
+  "text": "I'm in a team of four developers and I work with a product owner who talks to the shop owners. Support sends me the odd hard bug directly, and I'm usually the one who explains to them in plain words what went wrong. I also help the newest developer, who joined in the spring, find their way around the codebase.",
+  "sentences": [
+   "I'm in a team of four developers and I work with a product owner who talks to the shop owners.",
+   "Support sends me the odd hard bug directly, and I'm usually the one who explains to them in plain words what went wrong.",
+   "I also help the newest developer, who joined in the spring, find their way around the codebase."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:34:14.211Z"
+ },
+ {
+  "id": "trn_q8m18cqz231k",
+  "interviewId": "int_46dupziq8h10",
+  "index": 9,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "The unique key: I added a column that holds a request identifier from the client, and a unique index on it. When the same identifier comes twice, the service now returns the invoice it already created instead of making a new one.",
+  "sentences": [
+   "The unique key: I added a column that holds a request identifier from the client, and a unique index on it.",
+   "When the same identifier comes twice, the service now returns the invoice it already created instead of making a new one."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:34:17.595Z"
+ },
+ {
+  "id": "trn_mt2dlxfyhulk",
+  "interviewId": "int_46dupziq8h10",
+  "index": 11,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "More back-end work, maybe in a bigger team where I can learn from people who have done this longer. Work language English or Finnish, both are fine for me. Hybrid, and I could start after a notice period of two months.",
+  "sentences": [
+   "More back-end work, maybe in a bigger team where I can learn from people who have done this longer.",
+   "Work language English or Finnish, both are fine for me.",
+   "Hybrid, and I could start after a notice period of two months."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:34:20.437Z"
+ },
+ {
+  "id": "trn_48q0cevwlu5d",
+  "interviewId": "int_whogmkj9671z",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "tools",
+  "text": "Käytän päivittäin tehtaan prosessinohjausjärjestelmää ja Exceliä, jossa teen trendit ja tilastolliset tarkastelut. Laboratoriossa mittaan kosteutta, viskositeettia ja sulaindeksiä. Kemikaalien käsittelyyn kuuluvat tietysti turvallisuustiedotteet ja riskinarviot, ja ne päivitän itse omille alueilleni.",
+  "sentences": [
+   "Käytän päivittäin tehtaan prosessinohjausjärjestelmää ja Exceliä, jossa teen trendit ja tilastolliset tarkastelut.",
+   "Laboratoriossa mittaan kosteutta, viskositeettia ja sulaindeksiä.",
+   "Kemikaalien käsittelyyn kuuluvat tietysti turvallisuustiedotteet ja riskinarviot, ja ne päivitän itse omille alueilleni."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:35:10.744Z"
+ },
+ {
+  "id": "trn_vkou7u5wvyx0",
+  "interviewId": "int_whogmkj9671z",
+  "index": 7,
+  "role": "participant",
+  "kind": "answer",
+  "target": "people",
+  "text": "Työskentelen tuotantopäällikön ja vuoropäälliköiden kanssa, ja käyttäjät kertovat minulle suoraan, kun jokin tuntuu poikkeavan. Laatuinsinööri ja minä kävimme yhdessä läpi poikkeamaraportit joka perjantai. Minun osuuteni on selvittää syy ja ehdottaa korjaus, päätökset tekee tuotantopäällikkö.",
+  "sentences": [
+   "Työskentelen tuotantopäällikön ja vuoropäälliköiden kanssa, ja käyttäjät kertovat minulle suoraan, kun jokin tuntuu poikkeavan.",
+   "Laatuinsinööri ja minä kävimme yhdessä läpi poikkeamaraportit joka perjantai.",
+   "Minun osuuteni on selvittää syy ja ehdottaa korjaus, päätökset tekee tuotantopäällikkö."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:35:13.818Z"
+ },
+ {
+  "id": "trn_dvuhl8vsf7hk",
+  "interviewId": "int_whogmkj9671z",
+  "index": 9,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "Kosteuden mittaus tehtiin niin, että otin jokaisesta erästä kolme näytettä ja mittasin ne kosteusanalysaattorilla ennen sulatusta. Kirjasin tulokset taulukkoon, josta näkyi heti, jos erä ylitti rajan, ja silloin se meni uudelleen kuivaukseen.",
+  "sentences": [
+   "Kosteuden mittaus tehtiin niin, että otin jokaisesta erästä kolme näytettä ja mittasin ne kosteusanalysaattorilla ennen sulatusta.",
+   "Kirjasin tulokset taulukkoon, josta näkyi heti, jos erä ylitti rajan, ja silloin se meni uudelleen kuivaukseen."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:35:16.957Z"
+ },
+ {
+  "id": "trn_fdce5fjho4oe",
+  "interviewId": "int_whogmkj9671z",
+  "index": 11,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "Riskinarvioinnista yksi esimerkki: kävin viime vuonna läpi värin sekoitusalueen ja huomasin, että pölynimuri oli väärässä paikassa annostelun suhteen. Ehdotin sen siirtoa, ja siirto tehtiin kuukauden sisällä.",
+  "sentences": [
+   "Riskinarvioinnista yksi esimerkki: kävin viime vuonna läpi värin sekoitusalueen ja huomasin, että pölynimuri oli väärässä paikassa annostelun suhteen.",
+   "Ehdotin sen siirtoa, ja siirto tehtiin kuukauden sisällä."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:35:20.313Z"
+ },
+ {
+  "id": "trn_js11c6d28e2u",
+  "interviewId": "int_whogmkj9671z",
+  "index": 13,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "Etsin prosessi- tai kehitysinsinöörin työtä, mieluiten sellaista, jossa pääsee kehittämään prosessia eikä vain ylläpitämään sitä. Työkieleksi käy suomi tai englanti. Mieluiten paikan päällä, mutta pari etäpäivää viikossa sopii. Voin aloittaa kahden kuukauden irtisanomisajan jälkeen.",
+  "sentences": [
+   "Etsin prosessi- tai kehitysinsinöörin työtä, mieluiten sellaista, jossa pääsee kehittämään prosessia eikä vain ylläpitämään sitä.",
+   "Työkieleksi käy suomi tai englanti.",
+   "Mieluiten paikan päällä, mutta pari etäpäivää viikossa sopii.",
+   "Voin aloittaa kahden kuukauden irtisanomisajan jälkeen."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:35:23.385Z"
+ },
+ {
+  "id": "trn_xf3n3rj25146",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Tack, det är tydligt. Kan du berätta om en specifik situation där du själv planerade eller genomförde något med barngruppen?",
+  "sentences": [
+   "Tack, det är tydligt.",
+   "Kan du berätta om en specifik situation där du själv planerade eller genomförde något med barngruppen?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:41:45.042Z"
+ },
+ {
+  "id": "trn_skt3bmtq9q6k",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "tools",
+  "text": "Jag använder pedagogisk dokumentation, alltså foton och korta anteckningar om vad barnen gör, och en digital plattform där föräldrarna kan se dem. Dessutom använder jag bilder och tecken som stöd i kommunikationen, sagoböcker, sånger och enkla experiment med vatten och färg. Mitt första hjälpen-kort är också uppdaterat.",
+  "sentences": [
+   "Jag använder pedagogisk dokumentation, alltså foton och korta anteckningar om vad barnen gör, och en digital plattform där föräldrarna kan se dem.",
+   "Dessutom använder jag bilder och tecken som stöd i kommunikationen, sagoböcker, sånger och enkla experiment med vatten och färg.",
+   "Mitt första hjälpen-kort är också uppdaterat."
+  ],
+  "sentencesOriginal": null,
+  "lang": "sv",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:41:48.932Z"
+ },
+ {
+  "id": "trn_5knquehb0259",
+  "interviewId": "int_39b3yjlmwqar",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Kiitos. Kerro yhdestä tehtävästä tai tilanteesta koululla, jonka hoidit itse alusta loppuun?",
+  "sentences": [
+   "Kiitos.",
+   "Kerro yhdestä tehtävästä tai tilanteesta koululla, jonka hoidit itse alusta loppuun?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:43:52.287Z"
+ },
+ {
+  "id": "trn_26gayrf69i8f",
+  "interviewId": "int_46dupziq8h10",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "tools",
+  "text": "What tools, software or methods do you use in that work?",
+  "sentences": [
+   "What tools, software or methods do you use in that work?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:34:10.999Z"
+ },
+ {
+  "id": "trn_912s43nj738e",
+  "interviewId": "int_46dupziq8h10",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "people",
+  "text": "Thanks. Who did you work with on the invoice service, and what was your own part?",
+  "sentences": [
+   "Thanks.",
+   "Who did you work with on the invoice service, and what was your own part?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:34:14.153Z"
+ },
+ {
+  "id": "trn_b9u1sdhu6dr2",
+  "interviewId": "int_46dupziq8h10",
+  "index": 8,
+  "role": "interviewer",
+  "kind": "probe",
+  "target": "example",
+  "text": "Could you describe one concrete back-end project you worked on and what you were responsible for yourself?",
+  "sentences": [
+   "Could you describe one concrete back-end project you worked on and what you were responsible for yourself?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:34:17.522Z"
+ },
+ {
+  "id": "trn_oark03thjodl",
+  "interviewId": "int_46dupziq8h10",
+  "index": 10,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "What kind of work are you looking for next?",
+  "sentences": [
+   "What kind of work are you looking for next?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:34:20.375Z"
+ },
+ {
+  "id": "trn_4vzm3jya2org",
+  "interviewId": "int_46dupziq8h10",
+  "index": 12,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Thank you, that's all my questions. Your notes are ready: check them, change or remove anything, and approve only what you're happy with.",
+  "sentences": [
+   "Thank you, that's all my questions.",
+   "Your notes are ready: check them, change or remove anything, and approve only what you're happy with."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:34:22.518Z"
+ },
+ {
+  "id": "trn_u0iy1qb6yf1q",
+  "interviewId": "int_whogmkj9671z",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "tools",
+  "text": "Kiitos. Mitä työkaluja, laitteita tai ohjelmistoja käytit tuossa työssä?",
+  "sentences": [
+   "Kiitos.",
+   "Mitä työkaluja, laitteita tai ohjelmistoja käytit tuossa työssä?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:35:10.685Z"
+ },
+ {
+  "id": "trn_npatiyi78rb9",
+  "interviewId": "int_whogmkj9671z",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "people",
+  "text": "Kiitos. Kenen kanssa tai kenelle teit tätä työtä, ja mikä oli oma osuutesi yhteistyössä?",
+  "sentences": [
+   "Kiitos.",
+   "Kenen kanssa tai kenelle teit tätä työtä, ja mikä oli oma osuutesi yhteistyössä?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:35:13.756Z"
+ },
+ {
+  "id": "trn_mzdc36cfge85",
+  "interviewId": "int_whogmkj9671z",
+  "index": 8,
+  "role": "interviewer",
+  "kind": "probe",
+  "target": "example",
+  "text": "Kiitos. Voitko kertoa yhden konkreettisen esimerkin laboratorionäytteenotosta?",
+  "sentences": [
+   "Kiitos.",
+   "Voitko kertoa yhden konkreettisen esimerkin laboratorionäytteenotosta?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:35:16.892Z"
+ },
+ {
+  "id": "trn_0qmm5yxpm3to",
+  "interviewId": "int_whogmkj9671z",
+  "index": 10,
+  "role": "interviewer",
+  "kind": "probe",
+  "target": "example",
+  "text": "Kiitos. Voitko kertoa yhden konkreettisen esimerkin tuotantohukan vähentämisestä, mukaan lukien käyttämäsi työkalut ja näytteenottotavat?",
+  "sentences": [
+   "Kiitos.",
+   "Voitko kertoa yhden konkreettisen esimerkin tuotantohukan vähentämisestä, mukaan lukien käyttämäsi työkalut ja näytteenottotavat?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:35:20.236Z"
+ },
+ {
+  "id": "trn_3g2q6pc9v4da",
+  "interviewId": "int_whogmkj9671z",
+  "index": 12,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "Kiitos. Millaista työtä etsit seuraavaksi?",
+  "sentences": [
+   "Kiitos.",
+   "Millaista työtä etsit seuraavaksi?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:35:23.315Z"
+ },
+ {
+  "id": "trn_dp80qacurcy5",
+  "interviewId": "int_whogmkj9671z",
+  "index": 14,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Kiitos, siinä olivat kaikki kysymykseni. Muistiinpanosi ovat nyt valmiit: tarkista ne, muuta tai poista mitä haluat ja hyväksy vain se, mihin olet tyytyväinen.",
+  "sentences": [
+   "Kiitos, siinä olivat kaikki kysymykseni.",
+   "Muistiinpanosi ovat nyt valmiit: tarkista ne, muuta tai poista mitä haluat ja hyväksy vain se, mihin olet tyytyväinen."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:35:25.771Z"
+ },
+ {
+  "id": "trn_4nj327tbv5z4",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "tools",
+  "text": "Tack. Vilka verktyg, material eller arbetssätt använder du i ditt arbete med barngruppen?",
+  "sentences": [
+   "Tack.",
+   "Vilka verktyg, material eller arbetssätt använder du i ditt arbete med barngruppen?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:41:48.859Z"
+ },
+ {
+  "id": "trn_nkipsq9ewdv2",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "people",
+  "text": "Tack. Vilka arbetade du tillsammans med eller för i det här arbetet, och vad var din egen del?",
+  "sentences": [
+   "Tack.",
+   "Vilka arbetade du tillsammans med eller för i det här arbetet, och vad var din egen del?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:41:51.954Z"
+ },
+ {
+  "id": "trn_z2ocwfijezzl",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "index": 8,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "beyond",
+  "text": "Finns det något du kan från studier, volontärarbete eller ett tidigare jobb som du vill få antecknat?",
+  "sentences": [
+   "Finns det något du kan från studier, volontärarbete eller ett tidigare jobb som du vill få antecknat?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:41:57.972Z"
+ },
+ {
+  "id": "trn_c6r4j2o5u7xs",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "index": 10,
+  "role": "interviewer",
+  "kind": "probe",
+  "target": "example",
+  "text": "Tack. Kan du ge ett konkret exempel på hur du dokumenterade inför ett föräldrasamtal, och vilka verktyg du använde?",
+  "sentences": [
+   "Tack.",
+   "Kan du ge ett konkret exempel på hur du dokumenterade inför ett föräldrasamtal, och vilka verktyg du använde?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:42:01.182Z"
+ },
+ {
+  "id": "trn_gwytp6dt7iqy",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "index": 12,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "Tack. Vad för slags arbete söker du nu, och vilka uppgifter vill du ha där?",
+  "sentences": [
+   "Tack.",
+   "Vad för slags arbete söker du nu, och vilka uppgifter vill du ha där?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:42:04.248Z"
+ },
+ {
+  "id": "trn_e5hie8rcaey4",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "index": 14,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Tack, det var alla mina frågor. Dina anteckningar är klara: gå igenom dem, ändra eller ta bort det du vill och godkänn bara det du är nöjd med.",
+  "sentences": [
+   "Tack, det var alla mina frågor.",
+   "Dina anteckningar är klara: gå igenom dem, ändra eller ta bort det du vill och godkänn bara det du är nöjd med."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:42:06.621Z"
+ },
+ {
+  "id": "trn_rge1l0nkln8p",
+  "interviewId": "int_rohszk2tt337",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "What kind of work would you like to do next?",
+  "sentences": [
+   "What kind of work would you like to do next?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:43:17.152Z"
+ },
+ {
+  "id": "trn_u98yizwkghjg",
+  "interviewId": "int_39b3yjlmwqar",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "Kiitos. Millaista työtä etsit seuraavaksi?",
+  "sentences": [
+   "Kiitos.",
+   "Millaista työtä etsit seuraavaksi?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:43:55.254Z"
+ },
+ {
+  "id": "trn_rcuflgufshke",
+  "interviewId": "int_39b3yjlmwqar",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "Haluan jatkaa siivoustyössä, mieluiten päivä- tai aamuvuorossa, kohteessa jossa on koneita. Kielenä suomi. Voisin aloittaa heti, kun irtisanomisaika on ohi, eli kuukauden päästä.",
+  "sentences": [
+   "Haluan jatkaa siivoustyössä, mieluiten päivä- tai aamuvuorossa, kohteessa jossa on koneita.",
+   "Kielenä suomi.",
+   "Voisin aloittaa heti, kun irtisanomisaika on ohi, eli kuukauden päästä."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:43:55.372Z"
+ },
+ {
+  "id": "trn_wemq301mg3kg",
+  "interviewId": "int_39b3yjlmwqar",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Kiitos, siinä olivat kaikki kysymykseni. Muistiinpanosi ovat nyt valmiit: tarkista ne, muuta tai poista mitä haluat ja hyväksy vain se, mihin olet tyytyväinen.",
+  "sentences": [
+   "Kiitos, siinä olivat kaikki kysymykseni.",
+   "Muistiinpanosi ovat nyt valmiit: tarkista ne, muuta tai poista mitä haluat ja hyväksy vain se, mihin olet tyytyväinen."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:43:57.453Z"
+ },
+ {
+  "id": "trn_37024u95s6g0",
+  "interviewId": "int_ibgj3thvm7dq",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hi, I'm an AI interviewer for WorkEspoo. I'll ask a few short questions, about four minutes, and take notes. At the end you'll check the notes, change anything and approve them yourself. To start: what kind of work have you been doing recently?",
+  "sentences": [
+   "Hi, I'm an AI interviewer for WorkEspoo.",
+   "I'll ask a few short questions, about four minutes, and take notes.",
+   "At the end you'll check the notes, change anything and approve them yourself.",
+   "To start: what kind of work have you been doing recently?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:44:22.980Z"
+ },
+ {
+  "id": "trn_hl147ps5aa4c",
+  "interviewId": "int_ibgj3thvm7dq",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Thanks, that's clear. Could you describe one specific order-picking or truck-loading task you handled yourself in the tyre warehouse?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Could you describe one specific order-picking or truck-loading task you handled yourself in the tyre warehouse?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:44:24.026Z"
+ },
+ {
+  "id": "trn_yfqr03yptnx3",
+  "interviewId": "int_3x0gy2m73r5q",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hi, I'm an AI interviewer for WorkEspoo. I'll ask a few short questions, about four minutes, and take notes. At the end you'll check the notes, change anything and approve them yourself. To start: what kind of work have you been doing recently?",
+  "sentences": [
+   "Hi, I'm an AI interviewer for WorkEspoo.",
+   "I'll ask a few short questions, about four minutes, and take notes.",
+   "At the end you'll check the notes, change anything and approve them yourself.",
+   "To start: what kind of work have you been doing recently?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:36:28.821Z"
+ },
+ {
+  "id": "trn_b8rv6bixqsos",
+  "interviewId": "int_3x0gy2m73r5q",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "For the last eleven years I've been a site engineer and later site manager on concrete-frame housing and office projects around Espoo and Helsinki. Day to day I plan the pours and the formwork with the foremen, check the drawings against what's built, and keep the quality documents in order. I'm 53, and I came from Poland in 2008 to supervise the concrete on a bridge project, and then I stayed.",
+  "sentences": [
+   "For the last eleven years I've been a site engineer and later site manager on concrete-frame housing and office projects around Espoo and Helsinki.",
+   "Day to day I plan the pours and the formwork with the foremen, check the drawings against what's built, and keep the quality documents in order.",
+   "I'm 53, and I came from Poland in 2008 to supervise the concrete on a bridge project, and then I stayed."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:36:28.932Z"
+ },
+ {
+  "id": "trn_5xbo63tcew2c",
+  "interviewId": "int_3x0gy2m73r5q",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "On one housing block the drawings for the stairwell did not match the structural drawings, so the openings were in different places. I found it when I overlaid the two sets before the formwork went up, called the designers the same day, and we agreed a corrected opening. Because we caught it before pouring, nobody had to break out concrete.",
+  "sentences": [
+   "On one housing block the drawings for the stairwell did not match the structural drawings, so the openings were in different places.",
+   "I found it when I overlaid the two sets before the formwork went up, called the designers the same day, and we agreed a corrected opening.",
+   "Because we caught it before pouring, nobody had to break out concrete."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:36:30.286Z"
+ },
+ {
+  "id": "trn_z24w11n4t700",
+  "interviewId": "int_y9viihp9qr2k",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hi, I'm an AI interviewer for WorkEspoo. I'll ask a few short questions, about four minutes, and take notes. At the end you'll check the notes, change anything and approve them yourself. To start: what kind of work have you been doing recently?",
+  "sentences": [
+   "Hi, I'm an AI interviewer for WorkEspoo.",
+   "I'll ask a few short questions, about four minutes, and take notes.",
+   "At the end you'll check the notes, change anything and approve them yourself.",
+   "To start: what kind of work have you been doing recently?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:37:42.949Z"
+ },
+ {
+  "id": "trn_13s40lr3cytn",
+  "interviewId": "int_y9viihp9qr2k",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "I'm a mechanical design engineer at a company that makes industrial pumps. I design components, run flow and strength simulations, and go down to the workshop when a prototype doesn't behave. I've been there nine years, after my master's here in Finland. I'm Muslim and fast in Ramadan, so I plan my heavy simulation runs for the evenings that month, and nobody has ever had a problem with it.",
+  "sentences": [
+   "I'm a mechanical design engineer at a company that makes industrial pumps.",
+   "I design components, run flow and strength simulations, and go down to the workshop when a prototype doesn't behave.",
+   "I've been there nine years, after my master's here in Finland.",
+   "I'm Muslim and fast in Ramadan, so I plan my heavy simulation runs for the evenings that month, and nobody has ever had a problem with it."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:37:43.075Z"
+ },
+ {
+  "id": "trn_spa57sbq8w5f",
+  "interviewId": "int_y9viihp9qr2k",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "We had a pump housing that kept cracking near the outlet during pressure tests. I built a finite element model, saw a stress peak at a sharp internal corner, and redesigned it with a larger radius and a slightly thicker wall. Then I checked the flow again to make sure the change didn't hurt the efficiency. The new housing passed the pressure test on the first try.",
+  "sentences": [
+   "We had a pump housing that kept cracking near the outlet during pressure tests.",
+   "I built a finite element model, saw a stress peak at a sharp internal corner, and redesigned it with a larger radius and a slightly thicker wall.",
+   "Then I checked the flow again to make sure the change didn't hurt the efficiency.",
+   "The new housing passed the pressure test on the first try."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:37:44.391Z"
+ },
+ {
+  "id": "trn_4a90xyo8z0fy",
+  "interviewId": "int_5hsabxbuyfp6",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hei, olen WorkEspoon tekoälyhaastattelija. Kysyn muutaman lyhyen kysymyksen, siihen menee noin neljä minuuttia, ja kirjaan vastauksistasi muistiinpanoja. Lopuksi tarkistat ne, muutat mitä haluat ja hyväksyt ne itse. Aloitetaan: millaista työtä olet tehnyt viime aikoina?",
+  "sentences": [
+   "Hei, olen WorkEspoon tekoälyhaastattelija.",
+   "Kysyn muutaman lyhyen kysymyksen, siihen menee noin neljä minuuttia, ja kirjaan vastauksistasi muistiinpanoja.",
+   "Lopuksi tarkistat ne, muutat mitä haluat ja hyväksyt ne itse.",
+   "Aloitetaan: millaista työtä olet tehnyt viime aikoina?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:39:05.626Z"
+ },
+ {
+  "id": "trn_7rky6357tqk8",
+  "interviewId": "int_5hsabxbuyfp6",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "Olen työskennellyt kotihoidon sairaanhoitajana seitsemän vuotta. Käyn asiakkaiden luona antamassa lääkkeitä, hoidan haavoja ja seuraan vointia, ja kirjaan kaiken asiakastietojärjestelmään. Minulla on astma, mutta lääkkeiden antaminen ja haavanhoito sujuvat minulta pölyisissäkin kodeissa, kun tarkistan ne kotikäynnit työpäivän ensimmäiseksi.",
+  "sentences": [
+   "Olen työskennellyt kotihoidon sairaanhoitajana seitsemän vuotta.",
+   "Käyn asiakkaiden luona antamassa lääkkeitä, hoidan haavoja ja seuraan vointia, ja kirjaan kaiken asiakastietojärjestelmään.",
+   "Minulla on astma, mutta lääkkeiden antaminen ja haavanhoito sujuvat minulta pölyisissäkin kodeissa, kun tarkistan ne kotikäynnit työpäivän ensimmäiseksi."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:39:05.754Z"
+ },
+ {
+  "id": "trn_h1vtykpgdctz",
+  "interviewId": "int_5hsabxbuyfp6",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "Yksi vanhus oli kaatunut kahdesti viikossa, eikä kukaan ollut yhdistänyt asiaa. Kävin läpi hänen lääkelistansa ja huomasin, että verenpainelääke ja unilääke yhdessä saivat hänet huteraksi iltaisin. Soitin lääkärille, lääkitystä muutettiin, ja kaatuilu loppui. Kirjasin asian ja kerroin siitä omaisille ja kollegoille seuraavassa vuoronvaihdossa.",
+  "sentences": [
+   "Yksi vanhus oli kaatunut kahdesti viikossa, eikä kukaan ollut yhdistänyt asiaa.",
+   "Kävin läpi hänen lääkelistansa ja huomasin, että verenpainelääke ja unilääke yhdessä saivat hänet huteraksi iltaisin.",
+   "Soitin lääkärille, lääkitystä muutettiin, ja kaatuilu loppui.",
+   "Kirjasin asian ja kerroin siitä omaisille ja kollegoille seuraavassa vuoronvaihdossa."
+  ],
+  "sentencesOriginal": null,
+  "lang": "fi",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:39:07.022Z"
+ },
+ {
+  "id": "trn_a1dha6b4uilz",
+  "interviewId": "int_g5c966tjew5l",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hi, I'm an AI interviewer for WorkEspoo. I'll ask a few short questions, about four minutes, and take notes. At the end you'll check the notes, change anything and approve them yourself. To start: what kind of work have you been doing recently?",
+  "sentences": [
+   "Hi, I'm an AI interviewer for WorkEspoo.",
+   "I'll ask a few short questions, about four minutes, and take notes.",
+   "At the end you'll check the notes, change anything and approve them yourself.",
+   "To start: what kind of work have you been doing recently?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:40:24.638Z"
+ },
+ {
+  "id": "trn_3qnaifka6zkc",
+  "interviewId": "int_3x0gy2m73r5q",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Thanks, that's clear. Could you describe one specific concrete pour or formwork task you planned and handled yourself?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Could you describe one specific concrete pour or formwork task you planned and handled yourself?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:36:30.201Z"
+ },
+ {
+  "id": "trn_7whev2xcrjyx",
+  "interviewId": "int_3x0gy2m73r5q",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "tools",
+  "text": "Revit and AutoCAD for reading the models and drawings, a tablet on site for the drawings and photos, and Excel for the pour schedules. I know the Finnish building code well and I fill in the inspection documents myself. Total station, level and laser for checking positions.",
+  "sentences": [
+   "Revit and AutoCAD for reading the models and drawings, a tablet on site for the drawings and photos, and Excel for the pour schedules.",
+   "I know the Finnish building code well and I fill in the inspection documents myself.",
+   "Total station, level and laser for checking positions."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:36:33.509Z"
+ },
+ {
+  "id": "trn_gsnn37kb8sp7",
+  "interviewId": "int_3x0gy2m73r5q",
+  "index": 7,
+  "role": "participant",
+  "kind": "answer",
+  "target": "people",
+  "text": "I lead a crew of about twenty-five on site: the foremen, formwork carpenters and rebar fitters, plus subcontractors for electrical and ventilation. I report to the project manager and talk with the client's supervisor every week. My part is the schedule and the quality, not the budget.",
+  "sentences": [
+   "I lead a crew of about twenty-five on site: the foremen, formwork carpenters and rebar fitters, plus subcontractors for electrical and ventilation.",
+   "I report to the project manager and talk with the client's supervisor every week.",
+   "My part is the schedule and the quality, not the budget."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:36:36.649Z"
+ },
+ {
+  "id": "trn_o61qorwpb6dh",
+  "interviewId": "int_3x0gy2m73r5q",
+  "index": 9,
+  "role": "participant",
+  "kind": "answer",
+  "target": "beyond",
+  "text": "I started as a carpenter in my twenties, so I can read what the crew is doing. I also hold the site safety qualification and I run the safety walk every Monday. I've trained two young engineers to become supervisors.",
+  "sentences": [
+   "I started as a carpenter in my twenties, so I can read what the crew is doing.",
+   "I also hold the site safety qualification and I run the safety walk every Monday.",
+   "I've trained two young engineers to become supervisors."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:36:39.712Z"
+ },
+ {
+  "id": "trn_m5b9boe22jig",
+  "interviewId": "int_3x0gy2m73r5q",
+  "index": 11,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "The overlay was done in the model viewer: I laid the structural model over the architect's one and flicked between them level by level. The stairwell openings were about ten centimetres out. I took screenshots, sent them with the drawing numbers to both designers, and asked them to confirm which one was right.",
+  "sentences": [
+   "The overlay was done in the model viewer: I laid the structural model over the architect's one and flicked between them level by level.",
+   "The stairwell openings were about ten centimetres out.",
+   "I took screenshots, sent them with the drawing numbers to both designers, and asked them to confirm which one was right."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:36:42.762Z"
+ },
+ {
+  "id": "trn_vfx8d414l7cw",
+  "interviewId": "int_3x0gy2m73r5q",
+  "index": 13,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "Site manager or construction supervisor job on larger projects. English and Finnish both work for me. On site, naturally. I could start in January.",
+  "sentences": [
+   "Site manager or construction supervisor job on larger projects.",
+   "English and Finnish both work for me.",
+   "On site, naturally.",
+   "I could start in January."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:36:45.864Z"
+ },
+ {
+  "id": "trn_0ma11oies23p",
+  "interviewId": "int_y9viihp9qr2k",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Thanks, that's clear. Could you describe one specific prototype problem you handled yourself in the workshop?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Could you describe one specific prototype problem you handled yourself in the workshop?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:37:44.329Z"
+ },
+ {
+  "id": "trn_jnyq4r9y39w3",
+  "interviewId": "int_y9viihp9qr2k",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "tools",
+  "text": "SolidWorks for 3D modelling and drawings, Ansys for strength and flow simulations, MATLAB for scripts when I need to process test data. We use a PDM system for revisions. In the workshop I use calipers and a coordinate measuring machine for critical dimensions, and I can read the shop's CNC programs.",
+  "sentences": [
+   "SolidWorks for 3D modelling and drawings, Ansys for strength and flow simulations, MATLAB for scripts when I need to process test data.",
+   "We use a PDM system for revisions.",
+   "In the workshop I use calipers and a coordinate measuring machine for critical dimensions, and I can read the shop's CNC programs."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:37:47.724Z"
+ },
+ {
+  "id": "trn_f9vy5tecxbep",
+  "interviewId": "int_y9viihp9qr2k",
+  "index": 7,
+  "role": "participant",
+  "kind": "answer",
+  "target": "people",
+  "text": "I'm in a design group of seven. I work with the test engineers who run the pressure and performance tests, and with purchasing about suppliers' tolerances. Sales sometimes bring me customer questions directly. I own the design of the housings and impellers, and I review the drawings of the newer people in the group.",
+  "sentences": [
+   "I'm in a design group of seven.",
+   "I work with the test engineers who run the pressure and performance tests, and with purchasing about suppliers' tolerances.",
+   "Sales sometimes bring me customer questions directly.",
+   "I own the design of the housings and impellers, and I review the drawings of the newer people in the group."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:37:50.702Z"
+ },
+ {
+  "id": "trn_gyl0g0qzo1ja",
+  "interviewId": "int_y9viihp9qr2k",
+  "index": 9,
+  "role": "participant",
+  "kind": "answer",
+  "target": "beyond",
+  "text": "I wrote my thesis on cavitation in pumps, so I know the theory well enough to explain it. On the side I've built a small 3D printed test rig at home for flow experiments, and once a year I give a guest lecture on simulation at my old university.",
+  "sentences": [
+   "I wrote my thesis on cavitation in pumps, so I know the theory well enough to explain it.",
+   "On the side I've built a small 3D printed test rig at home for flow experiments, and once a year I give a guest lecture",
+   "on simulation at my old university."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:37:53.711Z"
+ },
+ {
+  "id": "trn_r5f4gv4b759w",
+  "interviewId": "int_y9viihp9qr2k",
+  "index": 11,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "The simulation work: I meshed the housing with finer elements around the corner, applied the test pressure, and compared the peak stress to the material's yield limit. The first version was above the limit, and the new radius brought it comfortably under.",
+  "sentences": [
+   "The simulation work: I meshed the housing with finer elements around the corner, applied the test pressure, and compared the peak stress to the material's yield limit.",
+   "The first version was above the limit, and the new radius brought it comfortably under."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:37:56.752Z"
+ },
+ {
+  "id": "trn_d7yfq5fscyxc",
+  "interviewId": "int_y9viihp9qr2k",
+  "index": 13,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "Mechanical design or simulation work, product development in the machine or energy industry. English or Finnish both work. I'd prefer hybrid. My notice period is three months.",
+  "sentences": [
+   "Mechanical design or simulation work, product development in the machine or energy industry.",
+   "English or Finnish both work.",
+   "I'd prefer hybrid.",
+   "My notice period is three months."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:38:00.085Z"
+ },
+ {
+  "id": "trn_hyfwbqf58lqn",
+  "interviewId": "int_5hsabxbuyfp6",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Kiitos. Kerro yhdestä kotikäynnistä tai tilanteesta, jonka hoidit itse alusta loppuun?",
+  "sentences": [
+   "Kiitos.",
+   "Kerro yhdestä kotikäynnistä tai tilanteesta, jonka hoidit itse alusta loppuun?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:39:06.957Z"
+ },
+ {
+  "id": "trn_tkl5b7gxyzgp",
+  "interviewId": "int_ibgj3thvm7dq",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "tools",
+  "text": "What tools, equipment, software or methods do you use in that warehouse work?",
+  "sentences": [
+   "What tools, equipment, software or methods do you use in that warehouse work?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:44:27.085Z"
+ },
+ {
+  "id": "trn_oix4jxnd55yz",
+  "interviewId": "int_ibgj3thvm7dq",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "people",
+  "text": "Who did you usually work with or for in the warehouse, and what was your own part in the team?",
+  "sentences": [
+   "Who did you usually work with or for in the warehouse, and what was your own part in the team?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:44:30.206Z"
+ },
+ {
+  "id": "trn_glxx8mhxiky8",
+  "interviewId": "int_3x0gy2m73r5q",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "tools",
+  "text": "What tools, equipment, software or methods do you use for planning pours, checking drawings and keeping quality documents?",
+  "sentences": [
+   "What tools, equipment, software or methods do you use for planning pours, checking drawings and keeping quality documents?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:36:33.405Z"
+ },
+ {
+  "id": "trn_4xekoogizxtg",
+  "interviewId": "int_3x0gy2m73r5q",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "people",
+  "text": "Thanks, that's clear. Who did you usually work with on site, and what was your own part in the team?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Who did you usually work with on site, and what was your own part in the team?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:36:36.572Z"
+ },
+ {
+  "id": "trn_xc2ullccnx1j",
+  "interviewId": "int_3x0gy2m73r5q",
+  "index": 8,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "beyond",
+  "text": "What have you done outside this main job, such as studies, volunteering, side projects or a different earlier job?",
+  "sentences": [
+   "What have you done outside this main job, such as studies, volunteering, side projects or a different earlier job?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:36:39.624Z"
+ },
+ {
+  "id": "trn_t3krky3k9uvl",
+  "interviewId": "int_3x0gy2m73r5q",
+  "index": 10,
+  "role": "interviewer",
+  "kind": "probe",
+  "target": "example",
+  "text": "Could you describe one specific concrete supervision situation and the tools you used, or would you prefer to skip this?",
+  "sentences": [
+   "Could you describe one specific concrete supervision situation and the tools you used, or would you prefer to skip this?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:36:42.713Z"
+ },
+ {
+  "id": "trn_85zlrhc1b1cp",
+  "interviewId": "int_3x0gy2m73r5q",
+  "index": 12,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "Thanks, that's clear. What kind of work are you looking for next?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "What kind of work are you looking for next?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:36:45.603Z"
+ },
+ {
+  "id": "trn_htfm31uar5p7",
+  "interviewId": "int_3x0gy2m73r5q",
+  "index": 14,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Thank you, that's all my questions. Your notes are ready: check them, change or remove anything, and approve only what you're happy with.",
+  "sentences": [
+   "Thank you, that's all my questions.",
+   "Your notes are ready: check them, change or remove anything, and approve only what you're happy with."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:36:48.174Z"
+ },
+ {
+  "id": "trn_qoapbr39odf5",
+  "interviewId": "int_y9viihp9qr2k",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "tools",
+  "text": "What tools, software or methods do you use in that work?",
+  "sentences": [
+   "What tools, software or methods do you use in that work?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:37:47.653Z"
+ },
+ {
+  "id": "trn_jyzfuo5eh1u3",
+  "interviewId": "int_y9viihp9qr2k",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "people",
+  "text": "Thanks, that's clear. Who did you work with on the pump housing, and what was your own part?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Who did you work with on the pump housing, and what was your own part?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:37:50.640Z"
+ },
+ {
+  "id": "trn_kt6gneq1o45d",
+  "interviewId": "int_y9viihp9qr2k",
+  "index": 8,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "beyond",
+  "text": "What have you done outside your main job, such as studies, volunteering, side projects or different work?",
+  "sentences": [
+   "What have you done outside your main job, such as studies, volunteering, side projects or different work?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:37:53.656Z"
+ },
+ {
+  "id": "trn_fjxzi5h3shrz",
+  "interviewId": "int_y9viihp9qr2k",
+  "index": 10,
+  "role": "interviewer",
+  "kind": "probe",
+  "target": "example",
+  "text": "Thanks, that's clear. Which simulation software do you use, and can you describe one prototype problem you solved in the workshop?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Which simulation software do you use, and can you describe one prototype problem you solved in the workshop?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:37:56.697Z"
+ },
+ {
+  "id": "trn_91hesf7o82n2",
+  "interviewId": "int_y9viihp9qr2k",
+  "index": 12,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "Thanks, that's clear. What kind of work are you looking for next?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "What kind of work are you looking for next?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:37:59.798Z"
+ },
+ {
+  "id": "trn_pneau773tuie",
+  "interviewId": "int_y9viihp9qr2k",
+  "index": 14,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Thank you, that's all my questions. Your notes are ready: check them, change or remove anything, and approve only what you're happy with.",
+  "sentences": [
+   "Thank you, that's all my questions.",
+   "Your notes are ready: check them, change or remove anything, and approve only what you're happy with."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:38:02.394Z"
+ },
+ {
+  "id": "trn_e1mfdy7n3dda",
+  "interviewId": "int_5hsabxbuyfp6",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "tools",
+  "text": "Kiitos. Mitä järjestelmiä tai menetelmiä käytit lääkityksen tarkistamisessa, voinnin seuraamisessa ja tiedon jakamisessa muille?",
+  "sentences": [
+   "Kiitos.",
+   "Mitä järjestelmiä tai menetelmiä käytit lääkityksen tarkistamisessa, voinnin seuraamisessa ja tiedon jakamisessa muille?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:39:10.262Z"
+ },
+ {
+  "id": "trn_umh2i7d7e3rs",
+  "interviewId": "int_5hsabxbuyfp6",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "people",
+  "text": "Kiitos. Kenen kanssa teit yhteistyötä tässä tilanteessa, ja mikä oli sinun oma osuutesi suhteessa lääkäriin, omaisiin ja kollegoihin?",
+  "sentences": [
+   "Kiitos.",
+   "Kenen kanssa teit yhteistyötä tässä tilanteessa, ja mikä oli sinun oma osuutesi suhteessa lääkäriin, omaisiin ja kollegoihin?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:39:14.001Z"
+ },
+ {
+  "id": "trn_l1obbssz2l83",
+  "interviewId": "int_5hsabxbuyfp6",
+  "index": 8,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "beyond",
+  "text": "Kiitos. Mitä opintoja, vapaaehtoistyötä tai sivuprojekteja sinulla on ollut nykyisen työsi ulkopuolella?",
+  "sentences": [
+   "Kiitos.",
+   "Mitä opintoja, vapaaehtoistyötä tai sivuprojekteja sinulla on ollut nykyisen työsi ulkopuolella?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:39:17.342Z"
+ },
+ {
+  "id": "trn_ylsea0zoszfo",
+  "interviewId": "int_5hsabxbuyfp6",
+  "index": 10,
+  "role": "interviewer",
+  "kind": "probe",
+  "target": "example",
+  "text": "Kiitos. Voitko kertoa yhden konkreettisen esimerkin asiakkaan voinnin seurannasta kotikäynnillä?",
+  "sentences": [
+   "Kiitos.",
+   "Voitko kertoa yhden konkreettisen esimerkin asiakkaan voinnin seurannasta kotikäynnillä?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:39:20.834Z"
+ },
+ {
+  "id": "trn_fd1f3mp8zodm",
+  "interviewId": "int_5hsabxbuyfp6",
+  "index": 12,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "Kiitos. Millaista työtä etsit seuraavaksi?",
+  "sentences": [
+   "Kiitos.",
+   "Millaista työtä etsit seuraavaksi?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:39:23.869Z"
+ },
+ {
+  "id": "trn_fj3kcclskl24",
+  "interviewId": "int_5hsabxbuyfp6",
+  "index": 14,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Kiitos, siinä olivat kaikki kysymykseni. Muistiinpanosi ovat nyt valmiit: tarkista ne, muuta tai poista mitä haluat ja hyväksy vain se, mihin olet tyytyväinen.",
+  "sentences": [
+   "Kiitos, siinä olivat kaikki kysymykseni.",
+   "Muistiinpanosi ovat nyt valmiit: tarkista ne, muuta tai poista mitä haluat ja hyväksy vain se, mihin olet tyytyväinen."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:39:26.235Z"
+ },
+ {
+  "id": "trn_iu2b2h70err9",
+  "interviewId": "int_g5c966tjew5l",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "tools",
+  "text": "Thanks, that's clear. What tools, equipment or software do you use in that work?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "What tools, equipment or software do you use in that work?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:40:32.297Z"
+ },
+ {
+  "id": "trn_gc6dklbtkbeg",
+  "interviewId": "int_g5c966tjew5l",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "people",
+  "text": "Who did you work with or for, and what was your part?",
+  "sentences": [
+   "Who did you work with or for, and what was your part?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:40:39.228Z"
+ },
+ {
+  "id": "trn_toipr9nkufiu",
+  "interviewId": "int_g5c966tjew5l",
+  "index": 8,
+  "role": "interviewer",
+  "kind": "probe",
+  "target": "example",
+  "text": "Could you describe one time you changed a dressing and watched for complications, including any tools or systems you used?",
+  "sentences": [
+   "Could you describe one time you changed a dressing and watched for complications, including any tools or systems you used?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:40:42.541Z"
+ },
+ {
+  "id": "trn_ok1sku4kfdi8",
+  "interviewId": "int_g5c966tjew5l",
+  "index": 10,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "What kind of work would you like to do next?",
+  "sentences": [
+   "What kind of work would you like to do next?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:40:46.303Z"
+ },
+ {
+  "id": "trn_0xtfu4jkbkx1",
+  "interviewId": "int_wq6ggxdm2ndj",
+  "index": 7,
+  "role": "participant",
+  "kind": "answer",
+  "target": "people",
+  "text": "I vårt arbetslag är vi tre vuxna, och jag har ansvaret för planeringen. Jag har utvecklingssamtal med föräldrarna två gånger per år och pratar med dem vid hämtningen nästan varje dag. Ibland samarbetar jag med speciallärare och talterapeut när ett barn behöver stöd.",
+  "sentences": [
+   "I vårt arbetslag är vi tre vuxna, och jag har ansvaret för planeringen.",
+   "Jag har utvecklingssamtal med föräldrarna två gånger per år och pratar med dem vid hämtningen nästan varje dag.",
+   "Ibland samarbetar jag med speciallärare och talterapeut när ett barn behöver stöd."
+  ],
+  "sentencesOriginal": null,
+  "lang": "sv",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:41:52.025Z"
+ },
+ {
+  "id": "trn_qv8vnapqjadf",
+  "interviewId": "int_tyc8b9ril3y5",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hi, I'm an AI interviewer for WorkEspoo. I'll ask a few short questions, about four minutes, and take notes. At the end you'll check the notes, change anything and approve them yourself. To start: what kind of work have you been doing recently?",
+  "sentences": [
+   "Hi, I'm an AI interviewer for WorkEspoo.",
+   "I'll ask a few short questions, about four minutes, and take notes.",
+   "At the end you'll check the notes, change anything and approve them yourself.",
+   "To start: what kind of work have you been doing recently?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:26:31.952Z"
+ },
+ {
+  "id": "trn_fwogiaq115xp",
+  "interviewId": "int_tyc8b9ril3y5",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "For the last three years I've been a developer at a company that runs electricity metering. Mostly Python and PostgreSQL: I maintain the nightly jobs that pull sensor readings in and load them into the database, and I look after the checks on top of that. I'm 38, and we moved here from Porto in Portugal when my husband got a job at a research institute, so the Python and SQL checks I write are my first work in Finland.",
+  "sentences": [
+   "For the last three years I've been a developer at a company that runs electricity metering.",
+   "Mostly Python and PostgreSQL: I maintain the nightly jobs that pull sensor readings in and load them into the database, and I look after the checks on top of that.",
+   "I'm 38, and we moved here from Porto in Portugal when my husband got a job at a research institute,",
+   "so the Python and SQL checks I write are my first work in Finland."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:26:32.323Z"
+ },
+ {
+  "id": "trn_36ud9qzy822z",
+  "interviewId": "int_tyc8b9ril3y5",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Thanks, that's clear. Could you describe one specific nightly job or check you handled yourself, and what you did?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Could you describe one specific nightly job or check you handled yourself, and what you did?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:26:34.838Z"
+ },
+ {
+  "id": "trn_n6l42z8e6oc2",
+  "interviewId": "int_tyc8b9ril3y5",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "Last winter the morning report kept showing holes for some meters. I went through the loader logs and found that one supplier's files arrived twice with different timestamps, and my job was dropping the second batch. I changed the load to compare the batches properly, and I added a check that raises an alert when a meter has no readings for six hours. After that the holes were gone.",
+  "sentences": [
+   "Last winter the morning report kept showing holes for some meters.",
+   "I went through the loader logs and found that one supplier's files arrived twice with different timestamps, and my job was dropping the second batch.",
+   "I changed the load to compare the batches properly, and I added a check that raises an alert when a meter has no readings for six hours.",
+   "After that the holes were gone."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:26:34.937Z"
+ },
+ {
+  "id": "trn_9odnurr0c0gu",
+  "interviewId": "int_tyc8b9ril3y5",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "tools",
+  "text": "What tools, software, or methods did you use to change the load and add that alert?",
+  "sentences": [
+   "What tools, software, or methods did you use to change the load and add that alert?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:26:38.202Z"
+ },
+ {
+  "id": "trn_vkvzeijdhedz",
+  "interviewId": "int_tyc8b9ril3y5",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "tools",
+  "text": "Python every day, with pandas for the cleaning, and PostgreSQL for storage. SQL for the checks. Git and a CI pipeline, so every change gets tested before it goes live. I read logs a lot, honestly. Cloud-wise I only know the basics, we run on a few virtual machines.",
+  "sentences": [
+   "Python every day, with pandas for the cleaning, and PostgreSQL for storage.",
+   "SQL for the checks.",
+   "Git and a CI pipeline, so every change gets tested before it goes live.",
+   "I read logs a lot, honestly.",
+   "Cloud-wise I only know the basics, we run on a few virtual machines."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:26:38.337Z"
+ },
+ {
+  "id": "trn_vtq1wjk2729h",
+  "interviewId": "int_tyc8b9ril3y5",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "people",
+  "text": "Who did you work with on this, such as a team or the people using the reports, and what was your own part?",
+  "sentences": [
+   "Who did you work with on this, such as a team or the people using the reports, and what was your own part?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:26:41.577Z"
+ },
+ {
+  "id": "trn_t7ih1a6hzcj4",
+  "interviewId": "int_tyc8b9ril3y5",
+  "index": 7,
+  "role": "participant",
+  "kind": "answer",
+  "target": "people",
+  "text": "I work in a team of five. The operations team are the ones who read my data every morning, so I meet them weekly and show what changed. Their questions usually decide what I fix next. The data owner at the supplier I only deal with by email, mostly when files are late.",
+  "sentences": [
+   "I work in a team of five.",
+   "The operations team are the ones who read my data every morning, so I meet them weekly and show what changed.",
+   "Their questions usually decide what I fix next.",
+   "The data owner at the supplier I only deal with by email, mostly when files are late."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:26:41.699Z"
+ },
+ {
+  "id": "trn_tl2aa8l2pze6",
+  "interviewId": "int_tyc8b9ril3y5",
+  "index": 8,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "beyond",
+  "text": "What have you done outside your main job, such as studies, volunteering, a side project, or a different earlier job?",
+  "sentences": [
+   "What have you done outside your main job, such as studies, volunteering, a side project, or a different earlier job?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:26:44.811Z"
+ },
+ {
+  "id": "trn_d6yqyyaeub0n",
+  "interviewId": "int_tyc8b9ril3y5",
+  "index": 9,
+  "role": "participant",
+  "kind": "answer",
+  "target": "beyond",
+  "text": "Before this I studied physics and did my master's thesis on sensor calibration, so I'm comfortable with measurement data. I also volunteer as a mentor on a beginners' coding course on Saturdays, where I help people with their first Python scripts.",
+  "sentences": [
+   "Before this I studied physics and did my master's thesis on sensor calibration, so I'm comfortable with measurement data.",
+   "I also volunteer as a mentor on a beginners' coding course on Saturdays, where I help people with their first Python scripts."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:26:44.915Z"
+ },
+ {
+  "id": "trn_s3juclk29a19",
+  "interviewId": "int_tyc8b9ril3y5",
+  "index": 10,
+  "role": "interviewer",
+  "kind": "probe",
+  "target": "example",
+  "text": "Could you describe one specific SQL data check you wrote and your role in it?",
+  "sentences": [
+   "Could you describe one specific SQL data check you wrote and your role in it?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:26:47.866Z"
+ },
+ {
+  "id": "trn_efli9el2if0c",
+  "interviewId": "int_tyc8b9ril3y5",
+  "index": 11,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "On a typical night the job pulls around forty files from the supplier's server, validates the columns, and loads them in one transaction. I wrote the validation myself: it checks that the timestamps are in order, that the units are the expected ones, and that no meter appears twice in the same file.",
+  "sentences": [
+   "On a typical night the job pulls around forty files from the supplier's server, validates the columns, and loads them in one transaction.",
+   "I wrote the validation myself: it checks that the timestamps are in order, that the units are the expected ones, and that no meter appears twice in the same file."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:26:48.094Z"
+ },
+ {
+  "id": "trn_a4q7y890czcb",
+  "interviewId": "int_tyc8b9ril3y5",
+  "index": 12,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "What kind of work would you like to do next?",
+  "sentences": [
+   "What kind of work would you like to do next?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:26:51.849Z"
+ },
+ {
+  "id": "trn_3xelg879ivyh",
+  "interviewId": "int_tyc8b9ril3y5",
+  "index": 13,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "Data engineering, or backend work close to data. English at work, I'm learning Finnish but I can't work in it yet. Hybrid would be best, and I could start within a month or two.",
+  "sentences": [
+   "Data engineering, or backend work close to data.",
+   "English at work, I'm learning Finnish but I can't work in it yet.",
+   "Hybrid would be best, and I could start within a month or two."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:26:52.166Z"
+ },
+ {
+  "id": "trn_hjb62kyvylg4",
+  "interviewId": "int_tyc8b9ril3y5",
+  "index": 14,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Thank you, that's all my questions. Your notes are ready: check them, change or remove anything, and approve only what you're happy with.",
+  "sentences": [
+   "Thank you, that's all my questions.",
+   "Your notes are ready: check them, change or remove anything, and approve only what you're happy with."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:26:54.572Z"
+ },
+ {
+  "id": "trn_pb8eydkiqumm",
+  "interviewId": "int_ibgj3thvm7dq",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "For the last year and a half I've worked in a distribution warehouse for car tyres, picking orders and loading trucks, mostly with a reach truck. Before that I was a baker for six years, on night shifts, so I'm used to early starts and heavy lifting. I'm a single dad with a daughter in school, and I like that picking orders and driving the reach truck comes with fixed hours.",
+  "sentences": [
+   "For the last year and a half I've worked in a distribution warehouse for car tyres, picking orders and loading trucks, mostly with a reach truck.",
+   "Before that I was a baker for six years, on night shifts, so I'm used to early starts and heavy lifting.",
+   "I'm a single dad with a daughter in school, and I like that picking orders and driving the reach truck comes with fixed hours."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:44:23.123Z"
+ },
+ {
+  "id": "trn_krrs3bfpoea7",
+  "interviewId": "int_ibgj3thvm7dq",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "In October we got double the normal volume of winter tyres. I noticed the pick lists were sending people across the whole warehouse for single tyres, so I suggested grouping orders by aisle in the handheld scanner and I tried it for a week on my own shift. We got the evening orders out before the trucks left, which hadn't happened in two weeks.",
+  "sentences": [
+   "In October we got double the normal volume of winter tyres.",
+   "I noticed the pick lists were sending people across the whole warehouse for single tyres, so I suggested grouping orders by aisle in the handheld",
+   "scanner and I tried it for a week on my own shift.",
+   "We got the evening orders out before the trucks left, which hadn't happened in two weeks."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:44:24.146Z"
+ },
+ {
+  "id": "trn_s6vp709fr49v",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hej, jag är en AI-intervjuare för WorkEspoo. Jag ställer några korta frågor, det tar ungefär fyra minuter, och jag antecknar under tiden. I slutet går du igenom anteckningarna, ändrar det du vill och godkänner dem själv. Vi börjar så här: vad har du arbetat med den senaste tiden?",
+  "sentences": [
+   "Hej, jag är en AI-intervjuare för WorkEspoo.",
+   "Jag ställer några korta frågor, det tar ungefär fyra minuter, och jag antecknar under tiden.",
+   "I slutet går du igenom anteckningarna, ändrar det du vill och godkänner dem själv.",
+   "Vi börjar så här: vad har du arbetat med den senaste tiden?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:45:40.792Z"
+ },
+ {
+  "id": "trn_4gd5nw53t2pb",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "Jag är bokförare på ett fastighetsbolag i Esbo, och har jobbat med bokföring i över tjugo år. Jag sköter leverantörsreskontran och momsdeklarationerna för ett femtiotal bostadsbolag. Jag är 56 och kom tillbaka efter ett års sjukledighet för cancer, och sköter sedan dess huvudboken heltid igen.",
+  "sentences": [
+   "Jag är bokförare på ett fastighetsbolag i Esbo, och har jobbat med bokföring i över tjugo år.",
+   "Jag sköter leverantörsreskontran och momsdeklarationerna för ett femtiotal bostadsbolag.",
+   "Jag är 56 och kom tillbaka efter ett års sjukledighet för cancer, och sköter sedan dess huvudboken heltid igen."
+  ],
+  "sentencesOriginal": null,
+  "lang": "sv",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:45:40.910Z"
+ },
+ {
+  "id": "trn_4yyn4rlle3q2",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "I våras hittade jag i bokslutet att ett bostadsbolag hade bokfört en stor faktura för fönsterbyte som underhåll, fast det var en grundförbättring som borde aktiveras. Jag räknade om avskrivningarna, pratade med revisorn och rättade bokföringen innan bokslutet lades fram för bolagsstämman. Då blev både resultatet och skatten rätt.",
+  "sentences": [
+   "I våras hittade jag i bokslutet att ett bostadsbolag hade bokfört en stor faktura för fönsterbyte som underhåll, fast det var en grundförbättring som borde aktiveras.",
+   "Jag räknade om avskrivningarna, pratade med revisorn och rättade bokföringen innan bokslutet lades fram för bolagsstämman.",
+   "Då blev både resultatet och skatten rätt."
+  ],
+  "sentencesOriginal": null,
+  "lang": "sv",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:45:42.314Z"
+ },
+ {
+  "id": "trn_qzx61u9tghmd",
+  "interviewId": "int_5s6cl21g9ljr",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hi, I'm an AI interviewer for WorkEspoo. I'll ask a few short questions, about four minutes, and take notes. At the end you'll check the notes, change anything and approve them yourself. To start: what kind of work have you been doing recently?",
+  "sentences": [
+   "Hi, I'm an AI interviewer for WorkEspoo.",
+   "I'll ask a few short questions, about four minutes, and take notes.",
+   "At the end you'll check the notes, change anything and approve them yourself.",
+   "To start: what kind of work have you been doing recently?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:47:04.824Z"
+ },
+ {
+  "id": "trn_diwuah1pfddq",
+  "interviewId": "int_5s6cl21g9ljr",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "I've been tiling bathrooms and kitchens for twenty-two years, the last nineteen in Finland, mostly renovations in apartment buildings around Espoo. I do the whole job: remove the old tiles, check the floor, waterproofing, then laying, grouting and silicone. I'm 49, I came from Bulgaria in 2007 as a tiler, and I run my own small tiling company with one employee.",
+  "sentences": [
+   "I've been tiling bathrooms and kitchens for twenty-two years, the last nineteen in Finland, mostly renovations in apartment buildings around Espoo.",
+   "I do the whole job: remove the old tiles, check the floor, waterproofing, then laying, grouting and silicone.",
+   "I'm 49, I came from Bulgaria in 2007 as a tiler, and I run my own small tiling company with one employee."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:47:04.932Z"
+ },
+ {
+  "id": "trn_x1tfv66p05gt",
+  "interviewId": "int_5s6cl21g9ljr",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "A bathroom in a 1970s building had a floor that sloped away from the drain in one corner, and the old tiles were cracking. I took everything up, measured the slope with a long level, and levelled the screed to give a proper fall to the drain. Then I put in a waterproofing membrane, tested it with water for twenty-four hours, and tiled over it. The customer called a year later to say it was still dry.",
+  "sentences": [
+   "A bathroom in a 1970s building had a floor that sloped away from the drain in one corner, and the old tiles were cracking.",
+   "I took everything up, measured the slope with a long level, and levelled the screed to give a proper fall to the drain.",
+   "Then I put in a waterproofing membrane, tested it with water for twenty-four hours, and tiled over it.",
+   "The customer called a year later to say it was still dry."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:47:05.958Z"
+ },
+ {
+  "id": "trn_y7gd1gq7osn8",
+  "interviewId": "int_ibgj3thvm7dq",
+  "index": 7,
+  "role": "participant",
+  "kind": "answer",
+  "target": "people",
+  "text": "I'm on a shift of twelve. The shift lead gives us the order list and I work mostly with another picker and the truck loader. I help the new temp workers on my aisle, and show them the system and safe stacking. Drivers get their pallets from me, so I talk with them about what's on the truck.",
+  "sentences": [
+   "I'm on a shift of twelve.",
+   "The shift lead gives us the order list and I work mostly with another picker and the truck loader.",
+   "I help the new temp workers on my aisle, and show them the system and safe stacking.",
+   "Drivers get their pallets from me, so I talk with them about what's on the truck."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:44:30.291Z"
+ },
+ {
+  "id": "trn_t6pv2mdtemp3",
+  "interviewId": "int_ibgj3thvm7dq",
+  "index": 9,
+  "role": "participant",
+  "kind": "answer",
+  "target": "beyond",
+  "text": "The bakery taught me time planning and hygiene rules. I also have a driving licence for vans and I did a safety course on working at heights last year.",
+  "sentences": [
+   "The bakery taught me time planning and hygiene rules.",
+   "I also have a driving licence for vans and I did a safety course on working at heights last year."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:44:33.330Z"
+ },
+ {
+  "id": "trn_y2n7ujdie150",
+  "interviewId": "int_ibgj3thvm7dq",
+  "index": 11,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "The grouping idea: I took the evening's list and sorted it by aisle on a sheet first to test it, and saw we'd save about a third of the walking. Then the shift lead asked IT to switch it on for the scanners.",
+  "sentences": [
+   "The grouping idea: I took the evening's list and sorted it by aisle on a sheet first to test it, and saw we'd save about a third of the walking.",
+   "Then the shift lead asked IT to switch it on for the scanners."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:44:36.603Z"
+ },
+ {
+  "id": "trn_ssglyj3waoh0",
+  "interviewId": "int_ibgj3thvm7dq",
+  "index": 13,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "More hours in logistics, maybe team lead later, or a warehouse job with a bigger system to learn. English at work; I can manage everyday Finnish, so I would list both. Day shift is better. I can start after one month's notice.",
+  "sentences": [
+   "More hours in logistics, maybe team lead later, or a warehouse job with a bigger system to learn.",
+   "English at work; I can manage everyday Finnish, so I would list both.",
+   "Day shift is better.",
+   "I can start after one month's notice."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:44:39.748Z"
+ },
+ {
+  "id": "trn_9szgahm0xzi5",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Tack, det är tydligt. Kan du berätta om en specifik uppgift eller situation med huvudboken som du hanterade själv?",
+  "sentences": [
+   "Tack, det är tydligt.",
+   "Kan du berätta om en specifik uppgift eller situation med huvudboken som du hanterade själv?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:45:42.243Z"
+ },
+ {
+  "id": "trn_scl8qasbxwl8",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "tools",
+  "text": "Jag arbetar i ett ekonomisystem för fastighetsbolag och använder Excel för avstämningar. Fakturorna kommer som e-fakturor och jag godkänner dem i inköpsflödet. Moms- och skattedeklarationerna lämnar jag in via skatteförvaltningens tjänst, och bokslutet gör jag i samarbete med revisorn.",
+  "sentences": [
+   "Jag arbetar i ett ekonomisystem för fastighetsbolag och använder Excel för avstämningar.",
+   "Fakturorna kommer som e-fakturor och jag godkänner dem i inköpsflödet.",
+   "Moms- och skattedeklarationerna lämnar jag in via skatteförvaltningens tjänst, och bokslutet gör jag i samarbete med revisorn."
+  ],
+  "sentencesOriginal": null,
+  "lang": "sv",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:45:46.332Z"
+ },
+ {
+  "id": "trn_l5qi9mcn2qs1",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "index": 7,
+  "role": "participant",
+  "kind": "answer",
+  "target": "people",
+  "text": "Jag jobbar i ett team på fyra personer, och styrelseordförandena i bolagen ringer mig ofta med frågor. Aktieägarna får fråga om sin egen avgift och jag förklarar utan jargong. Revisorn träffar jag två gånger per år, och jag förbereder alla underlag åt honom.",
+  "sentences": [
+   "Jag jobbar i ett team på fyra personer, och styrelseordförandena i bolagen ringer mig ofta med frågor.",
+   "Aktieägarna får fråga om sin egen avgift och jag förklarar utan jargong.",
+   "Revisorn träffar jag två gånger per år, och jag förbereder alla underlag åt honom."
+  ],
+  "sentencesOriginal": null,
+  "lang": "sv",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:45:51.279Z"
+ },
+ {
+  "id": "trn_r50wtejzn4r0",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "index": 9,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "Avskrivningarna: grundförbättringen fördelades på tio år enligt bolagets plan. Jag gjorde en ny avskrivningstabell, bokade differensen och skrev en kort förklaring till bokslutsbilagan så att styrelsen förstod ändringen.",
+  "sentences": [
+   "Avskrivningarna: grundförbättringen fördelades på tio år enligt bolagets plan.",
+   "Jag gjorde en ny avskrivningstabell, bokade differensen och skrev en kort förklaring till bokslutsbilagan så att styrelsen förstod ändringen."
+  ],
+  "sentencesOriginal": null,
+  "lang": "sv",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:45:55.318Z"
+ },
+ {
+  "id": "trn_rrn9sznjqos3",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "index": 11,
+  "role": "participant",
+  "kind": "answer",
+  "target": "beyond",
+  "text": "Jag har suttit i en idrottsförenings styrelse som kassör i tio år och sköter också deras bokföring. Dessutom har jag lärt upp två nya medarbetare i huvudboken och reskontran.",
+  "sentences": [
+   "Jag har suttit i en idrottsförenings styrelse som kassör i tio år och sköter också deras bokföring.",
+   "Dessutom har jag lärt upp två nya medarbetare i huvudboken och reskontran."
+  ],
+  "sentencesOriginal": null,
+  "lang": "sv",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:45:58.501Z"
+ },
+ {
+  "id": "trn_v44yr9xadi45",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "index": 13,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "Jag söker bokföringsjobb, gärna med lite kundkontakt, till exempel på en bokföringsbyrå eller i ett bolag med blandad ekonomiadministration. Svenska och finska fungerar lika bra som arbetsspråk, och engelska klarar jag också. Gärna nära hemmet i Esbo, och jag kan börja efter tre månaders uppsägningstid.",
+  "sentences": [
+   "Jag söker bokföringsjobb, gärna med lite kundkontakt, till exempel på en bokföringsbyrå eller i ett bolag med blandad ekonomiadministration.",
+   "Svenska och finska fungerar lika bra som arbetsspråk, och engelska klarar jag också.",
+   "Gärna nära hemmet i Esbo, och jag kan börja efter tre månaders uppsägningstid."
+  ],
+  "sentencesOriginal": null,
+  "lang": "sv",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:46:01.504Z"
+ },
+ {
+  "id": "trn_tc6dxylu35c0",
+  "interviewId": "int_5s6cl21g9ljr",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Thanks, that's clear. Could you describe one specific renovation task or situation you handled yourself from start to finish?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Could you describe one specific renovation task or situation you handled yourself from start to finish?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:47:05.887Z"
+ },
+ {
+  "id": "trn_pjflu4vh18ib",
+  "interviewId": "int_5s6cl21g9ljr",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "tools",
+  "text": "Tile cutter, wet saw, notched trowels, a levelling system and a laser level. For waterproofing I use the membrane system and I hold the wet room certificate, so the work gets documented properly. The adhesive depends on the tile size and the floor: flexible adhesive on old floors, and big tiles need back-buttering.",
+  "sentences": [
+   "Tile cutter, wet saw, notched trowels, a levelling system and a laser level.",
+   "For waterproofing I use the membrane system and I hold the wet room certificate, so the work gets documented properly.",
+   "The adhesive depends on the tile size and the floor: flexible adhesive on old floors, and big tiles need back-buttering."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:47:08.952Z"
+ },
+ {
+  "id": "trn_rovq7o86x5ue",
+  "interviewId": "int_5s6cl21g9ljr",
+  "index": 7,
+  "role": "participant",
+  "kind": "answer",
+  "target": "people",
+  "text": "Most of my customers are housing companies and private owners, and I work with the plumber and the electrician in the same bathroom, so we agree the order of work. My employee is in his second year and I teach him how to measure and plan the layout before cutting. The customer decides the tile, I decide how it's installed.",
+  "sentences": [
+   "Most of my customers are housing companies and private owners, and I work with the plumber and the electrician in the same bathroom, so we agree the order of work.",
+   "My employee is in his second year and I teach him how to measure and plan the layout before cutting.",
+   "The customer decides the tile, I decide how it's installed."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:47:11.993Z"
+ },
+ {
+  "id": "trn_whkytzx5j2tc",
+  "interviewId": "int_ibgj3thvm7dq",
+  "index": 8,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "beyond",
+  "text": "What have you done outside this warehouse job, like studies, volunteering, side projects or a different kind of work?",
+  "sentences": [
+   "What have you done outside this warehouse job, like studies, volunteering, side projects or a different kind of work?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:44:33.253Z"
+ },
+ {
+  "id": "trn_t0eyu2pp5qe3",
+  "interviewId": "int_ibgj3thvm7dq",
+  "index": 10,
+  "role": "interviewer",
+  "kind": "probe",
+  "target": "example",
+  "text": "Thanks, that's clear. Could you describe one baking task you did yourself, or would you rather skip this?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Could you describe one baking task you did yourself, or would you rather skip this?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:44:36.521Z"
+ },
+ {
+  "id": "trn_5gumhwadbpv1",
+  "interviewId": "int_ibgj3thvm7dq",
+  "index": 12,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "Thanks, that's clear. What kind of work are you looking for next, and would you like to keep doing reach-truck work?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "What kind of work are you looking for next, and would you like to keep doing reach-truck work?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:44:39.668Z"
+ },
+ {
+  "id": "trn_bkhzioj9l40b",
+  "interviewId": "int_ibgj3thvm7dq",
+  "index": 14,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Thank you, that's all my questions. Your notes are ready: check them, change or remove anything, and approve only what you're happy with.",
+  "sentences": [
+   "Thank you, that's all my questions.",
+   "Your notes are ready: check them, change or remove anything, and approve only what you're happy with."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:44:42.066Z"
+ },
+ {
+  "id": "trn_en9yer3qgwjy",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "tools",
+  "text": "Tack. Vilka program eller metoder använde du för att räkna om avskrivningarna och rätta bokföringen?",
+  "sentences": [
+   "Tack.",
+   "Vilka program eller metoder använde du för att räkna om avskrivningarna och rätta bokföringen?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:45:46.269Z"
+ },
+ {
+  "id": "trn_mo863vwh58z8",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "people",
+  "text": "Tack. Vilka samarbetade du med i det arbetet, och vad var din egen del jämfört med revisorns?",
+  "sentences": [
+   "Tack.",
+   "Vilka samarbetade du med i det arbetet, och vad var din egen del jämfört med revisorns?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:45:51.204Z"
+ },
+ {
+  "id": "trn_p718nypqttq9",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "index": 8,
+  "role": "interviewer",
+  "kind": "probe",
+  "target": "example",
+  "text": "Tack. Kan du ge ett konkret exempel på en uppgift i huvudboken som du själv hanterade, gärna i ekonomisystemet?",
+  "sentences": [
+   "Tack.",
+   "Kan du ge ett konkret exempel på en uppgift i huvudboken som du själv hanterade, gärna i ekonomisystemet?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:45:55.231Z"
+ },
+ {
+  "id": "trn_pr37asioph02",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "index": 10,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "beyond",
+  "text": "Tack. Vilket ekonomisystem använde du, och vilka rutinuppgifter i huvudboken hanterade du där regelbundet?",
+  "sentences": [
+   "Tack.",
+   "Vilket ekonomisystem använde du, och vilka rutinuppgifter i huvudboken hanterade du där regelbundet?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:45:58.441Z"
+ },
+ {
+  "id": "trn_yzuf7tkwx58k",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "index": 12,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "Tack. Vilket arbete söker du nu, och vilka uppgifter vill du främst arbeta med där?",
+  "sentences": [
+   "Tack.",
+   "Vilket arbete söker du nu, och vilka uppgifter vill du främst arbeta med där?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:46:01.438Z"
+ },
+ {
+  "id": "trn_4yffygzkmroy",
+  "interviewId": "int_u8d6q3pnfmbb",
+  "index": 14,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Tack, det var alla mina frågor. Dina anteckningar är klara: gå igenom dem, ändra eller ta bort det du vill och godkänn bara det du är nöjd med.",
+  "sentences": [
+   "Tack, det var alla mina frågor.",
+   "Dina anteckningar är klara: gå igenom dem, ändra eller ta bort det du vill och godkänn bara det du är nöjd med."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:46:03.801Z"
+ },
+ {
+  "id": "trn_flvaxoqr0i9x",
+  "interviewId": "int_5s6cl21g9ljr",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "tools",
+  "text": "What tools, equipment or materials do you usually use for waterproofing and tiling work like this?",
+  "sentences": [
+   "What tools, equipment or materials do you usually use for waterproofing and tiling work like this?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:47:08.878Z"
+ },
+ {
+  "id": "trn_2daaw20ezzbp",
+  "interviewId": "int_5s6cl21g9ljr",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "people",
+  "text": "Thanks, that's clear. Who did you usually work with or for on jobs like this, and what was your own part?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Who did you usually work with or for on jobs like this, and what was your own part?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:47:11.912Z"
+ },
+ {
+  "id": "trn_0hgw5v9kzqjp",
+  "interviewId": "int_5s6cl21g9ljr",
+  "index": 8,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "beyond",
+  "text": "Thanks. Outside your main tiling work, what studies, volunteering, side projects or earlier different work have you done?",
+  "sentences": [
+   "Thanks.",
+   "Outside your main tiling work, what studies, volunteering, side projects or earlier different work have you done?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:47:14.901Z"
+ },
+ {
+  "id": "trn_m3y87r4ie6ql",
+  "interviewId": "int_5s6cl21g9ljr",
+  "index": 10,
+  "role": "interviewer",
+  "kind": "probe",
+  "target": "example",
+  "text": "Thanks. Could you describe one renovation you ran yourself, including the tools you used?",
+  "sentences": [
+   "Thanks.",
+   "Could you describe one renovation you ran yourself, including the tools you used?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:47:18.213Z"
+ },
+ {
+  "id": "trn_5dgsvkrjxv9g",
+  "interviewId": "int_5s6cl21g9ljr",
+  "index": 12,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "Thanks. What kind of work would you like to do next?",
+  "sentences": [
+   "Thanks.",
+   "What kind of work would you like to do next?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:47:21.495Z"
+ },
+ {
+  "id": "trn_4qna3y2lhwv7",
+  "interviewId": "int_5s6cl21g9ljr",
+  "index": 14,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Thank you, that's all my questions. Your notes are ready: check them, change or remove anything, and approve only what you're happy with.",
+  "sentences": [
+   "Thank you, that's all my questions.",
+   "Your notes are ready: check them, change or remove anything, and approve only what you're happy with."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:47:23.849Z"
+ },
+ {
+  "id": "trn_22wqcvnippkl",
+  "interviewId": "int_5s6cl21g9ljr",
+  "index": 9,
+  "role": "participant",
+  "kind": "answer",
+  "target": "beyond",
+  "text": "I went to a vocational school for construction in my home country. Here I took the wet room course and the occupational safety card. I also fix small things in the housing company where I live, like cracked tiles in the stairwell, for free.",
+  "sentences": [
+   "I went to a vocational school for construction in my home country.",
+   "Here I took the wet room course and the occupational safety card.",
+   "I also fix small things in the housing company where I live, like cracked tiles in the stairwell, for free."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:47:14.987Z"
+ },
+ {
+  "id": "trn_p5moc13ca8ln",
+  "interviewId": "int_5s6cl21g9ljr",
+  "index": 11,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "For the levelling I set the laser to the drain height and marked the walls, mixed a self-levelling compound for the low corner and checked the fall with the long level every ten centimetres. It took one day to dry before the waterproofing.",
+  "sentences": [
+   "For the levelling I set the laser to the drain height and marked the walls, mixed a self-levelling compound for the low corner and checked",
+   "the fall with the long level every ten centimetres.",
+   "It took one day to dry before the waterproofing."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:47:18.744Z"
+ },
+ {
+  "id": "trn_wsnb3xl01bxm",
+  "interviewId": "int_5s6cl21g9ljr",
+  "index": 13,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "I want steady renovation work from a bigger contractor, or subcontracting for several, because it's hard to find customers all year round. English or Finnish for work, and Finnish is fine with customers. On site. I can start after my current job, in about three weeks.",
+  "sentences": [
+   "I want steady renovation work from a bigger contractor, or subcontracting for several, because it's hard to find customers all year round.",
+   "English or Finnish for work, and Finnish is fine with customers.",
+   "On site.",
+   "I can start after my current job, in about three weeks."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:47:21.778Z"
+ },
+ {
+  "id": "trn_csovpvadf6u2",
+  "interviewId": "int_pndjw12sje3w",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hi, I'm an AI interviewer for WorkEspoo. I'll ask three short questions and take notes, and at the end you'll check the notes, change anything and approve them yourself. To start: what kind of work have you been doing recently?",
+  "sentences": [
+   "Hi, I'm an AI interviewer for WorkEspoo.",
+   "I'll ask three short questions and take notes, and at the end you'll check the notes, change anything and approve them yourself.",
+   "To start: what kind of work have you been doing recently?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:48:13.940Z"
+ },
+ {
+  "id": "trn_yhal6od6at41",
+  "interviewId": "int_pndjw12sje3w",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "I work in the customer service team of an online electronics shop, on chat and email, and I answer calls on busy days. I handle delivery problems and warranty questions. I'm 23, I grew up in Vantaa and my parents come from Vietnam, and on chat I deal with returns and refunds on my own. I did my business studies at a university of applied sciences and started here on an internship.",
+  "sentences": [
+   "I work in the customer service team of an online electronics shop, on chat and email, and I answer calls on busy days.",
+   "I handle delivery problems and warranty questions.",
+   "I'm 23, I grew up in Vantaa and my parents come from Vietnam, and on chat I deal with returns and refunds on my own.",
+   "I did my business studies at a university of applied sciences and started here on an internship."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:48:14.062Z"
+ },
+ {
+  "id": "trn_iom26552aama",
+  "interviewId": "int_pndjw12sje3w",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Thanks, that's clear. Could you describe one specific return or refund case you handled yourself, from start to finish?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Could you describe one specific return or refund case you handled yourself, from start to finish?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:48:15.337Z"
+ },
+ {
+  "id": "trn_g9advl2habwz",
+  "interviewId": "int_pndjw12sje3w",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "A customer wrote three times that his laptop had not arrived, and he was very angry. I checked the tracking and found the parcel had gone to a wrong pick-up point. I phoned the point, found the parcel, and arranged a courier to bring it the same evening. Then I wrote him a short message explaining what happened, and I added a note in the system so the next agent would know.",
+  "sentences": [
+   "A customer wrote three times that his laptop had not arrived, and he was very angry.",
+   "I checked the tracking and found the parcel had gone to a wrong pick-up point.",
+   "I phoned the point, found the parcel, and arranged a courier to bring it the same evening.",
+   "Then I wrote him a short message explaining what happened, and I added a note in the system so the next agent would know."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:48:15.429Z"
+ },
+ {
+  "id": "trn_t4ksw6ciek0c",
+  "interviewId": "int_pndjw12sje3w",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "What kind of work would you like to do next, and what tasks would you like it to include?",
+  "sentences": [
+   "What kind of work would you like to do next, and what tasks would you like it to include?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:48:18.355Z"
+ },
+ {
+  "id": "trn_2cea71sqnu6e",
+  "interviewId": "int_pndjw12sje3w",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "I'd like to stay in customer service but with more responsibility, maybe a team handling bigger customers or something like customer success. I work in English and Finnish. Hybrid is best, and I could start with one month's notice.",
+  "sentences": [
+   "I'd like to stay in customer service but with more responsibility, maybe a team handling bigger customers or something like customer success.",
+   "I work in English and Finnish.",
+   "Hybrid is best, and I could start with one month's notice."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T01:48:18.417Z"
+ },
+ {
+  "id": "trn_1r7oac2ja6rb",
+  "interviewId": "int_pndjw12sje3w",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Thank you, that's all my questions. Your notes are ready: check them, change or remove anything, and approve only what you're happy with.",
+  "sentences": [
+   "Thank you, that's all my questions.",
+   "Your notes are ready: check them, change or remove anything, and approve only what you're happy with."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T01:48:20.517Z"
+ }
+]

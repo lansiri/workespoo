@@ -1,0 +1,6863 @@
+[
+ {
+  "id": "jm_ajbypkpdobhy",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_27fc2b63d0284da2b4312969a6f05903",
+  "cardVersion": 1,
+  "feedPosition": 4,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_7muih4f6ocqq",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_05fd9025114f41e785945e79bd6332fa",
+  "cardVersion": 1,
+  "feedPosition": 6,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_e4o5iktllp8u",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_fde3f16ccbf44450bddc6a73127339cb",
+  "cardVersion": 1,
+  "feedPosition": 8,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_kdyzaeaiaqbp",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_3be2d014bf164860b226e9cc9c27c6da",
+  "cardVersion": 1,
+  "feedPosition": 9,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_wa455ijkoh1e",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_6965d4e10085445da628706ae7732903",
+  "cardVersion": 1,
+  "feedPosition": 10,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_lb51y01fp674",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_0b6c4283ef2245f7a04f7276138d0544",
+  "cardVersion": 1,
+  "feedPosition": 11,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_c512wd4bhd9h",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_e4e846d56e2a436d8d607332edc6ae89",
+  "cardVersion": 1,
+  "feedPosition": 12,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_vay5c82o799q",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_1badd4178ddc4b04bdcc0f2e461e41d1",
+  "cardVersion": 1,
+  "feedPosition": 3,
+  "body": {
+   "basis": [
+    "occupation",
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions software development; the posting lists embedded software development and control systems.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": 3
+    },
+    {
+     "text": "Your card mentions Python for data import jobs and sensor readings; the posting asks for experience in C, C++ and Python.",
+     "escoUri": "http://data.europa.eu/esco/skill/ccd0a1d9-afda-43d9-b901-96344886e14d",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": 9
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_8jp0fskq9sez",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_b897699de40741158365b20db5dd8d54",
+  "cardVersion": 1,
+  "feedPosition": 5,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "ServiceNow certifications: CSA, CAD and CIS",
+    "Experience with large-scale or complex ServiceNow implementations",
+    "Service Portal development",
+    "Experience with scoped applications",
+    "Integration Hub"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_ica6bisu4fwd",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_09c5ed8656b54d73a3da373bd1cbda4e",
+  "cardVersion": 1,
+  "feedPosition": 14,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_3jw1v92zaq2f",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_d9f54f09423d44adb6a9a81fa4959a3a",
+  "cardVersion": 1,
+  "feedPosition": 15,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_lkdwez6rndfd",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_367e092ec3cb4614aa6d1e135f242fc3",
+  "cardVersion": 1,
+  "feedPosition": 16,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_gnrfezfrlee5",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_e8a78129da34480ca66b7ade9ee5c100",
+  "cardVersion": 1,
+  "feedPosition": 17,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_2cxxx81drxz2",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_b3988592e3cd4d3a9c74a4eb14c137b6",
+  "cardVersion": 1,
+  "feedPosition": 18,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_bg6m5zp3ekb3",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_bcb0246180fa4352943e8e904612c90f",
+  "cardVersion": 1,
+  "feedPosition": 19,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Python. This kind of work usually involves Python (computer programming).",
+     "escoUri": "http://data.europa.eu/esco/skill/ccd0a1d9-afda-43d9-b901-96344886e14d",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_i1twuf0g7rmv",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_09c5ed8656b54d73a3da373bd1cbda4e",
+  "cardVersion": 1,
+  "feedPosition": 3,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions TypeScript. This kind of work usually involves TypeScript.",
+     "escoUri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_ddtvedjtp45q",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_367e092ec3cb4614aa6d1e135f242fc3",
+  "cardVersion": 1,
+  "feedPosition": 4,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions TypeScript. This kind of work usually involves TypeScript.",
+     "escoUri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_q8ov6u2xgv51",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_e8a78129da34480ca66b7ade9ee5c100",
+  "cardVersion": 1,
+  "feedPosition": 5,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions TypeScript. This kind of work usually involves TypeScript.",
+     "escoUri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_n2jajgh7kz63",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_069f6d6c2b2e494aabe80c0dc53d4621",
+  "cardVersion": 1,
+  "feedPosition": 6,
+  "body": {
+   "basis": [
+    "occupation",
+    "text",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions React. This posting mentions React.",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": 15
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_843x5ivyyegt",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_96f4ccf9394d4ce191e4aa92a2dd0033",
+  "cardVersion": 1,
+  "feedPosition": 13,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "At least 1 year of work experience with Java and Spring Boot",
+    "Good understanding of modern full-stack development",
+    "Self-motivated, open-minded and eager to learn new technologies",
+    "Knowledge of .NET and/or Clojure",
+    "Familiarity with DevOps practices and tools"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_r8rmlzifeq3l",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_96f4ccf9394d4ce191e4aa92a2dd0033",
+  "cardVersion": 1,
+  "feedPosition": 2,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions TypeScript. This kind of work usually involves TypeScript.",
+     "escoUri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "At least 1 year of work experience with Java and Spring Boot",
+    "Good understanding of modern full-stack development",
+    "Self-motivated, open-minded and eager to learn new technologies",
+    "Knowledge of .NET and/or Clojure",
+    "Familiarity with DevOps practices and tools"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_8bv8mrsdhfzp",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_e4e846d56e2a436d8d607332edc6ae89",
+  "cardVersion": 1,
+  "feedPosition": 7,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions TypeScript. This kind of work usually involves TypeScript.",
+     "escoUri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_v6xwofzyso89",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_6c85070adf76443687c5de7e0601998d",
+  "cardVersion": 1,
+  "feedPosition": 8,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions TypeScript. This kind of work usually involves TypeScript.",
+     "escoUri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_j5ckj189are9",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_b3988592e3cd4d3a9c74a4eb14c137b6",
+  "cardVersion": 1,
+  "feedPosition": 9,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions TypeScript. This kind of work usually involves TypeScript.",
+     "escoUri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_lvoxexabvkh9",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_ea5eb711d5064005b6998b00837118db",
+  "cardVersion": 1,
+  "feedPosition": 10,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Collaborating with designers. This kind of work usually involves collaborate with designers.",
+     "escoUri": "http://data.europa.eu/esco/skill/d52382fe-f236-421f-95fe-34fe69d48dbd",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s18",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_njfmywy3ucko",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_0d07f1a60e84425184942db7fd002475",
+  "cardVersion": 1,
+  "feedPosition": 11,
+  "body": {
+   "basis": [
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Design systems. This posting mentions system design.",
+     "escoUri": "http://data.europa.eu/esco/skill/fae27053-8924-4bfd-b565-c9fe502044c9",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s14",
+     "postingSentence": 21
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_dmfkiv9smm0m",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_017f60e4564e43eab3afac40ec550fd3",
+  "cardVersion": 1,
+  "feedPosition": 12,
+  "body": {
+   "basis": [
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Design systems. This posting mentions system design.",
+     "escoUri": "http://data.europa.eu/esco/skill/fae27053-8924-4bfd-b565-c9fe502044c9",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s14",
+     "postingSentence": 27
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_jpp08v5wa5zn",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_b4d5d4a3b4864594ae2b601d879ccc85",
+  "cardVersion": 1,
+  "feedPosition": 13,
+  "body": {
+   "basis": [
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Design systems. This posting mentions system design.",
+     "escoUri": "http://data.europa.eu/esco/skill/fae27053-8924-4bfd-b565-c9fe502044c9",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s14",
+     "postingSentence": 21
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_cusav3tg4n0q",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_d9f54f09423d44adb6a9a81fa4959a3a",
+  "cardVersion": 1,
+  "feedPosition": 14,
+  "body": {
+   "basis": [
+    "occupation",
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Figma. This posting mentions Figma.",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s9",
+     "postingSentence": 29
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_fzk1sti5m2v0",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_27fc2b63d0284da2b4312969a6f05903",
+  "cardVersion": 1,
+  "feedPosition": 15,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions TypeScript. This kind of work usually involves TypeScript.",
+     "escoUri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_gpvxq671518u",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_05fd9025114f41e785945e79bd6332fa",
+  "cardVersion": 1,
+  "feedPosition": 16,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions TypeScript. This kind of work usually involves TypeScript.",
+     "escoUri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_8261i07m0h6h",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_1badd4178ddc4b04bdcc0f2e461e41d1",
+  "cardVersion": 1,
+  "feedPosition": 17,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions TypeScript. This kind of work usually involves TypeScript.",
+     "escoUri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_mi6myunhdwe6",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_fde3f16ccbf44450bddc6a73127339cb",
+  "cardVersion": 1,
+  "feedPosition": 18,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions TypeScript. This kind of work usually involves TypeScript.",
+     "escoUri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_axnb6nmynn26",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_3be2d014bf164860b226e9cc9c27c6da",
+  "cardVersion": 1,
+  "feedPosition": 19,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions TypeScript. This kind of work usually involves TypeScript.",
+     "escoUri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_70unirmnln8r",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_b0db548dbce14001a32b9dcb2a063dd5",
+  "cardVersion": 1,
+  "feedPosition": 3,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Java. This kind of work usually involves Java (computer programming).",
+     "escoUri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_ozd512y13kjz",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_8cdc7032f10f4199b3c97b7e57e3ef88",
+  "cardVersion": 1,
+  "feedPosition": 4,
+  "body": {
+   "basis": [
+    "role"
+   ],
+   "reasons": [],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_qbbzffj7jk1x",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_30ff71c2e0d34d47a0a607cf45b5b657",
+  "cardVersion": 1,
+  "feedPosition": 5,
+  "body": {
+   "basis": [
+    "role"
+   ],
+   "reasons": [],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_s24z7v9vagwj",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_ab6671db3ca84dcd8b8b7a15c06b2f94",
+  "cardVersion": 1,
+  "feedPosition": 6,
+  "body": {
+   "basis": [
+    "role"
+   ],
+   "reasons": [],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_3eot5rbc5ado",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_bf690ed4cf224ff2990049c768fba8ed",
+  "cardVersion": 1,
+  "feedPosition": 7,
+  "body": {
+   "basis": [
+    "role"
+   ],
+   "reasons": [],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_amso87t8odah",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_95be626933604635808cbda8e27b366b",
+  "cardVersion": 1,
+  "feedPosition": 8,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Database unique constraints. This kind of work usually involves database.",
+     "escoUri": "http://data.europa.eu/esco/skill/43ae58b9-5e56-4524-b45a-b422777a0576",
+     "evidence": {
+      "turnIndex": 3,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_wksq35zz64wl",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_1badd4178ddc4b04bdcc0f2e461e41d1",
+  "cardVersion": 1,
+  "feedPosition": 10,
+  "body": {
+   "basis": [
+    "occupation",
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Jenkins. This posting mentions Jenkins.",
+     "escoUri": "http://data.europa.eu/esco/skill/f47a1998-0beb-43be-9f46-380aa4d183da",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s18",
+     "postingSentence": 14
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_1m1yuiwz1b15",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_27fc2b63d0284da2b4312969a6f05903",
+  "cardVersion": 1,
+  "feedPosition": 12,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Java. This kind of work usually involves Java (computer programming).",
+     "escoUri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_y0rrfh7o26ag",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_05fd9025114f41e785945e79bd6332fa",
+  "cardVersion": 1,
+  "feedPosition": 14,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Java. This kind of work usually involves Java (computer programming).",
+     "escoUri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_zkrqzvx6ikzf",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_fde3f16ccbf44450bddc6a73127339cb",
+  "cardVersion": 1,
+  "feedPosition": 16,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Java. This kind of work usually involves Java (computer programming).",
+     "escoUri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_zhamuhtbhmar",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_20ba79bab4a34c35aa0a2808c2f68bd2",
+  "cardVersion": 1,
+  "feedPosition": 9,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Java. This kind of work usually involves Java (computer programming).",
+     "escoUri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "At least 5 years of experience in the software industry",
+    "Expertise in software development, DevOps, automation, testing, cloud",
+    "Experience using AI tools, AI-assisted development, or AI-based solutions",
+    "Ability to learn quickly and apply skills in different situations",
+    "Proactive and solution-oriented approach to work"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_g2k13fyua7da",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_fb388722c46544aba1682e4b83024f68",
+  "cardVersion": 1,
+  "feedPosition": 15,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Java. This kind of work usually involves Java (computer programming).",
+     "escoUri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Experience with client-server architecture, backend APIs and integrations",
+    "Basic knowledge of AWS or Azure, version control, CI/CD and DevSecOps",
+    "Degree in computer science, engineering, mathematics or a related field",
+    "Use agent-based coding tools effectively without compromising security",
+    "Write clean, maintainable and well-tested code using best practices"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_1ncj6a84b5g2",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_96f4ccf9394d4ce191e4aa92a2dd0033",
+  "cardVersion": 1,
+  "feedPosition": 11,
+  "body": {
+   "basis": [
+    "occupation",
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Java. This posting mentions Java.",
+     "escoUri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": 4
+    }
+   ],
+   "notMentioned": [
+    "Self-motivated, open-minded and eager to learn new technologies",
+    "Knowledge of .NET and/or Clojure",
+    "Familiarity with DevOps practices and tools",
+    "Experience with Web UI development"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_qlejyiisi15o",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_3be2d014bf164860b226e9cc9c27c6da",
+  "cardVersion": 1,
+  "feedPosition": 17,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Java. This kind of work usually involves Java (computer programming).",
+     "escoUri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_2y3g1k4z90xt",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_6965d4e10085445da628706ae7732903",
+  "cardVersion": 1,
+  "feedPosition": 18,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Java. This kind of work usually involves Java (computer programming).",
+     "escoUri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_r1xme3lq2bgq",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_0b6c4283ef2245f7a04f7276138d0544",
+  "cardVersion": 1,
+  "feedPosition": 19,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Java. This kind of work usually involves Java (computer programming).",
+     "escoUri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_im2i47hfkagt",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_b3ef2d8134d9444498c33b9c610ef54a",
+  "cardVersion": 1,
+  "feedPosition": 3,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Plastics manufacturing. This kind of work usually involves manufacturing processes.",
+     "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_f0jxdetlxjxg",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_65cf7122b52d476d83aaf6fd542f6bfc",
+  "cardVersion": 1,
+  "feedPosition": 4,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Plastics manufacturing. This kind of work usually involves manufacturing processes.",
+     "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_5xre3jk2618x",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_7ce4ad03433047a5b4a24a91ee80269a",
+  "cardVersion": 1,
+  "feedPosition": 5,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Plastics manufacturing. This kind of work usually involves manufacturing processes.",
+     "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_hr9fcl9vy1dp",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_08308af04b12436cabd93df917a42b8e",
+  "cardVersion": 1,
+  "feedPosition": 6,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Plastics manufacturing. This kind of work usually involves manufacturing processes.",
+     "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_y1elkhifu0i6",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_d3bf5c48280b4eccacd42163f280d9e6",
+  "cardVersion": 1,
+  "feedPosition": 7,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Plastics manufacturing. This kind of work usually involves manufacturing processes.",
+     "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_l21bd5rqp5t0",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_104271a0a4df4760bf447e149095d9ee",
+  "cardVersion": 1,
+  "feedPosition": 8,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Plastics manufacturing. This kind of work usually involves manufacturing processes.",
+     "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_tyctpq8qv1vz",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_6b58a55b51c94bd6a196840bb2a838fa",
+  "cardVersion": 1,
+  "feedPosition": 9,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Plastics manufacturing. This kind of work usually involves manufacturing processes.",
+     "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_q0ml8orsyod5",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_8be03621622e40bfbe89e045e0a4237f",
+  "cardVersion": 1,
+  "feedPosition": 1,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Laboratory material measurements. This kind of work usually involves measure materials.",
+     "escoUri": "http://data.europa.eu/esco/skill/fe490d6c-851b-44a8-949b-808e24c2cc54",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s12",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Willingness to work occasional weekends and overtime",
+    "At least 5 years of experience in similar mechanical maintenance work",
+    "Suitable education, such as machine assembler or sheet metal welder training",
+    "TIG and stick welding skills",
+    "Access to your own car and willingness to travel across Southern Finland"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_rgdxfqx7fsth",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_fc078ad2475444a6a048a942372e0fa1",
+  "cardVersion": 1,
+  "feedPosition": 10,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Plastics manufacturing. This kind of work usually involves manufacturing processes.",
+     "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_r5hbl74jidx7",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_f517d89d49034dbdb6d7c4477ca9e4f5",
+  "cardVersion": 1,
+  "feedPosition": 11,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Plastics manufacturing. This kind of work usually involves manufacturing processes.",
+     "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_lyavnjeeok6h",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_b1cc44002448452792b907fddc2d5083",
+  "cardVersion": 1,
+  "feedPosition": 12,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Plastics manufacturing. This kind of work usually involves manufacturing processes.",
+     "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_d5vhffupiopi",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_c36e00cba7dd45c2b04b1e85d8faed9a",
+  "cardVersion": 1,
+  "feedPosition": 13,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Plastics manufacturing. This kind of work usually involves manufacturing processes.",
+     "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_fxaz17ezr8dq",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_a04325b8f47d4b3d907774bb8c0d9106",
+  "cardVersion": 1,
+  "feedPosition": 14,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Laboratory material measurements. This kind of work usually involves measure materials.",
+     "escoUri": "http://data.europa.eu/esco/skill/fe490d6c-851b-44a8-949b-808e24c2cc54",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s12",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_4h44tpia4qdp",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_d895a6d11a504e738245c52b764e5d01",
+  "cardVersion": 1,
+  "feedPosition": 15,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Plastics manufacturing. This kind of work usually involves manufacturing processes.",
+     "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_mltl59pbfp1k",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_c3c98088c26341ccbbaa9323d0ffbade",
+  "cardVersion": 1,
+  "feedPosition": 16,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Plastics manufacturing. This kind of work usually involves manufacturing processes.",
+     "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_bb491og85yhj",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_96031f8dd91a44c5916625266542912b",
+  "cardVersion": 1,
+  "feedPosition": 17,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Laboratory material measurements. This kind of work usually involves measure materials.",
+     "escoUri": "http://data.europa.eu/esco/skill/fe490d6c-851b-44a8-949b-808e24c2cc54",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s12",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_jkidqwjyqi2v",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_e67df5afb4954e478535c8869e15c5cf",
+  "cardVersion": 1,
+  "feedPosition": 18,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Laboratory material measurements. This kind of work usually involves measure materials.",
+     "escoUri": "http://data.europa.eu/esco/skill/fe490d6c-851b-44a8-949b-808e24c2cc54",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s12",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_u7zo1xx0tt2n",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_0d07f1a60e84425184942db7fd002475",
+  "cardVersion": 1,
+  "feedPosition": 19,
+  "body": {
+   "basis": [
+    "role"
+   ],
+   "reasons": [],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_8lags5y5hd9k",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_2082996f7719434380d723e3621e4148",
+  "cardVersion": 1,
+  "feedPosition": 3,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This kind of work usually involves construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_3sh88m3fu6xr",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_b331c251165f421e8b5895b76d765508",
+  "cardVersion": 1,
+  "feedPosition": 2,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions checking construction against drawings; the posting lists checking construction compliance.",
+     "escoUri": "http://data.europa.eu/esco/skill/1b71f0d0-8e57-44dc-aaa0-3ee6fbb59991",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Construction-related education, such as building engineering or architecture (checked by the employer at hiring)",
+    "PKM/FISE qualification training for moisture assessment (checked by the employer at hiring)",
+    "Previous experience in moisture, damage or indoor air inspection work",
+    "SISA or RTA qualification for indoor air measurement (checked by the employer at hiring)",
+    "Category B driving licence (checked by the employer at hiring)"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_v15762dzpbxc",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_a30bebff6e284677b69e4da459f50d0d",
+  "cardVersion": 1,
+  "feedPosition": 4,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This kind of work usually involves construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_0idqanh84vkq",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_71cb08da467c4e2c9a55ddf6ca73f182",
+  "cardVersion": 1,
+  "feedPosition": 5,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This posting lists construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_9gqflpsbmvcl",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_b41cc4d7ce4e4632961ba83fd44bdcbe",
+  "cardVersion": 1,
+  "feedPosition": 6,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This posting lists construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_4lxv9gehrmx9",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_db97e5fb08b74bcbacd3cf7787c96c01",
+  "cardVersion": 1,
+  "feedPosition": 7,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This posting lists construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_ylm3l18x6zkk",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_8fe1f5cf282244fd82bc6d31efb88010",
+  "cardVersion": 1,
+  "feedPosition": 8,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This posting lists construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_xccafvgwd37g",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_8f1f56d943f54f8d97afd99e8164d57d",
+  "cardVersion": 1,
+  "feedPosition": 9,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This kind of work usually involves construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_tob6nka0ehus",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_13e613550bd94c4d97d6066ea45d710c",
+  "cardVersion": 1,
+  "feedPosition": 10,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This kind of work usually involves construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_fabedldz1mgp",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_dc5ce68fa2744faaac0ac5739dc19ba9",
+  "cardVersion": 1,
+  "feedPosition": 11,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This kind of work usually involves construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_v4on5ab3acus",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_d71d78dbce894ad0901cb4c8933f0408",
+  "cardVersion": 1,
+  "feedPosition": 12,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This kind of work usually involves construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_k1j0wgnvkais",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_0b772d2e75714d9997e6b1ee84397e38",
+  "cardVersion": 1,
+  "feedPosition": 13,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This kind of work usually involves construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_aiwufg1rgxln",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_a2bcb7dd2c854e4990dd75ba4eedef5d",
+  "cardVersion": 1,
+  "feedPosition": 14,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This kind of work usually involves construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_pkgpeu2bhx0a",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_777d65d6f9cc488bac60703b6fe1ee5c",
+  "cardVersion": 1,
+  "feedPosition": 15,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This kind of work usually involves construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_1ha9i8jq0k5i",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_ca5a1b179dc8444a8cd4d20a80ee158a",
+  "cardVersion": 1,
+  "feedPosition": 16,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This kind of work usually involves construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_z5bte3l0evjv",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_0c1baec0797a4a649374250befa1988c",
+  "cardVersion": 1,
+  "feedPosition": 17,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This kind of work usually involves construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_5iq0ihutdty4",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_fc47cb286cb747ca9c0d7360af29583c",
+  "cardVersion": 1,
+  "feedPosition": 18,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Concrete-frame construction. This kind of work usually involves construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_qr427g76w3rm",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_449957c92ef142a083d70355003b7093",
+  "cardVersion": 1,
+  "feedPosition": 19,
+  "body": {
+   "basis": [
+    "occupation",
+    "text",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Revit. This posting mentions Revit.",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s8",
+     "postingSentence": 22
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_wnw52ekhk6ip",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_3d8bf72c14084b1ba8052b4a1c7509e0",
+  "cardVersion": 1,
+  "feedPosition": 3,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
+     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_6jbbb61p6u1f",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_9a04696cb9cc474a8be776b57d3cb5b0",
+  "cardVersion": 1,
+  "feedPosition": 4,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
+     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_dlu6o8cisi4f",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_31c4dd6e8d0b48a9adaaeff4590fa66f",
+  "cardVersion": 1,
+  "feedPosition": 5,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
+     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_g750yyuo2fa4",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_3b63cd0a0f6148adbaeac3b54f9d9d2b",
+  "cardVersion": 1,
+  "feedPosition": 6,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
+     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_dwfucp1c99r1",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_4ab9f9736b9e466cb7aadedc445b33ab",
+  "cardVersion": 1,
+  "feedPosition": 8,
+  "body": {
+   "basis": [
+    "occupation",
+    "text",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Mechanical design engineering. This posting mentions mechanical engineering.",
+     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": 10
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_uyfpqoolh73g",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_2274b9952df746528e241d7bd4aef823",
+  "cardVersion": 1,
+  "feedPosition": 10,
+  "body": {
+   "basis": [
+    "occupation",
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions SolidWorks. This posting mentions SolidWorks.",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s9",
+     "postingSentence": 14
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_snoz3e8tv55o",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_8d1407776c3548f3963a6c7bdfb3c3a9",
+  "cardVersion": 1,
+  "feedPosition": 7,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
+     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Educational background in a relevant engineering field",
+    "Strong experience with Siemens PLCs and TIA Portal",
+    "Experience in PLC programming, HMI/SCADA, and industrial networks",
+    "Knowledge of EPLAN for electrical and control-system documentation",
+    "Experience with testing, commissioning, troubleshooting, and integration"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_dplq3b5pmknt",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_42a6c07b401d42a994c86884316f10ca",
+  "cardVersion": 1,
+  "feedPosition": 1,
+  "body": {
+   "basis": [
+    "occupation",
+    "text",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions mechanical design engineering; the posting asks for mechanical engineering and out-of-the-box thinking.",
+     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": 4
+    }
+   ],
+   "notMentioned": [
+    "Solution-oriented mindset",
+    "Knowledge of stability, center-of-gravity analysis and basic FEA",
+    "Strong creative and out-of-the-box design thinking",
+    "Practical, hands-on mindset and interest in production solutions"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_6ico45ebd2hx",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_0b6c4283ef2245f7a04f7276138d0544",
+  "cardVersion": 1,
+  "feedPosition": 11,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions MATLAB. This kind of work usually involves MATLAB.",
+     "escoUri": "http://data.europa.eu/esco/skill/c3a03c5a-c260-4c26-9b9a-873abb396f4d",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s11",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_c07cd5o447b8",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_65cf7122b52d476d83aaf6fd542f6bfc",
+  "cardVersion": 1,
+  "feedPosition": 12,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
+     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_gigin1p5undm",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_ef1204e177184e9f9f578488863eaba9",
+  "cardVersion": 1,
+  "feedPosition": 13,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
+     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_j8tlg3e6h84w",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_83ddeb3241404dbd92102f8da640ad6c",
+  "cardVersion": 1,
+  "feedPosition": 14,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
+     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_3c1anp7twkwo",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_7b6325fb780147329c94686441f0bb48",
+  "cardVersion": 1,
+  "feedPosition": 15,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
+     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_9c6zz2cmdjhh",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_9d68259eb67349cca5ade08dbb7e48dc",
+  "cardVersion": 1,
+  "feedPosition": 16,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
+     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_c2r0wbglnj31",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_4a2a5f3360cd4ba1ba1d9e4c4d47e4d4",
+  "cardVersion": 1,
+  "feedPosition": 17,
+  "body": {
+   "basis": [
+    "role"
+   ],
+   "reasons": [],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_ni661lv531ao",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_af6bb422c6604c60891647208df8d0f7",
+  "cardVersion": 1,
+  "feedPosition": 18,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
+     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_v25291vyscxw",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_cf3685bc5d604f23b038f02633123b93",
+  "cardVersion": 1,
+  "feedPosition": 19,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Flow and strength simulations. This kind of work usually involves run simulations.",
+     "escoUri": "http://data.europa.eu/esco/skill/a432ffcd-b58d-4417-836c-ea3282b626ca",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_qotj5llvatp3",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_c4b5a25f995a4f0e82f3afd1281c4d32",
+  "cardVersion": 1,
+  "feedPosition": 4,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Home care nursing. This kind of work usually involves specialist nursing care.",
+     "escoUri": "http://data.europa.eu/esco/skill/99a09006-31f4-41d3-b3aa-feb2aeff730b",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_efwmtn2e12nc",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_5643130d10a948ee860908eae09f808a",
+  "cardVersion": 1,
+  "feedPosition": 1,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions training in supporting people with dementia; the posting lists implementing nursing care.",
+     "escoUri": "http://data.europa.eu/esco/skill/f98e06f5-a09a-4356-b6a8-d55a7d3c5356",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s22",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Registration as a licensed nurse (checked by the employer at hiring)",
+    "Valid Norwegian HPR number or readiness to apply immediately (checked by the employer at hiring)",
+    "Swedish or Norwegian at B2 level, or willingness to reach it",
+    "Ability to work under pressure in a fast-paced hospital environment",
+    "Specialisation studies in nursing"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_saftxz7dnaet",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_7a019bbca43c4a5fa25a71fb665c9734",
+  "cardVersion": 1,
+  "feedPosition": 0,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions training in supporting people with dementia; the posting lists implementing nursing care.",
+     "escoUri": "http://data.europa.eu/esco/skill/f98e06f5-a09a-4356-b6a8-d55a7d3c5356",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s22",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Registered nurse licensed by Valvira (checked by the employer at hiring)",
+    "At least 2 years of experience in home care",
+    "Driving licence (checked by the employer at hiring)",
+    "Independent and responsible approach to work"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_lhfj0arlidf5",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_2918fa77fdef45dab8c74d681f645342",
+  "cardVersion": 1,
+  "feedPosition": 7,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Coordinating client care. This kind of work usually involves coordinate care.",
+     "escoUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_4ftvldp9f71m",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_79aba35598004fa992c1491f95c78262",
+  "cardVersion": 1,
+  "feedPosition": 8,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Coordinating client care. This kind of work usually involves coordinate care.",
+     "escoUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_t4u2wdg0d3qd",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_98b33023600748aaa2ff9861701c93ce",
+  "cardVersion": 1,
+  "feedPosition": 10,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Coordinating client care. This kind of work usually involves coordinate care.",
+     "escoUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_6i8lw2w1oklj",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_b390c36096be4111b04eb804e61573c7",
+  "cardVersion": 1,
+  "feedPosition": 12,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Coordinating client care. This kind of work usually involves coordinate care.",
+     "escoUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_rlq519di8jtd",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_1b2ee8fd39cf402682cd3d8b9007aae7",
+  "cardVersion": 1,
+  "feedPosition": 13,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Coordinating client care. This kind of work usually involves coordinate care.",
+     "escoUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_k4qdye9qkuux",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_9ff43043da4b4733a3cd19ab9452d566",
+  "cardVersion": 1,
+  "feedPosition": 14,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Coordinating client care. This kind of work usually involves coordinate care.",
+     "escoUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_2pp41infs4eh",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_4a807b948dd341ec8ad9d08ba8cdbabf",
+  "cardVersion": 1,
+  "feedPosition": 15,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Coordinating client care. This kind of work usually involves coordinate care.",
+     "escoUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_xs4oatdh9rv3",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_2571ebd690e7454e9f666f1f3fc2af6d",
+  "cardVersion": 1,
+  "feedPosition": 16,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Coordinating client care. This kind of work usually involves coordinate care.",
+     "escoUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_fedzupfg3sl3",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_0015e467d3aa4061b776f8c5db3918ba",
+  "cardVersion": 1,
+  "feedPosition": 17,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Coordinating client care. This kind of work usually involves coordinate care.",
+     "escoUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_qwm8cmt51lb9",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_fcf133506d8145c88c3c3986c3587c7b",
+  "cardVersion": 1,
+  "feedPosition": 18,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Coordinating client care. This kind of work usually involves coordinate care.",
+     "escoUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_v9lim3g5er60",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_bd47096af1c24f24be7f82a454ec8b62",
+  "cardVersion": 1,
+  "feedPosition": 5,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Coordinating client care. This kind of work usually involves coordinate care.",
+     "escoUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Sufficient English comprehension for training and documentation",
+    "Pass the GCP online test before starting work",
+    "Independent, proactive and flexible service attitude"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_hn5g43rjuew9",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_83f59305275b43cfbb5b7d11944f1d05",
+  "cardVersion": 1,
+  "feedPosition": 6,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Coordinating client care. This kind of work usually involves coordinate care.",
+     "escoUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Genuine enthusiasm to develop as a care entrepreneur and team and business",
+    "Financial readiness to become an entrepreneur",
+    "Enthusiasm for meaningful work supporting people's wellbeing"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_ubjhur0bp765",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_46f4fcd29fa94318914ae06425ad6a79",
+  "cardVersion": 1,
+  "feedPosition": 19,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Coordinating client care. This kind of work usually involves coordinate care.",
+     "escoUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_qdo10vk0w2u1",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_2918fa77fdef45dab8c74d681f645342",
+  "cardVersion": 1,
+  "feedPosition": 5,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_dzyuf2voded7",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_79aba35598004fa992c1491f95c78262",
+  "cardVersion": 1,
+  "feedPosition": 6,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_p31o5nbxbwpp",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_98b33023600748aaa2ff9861701c93ce",
+  "cardVersion": 1,
+  "feedPosition": 7,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_2w76qmcuhmfr",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_b390c36096be4111b04eb804e61573c7",
+  "cardVersion": 1,
+  "feedPosition": 9,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_d7zzlzkz9281",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_1b2ee8fd39cf402682cd3d8b9007aae7",
+  "cardVersion": 1,
+  "feedPosition": 10,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_5g2zfnvjzg08",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_9ff43043da4b4733a3cd19ab9452d566",
+  "cardVersion": 1,
+  "feedPosition": 11,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_y8zu3gcqf8rq",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_6c01aee400eb4142afafbd83c2d1dae8",
+  "cardVersion": 1,
+  "feedPosition": 1,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Valid medication administration licence (checked by the employer at hiring)",
+    "Finnish language skills at least at B2 level (checked by the employer at hiring)",
+    "Valid driving licence and driving skills (checked by the employer at hiring)",
+    "Practical nurse or registered nurse qualification (checked by the employer at hiring)",
+    "Work experience in home care"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_6nx7he4q9d2i",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_bd47096af1c24f24be7f82a454ec8b62",
+  "cardVersion": 1,
+  "feedPosition": 3,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "At least one year of experience in nursing care",
+    "Fluent Finnish",
+    "Pass the GCP online test before starting work",
+    "Independent, proactive and flexible service attitude",
+    "Commitment to providing high-quality nursing care"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_wj34svmwbe7y",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_83f59305275b43cfbb5b7d11944f1d05",
+  "cardVersion": 1,
+  "feedPosition": 4,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Genuine enthusiasm to develop as a care entrepreneur and team and business",
+    "Financial readiness to become an entrepreneur",
+    "Enthusiasm for meaningful work supporting people's wellbeing"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_xizjc2th4i9e",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_4a807b948dd341ec8ad9d08ba8cdbabf",
+  "cardVersion": 1,
+  "feedPosition": 13,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_djzvfc2rxo1m",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_2571ebd690e7454e9f666f1f3fc2af6d",
+  "cardVersion": 1,
+  "feedPosition": 14,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_enrrmhottpjl",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_0015e467d3aa4061b776f8c5db3918ba",
+  "cardVersion": 1,
+  "feedPosition": 15,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_ukmc9bkkbtns",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_fcf133506d8145c88c3c3986c3587c7b",
+  "cardVersion": 1,
+  "feedPosition": 16,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_juwzo2udedzx",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_46f4fcd29fa94318914ae06425ad6a79",
+  "cardVersion": 1,
+  "feedPosition": 17,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_jh6zpebw7qzu",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_edddb25df0594f8381937386781ea91a",
+  "cardVersion": 1,
+  "feedPosition": 18,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_kc0mptwhmnje",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_2cf25d4de9934d86ba6ee0ff3d8d0708",
+  "cardVersion": 1,
+  "feedPosition": 19,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Monitoring vital signs and postoperative patients. This kind of work usually involves monitor basic patients signs.",
+     "escoUri": "http://data.europa.eu/esco/skill/d3b74d50-7fc9-4051-9335-58d129a4a064",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s15",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_n14crr3eqw5f",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_2918fa77fdef45dab8c74d681f645342",
+  "cardVersion": 1,
+  "feedPosition": 3,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_0x1k085eb68e",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_79aba35598004fa992c1491f95c78262",
+  "cardVersion": 1,
+  "feedPosition": 4,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_29nhbxe0y2el",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_0b88343885f643bd8d35137419da0f9c",
+  "cardVersion": 1,
+  "feedPosition": 5,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_4yiunoyvujw6",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_bd47096af1c24f24be7f82a454ec8b62",
+  "cardVersion": 1,
+  "feedPosition": 1,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "At least one year of experience in nursing care",
+    "Sufficient English comprehension for training and documentation",
+    "Pass the GCP online test before starting work",
+    "Independent, proactive and flexible service attitude",
+    "Commitment to providing high-quality nursing care"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_f1yjuov2she8",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_83f59305275b43cfbb5b7d11944f1d05",
+  "cardVersion": 1,
+  "feedPosition": 2,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Genuine enthusiasm to develop as a care entrepreneur and team and business",
+    "Financial readiness to become an entrepreneur",
+    "Enthusiasm for meaningful work supporting people's wellbeing"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_rw2wl57d5ki8",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_98b33023600748aaa2ff9861701c93ce",
+  "cardVersion": 1,
+  "feedPosition": 7,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_z7opele5be1i",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_b390c36096be4111b04eb804e61573c7",
+  "cardVersion": 1,
+  "feedPosition": 10,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_mnj9nhxt2wi3",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_1b2ee8fd39cf402682cd3d8b9007aae7",
+  "cardVersion": 1,
+  "feedPosition": 11,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_e1vbqi7ljkps",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_9ff43043da4b4733a3cd19ab9452d566",
+  "cardVersion": 1,
+  "feedPosition": 12,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_44mvqemk3ise",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_4a807b948dd341ec8ad9d08ba8cdbabf",
+  "cardVersion": 1,
+  "feedPosition": 14,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_9p5t6749xkc4",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_2571ebd690e7454e9f666f1f3fc2af6d",
+  "cardVersion": 1,
+  "feedPosition": 15,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_z45uxxgkboyv",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_0015e467d3aa4061b776f8c5db3918ba",
+  "cardVersion": 1,
+  "feedPosition": 16,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_n4ubwpxmavu6",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_fcf133506d8145c88c3c3986c3587c7b",
+  "cardVersion": 1,
+  "feedPosition": 17,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_hekv7z53lpmt",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_46f4fcd29fa94318914ae06425ad6a79",
+  "cardVersion": 1,
+  "feedPosition": 18,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_l6a3344rhg4o",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_951954ea08a74104a00129d6979b5546",
+  "cardVersion": 1,
+  "feedPosition": 13,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Completed registered nursing degree (checked by the employer at hiring)",
+    "Licensed registered nurse (checked by the employer at hiring)",
+    "Valid Norwegian HPR number or readiness to apply immediately (checked by the employer at hiring)",
+    "Fluent Norwegian at B2 level, or willingness to reach B2",
+    "Ability to commit to assignments lasting one to three months"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_b6r3k94ujv1x",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_6c01aee400eb4142afafbd83c2d1dae8",
+  "cardVersion": 1,
+  "feedPosition": 8,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Valid medication administration licence (checked by the employer at hiring)",
+    "Valid driving licence and driving skills (checked by the employer at hiring)",
+    "Practical nurse or registered nurse qualification (checked by the employer at hiring)",
+    "Work experience in home care",
+    "Hygiene passport (checked by the employer at hiring)"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_xp2wuoy64j5w",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_ea61852ad85c4ce580f4b043cdce90a8",
+  "cardVersion": 1,
+  "feedPosition": 5,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Restaurant cooking. This posting lists use cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_8vui8kgszpon",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_3dddac3f060b4d8a98702f070ff9e0cf",
+  "cardVersion": 1,
+  "feedPosition": 6,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Restaurant cooking. This kind of work usually involves use cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_8g1kh04a28gq",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_2136ccb4dfb44e7d84a676f7d5fdb6e1",
+  "cardVersion": 1,
+  "feedPosition": 7,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Ordering from suppliers. This kind of work usually involves order supplies.",
+     "escoUri": "http://data.europa.eu/esco/skill/210827e3-3129-45a2-8683-70399f3f561f",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_itcip93jrul2",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_b66aa9c67d5d4615bf55347bdfb96120",
+  "cardVersion": 1,
+  "feedPosition": 8,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Restaurant cooking. This kind of work usually involves use cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_z7wxfw87s02g",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_50e38b2e496a4768b6cfccc2a6e21bfc",
+  "cardVersion": 1,
+  "feedPosition": 9,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Restaurant cooking. This kind of work usually involves use cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_er1llu04de23",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_12bce64114a04052b1fe57b762bbbb04",
+  "cardVersion": 1,
+  "feedPosition": 10,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Restaurant cooking. This kind of work usually involves use cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_eh01chbhndwn",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_0605bfd8c8aa41e58af46683cb845d25",
+  "cardVersion": 1,
+  "feedPosition": 11,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Restaurant cooking. This kind of work usually involves use cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_hyt51mif3w3z",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_02166f02bd2543cab9b30724757aab8b",
+  "cardVersion": 1,
+  "feedPosition": 12,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Restaurant cooking. This kind of work usually involves use cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_uyyoiq3rim5z",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_e5d23702e5d84c5080b39f670ec48056",
+  "cardVersion": 1,
+  "feedPosition": 13,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Restaurant cooking. This kind of work usually involves use cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_kj8tmcntmr6q",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_ecf6376a0eca4b74b384a3428817eb44",
+  "cardVersion": 1,
+  "feedPosition": 14,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Restaurant cooking. This kind of work usually involves use cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_0o1oz5su4br2",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_805ce336abb2457982c163ad65a517a6",
+  "cardVersion": 1,
+  "feedPosition": 3,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions restaurant cooking; the posting lists cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_x9u3kdmy0q8y",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_1a11eb00699b4d6e8271c70590cc60a3",
+  "cardVersion": 1,
+  "feedPosition": 15,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Ordering from suppliers. This kind of work usually involves order supplies.",
+     "escoUri": "http://data.europa.eu/esco/skill/210827e3-3129-45a2-8683-70399f3f561f",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_30hgxdmtm468",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_cd2b83a51b0c428f891679b58f1bb4dd",
+  "cardVersion": 1,
+  "feedPosition": 16,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Restaurant cooking. This kind of work usually involves use cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_hre7267uvqow",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_0fb707e46d3b43ebb1c5bd0ef45b5fd9",
+  "cardVersion": 1,
+  "feedPosition": 17,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Restaurant cooking. This kind of work usually involves use cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_1vyiiomq3hgh",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_ebde7eaa30dc486a90563a5b3b8bef38",
+  "cardVersion": 1,
+  "feedPosition": 18,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Restaurant cooking. This kind of work usually involves use cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_1hew2tdz3iaf",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_c5afc7259dc84bf8abca9663a3c81c2c",
+  "cardVersion": 1,
+  "feedPosition": 19,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Ordering from suppliers. This posting lists order supplies.",
+     "escoUri": "http://data.europa.eu/esco/skill/210827e3-3129-45a2-8683-70399f3f561f",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_5ppzetv5uz6m",
+  "talentId": "tal_ht9k4vwpbm2x",
+  "jobId": "job_tmt_b53cf23d16a1467ea1229bb4715cda2f",
+  "cardVersion": 1,
+  "feedPosition": 3,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Order picking. This kind of work usually involves pick orders for dispatching.",
+     "escoUri": "http://data.europa.eu/esco/skill/ee5e2297-39cc-4ed6-89e5-d58016118a7f",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:13.279Z"
+ },
+ {
+  "id": "jm_ped2kbragidq",
+  "talentId": "tal_ht9k4vwpbm2x",
+  "jobId": "job_tmt_07715f1d809146feb4b5e82c2ece1cdd",
+  "cardVersion": 1,
+  "feedPosition": 4,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Order picking. This kind of work usually involves pick orders for dispatching.",
+     "escoUri": "http://data.europa.eu/esco/skill/ee5e2297-39cc-4ed6-89e5-d58016118a7f",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:13.279Z"
+ },
+ {
+  "id": "jm_rfdcqlaj9oi9",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_319db43c852c48748caa9113f8460273",
+  "cardVersion": 1,
+  "feedPosition": 3,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Accounts payable. This kind of work usually involves manage accounts.",
+     "escoUri": "http://data.europa.eu/esco/skill/e2e15494-65b9-4af5-8b86-53fb51e7e022",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:14.888Z"
+ },
+ {
+  "id": "jm_6vk7psw32tnh",
+  "talentId": "tal_ht9k4vwpbm2x",
+  "jobId": "job_tmt_746311e2c99d4de5963ce1e1c2c8ea14",
+  "cardVersion": 1,
+  "feedPosition": 0,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Order picking. This kind of work usually involves pick orders for dispatching.",
+     "escoUri": "http://data.europa.eu/esco/skill/ee5e2297-39cc-4ed6-89e5-d58016118a7f",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Willingness to learn and a team-oriented approach",
+    "Ability to work efficiently without compromising safety",
+    "Accuracy, care and attention to detail",
+    "Ability to follow customer and employer instructions",
+    "Upper-secondary qualification or equivalent competence"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:13.279Z"
+ },
+ {
+  "id": "jm_lzambgu6mjlv",
+  "talentId": "tal_ht9k4vwpbm2x",
+  "jobId": "job_tmt_7affc29f3e7047638a3500f750ce0449",
+  "cardVersion": 1,
+  "feedPosition": 1,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Order picking. This kind of work usually involves pick orders for dispatching.",
+     "escoUri": "http://data.europa.eu/esco/skill/ee5e2297-39cc-4ed6-89e5-d58016118a7f",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Good attitude, attention to detail and careful working style",
+    "Physical stamina for hands-on warehouse work",
+    "Systematic approach and ability to take initiative",
+    "Punctuality, reliability and willingness to learn",
+    "Previous warehouse work experience"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:13.279Z"
+ },
+ {
+  "id": "jm_y4k681dv5gty",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_2f45fe74e54c4e448e19b01a35128fa7",
+  "cardVersion": 1,
+  "feedPosition": 2,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Accounts payable. This kind of work usually involves manage accounts.",
+     "escoUri": "http://data.europa.eu/esco/skill/e2e15494-65b9-4af5-8b86-53fb51e7e022",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Suitable commercial education, such as accounting",
+    "Proactive and independent working style",
+    "Prior experience with the M3 ERP system",
+    "Experience with other heavy ERP systems or system changes",
+    "Change-oriented"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:14.888Z"
+ },
+ {
+  "id": "jm_u877enwjxd4x",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_b663f964b7514da5883171438e2dc8e4",
+  "cardVersion": 1,
+  "feedPosition": 4,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Correcting financial statements. This kind of work usually involves prepare financial statements.",
+     "escoUri": "http://data.europa.eu/esco/skill/60f51172-37c0-4933-a27a-cbf55dcd7580",
+     "evidence": {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s9",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:14.888Z"
+ },
+ {
+  "id": "jm_kak4lkr83rau",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_d9f9b5c63bff4ed7b416449eb96be559",
+  "cardVersion": 1,
+  "feedPosition": 5,
+  "body": {
+   "basis": [
+    "occupation",
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Excel. This posting mentions Excel.",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s25",
+     "postingSentence": 13
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:14.888Z"
+ },
+ {
+  "id": "jm_btp8g3xrhcj9",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_9ed0fcfd3440422c854ba6c54e2cfdf4",
+  "cardVersion": 1,
+  "feedPosition": 6,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Explaining financial matters. This kind of work usually involves explain financial jargon.",
+     "escoUri": "http://data.europa.eu/esco/skill/0f5bd097-ed76-47f7-8f44-93be67967b5f",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 1
+     },
+     "signalId": "s26",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:14.888Z"
+ },
+ {
+  "id": "jm_xi3nrv2vfxqe",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_7e9c2d6d9c1c4f2c9635ca86f9f59509",
+  "cardVersion": 1,
+  "feedPosition": 7,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Accounts payable. This kind of work usually involves manage accounts.",
+     "escoUri": "http://data.europa.eu/esco/skill/e2e15494-65b9-4af5-8b86-53fb51e7e022",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:14.888Z"
+ },
+ {
+  "id": "jm_adioa0mez9gu",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_edd5f3a4b8e74561a46a3e5dcb2d4eff",
+  "cardVersion": 1,
+  "feedPosition": 8,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Explaining financial matters. This kind of work usually involves explain financial jargon.",
+     "escoUri": "http://data.europa.eu/esco/skill/0f5bd097-ed76-47f7-8f44-93be67967b5f",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 1
+     },
+     "signalId": "s26",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:14.888Z"
+ },
+ {
+  "id": "jm_b9k2jmrodkzr",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_90329a18f38d44cfb7b4ba01dbcb6af2",
+  "cardVersion": 1,
+  "feedPosition": 9,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Accounts payable. This kind of work usually involves manage accounts.",
+     "escoUri": "http://data.europa.eu/esco/skill/e2e15494-65b9-4af5-8b86-53fb51e7e022",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:14.888Z"
+ },
+ {
+  "id": "jm_nvvre7lhtjgv",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_e3ee097849e64380bc877557fe840049",
+  "cardVersion": 1,
+  "feedPosition": 10,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Accounts payable. This kind of work usually involves manage accounts.",
+     "escoUri": "http://data.europa.eu/esco/skill/e2e15494-65b9-4af5-8b86-53fb51e7e022",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:14.888Z"
+ },
+ {
+  "id": "jm_a6uz1s4m5zen",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_2d03daadc915445790f39a26a6aa55de",
+  "cardVersion": 1,
+  "feedPosition": 11,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Accounts payable. This kind of work usually involves manage accounts.",
+     "escoUri": "http://data.europa.eu/esco/skill/e2e15494-65b9-4af5-8b86-53fb51e7e022",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:14.888Z"
+ },
+ {
+  "id": "jm_ewkq5ldht96n",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_86be6814d9cf4810bc39f81c6b53becd",
+  "cardVersion": 1,
+  "feedPosition": 12,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Accounts payable. This kind of work usually involves manage accounts.",
+     "escoUri": "http://data.europa.eu/esco/skill/e2e15494-65b9-4af5-8b86-53fb51e7e022",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:14.888Z"
+ },
+ {
+  "id": "jm_irmbze8yjytb",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_0b6becae91f2467c853084a7fb58a6ca",
+  "cardVersion": 1,
+  "feedPosition": 13,
+  "body": {
+   "basis": [
+    "occupation",
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Excel. This posting mentions Excel.",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s25",
+     "postingSentence": 25
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:14.888Z"
+ },
+ {
+  "id": "jm_rgxeq5odrrwt",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_8830486648bc481e88daacd79ce8641e",
+  "cardVersion": 1,
+  "feedPosition": 14,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Accounts payable. This kind of work usually involves manage accounts.",
+     "escoUri": "http://data.europa.eu/esco/skill/e2e15494-65b9-4af5-8b86-53fb51e7e022",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:14.888Z"
+ },
+ {
+  "id": "jm_1hx09fdv84hc",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_7be7e3d757bd4461b4886d696d42d644",
+  "cardVersion": 1,
+  "feedPosition": 2,
+  "body": {
+   "basis": [
+    "occupation",
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions an occupational safety card; the posting asks for a valid occupational safety card.",
+     "escoUri": "http://data.europa.eu/esco/skill/d5e39a53-4f54-4d5f-9df3-b49664c9559d",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": 13
+    }
+   ],
+   "notMentioned": [
+    "Ability to work independently",
+    "Previous experience as an interior carpenter",
+    "Ability to read construction drawings",
+    "Willingness to work on large construction sites",
+    "Construction background and strong practical skills"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_nuoe6zmp6v85",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_7f2bd790ca1e4c58a5fe9233c76203ed",
+  "cardVersion": 1,
+  "feedPosition": 3,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Waterproofing membrane systems. This kind of work usually involves apply proofing membranes.",
+     "escoUri": "http://data.europa.eu/esco/skill/16801a68-549b-4eaf-9531-f2d516a9380c",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s12",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_2u1hddxnfql0",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_3d6d28166d5349ae8df942d3c8fe0dde",
+  "cardVersion": 1,
+  "feedPosition": 4,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Occupational safety card. This kind of work usually involves occupational health.",
+     "escoUri": "http://data.europa.eu/esco/skill/d5e39a53-4f54-4d5f-9df3-b49664c9559d",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_2sh1vsgiqcsv",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_10c52b37068446e2b8684e2af28866fe",
+  "cardVersion": 1,
+  "feedPosition": 5,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Selecting tile adhesives. This kind of work usually involves types of tile adhesive.",
+     "escoUri": "http://data.europa.eu/esco/skill/8a169eb9-2cf1-4653-aa5c-af575c9836f9",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s14",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_riq8a0tmtj1h",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_abb78a94cf814ce3a568c8e0970552d5",
+  "cardVersion": 1,
+  "feedPosition": 6,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Selecting tile adhesives. This kind of work usually involves types of tile adhesive.",
+     "escoUri": "http://data.europa.eu/esco/skill/8a169eb9-2cf1-4653-aa5c-af575c9836f9",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s14",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_brvzg4118dat",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_fa9a997112444a63b7074ac853c4b7b0",
+  "cardVersion": 1,
+  "feedPosition": 8,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Selecting tile adhesives. This kind of work usually involves types of tile adhesive.",
+     "escoUri": "http://data.europa.eu/esco/skill/8a169eb9-2cf1-4653-aa5c-af575c9836f9",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s14",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_vrm5cmc5h2ax",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_327ffb6360464f9f8a13265dd0effb3e",
+  "cardVersion": 1,
+  "feedPosition": 9,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Selecting tile adhesives. This kind of work usually involves types of tile adhesive.",
+     "escoUri": "http://data.europa.eu/esco/skill/8a169eb9-2cf1-4653-aa5c-af575c9836f9",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s14",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_5kribs1vjl3j",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_9a2f217ebe684b5ca062c51bf13ad373",
+  "cardVersion": 1,
+  "feedPosition": 10,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Running a tiling business. This kind of work usually involves managing a business with great care.",
+     "escoUri": "http://data.europa.eu/esco/skill/885564e4-9818-44ac-a77d-ddfe30b34ed7",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s5",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_91y5wqjn96hu",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_0f9447258ece4549a7d76637d1d2686d",
+  "cardVersion": 1,
+  "feedPosition": 11,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Selecting tile adhesives. This kind of work usually involves types of tile adhesive.",
+     "escoUri": "http://data.europa.eu/esco/skill/8a169eb9-2cf1-4653-aa5c-af575c9836f9",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s14",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_8y7imour0g8i",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_46f4fcd29fa94318914ae06425ad6a79",
+  "cardVersion": 1,
+  "feedPosition": 12,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Occupational safety card. This kind of work usually involves occupational health.",
+     "escoUri": "http://data.europa.eu/esco/skill/d5e39a53-4f54-4d5f-9df3-b49664c9559d",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_dpwbk3bdxru5",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_5f91b8d309ae4bd9b00ab60ec095dcd5",
+  "cardVersion": 1,
+  "feedPosition": 13,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Selecting tile adhesives. This kind of work usually involves types of tile adhesive.",
+     "escoUri": "http://data.europa.eu/esco/skill/8a169eb9-2cf1-4653-aa5c-af575c9836f9",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s14",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_1r5y8vq87whl",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_8ea69d56690d44b3bd9abc8f404b3869",
+  "cardVersion": 1,
+  "feedPosition": 14,
+  "body": {
+   "basis": [
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Occupational safety card. This posting mentions occupational health.",
+     "escoUri": "http://data.europa.eu/esco/skill/d5e39a53-4f54-4d5f-9df3-b49664c9559d",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": 3
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_lu9bkvws4b6n",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_c1d0b36c3590489ca28215f042a42bd5",
+  "cardVersion": 1,
+  "feedPosition": 15,
+  "body": {
+   "basis": [
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Occupational safety card. This posting mentions Occupational safety card.",
+     "escoUri": "http://data.europa.eu/esco/skill/d5e39a53-4f54-4d5f-9df3-b49664c9559d",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": 12
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_osl6dy9khbci",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_5dd79975a8854b7fafce12f78d2e165a",
+  "cardVersion": 1,
+  "feedPosition": 16,
+  "body": {
+   "basis": [
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Occupational safety card. This posting mentions Occupational safety card.",
+     "escoUri": "http://data.europa.eu/esco/skill/d5e39a53-4f54-4d5f-9df3-b49664c9559d",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": 27
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_du2hv8qyypja",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_d48e7edf716e405ab4a344fe7eb274f9",
+  "cardVersion": 1,
+  "feedPosition": 17,
+  "body": {
+   "basis": [
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Occupational safety card. This posting mentions työterveys.",
+     "escoUri": "http://data.europa.eu/esco/skill/d5e39a53-4f54-4d5f-9df3-b49664c9559d",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": 36
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_3knjjjfcb7up",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_97808fbba75f4ebb95f6b60e6f965ac7",
+  "cardVersion": 1,
+  "feedPosition": 18,
+  "body": {
+   "basis": [
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Occupational safety card. This posting mentions työterveys.",
+     "escoUri": "http://data.europa.eu/esco/skill/d5e39a53-4f54-4d5f-9df3-b49664c9559d",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": 39
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_t34q0fohbywg",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_bd733bc948c64485903e11533c832403",
+  "cardVersion": 1,
+  "feedPosition": 19,
+  "body": {
+   "basis": [
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Occupational safety card. This posting mentions työterveys.",
+     "escoUri": "http://data.europa.eu/esco/skill/d5e39a53-4f54-4d5f-9df3-b49664c9559d",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": 25
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_dxeg46rybri0",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_f282720943bf44a79ffc1c737c42623c",
+  "cardVersion": 1,
+  "feedPosition": 0,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation",
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions PostgreSQL; the posting asks for work with PostgreSQL databases and the sqlx library.",
+     "escoUri": "http://data.europa.eu/esco/skill/a8d07b5a-c1a1-42c6-9d53-db9c7a2ca996",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s10",
+     "postingSentence": 6
+    }
+   ],
+   "notMentioned": [
+    "Practical Rust programming experience from projects, studies or work",
+    "Ability to code independently, test, debug and assess architecture trade-offs",
+    "Willingness to learn and contribute to practical AI application development",
+    "GitHub profile or programming portfolio with relevant source code",
+    "Ability to code without AI and understand, explain and verify your code"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_6l9le3ka0tr5",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_3ccdf41d04614814a1a5955831dd026e",
+  "cardVersion": 1,
+  "feedPosition": 0,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions concrete-frame construction; the posting lists construction methods.",
+     "escoUri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s7",
+     "postingSentence": null
+    },
+    {
+     "text": "Your card mentions managing concrete-frame construction sites; the posting lists monitoring construction sites.",
+     "escoUri": "http://data.europa.eu/esco/skill/fc1a75bb-70e3-4005-881f-7709bf7b0ed4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Good customer service and interpersonal skills",
+    "Initiative, responsibility and an independent working style",
+    "Interest in business development and building customer relationships",
+    "Category B driving licence (checked by the employer at hiring)",
+    "Willingness to travel to customer sites"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_y1w3cjhhhy9a",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_2f5cf8c246084edfa364b497cd9645a0",
+  "cardVersion": 1,
+  "feedPosition": 1,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions managing concrete-frame construction sites; the posting lists monitoring construction sites.",
+     "escoUri": "http://data.europa.eu/esco/skill/fc1a75bb-70e3-4005-881f-7709bf7b0ed4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Technical education as an engineer"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:48:59.727Z"
+ },
+ {
+  "id": "jm_vcl6t52nm22r",
+  "talentId": "tal_8ttxss4rfn1c",
+  "jobId": "job_tmt_01531776c0294656a7ba1a7ec143ac07",
+  "cardVersion": 1,
+  "feedPosition": 0,
+  "body": {
+   "basis": [
+    "occupation",
+    "text",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Online retail customer service. This kind of work usually involves customer service.",
+     "escoUri": "http://data.europa.eu/esco/skill/15a33d76-4640-438d-ae64-fdc0c1d3eebc",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Ability to grasp overall situations and solve issues case by case",
+    "Interest in international customer service, orders and supply chains",
+    "Proactive attitude and willingness to learn",
+    "Willingness to work mainly at the Porvoo office",
+    "Ability to work systematically and advance tasks independently"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:18.962Z"
+ },
+ {
+  "id": "jm_kuxg9iy4lktb",
+  "talentId": "tal_8ttxss4rfn1c",
+  "jobId": "job_tmt_0b654c5e45dd4369a2b08b891581806b",
+  "cardVersion": 1,
+  "feedPosition": 1,
+  "body": {
+   "basis": [
+    "role"
+   ],
+   "reasons": [],
+   "notMentioned": [
+    "Degree in Electrical or Automation Engineering",
+    "Experience with CAD tools such as AutoCAD or Vertex",
+    "Willingness to travel occasionally in Europe and visit shipyards",
+    "Proactive attitude with strong communication and prioritization skills",
+    "Understanding of and interest in modern digital solutions"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:18.962Z"
+ },
+ {
+  "id": "jm_b6j53czcx03a",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_edddb25df0594f8381937386781ea91a",
+  "cardVersion": 1,
+  "feedPosition": 3,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions training in supporting people with dementia; the posting lists implementing nursing care.",
+     "escoUri": "http://data.europa.eu/esco/skill/f98e06f5-a09a-4356-b6a8-d55a7d3c5356",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s22",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_yle4byybtcm5",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_f8af5dc7dd6b4add8a33f299b47d3378",
+  "cardVersion": 1,
+  "feedPosition": 4,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions restaurant cooking; the posting lists cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_mf3uc8vm3d3w",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_20ba79bab4a34c35aa0a2808c2f68bd2",
+  "cardVersion": 1,
+  "feedPosition": 0,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "At least 5 years of experience in the software industry",
+    "Experience using AI tools, AI-assisted development, or AI-based solutions",
+    "Ability to learn quickly and apply skills in different situations",
+    "Proactive and solution-oriented approach to work",
+    "Smooth collaboration with technical and non-technical stakeholders"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_qi72rqcj43l5",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_951954ea08a74104a00129d6979b5546",
+  "cardVersion": 1,
+  "feedPosition": 2,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions training in supporting people with dementia; the posting lists implementing nursing care.",
+     "escoUri": "http://data.europa.eu/esco/skill/f98e06f5-a09a-4356-b6a8-d55a7d3c5356",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s22",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Completed registered nursing degree (checked by the employer at hiring)",
+    "Licensed registered nurse (checked by the employer at hiring)",
+    "Valid Norwegian HPR number or readiness to apply immediately (checked by the employer at hiring)",
+    "Fluent Swedish at B2 level, or willingness to reach B2",
+    "Fluent Norwegian at B2 level, or willingness to reach B2"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_80ieyy0d51rq",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_26e779c828274bd68c87421f44cf4313",
+  "cardVersion": 1,
+  "feedPosition": 0,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions first aid certification; the posting lists first aid certification.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Ability to work independently with business customers",
+    "Goal-oriented and active approach to work",
+    "Willingness to work in a mobile field role",
+    "Access to your own car",
+    "Own phone, tablet or computer for work"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_400qt6hkxapq",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_a22a0a977eca426eb6e32d00cd53c490",
+  "cardVersion": 1,
+  "feedPosition": 0,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions restaurant cooking; the posting lists the use of cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Arabic language skills",
+    "Hygiene passport or willingness to obtain one (checked by the employer at hiring)",
+    "Ability to work independently in a busy kitchen",
+    "Good teamwork, initiative and a responsible approach to work"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_d9xtvdavxlvn",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_671dc0b8246d455f8ef39eeda178c4f7",
+  "cardVersion": 1,
+  "feedPosition": 1,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions correcting financial statements; the posting lists preparing financial statements.",
+     "escoUri": "http://data.europa.eu/esco/skill/60f51172-37c0-4933-a27a-cbf55dcd7580",
+     "evidence": {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s9",
+     "postingSentence": null
+    },
+    {
+     "text": "Your card mentions filing tax returns; the posting lists preparing tax return forms.",
+     "escoUri": "http://data.europa.eu/esco/skill/22a173f5-868c-4d82-87e6-beed500ce070",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s22",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Strong, broad experience in housing company financial management",
+    "Practical experience with VAT-liable housing company finances",
+    "Good skills in loan-share calculations and renovation accounting",
+    "Ability to manage client financial administration as a whole",
+    "Systematic, careful and solution-oriented approach to work"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:49:14.888Z"
+ },
+ {
+  "id": "jm_nz777i7oi6pr",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_411444cd4f24475eb9a96fb731bfe0b0",
+  "cardVersion": 1,
+  "feedPosition": 1,
+  "body": {
+   "basis": [
+    "occupation",
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions you hold an occupational safety card; the posting lists occupational health care.",
+     "escoUri": "http://data.europa.eu/esco/skill/d5e39a53-4f54-4d5f-9df3-b49664c9559d",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": 10
+    }
+   ],
+   "notMentioned": [
+    "Experience installing partition walls and lowered ceilings",
+    "Previous experience in interior carpentry",
+    "Ability to read blueprints"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_9r18yrofgapm",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_f282720943bf44a79ffc1c737c42623c",
+  "cardVersion": 1,
+  "feedPosition": 1,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation",
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Python for data import jobs and sensor readings; the posting lists Python as another programming language.",
+     "escoUri": "http://data.europa.eu/esco/skill/ccd0a1d9-afda-43d9-b901-96344886e14d",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": 26
+    },
+    {
+     "text": "Your card mentions PostgreSQL; the posting asks for work with PostgreSQL databases and the sqlx library.",
+     "escoUri": "http://data.europa.eu/esco/skill/a8d07b5a-c1a1-42c6-9d53-db9c7a2ca996",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": 6
+    }
+   ],
+   "notMentioned": [
+    "Practical Rust programming experience from projects, studies or work",
+    "Understanding of full stack development and UI, backend and database interaction",
+    "Knowledge of REST APIs, MQTT and relational databases",
+    "Ability to code independently, test, debug and assess architecture trade-offs",
+    "Willingness to learn and contribute to practical AI application development"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_w41se3oeqvrr",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_b897699de40741158365b20db5dd8d54",
+  "cardVersion": 1,
+  "feedPosition": 0,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions TypeScript. This kind of work usually involves TypeScript.",
+     "escoUri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "ServiceNow certifications: CSA, CAD and CIS",
+    "Experience with large-scale or complex ServiceNow implementations",
+    "Service Portal development",
+    "Experience with scoped applications",
+    "Integration Hub"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_2ewn3vs41r5o",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_b897699de40741158365b20db5dd8d54",
+  "cardVersion": 1,
+  "feedPosition": 13,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Java. This kind of work usually involves Java (computer programming).",
+     "escoUri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "ServiceNow certifications: CSA, CAD and CIS",
+    "Experience with large-scale or complex ServiceNow implementations",
+    "Service Portal development",
+    "Experience with scoped applications",
+    "Integration Hub"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_gtr10qzt5zi7",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_fb388722c46544aba1682e4b83024f68",
+  "cardVersion": 1,
+  "feedPosition": 7,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Software development. This kind of work usually involves develop software prototype.",
+     "escoUri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Experience with client-server architecture, backend APIs and integrations",
+    "Basic knowledge of AWS or Azure, version control, CI/CD and DevSecOps",
+    "Degree in computer science, engineering, mathematics or a related field",
+    "Use agent-based coding tools effectively without compromising security",
+    "Write clean, maintainable and well-tested code using best practices"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:52.198Z"
+ },
+ {
+  "id": "jm_n5gm54fehjpu",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_fb388722c46544aba1682e4b83024f68",
+  "cardVersion": 1,
+  "feedPosition": 1,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions TypeScript. This kind of work usually involves TypeScript.",
+     "escoUri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s3",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Experience with client-server architecture, backend APIs and integrations",
+    "Basic knowledge of AWS or Azure, version control, CI/CD and DevSecOps",
+    "Degree in computer science, engineering, mathematics or a related field",
+    "Use agent-based coding tools effectively without compromising security",
+    "Write clean, maintainable and well-tested code using best practices"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:54.575Z"
+ },
+ {
+  "id": "jm_shgwlwerbwfd",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_1bd6ffbffe6f4c5ca4218e7ba89b2b0c",
+  "cardVersion": 1,
+  "feedPosition": 1,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Java. This kind of work usually involves Java (computer programming).",
+     "escoUri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Technical expertise needed for the role and willingness to develop it",
+    "Solution-focused approach, willingness to learn and interest in care reporting",
+    "Suitable higher education degree",
+    "Analytical thinking and interest in using data and information",
+    "Ability to clarify reporting needs and turn them into working solutions"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_ehz8zggiyln8",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_b1a090bb21ac40a1a8294f4384806a31",
+  "cardVersion": 1,
+  "feedPosition": 2,
+  "body": {
+   "basis": [
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Java; the posting asks for investigating Java- and Oracle-based environments and solving issues.",
+     "escoUri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s2",
+     "postingSentence": 2
+    },
+    {
+     "text": "Your card mentions database unique constraints; the posting asks for good knowledge of Oracle database.",
+     "escoUri": "http://data.europa.eu/esco/skill/43ae58b9-5e56-4524-b45a-b422777a0576",
+     "evidence": {
+      "turnIndex": 3,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s7",
+     "postingSentence": 19
+    }
+   ],
+   "notMentioned": [
+    "Relevant education in IT, software engineering, automation, or a related field",
+    "Good knowledge of Oracle databases",
+    "Open, curious mindset, proactive communication, and willingness to learn"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:48:56.470Z"
+ },
+ {
+  "id": "jm_6w0rc8ecj6kr",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_8d1407776c3548f3963a6c7bdfb3c3a9",
+  "cardVersion": 1,
+  "feedPosition": 0,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Plastics manufacturing. This kind of work usually involves manufacturing processes.",
+     "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Educational background in a relevant engineering field"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:48:57.744Z"
+ },
+ {
+  "id": "jm_tnpwv21egyoy",
+  "talentId": "tal_mogxo04jdwwl",
+  "jobId": "job_tmt_79d4b3596766442199c0b946c09ff25a",
+  "cardVersion": 1,
+  "feedPosition": 0,
+  "body": {
+   "basis": [
+    "occupation",
+    "text",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions mechanical design engineering; the posting asks for mechanical engineering activities in delivery projects.",
+     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": 11
+    },
+    {
+     "text": "Your card mentions SolidWorks; the posting lists as a plus skills in Solidworks, Inventor and Microstation.",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s9",
+     "postingSentence": 23
+    }
+   ],
+   "notMentioned": [
+    "Strong problem-solving skills and a proactive approach to work",
+    "Ability to work independently and collaborate with stakeholders",
+    "Good cooperation skills and productive working relationships",
+    "Willingness to travel occasionally to customer sites"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:49:02.016Z"
+ },
+ {
+  "id": "jm_vh02nkjn7o53",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_7a019bbca43c4a5fa25a71fb665c9734",
+  "cardVersion": 1,
+  "feedPosition": 8,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Registered nurse licensed by Valvira (checked by the employer at hiring)",
+    "At least 2 years of experience in home care",
+    "Driving licence (checked by the employer at hiring)",
+    "Independent and responsible approach to work"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_1hi13x4esqbb",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_7a019bbca43c4a5fa25a71fb665c9734",
+  "cardVersion": 1,
+  "feedPosition": 9,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Registered nurse licensed by Valvira (checked by the employer at hiring)",
+    "At least 2 years of experience in home care",
+    "Driving licence (checked by the employer at hiring)",
+    "Independent and responsible approach to work"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_o4pjheo5w4zd",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_951954ea08a74104a00129d6979b5546",
+  "cardVersion": 1,
+  "feedPosition": 12,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Completed registered nursing degree (checked by the employer at hiring)",
+    "Licensed registered nurse (checked by the employer at hiring)",
+    "Valid Norwegian HPR number or readiness to apply immediately (checked by the employer at hiring)",
+    "Fluent Swedish at B2 level, or willingness to reach B2",
+    "Fluent Norwegian at B2 level, or willingness to reach B2"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_qovebjsdb35v",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_6c01aee400eb4142afafbd83c2d1dae8",
+  "cardVersion": 1,
+  "feedPosition": 11,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Coordinating client care. This kind of work usually involves coordinate care.",
+     "escoUri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+     "evidence": {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Valid driving licence and driving skills (checked by the employer at hiring)",
+    "Practical nurse or registered nurse qualification (checked by the employer at hiring)",
+    "Work experience in home care",
+    "Hygiene passport (checked by the employer at hiring)",
+    "Vaccination protection in line with THL guidelines"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:04.697Z"
+ },
+ {
+  "id": "jm_uviqquafv2o7",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_29056ad2bb7a46088ba9e2fcd440f540",
+  "cardVersion": 1,
+  "feedPosition": 2,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Surgical ward nursing. This kind of work usually involves nursing science.",
+     "escoUri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Reliable, proactive and skilled in care work",
+    "Suitable degree in social services or health care",
+    "Prior experience working with children and families",
+    "Independent and responsible approach to work",
+    "Fluent Finnish"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_x9yhd2asiltm",
+  "talentId": "tal_l06hdipu1bdb",
+  "jobId": "job_tmt_29056ad2bb7a46088ba9e2fcd440f540",
+  "cardVersion": 1,
+  "feedPosition": 19,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions First aid certification. This kind of work usually involves first aid.",
+     "escoUri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     "signalId": "s13",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Reliable, proactive and skilled in care work",
+    "Suitable degree in social services or health care",
+    "Prior experience working with children and families",
+    "Independent and responsible approach to work",
+    "Experience with neurodivergent children or children needing special support"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:09.893Z"
+ },
+ {
+  "id": "jm_ea2zttcnnvz3",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_26e779c828274bd68c87421f44cf4313",
+  "cardVersion": 1,
+  "feedPosition": 7,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Occupational safety card. This kind of work usually involves occupational health.",
+     "escoUri": "http://data.europa.eu/esco/skill/d5e39a53-4f54-4d5f-9df3-b49664c9559d",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Ability to work independently with business customers",
+    "Goal-oriented and active approach to work",
+    "Willingness to work in a mobile field role",
+    "Access to your own car",
+    "Own phone, tablet or computer for work"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_r0fw9p1sfy1s",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_f2c1de2de57c4995a546e407b5ce3d22",
+  "cardVersion": 1,
+  "feedPosition": 1,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Restaurant cooking. This kind of work usually involves use cooking techniques.",
+     "escoUri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Experience in restaurant or chain business",
+    "Commercial insight and financial capacity for sustained growth",
+    "Understanding of restaurant operations and network expansion",
+    "Ability to make a separately agreed investment",
+    "Experience managing multiple restaurant locations"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:11.390Z"
+ },
+ {
+  "id": "jm_by15ewnrzl8d",
+  "talentId": "tal_ht9k4vwpbm2x",
+  "jobId": "job_tmt_698b6f58ed4e4e6398d92af858a110ed",
+  "cardVersion": 1,
+  "feedPosition": 2,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Order picking. This kind of work usually involves pick orders for dispatching.",
+     "escoUri": "http://data.europa.eu/esco/skill/ee5e2297-39cc-4ed6-89e5-d58016118a7f",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Logistics experience or eagerness to learn new things",
+    "Independent and responsible work attitude",
+    "Motivation and a positive attitude",
+    "Attention to detail"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:13.279Z"
+ },
+ {
+  "id": "jm_oacfy0sczt46",
+  "talentId": "tal_5t5ekr2w3ljb",
+  "jobId": "job_tmt_c9982aabd2ce4e0884754de6174feafc",
+  "cardVersion": 1,
+  "feedPosition": 0,
+  "body": {
+   "basis": [
+    "occupation",
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions an occupational safety card; the posting lists Fennia insurance and Mehiläinen occupational health care.",
+     "escoUri": "http://data.europa.eu/esco/skill/d5e39a53-4f54-4d5f-9df3-b49664c9559d",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s20",
+     "postingSentence": 21
+    }
+   ],
+   "notMentioned": [
+    "Willingness to travel for work after the Espoo site",
+    "Experience with demanding, large-scale tiling work",
+    "Ability to maintain a fast piecework pace",
+    "Proactive work attitude",
+    "Good physical fitness"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T01:49:17.431Z"
+ }
+]

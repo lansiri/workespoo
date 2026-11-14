@@ -1,0 +1,58 @@
+[
+ {
+  "eventId": "ev_demo2026",
+  "companyId": "co_demo01",
+  "number": 1,
+  "format": "in_person",
+  "agendaToken": "made-again-on-restore"
+ },
+ {
+  "eventId": "ev_demo2026",
+  "companyId": "co_demo02",
+  "number": 2,
+  "format": "in_person",
+  "agendaToken": "made-again-on-restore"
+ },
+ {
+  "eventId": "ev_demo2026",
+  "companyId": "co_demo03",
+  "number": 3,
+  "format": "in_person",
+  "agendaToken": "made-again-on-restore"
+ },
+ {
+  "eventId": "ev_demo2026",
+  "companyId": "co_demo04",
+  "number": 4,
+  "format": "in_person",
+  "agendaToken": "made-again-on-restore"
+ },
+ {
+  "eventId": "ev_demo2026",
+  "companyId": "co_demo05",
+  "number": 5,
+  "format": "in_person",
+  "agendaToken": "made-again-on-restore"
+ },
+ {
+  "eventId": "ev_demo2026",
+  "companyId": "co_demo06",
+  "number": 6,
+  "format": "online",
+  "agendaToken": "made-again-on-restore"
+ },
+ {
+  "eventId": "ev_demo2026",
+  "companyId": "co_demo07",
+  "number": 7,
+  "format": "online",
+  "agendaToken": "made-again-on-restore"
+ },
+ {
+  "eventId": "ev_demo2026",
+  "companyId": "co_demo08",
+  "number": 8,
+  "format": "online",
+  "agendaToken": "made-again-on-restore"
+ }
+]
