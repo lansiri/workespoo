@@ -1,5 +1,5 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
 import { loadJobFixtures } from "../../../fixtures/load";
 import { company, interview, job, jobMatch, jobQueue, needCard, signal, talent, turn } from "@/db/schema";
@@ -8,7 +8,7 @@ import { resetLlmState, setLlmFake, type LlmOptions } from "@/lib/llm";
 import { enqueue } from "@/lib/queue";
 import { computeFeed, feedForTalent, refineFeed, refreshNotMentioned } from "./feed";
 import { matchesPayload } from "./payload";
-import { STATUTORY_SUFFIX } from "./constants";
+import { FEED_SIZE, STATUTORY_SUFFIX } from "./constants";
 import { checkModelReasons, containsWholePhrase, REASONS_SYSTEM_PROMPT, type AllowedPair, type SignalForReason } from "./reasons";
 import { uriByLabel, addMaskedCompany, addNeed, addPerson, jobIdByTitle, occupationSkillsOf, req } from "./testkit";
 
@@ -131,11 +131,11 @@ describe("retrieval", () => {
     expect(await computeFeed(t.db, "tal_none", { now: NOW })).toEqual({ matches: 0 });
   });
 
-  it("keeps at most 40 postings, records basis and a feed position, and replaces the old rows", async () => {
+  it("keeps at most FEED_SIZE (20) postings, records basis and a feed position, and replaces the old rows", async () => {
     await personFor("tal_sw", "Mobile Developer");
     await computeFeed(t.db, "tal_sw", { now: NOW });
     const first = await t.db.select().from(jobMatch).where(eq(jobMatch.talentId, "tal_sw"));
-    expect(first.length).toBeLessThanOrEqual(40);
+    expect(first.length).toBeLessThanOrEqual(FEED_SIZE);
     expect(first.map((r) => r.feedPosition).sort((a, b) => a - b)).toEqual(first.map((_, i) => i));
     expect(first.every((r) => r.body.basis.length > 0 && r.cardVersion === 1)).toBe(true);
     await computeFeed(t.db, "tal_sw", { now: NOW });
@@ -143,6 +143,47 @@ describe("retrieval", () => {
     cards.delete("tal_sw");
     expect(await computeFeed(t.db, "tal_sw", { now: NOW })).toEqual({ matches: 0 });
     expect(await t.db.select().from(jobMatch).where(eq(jobMatch.talentId, "tal_sw"))).toHaveLength(0);
+  });
+});
+
+describe("feed size and mentions", () => {
+  async function addWeldingJobs(count: number, sentences: string[]) {
+    for (let i = 0; i < count; i++) {
+      await t.db.insert(job).values({
+        id: `job_weld_${i}`,
+        source: "tmt",
+        sourceId: `weld_${i}`,
+        url: `https://example.invalid/weld_${i}`,
+        title: `Hitsaaja ${i}`,
+        description: sentences.join(" "),
+        sentences,
+        municipalityCode: "049",
+        postedAt: new Date(NOW.getTime() - (i + 1) * 3_600_000),
+      });
+    }
+  }
+  afterEach(async () => {
+    await t.db.delete(job).where(sql`${job.id} LIKE 'job_weld_%'`);
+  });
+
+  it("FEED_SIZE is 20: more candidates than that are cut, newest first among equals", async () => {
+    expect(FEED_SIZE).toBe(20);
+    await addWeldingJobs(30, ["Daily stainless welding in a hall."]);
+    cards.set("tal_weld", await addPerson(t.db, { id: "tal_weld", signals: [{ id: "s1", phrase: "stainless welding" }] }));
+    expect(await computeFeed(t.db, "tal_weld", { now: NOW })).toEqual({ matches: FEED_SIZE });
+    const feed = await feedForTalent(t.db, "tal_weld");
+    expect(feed.map((f) => f.job.id)).toEqual(Array.from({ length: FEED_SIZE }, (_, i) => `job_weld_${i}`));
+  });
+
+  it("a mention is explained with the posting sentence that holds the phrase", async () => {
+    await addWeldingJobs(1, ["We are a small workshop.", "You do stainless welding every day."]);
+    cards.set("tal_weld", await addPerson(t.db, { id: "tal_weld", signals: [{ id: "s1", phrase: "stainless welding" }] }));
+    await computeFeed(t.db, "tal_weld", { now: NOW });
+    const [m] = await feedForTalent(t.db, "tal_weld");
+    expect(m.match.basis).toEqual(["text"]);
+    expect(m.match.reasons).toEqual([
+      expect.objectContaining({ signalId: "s1", postingSentence: 1, text: "Your card mentions stainless welding. This posting mentions stainless welding." }),
+    ]);
   });
 });
 

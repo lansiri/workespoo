@@ -1,0 +1,77 @@
+[
+  {"id": "warehouse-worker", "note": "the first real run, 14 Nov", "roles": [], "signals": [
+    {"phrase": "warehouse logistics", "kind": "skill"}, 
+    {"phrase": "order picking", "kind": "skill", "modelLabel": "pick orders for dispatching"}, 
+    {"phrase": "receiving incoming goods", "kind": "skill", "modelLabel": "receive goods"}, 
+    {"phrase": "warehouse management system", "kind": "tool"}, 
+    {"phrase": "SAP", "kind": "tool"}, 
+    {"phrase": "Excel", "kind": "tool"}, 
+    {"phrase": "reach truck operation", "kind": "skill", "modelLabel": "operate forklift"}]},
+  {"id": "practical-nurse", "note": "lähihoitaja", "roles": [], "signals": [
+    {"phrase": "elderly care", "kind": "domain", "modelLabel": "tend to elderly people"}, 
+    {"phrase": "medication administration", "kind": "skill", "modelLabel": "assist in the administration of medication to elderly"}, 
+    {"phrase": "patient hygiene and daily care", "kind": "skill", "modelLabel": "hygiene in a health care setting"}, 
+    {"phrase": "wound care", "kind": "skill"}, 
+    {"phrase": "patient records", "kind": "skill", "modelLabel": "patient record storage"}]},
+  {"id": "cleaner", "note": "p11 and everyday case", "roles": [], "signals": [
+    {"phrase": "perform cleaning duties", "kind": "skill"}, 
+    {"phrase": "operate floor cleaning equipment", "kind": "tool"}, 
+    {"phrase": "handle chemical cleaning agents", "kind": "skill"}, 
+    {"phrase": "sort waste", "kind": "skill"}, 
+    {"phrase": "maintain inventory of cleaning supplies", "kind": "skill"}]},
+  {"id": "cook", "note": "p10", "roles": [], "signals": [
+    {"phrase": "use cooking techniques", "kind": "skill"}, 
+    {"phrase": "comply with food safety and hygiene", "kind": "skill"}, 
+    {"phrase": "order supplies", "kind": "skill"}, 
+    {"phrase": "store raw food materials", "kind": "skill"}, 
+    {"phrase": "control of expenses", "kind": "skill"}]},
+  {"id": "data-engineer", "note": "Python, SQL, data pipelines", "roles": [], "signals": [
+    {"phrase": "Python", "kind": "tool"}, 
+    {"phrase": "SQL", "kind": "tool"}, 
+    {"phrase": "data pipelines", "kind": "skill"}, 
+    {"phrase": "data warehouse", "kind": "domain"}, 
+    {"phrase": "Airflow", "kind": "tool"}]},
+  {"id": "web-developer", "note": "React, TypeScript", "roles": [], "signals": [
+    {"phrase": "React", "kind": "tool"}, 
+    {"phrase": "TypeScript", "kind": "tool"}, 
+    {"phrase": "web application development", "kind": "skill"}, 
+    {"phrase": "REST API", "kind": "tool"}, 
+    {"phrase": "CSS", "kind": "tool"}]},
+  {"id": "sales-assistant", "note": "shop sales", "roles": [], "signals": [
+    {"phrase": "customer service", "kind": "skill"}, 
+    {"phrase": "cash register operation", "kind": "tool"}, 
+    {"phrase": "product display", "kind": "skill"}, 
+    {"phrase": "stock replenishment", "kind": "skill"}, 
+    {"phrase": "upselling", "kind": "skill", "modelLabel": "upsell products"}]},
+  {"id": "electrician", "note": "installation electrician", "roles": [], "signals": [
+    {"phrase": "electrical installation", "kind": "skill", "modelLabel": "install electrical and electronic equipment"}, 
+    {"phrase": "wiring", "kind": "skill"}, 
+    {"phrase": "electrical safety regulations", "kind": "knowledge"}, 
+    {"phrase": "reading electrical wiring diagrams", "kind": "skill"}, 
+    {"phrase": "test electrical equipment", "kind": "skill"}]},
+  {"id": "accountant", "note": "p13 and everyday case", "roles": [], "signals": [
+    {"phrase": "manage the general ledger", "kind": "skill"}, 
+    {"phrase": "accounting entries", "kind": "skill"}, 
+    {"phrase": "financial statements", "kind": "skill"}, 
+    {"phrase": "use accounting systems", "kind": "tool"}, 
+    {"phrase": "tax legislation", "kind": "knowledge"}, 
+    {"phrase": "Excel", "kind": "tool"}]},
+  {"id": "bus-driver", "note": "city bus", "roles": [], "signals": [
+    {"phrase": "drive a bus", "kind": "skill"}, 
+    {"phrase": "passenger safety", "kind": "skill"}, 
+    {"phrase": "follow driving routes and timetables", "kind": "skill"}, 
+    {"phrase": "customer service", "kind": "skill"}, 
+    {"phrase": "ticket sales", "kind": "skill", "modelLabel": "sell tickets"}]},
+  {"id": "tile-fitter", "note": "p14", "roles": [], "signals": [
+    {"phrase": "lay tiles", "kind": "skill"}, 
+    {"phrase": "plan tiling", "kind": "skill"}, 
+    {"phrase": "apply tile adhesive", "kind": "skill"}, 
+    {"phrase": "fill tile joints", "kind": "skill"}, 
+    {"phrase": "cut tiles", "kind": "skill"}]},
+  {"id": "early-years-teacher", "note": "p09", "roles": [], "signals": [
+    {"phrase": "support children's wellbeing", "kind": "skill"}, 
+    {"phrase": "teach kindergarten class content", "kind": "skill"}, 
+    {"phrase": "monitor children's physical development", "kind": "skill"}, 
+    {"phrase": "maintain relations with children's parents", "kind": "skill"}, 
+    {"phrase": "teamwork principles", "kind": "skill"}]}
+]

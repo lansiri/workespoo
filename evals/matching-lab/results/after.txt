@@ -1,0 +1,301 @@
+
+=== warehouse-worker (the first real run, 14 Nov)
+  signal [skill] warehouse logistics -> (no ESCO label)
+  signal [skill] order picking -> (no ESCO label)
+  signal [skill] receiving incoming goods -> (no ESCO label)
+  signal [tool] warehouse management system -> use a warehouse management system
+  signal [tool] SAP -> SAP R3
+  signal [tool] Excel -> (no ESCO label)
+  signal [skill] reach truck operation -> (no ESCO label)
+  4 postings in the feed; first 4:
+   1. Teamcenter Technical Lead / PLM Technical Architect | Academic Work Finland Oy | Espoo
+      links: SAP (optional); Excel (mention)
+   2. Technical Implementation Manager – SAP & Finance IT | Academic Work Finland Oy | Espoo
+      links: SAP (mention); Excel (mention)
+   3. Customer Solution Engineer, Hyvinkää | Academic Work Finland Oy | Espoo
+      links: SAP (mention); Excel (mention)
+   4. Data Scientist / Engineer, Espoo | Academic Work Finland Oy | Espoo
+      links: SAP (optional); Excel (mention)
+
+=== practical-nurse (lähihoitaja)
+  signal [domain] elderly care -> (no ESCO label)
+  signal [skill] medication administration -> (no ESCO label)
+  signal [skill] patient hygiene and daily care -> (no ESCO label)
+  signal [skill] wound care -> carry out wound care
+  signal [skill] patient records -> (no ESCO label)
+  0 postings in the feed; first 0:
+
+=== cleaner (p11 and everyday case)
+  signal [skill] perform cleaning duties -> perform cleaning duties
+  signal [tool] operate floor cleaning equipment -> operate floor cleaning equipment
+  signal [skill] handle chemical cleaning agents -> handle chemical cleaning agents
+  signal [skill] sort waste -> sort waste
+  signal [skill] maintain inventory of cleaning supplies -> maintain inventory of cleaning supplies
+  40 postings in the feed; first 12:
+   1. Kotisiivous | Omenasiivous | Espoo
+      links: perform cleaning duties (direct); operate floor cleaning equipment (essential); handle chemical cleaning agents (direct); sort waste (direct); maintain inventory of cleaning supplies (essential)
+   2. Supersiivooja, kouluttaja ja esimies | Omenasiivous Oy | Espoo
+      links: perform cleaning duties (direct); operate floor cleaning equipment (essential); handle chemical cleaning agents (direct); sort waste (essential); maintain inventory of cleaning supplies (direct)
+   3. siivooja | Astera Oy | Espoo
+      links: perform cleaning duties (direct); operate floor cleaning equipment (direct); handle chemical cleaning agents (essential); sort waste (essential); maintain inventory of cleaning supplies (essential)
+   4. Kotisiivous | Omenasiivous Oy | Espoo
+      links: perform cleaning duties (direct); operate floor cleaning equipment (essential); handle chemical cleaning agents (essential); sort waste (essential); maintain inventory of cleaning supplies (essential)
+   5. Tarvittaessa töihin kutsuttava toimistosiivooja, Tapiola | ISS Palvelut Oy | Espoo
+      links: perform cleaning duties (essential); operate floor cleaning equipment (essential); handle chemical cleaning agents (essential); sort waste (essential); maintain inventory of cleaning supplies (essential)
+   6. Toimistosiivooja arki-iltoihin 16-22, Tapiola | ISS Palvelut Oy | Espoo
+      links: perform cleaning duties (essential); operate floor cleaning equipment (essential); handle chemical cleaning agents (essential); sort waste (essential); maintain inventory of cleaning supplies (essential)
+   7. Kokoaikainen siivooja, Espoo | Luotea | Espoo
+      links: perform cleaning duties (essential); operate floor cleaning equipment (essential); handle chemical cleaning agents (essential); sort waste (essential); maintain inventory of cleaning supplies (essential)
+   8. Laitoshuoltaja (sisäinen sijainen) | HUS Helsingin yliopistollinen sairaala | Espoo
+      links: perform cleaning duties (essential); operate floor cleaning equipment (essential); handle chemical cleaning agents (essential); sort waste (essential); maintain inventory of cleaning supplies (essential)
+   9. Koulusiivoojia Espooseen | Eezy Henkilöstöpalvelut Oy | Espoo
+      links: perform cleaning duties (essential); operate floor cleaning equipment (essential); handle chemical cleaning agents (essential); sort waste (essential); maintain inventory of cleaning supplies (essential)
+  10. Päiväkotisiivoojia Espooseen | Eezy Henkilöstöpalvelut Oy | Espoo
+      links: perform cleaning duties (essential); operate floor cleaning equipment (essential); handle chemical cleaning agents (essential); sort waste (essential); maintain inventory of cleaning supplies (essential)
+  11. Palveluvastaava Jorvin sairaala | HUS Helsingin yliopistollinen sairaala | Espoo
+      links: perform cleaning duties (essential); operate floor cleaning equipment (essential); handle chemical cleaning agents (essential); sort waste (essential); maintain inventory of cleaning supplies (essential)
+  12. Kotisiivooja Espoon tiimiin (osa-aikainen) | Sivina Kotipalvelut Oy | Espoo
+      links: perform cleaning duties (direct); handle chemical cleaning agents (essential); sort waste (direct); maintain inventory of cleaning supplies (direct)
+
+=== cook (p10)
+  signal [skill] use cooking techniques -> use cooking techniques
+  signal [skill] comply with food safety and hygiene -> comply with food safety and hygiene
+  signal [skill] order supplies -> order supplies
+  signal [skill] store raw food materials -> store raw food materials
+  signal [skill] control of expenses -> control of expenses
+  40 postings in the feed; first 12:
+   1. Kokki, Tasteat Oy, Espoo | Tasteat Oy | Espoo
+      links: use cooking techniques (direct); comply with food safety and hygiene (direct); order supplies (essential); store raw food materials (essential); control of expenses (direct)
+   2. Lounaskokki, Espoo | StaffMill Oy | Espoo
+      links: use cooking techniques (direct); comply with food safety and hygiene (essential); order supplies (essential); store raw food materials (direct); control of expenses (essential)
+   3. ASIAN CUISINE CHEF | Natural Finland Group Oy | Espoo
+      links: use cooking techniques (direct); comply with food safety and hygiene (essential); order supplies (essential); store raw food materials (essential); control of expenses (essential)
+   4. Ravintolan työntekijä / Kotipizza Westend | Bite & Beans OY | Espoo
+      links: use cooking techniques (essential); comply with food safety and hygiene (direct); order supplies (essential); store raw food materials (essential); control of expenses (essential)
+   5. Ravintolakokki | SANARJA Oy | Espoo
+      links: use cooking techniques (direct); comply with food safety and hygiene (essential); order supplies (essential); store raw food materials (essential); control of expenses (essential)
+   6. Kokki - Hook, Tapiola | YES Your Excellent Staff Oy | Espoo
+      links: use cooking techniques (essential); comply with food safety and hygiene (essential); order supplies (essential); store raw food materials (essential); control of expenses (essential)
+   7. Kokki Espooseen Tapiolaan | Compass Group Finland | Espoo
+      links: use cooking techniques (essential); comply with food safety and hygiene (essential); order supplies (essential); store raw food materials (essential); control of expenses (essential)
+   8. Kokki Espooseen | Sodexo Oy | Espoo
+      links: use cooking techniques (essential); comply with food safety and hygiene (essential); order supplies (essential); store raw food materials (essential); control of expenses (essential)
+   9. Kokki keikkatyöhön Pääkaupunkiseudulle ja lähialueille | Barona Palvelut Oy | Espoo
+      links: use cooking techniques (essential); comply with food safety and hygiene (essential); order supplies (essential); store raw food materials (essential); control of expenses (essential)
+  10. Kokki / Lounaskokki | Tasteat Oy | Espoo
+      links: use cooking techniques (essential); comply with food safety and hygiene (essential); order supplies (essential); store raw food materials (essential); control of expenses (essential)
+  11. Kokkeja keikkatyöhön, pääkaupunkiseutu, Staffpoint Horeca | StaffPoint Oy | Espoo
+      links: use cooking techniques (essential); comply with food safety and hygiene (essential); order supplies (essential); store raw food materials (essential); control of expenses (essential)
+  12. Kokenut pizzakokki pääkaupunkiseudulle | Worker Etelä-Suomi Oy | Espoo
+      links: use cooking techniques (essential); comply with food safety and hygiene (essential); order supplies (essential); store raw food materials (essential); control of expenses (essential)
+
+=== data-engineer (Python, SQL, data pipelines)
+  signal [tool] Python -> Python (computer programming)
+  signal [tool] SQL -> SQL
+  signal [skill] data pipelines -> (no ESCO label)
+  signal [domain] data warehouse -> data warehouse
+  signal [tool] Airflow -> (no ESCO label)
+  23 postings in the feed; first 12:
+   1. Data Scientist / Engineer, Espoo | Academic Work Finland Oy | Espoo
+      links: Python (optional); SQL (mention); data pipelines (mention); data warehouse (essential)
+   2. Junioriohjelmistokehittäjä, harjoittelija tai opinnäytetyöntekijä — Rust ja tekoälysovellukset | Advaun Oy | Espoo
+      links: Python (direct); SQL (optional); data warehouse (essential)
+   3. Product Engineer – moniosaaja AI-vetoisiin kehityshankkeisiin | Gabria Oy | Espoo
+      links: Python (essential); SQL (optional); data warehouse (essential)
+   4. Raportointiasiantuntija, Tiedolla johtamisen yksikkö, Espoo | Länsi-Uudenmaan hyvinvointialue | Espoo
+      links: Python (optional); SQL (mention); data warehouse (essential)
+   5. Data Engineer, Insta Advance | Biisoni | Espoo
+      links: Python (mention); SQL (mention); data warehouse (essential)
+   6. Data & AI -konsultti, Pengon Oy | Academic Work Finland Oy | Espoo
+      links: Python (mention); SQL (mention); data warehouse (mention)
+   7. Koodaaja | ePubQuiz Oy | Espoo
+      links: Python (optional); SQL (direct)
+   8. Analyytikko, sijoitusriskien hallinta | LähiTapiola | Espoo
+      links: Python (mention); SQL (mention)
+   9. Control Software Engineer (Embedded Software) | Lokki Henkilöstöpalvelut Oy | Espoo
+      links: Python (mention); SQL (optional)
+  10. Ohjelmistokehittäjä (full-stack) energiasektorille, Espoo | Academic Work Finland Oy | Espoo
+      links: Python (mention); SQL (mention)
+  11. Software Developer (full-stack) for energy sector, Espoo | Academic Work Finland Oy | Espoo
+      links: Python (mention); SQL (mention)
+  12. Teamcenter Technical Lead / PLM Technical Architect | Academic Work Finland Oy | Espoo
+      links: Python (optional); SQL (mention)
+
+=== web-developer (React, TypeScript)
+  signal [tool] React -> (no ESCO label)
+  signal [tool] TypeScript -> TypeScript
+  signal [skill] web application development -> Rapid application development
+  signal [tool] REST API -> (no ESCO label)
+  signal [tool] CSS -> CSS
+  5 postings in the feed; first 5:
+   1. Ohjelmistokehittäjä (full-stack) energiasektorille, Espoo | Academic Work Finland Oy | Espoo
+      links: React (mention); TypeScript (mention)
+   2. Software Developer (full-stack) for energy sector, Espoo | Academic Work Finland Oy | Espoo
+      links: React (mention); TypeScript (mention)
+   3. AI Fullstack Developer, Avain Vuokra-asunnot Oy, Helsinki | Academic Work Finland Oy | Espoo
+      links: React (mention); TypeScript (mention)
+   4. Koodaaja | ePubQuiz Oy | Espoo
+      links: TypeScript (optional); CSS (optional)
+   5. Sales and Marketing Professionals | Sansaino Oy | Espoo
+      links: TypeScript (optional); CSS (optional)
+
+=== sales-assistant (shop sales)
+  signal [skill] customer service -> customer service
+  signal [tool] cash register operation -> operate cash register
+  signal [skill] product display -> organise product display
+  signal [skill] stock replenishment -> (no ESCO label)
+  signal [skill] upselling -> (no ESCO label)
+  39 postings in the feed; first 12:
+   1. Kaupan osaaja, Hyllyttäjä, Pääkaupunkiseutu | Joblink Oy | Espoo
+      links: customer service (direct); cash register operation (essential); product display (essential)
+   2. Joulukuusen myyjä, 10 paikkaa, Lännen Joulukuusikauppa Oy, Helsinki, Espoo, Vantaa | Lännen Joulukuusikauppa Oy | Espoo
+      links: customer service (mention); cash register operation (direct); product display (direct)
+   3. Palvelutiskimyyjä, Pääkaupunkiseutu | Joblink Oy | Espoo
+      links: customer service (direct); cash register operation (essential); product display (essential)
+   4. ALUEMYYNTIPÄÄLLIKKÖ | TEKNINEN MYYNTI | PROSEC Safety Systems | Espoo
+      links: customer service (essential); cash register operation (essential); product display (essential)
+   5. AJANVARAAJA / BUUKKARI B2B | PROSEC Safety Systems | Espoo
+      links: customer service (essential); cash register operation (essential); product display (essential)
+   6. Myyntiedustaja / Itsenäinen yrittäjä | Storybound Oy | Espoo
+      links: customer service (essential); cash register operation (essential); product display (essential)
+   7. Myyntikumppani ja kääntäjä. | M.K. Trade Solutions | Espoo
+      links: customer service (essential); cash register operation (essential); product display (essential)
+   8. Asiakaspalvelija rakennuskonevuokraamoon, Espoo | Visio Henkilöstöratkaisut Uusimaa Oy | Espoo
+      links: customer service (mention); cash register operation (essential); product display (essential)
+   9. Kokoaikainen sisustusmyyjä | Cobello oy | Espoo
+      links: customer service (mention); cash register operation (essential); product display (essential)
+  10. Ilotulitemyyjää Nummelaan uudenvuoden sesonkiin | Kaiku HR Uusimaa | Espoo
+      links: customer service (mention); cash register operation (essential); product display (essential)
+  11. Ilotulitemyyjää Espoo Selloon uudenvuoden sesonkiin | Kaiku HR Uusimaa | Espoo
+      links: customer service (mention); cash register operation (essential); product display (essential)
+  12. Ilotulitemyyjää Espoon Iso-Omenaan uudenvuoden sesonkiin | Kaiku HR Uusimaa | Espoo
+      links: customer service (mention); cash register operation (essential); product display (essential)
+
+=== electrician (installation electrician)
+  signal [skill] electrical installation -> (no ESCO label)
+  signal [skill] wiring -> repair wiring
+  signal [knowledge] electrical safety regulations -> electrical safety regulations
+  signal [skill] reading electrical wiring diagrams -> electrical wiring diagrams
+  signal [skill] test electrical equipment -> test electrical equipment
+  40 postings in the feed; first 12:
+   1. Ajoneuvon insinööri ja sähköajoneuvo asentaja | Rekkanova Oy | Espoo
+      links: wiring (optional); electrical safety regulations (essential); reading electrical wiring diagrams (direct); test electrical equipment (direct)
+   2. Sähköasentaja (vakituinen) – Helsingin seutu | Nurmijärven Sähköasennus Oy | Espoo
+      links: wiring (optional); electrical safety regulations (essential); reading electrical wiring diagrams (direct); test electrical equipment (essential)
+   3. Datacenter Electrician Contractors | Manpower | Espoo
+      links: electrical installation (mention); wiring (mention); reading electrical wiring diagrams (optional); test electrical equipment (essential)
+   4. Electrical Engineer | Beneq | Espoo
+      links: electrical installation (mention); reading electrical wiring diagrams (essential)
+   5. Electrical Technician, supervisor of electrical works (S2/S3) | Ioncell Oy | Espoo
+      links: electrical installation (mention); wiring (optional); reading electrical wiring diagrams (optional); test electrical equipment (essential)
+   6. Projektipäällikkö talotekniikan sähköhankkeisiin | Insinööritoimisto Planmax Oy | Espoo
+      links: wiring (optional); reading electrical wiring diagrams (direct); test electrical equipment (essential)
+   7. Sähkösuunnittelija, sähköinen talotekniikka | Insinööritoimisto Planmax Oy | Espoo
+      links: wiring (optional); reading electrical wiring diagrams (direct); test electrical equipment (essential)
+   8. Etsimme Tekijöitä Reissutyöhön, PK-Seutu | Visio Sähkö Oy | Espoo
+      links: wiring (optional); reading electrical wiring diagrams (essential); test electrical equipment (essential)
+   9. Huoltopäällikkö, rakennusautomaatio, Vantaa | Caverion Suomi Oy | Espoo
+      links: wiring (optional); reading electrical wiring diagrams (essential); test electrical equipment (essential)
+  10. Sähköinsinööri/Sähkötyönjohtaja datakeskushankkeet | Aaltovoima Oy | Espoo
+      links: wiring (optional); reading electrical wiring diagrams (essential); test electrical equipment (essential)
+  11. Nuorempi Datakeskusasentaja (Suomi & ulkomaat) | Visio Sähkö Oy | Espoo
+      links: wiring (optional); reading electrical wiring diagrams (essential); test electrical equipment (essential)
+  12. Huoltoasentaja (sähkö) | Wulff Works Oy | Espoo
+      links: wiring (optional); reading electrical wiring diagrams (essential); test electrical equipment (essential)
+
+=== accountant (p13 and everyday case)
+  signal [skill] manage the general ledger -> manage the general ledger
+  signal [skill] accounting entries -> accounting entries
+  signal [skill] financial statements -> financial statements
+  signal [tool] use accounting systems -> use accounting systems
+  signal [knowledge] tax legislation -> tax legislation
+  signal [tool] Excel -> (no ESCO label)
+  19 postings in the feed; first 12:
+   1. Kirjanpitäjä ja asiakaspalvelu | Taloasema HMJ Isännöinti Oy | Espoo
+      links: manage the general ledger (direct); accounting entries (direct); financial statements (essential); use accounting systems (direct); tax legislation (essential); Excel (mention)
+   2. Kiinteistökirjanpitäjä - kirjanpitäjä (As Oy) | Maijasto Oy | Espoo
+      links: manage the general ledger (essential); accounting entries (essential); financial statements (direct); use accounting systems (essential); tax legislation (essential)
+   3. Talous- ja hallintokoordinaattori, EnviroProcess Oy, Kerava | Academic Work Finland Oy | Espoo
+      links: accounting entries (essential); financial statements (essential); tax legislation (essential); Excel (mention)
+   4. Taloushallinnon asiantuntija, Vantaa | Academic Work Finland Oy | Espoo
+      links: accounting entries (essential); financial statements (essential); tax legislation (essential)
+   5. Asiakaspalvelun ja taloushallinnon ihmemies, bittiviidakon Tarzan (tai Jane) | Omenasiivous Oy | Espoo
+      links: manage the general ledger (optional); accounting entries (essential); financial statements (optional); use accounting systems (essential); tax legislation (essential)
+   6. Assistant Controller, Capman Real Estate, Jyväskylä | Academic Work Finland Oy | Espoo
+      links: manage the general ledger (optional); financial statements (essential); tax legislation (essential); Excel (mention)
+   7. Rahoitusasiantuntija | FSG Financial Services Group Oy | Espoo
+      links: financial statements (mention); tax legislation (optional)
+   8. Talous- ja hallintopäällikkö | Kehitysvammaliitto ry | Espoo
+      links: financial statements (essential)
+   9. Tekninen kiinteistöhoitaja, Espoo | Visio Henkilöstöratkaisut Uusimaa Oy | Espoo
+      links: financial statements (essential)
+  10. ZÓCALO FRANCHISING – MASTER FRANCHISE- JA ALUEKEHITTÄJÄMAHDOLLISUUS SUOMESSA | Virtual Pro Team Oy | Espoo
+      links: financial statements (essential)
+  11. Toiminnanjohtaja | GrIFK Salibandy ry - GrIFK Innebandy rf | Espoo
+      links: financial statements (essential)
+  12. Tekninen kiinteistönhoitaja | Mestarit Henkilöstöpalvelut Oy | Espoo
+      links: financial statements (essential)
+
+=== bus-driver (city bus)
+  signal [skill] drive a bus -> (no ESCO label)
+  signal [skill] passenger safety -> (no ESCO label)
+  signal [skill] follow driving routes and timetables -> (no ESCO label)
+  signal [skill] customer service -> customer service
+  signal [skill] ticket sales -> (no ESCO label)
+  0 postings in the feed; first 0:
+
+=== tile-fitter (p14)
+  signal [skill] lay tiles -> lay tiles
+  signal [skill] plan tiling -> plan tiling
+  signal [skill] apply tile adhesive -> apply tile adhesive
+  signal [skill] fill tile joints -> fill tile joints
+  signal [skill] cut tiles -> cut tiles
+  8 postings in the feed; first 8:
+   1. Laatoittaja- ja vesieristystyöt | VinRom rakennus Oy | Espoo
+      links: lay tiles (essential); plan tiling (direct); apply tile adhesive (essential); fill tile joints (essential); cut tiles (essential)
+   2. Laatoittajaa | Latva Saneeraus ja Rakennus Oy | Espoo
+      links: lay tiles (direct); plan tiling (essential); apply tile adhesive (essential); fill tile joints (essential); cut tiles (essential)
+   3. Rakennustyöntekijöitä PK-seudulle | Wulff Works Oy | Espoo
+      links: lay tiles (essential); plan tiling (essential); apply tile adhesive (essential); fill tile joints (essential); cut tiles (essential)
+   4. Laatoittaja | Huiput ei Hosu Oy | Espoo
+      links: lay tiles (essential); plan tiling (essential); apply tile adhesive (essential); fill tile joints (essential); cut tiles (essential)
+   5. Saneerausalan ammattilainen Uudellemaalle | KT-Henkilöstöpalvelut Oy | Espoo
+      links: lay tiles (essential); plan tiling (essential); apply tile adhesive (essential); fill tile joints (essential); cut tiles (essential)
+   6. Laatoittaja | Helsingin Kylpyhuoneremontti oy | Espoo
+      links: lay tiles (essential); plan tiling (essential); apply tile adhesive (essential); fill tile joints (essential); cut tiles (essential)
+   7. Puurakenne timpuri / Laatoittaja | Terracolor Oy | Espoo
+      links: lay tiles (essential); plan tiling (essential); apply tile adhesive (essential); fill tile joints (essential); cut tiles (essential)
+   8. Laatoittajia Espooseen | Suomen Henkilöstöasiantuntijat Oy | Espoo
+      links: lay tiles (essential); plan tiling (essential); apply tile adhesive (essential); fill tile joints (essential); cut tiles (essential)
+
+=== early-years-teacher (p09)
+  signal [skill] support children's wellbeing -> support children's wellbeing
+  signal [skill] teach kindergarten class content -> teach kindergarten class content
+  signal [skill] monitor children's physical development -> monitor children's physical development
+  signal [skill] maintain relations with children's parents -> maintain relations with children's parents
+  signal [skill] teamwork principles -> teamwork principles
+  40 postings in the feed; first 12:
+   1. Lärare inom småbarnspedagogik till Barnavårdsföreningen Daghemmet Anna i Esbo | Barnavårdsföreningen i Finland r.f. | Espoo
+      links: support children's wellbeing (direct); teach kindergarten class content (direct); monitor children's physical development (essential); maintain relations with children's parents (optional); teamwork principles (essential)
+   2. Lärare inom småbarnspedagogik, Niperts daghem | Esbo stad | Espoo
+      links: support children's wellbeing (essential); teach kindergarten class content (essential); monitor children's physical development (essential); maintain relations with children's parents (optional); teamwork principles (essential)
+   3. Varhaiskasvatuksen opettaja, Perkkaan päiväkoti | Espoon kaupunki | Espoo
+      links: support children's wellbeing (essential); teach kindergarten class content (essential); monitor children's physical development (essential); maintain relations with children's parents (optional); teamwork principles (essential)
+   4. Varhaiskasvatuksen opettaja, Perkkaan päiväkoti | Espoon kaupunki | Espoo
+      links: support children's wellbeing (essential); teach kindergarten class content (essential); monitor children's physical development (essential); maintain relations with children's parents (optional); teamwork principles (essential)
+   5. Varhaiskasvatuksen opettaja, Kiltakallion lastentalo | Espoon kaupunki | Espoo
+      links: support children's wellbeing (essential); teach kindergarten class content (essential); monitor children's physical development (essential); maintain relations with children's parents (optional); teamwork principles (essential)
+   6. Varhaiskasvatuksen opettaja, Lintuvaaran päiväkoti | Espoon kaupunki | Espoo
+      links: support children's wellbeing (essential); teach kindergarten class content (essential); monitor children's physical development (essential); maintain relations with children's parents (optional); teamwork principles (essential)
+   7. Varhaiskasvatuksen opettaja, Leppäviidan päiväkoti | Espoon kaupunki | Espoo
+      links: support children's wellbeing (essential); teach kindergarten class content (essential); monitor children's physical development (essential); maintain relations with children's parents (optional); teamwork principles (essential)
+   8. Varhaiskasvatuksen opettaja, Maakirjan päiväkoti | Espoon kaupunki | Espoo
+      links: support children's wellbeing (essential); teach kindergarten class content (essential); monitor children's physical development (essential); maintain relations with children's parents (optional); teamwork principles (essential)
+   9. Varhaiskasvatuksen opettaja, Painiityn päiväkoti | Espoon kaupunki | Espoo
+      links: support children's wellbeing (essential); teach kindergarten class content (essential); monitor children's physical development (essential); maintain relations with children's parents (optional); teamwork principles (essential)
+  10. Varhaiskasvatuksen opettaja, Ymmerstan päiväkoti | Espoon kaupunki | Espoo
+      links: support children's wellbeing (essential); teach kindergarten class content (essential); monitor children's physical development (essential); maintain relations with children's parents (optional); teamwork principles (essential)
+  11. Varhaiskasvatuksen opettaja, Ymmerstan päiväkoti | Espoon kaupunki | Espoo
+      links: support children's wellbeing (essential); teach kindergarten class content (essential); monitor children's physical development (essential); maintain relations with children's parents (optional); teamwork principles (essential)
+  12. Varhaiskasvatuksen erityisopettaja, Ymmerstan päiväkoti | Espoon kaupunki | Espoo
+      links: support children's wellbeing (essential); teach kindergarten class content (essential); monitor children's physical development (essential); maintain relations with children's parents (optional); teamwork principles (essential)

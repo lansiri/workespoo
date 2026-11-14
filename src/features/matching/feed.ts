@@ -8,6 +8,7 @@ import {
   type MatchBasis,
   type NeedCard,
   type SignalCard,
+  type SignalKind,
 } from "@/contracts";
 import { job, jobMatch } from "@/db/schema";
 import { getApprovedCard } from "@/features/card";
@@ -17,14 +18,7 @@ import { chatJson } from "@/lib/llm";
 import { enqueue } from "@/lib/queue";
 import { rowsOf } from "@/lib/sql";
 import {
-  ESPOO_CODE,
-  FEED_CANDIDATES,
-  FEED_FRESH_DAYS,
-  FEED_MUNICIPALITY_CODES,
-  FEED_REGION_CODE,
   FEED_SIZE,
-  GATE_OCC_LINKS_ALONE,
-  GATE_TEXT_SIGNALS_ALONE,
   REASON_CONCURRENCY,
   REASON_SENTENCE_MAX_CHARS,
   NEED_DRAFT_DELAY_MS,
@@ -32,10 +26,6 @@ import {
   REASON_DEADLINE_MS,
   REASON_TEMPERATURE,
   REASON_TOP_POSTINGS,
-  ROLE_TITLE_HIT_SIMILARITY,
-  TEXT_STOPWORDS,
-  TEXT_TERM_MAX,
-  TEXT_TERM_MIN_LENGTH,
 } from "./constants";
 import {
   buildReasonMessages,
@@ -49,6 +39,7 @@ import {
   type AllowedPair,
   type SignalForReason,
 } from "./reasons";
+import { retrieveForSignals, type Candidate } from "./retrieval";
 import { textArray, touchedRequirementIds, touchingSignals } from "./touches";
 
 /** The clock the feed reads when none is passed. Tests replace `now`. */
@@ -58,23 +49,9 @@ export const feedClock: { now: () => Date } = { now: () => new Date() };
  * Retrieval (docs/specs/matching.md 2.1 and 2.2)
  * ---------------------------------------------------------------------------------------- */
 
-type Candidate = { jobId: string; basis: MatchBasis[] };
-
-/** Words of ESCO labels and self-declared roles, as `word:*` prefix terms for a `simple` tsquery. */
-export function textTerms(labels: string[]): string[] {
-  const words = new Set<string>();
-  for (const label of labels) {
-    for (const w of label.toLowerCase().split(/[^\p{L}\p{N}]+/u)) {
-      if (w.length >= TEXT_TERM_MIN_LENGTH && !TEXT_STOPWORDS.has(w)) words.add(w);
-    }
-  }
-  return [...words].sort().slice(0, TEXT_TERM_MAX).map((w) => `${w}:*`);
-}
-
 /**
- * Retrieval for one person: postings linked to their skill URIs directly, through occupations,
- * by bilingual text search, or by a self-declared role in the title. The order is a posting
- * order for this one person (never stored as a number); it ranks postings, not people.
+ * Retrieval for one person: loads their approved signals and hands them to `retrieveForSignals`.
+ * The order is a posting order for this one person (never stored as a number).
  */
 export async function retrieveCandidates(
   db: Db,
@@ -82,98 +59,17 @@ export async function retrieveCandidates(
   roles: string[],
   now: Date,
 ): Promise<Candidate[]> {
-  const signalRows = rowsOf<{ esco_uri: string }>(
+  const rows = rowsOf<{ phrase: string; kind: SignalKind; esco_uri: string | null }>(
     await db.execute(
-      sql`SELECT DISTINCT esco_uri FROM signal WHERE talent_id = ${talentId} AND status = 'approved' AND esco_uri IS NOT NULL ORDER BY esco_uri`,
+      sql`SELECT phrase, kind, esco_uri FROM signal WHERE talent_id = ${talentId} AND status = 'approved' ORDER BY id`,
     ),
   );
-  const uris = signalRows.map((r) => r.esco_uri);
-  const labelRows =
-    uris.length === 0
-      ? []
-      : rowsOf<{ label_en: string; label_fi: string | null }>(
-          await db.execute(sql`SELECT label_en, label_fi FROM esco_concept WHERE uri = ANY(${textArray(uris)})`),
-        );
-  const terms = textTerms([...labelRows.flatMap((l) => [l.label_en, l.label_fi ?? ""]), ...roles]);
-  const tsquery = terms.join(" | ");
-  // One query per signal, so the gate can ask for text hits of two different signals.
-  const signalQueries = labelRows
-    .map((l) => textTerms([l.label_en, l.label_fi ?? ""]).join(" | "))
-    .filter((q) => q.length > 0);
-  const cleanRoles = roles.map((r) => r.trim()).filter((r) => r.length > 0);
-  if (uris.length === 0 && cleanRoles.length === 0) return [];
-
-  const nowIso = now.toISOString();
-  const codes = textArray([...FEED_MUNICIPALITY_CODES]);
-  const textHit = tsquery
-    ? sql`(j.search @@ to_tsquery('simple', ${tsquery}))`
-    : sql`false`;
-  const textSignals =
-    signalQueries.length > 0
-      ? sql`(SELECT count(*) FROM unnest(${textArray(signalQueries)}) q WHERE j.search @@ to_tsquery('simple', q))`
-      : sql`0`;
-  const roleHit =
-    cleanRoles.length > 0
-      ? sql`EXISTS (SELECT 1 FROM unnest(${textArray(cleanRoles)}) r WHERE word_similarity(lower(r), lower(j.title)) >= ${ROLE_TITLE_HIT_SIMILARITY})`
-      : sql`false`;
-
-  const result = await db.execute(sql`
-    WITH u AS (SELECT unnest(${textArray(uris)}) AS esco_uri),
-    ej AS (
-      SELECT j.* FROM job j
-      WHERE j.active
-        AND (j.expires_at IS NULL OR j.expires_at > ${nowIso}::timestamptz)
-        AND coalesce(j.posted_at, j.first_seen_at) > ${nowIso}::timestamptz - make_interval(days => ${FEED_FRESH_DAYS}::int)
-        AND (j.municipality_code = ANY(${codes}) OR j.region = ${FEED_REGION_CODE})
-        AND NOT EXISTS (
-          SELECT 1 FROM need_card nc JOIN company c ON c.id = nc.company_id
-          WHERE nc.job_id = j.id AND c.masked
-        )
-    ),
-    direct AS (
-      SELECT js.job_id, count(DISTINCT js.skill_uri) AS n
-      FROM job_skill js JOIN u ON u.esco_uri = js.skill_uri GROUP BY 1
-    ),
-    occ AS (
-      SELECT j.id AS job_id,
-             count(DISTINCT os.skill_uri) FILTER (WHERE os.relation = 'essential') AS ess,
-             count(DISTINCT os.skill_uri) FILTER (WHERE os.relation = 'optional') AS opt
-      FROM ej j
-      JOIN esco_occupation_skill os ON os.occupation_uri = ANY(j.esco_occupation_uris)
-      JOIN u ON u.esco_uri = os.skill_uri
-      GROUP BY 1
-    ),
-    scored AS (
-      SELECT j.id, j.municipality_code, j.posted_at,
-             coalesce(d.n, 0) AS n_direct, coalesce(o.ess, 0) AS ess, coalesce(o.opt, 0) AS opt,
-             ${textHit} AS text_hit, ${textSignals} AS text_signals, ${roleHit} AS role_hit
-      FROM ej j
-      LEFT JOIN direct d ON d.job_id = j.id
-      LEFT JOIN occ o ON o.job_id = j.id
-    )
-    SELECT id, n_direct, ess, opt, text_hit, role_hit
-    FROM scored
-    WHERE n_direct >= 1 OR ess + opt >= ${GATE_OCC_LINKS_ALONE} OR (ess + opt >= 1 AND text_hit)
-       OR text_signals >= ${GATE_TEXT_SIGNALS_ALONE} OR role_hit
-    ORDER BY 3 * n_direct + 2 * ess + opt + (text_hit)::int + (role_hit)::int DESC,
-             (municipality_code = ${ESPOO_CODE}) DESC, posted_at DESC NULLS LAST, id
-    LIMIT ${FEED_CANDIDATES}
-  `);
-  return rowsOf<{
-    id: string;
-    n_direct: number | string;
-    ess: number | string;
-    opt: number | string;
-    text_hit: boolean;
-    role_hit: boolean;
-  }>(result).map((r) => {
-    const basis: MatchBasis[] = [];
-    if (Number(r.n_direct) >= 1) basis.push("direct");
-    if (Number(r.ess) + Number(r.opt) >= 1) basis.push("occupation");
-    if (r.text_hit) basis.push("text");
-    if (r.role_hit) basis.push("role");
-    return { jobId: r.id, basis };
-  });
+  return retrieveForSignals(
+    db,
+    rows.map((r) => ({ phrase: r.phrase, kind: r.kind, escoUri: r.esco_uri })),
+    roles,
+    now,
+  );
 }
 
 /* ------------------------------------------------------------------------------------------

@@ -16,23 +16,24 @@ export const ROLE_TITLE_SIMILARITY = 0.5;
 
 /** Feed retrieval. */
 export const FEED_CANDIDATES = 40;
-export const FEED_SIZE = 40;
+export const FEED_SIZE = 20;
 export const FEED_FRESH_DAYS = 60;
 /** Espoo, Helsinki, Vantaa, Kauniainen. A posting in region 01 (Uusimaa) also qualifies. */
 export const FEED_MUNICIPALITY_CODES = ["049", "091", "092", "235"] as const;
 export const FEED_REGION_CODE = "01";
 export const ESPOO_CODE = "049";
-/** A posting passes the gate with this many occupation-linked skills (essential or optional) on their own. */
-export const GATE_OCC_LINKS_ALONE = 2;
-/** Text hits for this many different signals let a posting in without any link. */
-export const GATE_TEXT_SIGNALS_ALONE = 2;
+/** A posting enters the feed when this many different signals link to it (one non-tool signal with a strong link is enough on its own). */
+export const GATE_SIGNALS_ALONE = 2;
+/**
+ * A signal whose strong links (direct, essential, mention) reach more than this share of the
+ * postings in the pool, and at least `GENERIC_MIN_POSTINGS` of them, is too generic to bring a
+ * posting in alone ("customer service" is a skill of 5 percent of all postings). It still counts
+ * towards the two-signal gate and the order. Measured on the 1,338 real postings (14 Nov).
+ */
+export const GENERIC_SHARE = 0.04;
+export const GENERIC_MIN_POSTINGS = 40;
 /** `lookingFor.roles` against a posting title. */
 export const ROLE_TITLE_HIT_SIMILARITY = 0.5;
-/** Words shorter than this are left out of the text search. */
-export const TEXT_TERM_MIN_LENGTH = 4;
-/** Cap on text-search terms so the query stays small. */
-export const TEXT_TERM_MAX = 60;
-
 /** Reasons. */
 export const REASON_TOP_POSTINGS = 5;
 /** Need Card drafts requested per feed, for the first postings without one. */
@@ -52,14 +53,3 @@ export const REASON_SENTENCE_MAX_CHARS = 300;
 export const NOT_MENTIONED_MAX = 5;
 /** Appended in English to a statutory requirement; the page swaps it for the interface language. */
 export const STATUTORY_SUFFIX = " (checked by the employer at hiring)";
-
-/** Words that carry no meaning in an ESCO label, left out of the text search. */
-export const TEXT_STOPWORDS = new Set([
-  "with", "from", "that", "this", "using", "work", "works", "working", "skill", "skills",
-  "knowledge", "ability", "basic", "general", "other", "support", "service", "services",
-  "management", "manage", "perform", "provide", "apply", "ensure", "maintain", "develop",
-  "tasks", "task", "types", "type", "such", "their", "into", "over", "under", "between",
-  "and", "the", "for", "ja", "tai", "sekä", "jotka", "joka", "kanssa", "työ", "taito",
-  "taidot", "tieto", "och", "eller", "med",
-  "solution", "solutions", "ratkaisu", "ratkaisuja", "kehittää", "kehittäminen",
-]);
