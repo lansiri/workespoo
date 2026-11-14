@@ -1,0 +1,29 @@
+{
+  "item": "application-turn",
+  "caseId": "turn-en-forklift-protected",
+  "run": 2,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1,
+      2
+    ],
+    "concrete": true,
+    "missing": "result",
+    "followUp": "What was the outcome of your work checking deliveries and putting pallets away on the morning shift?"
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1029,
+    "firstTokenMs": 1029,
+    "tokensIn": 613,
+    "tokensOut": 40,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

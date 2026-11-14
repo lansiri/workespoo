@@ -1,0 +1,44 @@
+{
+  "item": "application-plan",
+  "caseId": "plan-dev-en",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "questions": [
+      {
+        "requirement": "R1",
+        "question": "Describe a backend API you built and integrated with another system. What did you do yourself in the client-server architecture and system integration?"
+      },
+      {
+        "requirement": "R2",
+        "question": "Describe a frontend application you developed with React. Which features did you build yourself, and how did you approach the work?"
+      },
+      {
+        "requirement": "R3",
+        "question": "Describe a time you used a CI/CD pipeline with AWS or Azure. What did you set up or change yourself, and how did you use version control or DevSecOps practices?"
+      },
+      {
+        "requirement": "R4",
+        "question": "Describe how you have used spoken and written English at work. What did you communicate, and with whom?"
+      },
+      {
+        "requirement": "R5",
+        "question": "Describe a project where you worked with SQL or NoSQL databases. What did you do yourself, such as designing, querying, or maintaining the data?"
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 4880,
+    "firstTokenMs": 4877,
+    "tokensIn": 722,
+    "tokensOut": 388,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

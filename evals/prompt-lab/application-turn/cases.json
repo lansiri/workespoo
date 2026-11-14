@@ -1,0 +1,233 @@
+{
+  "item": "application-turn",
+  "role": "live",
+  "schema": "ApplicationTurnOutput",
+  "maxTokens": 300,
+  "temperature": 0.2,
+  "cases": [
+    {
+      "id": "turn-en-dev-concrete",
+      "notes": "strong concrete example with result",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: English\nREQUIREMENT: Building backend APIs and integrating applications with other systems\nQUESTION ASKED: Describe a backend API you built and integrated with another system. What did you do yourself in the client-server architecture and system integration?\nFOLLOW-UP ALREADY ASKED: no\n\nANSWER\n[S1] Last year I rebuilt the order API for a logistics client in Node and TypeScript.\n[S2] I wrote the REST endpoints myself and connected them to their SAP system through a message queue.\n[S3] After the switch the nightly sync errors went from about thirty a week to almost none."
+        }
+      ]
+    },
+    {
+      "id": "turn-en-dev-vague",
+      "notes": "vague claim",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: English\nREQUIREMENT: Developing frontend applications with React\nQUESTION ASKED: Describe a frontend application you developed with React. Which features did you build yourself, and how did you approach the work?\nFOLLOW-UP ALREADY ASKED: no\n\nANSWER\n[S1] Yes, I know React quite well.\n[S2] I have used it a lot and I am good with hooks and components."
+        }
+      ]
+    },
+    {
+      "id": "turn-en-dev-vague-after-followup",
+      "notes": "vague again, follow-up already asked: followUp must be null",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: English\nREQUIREMENT: Developing frontend applications with React\nQUESTION ASKED: Describe a frontend application you developed with React. Which features did you build yourself, and how did you approach the work?\nFOLLOW-UP ALREADY ASKED: yes\n\nANSWER\n[S1] Mostly I just build components and hooks, the normal stuff in React."
+        }
+      ]
+    },
+    {
+      "id": "turn-en-dev-confident-long",
+      "notes": "long confident answer with no example",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: English\nREQUIREMENT: Using CI/CD pipelines and a cloud platform (AWS or Azure)\nQUESTION ASKED: Describe a time you used a CI/CD pipeline with AWS or Azure. What did you set up or change yourself, and how did you use version control or DevSecOps practices?\nFOLLOW-UP ALREADY ASKED: no\n\nANSWER\n[S1] I am very comfortable with CI/CD, it is honestly one of my strongest areas.\n[S2] I understand pipelines deeply, both GitHub Actions and Azure DevOps, and I always follow DevSecOps best practices.\n[S3] Cloud is something I am really confident with, AWS and Azure both.\n[S4] I think automation is the key to any modern team and I always push for it.\n[S5] Whatever the setup is, I can handle it."
+        }
+      ]
+    },
+    {
+      "id": "turn-en-dev-english",
+      "notes": "language requirement; follow-up must not ask where they learned it",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: English\nREQUIREMENT: Using English at work, spoken and written\nQUESTION ASKED: Describe how you have used spoken and written English at work. What did you communicate, and with whom?\nFOLLOW-UP ALREADY ASKED: no\n\nANSWER\n[S1] All our standups and code reviews were in English, because the team was in four countries.\n[S2] I wrote the API documentation and the release notes in English as well."
+        }
+      ]
+    },
+    {
+      "id": "turn-fi-forklift-we",
+      "notes": "\"we did\" without own part (Finnish)",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: Finnish\nREQUIREMENT: Driving a forklift in narrow aisles between shelves\nQUESTION ASKED: Kerro tilanteesta, jossa ajoit trukkia ahtaissa hyllyväleissä. Miten suoritit työn ja varmistit turvallisen liikkumisen?\nFOLLOW-UP ALREADY ASKED: no\n\nANSWER\n[S1] Edellisessä työpaikassa varastossa oli tosi kapeat hyllyvälit.\n[S2] Meidän tiimi hoiti siellä kaikki keräilyt ja täydennykset trukeilla kolmessa vuorossa."
+        }
+      ]
+    },
+    {
+      "id": "turn-fi-forklift-tyres-concrete",
+      "notes": "concrete with result, spoken Finnish",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: Finnish\nREQUIREMENT: Receiving, inspecting and handling tyres\nQUESTION ASKED: Kerro, miten olet osallistunut renkaiden vastaanottoon, tarkastukseen tai käsittelyyn. Mitä teit itse?\nFOLLOW-UP ALREADY ASKED: no\n\nANSWER\n[S1] Viime syksynä olin rengashotellissa Vantaalla.\n[S2] Mä otin vastaan asiakkaiden renkaat, tarkistin urasyvyydet ja kirjasin vauriot järjestelmään ennen hyllytystä.\n[S3] Esimies sanoi, että reklamaatiot väheni sinä syksynä selvästi."
+        }
+      ]
+    },
+    {
+      "id": "turn-fi-forklift-not-done",
+      "notes": "plainly has not done it: no follow-up",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: Finnish\nREQUIREMENT: Driving a forklift in narrow aisles between shelves\nQUESTION ASKED: Kerro tilanteesta, jossa ajoit trukkia ahtaissa hyllyväleissä. Miten suoritit työn ja varmistit turvallisen liikkumisen?\nFOLLOW-UP ALREADY ASKED: no\n\nANSWER\n[S1] En ole ajanut trukkia ahtaissa hyllyväleissä.\n[S2] Olen vain siirtänyt lavoja pumppukärryllä."
+        }
+      ]
+    },
+    {
+      "id": "turn-fi-forklift-finnish",
+      "notes": "language requirement in Finnish",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: Finnish\nREQUIREMENT: Using Finnish at work\nQUESTION ASKED: Kerro, miten olet käyttänyt suomea työssäsi, esimerkiksi työohjeissa tai yhteistyössä muiden kanssa.\nFOLLOW-UP ALREADY ASKED: no\n\nANSWER\n[S1] Mä puhun suomea töissä joka päivä.\n[S2] Viimeks Postin terminaalissa kaikki ohjeet ja radiopuhelin oli suomeks."
+        }
+      ]
+    },
+    {
+      "id": "turn-en-forklift-broken",
+      "notes": "broken but clear English; twin of turn-en-forklift-clean",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: English\nREQUIREMENT: Driving a forklift in narrow aisles between shelves\nQUESTION ASKED: Describe a time you drove a forklift in narrow aisles between shelves. What did you do to move and place the load safely?\nFOLLOW-UP ALREADY ASKED: no\n\nANSWER\n[S1] I work two year in Lidl warehouse Järvenpää.\n[S2] Every day I drive reach truck in very small aisle, shelf high like 8 meter.\n[S3] I put pallet up and take down for the store orders, I never hit the shelf."
+        }
+      ]
+    },
+    {
+      "id": "turn-en-forklift-clean",
+      "notes": "clean English twin of turn-en-forklift-broken",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: English\nREQUIREMENT: Driving a forklift in narrow aisles between shelves\nQUESTION ASKED: Describe a time you drove a forklift in narrow aisles between shelves. What did you do to move and place the load safely?\nFOLLOW-UP ALREADY ASKED: no\n\nANSWER\n[S1] I worked for two years in a Lidl warehouse in Järvenpää.\n[S2] Every day I drove a reach truck in very narrow aisles, with shelves about eight metres high.\n[S3] I put pallets up and took them down for the store orders, and I never hit a shelf."
+        }
+      ]
+    },
+    {
+      "id": "turn-en-forklift-protected",
+      "notes": "protected detail (family) inside a concrete answer",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: English\nREQUIREMENT: Experience of warehouse or logistics work\nQUESTION ASKED: Tell us about your previous warehouse or logistics work. What tasks did you handle yourself, and what did a typical workday involve?\nFOLLOW-UP ALREADY ASKED: no\n\nANSWER\n[S1] I worked three years in a Kesko warehouse in Vantaa before my daughter was born.\n[S2] I did the goods receiving on the morning shift, checking deliveries against the waybill and putting pallets away with a reach truck."
+        }
+      ]
+    },
+    {
+      "id": "turn-sv-nurse-not-done",
+      "notes": "plainly has not done it (Swedish)",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: Swedish\nREQUIREMENT: Earlier work at a health station\nQUESTION ASKED: Berätta om ditt tidigare arbete på en hälsostation. Vilka arbetsuppgifter hade du själv där?\nFOLLOW-UP ALREADY ASKED: no\n\nANSWER\n[S1] Nej, på en hälsostation har jag inte jobbat.\n[S2] Jag har bara jobbat på sjukhus."
+        }
+      ]
+    },
+    {
+      "id": "turn-sv-nurse-vague",
+      "notes": "vague claim (Swedish)",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: Swedish\nREQUIREMENT: Using IT systems in patient work\nQUESTION ASKED: Berätta hur du har använt IT-system i patientarbetet. Ge ett exempel på en uppgift som du själv utförde i systemet.\nFOLLOW-UP ALREADY ASKED: no\n\nANSWER\n[S1] Jag är van vid datorer och lär mig nya system snabbt."
+        }
+      ]
+    },
+    {
+      "id": "turn-sv-nurse-no-result",
+      "notes": "concrete own part, no result",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: Swedish\nREQUIREMENT: Assessing patients' need for care at the reception and by phone\nQUESTION ASKED: Beskriv ett tillfälle då du bedömde en patients vårdbehov vid mottagningen eller per telefon. Hur gick du till väga och vad gjorde du själv?\nFOLLOW-UP ALREADY ASKED: no\n\nANSWER\n[S1] På jourmottagningen i Ekenäs svarade jag i telefon på morgnarna.\n[S2] Jag frågade om symtomen, bedömde hur brådskande det var enligt ABCDE och bokade tid hos läkare eller sjukskötare."
+        }
+      ]
+    },
+    {
+      "id": "turn-sv-nurse-we",
+      "notes": "\"we did\" (Swedish)",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are listening to one answer in a job interview and deciding whether one follow-up question is worth asking. You do not judge the person and you never tell them how they did. Output JSON only.\n\nINPUT\n- One requirement from the job ad, and the question that was asked about it.\n- The person's answer as numbered sentences [S1], [S2], ...\n- Whether a follow-up has already been asked on this requirement.\n- The language to write in.\n\nDECIDE\n1. \"evidence\": the numbers of the sentences that speak to this requirement: what the person did, used or knows that bears on it. Empty if none do.\n2. \"concrete\": true only if the answer describes a specific piece of the person's own work for this requirement: a situation and what they themselves did. A general statement (\"I have experience with X\", \"we always did X\", \"I am good at X\") is not concrete.\n3. \"missing\": the one thing a follow-up could still bring out. \"example\": no specific situation. \"own_part\": a situation, but not what they did themselves. \"result\": what they did, but not what came of it. \"none\": nothing.\n4. \"followUp\": one question that asks for exactly that missing thing, about the same requirement. null when \"missing\" is \"none\", when a follow-up has already been asked, or when the person said they have not done this.\n\nRULES FOR THE FOLLOW-UP\n- One sentence, at most 25 words, in the requested language, speaking to the person as \"you\".\n- Refer to something the person just said, in neutral words. Do not repeat their answer back.\n- No praise, no judgement, no thanks, no hint about what a good answer is.\n- Never ask about age, gender, nationality, origin, religion, health, family, permits, or where they learned a language. Never name the employer.\n\nOUTPUT\n{\"evidence\":[1,2],\"concrete\":false,\"missing\":\"own_part\",\"followUp\":\"...\"}"
+        },
+        {
+          "role": "user",
+          "content": "WRITE IN: Swedish\nREQUIREMENT: Working closely with doctors and other care staff in a multiprofessional team\nQUESTION ASKED: Beskriv ett tillfälle då du arbetade i ett mångprofessionellt team med läkare och annan vårdpersonal. Vilket ansvar hade du själv i samarbetet?\nFOLLOW-UP ALREADY ASKED: no\n\nANSWER\n[S1] Vi hade ett bra team på avdelningen med läkare och skötare.\n[S2] Vi samarbetade mycket och hade möten varje morgon."
+        }
+      ]
+    }
+  ]
+}

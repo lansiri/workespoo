@@ -1,0 +1,29 @@
+{
+  "item": "application-turn-regular",
+  "caseId": "turn-fi-forklift-we",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1,
+      2
+    ],
+    "concrete": false,
+    "missing": "own_part",
+    "followUp": "Mitä sinä itse teit ajaessasi trukkia noissa kapeissa hyllyväleissä, jotta liikkuminen pysyi turvallisena?"
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1321,
+    "firstTokenMs": 1320,
+    "tokensIn": 680,
+    "tokensOut": 67,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 1
+  }
+}

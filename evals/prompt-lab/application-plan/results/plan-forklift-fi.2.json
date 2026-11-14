@@ -1,0 +1,44 @@
+{
+  "item": "application-plan",
+  "caseId": "plan-forklift-fi",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "questions": [
+      {
+        "requirement": "R1",
+        "question": "Kerro tilanteesta, jossa ajoit trukkia ahtaissa hyllyväleissä. Miten suoritit työn ja huomioit tilan rajoitukset?"
+      },
+      {
+        "requirement": "R2",
+        "question": "Kerro aiemmasta varasto- tai logistiikkatyöstäsi. Mitä tehtäviä teit itse ja miten työ eteni käytännössä?"
+      },
+      {
+        "requirement": "R3",
+        "question": "Kerro, miten olet käyttänyt suomea työssäsi, esimerkiksi työohjeiden ymmärtämisessä tai asioiden viestimisessä työkavereille."
+      },
+      {
+        "requirement": "R4",
+        "question": "Kerro, miten olet osallistunut renkaiden vastaanottoon, tarkastukseen tai käsittelyyn. Mitä teit itse kussakin vaiheessa?"
+      },
+      {
+        "requirement": "R5",
+        "question": "Kerro kokemuksestasi rengaspesulinjaston käytöstä ja valvonnasta. Mitä teit itse käynnistyksessä, työn aikana ja häiriötilanteissa?"
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 5814,
+    "firstTokenMs": 5814,
+    "tokensIn": 742,
+    "tokensOut": 500,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

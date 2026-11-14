@@ -1,0 +1,30 @@
+{
+  "item": "application-turn",
+  "caseId": "turn-en-forklift-clean",
+  "run": 2,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1,
+      2,
+      3
+    ],
+    "concrete": false,
+    "missing": "example",
+    "followUp": "Can you describe one specific time you placed a pallet in those narrow aisles and what you did to keep it safe?"
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1430,
+    "firstTokenMs": 1430,
+    "tokensIn": 632,
+    "tokensOut": 48,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

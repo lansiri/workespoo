@@ -1,0 +1,29 @@
+{
+  "item": "application-turn",
+  "caseId": "turn-fi-forklift-not-done",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1,
+      2
+    ],
+    "concrete": false,
+    "missing": "none",
+    "followUp": null
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 734,
+    "firstTokenMs": 732,
+    "tokensIn": 632,
+    "tokensOut": 23,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 1
+  }
+}

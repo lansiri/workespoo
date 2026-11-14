@@ -1,0 +1,28 @@
+{
+  "item": "application-turn",
+  "caseId": "turn-sv-nurse-vague",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1
+    ],
+    "concrete": false,
+    "missing": "example",
+    "followUp": "Kan du beskriva en specifik situation där du själv använde ett IT-system i patientarbetet?"
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1000,
+    "firstTokenMs": 1000,
+    "tokensIn": 597,
+    "tokensOut": 48,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "item": "application-plan",
+  "caseId": "plan-forklift-en",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "questions": [
+      {
+        "requirement": "R1",
+        "question": "Tell us about a time you drove a forklift in narrow aisles between shelves. What did you do to move and place the goods safely?"
+      },
+      {
+        "requirement": "R2",
+        "question": "Describe your previous warehouse or logistics work. Which tasks did you handle yourself, and what did a typical workday involve?"
+      },
+      {
+        "requirement": "R3",
+        "question": "Describe how you have used Finnish at work. What tasks or situations required you to speak, read, or write it?"
+      },
+      {
+        "requirement": "R4",
+        "question": "Describe a time you received, inspected, or handled tyres. What did you check, and what did you do yourself?"
+      },
+      {
+        "requirement": "R5",
+        "question": "Describe your experience running or monitoring a tyre washing line or similar production line. What did you do yourself, and how did you respond to problems?"
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 5070,
+    "firstTokenMs": 5070,
+    "tokensIn": 742,
+    "tokensOut": 382,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

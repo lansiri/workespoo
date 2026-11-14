@@ -1,0 +1,80 @@
+{
+  "item": "application-assess-combined",
+  "caseId": "assess-sv-nurse",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "ratings": [
+      {
+        "requirement": "R1",
+        "level": 3,
+        "evidence": [
+          "T1.S1",
+          "T1.S2",
+          "T1.S3"
+        ],
+        "reason_en": "The answer describes assessing symptoms and urgency by phone at an emergency reception, directing a patient with chest pain to immediate care, and timely treatment of an infarction.",
+        "reason_fi": "Vastaus kuvaa oireiden ja kiireellisyyden arviointia puhelimessa päivystysvastaanotolla, rintakipuisen potilaan ohjaamista välittömään hoitoon ja infarktin ajoissa tapahtunutta hoitoa.",
+        "reason_sv": "Svaret beskriver bedömning av symtom och brådskande grad per telefon på jourmottagningen, direkt inlämning av en patient med bröstsmärtor och infarktbehandling i tid."
+      },
+      {
+        "requirement": "R2",
+        "level": 1,
+        "evidence": [
+          "T3.S1",
+          "T3.S2"
+        ],
+        "reason_en": "The answer describes team use of Apotti for documentation, care plans and medicines, but does not identify a task the person performed.",
+        "reason_fi": "Vastaus kuvaa tiimin Apotti-käyttöä dokumentointiin, hoitosuunnitelmiin ja lääkkeisiin, mutta ei kerro henkilön itsensä suorittamaa tehtävää.",
+        "reason_sv": "Svaret beskriver teamets användning av Apotti för dokumentation, vårdplaner och mediciner men anger ingen uppgift som personen själv utförde."
+      },
+      {
+        "requirement": "R3",
+        "level": 1,
+        "evidence": [
+          "T5.S1"
+        ],
+        "reason_en": "The answer states knowledge of Finnish but gives no work situation where the language was used.",
+        "reason_fi": "Vastaus kertoo suomen kielen osaamisesta, mutta ei anna esimerkkiä työtilanteesta, jossa kieltä käytettiin.",
+        "reason_sv": "Svaret anger kunskaper i finska men ger ingen arbetssituation där språket användes."
+      },
+      {
+        "requirement": "R4",
+        "level": 1,
+        "evidence": [
+          "T7.S1",
+          "T7.S2",
+          "T7.S3"
+        ],
+        "reason_en": "The answers describe valuing cooperation with doctors and nurses but give no concrete teamwork situation or personal responsibility.",
+        "reason_fi": "Vastaukset kuvaavat yhteistyön arvostamista lääkäreiden ja hoitajien kanssa, mutta eivät anna konkreettista tiimityötilannetta tai omaa vastuuta.",
+        "reason_sv": "Svaren beskriver uppskattning av samarbete med läkare och skötare men ger ingen konkret teamsituation eller eget ansvar."
+      },
+      {
+        "requirement": "R5",
+        "level": 0,
+        "evidence": [],
+        "reason_en": "The answer states that there is no earlier work at a health station.",
+        "reason_fi": "Vastauksen mukaan aiempaa työtä terveysasemalla ei ole.",
+        "reason_sv": "Svaret anger att det inte finns tidigare arbete på en hälsostation."
+      }
+    ],
+    "summary_en": "The answers give a concrete example of assessing care needs by phone, including the outcome. They give no concrete examples of IT-system use, Finnish at work, or multiprofessional teamwork, and state no earlier health-station work.",
+    "summary_fi": "Vastaukset antavat konkreettisen esimerkin hoidontarpeen arvioinnista puhelimessa ja sen tuloksesta. Ne eivät anna konkreettisia esimerkkejä tietojärjestelmien käytöstä, suomen käytöstä työssä tai moniammatillisesta tiimityöstä, ja aiempaa terveysasematyötä ei ole.",
+    "summary_sv": "Svaren ger ett konkret exempel på vårdbehovsbedömning per telefon, inklusive resultatet. De ger inga konkreta exempel på IT-systemanvändning, finska i arbetet eller multiprofessionellt teamarbete och anger inget tidigare arbete på hälsostation."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 15703,
+    "firstTokenMs": 15701,
+    "tokensIn": 1791,
+    "tokensOut": 1230,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

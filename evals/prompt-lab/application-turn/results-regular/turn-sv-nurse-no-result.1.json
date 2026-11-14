@@ -1,0 +1,29 @@
+{
+  "item": "application-turn-regular",
+  "caseId": "turn-sv-nurse-no-result",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1,
+      2
+    ],
+    "concrete": true,
+    "missing": "result",
+    "followUp": "Vad blev utfallet för patienten efter din bedömning och tidsbokning?"
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 935,
+    "firstTokenMs": 933,
+    "tokensIn": 696,
+    "tokensOut": 43,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

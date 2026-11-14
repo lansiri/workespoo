@@ -1,0 +1,30 @@
+{
+  "item": "application-turn",
+  "caseId": "turn-en-dev-concrete",
+  "run": 2,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1,
+      2,
+      3
+    ],
+    "concrete": true,
+    "missing": "none",
+    "followUp": null
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1140,
+    "firstTokenMs": 1132,
+    "tokensIn": 627,
+    "tokensOut": 25,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "item": "application-turn",
+  "caseId": "turn-en-forklift-clean",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": false,
+  "error": "The 6000 ms deadline for this live call passed. Last error: no provider answered",
+  "rawOnFailure": "{\"evidence\":[1,2,3],\"concrete\":false,\"missing\":\"example\",\"followUp\":\"Can you describe one specific time you placed a pallet in those narrow aisles and what you did to keep it safe?\"}",
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 6009,
+    "firstTokenMs": null,
+    "tokensIn": null,
+    "tokensOut": null,
+    "ok": false,
+    "error": "The 6000 ms deadline for this live call passed. Last error: no provider answered",
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "item": "application-turn",
+  "caseId": "turn-en-dev-english",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1,
+      2
+    ],
+    "concrete": false,
+    "missing": "example",
+    "followUp": "Could you describe one specific situation where you used English at work, what you communicated, and with whom?"
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1539,
+    "firstTokenMs": 1538,
+    "tokensIn": 599,
+    "tokensOut": 43,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

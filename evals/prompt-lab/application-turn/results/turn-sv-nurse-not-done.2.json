@@ -1,0 +1,29 @@
+{
+  "item": "application-turn",
+  "caseId": "turn-sv-nurse-not-done",
+  "run": 2,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1,
+      2
+    ],
+    "concrete": false,
+    "missing": "none",
+    "followUp": null
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 815,
+    "firstTokenMs": 814,
+    "tokensIn": 601,
+    "tokensOut": 23,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}
