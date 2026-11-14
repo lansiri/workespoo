@@ -127,11 +127,12 @@ describe("computeEligibility", () => {
     req("r3", "Java", { escoSkillUris: [java] }),
   ];
 
-  it("needs 2 of 3 or more anchors, so 1 of 3 is not enough (boundary)", async () => {
+  it("one related anchor is enough, whatever the size of the need; none is not (boundary)", async () => {
     await pool();
     await addNeed(t.db, { id: "nc_1", jobId, requirements: three() });
     expect(await computeEligibility(t.db, { needCardId: "nc_1" })).toEqual({ rows: 4 });
-    expect(await eligibleIds("nc_1")).toEqual(["tal_b", "tal_c"]);
+    // tal_a relates to one of three anchors, tal_b and tal_c to more; the fourth person to none.
+    expect(await eligibleIds("nc_1")).toEqual(["tal_a", "tal_b", "tal_c"]);
   });
 
   it("needs only 1 anchor when the need has fewer than 3 (boundary)", async () => {
@@ -141,11 +142,11 @@ describe("computeEligibility", () => {
     expect(await eligibleIds("nc_1")).toEqual(["tal_a", "tal_b", "tal_c"]);
   });
 
-  it("M4: touches 1 of 4 anchors with no matching role is not eligible", async () => {
+  it("M4 (rule of 14 Nov): relating to 1 of 4 anchors is enough for an organiser's look, with or without a matching role", async () => {
     await pool();
     await addNeed(t.db, { id: "nc_1", jobId, requirements: [...three(), req("r4", "Kubernetes operations")] });
     await computeEligibility(t.db, { needCardId: "nc_1" });
-    expect(await eligibleIds("nc_1")).not.toContain("tal_a");
+    expect(await eligibleIds("nc_1")).toContain("tal_a");
   });
 
   it("is also eligible with one anchor plus a self-declared role close to the need title", async () => {
@@ -153,7 +154,8 @@ describe("computeEligibility", () => {
     await addPerson(t.db, { id: "tal_b", signals: [{ id: "s1", phrase: "Python", escoUri: python }], roles: ["Gardener"] });
     await addNeed(t.db, { id: "nc_1", jobId, title: "Data Engineer", requirements: three() });
     await computeEligibility(t.db, { needCardId: "nc_1" });
-    expect(await eligibleIds("nc_1")).toEqual(["tal_a"]);
+    // Both relate to one anchor, which is enough since 14 Nov; the role no longer decides it.
+    expect(await eligibleIds("nc_1")).toEqual(["tal_a", "tal_b"]);
   });
 
   it("M5: two nice-to-have anchors and no must-have is eligible", async () => {
@@ -186,8 +188,9 @@ describe("computeEligibility", () => {
     const finnish = req("r4", "Fluent Finnish", { category: "language", languageCode: "fi" });
     await addNeed(t.db, { id: "nc_1", jobId, requirements: [...three(), finnish] });
     await computeEligibility(t.db, { needCardId: "nc_1" });
-    // tal_b has the same anchors as tal_e but no Finnish; both are eligible.
-    expect(await eligibleIds("nc_1")).toEqual(["tal_b", "tal_c", "tal_e"]);
+    // tal_b has the same anchors as tal_e but no Finnish; both are eligible, and so is everyone
+    // else who relates to an anchor.
+    expect(await eligibleIds("nc_1")).toEqual(["tal_a", "tal_b", "tal_c", "tal_e"]);
     // And Finnish alone makes no one eligible.
     await addNeed(t.db, { id: "nc_2", jobId: await jobIdByTitle(t.db, "UX Designer"), requirements: [finnish] });
     await computeEligibility(t.db, { needCardId: "nc_2" });

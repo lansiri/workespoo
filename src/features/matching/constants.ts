@@ -9,7 +9,14 @@ export const TOUCH_TRIGRAM_THRESHOLD = 0.6;
 
 /** Eligibility: a need with at least this many anchor requirements needs `ANCHOR_THRESHOLD_LARGE` touched. */
 export const ANCHOR_COUNT_FOR_LARGE_NEED = 3;
-export const ANCHOR_THRESHOLD_LARGE = 2;
+/**
+ * 1 since the first seed on real data (14 Nov): with 2, nobody in the pool was eligible for any
+ * of the eight real needs, including a data engineer for a role that lists Python. Real
+ * requirements are specific and a card has few notes that link to them mechanically. One
+ * skill, experience or education requirement that a note relates to is enough to be worth an
+ * organiser's look; the organiser, not this number, decides who is suggested.
+ */
+export const ANCHOR_THRESHOLD_LARGE = 1;
 export const ANCHOR_THRESHOLD_SMALL = 1;
 /** Alternative route to eligible: one touched anchor plus a self-declared role this close to the need title. */
 export const ROLE_TITLE_SIMILARITY = 0.5;

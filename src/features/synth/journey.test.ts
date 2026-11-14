@@ -179,8 +179,12 @@ describe("one person through the whole product", () => {
     }
     expect(quoted).toBeGreaterThanOrEqual(3);
     expect(card.headline).not.toMatch(/\b38\b|husband|Porto|Portugal/i);
-    // The stand-in model repeated the planted sentence in a signal's rendering; the card feature's guard removed it.
-    expect(await actions("card.protected_dropped")).toBeGreaterThan(0);
+    // The stand-in model repeated the planted sentence in a signal's rendering. The card feature's
+    // guard caught it: the note keeps its evidence with a code-written sentence (counted as
+    // salvaged), or is dropped when nothing clean is left. Either way the words are gone (above).
+    const [synthesised] = await listAudit(t.db, { action: "card.synthesised" });
+    const caught = Number((synthesised?.detail as { salvaged?: number } | undefined)?.salvaged ?? 0) + (await actions("card.protected_dropped"));
+    expect(caught).toBeGreaterThan(0);
     expect(await actions("card.synthesised")).toBe(1);
   });
 

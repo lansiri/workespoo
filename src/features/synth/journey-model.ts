@@ -221,6 +221,12 @@ export function journeyModel(options: JourneyModelOptions): { fake: LlmFake; cal
         return feedReasons(opts);
       case "picks.reasons":
         return pickReasons(opts);
+      case "card.esco_pick": {
+        // Prompt C: the first candidate of every item, the way the text matcher's top result
+        // would be taken. Blocks look like "i=0 | phrase: ... | kind: ...", then "1. label" lines.
+        const items = [...opts.messages[opts.messages.length - 1]!.content.matchAll(/^i=(\d+) \|[^\n]*\n1\. /gm)];
+        return { picks: items.map((m) => ({ i: Number(m[1]), choice: 1 })) };
+      }
       default:
         throw new Error(`journey model: no scripted answer for purpose "${opts.purpose}"`);
     }
