@@ -293,6 +293,27 @@ describe("review queue payload", () => {
     expect(p.notMentioned).toEqual([]);
   });
 
+  it("does not call a decided pick out of date, and keeps its reasons, when the need changes afterwards", async () => {
+    const { picks, digestId } = await world(["tal_a", "tal_b"]);
+    await decidePick(t.db, { pickId: picks[0].id, decision: "approve" }, { now: NOW });
+    // The company edits its Need Card: the need moves to the next version.
+    const [row] = await t.db.select().from(needCard).where(eq(needCard.id, "nc_1"));
+    await t.db.update(needCard).set({ version: row.version + 1, body: { ...row.body, version: row.version + 1 } }).where(eq(needCard.id, "nc_1"));
+
+    let q = await buildReviewQueue(t.db, { now: NOW });
+    const byId = () => new Map(q.digests[0].needs[0].picks.map((p) => [p.id, p]));
+    expect(byId().get(picks[0].id)).toMatchObject({ status: "approved", outOfDate: null });
+    expect(byId().get(picks[0].id)!.reasons.length).toBeGreaterThan(0);
+    // The one still waiting is out of date: it has to be drafted again before anyone decides it.
+    expect(byId().get(picks[1].id)).toMatchObject({ status: "suggested", outOfDate: { need: true, card: false } });
+
+    // Once the list is published nothing on it is out of date.
+    await decidePick(t.db, { pickId: picks[1].id, decision: "remove", reasonCode: "duplicate" }, { now: NOW });
+    await publishDigest(t.db, digestId, { now: NOW });
+    q = await buildReviewQueue(t.db, { now: NOW });
+    for (const p of q.digests[0].needs[0].picks) expect(p.outOfDate).toBeNull();
+  });
+
   it("lists a need nobody relates to, and keeps a published digest of today in view with the company link", async () => {
     await addCompany(t.db, { id: "co_1", token: "tok-co-1" });
     await addNeed(t.db, { id: "nc_1", companyId: "co_1", requirements: [{ id: "req_1", text: "Python" }] });

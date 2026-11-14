@@ -123,7 +123,9 @@ export async function buildReviewQueue(db: Db, opts: { now?: Date } = {}): Promi
       );
       const queuePicks: QueuePick[] = ordered.map((p) => {
         const flags = freshness.get(p.id);
-        const stale = isOutOfDate(flags);
+        // Only a suggestion still waiting for a decision can be out of date. A decided pick was
+        // decided on what the card and the need said then, and a published list never changes.
+        const stale = isOutOfDate(flags) && p.status === "suggested" && d.status === "draft";
         const card = cards.get(p.talentId) ?? null;
         const base = {
           id: p.id,
