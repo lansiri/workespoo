@@ -2,7 +2,8 @@
  * A small per-client limit in memory for the CV upload (the site is one web process). The table
  * is bounded: expired entries are dropped first and, if it is still full, the oldest client.
  */
-export type RateLimiter = (key: string) => boolean;
+/** Returns 0 when the call is allowed, else the whole seconds until the oldest call leaves the window. */
+export type RateLimiter = (key: string) => number;
 
 export function createRateLimiter(opts: {
   limit: number;
@@ -18,7 +19,7 @@ export function createRateLimiter(opts: {
     table.delete(key); // re-inserted below, so the Map's order is least recently used first
     if (recent.length >= opts.limit) {
       table.set(key, recent);
-      return false;
+      return Math.max(1, Math.ceil((recent[0] + opts.windowMs - t) / 1000));
     }
     recent.push(t);
     table.set(key, recent);
@@ -32,7 +33,7 @@ export function createRateLimiter(opts: {
         table.delete(oldest);
       }
     }
-    return true;
+    return 0;
   };
 }
 

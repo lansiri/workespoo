@@ -12,6 +12,7 @@
  */
 import { spawn } from "node:child_process";
 import { readFileSync } from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import type { CvUploadError } from "@/contracts";
 import { anonymiseCv, type AnonymisedCv } from "./cv-anonymise";
@@ -24,10 +25,10 @@ export const CV_TEXT_MAX_CHARS = 20_000;
 /** Fewer readable characters than this means there is no usable text layer. */
 const MIN_TEXT_CHARS = 40;
 /** PDF parsing is CPU work: a handful at a time, the rest are told to try again. */
-const MAX_CONCURRENT = 3;
+const MAX_CONCURRENT = 2;
 /**
- * Memory arithmetic: a child is killed above 256 MiB resident, so three at once stay under
- * 768 MiB; next to a web process of about 300 MB that is about 1.07 GB, inside the 1.5 GB
+ * Memory arithmetic: a child is killed above 256 MiB resident, so two at once stay under
+ * 512 MiB; next to a web process of about 300 MB that is about 0.82 GB, inside the 1.5 GB
  * container limit. A normal CV needs well under 150 MiB.
  */
 const CHILD_RSS_LIMIT_BYTES = 256 * 1024 * 1024;
@@ -89,6 +90,14 @@ export function runPdfChild(bytes: Uint8Array, testMode?: string): Promise<Child
     } catch {
       resolve({ ok: false });
       return;
+    }
+
+    // Lowest priority: a PDF made to burn CPU must not starve the web process on a 2-vCPU host.
+    // Raising a process's own niceness needs no capability.
+    try {
+      if (child.pid !== undefined) os.setPriority(child.pid, 19);
+    } catch {
+      // not fatal
     }
 
     const timers: ReturnType<typeof setTimeout>[] = [];
@@ -163,6 +172,11 @@ export async function readCvPdf(bytes: Uint8Array): Promise<CvPdfResult> {
   // Cut BEFORE anonymising: the anonymiser's cost grows with the length of its input.
   const text = answer.text.slice(0, CV_TEXT_MAX_CHARS);
   if (text.replace(/\s/g, "").length < MIN_TEXT_CHARS) return { ok: false, error: "no_text" };
-  const anonymised = anonymiseCv(text);
-  return { ok: true, text: anonymised.text.slice(0, CV_TEXT_MAX_CHARS), removed: anonymised.removed };
+  try {
+    const anonymised = anonymiseCv(text);
+    return { ok: true, text: anonymised.text.slice(0, CV_TEXT_MAX_CHARS), removed: anonymised.removed };
+  } catch {
+    // Never log or return the error: its message can hold words from the CV.
+    return { ok: false, error: "unreadable" };
+  }
 }

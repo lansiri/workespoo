@@ -15,6 +15,7 @@ vi.mock("@/features/interview/cv-pdf", async (orig) => {
 
 import { POST } from "./route";
 
+const PDF = new TextEncoder().encode("%PDF-1.4");
 let nextClient = 0;
 /** Each request comes from a new client address unless the test names one. */
 function upload(body: BodyInit, headers: Record<string, string> = {}): Request {
@@ -55,7 +56,7 @@ describe("POST /api/interview/cv", () => {
     ["busy", 429],
   ] as const)("maps %s to %i", async (error, status) => {
     h.result = { ok: false, error };
-    const res = await POST(upload(new Uint8Array([1, 2, 3])));
+    const res = await POST(upload(PDF));
     expect(res.status).toBe(status);
     expect(await res.json()).toEqual({ error: { code: error } });
   });
@@ -64,14 +65,22 @@ describe("POST /api/interview/cv", () => {
     h.result = { ok: false, error: "unreadable" };
     const a = { "x-forwarded-for": "203.0.113.7, 10.1.1.1" };
     const before = h.calls;
-    for (let i = 0; i < 6; i++) expect((await POST(upload(new Uint8Array([1]), a))).status).toBe(422);
-    const limited = await POST(upload(new Uint8Array([1]), a));
+    for (let i = 0; i < 20; i++) expect((await POST(upload(PDF, a))).status).toBe(422);
+    const limited = await POST(upload(PDF, a));
     expect(limited.status).toBe(429);
-    expect(limited.headers.get("retry-after")).toBe("2");
+    const wait = Number(limited.headers.get("retry-after"));
+    expect(wait).toBeGreaterThan(50);
+    expect(wait).toBeLessThanOrEqual(60);
     expect(await limited.json()).toEqual({ error: { code: "busy" } });
-    expect(h.calls).toBe(before + 6);
-    // Another client is unaffected, and so is the same first address behind another proxy hop.
-    expect((await POST(upload(new Uint8Array([1]), { "x-forwarded-for": "203.0.113.8" }))).status).toBe(422);
-    expect((await POST(upload(new Uint8Array([1]), { "x-forwarded-for": "203.0.113.7" }))).status).toBe(429);
+    expect(h.calls).toBe(before + 20);
+    expect((await POST(upload(PDF, { "x-forwarded-for": "203.0.113.8" }))).status).toBe(422);
+    expect((await POST(upload(PDF, { "x-forwarded-for": "203.0.113.7" }))).status).toBe(429);
+  });
+
+  it("does not charge the limit for bodies that are not a PDF", async () => {
+    h.result = { ok: false, error: "unreadable" };
+    const a = { "x-forwarded-for": "198.51.100.9" };
+    for (let i = 0; i < 30; i++) expect((await POST(upload(new TextEncoder().encode("junk"), a))).status).toBe(415);
+    expect((await POST(upload(PDF, a))).status).toBe(422);
   });
 });
