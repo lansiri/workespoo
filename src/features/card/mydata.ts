@@ -15,6 +15,7 @@ import {
   talentIdentity,
   turn,
 } from "@/db/schema";
+import { exportApplications } from "@/features/application";
 import { audit } from "@/lib/audit";
 import { HttpError } from "@/lib/http";
 
@@ -69,7 +70,15 @@ export async function exportPersonData(db: Db, talentId: string) {
     .select({ id: pick.id })
     .from(pick)
     .where(eq(pick.talentId, talentId));
-  const ownIds = [talentId, ...interviews.map((i) => i.id), ...intros.map((i) => i.row.id), ...pickRows.map((p) => p.id)];
+  const applications = await exportApplications(db, talentId);
+  const applicationIds = applications.map((a) => (a as { id: string }).id);
+  const ownIds = [
+    talentId,
+    ...interviews.map((i) => i.id),
+    ...intros.map((i) => i.row.id),
+    ...pickRows.map((p) => p.id),
+    ...applicationIds,
+  ];
   const auditRows = await db
     .select()
     .from(auditLog)
@@ -117,6 +126,7 @@ export async function exportPersonData(db: Db, talentId: string) {
       addedBy: s.addedBy,
     })),
     transcript,
+    applications,
     consents: consents.map((c) => ({ kind: c.kind, textVersion: c.textVersion, grantedAt: c.grantedAt.toISOString(), withdrawnAt: iso(c.withdrawnAt) })),
     introductions: intros.map(({ row, companyName }) => ({
       id: row.id,
