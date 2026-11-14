@@ -201,6 +201,15 @@ export function ConsentForm() {
           )}
         </Field>
         <CvUpload enabled={consentInterview} current={cvText} limit={CV_MAX_CHARS} onText={setCvText} />
+        {/* Reading a LinkedIn profile needs a partnership with LinkedIn: shown, but it does nothing yet. */}
+        <div className="mt-2 flex flex-wrap items-center gap-3" data-testid="linkedin-fill">
+          <Button type="button" variant="ghost" disabled aria-describedby="linkedin-fill-soon" data-testid="linkedin-fill-button">
+            {m.linkedinButton}
+          </Button>
+          <span id="linkedin-fill-soon" className="we-hint-line" data-testid="linkedin-fill-soon">
+            {m.linkedinSoon}
+          </span>
+        </div>
 
         {failed ? <ErrorState testId="start-error" message={m.startError} action={{ label: e.retry, onClick: () => void start() }} /> : null}
 
