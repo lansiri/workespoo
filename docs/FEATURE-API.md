@@ -37,7 +37,7 @@ export function followEvents(db: Db, interviewId: string,
 /** Ends the interview early with the scripted closing and triggers synthesis. */
 export function stopInterview(db: Db, interviewId: string): Promise<void>;
 
-/** Resolves once background work for the interview (extraction, synthesis) has finished. For tests and the simulator. */
+/** Resolves once background work for the interview (extraction, live skill labels, synthesis) has finished. For tests and the simulator. */
 export function settleInterview(db: Db, interviewId: string, timeoutMs?: number): Promise<void>;
 ```
 
