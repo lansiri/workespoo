@@ -2,9 +2,9 @@
 
 Updated by the lead. Times are Helsinki time.
 
-## Now (Sat 14 Nov, afternoon)
+## Now (Sat 14 Nov, 18:20)
 
-**Job interviews and ranked applicants are live since 15:37 (commit `e630836`), and on GitHub.** The owner decided at 12:50 that applicants to a job are rated and ranked (`docs/LEAD-DECISIONS.md`, the newest entry; `docs/specs/job-interview.md`). Everything else stays as it was: the general interview is not scored, the Signal Card has no levels, the job feed has no match percentages, Daily Picks are in no particular order and approved one by one.
+**Live since 18:15: commit `19becab`** (job interviews and ranked applicants since 15:37; the level marks and the slow-rating line since 16:14; the CV upload as a PDF with its fixes and the "read the two as level" notes since 18:15). GitHub main holds the same. The owner decided at 12:50 that applicants to a job are rated and ranked (`docs/LEAD-DECISIONS.md`, the newest entry; `docs/specs/job-interview.md`). Everything else stays as it was: the general interview is not scored, the Signal Card has no levels, the job feed has no match percentages, Daily Picks are in no particular order and approved one by one.
 
 ### What was built
 
@@ -49,6 +49,8 @@ On the consent screen a person can now upload their CV as a PDF as well as paste
 | The first CV after a server start stalled the server for about two seconds (the patterns being compiled) | The server sends itself one warm-up request when it starts |
 
 Checked afterwards, on the server's Node version (22, in a container): 662 tests of the interview feature pass; hostile PDFs sent through the same code path each answered in about a second with the server's event loop stalled for at most 17 ms, and a stream expanding to 900 MB was killed and answered "unreadable" in under 3 s (`scripts/lab/cv-attack.ts`). `npm run check`: 2,174 passing. Both journeys pass on a local production build. Each fix was itself reviewed by a second reader who tried to defeat it, and corrected again.
+
+On the live site at 18:17, without touching the demo's data: a made-up CV as a PDF came back in 0.5 s with the name, the contacts and the birth and family line removed and the work history and languages kept; a body that is not a PDF was refused; the organiser's list shows the level marks and two "read the two as level" notes; "How this works" and the consent screen show the new text. The deploy waited for a quiet moment because someone was in the middle of a job application on the live site. The two journeys were not run on the live site after this deploy, because they reset the demo; they passed on a local production build of the same commit.
 
 Not checked: a real person's real CV (the tests use made-up ones), and a PDF on a phone.
 
