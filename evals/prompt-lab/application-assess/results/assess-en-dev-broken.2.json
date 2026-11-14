@@ -1,0 +1,81 @@
+{
+  "item": "application-assess",
+  "caseId": "assess-en-dev-broken",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "ratings": [
+      {
+        "requirement": "R1",
+        "level": 3,
+        "evidence": [
+          "T1.S1",
+          "T1.S2",
+          "T1.S3"
+        ],
+        "reason_en": "The answer describes personally rebuilding REST endpoints and connecting them to SAP through a message queue, after which nightly synchronization errors nearly disappeared.",
+        "reason_fi": "Vastaus kuvaa REST-päätepisteiden itsenäistä uudelleenrakentamista ja SAP-integraatiota viestijonolla, minkä jälkeen yösynkronoinnin virheet lähes katosivat.",
+        "reason_sv": "Svaret beskriver egen ombyggnad av REST-endpunkter och SAP-integration via en meddelandekö, varefter nattliga synkroniseringsfel nästan försvann."
+      },
+      {
+        "requirement": "R2",
+        "level": 1,
+        "evidence": [
+          "T3.S1",
+          "T3.S2",
+          "T5.S1"
+        ],
+        "reason_en": "The answers state regular React work with components and hooks, but no specific application or self-implemented feature is described.",
+        "reason_fi": "Vastauksissa kerrotaan React-komponenttien ja hookkien käytöstä, mutta konkreettista sovellusta tai itse toteutettua ominaisuutta ei kuvata.",
+        "reason_sv": "Svaren anger arbete med React-komponenter och hooks, men ingen specifik applikation eller egenimplementerad funktion beskrivs."
+      },
+      {
+        "requirement": "R3",
+        "level": 1,
+        "evidence": [
+          "T7.S1",
+          "T7.S2"
+        ],
+        "reason_en": "The answers describe a team GitHub Actions pipeline deploying merges to AWS staging, without identifying what the speaker set up or changed.",
+        "reason_fi": "Vastaukset kuvaavat tiimin GitHub Actions -putkea, joka vie yhdistämiset AWS-stagingiin, mutta eivät sitä, mitä puhuja itse rakensi tai muutti.",
+        "reason_sv": "Svaren beskriver teamets GitHub Actions-pipeline som distribuerar merges till AWS staging, utan att ange vad talaren själv satte upp eller ändrade."
+      },
+      {
+        "requirement": "R4",
+        "level": 2,
+        "evidence": [
+          "T9.S1",
+          "T9.S2"
+        ],
+        "reason_en": "The answer describes English stand-ups and code reviews across four countries and writing API documentation and release notes in English.",
+        "reason_fi": "Vastaus kuvaa englanninkielisiä palavereja ja koodikatselmointeja neljän maan tiimissä sekä API-dokumentaation ja julkaisumuistioiden kirjoittamista englanniksi.",
+        "reason_sv": "Svaret beskriver engelskspråkiga standups och kodgranskningar i fyra länder samt API-dokumentation och versionsanteckningar skrivna på engelska."
+      },
+      {
+        "requirement": "R5",
+        "level": 0,
+        "evidence": [],
+        "reason_en": "The answer states that SQL and NoSQL database work has not been done.",
+        "reason_fi": "Vastauksessa todetaan, ettei SQL- ja NoSQL-tietokantatyötä ole tehty.",
+        "reason_sv": "Svaret anger att arbete med SQL- och NoSQL-databaser inte har utförts."
+      }
+    ],
+    "summary_en": "The answers give concrete examples for backend API integration and workplace English. React and CI/CD are described without personal work examples, and databases are not addressed.",
+    "summary_fi": "Vastaukset sisältävät konkreettisia esimerkkejä backend-API-integraatiosta ja englannin työkäytöstä. React ja CI/CD kuvataan ilman henkilökohtaisia työesimerkkejä, eikä tietokantoihin ole sisältöä.",
+    "summary_sv": "Svaren ger konkreta exempel på backend-API-integration och engelska i arbetet. React och CI/CD beskrivs utan personliga arbetsexempel, och databaser behandlas inte."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 15410,
+    "firstTokenMs": 15409,
+    "tokensIn": 1446,
+    "tokensOut": 1311,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

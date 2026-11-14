@@ -1,0 +1,81 @@
+{
+  "item": "application-assess",
+  "caseId": "assess-en-dev",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "ratings": [
+      {
+        "requirement": "R1",
+        "level": 3,
+        "evidence": [
+          "T1.S1",
+          "T1.S2",
+          "T1.S3"
+        ],
+        "reason_en": "The answer describes personally rebuilding REST endpoints and integrating them with SAP through a message queue, followed by a sharp reduction in nightly sync errors.",
+        "reason_fi": "Vastaus kuvaa REST-päätepisteiden itsenäistä uudelleenrakentamista ja SAP-integraatiota viestijonolla, minkä jälkeen yöaikaiset synkronointivirheet vähenivät selvästi.",
+        "reason_sv": "Svaret beskriver ett eget ombyggt REST-API med SAP-integration via en meddelandekö, följt av en tydlig minskning av nattliga synkroniseringsfel."
+      },
+      {
+        "requirement": "R2",
+        "level": 1,
+        "evidence": [
+          "T3.S1",
+          "T3.S2",
+          "T5.S1"
+        ],
+        "reason_en": "The answers state experience with React components and hooks but give no concrete application or feature from the speaker's work.",
+        "reason_fi": "Vastauksissa kerrotaan React-komponenttien ja hookien käytöstä, mutta konkreettista sovellusta tai ominaisuutta omasta työstä ei kuvata.",
+        "reason_sv": "Svaren anger erfarenhet av React-komponenter och hooks men beskriver ingen konkret applikation eller funktion från eget arbete."
+      },
+      {
+        "requirement": "R3",
+        "level": 1,
+        "evidence": [
+          "T7.S1",
+          "T7.S2"
+        ],
+        "reason_en": "The answers describe a team pipeline deploying to AWS but do not identify what the speaker set up or changed.",
+        "reason_fi": "Vastaukset kuvaavat tiimin AWS:ään käyttöönottoa tekevää putkea, mutta eivät sitä, mitä puhuja itse rakensi tai muutti.",
+        "reason_sv": "Svaren beskriver teamets pipeline för distribution till AWS men anger inte vad talaren själv satte upp eller ändrade."
+      },
+      {
+        "requirement": "R4",
+        "level": 2,
+        "evidence": [
+          "T9.S1",
+          "T9.S2"
+        ],
+        "reason_en": "The answers describe participating in English standups and code reviews and writing API documentation and release notes for an international team.",
+        "reason_fi": "Vastaukset kuvaavat englanninkielisiä palavereja ja koodikatselmointeja sekä API-dokumentaation ja julkaisumuistioiden kirjoittamista kansainvälisessä tiimissä.",
+        "reason_sv": "Svaren beskriver engelskspråkiga standups och kodgranskningar samt skrivande av API-dokumentation och versionsanteckningar i ett internationellt team."
+      },
+      {
+        "requirement": "R5",
+        "level": 0,
+        "evidence": [],
+        "reason_en": "The answer states that the speaker has not worked with SQL or NoSQL databases.",
+        "reason_fi": "Vastauksessa todetaan, ettei puhuja ole työskennellyt SQL- tai NoSQL-tietokantojen kanssa.",
+        "reason_sv": "Svaret anger att talaren inte har arbetat med SQL- eller NoSQL-databaser."
+      }
+    ],
+    "summary_en": "Concrete examples were given for backend API integration and workplace English. React and CI/CD/cloud were described without a personal work example, and databases were not addressed.",
+    "summary_fi": "Konkreettiset esimerkit koskivat backend-API-integraatiota ja englannin käyttöä työssä. Reactia sekä CI/CD- ja pilvityötä kuvattiin ilman henkilökohtaista työesimerkkiä, eikä tietokantoihin annettu sisältöä.",
+    "summary_sv": "Konkreta exempel gavs för backend-API-integration och engelska i arbetet. React samt CI/CD och moln beskrevs utan ett personligt arbetsexempel, och databaser behandlades inte."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 15645,
+    "firstTokenMs": 15643,
+    "tokensIn": 1451,
+    "tokensOut": 1215,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 4
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "item": "application-assess",
+  "caseId": "assess-en-forklift-broken",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "ratings": [
+      {
+        "requirement": "R1",
+        "level": 3,
+        "evidence": [
+          "T1.S2",
+          "T1.S3"
+        ],
+        "reason_en": "The answer describes daily reach-truck work in narrow aisles with eight-metre shelves, lifting and retrieving pallets without hitting the shelves.",
+        "reason_fi": "Vastaus kuvaa päivittäistä työntömastotrukilla ajoa ahtaissa käytävissä kahdeksan metriä korkeiden hyllyjen välissä sekä lavojen käsittelyä ilman hyllykolareita.",
+        "reason_sv": "Svaret beskriver daglig körning med skjutstativtruck i trånga gångar mellan åtta meter höga hyllor samt pallhantering utan hyllkollisioner."
+      },
+      {
+        "requirement": "R2",
+        "level": 1,
+        "evidence": [
+          "T3.S1",
+          "T3.S2"
+        ],
+        "reason_en": "The answer lists picking, receiving and stock counting as familiar warehouse tasks but gives no specific work situation.",
+        "reason_fi": "Vastaus luettelee keräilyn, vastaanoton ja varastonlaskennan tutuiksi varastotehtäviksi, mutta ei anna konkreettista työtilannetta.",
+        "reason_sv": "Svaret räknar upp plockning, mottagning och inventering som bekanta lageruppgifter men ger ingen konkret arbetssituation."
+      },
+      {
+        "requirement": "R3",
+        "level": 2,
+        "evidence": [
+          "T5.S1"
+        ],
+        "reason_en": "The answer describes daily Finnish-language work instructions and radio communication at a Posti terminal.",
+        "reason_fi": "Vastaus kuvaa suomenkielisiä työohjeita ja radioviestintää päivittäisessä työssä Postin terminaalissa.",
+        "reason_sv": "Svaret beskriver dagliga finskspråkiga arbetsinstruktioner och radiokommunikation vid en Posti-terminal."
+      },
+      {
+        "requirement": "R4",
+        "level": 0,
+        "evidence": [],
+        "reason_en": "No answer was given about receiving, inspecting or handling tyres.",
+        "reason_fi": "Renkaiden vastaanotosta, tarkastuksesta tai käsittelystä ei annettu vastausta.",
+        "reason_sv": "Inget svar gavs om mottagning, kontroll eller hantering av däck."
+      },
+      {
+        "requirement": "R5",
+        "level": 0,
+        "evidence": [],
+        "reason_en": "The answer states that a washing line has not been used.",
+        "reason_fi": "Vastauksessa todetaan, ettei pesulinjastoa ole käytetty.",
+        "reason_sv": "Svaret anger att en tvättlinje inte har använts."
+      }
+    ],
+    "summary_en": "The answers give concrete examples of narrow-aisle forklift driving and using Finnish at work. They give no concrete example of warehouse duties and do not speak to tyre handling or tyre washing lines.",
+    "summary_fi": "Vastaukset antavat konkreettiset esimerkit trukilla ajosta ahtaissa hyllyväleissä ja suomen kielen käytöstä työssä. Ne eivät anna konkreettista esimerkkiä varastotehtävistä eivätkä käsittele renkaiden käsittelyä tai rengaspesulinjastoja.",
+    "summary_sv": "Svaren ger konkreta exempel på truckkörning i trånga hyllgångar och användning av finska i arbetet. De ger inget konkret exempel på lageruppgifter och berör inte däckhantering eller däcktvättlinjer."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 15930,
+    "firstTokenMs": 15928,
+    "tokensIn": 1407,
+    "tokensOut": 1323,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 1
+  }
+}

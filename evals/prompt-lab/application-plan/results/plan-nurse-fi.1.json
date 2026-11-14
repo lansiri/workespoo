@@ -1,0 +1,44 @@
+{
+  "item": "application-plan",
+  "caseId": "plan-nurse-fi",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "questions": [
+      {
+        "requirement": "R1",
+        "question": "Kerro tilanteesta, jossa arvioit potilaan hoidontarvetta vastaanotolla tai puhelimessa. Mitä teit itse arvion tekemiseksi ja hoidon ohjaamiseksi?"
+      },
+      {
+        "requirement": "R2",
+        "question": "Kerro, miten olet käyttänyt tietojärjestelmiä potilastyössä. Anna esimerkki tehtävästä, jonka teit itse järjestelmällä."
+      },
+      {
+        "requirement": "R3",
+        "question": "Kerro, miten olet käyttänyt suomen kieltä työssäsi potilaiden tai työkavereiden kanssa. Anna esimerkki tilanteesta ja omasta osuudestasi."
+      },
+      {
+        "requirement": "R4",
+        "question": "Kerro tilanteesta, jossa työskentelit moniammatillisessa tiimissä läheisessä yhteistyössä lääkäreiden ja muun hoitohenkilöstön kanssa. Mikä oli oma roolisi?"
+      },
+      {
+        "requirement": "R5",
+        "question": "Kerro aiemmasta työstäsi terveysasemalla. Mitä tehtäviä teit itse ja miten hyödyntäisit tätä kokemusta tässä työssä?"
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 4726,
+    "firstTokenMs": 4725,
+    "tokensIn": 880,
+    "tokensOut": 393,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

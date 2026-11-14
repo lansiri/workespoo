@@ -1,0 +1,80 @@
+{
+  "item": "application-assess-person",
+  "caseId": "assess-sv-nurse",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "ratings": [
+      {
+        "requirement": "R1",
+        "level": 3,
+        "evidence": [
+          "T1.S1",
+          "T1.S2",
+          "T1.S3"
+        ],
+        "reason_en": "The answer describes assessing chest pain by phone, directing the patient to immediate care, and timely treatment of a heart attack.",
+        "reason_fi": "Vastaus kuvaa rintakipujen arvioinnin puhelimessa, potilaan ohjaamisen välittömään hoitoon ja sydäninfarktin ajoissa tapahtuneen hoidon.",
+        "reason_sv": "Svaret beskriver en telefonbedömning av bröstsmärtor, remittering till omedelbar vård och att en hjärtinfarkt behandlades i tid."
+      },
+      {
+        "requirement": "R2",
+        "level": 1,
+        "evidence": [
+          "T3.S1",
+          "T3.S2"
+        ],
+        "reason_en": "The answer describes team use of Apotti for documentation, care plans and medicines, without identifying a task the person performed.",
+        "reason_fi": "Vastaus kuvaa tiimin Apotti-käyttöä dokumentointiin, hoitosuunnitelmiin ja lääkkeisiin, mutta ei henkilön itsensä suorittamaa tehtävää.",
+        "reason_sv": "Svaret beskriver teamets användning av Apotti för dokumentation, vårdplaner och läkemedel, utan att ange en uppgift personen själv utförde."
+      },
+      {
+        "requirement": "R3",
+        "level": 1,
+        "evidence": [
+          "T5.S1"
+        ],
+        "reason_en": "The answer states Finnish ability but gives no work situation where Finnish was used.",
+        "reason_fi": "Vastaus kertoo suomen kielen osaamisesta, mutta ei anna esimerkkiä työtilanteesta, jossa kieltä käytettiin.",
+        "reason_sv": "Svaret anger kunskaper i finska men ger ingen arbetssituation där språket användes."
+      },
+      {
+        "requirement": "R4",
+        "level": 1,
+        "evidence": [
+          "T7.S1",
+          "T7.S2",
+          "T7.S3"
+        ],
+        "reason_en": "The answers describe valuing teamwork and getting along with doctors and nurses, without a concrete teamwork situation or personal responsibility.",
+        "reason_fi": "Vastaukset kuvaavat tiimityön arvostamista ja tulemista toimeen lääkäreiden ja hoitajien kanssa, mutta eivät konkreettista tilannetta tai omaa vastuuta.",
+        "reason_sv": "Svaren beskriver uppskattning av teamarbete och samarbete med läkare och skötare, utan en konkret situation eller eget ansvar."
+      },
+      {
+        "requirement": "R5",
+        "level": 0,
+        "evidence": [],
+        "reason_en": "The answer states that there is no previous work at a health station.",
+        "reason_fi": "Vastauksen mukaan aiempaa työtä terveysasemalla ei ole.",
+        "reason_sv": "Svaret anger att det inte finns tidigare arbete på en hälsostation."
+      }
+    ],
+    "summary_en": "The answers give a concrete example for R1. R2, R3 and R4 contain general statements without a concrete example of the person's own work, and R5 is answered with no prior health station work.",
+    "summary_fi": "Vastaukset antavat konkreettisen esimerkin vaatimuksesta R1. R2, R3 ja R4 sisältävät yleisiä väitteitä ilman konkreettista esimerkkiä henkilön omasta työstä, ja R5:ssä kerrotaan, ettei aiempaa terveysasematyötä ole.",
+    "summary_sv": "Svaren ger ett konkret exempel för R1. R2, R3 och R4 innehåller allmänna uttalanden utan konkret exempel på personens eget arbete, och R5 besvaras med att det inte finns tidigare arbete på hälsostation."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 18134,
+    "firstTokenMs": 18126,
+    "tokensIn": 1775,
+    "tokensOut": 1345,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 1
+  }
+}

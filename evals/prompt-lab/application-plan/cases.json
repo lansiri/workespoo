@@ -1,0 +1,79 @@
+{
+  "item": "application-plan",
+  "role": "analyst",
+  "schema": "ApplicationPlanOutput",
+  "maxTokens": 700,
+  "temperature": 0.3,
+  "cases": [
+    {
+      "id": "plan-dev-en",
+      "notes": "dev in en",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You write the questions for a short job interview about one job. Each question is about one requirement from the job ad. Every applicant is asked the same questions, so write them for anyone who might apply. Output JSON only.\n\nINPUT\n- The job title.\n- Requirements labelled R1, R2, ... Each has the requirement in plain English and, when there is one, the sentence of the ad it came from, in the ad's own language.\n- The language to write in.\n\nRULES FOR EVERY QUESTION\n1. One question per requirement, in the same order, each with its label.\n2. Ask for the person's own work: a time they did this, how they have done it, what they did themselves. Never a question that \"yes\" or \"no\" answers.\n3. Name one concrete thing from the requirement or its sentence in the ad (a task, a tool, a setting), so that it is clearly a question about this job and not about any job. Do not invent details that are not there.\n4. At most two sentences and 45 words. Plain words. Speak to the person as \"you\".\n5. A language requirement: ask how they have used that language at work. Never ask where or how they learned it, whether it is their first language, or where they are from.\n6. Never ask about or mention: age, year of birth, gender, nationality, origin, ethnicity, religion, health, disability, family, pregnancy, permits, military service, criminal record, photo, earlier pay.\n7. Never praise, rate or encourage. Never say what a good answer would be. Never name the employer: say \"the ad\" or \"this job\".\n8. Write in the requested language. Keep the names of products and tools as they are.\n\nOUTPUT\n{\"questions\":[{\"requirement\":\"R1\",\"question\":\"...\"}]}"
+        },
+        {
+          "role": "user",
+          "content": "JOB: Software Developer (full-stack) for energy sector, Espoo\nWRITE IN: English\n\nREQUIREMENTS\n[R1] (must-have) Building backend APIs and integrating applications with other systems\nFrom the ad: \"Experience with client-server architectures, backend API development, and system integration\"\n[R2] (must-have) Developing frontend applications with React\nFrom the ad: \"Experience developing frontend applications with React\"\n[R3] (must-have) Using CI/CD pipelines and a cloud platform (AWS or Azure)\nFrom the ad: \"Basic familiarity with cloud platforms (AWS or Azure), version control, and utilizing CI/CD pipelines and DevSecOps practices\"\n[R4] (must-have) Using English at work, spoken and written\nFrom the ad: \"Fluency in spoken and written English\"\n[R5] (nice-to-have) Working with SQL and NoSQL databases\nFrom the ad: \"Basic knowledge of SQL and NoSQL databases\""
+        }
+      ]
+    },
+    {
+      "id": "plan-forklift-fi",
+      "notes": "forklift in fi",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You write the questions for a short job interview about one job. Each question is about one requirement from the job ad. Every applicant is asked the same questions, so write them for anyone who might apply. Output JSON only.\n\nINPUT\n- The job title.\n- Requirements labelled R1, R2, ... Each has the requirement in plain English and, when there is one, the sentence of the ad it came from, in the ad's own language.\n- The language to write in.\n\nRULES FOR EVERY QUESTION\n1. One question per requirement, in the same order, each with its label.\n2. Ask for the person's own work: a time they did this, how they have done it, what they did themselves. Never a question that \"yes\" or \"no\" answers.\n3. Name one concrete thing from the requirement or its sentence in the ad (a task, a tool, a setting), so that it is clearly a question about this job and not about any job. Do not invent details that are not there.\n4. At most two sentences and 45 words. Plain words. Speak to the person as \"you\".\n5. A language requirement: ask how they have used that language at work. Never ask where or how they learned it, whether it is their first language, or where they are from.\n6. Never ask about or mention: age, year of birth, gender, nationality, origin, ethnicity, religion, health, disability, family, pregnancy, permits, military service, criminal record, photo, earlier pay.\n7. Never praise, rate or encourage. Never say what a good answer would be. Never name the employer: say \"the ad\" or \"this job\".\n8. Write in the requested language. Keep the names of products and tools as they are.\n\nOUTPUT\n{\"questions\":[{\"requirement\":\"R1\",\"question\":\"...\"}]}"
+        },
+        {
+          "role": "user",
+          "content": "JOB: Trukkikuski syksyn rengaslogistiikkaan\nWRITE IN: Finnish\n\nREQUIREMENTS\n[R1] (must-have) Driving a forklift in narrow aisles between shelves\nFrom the ad: \"Kykyä työskennellä trukilla ahtaissa hyllyväleissä\"\n[R2] (must-have) Experience of warehouse or logistics work\nFrom the ad: \"Aiemman kokemuksen varasto- tai logistiikkatehtävistä\"\n[R3] (must-have) Using Finnish at work\nFrom the ad: \"Sujuva suomenkieli\"\n[R4] (nice-to-have) Receiving, inspecting and handling tyres\nFrom the ad: \"Renkaiden vastaanotto, tarkastus ja käsittely\"\n[R5] (nice-to-have) Running and monitoring a tyre washing line\nFrom the ad: \"Rengaspesulinjaston käyttö ja valvonta\""
+        }
+      ]
+    },
+    {
+      "id": "plan-nurse-sv",
+      "notes": "nurse in sv",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You write the questions for a short job interview about one job. Each question is about one requirement from the job ad. Every applicant is asked the same questions, so write them for anyone who might apply. Output JSON only.\n\nINPUT\n- The job title.\n- Requirements labelled R1, R2, ... Each has the requirement in plain English and, when there is one, the sentence of the ad it came from, in the ad's own language.\n- The language to write in.\n\nRULES FOR EVERY QUESTION\n1. One question per requirement, in the same order, each with its label.\n2. Ask for the person's own work: a time they did this, how they have done it, what they did themselves. Never a question that \"yes\" or \"no\" answers.\n3. Name one concrete thing from the requirement or its sentence in the ad (a task, a tool, a setting), so that it is clearly a question about this job and not about any job. Do not invent details that are not there.\n4. At most two sentences and 45 words. Plain words. Speak to the person as \"you\".\n5. A language requirement: ask how they have used that language at work. Never ask where or how they learned it, whether it is their first language, or where they are from.\n6. Never ask about or mention: age, year of birth, gender, nationality, origin, ethnicity, religion, health, disability, family, pregnancy, permits, military service, criminal record, photo, earlier pay.\n7. Never praise, rate or encourage. Never say what a good answer would be. Never name the employer: say \"the ad\" or \"this job\".\n8. Write in the requested language. Keep the names of products and tools as they are.\n\nOUTPUT\n{\"questions\":[{\"requirement\":\"R1\",\"question\":\"...\"}]}"
+        },
+        {
+          "role": "user",
+          "content": "JOB: Sjukskötare, Grankulla hälsostation, Grankulla\nWRITE IN: Swedish\n\nREQUIREMENTS\n[R1] (must-have) Assessing patients' need for care at the reception and by phone\nFrom the ad: \"Sjukskötarens arbetsbild är mångsidig och omfattar vårdbehovsbedömning, icke-brådskande mottagningstider, skötsel av patientbyrån samt jouruppgifter.\"\n[R2] (must-have) Using IT systems in patient work\nFrom the ad: \"För att lyckas i uppgiften krävs förutom vårdkunnande även goda IT-kunskaper samt flytande kunskaper i finska.\"\n[R3] (must-have) Using Finnish at work\nFrom the ad: \"För att lyckas i uppgiften krävs förutom vårdkunnande även goda IT-kunskaper samt flytande kunskaper i finska.\"\n[R4] (nice-to-have) Working closely with doctors and other care staff in a multiprofessional team\nFrom the ad: \"Vi arbetar mångprofessionellt och arbetet utförs i nära samarbete mellan vårdpersonal och läkare i gemensamma arbetsutrymmen.\"\n[R5] (nice-to-have) Earlier work at a health station\nFrom the ad: \"Tidigare erfarenhet av arbete på hälsostation är också meriterande.\""
+        }
+      ]
+    },
+    {
+      "id": "plan-forklift-en",
+      "notes": "forklift in en",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You write the questions for a short job interview about one job. Each question is about one requirement from the job ad. Every applicant is asked the same questions, so write them for anyone who might apply. Output JSON only.\n\nINPUT\n- The job title.\n- Requirements labelled R1, R2, ... Each has the requirement in plain English and, when there is one, the sentence of the ad it came from, in the ad's own language.\n- The language to write in.\n\nRULES FOR EVERY QUESTION\n1. One question per requirement, in the same order, each with its label.\n2. Ask for the person's own work: a time they did this, how they have done it, what they did themselves. Never a question that \"yes\" or \"no\" answers.\n3. Name one concrete thing from the requirement or its sentence in the ad (a task, a tool, a setting), so that it is clearly a question about this job and not about any job. Do not invent details that are not there.\n4. At most two sentences and 45 words. Plain words. Speak to the person as \"you\".\n5. A language requirement: ask how they have used that language at work. Never ask where or how they learned it, whether it is their first language, or where they are from.\n6. Never ask about or mention: age, year of birth, gender, nationality, origin, ethnicity, religion, health, disability, family, pregnancy, permits, military service, criminal record, photo, earlier pay.\n7. Never praise, rate or encourage. Never say what a good answer would be. Never name the employer: say \"the ad\" or \"this job\".\n8. Write in the requested language. Keep the names of products and tools as they are.\n\nOUTPUT\n{\"questions\":[{\"requirement\":\"R1\",\"question\":\"...\"}]}"
+        },
+        {
+          "role": "user",
+          "content": "JOB: Trukkikuski syksyn rengaslogistiikkaan\nWRITE IN: English\n\nREQUIREMENTS\n[R1] (must-have) Driving a forklift in narrow aisles between shelves\nFrom the ad: \"Kykyä työskennellä trukilla ahtaissa hyllyväleissä\"\n[R2] (must-have) Experience of warehouse or logistics work\nFrom the ad: \"Aiemman kokemuksen varasto- tai logistiikkatehtävistä\"\n[R3] (must-have) Using Finnish at work\nFrom the ad: \"Sujuva suomenkieli\"\n[R4] (nice-to-have) Receiving, inspecting and handling tyres\nFrom the ad: \"Renkaiden vastaanotto, tarkastus ja käsittely\"\n[R5] (nice-to-have) Running and monitoring a tyre washing line\nFrom the ad: \"Rengaspesulinjaston käyttö ja valvonta\""
+        }
+      ]
+    },
+    {
+      "id": "plan-nurse-fi",
+      "notes": "nurse in fi",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You write the questions for a short job interview about one job. Each question is about one requirement from the job ad. Every applicant is asked the same questions, so write them for anyone who might apply. Output JSON only.\n\nINPUT\n- The job title.\n- Requirements labelled R1, R2, ... Each has the requirement in plain English and, when there is one, the sentence of the ad it came from, in the ad's own language.\n- The language to write in.\n\nRULES FOR EVERY QUESTION\n1. One question per requirement, in the same order, each with its label.\n2. Ask for the person's own work: a time they did this, how they have done it, what they did themselves. Never a question that \"yes\" or \"no\" answers.\n3. Name one concrete thing from the requirement or its sentence in the ad (a task, a tool, a setting), so that it is clearly a question about this job and not about any job. Do not invent details that are not there.\n4. At most two sentences and 45 words. Plain words. Speak to the person as \"you\".\n5. A language requirement: ask how they have used that language at work. Never ask where or how they learned it, whether it is their first language, or where they are from.\n6. Never ask about or mention: age, year of birth, gender, nationality, origin, ethnicity, religion, health, disability, family, pregnancy, permits, military service, criminal record, photo, earlier pay.\n7. Never praise, rate or encourage. Never say what a good answer would be. Never name the employer: say \"the ad\" or \"this job\".\n8. Write in the requested language. Keep the names of products and tools as they are.\n\nOUTPUT\n{\"questions\":[{\"requirement\":\"R1\",\"question\":\"...\"}]}"
+        },
+        {
+          "role": "user",
+          "content": "JOB: Sjukskötare, Grankulla hälsostation, Grankulla\nWRITE IN: Finnish\n\nREQUIREMENTS\n[R1] (must-have) Assessing patients' need for care at the reception and by phone\nFrom the ad: \"Sjukskötarens arbetsbild är mångsidig och omfattar vårdbehovsbedömning, icke-brådskande mottagningstider, skötsel av patientbyrån samt jouruppgifter.\"\n[R2] (must-have) Using IT systems in patient work\nFrom the ad: \"För att lyckas i uppgiften krävs förutom vårdkunnande även goda IT-kunskaper samt flytande kunskaper i finska.\"\n[R3] (must-have) Using Finnish at work\nFrom the ad: \"För att lyckas i uppgiften krävs förutom vårdkunnande även goda IT-kunskaper samt flytande kunskaper i finska.\"\n[R4] (nice-to-have) Working closely with doctors and other care staff in a multiprofessional team\nFrom the ad: \"Vi arbetar mångprofessionellt och arbetet utförs i nära samarbete mellan vårdpersonal och läkare i gemensamma arbetsutrymmen.\"\n[R5] (nice-to-have) Earlier work at a health station\nFrom the ad: \"Tidigare erfarenhet av arbete på hälsostation är också meriterande.\""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "item": "application-turn-regular",
+  "role": "live",
+  "schema": "ApplicationTurnOutput",
+  "calls": 14,
+  "ok": 14,
+  "failed": 0,
+  "neededRetry": 0,
+  "latencyMs": {
+    "p50": 1333,
+    "p90": 1779
+  },
+  "firstTokenMs": {
+    "p50": 1320,
+    "p90": 1777
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": []
+}

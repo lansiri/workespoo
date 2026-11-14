@@ -1,0 +1,29 @@
+{
+  "item": "application-turn-regular",
+  "caseId": "turn-en-dev-vague",
+  "run": 2,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1,
+      2
+    ],
+    "concrete": false,
+    "missing": "example",
+    "followUp": "Can you describe one React application you worked on and a specific feature you built yourself?"
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1675,
+    "firstTokenMs": 1670,
+    "tokensIn": 617,
+    "tokensOut": 39,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

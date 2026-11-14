@@ -1,0 +1,21 @@
+{
+  "item": "application-plan",
+  "role": "analyst",
+  "schema": "ApplicationPlanOutput",
+  "calls": 10,
+  "ok": 10,
+  "failed": 0,
+  "neededRetry": 1,
+  "latencyMs": {
+    "p50": 5814,
+    "p90": 12311
+  },
+  "firstTokenMs": {
+    "p50": 5814,
+    "p90": 8095
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": []
+}

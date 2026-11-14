@@ -1,0 +1,29 @@
+{
+  "item": "application-turn-regular",
+  "caseId": "turn-en-dev-english",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1,
+      2
+    ],
+    "concrete": true,
+    "missing": "result",
+    "followUp": "What was the outcome of the API documentation and release notes you wrote in English?"
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 934,
+    "firstTokenMs": 932,
+    "tokensIn": 627,
+    "tokensOut": 38,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

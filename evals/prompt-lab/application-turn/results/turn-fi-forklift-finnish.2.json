@@ -1,0 +1,29 @@
+{
+  "item": "application-turn",
+  "caseId": "turn-fi-forklift-finnish",
+  "run": 2,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1,
+      2
+    ],
+    "concrete": false,
+    "missing": "example",
+    "followUp": "Kerro yksi tilanne Postin terminaalissa, jossa käytit suomea työohjeiden tai radiopuhelimen kanssa."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1116,
+    "firstTokenMs": 1116,
+    "tokensIn": 628,
+    "tokensOut": 57,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

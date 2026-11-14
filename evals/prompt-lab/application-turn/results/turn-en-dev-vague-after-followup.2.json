@@ -1,0 +1,28 @@
+{
+  "item": "application-turn",
+  "caseId": "turn-en-dev-vague-after-followup",
+  "run": 2,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1
+    ],
+    "concrete": false,
+    "missing": "example",
+    "followUp": null
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 916,
+    "firstTokenMs": 915,
+    "tokensIn": 577,
+    "tokensOut": 21,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

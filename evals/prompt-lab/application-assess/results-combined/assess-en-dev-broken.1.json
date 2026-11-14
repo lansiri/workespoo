@@ -1,0 +1,81 @@
+{
+  "item": "application-assess-combined",
+  "caseId": "assess-en-dev-broken",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "ratings": [
+      {
+        "requirement": "R1",
+        "level": 3,
+        "evidence": [
+          "T1.S1",
+          "T1.S2",
+          "T1.S3"
+        ],
+        "reason_en": "The answer describes personally rebuilding REST endpoints, integrating them with SAP through a message queue, and reducing nightly synchronization errors to almost zero.",
+        "reason_fi": "Vastaus kuvaa REST-päätepisteiden itsenäistä uudelleenrakentamista, SAP-integraatiota viestijonolla ja yöaikaisten synkronointivirheiden vähenemistä lähes nollaan.",
+        "reason_sv": "Svaret beskriver ett eget ombyggt REST-API, integration med SAP via en meddelandekö och att nattliga synkroniseringsfel minskade till nästan noll."
+      },
+      {
+        "requirement": "R2",
+        "level": 1,
+        "evidence": [
+          "T3.S1",
+          "T3.S2",
+          "T5.S1"
+        ],
+        "reason_en": "The answers state experience with React components and hooks but give no specific application or personally implemented feature.",
+        "reason_fi": "Vastauksissa kerrotaan React-komponenttien ja hookkien käytöstä, mutta konkreettista sovellusta tai itse toteutettua ominaisuutta ei kuvata.",
+        "reason_sv": "Svaren anger erfarenhet av React-komponenter och hooks men beskriver ingen specifik applikation eller egen implementerad funktion."
+      },
+      {
+        "requirement": "R3",
+        "level": 1,
+        "evidence": [
+          "T7.S1",
+          "T7.S2"
+        ],
+        "reason_en": "The answer describes a team GitHub Actions pipeline deploying merges to AWS staging, without identifying what the person set up or changed.",
+        "reason_fi": "Vastaus kuvaa tiimin GitHub Actions -putkea, joka vie muutokset AWS:n staging-ympäristöön, mutta ei henkilön omaa toteutusta tai muutosta.",
+        "reason_sv": "Svaret beskriver teamets GitHub Actions-pipeline för driftsättning till AWS staging, utan att ange vad personen själv satte upp eller ändrade."
+      },
+      {
+        "requirement": "R4",
+        "level": 2,
+        "evidence": [
+          "T9.S1",
+          "T9.S2"
+        ],
+        "reason_en": "The answer gives workplace examples of English standups and code reviews in a multinational team, plus personally written API documentation and release notes.",
+        "reason_fi": "Vastaus kuvaa englanninkielisiä palavereja ja koodikatselmuksia kansainvälisessä tiimissä sekä itse kirjoitettuja API-dokumentteja ja julkaisutietoja.",
+        "reason_sv": "Svaret ger arbetsexempel på engelska standups och kodgranskningar i ett multinationellt team samt egenhändigt skriven API-dokumentation och versionsinformation."
+      },
+      {
+        "requirement": "R5",
+        "level": 0,
+        "evidence": [],
+        "reason_en": "The answer states that the person has not worked with SQL or NoSQL databases.",
+        "reason_fi": "Vastauksessa todetaan, ettei henkilö ole työskennellyt SQL- tai NoSQL-tietokantojen parissa.",
+        "reason_sv": "Svaret anger att personen inte har arbetat med SQL- eller NoSQL-databaser."
+      }
+    ],
+    "summary_en": "The answers give concrete examples for backend API development and system integration, and for spoken and written English at work. React development and CI/CD with AWS are described without a personal work example, and SQL and NoSQL databases are not addressed.",
+    "summary_fi": "Vastauksissa on konkreettisia esimerkkejä backend-API-kehityksestä ja järjestelmäintegraatiosta sekä englannin suullisesta ja kirjallisesta käytöstä työssä. React-kehitys ja CI/CD AWS:n kanssa kuvataan ilman henkilökohtaista työesimerkkiä, eikä SQL- ja NoSQL-tietokantoihin ole kokemusta.",
+    "summary_sv": "Svaren ger konkreta exempel på backend-API-utveckling och systemintegration samt muntlig och skriftlig engelska i arbetet. React-utveckling och CI/CD med AWS beskrivs utan ett personligt arbetsexempel, och SQL- och NoSQL-databaser behandlas inte."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 15855,
+    "firstTokenMs": 15853,
+    "tokensIn": 1492,
+    "tokensOut": 1230,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 4
+  }
+}

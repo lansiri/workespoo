@@ -1,0 +1,76 @@
+{
+  "item": "application-assess",
+  "caseId": "assess-en-forklift-clean",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "ratings": [
+      {
+        "requirement": "R1",
+        "level": 3,
+        "evidence": [
+          "T1.S1",
+          "T1.S2",
+          "T1.S3"
+        ],
+        "reason_en": "The answer describes daily reach-truck work in narrow warehouse aisles, lifting and retrieving pallets without hitting shelves.",
+        "reason_fi": "Vastaus kuvaa päivittäistä työskentelyä pinoamistrukilla ahtaissa varastokäytävissä ja kuormalavojen nostamista ja poimimista ilman hyllykolareita.",
+        "reason_sv": "Svaret beskriver dagligt arbete med skjutstativtruck i trånga lagergångar, med lyft och plock av pallar utan hyllkollisioner."
+      },
+      {
+        "requirement": "R2",
+        "level": 1,
+        "evidence": [
+          "T3.S1",
+          "T3.S2"
+        ],
+        "reason_en": "The answers list warehouse tasks and familiarity but give no specific work situation or personal actions.",
+        "reason_fi": "Vastauksissa luetellaan varastotehtäviä ja kerrotaan niiden olevan tuttuja, mutta konkreettista työtilannetta tai omia toimia ei kuvata.",
+        "reason_sv": "Svaren räknar upp lageruppgifter och förtrogenhet men beskriver ingen konkret arbetssituation eller egna åtgärder."
+      },
+      {
+        "requirement": "R3",
+        "level": 2,
+        "evidence": [
+          "T5.S1"
+        ],
+        "reason_en": "The answer describes daily Finnish use at a Posti terminal for work instructions and radio traffic.",
+        "reason_fi": "Vastaus kuvaa suomen kielen päivittäistä käyttöä Postin terminaalissa työohjeissa ja radioliikenteessä.",
+        "reason_sv": "Svaret beskriver daglig användning av finska vid Postis terminal för arbetsinstruktioner och radiotrafik."
+      },
+      {
+        "requirement": "R4",
+        "level": 0,
+        "evidence": [],
+        "reason_en": "No answer was given about receiving, inspecting or handling tyres.",
+        "reason_fi": "Renkaiden vastaanotosta, tarkastuksesta tai käsittelystä ei annettu vastausta.",
+        "reason_sv": "Inget svar gavs om mottagning, kontroll eller hantering av däck."
+      },
+      {
+        "requirement": "R5",
+        "level": 0,
+        "evidence": [],
+        "reason_en": "The answer states no experience of using a washing line.",
+        "reason_fi": "Vastauksessa todetaan, ettei pesulinjaston käyttökokemusta ole.",
+        "reason_sv": "Svaret anger ingen erfarenhet av att använda en tvättlinje."
+      }
+    ],
+    "summary_en": "The answers give concrete examples for R1 and R3. R2 contains general claims without a work example, and R4 and R5 are not addressed.",
+    "summary_fi": "Vastauksissa on konkreettiset esimerkit vaatimuksista R1 ja R3. R2 sisältää yleisiä väitteitä ilman työesimerkkiä, eikä R4:ää tai R5:tä käsitellä.",
+    "summary_sv": "Svaren ger konkreta exempel för R1 och R3. R2 innehåller allmänna påståenden utan arbetsexempel, och R4 och R5 behandlas inte."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 13237,
+    "firstTokenMs": 13235,
+    "tokensIn": 1425,
+    "tokensOut": 1103,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

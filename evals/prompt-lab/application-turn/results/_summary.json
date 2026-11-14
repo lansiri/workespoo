@@ -1,0 +1,27 @@
+{
+  "item": "application-turn",
+  "role": "live",
+  "schema": "ApplicationTurnOutput",
+  "calls": 32,
+  "ok": 31,
+  "failed": 1,
+  "neededRetry": 0,
+  "latencyMs": {
+    "p50": 1143,
+    "p90": 1474
+  },
+  "firstTokenMs": {
+    "p50": 1132,
+    "p90": 1464
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": [
+    {
+      "caseId": "turn-en-forklift-clean",
+      "run": 1,
+      "error": "The 6000 ms deadline for this live call passed. Last error: no provider answered"
+    }
+  ]
+}
