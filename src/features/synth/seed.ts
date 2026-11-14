@@ -7,10 +7,10 @@
  * Nothing here calls a model; the features it calls may, but the harness never depends on a key
  * to produce the data (the interview is answered by the scripted candidate).
  */
-import { and, eq, inArray, like, or } from "drizzle-orm";
+import { and, eq, gte, inArray, like, lte, or } from "drizzle-orm";
 import type { InterviewMode } from "@/contracts";
 import type { Db } from "@/db/client";
-import { appMeta, company, consent, digest, eligibility, matchEvent, eventCompany, needCard, pick, talent } from "@/db/schema";
+import { appMeta, company, consent, digest, eligibility, llmCall, matchEvent, eventCompany, needCard, pick, talent } from "@/db/schema";
 import { audit } from "@/lib/audit";
 import { newId, newToken } from "@/lib/ids";
 import { loadDemoCandidates, selectDemoPostings, type DemoPick } from "./demo-postings";
@@ -66,6 +66,24 @@ export type SeedSummary = {
   usage: UsageReport;
   warnings: string[];
 };
+
+/** How many of one interview's model calls may fail before the seed rejects the interview. */
+export const MAX_FAILED_INTERVIEW_CALLS = 2;
+
+/**
+ * The interview never stalls: when the model does not answer, the engine asks a scripted
+ * question and goes on. That is right for a person and wrong for the demo world, which should
+ * show what the interviewer really asks. This counts the interview's failed model calls in the
+ * run's time span (`llm_call` has no interview id; the seed runs one interview at a time).
+ */
+async function failedInterviewCalls(db: Db, run: SimulatedRun): Promise<number> {
+  if (!run.timing) return 0;
+  const rows = await db
+    .select({ id: llmCall.id })
+    .from(llmCall)
+    .where(and(gte(llmCall.at, run.timing.startedAt), lte(llmCall.at, run.timing.endedAt), like(llmCall.purpose, "interview.%"), eq(llmCall.ok, false)));
+  return rows.length;
+}
 
 type StoredCompany = { number: number; companyId: string; jobId: string; title: string; tags: string[] };
 
@@ -188,13 +206,19 @@ export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummar
     }
     for (const stale of taken.filter((t) => t.personaKey === persona.id)) await db.delete(talent).where(eq(talent.id, stale.id));
     // An interview can fail when the model stops answering half-way: a network cut leaves a card
-    // with no notes, and that cannot be approved. Try twice, then go on without this person and
-    // say so. The seed is idempotent, so a second run fills the gap.
+    // with no notes, which cannot be approved, or an interview made of scripted questions, which
+    // the demo world should not hold. Try twice, then go on without this person and say so.
+    // The seed is idempotent, so a second run fills the gap.
     let run: SimulatedRun | null = null;
     let lastError = "";
     for (let attempt = 1; attempt <= 2 && !run; attempt++) {
       try {
-        run = await runSimulatedInterview(db, persona, options.mode ?? persona.interviewMode, { deps, log });
+        const attemptRun = await runSimulatedInterview(db, persona, options.mode ?? persona.interviewMode, { deps, log });
+        const failed = await failedInterviewCalls(db, attemptRun);
+        if (failed > MAX_FAILED_INTERVIEW_CALLS) {
+          throw new Error(`the model did not answer ${failed} of this interview's calls, so the interviewer asked scripted questions`);
+        }
+        run = attemptRun;
       } catch (error) {
         lastError = error instanceof Error ? error.message : String(error);
         log(`  interview ${attempt} of 2 failed for ${persona.id}: ${lastError.slice(0, 160)}`);

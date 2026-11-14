@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { loadJobFixtures } from "../../../fixtures/load";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
-import { auditLog, company, digest, eventCompany, matchEvent, needCard, pick, talent } from "@/db/schema";
+import { auditLog, company, digest, eventCompany, interview, llmCall, matchEvent, needCard, pick, talent } from "@/db/schema";
 import { createFakeEngine } from "./fake-engine";
 import { loadPersonas } from "./persona";
 import { mkdtempSync, rmSync } from "node:fs";
@@ -11,7 +11,7 @@ import path from "node:path";
 import { setLlmFake } from "@/lib/llm";
 import { hasSnapshot, restoreDemoSnapshot, snapshotDemo } from "./snapshot";
 import { assertNoDemoEvent } from "./script-db";
-import { DEMO_EVENT_ID, helsinkiDay, resetDemo, seedDemo, type SeedSummary } from "./seed";
+import { DEMO_EVENT_ID, MAX_FAILED_INTERVIEW_CALLS, helsinkiDay, resetDemo, seedDemo, type SeedSummary } from "./seed";
 
 const personas = loadPersonas();
 const NOW = new Date("2026-11-25T08:00:00Z");
@@ -187,6 +187,51 @@ describe("seedDemo when an interview fails", () => {
       const second = await seedDemo(own.db, { deps: fake, personas: some, now: () => NOW, appUrl: "https://example.test" });
       expect(second.personas).toEqual({ created: 1, kept: 3 });
       expect((await own.db.select().from(talent)).filter((p) => p.inPool)).toHaveLength(4);
+    } finally {
+      await own.close();
+    }
+  }, 120_000);
+});
+
+describe("seedDemo when the model does not answer during an interview", () => {
+  it("rejects an interview made of scripted questions and does it again", async () => {
+    const own = await createTestDb();
+    try {
+      await loadJobFixtures(own.db);
+      const some = personas.slice(0, 3);
+      const fake = createFakeEngine(own.db, { personas: some });
+      const failedCall = { role: "live" as const, provider: "verda", model: "m", purpose: "interview.live", latencyMs: 6000, ok: false, error: "deadline" };
+      // During the second person's first interview the model fails more often than the seed
+      // accepts; during the third person's interview it fails as often as is still accepted.
+      let secondPersonAttempts = 0;
+      const flaky: typeof fake = {
+        ...fake,
+        settleInterview: async (...args: Parameters<typeof fake.settleInterview>) => {
+          const [row] = await own.db.select({ key: talent.personaKey }).from(interview).innerJoin(talent, eq(talent.id, interview.talentId)).where(eq(interview.id, args[1]));
+          if (row?.key === some[1].id && secondPersonAttempts++ === 0) {
+            await own.db.insert(llmCall).values(Array.from({ length: MAX_FAILED_INTERVIEW_CALLS + 1 }, () => failedCall));
+          }
+          if (row?.key === some[2].id) {
+            await own.db.insert(llmCall).values([
+              ...Array.from({ length: MAX_FAILED_INTERVIEW_CALLS }, () => failedCall),
+              { ...failedCall, purpose: "card.synthesis" }, // not an interview call: not counted
+            ]);
+          }
+          return fake.settleInterview(...args);
+        },
+      };
+      const lines: string[] = [];
+      const summary = await seedDemo(own.db, { deps: flaky, personas: some, now: () => NOW, appUrl: "https://example.test", log: (l) => lines.push(l) });
+
+      expect(summary.personas).toEqual({ created: 3, kept: 0 });
+      expect(secondPersonAttempts).toBe(2);
+      const failures = lines.filter((l) => l.includes("failed for"));
+      expect(failures).toHaveLength(1);
+      expect(failures[0]).toContain(`interview 1 of 2 failed for ${some[1].id}`);
+      expect(failures[0]).toContain("scripted questions");
+      expect(summary.warnings.filter((w) => w.includes("is not in the pool"))).toHaveLength(0);
+      // One person per persona: the rejected interview's person is gone.
+      expect((await own.db.select().from(talent)).map((p) => p.personaKey).sort()).toEqual(some.map((p) => p.id).sort());
     } finally {
       await own.close();
     }
