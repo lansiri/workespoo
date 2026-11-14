@@ -1,0 +1,29 @@
+{
+  "item": "application-turn",
+  "caseId": "turn-sv-nurse-no-result",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1,
+      2
+    ],
+    "concrete": false,
+    "missing": "example",
+    "followUp": "Kan du beskriva ett specifikt telefonsamtal där du bedömde en patients vårdbehov och hur du själv gick till väga?"
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 2307,
+    "firstTokenMs": 2306,
+    "tokensIn": 668,
+    "tokensOut": 61,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 1
+  }
+}

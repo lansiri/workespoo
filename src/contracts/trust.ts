@@ -21,6 +21,7 @@ export const SubjectType = z.enum([
   "agenda_item",
   "consent",
   "pool",
+  "application",
   "system",
 ]);
 export type SubjectType = z.infer<typeof SubjectType>;
@@ -98,10 +99,19 @@ export const AUDIT_ACTIONS = [
   "organiser.quotes_viewed",
   "settings.changed",
   "demo.reset",
+  // job interviews and ranked applicants (docs/specs/job-interview.md)
+  "application.started",
+  "application.submitted",
+  "application.assessed",
+  "application.withdrawn",
+  "ranking.moved",
+  "ranking.unpinned",
+  "ranking.approved",
 ] as const;
 export type AuditAction = (typeof AUDIT_ACTIONS)[number];
 
-export const ConsentKind = z.enum(["interview", "pool", "voice_vendor", "live_demo"]);
+/** `job_assessment`: the person agreed that a job interview is rated by the model and that applicants are ranked. */
+export const ConsentKind = z.enum(["interview", "pool", "voice_vendor", "live_demo", "job_assessment"]);
 export type ConsentKind = z.infer<typeof ConsentKind>;
 
 export const Consent = z.object({

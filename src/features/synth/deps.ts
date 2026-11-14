@@ -5,6 +5,7 @@
  * stand-in of `fake-engine.ts`.
  */
 import { approveCard, cardForCompany, cardForPerson, editCard, setPoolOptIn } from "@/features/card";
+import { assessApplication, startApplication, submitApplication, submitApplicationTurn } from "@/features/application";
 import { settleInterview, startInterview, submitTurn } from "@/features/interview";
 import { draftNeedCard } from "@/features/needs";
 import { computeEligibility } from "@/features/matching";
@@ -22,7 +23,17 @@ export type SimDeps = {
   setPoolOptIn: typeof setPoolOptIn;
 };
 
+/** What the simulated applications call in the application feature (through its index only). */
+export type ApplicationDeps = {
+  startApplication: typeof startApplication;
+  submitApplicationTurn: typeof submitApplicationTurn;
+  submitApplication: typeof submitApplication;
+  assessApplication: typeof assessApplication;
+};
+
 export type SeedDeps = SimDeps & {
+  /** The application feature. Left out (the fake engine does), the seed makes no applications. */
+  applications?: ApplicationDeps;
   draftNeedCard: typeof draftNeedCard;
   computeEligibility: typeof computeEligibility;
   draftDailyDigests: typeof draftDailyDigests;
@@ -37,6 +48,7 @@ export function realSimDeps(): SimDeps {
 export function realSeedDeps(): SeedDeps {
   return {
     ...realSimDeps(),
+    applications: { startApplication, submitApplicationTurn, submitApplication, assessApplication },
     draftNeedCard,
     computeEligibility,
     draftDailyDigests,

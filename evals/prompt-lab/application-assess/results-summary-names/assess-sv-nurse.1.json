@@ -1,0 +1,80 @@
+{
+  "item": "application-assess-summary-names",
+  "caseId": "assess-sv-nurse",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "ratings": [
+      {
+        "requirement": "R1",
+        "level": 3,
+        "evidence": [
+          "T1.S1",
+          "T1.S2",
+          "T1.S3"
+        ],
+        "reason_en": "The answer describes assessing chest pain by phone, directing the patient in immediately, and timely treatment of an infarction.",
+        "reason_fi": "Vastaus kuvaa rintakipupotilaan vajauksen arviointia puhelimessa, välitöntä vastaanotolle ohjaamista ja infarktin ajoissa tapahtunutta hoitoa.",
+        "reason_sv": "Svaret beskriver bedömning av bröstsmärtor per telefon, omedelbar inlots av patienten och behandling av en infarkt i tid."
+      },
+      {
+        "requirement": "R2",
+        "level": 1,
+        "evidence": [
+          "T3.S1",
+          "T3.S2"
+        ],
+        "reason_en": "The answers describe Apotti use for documentation by the ward team, without a specific task the speaker performed.",
+        "reason_fi": "Vastaukset kuvaavat osaston tiimin Apotti-käyttöä dokumentoinnissa, mutta eivät vastaajan itsensä suorittamaa tehtävää.",
+        "reason_sv": "Svaren beskriver avdelningsteamets användning av Apotti för dokumentation, utan en specifik uppgift som den svarande utförde."
+      },
+      {
+        "requirement": "R3",
+        "level": 1,
+        "evidence": [
+          "T5.S1"
+        ],
+        "reason_en": "The answer states Finnish ability but gives no work situation using the language.",
+        "reason_fi": "Vastaus kertoo suomen kielen osaamisesta, mutta ei anna esimerkkiä kielen käytöstä työssä.",
+        "reason_sv": "Svaret anger kunskaper i finska men ger ingen arbetssituation där språket användes."
+      },
+      {
+        "requirement": "R4",
+        "level": 1,
+        "evidence": [
+          "T7.S1",
+          "T7.S2",
+          "T7.S3"
+        ],
+        "reason_en": "The answers describe valuing teamwork and getting along with doctors and nurses, without a concrete work example.",
+        "reason_fi": "Vastaukset kuvaavat tiimityön arvostamista ja tulemista toimeen lääkäreiden ja hoitajien kanssa, mutta eivät konkreettista työesimerkkiä.",
+        "reason_sv": "Svaren beskriver uppskattning av teamarbete och samarbete med läkare och skötare, utan ett konkret arbetsexempel."
+      },
+      {
+        "requirement": "R5",
+        "level": 0,
+        "evidence": [],
+        "reason_en": "The answer states there is no earlier health station work.",
+        "reason_fi": "Vastauksessa todetaan, ettei aiempaa työtä terveysasemalla ole.",
+        "reason_sv": "Svaret anger att det inte finns tidigare arbete på hälsostation."
+      }
+    ],
+    "summary_en": "The answers give a concrete example for assessing patients' care needs by phone. They do not give concrete examples for IT systems, Finnish at work, or multiprofessional teamwork, and state no earlier health station work.",
+    "summary_fi": "Vastauksissa on konkreettinen esimerkki potilaan hoitotarpeen arvioinnista puhelimessa. Niissä ei ole konkreettisia esimerkkejä IT-järjestelmistä, suomen kielen käytöstä työssä tai moniammatillisesta tiimityöstä, ja aiempaa terveysasematyötä ei ole.",
+    "summary_sv": "Svaren ger ett konkret exempel på bedömning av patients vårdbehov per telefon. De ger inga konkreta exempel på IT-system, finska i arbetet eller multiprofessionellt teamarbete och anger inget tidigare arbete på hälsostation."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 13484,
+    "firstTokenMs": 13478,
+    "tokensIn": 1761,
+    "tokensOut": 1119,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 1
+  }
+}

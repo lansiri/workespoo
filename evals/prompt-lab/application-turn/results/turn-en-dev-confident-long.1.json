@@ -1,0 +1,30 @@
+{
+  "item": "application-turn",
+  "caseId": "turn-en-dev-confident-long",
+  "run": 1,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1,
+      2,
+      3
+    ],
+    "concrete": false,
+    "missing": "example",
+    "followUp": "Can you describe a specific pipeline you set up or changed yourself on AWS or Azure, and what your own part in it was?"
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1272,
+    "firstTokenMs": 1272,
+    "tokensIn": 676,
+    "tokensOut": 50,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

@@ -1034,14 +1034,14 @@ button.we-chip { cursor: pointer; }
   .we-talk-row .we-type-box, .we-talk-row .we-type-answer { width: 100%; max-width: 520px; }
 }
 .we-menu-sheet { max-width: calc(100vw - 32px); }
-/* Organiser bar carries five long labels: fold the nav behind Menu until there is room (Finnish needs about 1360 px). */
-@media (min-width: 761px) and (max-width: 1360px) {
+/* Organiser bar carries six long labels: fold the nav behind Menu until there is room (Finnish needs about 1480 px). */
+@media (min-width: 761px) and (max-width: 1480px) {
   .we-aud-organiser .we-mainnav { display: none; }
   .we-aud-organiser .we-menu { display: block; }
   .we-aud-organiser .we-menu-btn { display: grid; }
 }
-/* Every other bar: four links, the language switcher and the logo need about 1000 px in Finnish. Below that the links go behind Menu, so the bar never runs past the window. */
-@media (min-width: 761px) and (max-width: 1000px) {
+/* Every other bar: five links, the language switcher and the logo need about 1140 px in Finnish. Below that the links go behind Menu, so the bar never runs past the window. */
+@media (min-width: 761px) and (max-width: 1140px) {
   .we-mainnav { display: none; }
   .we-menu { display: block; }
   .we-menu-btn { display: grid; }
@@ -1296,4 +1296,35 @@ body:has(.we-iv) .we-site-footer { display: none; }
   .we-cd-wrap { padding-top: 10px; }
   .we-seg button { font-size: 13px; padding: 8px 6px; }
   .we-sig-head { padding: 14px 16px 20px; }
+}
+
+/* ---------- the interview room in a short window ----------
+   The centre column is as tall as the window under the top bar and holds, from the top: the AI line, the
+   interviewer's mark, the question, the person's own words and the controls. In a short window (a small
+   laptop, or a browser sharing the screen) they did not fit: the question lost its last line under the
+   words box, and the words ran out of their box and over the controls. Now the mark shrinks with the
+   window, the question and the controls never give way, and the words box takes what is left and scrolls
+   inside itself. */
+@media (min-width: 761px) {
+  .we-iv:not(.we-presenter) .we-iv-stage-col .we-stage { --size: clamp(104px, calc(var(--iv-h, calc(100vh - 64px)) - 576px), 236px); }
+  .we-iv-stage-col > .we-ai-line, .we-iv-stage-col > .we-iv-line, .we-iv-stage-col > .we-iv-controls,
+  .we-iv-stage-col > .we-iv-alert, .we-iv-stage-col > .we-iv-slow { flex: none; }
+  .we-iv-stage-col > .we-words { flex: 0 1 auto; overflow-y: auto; scrollbar-width: thin; }
+  /* While the person is speaking or typing, the newest words are the ones to keep in view. */
+  .we-iv-stage-col > .we-words.we-live { display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+  .we-iv-stage-col > .we-words.we-live > * { flex: none; }
+  /* Last resort, for a very short window or a very long question: the column scrolls and nothing is cut off. */
+  .we-iv-stage-col { overflow: hidden auto; scrollbar-width: thin; }
+}
+/* A small laptop: everything a little tighter, and the state badge hangs lower so it does not cover the mark. */
+@media (min-width: 761px) and (max-height: 720px) {
+  .we-iv:not(.we-presenter) .we-iv-stage-col { padding-top: 12px; }
+  .we-iv:not(.we-presenter) .we-iv-stage-col .we-ai-line { font-size: 14px; }
+  .we-iv:not(.we-presenter) .we-iv-stage-col .we-stage { margin-top: 10px; }
+  .we-iv:not(.we-presenter) .we-iv-stage-col .we-state-badge { bottom: -18px; font-size: 13.5px; padding: 5px 12px 5px 8px; }
+  .we-iv:not(.we-presenter) .we-iv-line { margin-top: 30px; font-size: 25px; }
+  .we-iv:not(.we-presenter) .we-iv-line.we-long { font-size: 22px; }
+  .we-iv:not(.we-presenter) .we-iv-line .we-who { margin-bottom: 8px; }
+  .we-iv:not(.we-presenter) .we-iv-stage-col > .we-words { margin-top: 12px; font-size: 17px; }
+  .we-iv:not(.we-presenter) .we-iv-controls { padding-top: 12px; }
 }

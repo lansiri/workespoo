@@ -168,6 +168,26 @@ export async function requestToMeet(
     throw new HttpError(403, "not_available", "You can only ask to meet someone from your approved picks");
   }
 
+  return createIntroRequest(db, {
+    companyId: co.id,
+    talentId: row.pick.talentId,
+    needCardId: row.pick.needCardId,
+    pickId: row.pick.id,
+    now,
+  });
+}
+
+/**
+ * The core of a company's request to meet a person: the lock for the pair, the checks for an
+ * open, accepted or recently declined request, the insert and the audit. `pickId` is null
+ * when the request does not come from a Daily Pick (a ranked applicant). The caller has
+ * already decided that the company may ask for this person.
+ */
+export async function createIntroRequest(
+  db: Db,
+  args: { companyId: string; talentId: string; needCardId: string | null; pickId: string | null; now?: Date },
+): Promise<{ id: string; status: IntroStatus; expiresAt: string | null }> {
+  const now = args.now ?? new Date();
   const [event = null] = await db.select().from(matchEvent).orderBy(desc(matchEvent.date), desc(matchEvent.id)).limit(1);
   let expiresAt = new Date(now.getTime() + INTRO_EXPIRY_MS);
   if (event && event.startsAt.getTime() > now.getTime()) {
@@ -176,11 +196,11 @@ export async function requestToMeet(
   }
 
   const created = await db.transaction(async (tx) => {
-    await tx.execute(sql`select pg_advisory_xact_lock(hashtext(${`intro:${co.id}:${row.pick.talentId}`}))`);
+    await tx.execute(sql`select pg_advisory_xact_lock(hashtext(${`intro:${args.companyId}:${args.talentId}`}))`);
     const existing = await tx
       .select({ status: intro.status, respondedAt: intro.respondedAt, requestedAt: intro.requestedAt })
       .from(intro)
-      .where(and(eq(intro.companyId, co.id), eq(intro.talentId, row.pick.talentId)));
+      .where(and(eq(intro.companyId, args.companyId), eq(intro.talentId, args.talentId)));
     const cooldownStart = new Date(now.getTime() - DECLINE_COOLDOWN_DAYS * 24 * 60 * 60 * 1000);
     const blocked = existing.some(
       (e) =>
@@ -194,10 +214,10 @@ export async function requestToMeet(
       .insert(intro)
       .values({
         id: newId("intro"),
-        talentId: row.pick.talentId,
-        companyId: co.id,
-        needCardId: row.pick.needCardId,
-        pickId: row.pick.id,
+        talentId: args.talentId,
+        companyId: args.companyId,
+        needCardId: args.needCardId,
+        pickId: args.pickId,
         initiatedBy: "company",
         status: "awaiting_talent",
         requestPairs: [],
@@ -206,15 +226,30 @@ export async function requestToMeet(
       })
       .returning();
     await audit(tx, {
-      actor: `company:${co.id}` as never,
+      actor: `company:${args.companyId}` as never,
       action: "intro.requested",
       subjectType: "intro",
       subjectId: inserted.id,
-      detail: { introId: inserted.id, pickId: row.pick.id, needCardId: row.pick.needCardId, to: "awaiting_talent", actor: `company:${co.id}` },
+      detail: { introId: inserted.id, pickId: args.pickId, needCardId: args.needCardId, to: "awaiting_talent", actor: `company:${args.companyId}` },
     });
     return inserted;
   });
   return { id: created.id, status: created.status, expiresAt: created.expiresAt ? created.expiresAt.toISOString() : null };
+}
+
+/** The newest introduction between a company and a person, whatever started it, or null. */
+export async function latestIntroForPair(
+  db: Db,
+  companyId: string,
+  talentId: string,
+): Promise<{ id: string; status: IntroStatus; requestedAt: string; respondedAt: string | null } | null> {
+  const [row] = await db
+    .select({ id: intro.id, status: intro.status, requestedAt: intro.requestedAt, respondedAt: intro.respondedAt })
+    .from(intro)
+    .where(and(eq(intro.companyId, companyId), eq(intro.talentId, talentId)))
+    .orderBy(desc(intro.requestedAt), desc(intro.id))
+    .limit(1);
+  return row ? { id: row.id, status: row.status, requestedAt: row.requestedAt.toISOString(), respondedAt: iso(row.respondedAt) } : null;
 }
 
 const iso = (d: Date | null): string | null => (d ? d.toISOString() : null);

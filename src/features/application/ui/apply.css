@@ -1,0 +1,102 @@
+/* ==========================================================================
+   The person's job-interview screens. Class names start we-ap-; everything is built from the
+   design system's tokens (src/app/globals.css) and the kit's classes (src/components/we/we.css).
+   The room uses the interview room's layout classes, so its short-window rules apply to it too.
+   ========================================================================== */
+
+/* ---------- the list of jobs ---------- */
+
+.we-ap-jobs-banner { margin-top: 24px; max-width: 720px; }
+.we-ap-jobs-banner + .we-ap-jobs { margin-top: 20px; }
+.we-ap-jobs { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 20px; }
+.we-ap-job { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px; display: flex; flex-direction: column; gap: 12px; min-width: 0; box-shadow: var(--shadow-1); }
+.we-ap-job-company { font-size: 14px; font-weight: 600; color: var(--muted-ink); }
+.we-ap-job h2 { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; }
+.we-ap-job-summary { font-size: 15px; color: var(--ink); }
+.we-ap-job h3 { font-size: 15px; font-weight: 600; font-family: var(--font-body); color: var(--muted-ink); margin-top: 4px; }
+.we-ap-job-reqs { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.we-ap-job-reqs li { display: flex; gap: 10px; align-items: baseline; justify-content: space-between; font-size: 14.5px; border-top: 1px solid var(--line); padding-top: 8px; }
+.we-ap-job-reqs li:first-child { border-top: 0; padding-top: 0; }
+.we-ap-job-reqs .we-tag { flex: none; }
+.we-ap-job-action { margin-top: auto; padding-top: 6px; }
+.we-ap-job-action .we-btn { width: 100%; }
+.we-ap-need { margin-top: 24px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.we-ap-need p { font-family: var(--font-display); font-size: 22px; line-height: 1.3; font-weight: 500; max-width: 640px; text-wrap: balance; }
+
+/* ---------- the start screen ---------- */
+
+.we-ap-start-company { font-size: 15px; font-weight: 600; color: var(--muted-ink); margin-bottom: 6px; }
+.we-ap-will-ask { margin-top: 24px; }
+.we-ap-will-ask h2 { font-size: 17px; font-family: var(--font-body); font-weight: 600; }
+.we-ap-will-ask ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 15px; }
+.we-ap-will-ask li { padding-left: 16px; position: relative; }
+.we-ap-will-ask li::before { content: ""; position: absolute; left: 2px; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: var(--pine); }
+.we-ap-start-links { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* ---------- the room ---------- */
+
+.we-ap-ad h3 { font-size: 20px; }
+.we-ap-reqs { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.we-ap-req { border: 1.5px solid var(--line); border-radius: var(--r-md); padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; background: var(--paper); }
+.we-ap-req[data-now="true"] { border-color: var(--ink); background: var(--sun-soft); box-shadow: var(--shadow-ink-sm); }
+.we-ap-req[data-progress="answered"] { border-color: var(--pine-100); background: var(--pine-50); }
+.we-ap-req[data-progress="skipped"] { border-style: dashed; color: var(--muted-ink); }
+.we-ap-req-text { font-size: 14.5px; line-height: 1.4; color: var(--ink); }
+.we-ap-req-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: var(--muted-ink); }
+.we-ap-req-state { font-weight: 600; }
+.we-ap-req-now { font: 700 11px/1 var(--font-body); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); background: var(--sun); border-radius: 5px; padding: 3px 6px; }
+.we-ap-ended { display: flex; flex-direction: column; gap: 4px; text-align: center; margin-top: 12px; flex: none; }
+.we-ap-ended b { font-family: var(--font-display); font-weight: 500; font-size: 20px; }
+.we-ap-ended span { color: var(--muted-ink); font-size: 15px; }
+.we-ap-to-review { margin-top: 14px; display: flex; justify-content: center; flex: none; }
+@media (min-width: 761px) {
+  .we-iv-stage-col > .we-ap-ended, .we-iv-stage-col > .we-ap-to-review { flex: none; }
+}
+
+/* ---------- review, sent and result ---------- */
+
+.we-ap-page { max-width: 860px; margin: 0 auto; padding: 32px 24px 64px; }
+.we-ap-page-head h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.01em; }
+.we-ap-page-head p { color: var(--muted-ink); margin-top: 8px; max-width: 680px; }
+.we-ap-list { list-style: none; margin: 28px 0 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+.we-ap-item { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px 22px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.we-ap-item h2 { font-size: 20px; font-weight: 500; line-height: 1.25; }
+.we-ap-item-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.we-ap-label { font-size: 12.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted-ink); }
+.we-ap-question { font-size: 15.5px; }
+.we-ap-answer { background: var(--mint-soft); border-radius: var(--r-md); padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+.we-ap-answer p { font-size: 15.5px; line-height: 1.5; color: var(--ink); }
+.we-ap-answer .we-btn { align-self: flex-start; }
+.we-ap-none { font-size: 14.5px; color: var(--muted-ink); font-style: italic; }
+.we-ap-actions { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.we-ap-actions .we-start-reason, .we-ap-fine { font-size: 14px; color: var(--muted-ink); max-width: 640px; }
+.we-ap-working { display: flex; align-items: center; gap: 12px; margin-top: 24px; font-size: 16px; color: var(--muted-ink); }
+.we-ap-working::before { content: ""; width: 16px; height: 16px; border-radius: 50%; border: 3px solid var(--pine-100); border-top-color: var(--pine); animation: we-ap-spin 0.9s linear infinite; flex: none; }
+@keyframes we-ap-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .we-ap-working::before { animation: none; } }
+
+.we-ap-summary { margin-top: 24px; background: var(--sun-soft); border: 1.5px solid var(--ink); border-radius: var(--r-lg); padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+.we-ap-summary p { font-size: 16px; }
+.we-ap-facts { margin-top: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 16px; }
+.we-ap-facts [data-testid="apply-points"] { font-family: var(--font-display); font-size: 24px; font-weight: 600; }
+.we-ap-facts [data-testid="apply-position"] { font-weight: 600; color: var(--pine); }
+.we-ap-rating { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px 22px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.we-ap-rating h3 { font-size: 19px; font-weight: 500; line-height: 1.25; }
+.we-ap-level { display: flex; flex-direction: column; gap: 4px; }
+.we-ap-level b { font-size: 17px; }
+.we-ap-level span { font-size: 14.5px; color: var(--muted-ink); }
+.we-ap-level[data-level="0"] b { color: var(--muted-ink); }
+.we-ap-level[data-level="2"] b, .we-ap-level[data-level="3"] b { color: var(--pine); }
+.we-ap-reason { display: flex; flex-direction: column; gap: 4px; }
+.we-ap-reason p { font-size: 15px; }
+.we-ap-reason-head { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.we-ap-own { display: flex; flex-direction: column; gap: 6px; }
+.we-ap-own blockquote { margin: 0; font-size: 15px; line-height: 1.5; }
+.we-ap-withdraw { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); }
+
+@media (max-width: 760px) {
+  .we-ap-page { padding: 18px 16px 48px; }
+  .we-ap-page-head h1 { font-size: 28px; }
+  .we-ap-jobs { grid-template-columns: 1fr; }
+  .we-ap-actions .we-btn, .we-ap-withdraw .we-btn { align-self: stretch; width: 100%; }
+}

@@ -11,8 +11,10 @@ import { and, eq, gte, inArray, like, lte, or } from "drizzle-orm";
 import type { InterviewMode } from "@/contracts";
 import type { Db } from "@/db/client";
 import { appMeta, company, consent, digest, eligibility, llmCall, matchEvent, eventCompany, needCard, pick, talent } from "@/db/schema";
+import { QUESTIONS_KEY_PREFIX } from "@/features/application";
 import { audit } from "@/lib/audit";
 import { newId, newToken } from "@/lib/ids";
+import { runSimulatedApplications, type ApplicationsReport } from "./applications";
 import { loadDemoCandidates, selectDemoPostings, type DemoPick } from "./demo-postings";
 import { realSeedDeps, type SeedDeps } from "./deps";
 import type { Persona } from "./persona";
@@ -54,6 +56,8 @@ export type SeedOptions = {
   pitchJobId?: string;
   /** Interview mode for every persona; default is each persona's own. */
   mode?: InterviewMode;
+  /** `false` skips the simulated applications (`--no-applications`). Default: they run when the deps hold the application feature. */
+  applications?: boolean;
   /** Remove existing demo state first. */
   reset?: boolean;
   /** The generated rows were just restored from the snapshot: do not run the queue or eligibility again. */
@@ -71,6 +75,8 @@ export type SeedSummary = {
   yesterday: { date: string; digests: number; picks: number };
   today: { date: string; digests: number; picks: number; pitchLeftUndrafted: boolean };
   queueJobsRun: number;
+  /** The simulated applications: how many were planned, assessed, and which failed (left out, not stored). Null when this run made none. */
+  applications: ApplicationsReport | null;
   /** Model calls, failures and waiting per interview and in total, read from `llm_call`. */
   usage: UsageReport;
   warnings: string[];
@@ -124,6 +130,9 @@ export async function resetDemo(db: Db): Promise<void> {
         detail: { count: real, reason: "demo reset" },
       });
     }
+    // The worded questions of the demo companies' jobs go with them (a restore brings the snapshot's back).
+    const needs = await tx.select({ id: needCard.id }).from(needCard).where(like(needCard.companyId, "co_demo%"));
+    if (needs.length > 0) await tx.delete(appMeta).where(or(...needs.map((n) => like(appMeta.key, `${QUESTIONS_KEY_PREFIX}${n.id}:%`))));
     await tx.delete(company).where(like(company.id, "co_demo%"));
     await tx.delete(matchEvent).where(eq(matchEvent.id, DEMO_EVENT_ID));
     await tx.delete(appMeta).where(or(eq(appMeta.key, DEMO_COMPANIES_KEY), like(appMeta.key, `settings:${DEMO_EVENT_ID}:%`)));
@@ -282,6 +291,19 @@ export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummar
   const unmatched = people.filter((p) => !everEligible.has(p.id)).length;
   if (unmatched < 2) warnings.push(`coverage: ${unmatched} pool people have no eligible need, at least 2 are wanted for the unmatched queue`);
 
+  // 5b. Applications of the simulated people, through the real application feature. Not when
+  //     restoring: the snapshot holds them.
+  let applications: ApplicationsReport | null = null;
+  if (!options.restored && options.applications !== false && deps.applications) {
+    applications = await runSimulatedApplications(
+      db,
+      personas,
+      chosen.map((c) => ({ number: c.number, companyId: c.companyId, jobId: c.jobId, needCardId: needCardIds.get(c.companyId) ?? null })),
+      { deps: deps.applications, log },
+    );
+    for (const f of applications.failed) warnings.push(`application of ${f.personaId} to company ${f.companyNumber} is not stored: ${f.reason}. Run the seed again to add it`);
+  }
+
   // 6. Yesterday: a published digest for every company, so that every eligible synthetic person
   //    counts as already suggested and a newly approved card is picked first.
   const today = helsinkiDay(now());
@@ -370,6 +392,7 @@ export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummar
     yesterday: { date: yesterday, digests: yDigests, picks: yPicks },
     today: { date: today, digests: tDigests, picks: tPicks, pitchLeftUndrafted },
     queueJobsRun,
+    applications,
     usage: await buildUsageReport(
       db,
       interviewRuns.flatMap((r) => (r.timing ? [{ label: `${r.persona.id} (${r.mode})`, ...r.timing }] : [])),

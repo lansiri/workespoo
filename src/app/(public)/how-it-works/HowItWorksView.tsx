@@ -49,10 +49,12 @@ export function HowItWorksView({
       </header>
       <p className="hw-intro">{c.intro}</p>
       {c.sections.map((s, i) => (
-        // The second shared section is "The AI takes notes. It does not judge.": the page's loudest line.
+        // The second shared section is "In the conversation, the AI takes notes. It does not judge.": the page's loudest line.
         <section key={s.heading} data-testid="how-section" className={i === 1 ? "hw-section hw-key" : "hw-section"}>
           <h2 className="hw-h">{s.heading}</h2>
-          <p>{s.body}</p>
+          {s.body.split("\n\n").map((paragraph) => (
+            <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+          ))}
         </section>
       ))}
       {stats ? (

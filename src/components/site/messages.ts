@@ -6,6 +6,7 @@ export const siteMessages = {
     navInterview: "Interview",
     navCard: "My card",
     navMatches: "My matches",
+    navApply: "Apply for a job",
     navOrganisers: "For organisers",
     navHow: "How this works",
     footer: "Prototype for Junction 2026. Not an official City of Espoo service.",
@@ -19,6 +20,7 @@ export const siteMessages = {
     navReview: "Today's review",
     navExposure: "Exposure",
     navAudit: "Audit log",
+    navApplicants: "Applicants",
     forCompanies: "For companies",
     menu: "Menu",
     logoLabel: "WorkEspoo, front page",
@@ -33,6 +35,7 @@ export const siteMessages = {
     navInterview: "Haastattelu",
     navCard: "Korttini",
     navMatches: "Osumani",
+    navApply: "Hae työtä",
     navOrganisers: "Järjestäjille",
     navHow: "Näin tämä toimii",
     footer: "Prototyyppi Junction 2026 -tapahtumaan. Ei ole Espoon kaupungin virallinen palvelu.",
@@ -46,6 +49,7 @@ export const siteMessages = {
     navReview: "Päivän tarkistus",
     navExposure: "Näkyvyys",
     navAudit: "Tapahtumaloki",
+    navApplicants: "Hakijat",
     forCompanies: "Yrityksille",
     menu: "Valikko",
     logoLabel: "WorkEspoo, etusivu",
@@ -60,6 +64,7 @@ export const siteMessages = {
     navInterview: "Intervju",
     navCard: "Mitt kort",
     navMatches: "Mina matchningar",
+    navApply: "Sök jobb",
     navOrganisers: "För arrangörer",
     navHow: "Så fungerar det",
     footer: "Prototyp för Junction 2026. Inte en officiell tjänst från Esbo stad.",
@@ -73,6 +78,7 @@ export const siteMessages = {
     navReview: "Dagens granskning",
     navExposure: "Synlighet",
     navAudit: "Händelselogg",
+    navApplicants: "Sökande",
     forCompanies: "För företag",
     menu: "Meny",
     logoLabel: "WorkEspoo, startsida",
@@ -87,6 +93,7 @@ export const siteMessages = {
   navInterview: string;
   navCard: string;
   navMatches: string;
+  navApply: string;
   navOrganisers: string;
   navHow: string;
   footer: string;
@@ -99,6 +106,7 @@ export const siteMessages = {
   navReview: string;
   navExposure: string;
   navAudit: string;
+  navApplicants: string;
   forCompanies: string;
   menu: string;
   logoLabel: string;

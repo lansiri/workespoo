@@ -139,3 +139,18 @@ Phase 2 pages are the real routes and hooks without styling: plain HTML elements
 - **The interviewer's voice plays straight from the audio element.** The level meter that routed it through a Web Audio context is gone (it fed only the test page, and on a phone a suspended context means a silent interviewer). A clip that stops moving is asked to play again after a second and skipped after four, so one stalled sentence cannot silence the rest of a reply.
 - **A press of the talk button ends when the finger lifts**, not when React has drawn the listening state.
 - **The speech image is its own image** (`infra/stt/Dockerfile`), tagged with the runtime and the model and built by the deploy hook only when that tag is missing, so an ordinary deploy never downloads the model again and a problem with it cannot break the app image.
+
+## The owner's decision on job interviews and ranking (14 Nov, 12:50)
+
+- **Applicants to a job are rated and ranked by the model.** The owner asked for a job-specific interview after which "all applicants" are ranked, was shown that this breaks rule 4 as it stood ("nothing about a person is scored, ranked or levelled") and what the pitch and the public page said, was offered three ways (order by counted evidence; the employer ranks by hand; the model ranks with reasons), and chose the third: the model rates each job interview and ranks the applicants with written reasons, and an organiser can reorder and must approve. Rule 4, 6 and 7 in `CLAUDE.md` were rewritten to say exactly that.
+- **What keeps it defensible, and is therefore part of the feature and not decoration**:
+  - the person is told before the job interview that it is rated and ranked, and agrees to that separately;
+  - every applicant to a job is asked about the same requirements, taken from the ad (a structured interview);
+  - a rating is about the evidence in the answers for one requirement, on a short scale with a written anchor for each step, never about the person;
+  - every rating above the lowest points at the person's own sentences, and code drops a rating whose reference does not resolve;
+  - the assessor never gets the name, the nickname, the interview language or whether the person spoke or typed, and sentences with a protected detail are left out of what it reads;
+  - each application is rated on its own against the scale; the order is then computed by code, so one person's rating does not change when another person applies;
+  - the person sees their own ratings and reasons; the organiser sees the evidence, can move a person with a reason and approves the list; nobody is removed by a rating;
+  - the company sees the approved order with the reasons, and no name and no original words until both sides agree to meet, as before.
+- **Everything else stays as it was**: the Signal Card has no levels, the job feed has no match numbers, Daily Picks are in no particular order.
+- **Every public sentence that said "nothing is scored or ranked"** (the consent page, "How this works", the README, the pitch notes, the demo script) is rewritten when the feature ships, not before: until then those sentences are still true of the live site.

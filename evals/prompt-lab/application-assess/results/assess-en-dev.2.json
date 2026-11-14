@@ -1,0 +1,81 @@
+{
+  "item": "application-assess",
+  "caseId": "assess-en-dev",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "ratings": [
+      {
+        "requirement": "R1",
+        "level": 3,
+        "evidence": [
+          "T1.S1",
+          "T1.S2",
+          "T1.S3"
+        ],
+        "reason_en": "The answer describes personally rebuilding REST endpoints and integrating them with SAP through a message queue, followed by a sharp reduction in nightly sync errors.",
+        "reason_fi": "Vastaus kuvaa REST-päätepisteiden itsenäistä uudelleenrakentamista ja SAP-integraatiota viestijonolla, minkä jälkeen yöaikaiset synkronointivirheet vähenivät lähes olemattomiin.",
+        "reason_sv": "Svaret beskriver ett eget ombyggt REST-API med SAP-integration via en meddelandekö, varefter synkroniseringsfelen under natten minskade till nästan inga."
+      },
+      {
+        "requirement": "R2",
+        "level": 1,
+        "evidence": [
+          "T3.S1",
+          "T3.S2",
+          "T5.S1"
+        ],
+        "reason_en": "The answers state experience with React components and hooks but give no concrete application or feature from the person's own work.",
+        "reason_fi": "Vastauksissa kerrotaan React-komponenttien ja hookkien käytöstä, mutta konkreettista sovellusta tai ominaisuutta omasta työstä ei kuvata.",
+        "reason_sv": "Svaren anger erfarenhet av React-komponenter och hooks men beskriver ingen konkret applikation eller funktion från eget arbete."
+      },
+      {
+        "requirement": "R3",
+        "level": 1,
+        "evidence": [
+          "T7.S1",
+          "T7.S2"
+        ],
+        "reason_en": "The answer describes a team pipeline in GitHub Actions deploying merges to AWS staging, without identifying what the person set up or changed.",
+        "reason_fi": "Vastaus kuvaa tiimin GitHub Actions -putkea ja AWS-staging-käyttöönottoja, mutta ei sitä, mitä henkilö itse rakensi tai muutti.",
+        "reason_sv": "Svaret beskriver teamets pipeline i GitHub Actions med distribution till AWS staging, utan att ange vad personen själv satte upp eller ändrade."
+      },
+      {
+        "requirement": "R4",
+        "level": 2,
+        "evidence": [
+          "T9.S1",
+          "T9.S2"
+        ],
+        "reason_en": "The answer gives concrete workplace use of spoken English in an international team's standups and reviews, and written English in API documentation and release notes.",
+        "reason_fi": "Vastaus kuvaa englannin käyttöä kansainvälisen tiimin palavereissa ja koodikatselmuksissa sekä API-dokumentaation ja julkaisumuistiinpanojen kirjoittamista englanniksi.",
+        "reason_sv": "Svaret beskriver muntlig engelska i ett internationellt teams möten och kodgranskningar samt skriftlig engelska i API-dokumentation och versionsanteckningar."
+      },
+      {
+        "requirement": "R5",
+        "level": 0,
+        "evidence": [],
+        "reason_en": "The answer states that the person has not worked with SQL or NoSQL databases.",
+        "reason_fi": "Vastauksessa todetaan, ettei SQL- tai NoSQL-tietokantojen parissa ole työskennelty.",
+        "reason_sv": "Svaret anger att personen inte har arbetat med SQL- eller NoSQL-databaser."
+      }
+    ],
+    "summary_en": "Concrete examples were given for backend API integration and workplace English. React and CI/CD were described without individual work examples, and databases were not addressed beyond stating no experience.",
+    "summary_fi": "Konkreettiset esimerkit koskivat backend-API-integraatiota ja englannin käyttöä työssä. React ja CI/CD kuvattiin ilman esimerkkiä omasta työstä, ja tietokannoista todettiin vain kokemuksen puuttuvan.",
+    "summary_sv": "Konkreta exempel gavs för backend-API-integration och engelska i arbetet. React och CI/CD beskrevs utan exempel på eget arbete, och för databaser angavs att erfarenhet saknas."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 14516,
+    "firstTokenMs": 14512,
+    "tokensIn": 1451,
+    "tokensOut": 1095,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 0
+  }
+}

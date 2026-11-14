@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { eq, sql } from "drizzle-orm";
-import { auditLog, company, consent, intro, jobQueue, notification, talent, talentIdentity, turn } from "@/db/schema";
+import { application, applicationTurn, auditLog, company, consent, intro, job, jobQueue, notification, talent, talentIdentity, turn } from "@/db/schema";
 import { audit, listAudit } from "@/lib/audit";
 import { recordConsent } from "@/lib/consent";
 import { enqueue } from "@/lib/queue";
@@ -33,6 +33,20 @@ beforeEach(async () => {
     await t.db.insert(notification).values({ id: `ntf_${talentId}`, recipientType: "talent", recipientId: talentId, kind: "x", payload: {} });
   }
   await t.db.insert(company).values({ id: "cmp_000000001", displayName: "A logistics company", source: "synthetic", digestToken: "tok1" });
+  await t.db.insert(job).values({ id: "job_apply0000001", source: "tmt", sourceId: "x1", url: "https://example.invalid/x1", title: "Warehouse worker", employerName: "Acme Oy", sector: "private", lang: "en", description: "Picks orders." }).onConflictDoNothing();
+  for (const talentId of [ME, OTHER]) {
+    const applicationId = `app_${talentId}`;
+    await t.db.insert(application).values({
+      id: applicationId,
+      talentId,
+      jobId: "job_apply0000001",
+      companyId: "cmp_000000001",
+      plan: { needCardId: "nc_x", needCardVersion: 1, lang: "en", requirements: [{ requirementId: "req_x", text: "Order picking", kind: "must", category: "skill", postingSentence: 0, question: "Tell me about picking orders?", wording: "code" }] },
+      state: { cursor: 0, followUps: {}, progress: {}, noted: {} },
+    });
+    await t.db.insert(applicationTurn).values({ id: `apt_${talentId}`, applicationId, index: 0, role: "participant", kind: "answer", text: "I picked orders.", sentences: ["I picked orders."] });
+    await audit(t.db, { actor: `talent:${talentId}`, action: "application.started", subjectType: "application", subjectId: applicationId, detail: { talentId, jobId: "job_apply0000001" } });
+  }
   await t.db.insert(intro).values({ id: "int2_00000001", talentId: ME, companyId: "cmp_000000001", initiatedBy: "company", status: "pending_talent" as never });
   await t.db.insert(intro).values({ id: "int2_00000002", talentId: OTHER, companyId: "cmp_000000001", initiatedBy: "company", status: "pending_talent" as never });
   await t.db.insert(talentIdentity).values({ talentId: ME, displayName: "Aino Virtanen", contact: "aino@example.org" });
@@ -57,6 +71,8 @@ describe("exportPersonData", () => {
     expect(data.consents.map((c) => c.kind)).toEqual(["interview"]);
     expect(data.introductions).toEqual([expect.objectContaining({ id: "int2_00000001", status: "pending_talent", company: "A logistics company" })]);
     expect(data.audit.some((a) => a.action === "card.approved")).toBe(true);
+    expect(data.applications).toEqual([expect.objectContaining({ id: `app_${ME}`, turns: [expect.objectContaining({ text: "I picked orders." })] })]);
+    expect(data.audit.some((a) => a.action === "application.started")).toBe(true);
     const text = JSON.stringify(data);
     expect(text).not.toContain(OTHER);
     expect(text).not.toContain("Fern-31");
@@ -79,6 +95,9 @@ describe("deletePerson", () => {
       const n = (Array.isArray(res) ? res : res.rows ?? [])[0].n;
       expect({ name, n }).toEqual({ name, n: 0 });
     }
+    // the application and its turns are gone with the person; the other person's stay
+    expect((await t.db.select().from(application)).map((r) => r.id)).toEqual([`app_${OTHER}`]);
+    expect(await t.db.select().from(applicationTurn)).toHaveLength(1);
     // the other person is untouched
     expect((await t.db.select().from(talent)).map((r) => r.id)).toEqual([OTHER]);
     expect(await t.db.select().from(intro)).toHaveLength(1);

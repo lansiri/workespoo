@@ -1,0 +1,44 @@
+{
+  "item": "application-plan",
+  "caseId": "plan-nurse-sv",
+  "run": 1,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "questions": [
+      {
+        "requirement": "R1",
+        "question": "Beskriv ett tillfälle då du bedömde en patients vårdbehov vid mottagningen eller per telefon. Hur gick du till väga och vad gjorde du själv?"
+      },
+      {
+        "requirement": "R2",
+        "question": "Berätta hur du har använt IT-system i patientarbetet. Ge ett exempel på en uppgift som du själv utförde i systemet."
+      },
+      {
+        "requirement": "R3",
+        "question": "Berätta hur du har använt finska i ditt arbete med patienter eller kollegor. Ge ett exempel på en arbetssituation där du använde språket."
+      },
+      {
+        "requirement": "R4",
+        "question": "Beskriv ett tillfälle då du arbetade i ett mångprofessionellt team med läkare och annan vårdpersonal. Vilket ansvar hade du själv i samarbetet?"
+      },
+      {
+        "requirement": "R5",
+        "question": "Berätta om ditt tidigare arbete på en hälsostation. Vilka arbetsuppgifter hade du själv där?"
+      }
+    ]
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 7528,
+    "firstTokenMs": 7527,
+    "tokensIn": 880,
+    "tokensOut": 571,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 1
+  }
+}

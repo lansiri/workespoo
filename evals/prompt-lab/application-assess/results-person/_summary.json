@@ -1,0 +1,21 @@
+{
+  "item": "application-assess-person",
+  "role": "analyst",
+  "schema": "ApplicationAssessOutput",
+  "calls": 4,
+  "ok": 4,
+  "failed": 0,
+  "neededRetry": 0,
+  "latencyMs": {
+    "p50": 16331,
+    "p90": 18134
+  },
+  "firstTokenMs": {
+    "p50": 16327,
+    "p90": 18126
+  },
+  "models": [
+    "verda:kimi-k3-1-pro"
+  ],
+  "failures": []
+}

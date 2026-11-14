@@ -9,7 +9,7 @@ Lead-owned. This file is the contract between the agents that build `src/lib` an
 ```ts
 export type IdPrefix =
   | "tal" | "int" | "trn" | "job" | "co" | "nc" | "req" | "jm" | "dig" | "pick"
-  | "intro" | "ag" | "ev" | "con" | "ntf" | "note";
+  | "intro" | "ag" | "ev" | "con" | "ntf" | "note" | "app" | "apt";
 /** `${prefix}_${12 random lowercase alphanumerics}`. */
 export function newId(prefix: IdPrefix): string;
 /** 32 random URL-safe characters, for signed links (digest, agenda). */

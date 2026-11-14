@@ -15,6 +15,7 @@ import {
   talentIdentity,
   turn,
 } from "@/db/schema";
+import { dropPeopleFromRankings, exportApplications } from "@/features/application";
 import { audit } from "@/lib/audit";
 import { HttpError } from "@/lib/http";
 
@@ -69,7 +70,15 @@ export async function exportPersonData(db: Db, talentId: string) {
     .select({ id: pick.id })
     .from(pick)
     .where(eq(pick.talentId, talentId));
-  const ownIds = [talentId, ...interviews.map((i) => i.id), ...intros.map((i) => i.row.id), ...pickRows.map((p) => p.id)];
+  const applications = await exportApplications(db, talentId);
+  const applicationIds = applications.map((a) => (a as { id: string }).id);
+  const ownIds = [
+    talentId,
+    ...interviews.map((i) => i.id),
+    ...intros.map((i) => i.row.id),
+    ...pickRows.map((p) => p.id),
+    ...applicationIds,
+  ];
   const auditRows = await db
     .select()
     .from(auditLog)
@@ -117,6 +126,7 @@ export async function exportPersonData(db: Db, talentId: string) {
       addedBy: s.addedBy,
     })),
     transcript,
+    applications,
     consents: consents.map((c) => ({ kind: c.kind, textVersion: c.textVersion, grantedAt: c.grantedAt.toISOString(), withdrawnAt: iso(c.withdrawnAt) })),
     introductions: intros.map(({ row, companyName }) => ({
       id: row.id,
@@ -139,6 +149,8 @@ export async function deleteResidue(tx: Db, ids: string[]): Promise<void> {
   await tx.delete(consent).where(and(eq(consent.subjectType, "talent"), inArray(consent.subjectId, ids)));
   await tx.delete(notification).where(and(eq(notification.recipientType, "talent"), inArray(notification.recipientId, ids)));
   await tx.delete(jobQueue).where(inArray(sql<string>`${jobQueue.payload}->>'talentId'`, ids));
+  // An approved list of applicants is a stored copy, and a pin names an application: neither hangs off the person.
+  await dropPeopleFromRankings(tx, ids);
 }
 
 /**

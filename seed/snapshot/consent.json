@@ -403,5 +403,104 @@
   "textVersion": "2026-11-v1",
   "grantedAt": "2026-11-14T04:00:29.124Z",
   "withdrawnAt": null
+ },
+ {
+  "id": "con_s47ipud7kj7f",
+  "subjectType": "talent",
+  "subjectId": "tal_z63mnny9pugj",
+  "kind": "job_assessment",
+  "textVersion": "2026-11-v2",
+  "grantedAt": "2026-11-14T12:46:32.621Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_ccikqv27hhog",
+  "subjectType": "talent",
+  "subjectId": "tal_4thrbmb9cwbr",
+  "kind": "job_assessment",
+  "textVersion": "2026-11-v2",
+  "grantedAt": "2026-11-14T12:47:18.033Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_4qgjwvf1lfni",
+  "subjectType": "talent",
+  "subjectId": "tal_tqhpbpuo02i6",
+  "kind": "job_assessment",
+  "textVersion": "2026-11-v2",
+  "grantedAt": "2026-11-14T12:48:02.425Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_95xjq67caclu",
+  "subjectType": "talent",
+  "subjectId": "tal_78jy75ig6iz8",
+  "kind": "job_assessment",
+  "textVersion": "2026-11-v2",
+  "grantedAt": "2026-11-14T12:49:01.733Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_7dekqi2okq8u",
+  "subjectType": "talent",
+  "subjectId": "tal_8ttxss4rfn1c",
+  "kind": "job_assessment",
+  "textVersion": "2026-11-v2",
+  "grantedAt": "2026-11-14T12:53:20.272Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_u8xurmutf96y",
+  "subjectType": "talent",
+  "subjectId": "tal_97f6wdepp3e2",
+  "kind": "job_assessment",
+  "textVersion": "2026-11-v2",
+  "grantedAt": "2026-11-14T12:53:21.048Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_gt1pav36bprs",
+  "subjectType": "talent",
+  "subjectId": "tal_obsixyk2osql",
+  "kind": "job_assessment",
+  "textVersion": "2026-11-v2",
+  "grantedAt": "2026-11-14T12:54:38.523Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_o9lzkbfsa5r3",
+  "subjectType": "talent",
+  "subjectId": "tal_j54cox1yp9f0",
+  "kind": "job_assessment",
+  "textVersion": "2026-11-v2",
+  "grantedAt": "2026-11-14T12:55:51.382Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_1ly528swaa3l",
+  "subjectType": "talent",
+  "subjectId": "tal_sabxh4xaga3o",
+  "kind": "job_assessment",
+  "textVersion": "2026-11-v2",
+  "grantedAt": "2026-11-14T12:56:24.465Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_bjeko90ik1dr",
+  "subjectType": "talent",
+  "subjectId": "tal_i210th809pqh",
+  "kind": "job_assessment",
+  "textVersion": "2026-11-v2",
+  "grantedAt": "2026-11-14T12:57:30.394Z",
+  "withdrawnAt": null
+ },
+ {
+  "id": "con_wof2i21ncacn",
+  "subjectType": "talent",
+  "subjectId": "tal_43fbkeofwipr",
+  "kind": "job_assessment",
+  "textVersion": "2026-11-v2",
+  "grantedAt": "2026-11-14T12:59:11.047Z",
+  "withdrawnAt": null
  }
 ]

@@ -44,6 +44,6 @@ export type InterviewEvent = z.infer<typeof InterviewEvent>;
 export type InterviewEventType = InterviewEvent["type"];
 
 /** Encode one event as a server-sent event frame. */
-export function encodeSseEvent(event: InterviewEvent): string {
+export function encodeSseEvent<E extends { readonly type: string }>(event: E): string {
   return `event: ${event.type}\ndata: ${JSON.stringify(event)}\n\n`;
 }

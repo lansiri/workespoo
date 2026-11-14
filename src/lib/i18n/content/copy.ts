@@ -394,9 +394,9 @@ export const poolCopy = {
 
 const dataEn = {
   export: "Download my data",
-  exportHelp: "A file with your answers, your card and your consents.",
+  exportHelp: "A file with your answers, your card, your job applications with their ratings, and your consents.",
   delete: "Delete everything",
-  deleteConfirm: "Delete your answers, your card and everything linked to them? This can't be undone.",
+  deleteConfirm: "Delete your answers, your card, your job applications and everything linked to them? This can't be undone.",
   deleteYes: "Yes, delete everything",
   deleted: "Everything has been deleted.",
 };
@@ -405,17 +405,17 @@ export const dataCopy = {
   en: dataEn,
   fi: {
     export: "Lataa tietoni",
-    exportHelp: "Tiedosto, jossa ovat vastauksesi, korttisi ja suostumuksesi.",
+    exportHelp: "Tiedosto, jossa ovat vastauksesi, korttisi, työhakemuksesi arvioineen ja suostumuksesi.",
     delete: "Poista kaikki",
-    deleteConfirm: "Poistetaanko vastauksesi, korttisi ja kaikki niihin liittyvä? Tätä ei voi perua.",
+    deleteConfirm: "Poistetaanko vastauksesi, korttisi, työhakemuksesi ja kaikki niihin liittyvä? Tätä ei voi perua.",
     deleteYes: "Kyllä, poista kaikki",
     deleted: "Kaikki on poistettu.",
   },
   sv: {
     export: "Ladda ner mina uppgifter",
-    exportHelp: "En fil med dina svar, ditt kort och dina samtycken.",
+    exportHelp: "En fil med dina svar, ditt kort, dina jobbansökningar med deras bedömningar och dina samtycken.",
     delete: "Radera allt",
-    deleteConfirm: "Vill du radera dina svar, ditt kort och allt som hör till dem? Det går inte att ångra.",
+    deleteConfirm: "Vill du radera dina svar, ditt kort, dina jobbansökningar och allt som hör till dem? Det går inte att ångra.",
     deleteYes: "Ja, radera allt",
     deleted: "Allt har raderats.",
   },

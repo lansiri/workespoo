@@ -1,0 +1,30 @@
+{
+  "item": "application-turn-regular",
+  "caseId": "turn-en-forklift-broken",
+  "run": 2,
+  "role": "live",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "evidence": [
+      1,
+      2,
+      3
+    ],
+    "concrete": true,
+    "missing": "own_part",
+    "followUp": "What did you do yourself to move and place the pallets safely in those narrow aisles?"
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 1333,
+    "firstTokenMs": 1311,
+    "tokensIn": 653,
+    "tokensOut": 43,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 4
+  }
+}

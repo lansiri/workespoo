@@ -9,3 +9,4 @@ export * from "./people";
 export * from "./matching";
 export * from "./trust";
 export * from "./system";
+export * from "./application";

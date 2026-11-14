@@ -5,6 +5,7 @@
 .hw-intro { font-size: 18px; line-height: 1.5; color: var(--muted-ink); margin: 0 0 8px; }
 .hw-section { margin-top: 28px; }
 .hw-section p { margin: 0; font-size: 16px; line-height: 1.55; }
+.hw-section p + p { margin-top: 10px; }
 .hw-h { font-family: var(--font-display); font-weight: 500; font-size: 20px; line-height: 1.2; margin: 0 0 6px; }
 .hw-key { padding: 20px 22px 22px; background: var(--sun-soft); border: 2.5px solid var(--ink); border-radius: var(--r-md); box-shadow: var(--shadow-ink-sm); }
 .hw-key .hw-h { font-size: clamp(24px, 5vw, 30px); font-weight: 600; margin-bottom: 8px; }

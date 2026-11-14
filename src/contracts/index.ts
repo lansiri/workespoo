@@ -12,3 +12,4 @@ export * from "./trust";
 export * from "./events";
 export * from "./voice";
 export * from "./queue";
+export * from "./application";

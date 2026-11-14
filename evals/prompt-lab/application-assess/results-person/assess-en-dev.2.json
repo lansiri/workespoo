@@ -1,0 +1,81 @@
+{
+  "item": "application-assess-person",
+  "caseId": "assess-en-dev",
+  "run": 2,
+  "role": "analyst",
+  "kind": "json",
+  "ok": true,
+  "data": {
+    "ratings": [
+      {
+        "requirement": "R1",
+        "level": 3,
+        "evidence": [
+          "T1.S1",
+          "T1.S2",
+          "T1.S3"
+        ],
+        "reason_en": "The answer describes personally rebuilding REST endpoints and integrating them with SAP through a message queue, after which nightly sync errors nearly disappeared.",
+        "reason_fi": "Vastaus kuvaa REST-päätepisteiden itsenäistä uudelleenrakentamista ja SAP-integraatiota viestijonolla, minkä jälkeen yöaikaiset synkronointivirheet lähes katosivat.",
+        "reason_sv": "Svaret beskriver ett eget ombyggt REST-API med SAP-integration via en meddelandekö, varefter nattliga synkroniseringsfel nästan försvann."
+      },
+      {
+        "requirement": "R2",
+        "level": 1,
+        "evidence": [
+          "T3.S1",
+          "T3.S2",
+          "T5.S1"
+        ],
+        "reason_en": "The answers state experience with React components and hooks but give no specific application or feature from the person's own work.",
+        "reason_fi": "Vastauksissa kerrotaan React-komponenttien ja hookien käytöstä, mutta ei anneta esimerkkiä tietystä sovelluksesta tai ominaisuudesta omassa työssä.",
+        "reason_sv": "Svaren anger erfarenhet av React-komponenter och hooks men ger inget exempel på en specifik applikation eller funktion i eget arbete."
+      },
+      {
+        "requirement": "R3",
+        "level": 1,
+        "evidence": [
+          "T7.S1",
+          "T7.S2"
+        ],
+        "reason_en": "The answer describes a team GitHub Actions pipeline deploying merges to AWS staging but does not identify what the person set up or changed.",
+        "reason_fi": "Vastaus kuvaa tiimin GitHub Actions -putkea, joka vei yhdistämiset AWS:n staging-ympäristöön, mutta ei henkilön omaa osuutta.",
+        "reason_sv": "Svaret beskriver teamets GitHub Actions-pipeline som distribuerade merges till AWS staging men anger inte personens egen roll."
+      },
+      {
+        "requirement": "R4",
+        "level": 2,
+        "evidence": [
+          "T9.S1",
+          "T9.S2"
+        ],
+        "reason_en": "The answer describes English standups and code reviews in an international team and personally writing API documentation and release notes in English.",
+        "reason_fi": "Vastaus kuvaa englanninkielisiä palavereja ja koodikatselmuksia kansainvälisessä tiimissä sekä API-dokumentaation ja julkaisumuistioiden kirjoittamista englanniksi.",
+        "reason_sv": "Svaret beskriver engelskspråkiga standups och kodgranskningar i ett internationellt team samt eget skrivande av API-dokumentation och versionsanteckningar på engelska."
+      },
+      {
+        "requirement": "R5",
+        "level": 0,
+        "evidence": [],
+        "reason_en": "The answer states that the person has not worked with SQL or NoSQL databases.",
+        "reason_fi": "Vastauksessa todetaan, ettei henkilö ole työskennellyt SQL- tai NoSQL-tietokantojen kanssa.",
+        "reason_sv": "Svaret anger att personen inte har arbetat med SQL- eller NoSQL-databaser."
+      }
+    ],
+    "summary_en": "The answers give concrete examples for R1 and R4. R2 and R3 contain no concrete example of the person's own work, and R5 describes no database experience.",
+    "summary_fi": "Vastauksissa on konkreettisia esimerkkejä vaatimuksista R1 ja R4. R2 ja R3 eivät sisällä konkreettista esimerkkiä henkilön omasta työstä, eikä R5 kuvaa tietokantakokemusta.",
+    "summary_sv": "Svaren ger konkreta exempel för R1 och R4. R2 och R3 saknar konkreta exempel på personens eget arbete, och R5 beskriver ingen databasvana."
+  },
+  "meta": {
+    "provider": "verda",
+    "model": "kimi-k3-1-pro",
+    "latencyMs": 16189,
+    "firstTokenMs": 16187,
+    "tokensIn": 1481,
+    "tokensOut": 1291,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "queuedMs": 1
+  }
+}

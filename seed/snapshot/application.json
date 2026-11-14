@@ -1,0 +1,5964 @@
+[
+ {
+  "id": "app_7ulkwslybl40",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_e07c79d3e6d04a53919f649dfeba9e51",
+  "companyId": "co_demo03",
+  "status": "assessed",
+  "plan": {
+   "lang": "en",
+   "needCardId": "nc_uyb94repx9n8",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "Experience with ERP, software development, or technical systems development",
+     "wording": "model",
+     "category": "experience",
+     "question": "Describe a time you worked with an ERP system, software development, or technical systems development. What did you do yourself?",
+     "requirementId": "req_163d0uspvctx",
+     "postingSentence": 12
+    },
+    {
+     "kind": "must",
+     "text": "Ability to grasp overall systems and develop processes",
+     "wording": "model",
+     "category": "skill",
+     "question": "Tell us about a time you developed a process while considering the wider system around it. How did you map the overall system, and what did you change?",
+     "requirementId": "req_vc43ywe040dp",
+     "postingSentence": 13
+    },
+    {
+     "kind": "must",
+     "text": "Self-directed problem-solving approach",
+     "wording": "model",
+     "category": "other",
+     "question": "Describe a technical problem you took the initiative to solve without waiting for direction. What steps did you take yourself?",
+     "requirementId": "req_oecq8qidjrk6",
+     "postingSentence": 14
+    },
+    {
+     "kind": "must",
+     "text": "Motivation to see concrete results in production and daily work",
+     "wording": "model",
+     "category": "other",
+     "question": "Tell us about work you did that produced concrete results in production or daily work. What did you do, and what changed for the people using it?",
+     "requirementId": "req_btmdjd5g9hba",
+     "postingSentence": 15
+    },
+    {
+     "kind": "must",
+     "text": "Fluent Finnish",
+     "wording": "model",
+     "category": "language",
+     "question": "How have you used Finnish at work? Describe a situation where you discussed or explained technical matters in Finnish.",
+     "requirementId": "req_z9itud19d7oo",
+     "postingSentence": 16
+    },
+    {
+     "kind": "must",
+     "text": "Ability to work with technical material in English",
+     "wording": "model",
+     "category": "language",
+     "question": "Describe a time you used English technical material, such as documentation, in your work. What did you do with it?",
+     "requirementId": "req_h94tlc7y0wll",
+     "postingSentence": 16
+    }
+   ],
+   "needCardVersion": 1
+  },
+  "state": {
+   "noted": {
+    "req_btmdjd5g9hba": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_h94tlc7y0wll": [
+     {
+      "turnIndex": 11,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "req_oecq8qidjrk6": [
+     {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "req_vc43ywe040dp": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_163d0uspvctx": "answered",
+    "req_btmdjd5g9hba": "answered",
+    "req_h94tlc7y0wll": "answered",
+    "req_oecq8qidjrk6": "answered",
+    "req_vc43ywe040dp": "answered",
+    "req_z9itud19d7oo": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 1,
+     "reason": {
+      "en": "The answers describe PDM drawing and revision management plus MATLAB test-data scripts, but no specific ERP, software-development, or technical-systems development project.",
+      "fi": "Vastauksissa kuvataan PDM-piirustusten ja revisioiden hallintaa sekä MATLAB-testidataskriptejä, mutta ei konkreettista ERP-, ohjelmisto- tai teknisen järjestelmän kehityshanketta.",
+      "sv": "Svaren beskriver PDM-hantering av ritningar och revisioner samt MATLAB-skript för testdata, men inget konkret ERP-, programvaru- eller tekniskt systemutvecklingsprojekt."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_163d0uspvctx"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The pump-housing redesign links design, simulation, testing and performance with a passed pressure test, but does not describe developing or mapping a process.",
+      "fi": "Pumppukotelon uudelleensuunnittelu yhdistää suunnittelun, simuloinnin, testauksen ja suorituskyvyn sekä hyväksytyn painetestin, mutta prosessin kehittämistä tai kartoitusta ei kuvata.",
+      "sv": "Omkonstruktionen av pumphuset kopplar samman konstruktion, simulering, provning och prestanda med ett godkänt trycktest, men beskriver inte processutveckling eller processkartläggning."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_vc43ywe040dp"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes independently modelling the cracking housing, redesigning it, checking flow, and achieving a first-pass pressure test.",
+      "fi": "Vastaus kuvaa itsenäisesti halkeavan kotelon mallintamisen, uudelleensuunnittelun ja virtauksen tarkistamisen, minkä jälkeen painetesti läpäistiin ensimmäisellä yrityksellä.",
+      "sv": "Svaret beskriver självständig modellering av det spruckna huset, omkonstruktion och flödeskontroll, varefter trycktestet klarades på första försöket."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_oecq8qidjrk6"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answers give a concrete example with what was done and what came of it, in a setting like the ad's.",
+      "fi": "Uudelleensuunniteltu kotelo läpäisi painetestin ensimmäisellä yrityksellä, jolloin testausinsinöörit saivat toimivan prototyypin uuden halkeilleen sijaan.",
+      "sv": "Det omkonstruerade huset klarade trycktestet på första försöket, så testingenjörerna fick en fungerande prototyp i stället för ännu ett sprucket hus."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_btmdjd5g9hba"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers give no example of using Finnish at work.",
+      "fi": "Vastauksissa ei ole esimerkkiä suomen kielen käytöstä työssä.",
+      "sv": "Svaren innehåller inget exempel på användning av finska i arbetet."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_z9itud19d7oo"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers give no example of using English technical material at work.",
+      "fi": "Vastauksissa ei ole esimerkkiä englanninkielisen teknisen materiaalin käytöstä työssä.",
+      "sv": "Svaren innehåller inget exempel på användning av engelskt tekniskt material i arbetet."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_h94tlc7y0wll"
+    }
+   ],
+   "summary": {
+    "en": "The answers gave concrete examples for 3 of 6 requirements.",
+    "fi": "Vastauksissa oli konkreettinen esimerkki 3 vaatimuksesta (6 kysyttiin).",
+    "sv": "Svaren gav konkreta exempel för 3 av 6 krav."
+   },
+   "assessedAt": "2026-11-14T13:07:55.996Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T12:46:32.620Z",
+  "submittedAt": "2026-11-14T12:46:59.515Z",
+  "assessedAt": "2026-11-14T13:07:55.996Z"
+ },
+ {
+  "id": "app_v5zote2eft4j",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_e07c79d3e6d04a53919f649dfeba9e51",
+  "companyId": "co_demo03",
+  "status": "assessed",
+  "plan": {
+   "lang": "en",
+   "needCardId": "nc_uyb94repx9n8",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "Experience with ERP, software development, or technical systems development",
+     "wording": "model",
+     "category": "experience",
+     "question": "Describe a time you worked with an ERP system, software development, or technical systems development. What did you do yourself?",
+     "requirementId": "req_163d0uspvctx",
+     "postingSentence": 12
+    },
+    {
+     "kind": "must",
+     "text": "Ability to grasp overall systems and develop processes",
+     "wording": "model",
+     "category": "skill",
+     "question": "Tell us about a time you developed a process while considering the wider system around it. How did you map the overall system, and what did you change?",
+     "requirementId": "req_vc43ywe040dp",
+     "postingSentence": 13
+    },
+    {
+     "kind": "must",
+     "text": "Self-directed problem-solving approach",
+     "wording": "model",
+     "category": "other",
+     "question": "Describe a technical problem you took the initiative to solve without waiting for direction. What steps did you take yourself?",
+     "requirementId": "req_oecq8qidjrk6",
+     "postingSentence": 14
+    },
+    {
+     "kind": "must",
+     "text": "Motivation to see concrete results in production and daily work",
+     "wording": "model",
+     "category": "other",
+     "question": "Tell us about work you did that produced concrete results in production or daily work. What did you do, and what changed for the people using it?",
+     "requirementId": "req_btmdjd5g9hba",
+     "postingSentence": 15
+    },
+    {
+     "kind": "must",
+     "text": "Fluent Finnish",
+     "wording": "model",
+     "category": "language",
+     "question": "How have you used Finnish at work? Describe a situation where you discussed or explained technical matters in Finnish.",
+     "requirementId": "req_z9itud19d7oo",
+     "postingSentence": 16
+    },
+    {
+     "kind": "must",
+     "text": "Ability to work with technical material in English",
+     "wording": "model",
+     "category": "language",
+     "question": "Describe a time you used English technical material, such as documentation, in your work. What did you do with it?",
+     "requirementId": "req_h94tlc7y0wll",
+     "postingSentence": 16
+    }
+   ],
+   "needCardVersion": 1
+  },
+  "state": {
+   "noted": {
+    "req_163d0uspvctx": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_btmdjd5g9hba": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_oecq8qidjrk6": [
+     {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "req_vc43ywe040dp": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_163d0uspvctx": "answered",
+    "req_btmdjd5g9hba": "answered",
+    "req_h94tlc7y0wll": "answered",
+    "req_oecq8qidjrk6": "answered",
+    "req_vc43ywe040dp": "answered",
+    "req_z9itud19d7oo": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes changing a nightly Python loader and adding an alert, after which missing meter readings disappeared from the morning report.",
+      "fi": "Vastauksessa kerrotaan Python-latauksen muuttamisesta ja hälytyksen lisäämisestä, minkä jälkeen mittareiden puuttuvat lukemat katosivat aamuraportista.",
+      "sv": "Svaret beskriver en ändring av en Python-laddning och en ny larmkontroll, varefter saknade mätavläsningar försvann från morgonrapporten."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_163d0uspvctx"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer traces the wider loading chain, changes batch comparison and adds a SQL alert, restoring a reliable morning report for operations.",
+      "fi": "Vastauksessa selvitetään koko latausketju, muutetaan erien vertailua ja lisätään SQL-hälytys, minkä jälkeen operatiivinen tiimi voi taas luottaa aamuraporttiin.",
+      "sv": "Svaret spårar hela laddningskedjan, ändrar batchjämförelsen och lägger till en SQL-larmkontroll, så att driftteamet åter kan lita på morgonrapporten."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_vc43ywe040dp"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes independently tracing missing readings, fixing duplicate-batch handling and adding an alert that removed the report gaps.",
+      "fi": "Vastauksessa kerrotaan puuttuvien lukemien itsenäisestä selvittämisestä, päällekkäisten erien käsittelyn korjaamisesta ja hälytyksestä, joka poisti raportin aukot.",
+      "sv": "Svaret beskriver ett självinitierat spårande av saknade avläsningar, korrigerad hantering av dubbla batcher och ett larm som tog bort luckorna i rapporten."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_oecq8qidjrk6"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes loader and alert changes that gave the operations team complete readings in the report used every morning.",
+      "fi": "Vastauksessa kerrotaan latauksen ja hälytyksen muutoksista, joiden ansiosta operatiivinen tiimi sai täydelliset lukemat joka aamu käyttämäänsä raporttiin.",
+      "sv": "Svaret beskriver ändringar av laddningen och larmet som gav driftteamet fullständiga avläsningar i rapporten som används varje morgon."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_btmdjd5g9hba"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answer states that Finnish has not been used at work or for technical discussions.",
+      "fi": "Vastauksessa todetaan, ettei suomea ole käytetty työssä tai teknisissä keskusteluissa.",
+      "sv": "Svaret anger att finska inte har använts i arbetet eller i tekniska diskussioner."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_z9itud19d7oo"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answer states that there is no example of using English technical documentation at work.",
+      "fi": "Vastauksessa todetaan, ettei englanninkielisen teknisen dokumentaation käytöstä työssä ole esimerkkiä.",
+      "sv": "Svaret anger att det inte finns något exempel på användning av engelsk teknisk dokumentation i arbetet."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_h94tlc7y0wll"
+    }
+   ],
+   "summary": {
+    "en": "The answers give concrete examples for technical systems development, overall systems and process development, self-directed problem-solving, and concrete production results. They do not speak to using Finnish at work or working with English technical material.",
+    "fi": "Vastauksissa on konkreettiset esimerkit teknisten järjestelmien kehittämisestä, kokonaisuuksien ja prosessien kehittämisestä, oma-aloitteisesta ongelmanratkaisusta sekä konkreettisista tuotannon tuloksista. Suomen käyttöä työssä tai englanninkielisen teknisen materiaalin käyttöä ne eivät käsittele.",
+    "sv": "Svaren ger konkreta exempel på utveckling av tekniska system, helhets- och processutveckling, självinitierad problemlösning samt konkreta produktionsresultat. De behandlar inte användning av finska i arbetet eller arbete med engelskt tekniskt material."
+   },
+   "assessedAt": "2026-11-14T13:08:17.224Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T12:47:18.032Z",
+  "submittedAt": "2026-11-14T12:47:42.407Z",
+  "assessedAt": "2026-11-14T13:08:17.224Z"
+ },
+ {
+  "id": "app_mdrxrgpilyhq",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_8d1407776c3548f3963a6c7bdfb3c3a9",
+  "companyId": "co_demo08",
+  "status": "assessed",
+  "plan": {
+   "lang": "en",
+   "needCardId": "nc_bfn8y6d4liki",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "Educational background in a relevant engineering field",
+     "wording": "model",
+     "category": "education",
+     "question": "What engineering field did you study, and which project from your studies or work best shows your background in that field?",
+     "requirementId": "req_jtep8j6prptw",
+     "postingSentence": 18
+    },
+    {
+     "kind": "must",
+     "text": "Strong experience with Siemens PLCs and TIA Portal",
+     "wording": "model",
+     "category": "experience",
+     "question": "Describe a project where you worked with Siemens PLCs and TIA Portal. What did you do yourself?",
+     "requirementId": "req_84iuqbj54jo4",
+     "postingSentence": 19
+    },
+    {
+     "kind": "must",
+     "text": "Experience in PLC programming, HMI/SCADA and industrial networks",
+     "wording": "model",
+     "category": "experience",
+     "question": "Describe a project where you did PLC programming and worked with HMI/SCADA or industrial communication networks. What was your role?",
+     "requirementId": "req_m5h2ekbba540",
+     "postingSentence": 20
+    },
+    {
+     "kind": "must",
+     "text": "Knowledge of EPLAN for electrical and control-system documentation",
+     "wording": "model",
+     "category": "skill",
+     "question": "Describe a time you used EPLAN for electrical or control-system documentation. What documents did you produce or update yourself?",
+     "requirementId": "req_hw8gko0clqsw",
+     "postingSentence": 21
+    },
+    {
+     "kind": "must",
+     "text": "Experience with testing, commissioning, troubleshooting and integration",
+     "wording": "model",
+     "category": "experience",
+     "question": "Describe a project where you handled testing, commissioning, troubleshooting, or system integration. What did you do yourself, and what problem did you resolve?",
+     "requirementId": "req_53duznu77uz9",
+     "postingSentence": 23
+    },
+    {
+     "kind": "must",
+     "text": "Knowledge of electrical automation and control systems",
+     "wording": "model",
+     "category": "skill",
+     "question": "Describe your work on an electrical automation or control system. What parts of the system did you design, configure, or maintain yourself?",
+     "requirementId": "req_umlxp1gbhc6o",
+     "postingSentence": 24
+    }
+   ],
+   "needCardVersion": 2
+  },
+  "state": {
+   "noted": {},
+   "cursor": 6,
+   "progress": {
+    "req_53duznu77uz9": "answered",
+    "req_84iuqbj54jo4": "answered",
+    "req_hw8gko0clqsw": "answered",
+    "req_jtep8j6prptw": "answered",
+    "req_m5h2ekbba540": "answered",
+    "req_umlxp1gbhc6o": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers state that the education is in nursing rather than engineering and describe perioperative patient care.",
+      "fi": "Vastauksissa kerrotaan koulutuksen olevan hoitotyössä eikä insinöörialalla, ja esimerkki koskee leikkausta edeltävää ja sen jälkeistä hoitoa.",
+      "sv": "Svaren anger att utbildningen är inom omvårdnad snarare än teknik och beskriver patientvård före och efter operationer."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_jtep8j6prptw"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers state that there is no experience with Siemens PLCs, TIA Portal, or automation projects.",
+      "fi": "Vastauksissa todetaan, ettei kokemusta Siemensin logiikoista, TIA Portalista tai automaatioprojekteista ole.",
+      "sv": "Svaren anger att det inte finns någon erfarenhet av Siemens PLC, TIA Portal eller automationsprojekt."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_84iuqbj54jo4"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers state that there is no experience with PLC programming, HMI/SCADA, or industrial communication networks.",
+      "fi": "Vastauksissa todetaan, ettei kokemusta PLC-ohjelmoinnista, HMI/SCADA-järjestelmistä tai teollisista tietoliikenneverkoista ole.",
+      "sv": "Svaren anger att det inte finns någon erfarenhet av PLC-programmering, HMI/SCADA eller industriella kommunikationsnätverk."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_m5h2ekbba540"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers state that EPLAN and electrical or control-system documentation have not been used or produced.",
+      "fi": "Vastauksissa todetaan, ettei EPLANia ole käytetty eikä sähkö- tai ohjausjärjestelmädokumentaatiota ole laadittu.",
+      "sv": "Svaren anger att EPLAN inte har använts och att dokumentation för el- eller styrsystem inte har tagits fram."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_hw8gko0clqsw"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers state that no testing, commissioning, troubleshooting, or system integration project has been handled; the example concerns clinical patient care.",
+      "fi": "Vastauksissa todetaan, ettei testaus-, käyttöönotto-, vianetsintä- tai järjestelmäintegraatioprojektia ole hoidettu; esimerkki koskee kliinistä potilashoitoa.",
+      "sv": "Svaren anger att inget projekt inom testning, idrifttagning, felsökning eller systemintegration har hanterats; exemplet gäller klinisk patientvård."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_53duznu77uz9"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers state that electrical automation or control systems have not been designed, configured, or maintained.",
+      "fi": "Vastauksissa todetaan, ettei sähköautomaatio- tai ohjausjärjestelmiä ole suunniteltu, konfiguroitu tai ylläpidetty.",
+      "sv": "Svaren anger att elautomation eller styrsystem inte har konstruerats, konfigurerats eller underhållits."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_umlxp1gbhc6o"
+    }
+   ],
+   "summary": {
+    "en": "The answers did not speak to engineering education, Siemens PLCs and TIA Portal, PLC programming and HMI/SCADA networks, EPLAN, testing and commissioning, or electrical automation and control systems. The examples concern nursing and clinical patient care.",
+    "fi": "Vastaukset eivät käsitelleet insinöörikoulutusta, Siemensin logiikoita ja TIA Portalia, PLC-ohjelmointia ja HMI/SCADA-verkkoja, EPLANia, testausta ja käyttöönottoa tai sähköautomaatio- ja ohjausjärjestelmiä. Esimerkit koskivat hoitotyötä ja kliinistä potilashoitoa.",
+    "sv": "Svaren berörde inte teknikutbildning, Siemens PLC och TIA Portal, PLC-programmering och HMI/SCADA-nätverk, EPLAN, testning och idrifttagning eller elautomation och styrsystem. Exemplen gällde omvårdnad och klinisk patientvård."
+   },
+   "assessedAt": "2026-11-14T12:58:11.718Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T12:57:30.393Z",
+  "submittedAt": "2026-11-14T12:57:55.520Z",
+  "assessedAt": "2026-11-14T12:58:11.718Z"
+ },
+ {
+  "id": "app_pbve9pzblxwi",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_e07c79d3e6d04a53919f649dfeba9e51",
+  "companyId": "co_demo03",
+  "status": "assessed",
+  "plan": {
+   "lang": "en",
+   "needCardId": "nc_uyb94repx9n8",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "Experience with ERP, software development, or technical systems development",
+     "wording": "model",
+     "category": "experience",
+     "question": "Describe a time you worked with an ERP system, software development, or technical systems development. What did you do yourself?",
+     "requirementId": "req_163d0uspvctx",
+     "postingSentence": 12
+    },
+    {
+     "kind": "must",
+     "text": "Ability to grasp overall systems and develop processes",
+     "wording": "model",
+     "category": "skill",
+     "question": "Tell us about a time you developed a process while considering the wider system around it. How did you map the overall system, and what did you change?",
+     "requirementId": "req_vc43ywe040dp",
+     "postingSentence": 13
+    },
+    {
+     "kind": "must",
+     "text": "Self-directed problem-solving approach",
+     "wording": "model",
+     "category": "other",
+     "question": "Describe a technical problem you took the initiative to solve without waiting for direction. What steps did you take yourself?",
+     "requirementId": "req_oecq8qidjrk6",
+     "postingSentence": 14
+    },
+    {
+     "kind": "must",
+     "text": "Motivation to see concrete results in production and daily work",
+     "wording": "model",
+     "category": "other",
+     "question": "Tell us about work you did that produced concrete results in production or daily work. What did you do, and what changed for the people using it?",
+     "requirementId": "req_btmdjd5g9hba",
+     "postingSentence": 15
+    },
+    {
+     "kind": "must",
+     "text": "Fluent Finnish",
+     "wording": "model",
+     "category": "language",
+     "question": "How have you used Finnish at work? Describe a situation where you discussed or explained technical matters in Finnish.",
+     "requirementId": "req_z9itud19d7oo",
+     "postingSentence": 16
+    },
+    {
+     "kind": "must",
+     "text": "Ability to work with technical material in English",
+     "wording": "model",
+     "category": "language",
+     "question": "Describe a time you used English technical material, such as documentation, in your work. What did you do with it?",
+     "requirementId": "req_h94tlc7y0wll",
+     "postingSentence": 16
+    }
+   ],
+   "needCardVersion": 1
+  },
+  "state": {
+   "noted": {
+    "req_163d0uspvctx": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     }
+    ],
+    "req_btmdjd5g9hba": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     }
+    ],
+    "req_oecq8qidjrk6": [
+     {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_vc43ywe040dp": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_163d0uspvctx": "answered",
+    "req_btmdjd5g9hba": "answered",
+    "req_h94tlc7y0wll": "answered",
+    "req_oecq8qidjrk6": "answered",
+    "req_vc43ywe040dp": "answered",
+    "req_z9itud19d7oo": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes rebuilding an inaccessible booking-form component in React and TypeScript, adding tests, and passing the customer's next accessibility audit.",
+      "fi": "Vastauksessa kerrotaan varauslomakkeen komponentin uudelleenrakentamisesta Reactilla ja TypeScriptillä, testien lisäämisestä ja asiakkaan seuraavan saavutettavuusauditoinnin läpäisystä.",
+      "sv": "Svaret beskriver hur en bokningsformulärskomponent byggdes om i React och TypeScript, tester lades till och kundens nästa tillgänglighetsgranskning godkändes."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 5,
+       "sentenceFrom": 5
+      }
+     ],
+     "requirementId": "req_163d0uspvctx"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answer describes reviewing the full screen-reader flow, rebuilding a component and adding regression tests, but not developing a wider process.",
+      "fi": "Vastauksessa kerrotaan koko ruudunlukijakulun tarkistamisesta, komponentin uudelleenrakentamisesta ja regressiotestien lisäämisestä, mutta ei laajemman prosessin kehittämisestä.",
+      "sv": "Svaret beskriver granskning av hela skärmläsarflödet, ombyggnad av en komponent och regressionstester, men inte utveckling av en bredare process."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_vc43ywe040dp"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes independently reproducing accessibility faults, rebuilding the date field, testing the full flow and passing the customer's next audit.",
+      "fi": "Vastauksessa kerrotaan saavutettavuusvirheiden itsenäisestä toistamisesta, päivämääräkentän uudelleenrakentamisesta, koko kulun testaamisesta ja asiakkaan seuraavan auditoinnin läpäisystä.",
+      "sv": "Svaret beskriver självständig reproduktion av tillgänglighetsfel, ombyggnad av datumfältet, testning av hela flödet och godkännande i kundens nästa granskning."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_oecq8qidjrk6"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The rebuilt date field made errors audible and keyboard navigation possible for users, and the customer's next accessibility audit passed.",
+      "fi": "Uudelleenrakennettu päivämääräkenttä teki virheistä kuultavia ja näppäimistöllä liikkumisen mahdolliseksi käyttäjille, ja asiakkaan seuraava saavutettavuusauditointi läpäistiin.",
+      "sv": "Det ombyggda datumfältet gjorde felmeddelanden hörbara och tangentbordsnavigering möjlig för användarna, och kundens nästa tillgänglighetsgranskning godkändes."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 5,
+       "sentenceFrom": 5
+      }
+     ],
+     "requirementId": "req_btmdjd5g9hba"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answer states that Finnish has not been used at work and gives no example of technical discussion in Finnish.",
+      "fi": "Vastauksessa todetaan, ettei suomea ole käytetty työssä, eikä teknisestä keskustelusta suomeksi anneta esimerkkiä.",
+      "sv": "Svaret anger att finska inte har använts i arbetet och ger inget exempel på tekniska diskussioner på finska."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_z9itud19d7oo"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answer gives no example of using English technical material; the tools and design work mentioned do not show English use.",
+      "fi": "Vastauksessa ei ole esimerkkiä englanninkielisen teknisen materiaalin käytöstä; mainitut työkalut ja suunnittelutyö eivät osoita englannin käyttöä.",
+      "sv": "Svaret ger inget exempel på användning av engelskt tekniskt material; de nämnda verktygen och designarbetet visar inte användning av engelska."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_h94tlc7y0wll"
+    }
+   ],
+   "summary": {
+    "en": "The answers give concrete examples for software development, process-related improvement, self-directed problem-solving and concrete production results. They do not show workplace Finnish or use of English technical material.",
+    "fi": "Vastauksissa on konkreettiset esimerkit ohjelmistokehityksestä, prosessiin liittyvästä parannuksesta, oma-aloitteisesta ongelmanratkaisusta ja konkreettisista tuotantotuloksista. Niissä ei näy suomen käyttöä työssä tai englanninkielisen teknisen materiaalin käyttöä.",
+    "sv": "Svaren ger konkreta exempel på mjukvaruutveckling, processrelaterad förbättring, självständig problemlösning och konkreta produktionsresultat. De visar inte användning av finska i arbetet eller av engelskt tekniskt material."
+   },
+   "assessedAt": "2026-11-14T13:08:38.126Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T12:48:02.425Z",
+  "submittedAt": "2026-11-14T12:48:29.293Z",
+  "assessedAt": "2026-11-14T13:08:38.126Z"
+ },
+ {
+  "id": "app_jzmx6m98ztpx",
+  "talentId": "tal_97f6wdepp3e2",
+  "jobId": "job_tmt_e7cf5a28562147d0bf82d7e243e9f4cf",
+  "companyId": "co_demo06",
+  "status": "assessed",
+  "plan": {
+   "lang": "en",
+   "needCardId": "nc_jgpgnh8d4c69",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "A few years of hands-on full-stack software development experience",
+     "wording": "model",
+     "category": "experience",
+     "question": "Describe your hands-on full-stack development work over the past few years, focusing on one project. What did you personally build on the frontend and backend?",
+     "requirementId": "req_idlsep5jn7n3",
+     "postingSentence": 20
+    },
+    {
+     "kind": "must",
+     "text": "Strong Node.js and/or TypeScript knowledge; Python, C#, or Java interest",
+     "wording": "model",
+     "category": "skill",
+     "question": "Describe a project where you used Node.js or TypeScript. What did you build yourself, and how have you used or explored Python, C#, or Java in your work?",
+     "requirementId": "req_sroja6gd05ti",
+     "postingSentence": 21
+    },
+    {
+     "kind": "must",
+     "text": "Experience with client-server architecture, backend APIs, and integration",
+     "wording": "model",
+     "category": "experience",
+     "question": "Describe a time you developed a backend API within a client-server architecture and integrated it with another system. What did you implement yourself?",
+     "requirementId": "req_dctd5mz312ba",
+     "postingSentence": 23
+    },
+    {
+     "kind": "must",
+     "text": "Basic cloud, version control, CI/CD, and DevSecOps familiarity",
+     "wording": "model",
+     "category": "skill",
+     "question": "Describe a project where you used AWS or Azure, version control, and a CI/CD pipeline. What did you do yourself, and how did you apply DevSecOps practices?",
+     "requirementId": "req_s2w8bqycgpvg",
+     "postingSentence": 24
+    },
+    {
+     "kind": "must",
+     "text": "Fluency in spoken and written English",
+     "wording": "model",
+     "category": "language",
+     "question": "Describe how you have used spoken and written English at work, including one example of a discussion and one example of documentation or another written deliverable.",
+     "requirementId": "req_eod39fbk2m14",
+     "postingSentence": 25
+    },
+    {
+     "kind": "must",
+     "text": "University degree in computer science, engineering, mathematics, or related",
+     "wording": "model",
+     "category": "education",
+     "question": "Tell me about your university degree in computer science, engineering, mathematics, or a related field, and describe one project you completed during those studies.",
+     "requirementId": "req_4p2mfm8c6h8f",
+     "postingSentence": 26
+    }
+   ],
+   "needCardVersion": 1
+  },
+  "state": {
+   "noted": {
+    "req_dctd5mz312ba": [
+     {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     }
+    ],
+    "req_eod39fbk2m14": [
+     {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_idlsep5jn7n3": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_s2w8bqycgpvg": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_sroja6gd05ti": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 6,
+      "sentenceFrom": 6
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_4p2mfm8c6h8f": "answered",
+    "req_dctd5mz312ba": "answered",
+    "req_eod39fbk2m14": "answered",
+    "req_idlsep5jn7n3": "answered",
+    "req_s2w8bqycgpvg": "answered",
+    "req_sroja6gd05ti": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers describe four years of backend Java work but explicitly no personally built frontend or full-stack project.",
+      "fi": "Vastaukset kuvaavat neljän vuoden Java-taustajärjestelmätyötä, mutta eivät itse rakennettua käyttöliittymää tai full-stack-projektia.",
+      "sv": "Svaren beskriver fyra års Java-backendarbete men uttryckligen ingen egenbyggd frontend eller något fullstackprojekt."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_idlsep5jn7n3"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answers describe four years of Java Spring Boot work and a personally implemented duplicate-charge fix, but no Node.js or TypeScript work.",
+      "fi": "Vastaukset kuvaavat neljän vuoden Java Spring Boot -työtä ja itse toteutetun tuplaveloituskorjauksen, mutta ei Node.js- tai TypeScript-työtä.",
+      "sv": "Svaren beskriver fyra års arbete med Java Spring Boot och en egen åtgärd mot dubbeldebitering, men inget arbete med Node.js eller TypeScript."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 5,
+       "sentenceFrom": 5
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 6,
+       "sentenceFrom": 6
+      }
+     ],
+     "requirementId": "req_sroja6gd05ti"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes implementing Spring Boot services with PostgreSQL integration, personally fixing duplicate requests, and eliminating double charges for three months.",
+      "fi": "Vastaus kuvaa Spring Boot -palvelujen toteuttamista PostgreSQL-integraatiolla, duplikaattipyyntöjen korjaamista ja tuplaveloitusten päättymistä kolmeksi kuukaudeksi.",
+      "sv": "Svaret beskriver implementering av Spring Boot-tjänster med PostgreSQL-integration, en egen åtgärd mot dubblettförfrågningar och inga dubbeldebiteringar på tre månader."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 5,
+       "sentenceFrom": 5
+      }
+     ],
+     "requirementId": "req_dctd5mz312ba"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answers describe personally running JUnit tests through Jenkins, using local Docker, and maintaining dependencies, without cloud or version-control examples.",
+      "fi": "Vastaukset kuvaavat JUnit-testien ajamista Jenkinsillä, paikallista Docker-käyttöä ja riippuvuuksien ylläpitoa, mutta eivät pilvi- tai versionhallintaesimerkkejä.",
+      "sv": "Svaren beskriver JUnit-tester via Jenkins, lokal Docker-användning och underhåll av beroenden, men inga exempel på moln eller versionshantering."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_s2w8bqycgpvg"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answers give a spoken English support discussion and its design suggestion, but no written documentation deliverable.",
+      "fi": "Vastaukset kuvaavat englanninkielisen tukikeskustelun ja siitä syntyneen suunnitteluehdotuksen, mutta eivät kirjallista dokumentaatiotoimitusta.",
+      "sv": "Svaren beskriver en muntlig supportdiskussion på engelska och dess designförslag, men ingen skriftlig dokumentationsleverans."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_eod39fbk2m14"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "Nothing in the answers speaks to this requirement.",
+      "fi": "Vastauksen mukaan tietotekniikan, insinööritieteiden, matematiikan tai läheisen alan yliopistotutkintoa ei ole.",
+      "sv": "Svaret anger att det inte finns någon universitetsexamen inom datavetenskap, teknik, matematik eller ett närliggande område."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_4p2mfm8c6h8f"
+    }
+   ],
+   "summary": {
+    "en": "Concrete examples cover Java backend development, client-server API integration, Jenkins-based CI maintenance, and spoken English. The answers do not show full-stack frontend work, Node.js or TypeScript, cloud or version-control work, written English deliverables, or a relevant university degree.",
+    "fi": "Konkreettiset esimerkit kattavat Java-taustajärjestelmäkehityksen, asiakas-palvelin-rajapintaintegraation, Jenkins-pohjaisen CI-ylläpidon ja puhutun englannin. Vastaukset eivät osoita full-stack-käyttöliittymätyötä, Node.js- tai TypeScript-osaamista, pilvi- tai versionhallintatyötä, englanninkielisiä kirjallisia tuotoksia tai alan yliopistotutkintoa.",
+    "sv": "Konkreta exempel omfattar Java-backendutveckling, API-integration i klient-servermiljö, CI-underhåll med Jenkins och muntlig engelska. Svaren visar inte fullstack-frontend arbete, Node.js eller TypeScript, moln- eller versionshanteringsarbete, skriftliga engelska leveranser eller relevant universitetsexamen."
+   },
+   "assessedAt": "2026-11-14T12:54:28.357Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T12:53:21.046Z",
+  "submittedAt": "2026-11-14T12:53:53.619Z",
+  "assessedAt": "2026-11-14T12:54:28.357Z"
+ },
+ {
+  "id": "app_mosohqhph54d",
+  "talentId": "tal_4thrbmb9cwbr",
+  "jobId": "job_tmt_e7cf5a28562147d0bf82d7e243e9f4cf",
+  "companyId": "co_demo06",
+  "status": "assessed",
+  "plan": {
+   "lang": "en",
+   "needCardId": "nc_jgpgnh8d4c69",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "A few years of hands-on full-stack software development experience",
+     "wording": "model",
+     "category": "experience",
+     "question": "Describe your hands-on full-stack development work over the past few years, focusing on one project. What did you personally build on the frontend and backend?",
+     "requirementId": "req_idlsep5jn7n3",
+     "postingSentence": 20
+    },
+    {
+     "kind": "must",
+     "text": "Strong Node.js and/or TypeScript knowledge; Python, C#, or Java interest",
+     "wording": "model",
+     "category": "skill",
+     "question": "Describe a project where you used Node.js or TypeScript. What did you build yourself, and how have you used or explored Python, C#, or Java in your work?",
+     "requirementId": "req_sroja6gd05ti",
+     "postingSentence": 21
+    },
+    {
+     "kind": "must",
+     "text": "Experience with client-server architecture, backend APIs, and integration",
+     "wording": "model",
+     "category": "experience",
+     "question": "Describe a time you developed a backend API within a client-server architecture and integrated it with another system. What did you implement yourself?",
+     "requirementId": "req_dctd5mz312ba",
+     "postingSentence": 23
+    },
+    {
+     "kind": "must",
+     "text": "Basic cloud, version control, CI/CD, and DevSecOps familiarity",
+     "wording": "model",
+     "category": "skill",
+     "question": "Describe a project where you used AWS or Azure, version control, and a CI/CD pipeline. What did you do yourself, and how did you apply DevSecOps practices?",
+     "requirementId": "req_s2w8bqycgpvg",
+     "postingSentence": 24
+    },
+    {
+     "kind": "must",
+     "text": "Fluency in spoken and written English",
+     "wording": "model",
+     "category": "language",
+     "question": "Describe how you have used spoken and written English at work, including one example of a discussion and one example of documentation or another written deliverable.",
+     "requirementId": "req_eod39fbk2m14",
+     "postingSentence": 25
+    },
+    {
+     "kind": "must",
+     "text": "University degree in computer science, engineering, mathematics, or related",
+     "wording": "model",
+     "category": "education",
+     "question": "Tell me about your university degree in computer science, engineering, mathematics, or a related field, and describe one project you completed during those studies.",
+     "requirementId": "req_4p2mfm8c6h8f",
+     "postingSentence": 26
+    }
+   ],
+   "needCardVersion": 1
+  },
+  "state": {
+   "noted": {
+    "req_dctd5mz312ba": [
+     {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_eod39fbk2m14": [
+     {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "req_idlsep5jn7n3": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_s2w8bqycgpvg": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_sroja6gd05ti": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_4p2mfm8c6h8f": "answered",
+    "req_dctd5mz312ba": "answered",
+    "req_eod39fbk2m14": "answered",
+    "req_idlsep5jn7n3": "answered",
+    "req_s2w8bqycgpvg": "answered",
+    "req_sroja6gd05ti": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 2,
+     "reason": {
+      "en": "Three years of backend data-pipeline and REST-service work are described, but no frontend work or project outcome.",
+      "fi": "Vastaus kuvaa kolmen vuoden backend- ja dataputkiyötä sekä REST-palvelun rakentamista, mutta ei frontend-työtä tai projektin tulosta.",
+      "sv": "Svaret beskriver tre års backend- och datapipelinearbete samt en REST-tjänst, men inget frontendarbete eller projektresultat."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_idlsep5jn7n3"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answers describe a self-built Python REST service and daily pipeline work, while Node.js and TypeScript have not been used.",
+      "fi": "Vastaukset kuvaavat itse rakennettua Python REST -palvelua ja päivittäistä dataputkiyötä; Node.js- tai TypeScript-kokemusta ei ole.",
+      "sv": "Svaren beskriver en egenbyggd REST-tjänst i Python och dagligt pipelinearbete, men ingen användning av Node.js eller TypeScript."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_sroja6gd05ti"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes personally building an energy-sector REST service integrated with PostgreSQL and nightly pipelines, tested through CI before going live.",
+      "fi": "Vastaus kuvaa itse rakennettua energia-alan REST-palvelua, joka integroi PostgreSQL:n ja yöajot sekä testattiin CI-putkessa ennen tuotantoon vientiä.",
+      "sv": "Svaret beskriver en egenbyggd REST-tjänst inom energisektorn, integrerad med PostgreSQL och nattliga pipelines samt CI-testad före lansering."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_dctd5mz312ba"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answers describe using Git and CI tests before release, without AWS, Azure, or formal DevSecOps practice.",
+      "fi": "Vastaukset kuvaavat Gitin ja CI-testien käyttöä ennen julkaisua, mutta eivät AWS:n, Azuren tai muodollisten DevSecOps-käytäntöjen käyttöä.",
+      "sv": "Svaren beskriver Git och CI-tester före lansering, men inte AWS, Azure eller formella DevSecOps-metoder."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_s2w8bqycgpvg"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "No work example of spoken or written English is provided.",
+      "fi": "Vastauksissa ei ole työesimerkkiä puhutun tai kirjallisen englannin käytöstä.",
+      "sv": "Svaren innehåller inget arbetsexempel på talad eller skriftlig engelska."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_eod39fbk2m14"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answer states that there is no university degree or study project to describe.",
+      "fi": "Vastauksen mukaan yliopistotutkintoa tai kuvattavaa opiskeluprojektia ei ole.",
+      "sv": "Svaret anger att det inte finns någon universitetsexamen eller studieprojekt att beskriva."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_4p2mfm8c6h8f"
+    }
+   ],
+   "summary": {
+    "en": "The answers give concrete examples of backend-focused full-stack work, Python development, REST API integration, and Git with CI testing. They do not address work use of English or a relevant university degree, and Node.js/TypeScript, cloud platforms, and formal DevSecOps are not described.",
+    "fi": "Vastaukset sisältävät konkreettisia esimerkkejä backend-painotteisesta full-stack-työstä, Python-kehityksestä, REST API -integraatiosta sekä Gitin ja CI-testien käytöstä. Englannin työkäyttöä tai alan yliopistotutkintoa ei käsitellä, eikä Node.js/TypeScript-, pilvi- tai muodollista DevSecOps-kokemusta kuvata.",
+    "sv": "Svaren ger konkreta exempel på backendinriktat fullstackarbete, Python-utveckling, REST API-integration samt Git och CI-tester. De behandlar inte engelska i arbetet eller en relevant universitetsexamen, och Node.js/TypeScript, molnplattformar och formella DevSecOps-metoder beskrivs inte."
+   },
+   "assessedAt": "2026-11-14T12:55:15.659Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T12:54:28.624Z",
+  "submittedAt": "2026-11-14T12:54:58.234Z",
+  "assessedAt": "2026-11-14T12:55:15.659Z"
+ },
+ {
+  "id": "app_74ijg2xq0r46",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_e3c5756883c74559b8e0c68f59971d31",
+  "companyId": "co_demo01",
+  "status": "assessed",
+  "plan": {
+   "lang": "sv",
+   "needCardId": "nc_ncivfnx96sx2",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "Fluent Excel skills",
+     "wording": "model",
+     "category": "skill",
+     "question": "Beskriv ett arbete där du använde Excel regelbundet. Vilka uppgifter utförde du själv, och vilka funktioner använde du?",
+     "requirementId": "req_nu7vil3es3h5",
+     "postingSentence": 11
+    },
+    {
+     "kind": "must",
+     "text": "Willingness to learn and expand skills beyond routine bookkeeping",
+     "wording": "model",
+     "category": "other",
+     "question": "Berätta om en gång då du lärde dig något nytt utanför den vanliga bokföringen. Vad gjorde du för att utveckla den nya kunskapen?",
+     "requirementId": "req_qcanepviyy3z",
+     "postingSentence": 14
+    },
+    {
+     "kind": "must",
+     "text": "Customer service attitude and clear, friendly communication",
+     "wording": "model",
+     "category": "skill",
+     "question": "Beskriv ett kundärende där du behövde förklara något tydligt och vänligt. Hur kommunicerade du med kunden?",
+     "requirementId": "req_mk18fxtn7em3",
+     "postingSentence": 16
+    },
+    {
+     "kind": "must",
+     "text": "Investigate questions and follow issues through to completion",
+     "wording": "model",
+     "category": "other",
+     "question": "Berätta om en kundfråga du inte kunde svara på direkt. Hur undersökte du saken och följde upp den tills den var helt löst?",
+     "requirementId": "req_gm3y4y93z6sf",
+     "postingSentence": 17
+    },
+    {
+     "kind": "must",
+     "text": "Accuracy and responsibility",
+     "wording": "model",
+     "category": "other",
+     "question": "Beskriv en bokföringsuppgift där noggrannhet och ansvar var särskilt viktiga. Vad gjorde du själv för att kontrollera arbetet och slutföra uppgiften?",
+     "requirementId": "req_mdo3oj1164xh",
+     "postingSentence": 18
+    },
+    {
+     "kind": "must",
+     "text": "Confidence to take on varied tasks",
+     "wording": "model",
+     "category": "other",
+     "question": "Berätta om en arbetsdag då du tog dig an flera olika uppgifter och behövde växla mellan dem. Vad gjorde du själv?",
+     "requirementId": "req_5kymalfofubo",
+     "postingSentence": 18
+    }
+   ],
+   "needCardVersion": 2
+  },
+  "state": {
+   "noted": {
+    "req_5kymalfofubo": [
+     {
+      "turnIndex": 11,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     }
+    ],
+    "req_gm3y4y93z6sf": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_mdo3oj1164xh": [
+     {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_mk18fxtn7em3": [
+     {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "req_nu7vil3es3h5": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     }
+    ],
+    "req_qcanepviyy3z": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_5kymalfofubo": "answered",
+    "req_gm3y4y93z6sf": "answered",
+    "req_mdo3oj1164xh": "answered",
+    "req_mk18fxtn7em3": "answered",
+    "req_nu7vil3es3h5": "answered",
+    "req_qcanepviyy3z": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answer describes regular personal use of Excel for general ledger and supplier reconciliations in bookkeeping work.",
+      "fi": "Vastaus kuvaa Excelin säännöllistä omaa käyttöä pääkirjan ja toimittajien täsmäytyksiin kirjanpitotyössä.",
+      "sv": "Svaret beskriver regelbunden egen användning av Excel för avstämningar av huvudbok och leverantörer i bokföringsarbetet."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "requirementId": "req_nu7vil3es3h5"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answer describes correcting a window replacement’s classification and recalculating depreciation outside routine bookkeeping, without stating the result.",
+      "fi": "Vastaus kuvaa ikkunaremontin luokittelun korjaamista ja poistojen uudelleenlaskemista tavanomaisen kirjanpidon ulkopuolella, mutta tulosta ei kerrota.",
+      "sv": "Svaret beskriver korrigering av ett fönsterbytes klassificering och omberäkning av avskrivningar utanför löpande bokföring, utan att ange resultatet."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "requirementId": "req_qcanepviyy3z"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answers describe explaining shareholders’ fee questions without jargon, tailoring replies, and handling housing company chairs’ questions clearly and in a friendly way.",
+      "fi": "Vastaukset kuvaavat osakkaiden maksukysymysten selittämistä ilman ammattikieltä, vastausten räätälöintiä sekä taloyhtiöiden puheenjohtajien selkeää ja ystävällistä kohtaamista.",
+      "sv": "Svaren beskriver hur aktieägares avgiftsfrågor förklaras utan fackjargong, svaren anpassas och bostadsbolagsordförandenas frågor bemöts tydligt och vänligt."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_mk18fxtn7em3"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes recalculating depreciation, consulting the auditor, and correcting the accounts before the general meeting, resulting in correct profit and tax.",
+      "fi": "Vastaus kuvaa poistojen uudelleenlaskemista, asian käsittelyä tilintarkastajan kanssa ja kirjanpidon korjaamista ennen yhtiökokousta, jolloin tulos ja verot korjaantuivat.",
+      "sv": "Svaret beskriver omberäkning av avskrivningar, diskussion med revisorn och korrigering före bolagsstämman, vilket gav rätt resultat och skatt."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_gm3y4y93z6sf"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes detecting a misclassified invoice, recalculating depreciation, checking the assessment with the auditor, and correcting the accounts so profit and tax were right.",
+      "fi": "Vastaus kuvaa väärin kirjatun laskun havaitsemista, poistojen uudelleenlaskemista, arvion tarkistamista tilintarkastajalla ja kirjanpidon korjaamista, jolloin tulos ja verot korjaantuivat.",
+      "sv": "Svaret beskriver upptäckt av en felklassificerad faktura, omberäkning av avskrivningar, kontroll med revisorn och korrigering som gav rätt resultat och skatt."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_mdo3oj1164xh"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answers describe a workday moving between e-invoice approval, supplier ledgers, general ledger reconciliations, and responding to calls, without stating an outcome.",
+      "fi": "Vastaukset kuvaavat työpäivää, jossa siirrytään verkkolaskujen hyväksynnästä, ostoreskontrasta ja pääkirjan täsmäytyksistä puheluihin vastaamiseen, mutta tulosta ei kerrota.",
+      "sv": "Svaren beskriver en arbetsdag med växling mellan godkännande av e-fakturor, leverantörsreskontra, huvudboksavstämningar och telefonsamtal, utan att ange ett resultat."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 11,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "requirementId": "req_5kymalfofubo"
+    }
+   ],
+   "summary": {
+    "en": "The answers gave concrete examples for Excel use, learning beyond routine bookkeeping, customer communication, investigating and completing issues, accuracy and responsibility, and handling varied tasks. No requirement was left unaddressed.",
+    "fi": "Vastaukset sisälsivät konkreettisia esimerkkejä Excelin käytöstä, oppimisesta tavanomaisen kirjanpidon ulkopuolella, asiakasviestinnästä, asioiden selvittämisestä ja viemisestä loppuun, tarkkuudesta ja vastuusta sekä vaihtelevista tehtävistä. Yhtään vaatimusta ei jätetty käsittelemättä.",
+    "sv": "Svaren gav konkreta exempel på Excelanvändning, lärande utanför löpande bokföring, kundkommunikation, utredning och slutförande av ärenden, noggrannhet och ansvar samt varierande arbetsuppgifter. Inget krav lämnades obehandlat."
+   },
+   "assessedAt": "2026-11-14T12:55:50.736Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T12:54:38.523Z",
+  "submittedAt": "2026-11-14T12:55:14.101Z",
+  "assessedAt": "2026-11-14T12:55:50.736Z"
+ },
+ {
+  "id": "app_ee4wcnp29b2t",
+  "talentId": "tal_tqhpbpuo02i6",
+  "jobId": "job_tmt_e7cf5a28562147d0bf82d7e243e9f4cf",
+  "companyId": "co_demo06",
+  "status": "assessed",
+  "plan": {
+   "lang": "en",
+   "needCardId": "nc_jgpgnh8d4c69",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "A few years of hands-on full-stack software development experience",
+     "wording": "model",
+     "category": "experience",
+     "question": "Describe your hands-on full-stack development work over the past few years, focusing on one project. What did you personally build on the frontend and backend?",
+     "requirementId": "req_idlsep5jn7n3",
+     "postingSentence": 20
+    },
+    {
+     "kind": "must",
+     "text": "Strong Node.js and/or TypeScript knowledge; Python, C#, or Java interest",
+     "wording": "model",
+     "category": "skill",
+     "question": "Describe a project where you used Node.js or TypeScript. What did you build yourself, and how have you used or explored Python, C#, or Java in your work?",
+     "requirementId": "req_sroja6gd05ti",
+     "postingSentence": 21
+    },
+    {
+     "kind": "must",
+     "text": "Experience with client-server architecture, backend APIs, and integration",
+     "wording": "model",
+     "category": "experience",
+     "question": "Describe a time you developed a backend API within a client-server architecture and integrated it with another system. What did you implement yourself?",
+     "requirementId": "req_dctd5mz312ba",
+     "postingSentence": 23
+    },
+    {
+     "kind": "must",
+     "text": "Basic cloud, version control, CI/CD, and DevSecOps familiarity",
+     "wording": "model",
+     "category": "skill",
+     "question": "Describe a project where you used AWS or Azure, version control, and a CI/CD pipeline. What did you do yourself, and how did you apply DevSecOps practices?",
+     "requirementId": "req_s2w8bqycgpvg",
+     "postingSentence": 24
+    },
+    {
+     "kind": "must",
+     "text": "Fluency in spoken and written English",
+     "wording": "model",
+     "category": "language",
+     "question": "Describe how you have used spoken and written English at work, including one example of a discussion and one example of documentation or another written deliverable.",
+     "requirementId": "req_eod39fbk2m14",
+     "postingSentence": 25
+    },
+    {
+     "kind": "must",
+     "text": "University degree in computer science, engineering, mathematics, or related",
+     "wording": "model",
+     "category": "education",
+     "question": "Tell me about your university degree in computer science, engineering, mathematics, or a related field, and describe one project you completed during those studies.",
+     "requirementId": "req_4p2mfm8c6h8f",
+     "postingSentence": 26
+    }
+   ],
+   "needCardVersion": 1
+  },
+  "state": {
+   "noted": {
+    "req_eod39fbk2m14": [
+     {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_idlsep5jn7n3": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     }
+    ],
+    "req_s2w8bqycgpvg": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_sroja6gd05ti": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_4p2mfm8c6h8f": "answered",
+    "req_dctd5mz312ba": "answered",
+    "req_eod39fbk2m14": "answered",
+    "req_idlsep5jn7n3": "answered",
+    "req_s2w8bqycgpvg": "answered",
+    "req_sroja6gd05ti": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answers describe personally building and testing React booking screens, while explicitly giving no full-stack or backend development example.",
+      "fi": "Vastaukset kuvaavat React-varausnäyttöjen ja niiden testien henkilökohtaista rakentamista, mutta full-stack- tai backend-työstä ei ole esimerkkiä.",
+      "sv": "Svaren beskriver eget arbete med att bygga och testa React-bokningsskärmar, men ger inget exempel på fullstack- eller backendutveckling."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 5,
+       "sentenceFrom": 5
+      }
+     ],
+     "requirementId": "req_idlsep5jn7n3"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The example describes building TypeScript components and fixing accessibility defects so errors were announced and keyboard focus no longer became trapped.",
+      "fi": "Esimerkissä rakennettiin TypeScript-komponentteja ja korjattiin saavutettavuusvirheet niin, että virheet ilmoitettiin eikä näppäimistön kohdistus enää jäänyt kiinni.",
+      "sv": "Exemplet beskriver TypeScript-komponenter och åtgärdade tillgänglighetsfel, så att fel meddelades och tangentbordsfokus inte längre fastnade."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_sroja6gd05ti"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers state that no backend API or system integration was developed and describe frontend accessibility work instead.",
+      "fi": "Vastausten mukaan backend-rajapintaa tai järjestelmäintegraatiota ei ole kehitetty, ja niissä kuvataan sen sijaan frontend-saavutettavuustyötä.",
+      "sv": "Svaren anger att ingen backend-API eller systemintegration har utvecklats och beskriver i stället tillgänglighetsarbete i frontend."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_dctd5mz312ba"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answers describe daily Git use and code review during booking-screen development, with no cloud, CI/CD, or DevSecOps project.",
+      "fi": "Vastaukset kuvaavat Gitin päivittäistä käyttöä ja koodikatselmointia varausnäyttöjen kehityksessä, mutta eivät pilvi-, CI/CD- tai DevSecOps-projektia.",
+      "sv": "Svaren beskriver daglig Git-användning och kodgranskning vid utveckling av bokningsskärmar, men inget moln-, CI/CD- eller DevSecOps-projekt."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_s2w8bqycgpvg"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers do not identify any workplace discussion or written deliverable as using English.",
+      "fi": "Vastauksissa ei osoiteta mitään työkeskustelua tai kirjallista tuotosta englannin kielellä tehdystä työstä.",
+      "sv": "Svaren identifierar inget arbetsplatssamtal eller skriftligt arbete som utförts på engelska."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_eod39fbk2m14"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers confirm a completed degree but do not establish its subject or describe a project from those studies.",
+      "fi": "Vastauksissa mainitaan suoritettu tutkinto, mutta sen alaa ei vahvisteta eikä opinnoissa tehtyä projektia kuvata.",
+      "sv": "Svaren bekräftar en avslutad examen men anger inte dess ämne och beskriver inget projekt från studierna."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_4p2mfm8c6h8f"
+    }
+   ],
+   "summary": {
+    "en": "Concrete examples cover frontend work, TypeScript accessibility fixes, and daily Git use. The answers do not show full-stack or backend API work, cloud/CI/CD/DevSecOps, workplace English use, or a degree in a required subject.",
+    "fi": "Konkreettiset esimerkit käsittelevät frontend-työtä, TypeScript-saavutettavuuskorjauksia ja Gitin päivittäistä käyttöä. Vastauksissa ei näy full-stack- tai backend-rajapintatyötä, pilvi-, CI/CD- tai DevSecOps-työtä, englannin työkäyttöä tai vaaditun alan tutkintoa.",
+    "sv": "Konkreta exempel gäller frontend-arbete, TypeScript-åtgärder för tillgänglighet och daglig Git-användning. Svaren visar inte fullstack- eller backend-API-arbete, moln/CI/CD/DevSecOps, engelska i arbetet eller examen inom ett efterfrågat ämne."
+   },
+   "assessedAt": "2026-11-14T12:56:18.174Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T12:55:15.906Z",
+  "submittedAt": "2026-11-14T12:55:43.987Z",
+  "assessedAt": "2026-11-14T12:56:18.174Z"
+ },
+ {
+  "id": "app_6gxqtmsyr72p",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_e3c5756883c74559b8e0c68f59971d31",
+  "companyId": "co_demo01",
+  "status": "assessed",
+  "plan": {
+   "lang": "en",
+   "needCardId": "nc_ncivfnx96sx2",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "Fluent Excel skills",
+     "wording": "model",
+     "category": "skill",
+     "question": "Tell us about a time you used Excel in your work. What did you build or do yourself, and which Excel features did you use?",
+     "requirementId": "req_nu7vil3es3h5",
+     "postingSentence": 11
+    },
+    {
+     "kind": "must",
+     "text": "Willingness to learn and expand skills beyond routine bookkeeping",
+     "wording": "model",
+     "category": "other",
+     "question": "Describe a time you learned a new skill that took you beyond routine bookkeeping. What did you learn, and how did you use it in your work?",
+     "requirementId": "req_qcanepviyy3z",
+     "postingSentence": 14
+    },
+    {
+     "kind": "must",
+     "text": "Customer service attitude and clear, friendly communication",
+     "wording": "model",
+     "category": "skill",
+     "question": "Describe a customer service situation where you had to explain something clearly and keep the communication friendly. What did you say and do?",
+     "requirementId": "req_mk18fxtn7em3",
+     "postingSentence": 16
+    },
+    {
+     "kind": "must",
+     "text": "Investigate questions and follow issues through to completion",
+     "wording": "model",
+     "category": "other",
+     "question": "Tell us about a customer question you could not answer immediately. How did you investigate it, and what did you do to follow the issue through to completion?",
+     "requirementId": "req_gm3y4y93z6sf",
+     "postingSentence": 17
+    },
+    {
+     "kind": "must",
+     "text": "Accuracy and responsibility",
+     "wording": "model",
+     "category": "other",
+     "question": "Describe a time your accuracy and responsibility mattered in bookkeeping or another work task. What checks did you make, and what did you personally take responsibility for?",
+     "requirementId": "req_mdo3oj1164xh",
+     "postingSentence": 18
+    },
+    {
+     "kind": "must",
+     "text": "Confidence to take on varied tasks",
+     "wording": "model",
+     "category": "other",
+     "question": "Tell us about a workday when you took on varied tasks and had to switch between them. What were the tasks, and how did you handle the changes?",
+     "requirementId": "req_5kymalfofubo",
+     "postingSentence": 18
+    }
+   ],
+   "needCardVersion": 2
+  },
+  "state": {
+   "noted": {
+    "req_5kymalfofubo": [
+     {
+      "turnIndex": 13,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 13,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 13,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "req_gm3y4y93z6sf": [
+     {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_mdo3oj1164xh": [
+     {
+      "turnIndex": 11,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "req_mk18fxtn7em3": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_nu7vil3es3h5": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     }
+    ],
+    "req_qcanepviyy3z": [
+     {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_5kymalfofubo": "answered",
+    "req_gm3y4y93z6sf": "answered",
+    "req_mdo3oj1164xh": "answered",
+    "req_mk18fxtn7em3": "answered",
+    "req_nu7vil3es3h5": "answered",
+    "req_qcanepviyy3z": "answered"
+   },
+   "followUps": {
+    "req_nu7vil3es3h5": 1
+   }
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answer describes using Excel for pour schedules that support planning with foremen, without naming features or a concrete result.",
+      "fi": "Vastaus kuvaa Excelin käyttöä valuaikatauluihin, jotka tukevat suunnittelua työnjohtajien kanssa, mutta ei nimeä toimintoja tai konkreettista tulosta.",
+      "sv": "Svaret beskriver Excel-användning för gjutscheman som stödjer planeringen med arbetsledarna, utan att nämna funktioner eller ett konkret resultat."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "requirementId": "req_nu7vil3es3h5"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes expanding drawing checks, finding mismatched stairwell openings and getting a correction agreed before pouring, avoiding concrete breakout.",
+      "fi": "Vastaus kuvaa piirustustarkistusten laajentamista, porrashuoneaukkojen epäkohdan löytämistä ja korjauksen sopimista ennen valua, jolloin betonin purku vältyttiin.",
+      "sv": "Svaret beskriver utökade ritningskontroller, upptäckten av felaktiga trapphusöppningar och en överenskommen korrigering före gjutningen, så att betong inte behövde brytas upp."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_qcanepviyy3z"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answers describe re-explaining plans with a drawing and resolving a drawing mismatch with designers, but give no customer-service situation.",
+      "fi": "Vastaukset kuvaavat suunnitelmien selittämistä uudelleen piirroksen avulla ja piirustusepäkohdan ratkaisemista suunnittelijoiden kanssa, mutta eivät asiakaspalvelutilannetta.",
+      "sv": "Svaren beskriver hur planer förklaras på nytt med en skiss och hur en ritningsavvikelse löses med projektörerna, men ingen kundservicesituation."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_mk18fxtn7em3"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes comparing conflicting drawings, contacting designers and securing a corrected opening before pouring, so work proceeded without concrete breakout.",
+      "fi": "Vastaus kuvaa ristiriitaisten piirustusten vertailua, yhteydenottoa suunnittelijoihin ja korjatun aukon varmistamista ennen valua, joten työ eteni ilman betonin purkua.",
+      "sv": "Svaret beskriver jämförelse av motstridiga ritningar, kontakt med projektörerna och en korrigerad öppning före gjutningen, så att arbetet fortsatte utan att betong bröts upp."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_gm3y4y93z6sf"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes careful drawing checks, personal responsibility for resolving the mismatch and maintaining inspection documents, preventing concrete breakout.",
+      "fi": "Vastaus kuvaa huolellisia piirustustarkistuksia, henkilökohtaista vastuuta epäkohdan ratkaisemisesta ja tarkastusasiakirjojen ylläpitoa, jolloin betonin purku vältyttiin.",
+      "sv": "Svaret beskriver noggranna ritningskontroller, personligt ansvar för att lösa avvikelsen och skötsel av besiktningshandlingar, vilket förhindrade att betong bröts upp."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 11,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_mdo3oj1164xh"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answer describes moving between pour planning, drawing checks, quality documents, crew leadership and subcontractor coordination, without describing a result.",
+      "fi": "Vastaus kuvaa siirtymistä valujen suunnittelun, piirustustarkistusten, laatuasiakirjojen, työryhmän johtamisen ja aliurakoitsijayhteistyön välillä ilman tuloksen kuvausta.",
+      "sv": "Svaret beskriver växling mellan gjutplanering, ritningskontroller, kvalitetshandlingar, personalledning och samordning med underentreprenörer, utan att beskriva ett resultat."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 13,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 13,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 13,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_5kymalfofubo"
+    }
+   ],
+   "summary": {
+    "en": "The answers gave concrete examples for Excel scheduling, learning expanded drawing checks, clear communication, issue follow-through, accuracy and responsibility, and handling varied tasks. The communication example was not in customer service, and the Excel and varied-task examples did not describe outcomes.",
+    "fi": "Vastaukset antoivat konkreettiset esimerkit Excel-aikatauluista, piirustustarkistusten oppimisesta, selkeästä viestinnästä, asioiden loppuun viemisestä, tarkkuudesta ja vastuusta sekä monipuolisista tehtävistä. Viestintäesimerkki ei ollut asiakaspalvelusta, eikä Excel- tai tehtäväesimerkeissä kuvattu tuloksia.",
+    "sv": "Svaren gav konkreta exempel på Excel-scheman, inlärning av utökade ritningskontroller, tydlig kommunikation, uppföljning av ärenden, noggrannhet och ansvar samt varierande arbetsuppgifter. Kommunikationsexemplet gällde inte kundservice, och Excel- och arbetsuppgiftsexemplen beskrev inga resultat."
+   },
+   "assessedAt": "2026-11-14T12:57:05.747Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T12:55:51.382Z",
+  "submittedAt": "2026-11-14T12:56:25.094Z",
+  "assessedAt": "2026-11-14T12:57:05.747Z"
+ },
+ {
+  "id": "app_bq1bgmqixclv",
+  "talentId": "tal_sabxh4xaga3o",
+  "jobId": "job_tmt_9cf4bbbb865f443492a295fb0895cb70",
+  "companyId": "co_demo07",
+  "status": "assessed",
+  "plan": {
+   "lang": "en",
+   "needCardId": "nc_tt1iyhhlyo8p",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "At least 3 years as a head chef or shift supervisor",
+     "wording": "model",
+     "category": "experience",
+     "question": "Describe your work as a head chef or shift supervisor, including how long you held each role and the kitchen duties you handled yourself.",
+     "requirementId": "req_dsjig5d8wj1l",
+     "postingSentence": 5
+    },
+    {
+     "kind": "must",
+     "text": "Ability to independently lead a kitchen and a small team",
+     "wording": "model",
+     "category": "skill",
+     "question": "Tell us about a time you independently ran a kitchen and led a small team. What did you do yourself during a shift?",
+     "requirementId": "req_js2s0f9snmb1",
+     "postingSentence": 6
+    },
+    {
+     "kind": "nice",
+     "text": "Passion for hands-on kitchen work",
+     "wording": "model",
+     "category": "other",
+     "question": "Describe a recent period when most of your working time was spent on hands-on kitchen work rather than at a laptop. What cooking or preparation tasks did you do yourself?",
+     "requirementId": "req_emc30rjjfhov",
+     "postingSentence": 7
+    },
+    {
+     "kind": "nice",
+     "text": "Skill in making tasty food from scratch with fresh ingredients",
+     "wording": "model",
+     "category": "skill",
+     "question": "Tell us about a lunch dish or menu you made from scratch using fresh ingredients. What did you prepare yourself, and how did you make it tasty?",
+     "requirementId": "req_y91umzqxejz4",
+     "postingSentence": 12
+    },
+    {
+     "kind": "nice",
+     "text": "Developmental leadership and ability to inspire others",
+     "wording": "model",
+     "category": "other",
+     "question": "Describe a time you developed someone's kitchen skills and inspired your team. What did you do yourself, and what changed?",
+     "requirementId": "req_naip0vxuc7r4",
+     "postingSentence": 13
+    },
+    {
+     "kind": "nice",
+     "text": "Broad professional expertise to develop the business and team",
+     "wording": "model",
+     "category": "skill",
+     "question": "Tell us about a time you used your broad kitchen expertise to improve both the business and your team. What did you change, and what was the result?",
+     "requirementId": "req_uadqqzwgvr7y",
+     "postingSentence": 13
+    }
+   ],
+   "needCardVersion": 2
+  },
+  "state": {
+   "noted": {
+    "req_dsjig5d8wj1l": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     }
+    ],
+    "req_emc30rjjfhov": [
+     {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_js2s0f9snmb1": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     }
+    ],
+    "req_naip0vxuc7r4": [
+     {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_uadqqzwgvr7y": [
+     {
+      "turnIndex": 11,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     }
+    ],
+    "req_y91umzqxejz4": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_dsjig5d8wj1l": "answered",
+    "req_emc30rjjfhov": "answered",
+    "req_js2s0f9snmb1": "answered",
+    "req_naip0vxuc7r4": "answered",
+    "req_uadqqzwgvr7y": "answered",
+    "req_y91umzqxejz4": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answer states no head chef or shift supervisor experience, describing lunch cook work instead.",
+      "fi": "Vastauksessa kerrotaan, ettei kokemusta keittiömestarin tai vuoromestarin tehtävistä ole, vaan työ on ollut lounaskokin työtä.",
+      "sv": "Svaret anger ingen erfarenhet som kökschef eller skiftledare, utan beskriver arbete som lunchkock."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_dsjig5d8wj1l"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answer describes making the daily plan for a six-person canteen kitchen team and guiding two trainees.",
+      "fi": "Vastauksessa kerrotaan kuuden hengen ruokalakeittiötiimin päiväsuunnitelman tekemisestä ja kahden harjoittelijan ohjaamisesta.",
+      "sv": "Svaret beskriver daglig planering för ett sexpersoners team i ett matsalskök och handledning av två praktikanter."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "requirementId": "req_js2s0f9snmb1"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes daily cutting, cooking and preparation for about two hundred portions, with most working time spent on practical kitchen tasks.",
+      "fi": "Vastauksessa kerrotaan päivittäisestä leikkaamisesta, kypsentämisestä ja valmistelusta noin kahdelle sadalle annokselle; suurin osa työajasta käytetään käytännön keittiötyöhön.",
+      "sv": "Svaret beskriver daglig skärning, tillagning och förberedelse för cirka tvåhundra portioner, med största delen av arbetstiden i praktiskt köksarbete."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_emc30rjjfhov"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes preparing a replacement chicken lunch that was served on time, plus using trimmings for flavourful soups and stocks without waste.",
+      "fi": "Vastauksessa kerrotaan korvaavan kanalounaan valmistamisesta aikataulussa sekä tähteiden käyttämisestä maukkaisiin keittoihin ja liemiin ilman hävikkiä.",
+      "sv": "Svaret beskriver en ersättande kycklinglunch som serverades i tid samt användning av rester i smakrika soppor och buljonger utan svinn."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_y91umzqxejz4"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answer describes daily planning and hands-on cutting and cooking guidance for two trainees, without a measured change or team-inspiration example.",
+      "fi": "Vastauksessa kerrotaan päivittäisestä suunnittelusta ja kahden harjoittelijan käytännön leikkaus- ja kypsennysopetuksesta, ilman mitattua muutosta tai tiimin innostamisesimerkkiä.",
+      "sv": "Svaret beskriver daglig planering och praktisk handledning i skärning och tillagning för två praktikanter, utan uppmätt förändring eller exempel på inspiration."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_naip0vxuc7r4"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer links trainee guidance, cost control and trimmings use with a menu change that kept lunch on time and avoided waste.",
+      "fi": "Vastaus yhdistää harjoittelijoiden ohjauksen, kustannusten hallinnan ja tähteiden hyödyntämisen ruokalistan muutokseen, joka piti lounaan aikataulussa ja vältti hävikkiä.",
+      "sv": "Svaret kopplar praktikanthandledning, kostnadskontroll och restanvändning till en menyändring som höll lunchen i tid och undvek svinn."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 5,
+       "sentenceFrom": 5
+      }
+     ],
+     "requirementId": "req_uadqqzwgvr7y"
+    }
+   ],
+   "summary": {
+    "en": "The answers give concrete examples of leading a canteen team, hands-on cooking, scratch lunch preparation, trainee guidance, and cost-conscious business support. They do not show the required head chef or shift supervisor experience.",
+    "fi": "Vastauksissa on konkreettisia esimerkkejä ruokalatiimin johtamisesta, käytännön ruoanlaitosta, alusta asti valmistetusta lounaasta, harjoittelijoiden ohjauksesta ja kustannuksia huomioivasta liiketoiminnan tukemisesta. Niissä ei ole vaadittua kokemusta keittiömestarin tai vuoromestarin tehtävistä.",
+    "sv": "Svaren ger konkreta exempel på att leda ett matsalsteam, praktisk matlagning, lunch tillagad från grunden, praktikanthandledning och kostnadsmedvetet affärsstöd. De visar inte den erforderliga erfarenheten som kökschef eller skiftledare."
+   },
+   "assessedAt": "2026-11-14T12:57:23.811Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T12:56:24.465Z",
+  "submittedAt": "2026-11-14T12:57:04.753Z",
+  "assessedAt": "2026-11-14T12:57:23.811Z"
+ },
+ {
+  "id": "app_ke80b653hnwl",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_e3c5756883c74559b8e0c68f59971d31",
+  "companyId": "co_demo01",
+  "status": "assessed",
+  "plan": {
+   "lang": "fi",
+   "needCardId": "nc_ncivfnx96sx2",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "Fluent Excel skills",
+     "wording": "model",
+     "category": "skill",
+     "question": "Kerro työtehtävästä, jossa käytit Exceliä. Mitä teit itse taulukolla tai tiedoilla?",
+     "requirementId": "req_nu7vil3es3h5",
+     "postingSentence": 11
+    },
+    {
+     "kind": "must",
+     "text": "Willingness to learn and expand skills beyond routine bookkeeping",
+     "wording": "model",
+     "category": "other",
+     "question": "Kerro kerrasta, jolloin opit uuden asian tavanomaisen kirjanpidon ulkopuolella. Mitä teit itse oppiaksesi ja ottaaksesi uuden tehtävän haltuun?",
+     "requirementId": "req_qcanepviyy3z",
+     "postingSentence": 14
+    },
+    {
+     "kind": "must",
+     "text": "Customer service attitude and clear, friendly communication",
+     "wording": "model",
+     "category": "skill",
+     "question": "Kerro asiakaspalvelutilanteesta, jossa selkeytit asiakkaalle vaikeaa asiaa. Mitä sanoit tai teit viestiäksesi selkeästi ja ystävällisesti?",
+     "requirementId": "req_mk18fxtn7em3",
+     "postingSentence": 16
+    },
+    {
+     "kind": "must",
+     "text": "Investigate questions and follow issues through to completion",
+     "wording": "model",
+     "category": "other",
+     "question": "Kerro asiakkaan kysymyksestä, johon et tiennyt vastausta heti. Miten selvitit asian ja varmistit, että se hoidettiin loppuun asti?",
+     "requirementId": "req_gm3y4y93z6sf",
+     "postingSentence": 17
+    },
+    {
+     "kind": "must",
+     "text": "Accuracy and responsibility",
+     "wording": "model",
+     "category": "other",
+     "question": "Kerro kirjanpitoon liittyvästä tehtävästä, jossa tarkkuus ja vastuullisuus olivat tärkeitä. Miten tarkistit oman työsi ja hoidit sen loppuun?",
+     "requirementId": "req_mdo3oj1164xh",
+     "postingSentence": 18
+    },
+    {
+     "kind": "must",
+     "text": "Confidence to take on varied tasks",
+     "wording": "model",
+     "category": "other",
+     "question": "Kerro työpäivästä, jona otit rohkeasti haltuun erilaisia tehtäviä. Miten vaihdoit tehtävästä toiseen ja pidit työt hallinnassa?",
+     "requirementId": "req_5kymalfofubo",
+     "postingSentence": 18
+    }
+   ],
+   "needCardVersion": 2
+  },
+  "state": {
+   "noted": {
+    "req_5kymalfofubo": [
+     {
+      "turnIndex": 11,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     }
+    ],
+    "req_gm3y4y93z6sf": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "req_mk18fxtn7em3": [
+     {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     }
+    ],
+    "req_nu7vil3es3h5": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "req_qcanepviyy3z": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_5kymalfofubo": "answered",
+    "req_gm3y4y93z6sf": "answered",
+    "req_mdo3oj1164xh": "answered",
+    "req_mk18fxtn7em3": "answered",
+    "req_nu7vil3es3h5": "answered",
+    "req_qcanepviyy3z": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answer describes daily Excel trend and statistical analysis and comparing batch moisture data to identify variation behind rising rejects.",
+      "fi": "Vastaus kuvaa Excelin päivittäistä käyttöä trendeihin ja tilastollisiin tarkasteluihin sekä erien kosteustietojen vertailua hylkäysmäärän kasvun syyn selvittämiseksi.",
+      "sv": "Svaret beskriver daglig Excel-användning för trender och statistiska analyser samt jämförelse av partiers fuktdatan för att identifiera orsaken till ökade utskott."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_nu7vil3es3h5"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes learning sampling and measurements, applying them to find moisture variation, and instructing operators, after which rejects fell.",
+      "fi": "Vastaus kuvaa näytteenoton ja mittausten oppimista, niiden soveltamista kosteusvaihtelun löytämiseen sekä käyttäjien ohjeistamista, minkä jälkeen hylkäysmäärä laski.",
+      "sv": "Svaret beskriver inlärning av provtagning och mätningar, tillämpning för att hitta fuktvariationer samt instruktioner till operatörerna, varefter utskottet minskade."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_qcanepviyy3z"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answer describes explaining to line operators how moisture variation caused defects, but gives no customer-service example.",
+      "fi": "Vastaus kuvaa linjan käyttäjille selittämistä siitä, miten raaka-aineen kosteusvaihtelu aiheutti vikoja, mutta ei sisällä asiakaspalveluesimerkkiä.",
+      "sv": "Svaret beskriver hur operatörerna fick en förklaring till att fuktvariationer orsakade fel, men innehåller inget exempel från kundservice."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "requirementId": "req_mk18fxtn7em3"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answer describes investigating an unexplained production defect by reviewing temperature logs, but the shown text does not describe completion.",
+      "fi": "Vastaus kuvaa selittämättömän tuotantovian selvittämistä lämpötilalokien avulla, mutta näytetty teksti ei kerro asian viemisestä loppuun.",
+      "sv": "Svaret beskriver utredning av ett oförklarat produktionsfel genom granskning av temperaturloggar, men den visade texten beskriver inte avslutandet."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_gm3y4y93z6sf"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answer describes a quality-defect investigation requiring accuracy, but gives no bookkeeping example or details of checking the work.",
+      "fi": "Vastaus kuvaa tarkkuutta vaatinutta laatuvian selvittämistä, mutta ei sisällä kirjanpitoesimerkkiä eikä tietoja oman työn tarkistamisesta.",
+      "sv": "Svaret beskriver en kvalitetsfelsutredning som krävde noggrannhet, men innehåller inget bokföringsexempel eller uppgifter om kontroll av arbetet."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "requirementId": "req_mdo3oj1164xh"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answer concerns fixing a drying step and does not describe varied tasks or switching between them.",
+      "fi": "Vastaus käsittelee kuivausvaiheen korjaamista eikä kuvaa erilaisia tehtäviä tai niiden välillä vaihtamista.",
+      "sv": "Svaret handlar om att åtgärda ett torksteg och beskriver inte varierande uppgifter eller växling mellan dem."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_5kymalfofubo"
+    }
+   ],
+   "summary": {
+    "en": "The answers give concrete examples of Excel analysis, learning laboratory work, technical communication, defect investigation, and accuracy in quality work. They do not address taking on varied tasks or switching between them.",
+    "fi": "Vastaukset sisältävät konkreettisia esimerkkejä Excel-analyysistä, laboratoriotyön oppimisesta, teknisestä viestinnästä, vian selvittämisestä ja tarkkuudesta laatutyössä. Ne eivät käsittele erilaisten tehtävien ottamista haltuun tai niiden välillä vaihtamista.",
+    "sv": "Svaren ger konkreta exempel på Excel-analys, inlärning av laboratoriearbete, teknisk kommunikation, felsutredning och noggrannhet i kvalitetsarbete. De behandlar inte att ta sig an varierande uppgifter eller växla mellan dem."
+   },
+   "assessedAt": "2026-11-14T12:58:56.229Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T12:57:21.110Z",
+  "submittedAt": "2026-11-14T12:58:21.081Z",
+  "assessedAt": "2026-11-14T12:58:56.229Z"
+ },
+ {
+  "id": "app_d5s3youxq5ra",
+  "talentId": "tal_43fbkeofwipr",
+  "jobId": "job_tmt_702a75ef8be2443e8d52f26dae3b9d20",
+  "companyId": "co_demo02",
+  "status": "assessed",
+  "plan": {
+   "lang": "fi",
+   "needCardId": "nc_nyapvx03ehau",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "Suitable experience in social and health care customer work",
+     "wording": "model",
+     "category": "experience",
+     "question": "Kerro sosiaali- ja terveysalan asiakastyöstä, jota olet tehnyt. Mikä oli oma roolisi ja mitä teit asiakkaan hyväksi?",
+     "requirementId": "req_a3u97efwsicu",
+     "postingSentence": 31
+    },
+    {
+     "kind": "must",
+     "text": "Experience in home care, needs assessment, coordination or client responsibility",
+     "wording": "model",
+     "category": "experience",
+     "question": "Kerro, miten olet arvioinut asiakkaan palvelutarvetta kotihoidossa tai kotipalveluissa. Mitä teit itse arvioinnissa ja työn koordinoinnissa?",
+     "requirementId": "req_iye900ivhxm7",
+     "postingSentence": 41
+    },
+    {
+     "kind": "nice",
+     "text": "Independent and responsible approach to work",
+     "wording": "model",
+     "category": "other",
+     "question": "Kerro tilanteesta, jossa teit asiakastyötä itsenäisesti ja vastasit sen etenemisestä. Mitä päätöksiä teit itse ja miten varmistit työn valmistumisen?",
+     "requirementId": "req_d1lepm7m4dn6",
+     "postingSentence": 33
+    },
+    {
+     "kind": "nice",
+     "text": "Good interpersonal and organisational skills",
+     "wording": "model",
+     "category": "skill",
+     "question": "Kerro tilanteesta, jossa organisoit asiakastyötä ja teit yhteistyötä useiden ihmisten kanssa. Mitä teit itse, jotta yhteistyö ja työnjako sujuivat?",
+     "requirementId": "req_fu7ol3ldv3z0",
+     "postingSentence": 34
+    },
+    {
+     "kind": "nice",
+     "text": "Customer-oriented and solution-focused working style",
+     "wording": "model",
+     "category": "other",
+     "question": "Kerro asiakastyön tilanteesta, jossa etsit ratkaisun asiakkaan tarpeeseen. Mitä teit itse ja miten ratkaisu auttoi asiakasta?",
+     "requirementId": "req_kje7kdacxb9o",
+     "postingSentence": 35
+    },
+    {
+     "kind": "nice",
+     "text": "Interest in service sales, marketing and customer acquisition",
+     "wording": "model",
+     "category": "skill",
+     "question": "Kerro, miten olet osallistunut palveluiden myyntiin, markkinointiin tai asiakashankintaan. Mitä teit itse ja mitä siitä seurasi?",
+     "requirementId": "req_4jcimh6966ie",
+     "postingSentence": 36
+    }
+   ],
+   "needCardVersion": 2
+  },
+  "state": {
+   "noted": {
+    "req_a3u97efwsicu": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_d1lepm7m4dn6": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     }
+    ],
+    "req_fu7ol3ldv3z0": [
+     {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "req_iye900ivhxm7": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "req_kje7kdacxb9o": [
+     {
+      "turnIndex": 11,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_4jcimh6966ie": "answered",
+    "req_a3u97efwsicu": "answered",
+    "req_d1lepm7m4dn6": "answered",
+    "req_fu7ol3ldv3z0": "answered",
+    "req_iye900ivhxm7": "answered",
+    "req_kje7kdacxb9o": "answered"
+   },
+   "followUps": {
+    "req_iye900ivhxm7": 1
+   }
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answers describe seven years of home-care nursing, including medication, wound care, monitoring, documentation and visit planning, without a specific outcome.",
+      "fi": "Vastaukset kuvaavat seitsemän vuoden kotihoidon sairaanhoitajatyötä, lääkitystä, haavanhoitoa, seurantaa, kirjaamista ja käyntien suunnittelua ilman konkreettista lopputulosta.",
+      "sv": "Svaren beskriver sju års arbete som sjukskötare inom hemvården med medicinering, sårvård, uppföljning, dokumentation och planering, utan ett konkret resultat."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_a3u97efwsicu"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The home-care example describes assessing fall risk through the medication list, contacting the doctor and informing others, after which the falls stopped.",
+      "fi": "Kotihoidon esimerkissä kaatumisriskiä arvioitiin lääkelistan avulla, lääkäriin otettiin yhteyttä ja muille tiedotettiin, minkä jälkeen kaatumiset loppuivat.",
+      "sv": "Exemplet från hemvården beskriver hur fallrisken bedömdes via medicinlistan, läkaren kontaktades och andra informerades, varefter fallen upphörde."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_iye900ivhxm7"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The home-care example describes independently reviewing medicines, contacting the doctor and completing documentation and handover, after which the falls stopped.",
+      "fi": "Kotihoidon esimerkissä lääkitys käytiin itsenäisesti läpi, lääkäriin otettiin yhteyttä sekä kirjaus ja tiedonvälitys hoidettiin, minkä jälkeen kaatumiset loppuivat.",
+      "sv": "Exemplet från hemvården beskriver en självständig medicingenomgång, läkarkontakt samt dokumentation och informationsöverföring, varefter fallen upphörde."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_d1lepm7m4dn6"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The example describes coordinating a medication change with the doctor and updating relatives and colleagues through records and handover, after which the falls stopped.",
+      "fi": "Esimerkissä lääkitysmuutos järjestettiin lääkärin kanssa ja omaiset sekä kollegat tiedotettiin kirjauksen ja vuoronvaihdon kautta, minkä jälkeen kaatumiset loppuivat.",
+      "sv": "Exemplet beskriver hur medicinändringen samordnades med läkaren och anhöriga samt kollegor informerades genom dokumentation och skiftöverlämning, varefter fallen upphörde."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_fu7ol3ldv3z0"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The example describes identifying a medication-related cause of falls, arranging a change with the doctor and informing others, which ended the falls.",
+      "fi": "Esimerkissä kaatumisten lääkitykseen liittyvä syy tunnistettiin, muutos järjestettiin lääkärin kanssa ja muille tiedotettiin, minkä jälkeen kaatumiset loppuivat.",
+      "sv": "Exemplet beskriver hur en medicinrelaterad orsak till fallen identifierades, en ändring ordnades med läkaren och andra informerades, vilket fick fallen att upphöra."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 11,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_kje7kdacxb9o"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers state no participation in service sales, marketing or customer acquisition.",
+      "fi": "Vastauksissa todetaan, ettei osallistumista palveluiden myyntiin, markkinointiin tai asiakashankintaan ole.",
+      "sv": "Svaren anger ingen medverkan i försäljning av tjänster, marknadsföring eller kundanskaffning."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_4jcimh6966ie"
+    }
+   ],
+   "summary": {
+    "en": "The answers give concrete examples for social and health care customer work, home-care needs assessment and coordination, independent responsibility, interpersonal and organisational skills, and customer-oriented problem solving. They do not speak to service sales, marketing or customer acquisition.",
+    "fi": "Vastaukset sisältävät konkreettisia esimerkkejä sosiaali- ja terveysalan asiakastyöstä, kotihoidon palvelutarpeen arvioinnista ja koordinoinnista, itsenäisestä vastuusta, vuorovaikutus- ja organisointitaidoista sekä asiakaslähtöisestä ongelmanratkaisusta. Ne eivät käsittele palveluiden myyntiä, markkinointia tai asiakashankintaa.",
+    "sv": "Svaren ger konkreta exempel på kundarbete inom social- och hälsovården, behovsbedömning och samordning inom hemvården, självständigt ansvar, samarbets- och organisationsförmåga samt kundorienterad problemlösning. De behandlar inte försäljning av tjänster, marknadsföring eller kundanskaffning."
+   },
+   "assessedAt": "2026-11-14T13:00:32.009Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T12:59:11.046Z",
+  "submittedAt": "2026-11-14T12:59:55.270Z",
+  "assessedAt": "2026-11-14T13:00:32.009Z"
+ },
+ {
+  "id": "app_jlghslcopnsi",
+  "talentId": "tal_8ttxss4rfn1c",
+  "jobId": "job_tmt_702a75ef8be2443e8d52f26dae3b9d20",
+  "companyId": "co_demo02",
+  "status": "assessed",
+  "plan": {
+   "lang": "en",
+   "needCardId": "nc_nyapvx03ehau",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "Suitable experience in social and health care customer work",
+     "wording": "model",
+     "category": "experience",
+     "question": "Describe a time you worked directly with customers in social and health care. What were your own responsibilities, and what customer work did you carry out?",
+     "requirementId": "req_a3u97efwsicu",
+     "postingSentence": 31
+    },
+    {
+     "kind": "must",
+     "text": "Experience in home care, needs assessment, coordination or client responsibility",
+     "wording": "model",
+     "category": "experience",
+     "question": "Tell us about your experience with home care, service needs assessment, work coordination, or client responsibility. Describe one example and what you did yourself.",
+     "requirementId": "req_iye900ivhxm7",
+     "postingSentence": 41
+    },
+    {
+     "kind": "nice",
+     "text": "Independent and responsible approach to work",
+     "wording": "model",
+     "category": "other",
+     "question": "Describe a time you managed your client work independently and responsibly. What decisions did you make, and how did you make sure your tasks were completed?",
+     "requirementId": "req_d1lepm7m4dn6",
+     "postingSentence": 33
+    },
+    {
+     "kind": "nice",
+     "text": "Good interpersonal and organisational skills",
+     "wording": "model",
+     "category": "skill",
+     "question": "Give an example of a time you organised client services while working with customers, relatives, or other professionals. How did you communicate and organise the work?",
+     "requirementId": "req_fu7ol3ldv3z0",
+     "postingSentence": 34
+    },
+    {
+     "kind": "nice",
+     "text": "Customer-oriented and solution-focused working style",
+     "wording": "model",
+     "category": "other",
+     "question": "Describe a time you solved a customer's problem in a customer-oriented and solution-focused way. What was the situation, and what did you do?",
+     "requirementId": "req_kje7kdacxb9o",
+     "postingSentence": 35
+    },
+    {
+     "kind": "nice",
+     "text": "Interest in service sales, marketing and customer acquisition",
+     "wording": "model",
+     "category": "skill",
+     "question": "Tell us about a time you took part in service sales, marketing, or customer acquisition. What did you do yourself, and what interested you about the work?",
+     "requirementId": "req_4jcimh6966ie",
+     "postingSentence": 36
+    }
+   ],
+   "needCardVersion": 2
+  },
+  "state": {
+   "noted": {
+    "req_d1lepm7m4dn6": [
+     {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 6,
+      "sentenceFrom": 6
+     }
+    ],
+    "req_fu7ol3ldv3z0": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_iye900ivhxm7": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     }
+    ],
+    "req_kje7kdacxb9o": [
+     {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_4jcimh6966ie": "answered",
+    "req_a3u97efwsicu": "answered",
+    "req_d1lepm7m4dn6": "answered",
+    "req_fu7ol3ldv3z0": "answered",
+    "req_iye900ivhxm7": "answered",
+    "req_kje7kdacxb9o": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers state there is no direct social and health care customer work; the example concerns online electronics customer service.",
+      "fi": "Vastauksissa todetaan, ettei suoraa sosiaali- ja terveysalan asiakastyötä ole; esimerkki koskee verkkokaupan elektroniikka-asiakaspalvelua.",
+      "sv": "Svaren anger att det inte finns direkt kundarbete inom social- och hälsovården; exemplet gäller kundservice för en elektronikwebbutik."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_a3u97efwsicu"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The example describes owning a missing-laptop case, coordinating the pick-up point and courier, and achieving same-evening delivery outside home care.",
+      "fi": "Esimerkissä henkilö vastasi kadonneesta kannettavasta, koordinoi noutopistettä ja lähettiä sekä järjesti toimituksen samaksi illaksi kotihoidon ulkopuolella.",
+      "sv": "Exemplet beskriver ansvar för ett försvunnet laptopärende, samordning med utlämningsställe och bud samt leverans samma kväll utanför hemvården."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 5,
+       "sentenceFrom": 5
+      }
+     ],
+     "requirementId": "req_iye900ivhxm7"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The example describes independently tracing a parcel, deciding on courier delivery, informing the customer, and documenting the completed case.",
+      "fi": "Esimerkissä henkilö itsenäisesti jäljitti paketin, päätti lähettitoimituksesta, tiedotti asiakasta ja dokumentoi saatettua tapausta.",
+      "sv": "Exemplet beskriver hur personen självständigt spårade paketet, beslutade om budleverans, informerade kunden och dokumenterade det avslutade ärendet."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 5,
+       "sentenceFrom": 5
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 6,
+       "sentenceFrom": 6
+      }
+     ],
+     "requirementId": "req_d1lepm7m4dn6"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The example describes organising a same-evening courier with the pick-up point and communicating the resolution to the customer and next agent.",
+      "fi": "Esimerkissä henkilö organisoi lähettitoimituksen samaksi illaksi noutopisteen kanssa ja tiedotti ratkaisusta asiakasta sekä seuraavaa käsittelijää.",
+      "sv": "Exemplet beskriver hur personen organiserade budleverans samma kväll med utlämningsstället och informerade kunden och nästa handläggare om lösningen."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_fu7ol3ldv3z0"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The example describes resolving an angry customer’s missing delivery through tracking, coordination, same-evening courier delivery, and a clear explanation.",
+      "fi": "Esimerkissä henkilö ratkaisi vihastuneen asiakkaan puuttuvan toimituksen jäljittämällä paketin, koordinoimalla saman illan lähettitoimituksen ja selittämällä tilanteen.",
+      "sv": "Exemplet beskriver hur en arg kunds uteblivna leverans löstes genom spårning, samordning, budleverans samma kväll och en tydlig förklaring."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_kje7kdacxb9o"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers state there is no experience of service sales, marketing, or customer acquisition; the example concerns resolving a delivery problem.",
+      "fi": "Vastauksissa todetaan, ettei kokemusta palvelumyynnistä, markkinoinnista tai asiakashankinnasta ole; esimerkki koskee toimitusongelman ratkaisua.",
+      "sv": "Svaren anger att det inte finns erfarenhet av tjänsteförsäljning, marknadsföring eller kundanskaffning; exemplet gäller lösning av ett leveransproblem."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_4jcimh6966ie"
+    }
+   ],
+   "summary": {
+    "en": "Concrete examples cover client-case coordination, independent responsible work, interpersonal organisation, and customer-oriented problem solving. The answers do not cover social and health care customer work or service sales, marketing, and customer acquisition.",
+    "fi": "Konkreettiset esimerkit koskevat asiakastapauksen koordinointia, itsenäistä vastuullista työtä, vuorovaikutusta ja organisointia sekä asiakaslähtöistä ongelmanratkaisua. Vastaukset eivät käsittele sosiaali- ja terveysalan asiakastyötä tai palvelumyyntiä, markkinointia ja asiakashankintaa.",
+    "sv": "Konkreta exempel omfattar samordning av kundärenden, självständigt ansvarsfullt arbete, samspel och organisering samt kundorienterad problemlösning. Svaren behandlar inte kundarbete inom social- och hälsovården eller tjänsteförsäljning, marknadsföring och kundanskaffning."
+   },
+   "assessedAt": "2026-11-14T13:01:25.372Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T13:00:38.257Z",
+  "submittedAt": "2026-11-14T13:01:03.854Z",
+  "assessedAt": "2026-11-14T13:01:25.372Z"
+ },
+ {
+  "id": "app_68zamzrmxw05",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_9f7e2a6793fc48ac983d6e0c4fc98560",
+  "companyId": "co_demo04",
+  "status": "assessed",
+  "plan": {
+   "lang": "en",
+   "needCardId": "nc_pocgnfgt3lvr",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "Solution-focused approach and enthusiasm for new technologies",
+     "wording": "model",
+     "category": "other",
+     "question": "Describe a time you used a new technology to develop a product or technical solution in a customer project. What did you do yourself?",
+     "requirementId": "req_uo60yhgvrz2j",
+     "postingSentence": 11
+    },
+    {
+     "kind": "must",
+     "text": "Curious, proactive and practical problem-solving skills",
+     "wording": "model",
+     "category": "other",
+     "question": "Describe a mechanical design problem you identified and moved forward with customers or colleagues. How did you investigate it, and what practical solution did you deliver?",
+     "requirementId": "req_c5dl2h0h1v1r",
+     "postingSentence": 12
+    },
+    {
+     "kind": "must",
+     "text": "Suitable technical higher education degree, such as mechanical engineering",
+     "wording": "model",
+     "category": "education",
+     "question": "Describe your technical higher education, such as a mechanical engineering degree, and one design project you completed during your studies.",
+     "requirementId": "req_zr4jpxovdbas",
+     "postingSentence": 15
+    },
+    {
+     "kind": "must",
+     "text": "Experience in mechanical design in product development or industry",
+     "wording": "model",
+     "category": "experience",
+     "question": "Describe a mechanical design you worked on in a product development or industrial setting. What was your own role from concept to finished design?",
+     "requirementId": "req_fx5vo7d2n82n",
+     "postingSentence": 16
+    },
+    {
+     "kind": "must",
+     "text": "Knowledge of 3D CAD and PDM/PLM systems, such as the company, SolidWorks or NX",
+     "wording": "model",
+     "category": "skill",
+     "question": "Describe a project where you used 3D CAD and a PDM/PLM system, such as SolidWorks or NX. What did you model, and how did you manage the design data?",
+     "requirementId": "req_2szmrmaz1znc",
+     "postingSentence": 17
+    },
+    {
+     "kind": "must",
+     "text": "Knowledge of materials, manufacturing methods and product structures",
+     "wording": "model",
+     "category": "skill",
+     "question": "Describe a product structure you designed. How did you choose its materials and manufacturing methods, and what did you change based on those choices?",
+     "requirementId": "req_yf8ljim3ly9j",
+     "postingSentence": 19
+    }
+   ],
+   "needCardVersion": 2
+  },
+  "state": {
+   "noted": {
+    "req_2szmrmaz1znc": [
+     {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_c5dl2h0h1v1r": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     }
+    ],
+    "req_fx5vo7d2n82n": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     }
+    ],
+    "req_uo60yhgvrz2j": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_yf8ljim3ly9j": [
+     {
+      "turnIndex": 11,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     }
+    ],
+    "req_zr4jpxovdbas": [
+     {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_2szmrmaz1znc": "answered",
+    "req_c5dl2h0h1v1r": "answered",
+    "req_fx5vo7d2n82n": "answered",
+    "req_uo60yhgvrz2j": "answered",
+    "req_yf8ljim3ly9j": "answered",
+    "req_zr4jpxovdbas": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 2,
+     "reason": {
+      "en": "The pump housing redesign is a concrete solution-focused example, but the answer states that no new technology was used in a customer project.",
+      "fi": "Pumppurungon uudelleensuunnittelu on konkreettinen ratkaisukeskeinen esimerkki, mutta vastauksessa todetaan, ettei uutta teknologiaa ole käytetty asiakasprojektissa.",
+      "sv": "Omkonstruktionen av pumphuset är ett konkret lösningsinriktat exempel, men svaret anger att ingen ny teknik användes i ett kundprojekt."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_uo60yhgvrz2j"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "Working with test engineers, the person used finite element analysis, changed the housing geometry, checked flow, and achieved a first-pass pressure test.",
+      "fi": "Henkilö työskenteli testausinsinöörien kanssa, käytti elementtimenetelmää, muutti rungon geometriaa, tarkisti virtauksen ja sai rungon läpäisemään painetestin heti.",
+      "sv": "Personen arbetade med testingenjörer, använde finita elementanalys, ändrade husets geometri, kontrollerade flödet och fick godkänt trycktest direkt."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 5,
+       "sentenceFrom": 5
+      }
+     ],
+     "requirementId": "req_c5dl2h0h1v1r"
+    },
+    {
+     "level": 1,
+     "reason": {
+      "en": "The answer states a master’s degree but gives no subject or study design project; the example concerns later pump work.",
+      "fi": "Vastauksessa mainitaan maisterintutkinto, mutta ei sen alaa tai opintoihin kuuluvaa suunnitteluprojektia; esimerkki koskee myöhempää pumppujen parissa tehtyä työtä.",
+      "sv": "Svaret anger en masterexamen men inte ämnet eller något designprojekt från studierna; exemplet gäller senare arbete med pumpar."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "requirementId": "req_zr4jpxovdbas"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The person owned an industrial pump housing redesign, performed analysis and SolidWorks modelling, managed drawings, and achieved a successful first prototype pressure test.",
+      "fi": "Henkilö vastasi teollisen pumppurungon uudelleensuunnittelusta, teki analyysit ja SolidWorks-mallinnuksen, hallinnoi piirustuksia ja sai prototyypin läpäisemään painetestin heti.",
+      "sv": "Personen ansvarade för omkonstruktionen av ett industripumphus, gjorde analyser och SolidWorks-modellering, hanterade ritningar och fick godkänt trycktest för första prototypen."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 5,
+       "sentenceFrom": 5
+      }
+     ],
+     "requirementId": "req_fx5vo7d2n82n"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes SolidWorks modelling of the housing and controlled drawings and revisions in PDM, ending with a successful pressure test.",
+      "fi": "Vastaus kuvaa rungon SolidWorks-mallinnusta sekä piirustusten ja versioiden hallintaa PDM-järjestelmässä, ja uusi runko läpäisi painetestin.",
+      "sv": "Svaret beskriver SolidWorks-modellering av huset samt kontrollerade ritningar och revisioner i PDM, vilket slutade med ett godkänt trycktest."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_2szmrmaz1znc"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes designing pump housings and impellers and changing housing geometry with a tested outcome, but not choosing materials or manufacturing methods.",
+      "fi": "Vastaus kuvaa pumppurunkojen ja juoksupyörien suunnittelua sekä rungon geometrian muutosta ja testattua tulosta, mutta ei materiaalien tai valmistusmenetelmien valintaa.",
+      "sv": "Svaret beskriver konstruktion av pumphus och pumphjul samt ändrad husgeometri med testat resultat, men inte val av material eller tillverkningsmetoder."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 11,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 5,
+       "sentenceFrom": 5
+      }
+     ],
+     "requirementId": "req_yf8ljim3ly9j"
+    }
+   ],
+   "summary": {
+    "en": "The answers give concrete examples for solution-focused redesign, practical problem-solving, industrial mechanical design, 3D CAD/PDM, and pump product structures. Technical higher education is stated without its subject, and new technology use and material or manufacturing selection are not described.",
+    "fi": "Vastaukset antavat konkreettisia esimerkkejä ratkaisukeskeisestä uudelleensuunnittelusta, käytännön ongelmanratkaisusta, teollisesta mekaniikkasuunnittelusta, 3D CAD/PDM-käytöstä ja pumppujen tuoterakenteista. Tekninen korkeakoulututkinto mainitaan ilman alaa, eikä uuden teknologian käyttöä tai materiaalien ja valmistusmenetelmien valintaa kuvata.",
+    "sv": "Svaren ger konkreta exempel på lösningsinriktad omkonstruktion, praktisk problemlösning, industriell maskinkonstruktion, 3D CAD/PDM och pumparproduktstrukturer. Teknisk högskoleutbildning anges utan ämne, medan användning av ny teknik och val av material eller tillverkningsmetoder inte beskrivs."
+   },
+   "assessedAt": "2026-11-14T13:02:38.293Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T13:01:32.540Z",
+  "submittedAt": "2026-11-14T13:01:58.889Z",
+  "assessedAt": "2026-11-14T13:02:38.293Z"
+ },
+ {
+  "id": "app_yqptlppx7izr",
+  "talentId": "tal_i210th809pqh",
+  "jobId": "job_tmt_9a60f81e576f49b69597183bd0095710",
+  "companyId": "co_demo05",
+  "status": "assessed",
+  "plan": {
+   "lang": "en",
+   "needCardId": "nc_hvpjp4wzxq8s",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "Energetic, solution-oriented, and effective in fast-moving projects",
+     "wording": "model",
+     "category": "other",
+     "question": "Tell us about a fast-moving project where you had to stay solution-oriented. What did you do yourself to keep the work moving?",
+     "requirementId": "req_7a8nasiy2om0",
+     "postingSentence": 23
+    },
+    {
+     "kind": "must",
+     "text": "B.Sc. or M.Sc. in Electrical Engineering or a related field",
+     "wording": "model",
+     "category": "education",
+     "question": "What is your B.Sc. or M.Sc. degree in, and how have you applied your Electrical Engineering or related studies in your work?",
+     "requirementId": "req_4pngjc325jv2",
+     "postingSentence": 25
+    },
+    {
+     "kind": "must",
+     "text": "Understanding of electrical distribution systems and infrastructure projects",
+     "wording": "model",
+     "category": "skill",
+     "question": "Describe your work on electrical distribution systems within an infrastructure project. What parts did you handle yourself?",
+     "requirementId": "req_u90r54ott79c",
+     "postingSentence": 26
+    },
+    {
+     "kind": "must",
+     "text": "Ability to review and evaluate technical solutions and documentation",
+     "wording": "model",
+     "category": "skill",
+     "question": "Tell us about a time you reviewed and evaluated a technical solution and its documentation. What did you examine, and what conclusions did you reach?",
+     "requirementId": "req_40u57xumdyer",
+     "postingSentence": 27
+    },
+    {
+     "kind": "must",
+     "text": "Strong analytical and problem-solving skills",
+     "wording": "model",
+     "category": "other",
+     "question": "Describe a difficult technical problem you solved through analysis. What steps did you take, and what was the result?",
+     "requirementId": "req_nu9bv4o7k8b9",
+     "postingSentence": 28
+    },
+    {
+     "kind": "must",
+     "text": "Good communication skills and ability to work with multiple stakeholders",
+     "wording": "model",
+     "category": "other",
+     "question": "Tell us about a project where you worked with multiple stakeholders. How did you communicate technical information and handle differing views?",
+     "requirementId": "req_dkjs0lgbeyux",
+     "postingSentence": 29
+    }
+   ],
+   "needCardVersion": 2
+  },
+  "state": {
+   "noted": {
+    "req_40u57xumdyer": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_7a8nasiy2om0": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_dkjs0lgbeyux": [
+     {
+      "turnIndex": 11,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     }
+    ],
+    "req_nu9bv4o7k8b9": [
+     {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_40u57xumdyer": "answered",
+    "req_4pngjc325jv2": "answered",
+    "req_7a8nasiy2om0": "answered",
+    "req_dkjs0lgbeyux": "answered",
+    "req_nu9bv4o7k8b9": "answered",
+    "req_u90r54ott79c": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answer describes acting quickly during a post-operative emergency, following protocol and documenting observations, leading to bleeding being found and further surgery.",
+      "fi": "Vastaus kuvaa nopeaa toimintaa leikkauksen jälkeisessä hätätilanteessa, protokollan noudattamista ja havaintojen kirjaamista, minkä jälkeen verenvuoto löytyi ja leikkaus uusittiin.",
+      "sv": "Svaret beskriver snabba åtgärder vid en postoperativ nödsituation, arbete enligt protokoll och dokumentation, varefter blödning upptäcktes och patienten opererades igen."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_7a8nasiy2om0"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers state that the qualification is in nursing rather than Electrical Engineering or a related field.",
+      "fi": "Vastausten mukaan koulutus on hoitotyöstä eikä sähkötekniikasta tai läheiseltä alalta.",
+      "sv": "Svaren anger att utbildningen är inom omvårdnad och inte elektroteknik eller ett närliggande område."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_4pngjc325jv2"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers state that there is no work experience with electrical distribution systems or infrastructure projects.",
+      "fi": "Vastausten mukaan työkokemusta sähkönjakelujärjestelmistä tai infrastruktuurihankkeista ei ole.",
+      "sv": "Svaren anger att det inte finns arbetslivserfarenhet av eldistributionssystem eller infrastrukturprojekt."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_u90r54ott79c"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "A clinical example describes assessing monitor readings and recorded observations, escalating care and starting fluids, but not reviewing an engineering solution or its documentation.",
+      "fi": "Kliinisessä esimerkissä arvioidaan monitorilukemia ja kirjattuja havaintoja, hälytetään lääkäri ja aloitetaan nesteytys, mutta ei arvioida teknistä ratkaisua tai sen dokumentaatiota.",
+      "sv": "Ett kliniskt exempel beskriver bedömning av monitorvärden och dokumenterade observationer, larm till läkare och vätskebehandling, men inte granskning av en teknisk lösning eller dess dokumentation."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_40u57xumdyer"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The clinical example describes comparing observations, using an early warning chart, escalating care and documenting findings, after which bleeding was found and treated surgically.",
+      "fi": "Kliinisessä esimerkissä verrataan havaintoja, käytetään varhaisen varoituksen taulukkoa, hälytetään lääkäri ja kirjataan löydökset, minkä jälkeen verenvuoto löytyi ja hoidettiin leikkauksella.",
+      "sv": "Det kliniska exemplet beskriver jämförelse av observationer, användning av ett tidigt varningsschema, larm och dokumentation, varefter blödning upptäcktes och behandlades kirurgiskt."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_nu9bv4o7k8b9"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The example describes coordinating post-operative care with several stakeholders, calling the doctor, sharing documented observations and explaining matters to families.",
+      "fi": "Esimerkissä koordinoidaan leikkauksen jälkeistä hoitoa useiden tahojen kanssa, hälytetään lääkäri, jaetaan kirjattuja havaintoja ja selitetään tilannetta omaisille.",
+      "sv": "Exemplet beskriver samordning av postoperativ vård med flera intressenter, kontakt med läkare, delning av dokumenterade observationer och enkla förklaringar till anhöriga."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 11,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_dkjs0lgbeyux"
+    }
+   ],
+   "summary": {
+    "en": "Concrete examples cover solution-oriented action under time pressure, clinical review of observations, analytical problem-solving, and communication with multiple care stakeholders. The answers do not speak to the required engineering degree or electrical distribution and infrastructure project experience.",
+    "fi": "Konkreettiset esimerkit käsittelevät ratkaisukeskeistä toimintaa aikapaineessa, havaintojen kliinistä arviointia, analyyttista ongelmanratkaisua ja viestintää useiden hoitotyön sidosryhmien kanssa. Vastaukset eivät käsittele vaadittua tekniikan tutkintoa tai kokemusta sähkönjakelusta ja infrastruktuurihankkeista.",
+    "sv": "Konkreta exempel beskriver lösningsorienterat arbete under tidspress, klinisk granskning av observationer, analytisk problemlösning och kommunikation med flera vårdintressenter. Svaren berör inte den erforderliga tekniska examen eller erfarenhet av eldistribution och infrastrukturprojekt."
+   },
+   "assessedAt": "2026-11-14T13:03:47.059Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T13:02:43.432Z",
+  "submittedAt": "2026-11-14T13:03:10.633Z",
+  "assessedAt": "2026-11-14T13:03:47.059Z"
+ },
+ {
+  "id": "app_1ed9atm3igfk",
+  "talentId": "tal_j54cox1yp9f0",
+  "jobId": "job_tmt_9a60f81e576f49b69597183bd0095710",
+  "companyId": "co_demo05",
+  "status": "assessed",
+  "plan": {
+   "lang": "en",
+   "needCardId": "nc_hvpjp4wzxq8s",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "Energetic, solution-oriented, and effective in fast-moving projects",
+     "wording": "model",
+     "category": "other",
+     "question": "Tell us about a fast-moving project where you had to stay solution-oriented. What did you do yourself to keep the work moving?",
+     "requirementId": "req_7a8nasiy2om0",
+     "postingSentence": 23
+    },
+    {
+     "kind": "must",
+     "text": "B.Sc. or M.Sc. in Electrical Engineering or a related field",
+     "wording": "model",
+     "category": "education",
+     "question": "What is your B.Sc. or M.Sc. degree in, and how have you applied your Electrical Engineering or related studies in your work?",
+     "requirementId": "req_4pngjc325jv2",
+     "postingSentence": 25
+    },
+    {
+     "kind": "must",
+     "text": "Understanding of electrical distribution systems and infrastructure projects",
+     "wording": "model",
+     "category": "skill",
+     "question": "Describe your work on electrical distribution systems within an infrastructure project. What parts did you handle yourself?",
+     "requirementId": "req_u90r54ott79c",
+     "postingSentence": 26
+    },
+    {
+     "kind": "must",
+     "text": "Ability to review and evaluate technical solutions and documentation",
+     "wording": "model",
+     "category": "skill",
+     "question": "Tell us about a time you reviewed and evaluated a technical solution and its documentation. What did you examine, and what conclusions did you reach?",
+     "requirementId": "req_40u57xumdyer",
+     "postingSentence": 27
+    },
+    {
+     "kind": "must",
+     "text": "Strong analytical and problem-solving skills",
+     "wording": "model",
+     "category": "other",
+     "question": "Describe a difficult technical problem you solved through analysis. What steps did you take, and what was the result?",
+     "requirementId": "req_nu9bv4o7k8b9",
+     "postingSentence": 28
+    },
+    {
+     "kind": "must",
+     "text": "Good communication skills and ability to work with multiple stakeholders",
+     "wording": "model",
+     "category": "other",
+     "question": "Tell us about a project where you worked with multiple stakeholders. How did you communicate technical information and handle differing views?",
+     "requirementId": "req_dkjs0lgbeyux",
+     "postingSentence": 29
+    }
+   ],
+   "needCardVersion": 2
+  },
+  "state": {
+   "noted": {
+    "req_40u57xumdyer": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "req_7a8nasiy2om0": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "req_dkjs0lgbeyux": [
+     {
+      "turnIndex": 11,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 5,
+      "sentenceFrom": 5
+     }
+    ],
+    "req_nu9bv4o7k8b9": [
+     {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_40u57xumdyer": "answered",
+    "req_4pngjc325jv2": "answered",
+    "req_7a8nasiy2om0": "answered",
+    "req_dkjs0lgbeyux": "answered",
+    "req_nu9bv4o7k8b9": "answered",
+    "req_u90r54ott79c": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes resolving a drawing mismatch during a fast-moving housing project by contacting designers immediately, allowing work to continue without breaking out concrete.",
+      "fi": "Vastaus kuvaa piirustusristiriidan ratkaisemista nopeatempoisessa asuinkohteessa ottamalla heti yhteyttä suunnittelijoihin, jolloin työt jatkuivat ilman betonin purkamista.",
+      "sv": "Svaret beskriver hur en ritningskonflikt löstes i ett snabbrörligt bostadsprojekt genom omedelbar designkontakt, så att arbetet fortsatte utan att betong bröts upp."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_7a8nasiy2om0"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers state that Electrical Engineering studies have not been completed and describe construction engineering drawing work instead.",
+      "fi": "Vastauksissa todetaan, ettei sähkötekniikan opintoja ole suoritettu, ja kuvataan sen sijaan rakennusteknistä piirustustyötä.",
+      "sv": "Svaren anger att inga elektrotekniska studier har genomförts och beskriver i stället byggtekniskt ritningsarbete."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_4pngjc325jv2"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "Nothing in the answers speaks to this requirement.",
+      "fi": "Vastauksissa ei puhuttu tästä vaatimuksesta.",
+      "sv": "Inget i svaren handlar om det här kravet."
+     },
+     "wording": "code",
+     "evidence": [],
+     "requirementId": "req_u90r54ott79c"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes overlaying structural and architectural drawings, identifying misplaced stairwell openings, obtaining corrected documentation, and preventing concrete breakout.",
+      "fi": "Vastaus kuvaa rakenne- ja arkkitehtipiirustusten päällekkäistarkistusta, porrashuoneaukkojen virheen löytämistä, dokumentaation korjaamista ja betonin purkamisen välttämistä.",
+      "sv": "Svaret beskriver överlagring av konstruktions- och arkitektritningar, upptäckt av felplacerade trapphusöppningar, korrigerad dokumentation och undviket betonguppbrytande."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_40u57xumdyer"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes analysing overlapping drawings, identifying conflicting stairwell openings, agreeing a correction with designers, and avoiding concrete breakout.",
+      "fi": "Vastaus kuvaa päällekkäisten piirustusten analysointia, porrashuoneaukkojen ristiriidan havaitsemista, korjauksesta sopimista suunnittelijoiden kanssa ja betonin purkamisen välttämistä.",
+      "sv": "Svaret beskriver analys av överlagrade ritningar, upptäckt av motstridiga trapphusöppningar, en korrigering överenskommen med projektörerna och undviket betonguppbrytande."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_nu9bv4o7k8b9"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answers describe agreeing a drawing correction with designers, leading site trades and subcontractors, using sketches to clarify plans, and reporting weekly to project and client representatives.",
+      "fi": "Vastaukset kuvaavat piirustuskorjauksesta sopimista suunnittelijoiden kanssa, työmaan ammattiryhmien ja aliurakoitsijoiden johtamista, luonnosten käyttöä suunnitelmien selventämiseen sekä viikoittaista raportointia hankkeen ja asiakkaan edustajille.",
+      "sv": "Svaren beskriver en ritningskorrigering överenskommen med projektörer, ledning av yrkesgrupper och underentreprenörer, skisser för att förtydliga planer samt veckovis rapportering till projektets och kundens representanter."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 5,
+       "sentenceFrom": 5
+      }
+     ],
+     "requirementId": "req_dkjs0lgbeyux"
+    }
+   ],
+   "summary": {
+    "en": "Concrete examples cover solution-oriented work in a fast-moving project, technical documentation review, analytical problem-solving, and communication with multiple stakeholders. The answers do not speak to an Electrical Engineering degree or electrical distribution systems in infrastructure projects.",
+    "fi": "Konkreettiset esimerkit kattavat ratkaisukeskeisen työn nopeatempoisessa hankkeessa, teknisen dokumentaation arvioinnin, analyyttisen ongelmanratkaisun ja viestinnän useiden sidosryhmien kanssa. Vastaukset eivät käsittele sähkötekniikan tutkintoa tai sähkönjakelujärjestelmiä infrastruktuurihankkeissa.",
+    "sv": "Konkreta exempel omfattar lösningsorienterat arbete i ett snabbrörligt projekt, granskning av teknisk dokumentation, analytisk problemlösning och kommunikation med flera intressenter. Svaren berör inte en elektroteknisk examen eller eldistributionssystem i infrastrukturprojekt."
+   },
+   "assessedAt": "2026-11-14T13:04:34.271Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T13:03:48.850Z",
+  "submittedAt": "2026-11-14T13:04:15.571Z",
+  "assessedAt": "2026-11-14T13:04:34.271Z"
+ },
+ {
+  "id": "app_hkeghzjvdjb2",
+  "talentId": "tal_8ttxss4rfn1c",
+  "jobId": "job_tmt_e3c5756883c74559b8e0c68f59971d31",
+  "companyId": "co_demo01",
+  "status": "assessed",
+  "plan": {
+   "lang": "en",
+   "needCardId": "nc_ncivfnx96sx2",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "Fluent Excel skills",
+     "wording": "model",
+     "category": "skill",
+     "question": "Tell us about a time you used Excel in your work. What did you build or do yourself, and which Excel features did you use?",
+     "requirementId": "req_nu7vil3es3h5",
+     "postingSentence": 11
+    },
+    {
+     "kind": "must",
+     "text": "Willingness to learn and expand skills beyond routine bookkeeping",
+     "wording": "model",
+     "category": "other",
+     "question": "Describe a time you learned a new skill that took you beyond routine bookkeeping. What did you learn, and how did you use it in your work?",
+     "requirementId": "req_qcanepviyy3z",
+     "postingSentence": 14
+    },
+    {
+     "kind": "must",
+     "text": "Customer service attitude and clear, friendly communication",
+     "wording": "model",
+     "category": "skill",
+     "question": "Describe a customer service situation where you had to explain something clearly and keep the communication friendly. What did you say and do?",
+     "requirementId": "req_mk18fxtn7em3",
+     "postingSentence": 16
+    },
+    {
+     "kind": "must",
+     "text": "Investigate questions and follow issues through to completion",
+     "wording": "model",
+     "category": "other",
+     "question": "Tell us about a customer question you could not answer immediately. How did you investigate it, and what did you do to follow the issue through to completion?",
+     "requirementId": "req_gm3y4y93z6sf",
+     "postingSentence": 17
+    },
+    {
+     "kind": "must",
+     "text": "Accuracy and responsibility",
+     "wording": "model",
+     "category": "other",
+     "question": "Describe a time your accuracy and responsibility mattered in bookkeeping or another work task. What checks did you make, and what did you personally take responsibility for?",
+     "requirementId": "req_mdo3oj1164xh",
+     "postingSentence": 18
+    },
+    {
+     "kind": "must",
+     "text": "Confidence to take on varied tasks",
+     "wording": "model",
+     "category": "other",
+     "question": "Tell us about a workday when you took on varied tasks and had to switch between them. What were the tasks, and how did you handle the changes?",
+     "requirementId": "req_5kymalfofubo",
+     "postingSentence": 18
+    }
+   ],
+   "needCardVersion": 2
+  },
+  "state": {
+   "noted": {
+    "req_5kymalfofubo": [
+     {
+      "turnIndex": 11,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 11,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_gm3y4y93z6sf": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_mdo3oj1164xh": [
+     {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_mk18fxtn7em3": [
+     {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_nu7vil3es3h5": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 1,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "req_qcanepviyy3z": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_5kymalfofubo": "answered",
+    "req_gm3y4y93z6sf": "answered",
+    "req_mdo3oj1164xh": "answered",
+    "req_mk18fxtn7em3": "answered",
+    "req_nu7vil3es3h5": "answered",
+    "req_qcanepviyy3z": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answer describes producing a monthly return-reason report in Excel but does not identify particular advanced Excel features.",
+      "fi": "Vastaus kuvaa kuukausittaisen palautussyiraportin laatimista Excelissä, mutta ei mainitse erityisiä edistyneitä Excel-ominaisuuksia.",
+      "sv": "Svaret beskriver en månatlig rapport över returorsaker i Excel men nämner inga särskilda avancerade Excel-funktioner."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_nu7vil3es3h5"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes progressing from a customer service internship to independently handling returns and refunds using ticket, order and courier tracking systems.",
+      "fi": "Vastaus kuvaa etenemistä asiakaspalveluharjoittelusta itsenäiseen palautusten ja hyvitysten käsittelyyn tiketti-, tilaus- ja seurantajärjestelmiä käyttäen.",
+      "sv": "Svaret beskriver utvecklingen från kundservicepraktik till självständig hantering av returer och återbetalningar med ärende-, order- och spårningssystem."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_qcanepviyy3z"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes calmly explaining a misdirected laptop delivery to an angry customer after arranging same-evening courier delivery.",
+      "fi": "Vastaus kuvaa, miten väärään noutopisteeseen mennyt kannettava selitettiin rauhallisesti vihaiselle asiakkaalle saman illan kuljetuksen järjestämisen jälkeen.",
+      "sv": "Svaret beskriver hur en feldirigerad datorleverans förklarades lugnt för en arg kund efter att leverans samma kväll hade ordnats."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_mk18fxtn7em3"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes tracing a missing laptop, confirming its location, arranging same-evening delivery and informing the customer.",
+      "fi": "Vastaus kuvaa kadonneen kannettavan jäljittämistä, sijainnin varmistamista, saman illan toimituksen järjestämistä ja asiakkaalle tiedottamista.",
+      "sv": "Svaret beskriver hur en försvunnen dator spårades, dess plats bekräftades, leverans samma kväll ordnades och kunden informerades."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_gm3y4y93z6sf"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes verifying a parcel’s location, personally arranging its delivery, explaining the resolution and documenting the case for colleagues.",
+      "fi": "Vastaus kuvaa paketin sijainnin varmistamista, toimituksen henkilökohtaista järjestämistä, ratkaisun selittämistä ja tapauksen dokumentoimista kollegoille.",
+      "sv": "Svaret beskriver hur paketets plats verifierades, leveransen ordnades personligen, lösningen förklarades och ärendet dokumenterades för kollegorna."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_mdo3oj1164xh"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes switching between customer contacts and internal checks, triaging cases and keeping ticket notes while resolving a missing-laptop case.",
+      "fi": "Vastaus kuvaa siirtymistä asiakasyhteydenottojen ja sisäisten tarkistusten välillä, tapausten priorisointia ja tikettimerkintöjä kadonneen kannettavan tapausta ratkaistaessa.",
+      "sv": "Svaret beskriver växling mellan kundkontakter och interna kontroller, prioritering av ärenden och ärendeanteckningar medan ett fall med en försvunnen dator löstes."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 11,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 11,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_5kymalfofubo"
+    }
+   ],
+   "summary": {
+    "en": "The answers give concrete examples for Excel reporting, learning returns and refunds work, clear and friendly customer communication, investigating issues to completion, accuracy and responsibility, and handling varied tasks.",
+    "fi": "Vastaukset sisältävät konkreettisia esimerkkejä Excel-raportoinnista, palautus- ja hyvitystyön oppimisesta, selkeästä ja ystävällisestä asiakasviestinnästä, asioiden selvittämisestä loppuun, tarkkuudesta ja vastuullisuudesta sekä vaihtelevien tehtävien hoitamisesta.",
+    "sv": "Svaren ger konkreta exempel på Excel-rapportering, inlärning av retur- och återbetalningsarbete, tydlig och vänlig kundkommunikation, utredning av ärenden till slut, noggrannhet och ansvar samt hantering av varierande uppgifter."
+   },
+   "assessedAt": "2026-11-14T13:07:00.940Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T13:05:43.548Z",
+  "submittedAt": "2026-11-14T13:06:16.327Z",
+  "assessedAt": "2026-11-14T13:07:00.940Z"
+ },
+ {
+  "id": "app_m2ybjiwtnzr3",
+  "talentId": "tal_78jy75ig6iz8",
+  "jobId": "job_tmt_e07c79d3e6d04a53919f649dfeba9e51",
+  "companyId": "co_demo03",
+  "status": "assessed",
+  "plan": {
+   "lang": "fi",
+   "needCardId": "nc_uyb94repx9n8",
+   "requirements": [
+    {
+     "kind": "must",
+     "text": "Experience with ERP, software development, or technical systems development",
+     "wording": "model",
+     "category": "experience",
+     "question": "Kerro työstä, jossa olet kehittänyt ERP-järjestelmää, ohjelmistoa tai muuta teknistä järjestelmää. Mitä teit itse?",
+     "requirementId": "req_163d0uspvctx",
+     "postingSentence": 12
+    },
+    {
+     "kind": "must",
+     "text": "Ability to grasp overall systems and develop processes",
+     "wording": "model",
+     "category": "skill",
+     "question": "Kerro tilanteesta, jossa hahmotit järjestelmäkokonaisuuden ja kehitit sen prosesseja. Mitä muutoksia teit itse?",
+     "requirementId": "req_vc43ywe040dp",
+     "postingSentence": 13
+    },
+    {
+     "kind": "must",
+     "text": "Self-directed problem-solving approach",
+     "wording": "model",
+     "category": "other",
+     "question": "Kerro tilanteesta, jossa ratkaisit teknisen ongelman oma-aloitteisesti. Mitä teit itse ongelman selvittämiseksi ja korjaamiseksi?",
+     "requirementId": "req_oecq8qidjrk6",
+     "postingSentence": 14
+    },
+    {
+     "kind": "must",
+     "text": "Motivation to see concrete results in production and daily work",
+     "wording": "model",
+     "category": "other",
+     "question": "Kerro työstäsi, jonka tulokset näkyivät konkreettisesti tuotannossa tai päivittäisessä työssä. Mitä teit itse ja mikä muuttui?",
+     "requirementId": "req_btmdjd5g9hba",
+     "postingSentence": 15
+    },
+    {
+     "kind": "must",
+     "text": "Fluent Finnish",
+     "wording": "model",
+     "category": "language",
+     "question": "Kerro, miten olet käyttänyt suomea työssäsi, esimerkiksi teknisissä keskusteluissa tai dokumentoinnissa. Millaisissa tilanteissa olet käyttänyt sitä?",
+     "requirementId": "req_z9itud19d7oo",
+     "postingSentence": 16
+    },
+    {
+     "kind": "must",
+     "text": "Ability to work with technical material in English",
+     "wording": "model",
+     "category": "language",
+     "question": "Kerro tilanteesta, jossa käytit englanninkielistä teknistä materiaalia työssäsi. Mitä materiaalia käytit ja mitä teit sen avulla?",
+     "requirementId": "req_h94tlc7y0wll",
+     "postingSentence": 16
+    }
+   ],
+   "needCardVersion": 1
+  },
+  "state": {
+   "noted": {
+    "req_btmdjd5g9hba": [
+     {
+      "turnIndex": 7,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_oecq8qidjrk6": [
+     {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     },
+     {
+      "turnIndex": 5,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "req_vc43ywe040dp": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "req_z9itud19d7oo": [
+     {
+      "turnIndex": 9,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ]
+   },
+   "cursor": 6,
+   "progress": {
+    "req_163d0uspvctx": "answered",
+    "req_btmdjd5g9hba": "answered",
+    "req_h94tlc7y0wll": "answered",
+    "req_oecq8qidjrk6": "answered",
+    "req_vc43ywe040dp": "answered",
+    "req_z9itud19d7oo": "answered"
+   },
+   "followUps": {}
+  },
+  "assessment": {
+   "ratings": [
+    {
+     "level": 1,
+     "reason": {
+      "en": "The answers describe daily process control system use and Excel analysis, but no ERP, software, or technical system development.",
+      "fi": "Vastaukset kuvaavat prosessinohjausjärjestelmän päivittäistä käyttöä ja Excel-analyyseja, mutta eivät ERP-, ohjelmisto- tai teknisen järjestelmän kehittämistä.",
+      "sv": "Svaren beskriver daglig användning av ett processstyrsystem och Excel-analyser, men inte utveckling av ERP, programvara eller tekniska system."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "requirementId": "req_163d0uspvctx"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes investigating moisture variation across the line, changing drying and measurement practices, and halving rejections within two weeks.",
+      "fi": "Vastaus kuvaa linjan kosteusvaihtelun selvittämistä, kuivauksen ja mittauskäytäntöjen muuttamista sekä hylkäysten puolittumista kahdessa viikossa.",
+      "sv": "Svaret beskriver undersökning av fuktvariationer i linjen, ändrade tork- och mätmetoder samt halverade kassationer inom två veckor."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_vc43ywe040dp"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer describes independently tracing defects through logs and samples, introducing drying and moisture checks, and reducing rejections by half.",
+      "fi": "Vastaus kuvaa vikojen oma-aloitteista jäljittämistä lokien ja näytteiden avulla, kuivaus- ja kosteustarkistusten käyttöönottoa sekä hylkäysten puolittumista.",
+      "sv": "Svaret beskriver självinitierad spårning av fel via loggar och prover, införda tork- och fuktkontroller samt halverade kassationer."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 5,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_oecq8qidjrk6"
+    },
+    {
+     "level": 3,
+     "reason": {
+      "en": "The answer connects the person's investigation and process changes to rejections falling by half in production within two weeks.",
+      "fi": "Vastaus yhdistää henkilön selvitystyön ja prosessimuutokset tuotannon hylkäysten puolittumiseen kahdessa viikossa.",
+      "sv": "Svaret kopplar personens undersökning och processändringar till att kassationerna i produktionen halverades inom två veckor."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 7,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "requirementId": "req_btmdjd5g9hba"
+    },
+    {
+     "level": 2,
+     "reason": {
+      "en": "The answers describe using Finnish in daily technical discussions, risk assessment documentation, operator instructions, and reviews of deviations.",
+      "fi": "Vastaukset kuvaavat suomen käyttöä päivittäisissä teknisissä keskusteluissa, riskiarvioiden dokumentoinnissa, käyttäjäohjeistuksessa ja poikkeamien läpikäynnissä.",
+      "sv": "Svaren beskriver användning av finska i dagliga tekniska samtal, dokumentation av riskbedömningar, operatörsinstruktioner och genomgångar av avvikelser."
+     },
+     "wording": "model",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "requirementId": "req_z9itud19d7oo"
+    },
+    {
+     "level": 0,
+     "reason": {
+      "en": "The answers give no situation where English-language technical material was used at work.",
+      "fi": "Vastauksissa ei ole tilannetta, jossa englanninkielistä teknistä materiaalia olisi käytetty työssä.",
+      "sv": "Svaren innehåller ingen situation där engelskspråkigt tekniskt material använts i arbetet."
+     },
+     "wording": "model",
+     "evidence": [],
+     "requirementId": "req_h94tlc7y0wll"
+    }
+   ],
+   "summary": {
+    "en": "The answers give concrete examples of process development, self-directed problem-solving, concrete production results, and using Finnish in technical work. They describe process control system use but no ERP, software, or technical system development, and do not address using English technical material.",
+    "fi": "Vastaukset sisältävät konkreettisia esimerkkejä prosessien kehittämisestä, oma-aloitteisesta ongelmanratkaisusta, tuotannon konkreettisista tuloksista ja suomen käytöstä teknisessä työssä. Ne kuvaavat prosessinohjausjärjestelmän käyttöä, mutta eivät ERP-, ohjelmisto- tai teknisen järjestelmän kehittämistä eivätkä englanninkielisen teknisen materiaalin käyttöä.",
+    "sv": "Svaren ger konkreta exempel på processutveckling, självinitierad problemlösning, konkreta produktionsresultat och användning av finska i tekniskt arbete. De beskriver användning av ett processstyrsystem men inte utveckling av ERP, programvara eller tekniska system och behandlar inte användning av engelskt tekniskt material."
+   },
+   "assessedAt": "2026-11-14T13:09:13.778Z",
+   "rubricVersion": "2026-11-14"
+  },
+  "createdAt": "2026-11-14T12:49:01.733Z",
+  "submittedAt": "2026-11-14T12:49:34.909Z",
+  "assessedAt": "2026-11-14T13:09:13.778Z"
+ }
+]
