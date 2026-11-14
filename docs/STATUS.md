@@ -12,10 +12,10 @@ Updated by the lead. Times are Helsinki time.
 |---|---|
 | Choosing a job | `/apply`: the eight demo companies' jobs, each with what its ad asks for. Needs an approved card; being in the pool is not needed |
 | Start screen | Says that an AI rates the answers against the ad, that applicants are put in order, that an organiser reads the answers and checks the order, and that the company sees no name and none of the person's words until both agree to meet. A separate consent (`job_assessment`); nothing starts without it |
-| The job interview | One question per requirement of the ad, at most six, chosen by code (must-haves first; statutory and permit requirements are never asked). The questions are worded once per job and language and every applicant gets the same ones. At most one follow-up per requirement, only when the answer had no concrete example. Skip, stop, remove an answer; review before sending. English, Finnish and Swedish, typed or spoken |
+| The job interview | One question per requirement of the ad, at most six, chosen by code (must-haves first; statutory and permit requirements are never asked). The questions are worded once per Need Card version and language, so every applicant is asked about the same requirements, in the same wording for the same language; follow-ups are written by the model for each person. At most one follow-up per requirement, only when the answer had no concrete example. Skip, stop, remove an answer; review before sending. English, Finnish and Swedish, typed or spoken |
 | Assessment | After sending: a level from 0 to 3 per requirement, with a written anchor for each level and a reason in three languages that points at the person's own sentences. Code drops references that do not resolve, replaces reasons that judge the person or name a protected detail, and leaves out of the assessor's input any sentence in which the person says something protected about themselves |
 | Points and order | Code: level times weight (must-have 2, nice-to-have 1); order by points, then must-haves at level 2 or 3, then who sent earlier. Nobody is removed by a rating |
-| The person's result | Levels, reasons, the sentences they rest on, points, and after an approval "You are number N of M on the list the company sees". Withdraw deletes the application everywhere, the approved list included |
+| The person's result | Levels, reasons, the sentences they rest on, points, and after an approval "You are number N of M on the list the company sees". Withdraw deletes the application and its answers and takes the person off the list, the approved one included; the audit log keeps its ids and any organiser's reason, never the answers |
 | Organiser | **Applicants** in the organiser's menu: per job the ranked list, the answers behind each rating, a move that needs a written reason, approval of the exact list seen (refused if it changed meanwhile), and a link to the company's page |
 | Company | `/c/[token]/applicants`: the approved order with levels and reasons, "Position set by the organiser" on a moved person, no name and no own words until both agree to meet; **Ask to meet** uses the existing introduction flow |
 | Demo world | Simulated people have applied through the real feature with the real model ([[APPLICATIONS-COUNT]]). The pitch company (03) has four simulated applicants, so the person on stage becomes the fifth. "Reset demo" restores them without a model |
@@ -33,11 +33,12 @@ Updated by the lead. Times are Helsinki time.
 
 ### Not done
 
-1. Deploy, then run `golden-path` and `job-interview` on the live site: [[DEPLOYED-AT]].
+1. Before deploying: rewrite the sentences on the public page `/how-it-works` (`src/lib/i18n/content/how-it-works.ts`, three languages) that say the AI does not score or rate answers, so that they speak of the conversation only and name the job interview as the one thing rated; the consent page does not mention the job interview yet either (the job interview's own start screen says what is rated). Then deploy, and run `golden-path` and `job-interview` on the live site: [[DEPLOYED-AT]].
 2. The language swap check (`evals/application-swap`, run by hand): [[SWAP-CHECK]].
 3. The backup video again, with the job interview in it: [[VIDEO]].
 4. **Still not checked by anyone: a real phone and a real voice.**
-5. The public page `/how-it-works` and the consent page do not mention the job interview yet; the job interview's own start screen says what is rated.
+5. The Finnish line above the organiser's ranked list says the AI gave the points; the English and Swedish say the points come from the AI's ratings (code computes them). Fix the Finnish in `src/features/application/messages-organiser.ts` (`orderLine`).
+6. Approving a ranked list checks that it is the list on screen, not that the organiser opened anyone's answers; reading them rests on the organiser.
 
 Known limits, also in the README and the pitch notes: the protected-detail screening is word lists in three languages and can miss an unusual phrasing; reasons are model-written and checked by word lists, with an organiser as the last check; the simulated applicants are played by a model from persona sheets; the level scale and the weights are a first version nobody has validated with employers; an EU AI Act high-risk system needs a conformity assessment, a fundamental rights impact assessment and validation on real applicants, none of which this prototype has.
 
@@ -115,4 +116,4 @@ Waiting for a result: the language swap check of the job interview, run by hand 
 - [x] Gate 1: live URL over HTTPS, deploy and rollback proven, streamed model turn from the server, 1,000+ Espoo postings and ESCO in the database, voice round trip from the server.
 - [x] Gate 2: the full path works end to end with the real model. Evaluation reports in `evals/`.
 - [x] Gate 3: styled product, golden-path test green on the live site, backup video, demo freeze (tag `demo-freeze-2026-11-14`).
-- [ ] Gate 4: job interviews live, `job-interview` and `golden-path` green on the live site, the swap check read, the backup video recorded again. Deployed: [[DEPLOYED-AT]]; swap check: [[SWAP-CHECK]]; video: [[VIDEO]].
+- [ ] Gate 4: the `/how-it-works` sentences limited to the conversation, job interviews live, `job-interview` and `golden-path` green on the live site, the swap check read, the backup video recorded again. Deployed: [[DEPLOYED-AT]]; swap check: [[SWAP-CHECK]]; video: [[VIDEO]].
