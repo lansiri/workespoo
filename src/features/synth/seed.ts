@@ -253,6 +253,12 @@ export async function seedDemo(db: Db, options: SeedOptions): Promise<SeedSummar
   }
   const people = await db.select().from(talent).where(and(eq(talent.synthetic, true), eq(talent.inPool, true)));
   for (const c of chosen) {
+    // A posting that lists duties and no requirements gives a card nobody can relate to.
+    const needId = needCardIds.get(c.companyId);
+    const [need] = needId ? await db.select().from(needCard).where(eq(needCard.id, needId)) : [];
+    if (need && need.body.requirements.length === 0) {
+      warnings.push(`coverage: ${demoCompanyName(c.number)} has a Need Card with no requirements (the posting lists none): choose another posting for it`);
+    }
     const n = eligibleByNeed.get(needCardIds.get(c.companyId) ?? "")?.size ?? 0;
     if (n < 3) warnings.push(`coverage: ${demoCompanyName(c.number)} has ${n} eligible pool people, at least 3 are needed`);
   }
