@@ -39,6 +39,10 @@ export function currentNavKey(pathname: string, nav: readonly NavItem[]): string
   return best?.key;
 }
 
+function writeLanguageCookie(lang: UiLang): void {
+  document.cookie = uiLangCookieString(lang);
+}
+
 /**
  * Language links in the kit's style. They are plain links to `/lang/<code>`, which sets the
  * cookie and comes back, so they work without JavaScript; with it the page switches in place.
@@ -52,7 +56,7 @@ function ShellLanguages({ label, short, hideOnPhone }: { label: string; short: b
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
     event.preventDefault();
     if (lang === current) return;
-    document.cookie = uiLangCookieString(lang);
+    writeLanguageCookie(lang);
     router.refresh();
   };
   return (

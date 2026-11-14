@@ -37,7 +37,7 @@ vi.mock("@/lib/session", async () => {
   };
 });
 
-import { approveCard, cardForCompany, cardForPerson, setPoolOptIn } from "@/features/card";
+import { approveCard, cardForPerson, setPoolOptIn } from "@/features/card";
 import { settleInterview, startInterview, submitTurn } from "@/features/interview";
 import { computeEligibility, feedForTalent } from "@/features/matching";
 import { getNeedCard, draftNeedCard } from "@/features/needs";
