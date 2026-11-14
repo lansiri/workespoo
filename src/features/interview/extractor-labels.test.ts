@@ -199,6 +199,29 @@ describe("live skill labels", () => {
     expect(await litOf(id)).toHaveLength(1);
   });
 
+  it("a label that is racing the closing line never publishes after it", async () => {
+    let release!: () => void;
+    const gate = new Promise<void>((r) => (release = r));
+    install({
+      extract: () => [{ phrase: PHRASE }],
+      pick: async (o) => {
+        await gate;
+        return pickFirst(o);
+      },
+    });
+    const id = await start();
+    await say(id);
+    await vi.waitFor(() => expect(calls.pick).toHaveLength(1));
+    release();
+    await stopInterview(t.db, id);
+    await settleInterview(t.db, id);
+    const events = await eventsOf(id);
+    const closeAt = events.findIndex((e) => e.type === "turn.done" && e.closing);
+    expect(closeAt).toBeGreaterThanOrEqual(0);
+    const after = events.slice(closeAt + 1).filter((e) => e.type === "jobs.lit" || e.type === "signal.updated");
+    expect(after).toHaveLength(0);
+  });
+
   it("a note whose answer was removed while the call ran gets no label", async () => {
     let release!: () => void;
     const gate = new Promise<void>((r) => (release = r));
