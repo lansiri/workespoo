@@ -4,7 +4,7 @@
  * through their public `index.ts` only, as docs/FEATURE-API.md requires. `--fake` swaps in the
  * stand-in of `fake-engine.ts`.
  */
-import { approveCard, cardForCompany, cardForPerson, setPoolOptIn } from "@/features/card";
+import { approveCard, cardForCompany, cardForPerson, editCard, setPoolOptIn } from "@/features/card";
 import { settleInterview, startInterview, submitTurn } from "@/features/interview";
 import { draftNeedCard } from "@/features/needs";
 import { computeEligibility } from "@/features/matching";
@@ -16,6 +16,8 @@ export type SimDeps = {
   settleInterview: typeof settleInterview;
   cardForPerson: typeof cardForPerson;
   cardForCompany: typeof cardForCompany;
+  /** The review edit of the card page; the simulator uses it to declare how the person wants to work. */
+  editCard: typeof editCard;
   approveCard: typeof approveCard;
   setPoolOptIn: typeof setPoolOptIn;
 };
@@ -29,7 +31,7 @@ export type SeedDeps = SimDeps & {
 };
 
 export function realSimDeps(): SimDeps {
-  return { startInterview, submitTurn, settleInterview, cardForPerson, cardForCompany, approveCard, setPoolOptIn };
+  return { startInterview, submitTurn, settleInterview, cardForPerson, cardForCompany, editCard, approveCard, setPoolOptIn };
 }
 
 export function realSeedDeps(): SeedDeps {

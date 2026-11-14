@@ -158,6 +158,14 @@ export function createFakeEngine(db: Db, options: FakeEngineOptions = {}): SeedD
     async cardForPerson(_db, talentId) {
       return cards.get(talentId)?.person ?? null;
     },
+
+    async editCard(_db, talentId, edit) {
+      const stored = cards.get(talentId);
+      if (!stored) throw new Error(`fake engine: no card for ${talentId}`);
+      if (edit.op !== "lookingFor") throw new Error(`fake engine: the edit "${edit.op}" is not implemented`);
+      await storeCard(talentId, { ...stored.body, lookingFor: { ...edit.lookingFor } }, stored.body.status === "approved");
+      return { sensitive: false };
+    },
     async cardForCompany(_db, talentId) {
       const c = cards.get(talentId);
       return c && c.person.status === "approved" ? c.company : null;

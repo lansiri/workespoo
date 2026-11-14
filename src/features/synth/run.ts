@@ -62,6 +62,18 @@ export async function labelSynthetic(db: Db, talentId: string, persona: Persona)
   await db.update(talent).set({ synthetic: true, personaKey: persona.id, purgeAfter: null, liveDemo: false }).where(eq(talent.id, talentId));
 }
 
+/** How a person writes a language's name in the language they are using on the page. */
+const LANGUAGE_NAMES: Record<string, Record<string, string>> = {
+  en: { en: "English", fi: "Finnish", sv: "Swedish" },
+  fi: { en: "englanti", fi: "suomi", sv: "ruotsi" },
+  sv: { en: "engelska", fi: "finska", sv: "svenska" },
+};
+
+/** A persona's work-language code as the person would type it; an unknown one stays a code. */
+export function typedLanguage(code: string, pageLang: string): string {
+  return LANGUAGE_NAMES[pageLang]?.[code] ?? code;
+}
+
 /** Safety stop: the longest interview plans 7 questions plus repairs and probes. */
 const MAX_ANSWERS = 16;
 
@@ -109,8 +121,9 @@ export type RunOptions = {
 
 /**
  * Start an interview, answer it from the persona's script until the interviewer closes it,
- * settle, label the person synthetic, store the synthetic identity, approve the card and opt
- * in to the pool. `mode` defaults to the persona's own.
+ * settle, label the person synthetic, store the synthetic identity, declare how the person wants
+ * to work (mode, start, work languages), approve the card and opt in to the pool. `mode`
+ * defaults to the persona's own.
  */
 export async function runSimulatedInterview(
   db: Db,
@@ -155,6 +168,18 @@ export async function runSimulatedInterview(
 
   const draft = await deps.cardForPerson(db, talentId);
   if (!draft) throw new Error(`${persona.id}: no card exists after the interview settled`);
+  // What a person does on the card page before approving: say where, when and in which languages
+  // they want to work. The interview never infers a language; it is declared here, by the same
+  // edit the page makes. The roles the notes already hold stay; missing ones the person types in.
+  await deps.editCard(db, talentId, {
+    op: "lookingFor",
+    lookingFor: {
+      roles: draft.lookingFor.roles.length > 0 ? draft.lookingFor.roles : persona.lookingFor.roles,
+      workMode: persona.lookingFor.workMode,
+      startFrom: persona.lookingFor.startFrom,
+      workLanguages: persona.lookingFor.workLanguages.map((code) => typedLanguage(code, persona.interviewLang)),
+    },
+  });
   await deps.approveCard(db, talentId);
   await deps.setPoolOptIn(db, talentId, true);
 

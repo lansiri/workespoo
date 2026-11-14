@@ -4,7 +4,7 @@ import { talent, talentIdentity } from "@/db/schema";
 import { createTestDb, type TestDb } from "../../../tests/helpers/db";
 import { createFakeEngine } from "./fake-engine";
 import { loadPersonas } from "./persona";
-import { runSimulatedInterview } from "./run";
+import { runSimulatedInterview, typedLanguage } from "./run";
 import type { SimDeps } from "./deps";
 
 // The default wiring calls the features through their public index files. Route them to the fake.
@@ -17,6 +17,7 @@ vi.mock("@/features/interview", () => ({
 vi.mock("@/features/card", () => ({
   cardForPerson: (...a: Parameters<SimDeps["cardForPerson"]>) => holder.engine!.cardForPerson(...a),
   cardForCompany: (...a: Parameters<SimDeps["cardForCompany"]>) => holder.engine!.cardForCompany(...a),
+  editCard: (...a: Parameters<SimDeps["editCard"]>) => holder.engine!.editCard(...a),
   approveCard: (...a: Parameters<SimDeps["approveCard"]>) => holder.engine!.approveCard(...a),
   setPoolOptIn: (...a: Parameters<SimDeps["setPoolOptIn"]>) => holder.engine!.setPoolOptIn(...a),
 }));
@@ -48,6 +49,59 @@ describe("runSimulatedInterview", () => {
     expect(row).toMatchObject({ synthetic: true, liveDemo: false, inPool: true, personaKey: persona.id, handle: persona.handle });
     const [identity] = await t.db.select().from(talentIdentity).where(eq(talentIdentity.talentId, run.talentId));
     expect(identity).toMatchObject({ displayName: persona.name, contact: persona.email });
+  });
+
+  it("declares how the person wants to work on the card, before approving it", async () => {
+    const engine = holder.engine!;
+    const persona = personas.find((p) => p.lookingFor.workLanguages.length >= 3)!;
+    // What the simulator sends as the card edit when the draft's notes hold these roles.
+    const declaredWith = async (rolesOnDraft: string[]) => {
+      const calls: string[] = [];
+      let edit: Parameters<SimDeps["editCard"]>[2] | null = null;
+      const deps: SimDeps = {
+        ...engine,
+        cardForPerson: async (...a) => {
+          const card = await engine.cardForPerson(...a);
+          return card && calls.length === 0 ? { ...card, lookingFor: { ...card.lookingFor, roles: rolesOnDraft } } : card;
+        },
+        editCard: async (...a) => {
+          calls.push("editCard");
+          edit = a[2];
+          return engine.editCard(...a);
+        },
+        approveCard: async (...a) => {
+          calls.push("approveCard");
+          return engine.approveCard(...a);
+        },
+      };
+      const run = await runSimulatedInterview(t.db, persona, undefined, { deps });
+      expect(calls).toEqual(["editCard", "approveCard"]);
+      return { edit: edit as unknown, run };
+    };
+
+    // Languages are typed the way a person writes them in the language of the page.
+    const typedLanguages = persona.lookingFor.workLanguages.map((code) => typedLanguage(code, persona.interviewLang));
+    expect(typedLanguages).not.toEqual(persona.lookingFor.workLanguages);
+    const declared = { ...persona.lookingFor, workLanguages: typedLanguages };
+
+    // The notes already hold a role: it stays, and the rest is the person's own declaration.
+    const kept = await declaredWith(["Role from the notes"]);
+    expect(kept.edit).toEqual({ op: "lookingFor", lookingFor: { ...declared, roles: ["Role from the notes"] } });
+    expect(kept.run.person.lookingFor).toMatchObject({
+      workMode: persona.lookingFor.workMode,
+      startFrom: persona.lookingFor.startFrom,
+      workLanguages: typedLanguages,
+    });
+    // The notes hold no role: the person types theirs in.
+    const typed = await declaredWith([]);
+    expect(typed.edit).toEqual({ op: "lookingFor", lookingFor: declared });
+  });
+
+  it("writes language names as a person would in English, Finnish and Swedish", () => {
+    expect(["en", "fi", "sv"].map((code) => typedLanguage(code, "en"))).toEqual(["English", "Finnish", "Swedish"]);
+    expect(["en", "fi", "sv"].map((code) => typedLanguage(code, "fi"))).toEqual(["englanti", "suomi", "ruotsi"]);
+    expect(["en", "fi", "sv"].map((code) => typedLanguage(code, "sv"))).toEqual(["engelska", "finska", "svenska"]);
+    expect(typedLanguage("et", "en")).toBe("et");
   });
 
   it("answers a probe with the persona's second, more concrete answer", async () => {

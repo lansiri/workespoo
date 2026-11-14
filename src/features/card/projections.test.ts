@@ -18,7 +18,8 @@ beforeAll(async () => {
   await seedCard(t.db, TALENT, {
     status: "approved",
     version: 2,
-    lookingFor: { roles: ["Warehouse coordinator"], workMode: "hybrid", workLanguages: ["Finnish"] },
+    // Typed in Finnish, the language of the interview: the words themselves would give that away.
+    lookingFor: { roles: ["Warehouse coordinator"], workMode: "hybrid", workLanguages: ["englanti", "ruotsi", "not a language"] },
     signals: [
       signal({ id: "s3", phrase: "SAP", kind: "tool", esco, evidence: [{ turnIndex: 3, sentenceFrom: 2, sentenceTo: 2 }] }),
       signal({ id: "s1", phrase: "Receiving goods", phraseOwn: "Tavaran vastaanotto", evidence: [{ turnIndex: 1, sentenceFrom: 1, sentenceTo: 1 }] }),
@@ -48,6 +49,8 @@ describe("projections", () => {
     expect(c.signals[0].rendering).toBe("They worked with receiving goods.");
     expect(JSON.stringify(c)).not.toContain("Draft only phrase");
     expect(keys(c.lookingFor)).toEqual(["roles", "startFrom", "workLanguages", "workMode"]);
+    // Declared work languages reach a company as codes, never as the person typed them.
+    expect(c.lookingFor.workLanguages).toEqual(["en", "sv"]);
   });
 
   it("cardForOrganiser is the company payload plus pool status, version, approval date and talent id", async () => {
@@ -67,7 +70,7 @@ describe("projections", () => {
       expect(json).not.toContain(NAME);
       expect(json).not.toContain(CONTACT);
       expect(json).not.toContain("Tavaran vastaanotto");
-      for (const forbidden of ['"fi"', '"voice"', '"text"', "inputMode", "interviewLang", '"lang"', "quotes", "phraseOwn", "hasExample", "evidence", "identity"]) {
+      for (const forbidden of ['"fi"', "englanti", "ruotsi", "not a language", '"voice"', '"text"', "inputMode", "interviewLang", '"lang"', "quotes", "phraseOwn", "hasExample", "evidence", "identity"]) {
         expect(json).not.toContain(forbidden);
       }
     }

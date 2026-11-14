@@ -11,6 +11,7 @@ import {
 } from "@/contracts";
 import type { Db } from "@/db/client";
 import { talent, talentIdentity } from "@/db/schema";
+import { languageCodes } from "./languages";
 import { latestInterview, loadCard, loadTranscript, orderSignals, quotesFor } from "./store";
 
 /** The approved card, or null. Matching and companies only ever see this one. */
@@ -57,7 +58,9 @@ function companyBase(card: SignalCard, synthetic: boolean) {
       roles: [...card.lookingFor.roles],
       workMode: card.lookingFor.workMode,
       startFrom: card.lookingFor.startFrom,
-      workLanguages: [...card.lookingFor.workLanguages],
+      // Codes, never the words as typed: "suomi" or "finska" would tell which language the person
+      // was using. Anything that is not a recognised language name is left out.
+      workLanguages: languageCodes(card.lookingFor.workLanguages),
     },
   };
 }
