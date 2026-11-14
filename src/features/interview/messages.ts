@@ -12,7 +12,7 @@ const en = {
   voiceProcessorBrowser: "your browser's speech service",
   cvLabel: "Paste your CV or upload a PDF, if you like.",
   cvHelp:
-    "Before the AI sees it, our server removes your name, contact details, dates and personal details by fixed rules, not by AI. It is only used to choose questions and is not kept.",
+    "Before the AI processes the text, our server removes your name, contact details, dates and other personal details. This is done by fixed rules, not by AI. The text is used only to choose questions and is not kept. Please review it carefully and make sure that nothing that could identify you remains.",
   cvUpload: "Upload a PDF",
   cvUploadNeedsConsent: "Tick the first box above to upload a file.",
   cvReading: "Reading the PDF…",
@@ -121,7 +121,7 @@ export const interviewMessages = {
     voiceProcessorBrowser: "selaimesi puheentunnistuspalvelu",
     cvLabel: "Liitä CV tähän tai lataa PDF, jos haluat.",
     cvHelp:
-      "Ennen kuin tekoäly näkee sen, palvelimemme poistaa nimesi, yhteystietosi, päivämäärät ja henkilötiedot kiinteillä säännöillä, ei tekoälyllä. Sitä käytetään vain kysymysten valitsemiseen, eikä sitä säilytetä.",
+      "Ennen kuin tekoäly käsittelee tekstin, palvelimemme poistaa siitä nimesi, yhteystietosi, päivämäärät ja muut henkilötiedot. Poisto tehdään kiinteillä säännöillä, ei tekoälyllä. Tekstiä käytetään vain kysymysten valitsemiseen, eikä sitä säilytetä. Tarkista teksti huolellisesti ja varmista, ettei siihen jää tietoja, joista sinut voitaisiin tunnistaa.",
     cvUpload: "Lataa PDF",
     cvUploadNeedsConsent: "Rastita ensin ylin ruutu, niin voit ladata tiedoston.",
     cvReading: "Luetaan PDF:ää…",
@@ -227,7 +227,7 @@ export const interviewMessages = {
     voiceProcessorBrowser: "webbläsarens taligenkänningstjänst",
     cvLabel: "Klistra in ditt CV eller ladda upp en PDF om du vill.",
     cvHelp:
-      "Innan AI:n ser det tar vår server bort ditt namn, dina kontaktuppgifter, datum och personuppgifter med fasta regler, inte med AI. Det används bara för att välja frågor och sparas inte.",
+      "Innan AI:n behandlar texten tar vår server bort ditt namn, dina kontaktuppgifter, datum och andra personuppgifter. Detta sker med fasta regler, inte med AI. Texten används bara för att välja frågor och sparas inte. Granska texten noggrant och se till att inga uppgifter som kan identifiera dig finns kvar.",
     cvUpload: "Ladda upp en PDF",
     cvUploadNeedsConsent: "Kryssa i den första rutan ovan för att ladda upp en fil.",
     cvReading: "Läser PDF:en…",

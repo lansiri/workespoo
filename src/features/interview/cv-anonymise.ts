@@ -126,7 +126,9 @@ const NAME_LABELS = new Set(["name", "full name", "nimi", "namn"]);
 // ---------- the name ----------
 
 const CAP = "(?:\\p{Lu}[\\p{Ll}'’]+|\\p{Lu}{2,})(?:-(?:\\p{Lu}[\\p{Ll}'’]+|\\p{Lu}{2,}))?";
-const NAME_LINE = new RegExp(`^${CAP}(?:\\s+${CAP}){1,3}$`, "u");
+const CAP_WORD = new RegExp(`^${CAP}$`, "u");
+/** Lowercase parts inside a name: "Johan von Essen", "Anna af Ugglas". */
+const PARTICLES = new Set(["von", "van", "der", "den", "de", "af", "av"]);
 const CV_WORDS = /(?:curriculum\s+vitae|ansioluettelo|meritförteckning|levnadsbeskrivning|résumé|resume|\bcv\b)/giu;
 
 /** Words that make a capitalised line a job title or heading, not a name. */
@@ -143,14 +145,133 @@ const NOT_NAME_WORDS = new Set([
   "opiskelija", "harjoittelija", "koordinaattori", "johtaja", "myyjä", "myyntineuvottelija", "esihenkilö",
   "utvecklare", "ingenjör", "chef", "assistent", "konsult", "sjuksköterska", "lärare", "förare",
   "kock", "städare", "studerande", "praktikant", "säljare", "handläggare",
+  // more titles and header words, so that "Operations Planner" is not taken for a person
+  "barista", "waiter", "waitress", "programmer", "scientist", "researcher", "clerk", "cashier", "receptionist",
+  "secretary", "supervisor", "plumber", "welder", "baker", "planner", "buyer", "recruiter", "trainer",
+  "coach", "courier", "security", "operations", "finance", "business", "general", "technical", "office",
+  "administration", "retail", "restaurant", "kitchen", "production", "quality", "safety", "team", "contact",
+  "address", "phone", "email", "mobile", "location", "profile", "summary",
+  "hitsaaja", "asentaja", "kirjanpitäjä", "hoitaja", "lääkäri", "tutkija", "tarjoilija", "kassa", "vastaava",
+  "työnjohtaja", "vartija", "lastenhoitaja", "ohjaaja", "kouluttaja", "asiakaspalvelija", "asiakaspalvelu",
+  "markkinointi", "tuotanto", "ravintola", "keittiö", "varasto", "talous",
+  "svetsare", "elektriker", "snickare", "projektledare", "vårdare", "läkare", "forskare", "servitör", "kassör",
+  "lagerarbetare", "arbetsledare", "väktare", "barnskötare", "handledare", "kundtjänst", "marknadsföring",
+  "produktion", "kvalitet", "säkerhet", "restaurang", "kök", "lager", "ekonomi",
+  // company and place words: "Nordea Bank", "Wolt Finland" are employers, not people
+  "bank", "group", "oy", "oyj", "ab", "abp", "ltd", "inc", "corp", "company", "university", "college", "school",
+  "hospital", "city", "centre", "center", "finland", "sweden", "europe", "nordic",
+  "yliopisto", "korkeakoulu", "koulu", "sairaala", "kaupunki", "suomi", "ruotsi", "pohjola",
+  "universitet", "högskola", "skola", "sjukhus", "stad", "sverige", "norden",
 ]);
 
-function looksLikeName(line: string): boolean {
-  if (!NAME_LINE.test(line)) return false;
-  const words = line.toLowerCase().split(/[\s-]+/);
-  if (words.some((w) => NOT_NAME_WORDS.has(w))) return false;
-  const key = headingKey(line);
-  return key === null || (!DROP_SET.has(key) && !KEEP_SET.has(key));
+/** The text without accents ("Lindström" → "lindstrom"), lowercase. For comparing spellings. */
+function fold(s: string): string {
+  return s.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
+}
+
+function isStopWord(token: string): boolean {
+  const t = token.toLowerCase();
+  return NOT_NAME_WORDS.has(t) || KEEP_SET.has(t) || DROP_SET.has(t);
+}
+
+const isNameWord = (t: string) => CAP_WORD.test(t) && !isStopWord(t);
+
+/**
+ * Runs of two to four name-like words inside a header line: "Aino Virtanen", "Johan von Essen",
+ * "VIRTANEN AINO", also when the name shares the line with a job title or with contacts
+ * ("Aino Maria Virtanen Software Developer"). A run stops at a job title or a heading word.
+ */
+export function nameRuns(headerLine: string): string[] {
+  const runs: string[] = [];
+  for (const segment of headerLine.split(/\s*[|•·,–—:/;]\s*|\s{2,}|\s[-–]\s/u)) {
+    const tokens = segment.trim().split(/\s+/).filter(Boolean);
+    if (tokens.length === 0 || tokens.length > 8) continue;
+    // Prose, not a name line: more than one ordinary lowercase word.
+    if (tokens.filter((t) => !CAP_WORD.test(t) && !PARTICLES.has(t)).length > 1) continue;
+    let i = 0;
+    while (i < tokens.length) {
+      const run: string[] = [];
+      let j = i;
+      while (j < tokens.length) {
+        const t = tokens[j]!;
+        const next = tokens[j + 1];
+        if (isNameWord(t)) run.push(t);
+        else if (PARTICLES.has(t) && run.length > 0 && next !== undefined && isNameWord(next)) run.push(t);
+        else break;
+        j += 1;
+        if (run.filter((r) => !PARTICLES.has(r)).length === 4) break;
+      }
+      if (run.filter((r) => !PARTICLES.has(r)).length >= 2) {
+        runs.push(run.join(" "));
+        i = j;
+      } else {
+        i = Math.max(j, i + 1);
+      }
+    }
+  }
+  return runs;
+}
+
+// ---------- the name from the email address and the profile link ----------
+
+const EMAIL_FIND = /[\p{L}\p{N}._%+'-]+@[\p{L}\p{N}-]+(?:\.[\p{L}\p{N}-]+)+/gu;
+const PROFILE_SLUG = /(?:linkedin\.com\/(?:in|pub)|xing\.com\/profile|github\.com)\/([\p{L}\p{N}%_.-]+)/giu;
+const CAPITALISED = /(?<![\p{L}\p{N}])(?:\p{Lu}\p{Ll}+|\p{Lu}{2,})(?![\p{L}\p{N}])/gu;
+/** Mailbox names that say nothing about a person. */
+const GENERIC_LOCAL = new Set([
+  "info", "contact", "contacts", "hello", "hi", "mail", "email", "cv", "work", "jobs", "job", "hr", "admin",
+  "office", "support", "sales", "noreply", "me", "my", "the", "and", "team", "post", "posti", "yhteys",
+  "kontakt", "kontakti", "tyo", "työ", "recruit", "recruiting", "career", "careers",
+]);
+
+/**
+ * Spellings (folded) of name words found in the email addresses and profile links of the text.
+ * An address such as `erik.lindstrom@…` or `/in/erik-lindstrom-4821` names the person better
+ * than anything else in a CV. `single` holds one-word mailboxes ("avirtanen92"), which only
+ * count for header words that appear inside them.
+ */
+function identityParts(text: string): { parts: Set<string>; single: string[] } {
+  const parts = new Set<string>();
+  const single: string[] = [];
+  const addPieces = (pieces: string[]) => {
+    for (const p of pieces) {
+      const f = fold(p).replace(/[^a-z]/g, "");
+      if (f.length >= 3 && !GENERIC_LOCAL.has(f)) parts.add(f);
+    }
+  };
+  for (const m of text.matchAll(EMAIL_FIND)) {
+    const local = m[0].slice(0, m[0].lastIndexOf("@"));
+    const pieces = local.split(/[._+'-]+/).filter((p) => p.replace(/\d/g, "").length >= 3);
+    if (pieces.length >= 2) addPieces(pieces.map((p) => p.replace(/\d+/g, "")));
+    else if (pieces.length === 1) {
+      const f = fold(pieces[0]!).replace(/[^a-z]/g, "");
+      if (f.length >= 5 && !GENERIC_LOCAL.has(f)) single.push(f);
+    }
+  }
+  for (const m of text.matchAll(PROFILE_SLUG)) {
+    const pieces = m[1]!.split(/[-_.%]+/).filter((p) => p.length >= 3 && !/\d/.test(p));
+    if (pieces.length >= 2) addPieces(pieces);
+  }
+  return { parts, single };
+}
+
+/** Name words of the text (in the text's own spelling) that the email or profile link confirms. */
+function confirmedNameWords(text: string, headerText: string, id: { parts: Set<string>; single: string[] }): string[] {
+  const found = new Set<string>();
+  if (id.parts.size > 0) {
+    for (const m of text.matchAll(CAPITALISED)) if (id.parts.has(fold(m[0]))) found.add(m[0]);
+  }
+  for (const m of headerText.matchAll(CAPITALISED)) {
+    const f = fold(m[0]);
+    if (f.length >= 4 && !isStopWord(m[0]) && id.single.some((s) => s.includes(f))) found.add(m[0]);
+  }
+  return [...found];
+}
+
+/** Candidates the email or profile link confirms; without confirmation, the first two. */
+function pickNames(candidates: string[], confirmed: Set<string>): string[] {
+  const sure = candidates.filter((c) => c.split(/[\s-]+/).some((t) => confirmed.has(fold(t))));
+  return sure.length > 0 ? sure : candidates.slice(0, 2);
 }
 
 function stripCvWords(line: string): string {
@@ -162,8 +283,17 @@ function stripCvWords(line: string): string {
     .trim();
 }
 
+/** The words of a name that are worth removing alone: no particles, no short bits, hyphen parts too. */
 function nameTokens(name: string): string[] {
-  return name.split(/\s+/).filter((t) => t.replace(/[^\p{L}]/gu, "").length >= 3);
+  const out = new Set<string>();
+  for (const t of name.split(/\s+/)) {
+    if (PARTICLES.has(t) || isStopWord(t)) continue;
+    if (t.replace(/[^\p{L}]/gu, "").length >= 3) out.add(t);
+    if (t.includes("-")) {
+      for (const part of t.split("-")) if (part.length >= 3 && !isStopWord(part)) out.add(part);
+    }
+  }
+  return [...out];
 }
 
 /** "MAIJA" also matches "Maija", and "Maija" matches "MAIJA"; "Will" never matches the verb "will". */
@@ -171,6 +301,35 @@ function tokenVariants(token: string): string[] {
   const lower = token.toLocaleLowerCase("fi");
   const title = lower.replace(/(^|-)(\p{L})/gu, (_m, sep: string, c: string) => sep + c.toLocaleUpperCase("fi"));
   return [...new Set([token, title, token.toLocaleUpperCase("fi")])];
+}
+
+const CASE_ENDINGS = "(?:n|s|a|ä|ssa|ssä|sta|stä|lle|lta|lla|llä|ksi|na|nä|:n|:s|'s|’s)";
+
+/**
+ * A regex source that finds the name word as it appears in text: in any case, with or without
+ * accents ("Lindström" and "Lindstrom"), and in the endings of Finnish and Swedish ("Ainon",
+ * "Virtasen" for Virtanen, "Hintikan" for Hintikka, "Lindströms"). Written in capitals the word
+ * is matched as it stands.
+ */
+function tokenPattern(token: string): string {
+  const alts = new Set<string>();
+  for (const v of tokenVariants(token)) {
+    for (const spelling of new Set([v, v.normalize("NFD").replace(/\p{M}/gu, "")])) {
+      const isUpper = spelling === spelling.toLocaleUpperCase("fi") && spelling.length > 1;
+      if (isUpper || spelling.length < 4) {
+        alts.add(escape(spelling));
+        continue;
+      }
+      alts.add(`${escape(spelling)}${CASE_ENDINGS}?`);
+      if (spelling.endsWith("nen")) {
+        alts.add(`${escape(spelling.slice(0, -3))}s(?:en|ta|ella|elta|elle|essa|esta|eksi|ena|e)`);
+      }
+      if (/(?:kk|pp|tt)[aeo]$/.test(spelling)) {
+        alts.add(`${escape(spelling.slice(0, -2))}(?:an|alle|alta|alla|asta|assa|aksi|ana|aa|on|olle|olta|olla|osta|ossa|oksi|ona|oa)`);
+      }
+    }
+  }
+  return [...alts].join("|");
 }
 
 // ---------- inline patterns ----------
@@ -260,7 +419,38 @@ const COUNTRY = wordList(COUNTRIES_AND_DEMONYMS, "gu");
 /** Zero-width and control characters (hidden text), except tab and newline. */
 const INVISIBLE = /[\u0000-\u0008\u000B-\u001F\u007F­​-‏‪-‮⁠-⁤﻿]/g;
 
+// ---------- where the person lives (header only) ----------
+
+/**
+ * Towns and countries, removed from the header block only: there they are a home address. In
+ * the body "Nokia, Espoo" or "Stockholm office" says where an employer is, which is work.
+ */
+const HEADER_PLACES = wordList([
+  // Finnish towns (Finnish, Swedish and English forms)
+  "Helsinki", "Helsingfors", "Espoo", "Esbo", "Vantaa", "Vanda", "Kauniainen", "Grankulla", "Tampere",
+  "Tammerfors", "Turku", "Åbo", "Oulu", "Uleåborg", "Jyväskylä", "Lahti", "Kuopio", "Pori", "Björneborg",
+  "Joensuu", "Lappeenranta", "Hämeenlinna", "Vaasa", "Vasa", "Seinäjoki", "Rovaniemi", "Kotka", "Kouvola",
+  "Mikkeli", "Porvoo", "Borgå", "Kokkola", "Karleby", "Hyvinkää", "Lohja", "Lojo", "Järvenpää", "Nurmijärvi",
+  "Rauma", "Kajaani", "Kerava", "Savonlinna", "Tuusula", "Kirkkonummi", "Kyrkslätt", "Sipoo", "Sibbo",
+  "Riihimäki", "Salo", "Raasepori", "Raseborg", "Imatra", "Kemi", "Tornio", "Iisalmi", "Raisio", "Naantali",
+  "Kangasala", "Ylöjärvi", "Pirkkala", "Lempäälä", "Kaarina", "Mariehamn", "Maarianhamina",
+  // Swedish towns
+  "Stockholm", "Göteborg", "Gothenburg", "Malmö", "Uppsala", "Västerås", "Örebro", "Linköping", "Helsingborg",
+  "Jönköping", "Norrköping", "Lund", "Umeå", "Gävle", "Borås", "Södertälje", "Eskilstuna", "Karlstad", "Täby",
+  "Växjö", "Halmstad", "Sundsvall", "Luleå", "Trollhättan", "Östersund", "Borlänge", "Kalmar", "Falun",
+  "Skövde", "Karlskrona", "Kristianstad", "Skellefteå", "Uddevalla", "Lidingö", "Landskrona", "Nyköping",
+  "Solna", "Sundbyberg", "Nacka", "Huddinge", "Haninge", "Botkyrka", "Sollentuna", "Märsta", "Varberg",
+  "Kista", "Älvsjö", "Bromma",
+  // countries of residence
+  "Finland", "Suomi", "Sweden", "Sverige", "Ruotsi",
+]);
+
 // ---------- the pass ----------
+
+/** Non-empty lines at the top that can still be the header, when no heading comes first. */
+const HEADER_MAX_LINES = 10;
+/** Name runs are looked for in this many non-empty lines at the top. */
+const NAME_SCAN_LINES = 3;
 
 function emptyRemoved(): CvRemoved {
   return { name: 0, contact: 0, id: 0, date: 0, personal: 0, section: 0, protected: 0, country: 0 };
@@ -273,12 +463,41 @@ function replaceCounting(text: string, re: RegExp, removed: CvRemoved, kind: CvR
   });
 }
 
-/** Lines out: personal sections, labelled personal lines, and the name line at the top. */
-function dropLines(lines: string[], removed: CvRemoved): { kept: string[]; names: string[] } {
+/** A header line with contacts and links turned into separators, ready to look for a name in. */
+function forNameScan(line: string): string {
+  return redactContacts(line)
+    .replace(URL, REDACTED)
+    .replace(SOCIAL, REDACTED)
+    .replace(DOMAIN_PATH, REDACTED)
+    .split(REDACTED)
+    .join(" | ");
+}
+
+type LineResult = {
+  kept: string[];
+  /** Names from labelled lines ("Name: ..."), always taken. */
+  labelled: string[];
+  /** Name-like runs from the top lines: used when the email or profile link confirms one, else the first two. */
+  candidates: string[];
+  /** How many entries of `kept` belong to the header (before the first section heading). */
+  headerLength: number;
+};
+
+/** Lines out: personal sections and labelled personal lines. Names and the header are noted on the way. */
+function dropLines(lines: string[], removed: CvRemoved): LineResult {
   const kept: string[] = [];
-  const names: string[] = [];
+  const labelled: string[] = [];
+  const candidates: string[] = [];
   let dropping = 0; // non-empty lines left to drop in a personal section, 0 when not in one
-  let seenContent = 0; // non-empty lines kept or dropped so far, for the name at the top
+  let seenContent = 0; // non-empty lines so far
+  let header = true;
+  let headerLength = -1;
+  const endHeader = () => {
+    if (header) {
+      header = false;
+      headerLength = kept.length;
+    }
+  };
 
   for (const raw of lines) {
     const line = raw.trim();
@@ -290,6 +509,8 @@ function dropLines(lines: string[], removed: CvRemoved): { kept: string[]; names
     if (stripCvWords(line) === "") continue;
     seenContent += 1;
     const key = headingKey(line);
+    const isHeading = key !== null && (DROP_SET.has(key) || KEEP_SET.has(key));
+    if (isHeading || seenContent > HEADER_MAX_LINES) endHeader();
 
     if (key !== null && DROP_SET.has(key)) {
       removed.section += 1;
@@ -302,7 +523,7 @@ function dropLines(lines: string[], removed: CvRemoved): { kept: string[]; names
       } else {
         dropping -= 1;
         const label = LABEL_LINE.exec(line);
-        if (label && NAME_LABELS.has(label[1]!.toLowerCase().replace(/\s+/g, " "))) names.push(stripCvWords(label[2] ?? ""));
+        if (label && NAME_LABELS.has(label[1]!.toLowerCase().replace(/\s+/g, " "))) labelled.push(stripCvWords(label[2] ?? ""));
         continue;
       }
     }
@@ -310,7 +531,7 @@ function dropLines(lines: string[], removed: CvRemoved): { kept: string[]; names
     const label = LABEL_LINE.exec(line);
     if (label) {
       if (NAME_LABELS.has(label[1]!.toLowerCase().replace(/\s+/g, " "))) {
-        names.push(stripCvWords(label[2] ?? ""));
+        labelled.push(stripCvWords(label[2] ?? ""));
         removed.name += 1;
       } else {
         removed.personal += 1;
@@ -318,29 +539,22 @@ function dropLines(lines: string[], removed: CvRemoved): { kept: string[]; names
       continue;
     }
 
-    if (names.length === 0 && seenContent <= 3) {
-      const candidate = stripCvWords(line);
-      if (looksLikeName(candidate)) {
-        names.push(candidate);
-        removed.name += 1;
-        continue;
-      }
-    }
+    if (header && !isHeading && seenContent <= NAME_SCAN_LINES) candidates.push(...nameRuns(forNameScan(line)));
 
     kept.push(line);
   }
-  return { kept, names: names.filter((n) => n.length > 0) };
+  endHeader();
+  return { kept, labelled: labelled.filter((n) => n.length > 0), candidates, headerLength };
 }
 
-/** Every later use of the name: the full name first, then each of its words. */
+/** Every use of the names: the full name first, then each of its words as it appears in text. */
 function removeName(text: string, names: string[], removed: CvRemoved): string {
   let out = text;
   for (const name of names) {
     const full = new RegExp(`${BEFORE}${name.split(/\s+/).map(escape).join("\\s+")}${AFTER}`, "giu");
     out = replaceCounting(out, full, removed, "name");
     for (const token of nameTokens(name)) {
-      const re = new RegExp(`${BEFORE}(?:${tokenVariants(token).map(escape).join("|")})${AFTER}`, "gu");
-      out = replaceCounting(out, re, removed, "name");
+      out = replaceCounting(out, new RegExp(`${BEFORE}(?:${tokenPattern(token)})${AFTER}`, "gu"), removed, "name");
     }
   }
   return out;
@@ -370,6 +584,9 @@ function tidy(text: string): string {
     .map((line) =>
       line
         .replace(new RegExp(`${marker}(?:[\\s,;:/|·•–—()-]*${marker})+`, "g"), REDACTED)
+        // "[removed] – Customer Service Specialist": the removed name leaves its separator behind.
+        .replace(new RegExp(`^${marker}\\s*[|•·,–—:/-]+\\s*(?=\\S)`), "")
+        .replace(new RegExp(`(?<=\\S)\\s*[|•·,–—:/-]+\\s*${marker}$`), "")
         .replace(/\(\s*\)|\[\s*\]/g, "")
         .replace(/[^\S\n]+/g, " ")
         .trim(),
@@ -385,8 +602,23 @@ export function anonymiseCv(input: string): AnonymisedCv {
   const removed = emptyRemoved();
   const normalised = input.replace(/\r\n?/g, "\n").replace(INVISIBLE, "").normalize("NFC");
 
-  const { kept, names } = dropLines(normalised.split("\n"), removed);
+  // The email and profile link name the person best: read them before anything is removed,
+  // from the whole text (a contact section is dropped later).
+  const identity = identityParts(normalised);
+  const { kept, labelled, candidates, headerLength } = dropLines(normalised.split("\n"), removed);
+
+  // Home town and country, in the header only. Postal codes go first: "33100 Tampere" is one address.
+  for (let i = 0; i < Math.min(headerLength, kept.length); i++) {
+    let line = replaceCounting(kept[i]!, POSTAL_FI, removed, "contact");
+    line = replaceCounting(line, POSTAL_SE, removed, "contact");
+    kept[i] = replaceCounting(line, HEADER_PLACES, removed, "contact");
+  }
   let text = kept.join("\n");
+
+  const headerText = kept.slice(0, headerLength).join("\n");
+  const confirmedWords = confirmedNameWords(normalised, headerText, identity);
+  const confirmed = new Set([...identity.parts, ...confirmedWords.map(fold)]);
+  const names = [...labelled, ...pickNames(candidates, confirmed), ...confirmedWords];
 
   text = replaceCounting(text, HETU, removed, "id");
   text = replaceCounting(text, PERSONNUMMER, removed, "id");
