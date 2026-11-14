@@ -55,10 +55,10 @@ clips.forEach((clipFile, index) => {
     const wrapped = wrap(c.text);
     writeFileSync(textFile, wrapped);
     const lines = wrapped.split("\n").length;
-    const y = lines > 1 ? `h-${BAR}+10` : `h-${BAR}+28`;
-    // The type grows with the frame: 25 px at 1280 wide, 31 px at 1600.
+    const y = lines > 1 ? `h-${BAR}+12` : `h-${BAR}+30`;
+    // The type grows with the frame: 23 px at 1280 wide, 29 px at 1600; two lines fit the bar.
     filters.push(
-      `drawtext=fontfile='${FONT}':textfile='${textFile}':fontcolor=white:fontsize=w/51:line_spacing=7:x=(w-text_w)/2:y=${y}:enable='between(t,${c.from.toFixed(2)},${c.to.toFixed(2)})'`,
+      `drawtext=fontfile='${FONT}':textfile='${textFile}':fontcolor=white:fontsize=w/56:line_spacing=6:x=(w-text_w)/2:y=${y}:enable='between(t,${c.from.toFixed(2)},${c.to.toFixed(2)})'`,
     );
   });
   const part = path.join(work, `part-${String(index).padStart(2, "0")}.mp4`);
