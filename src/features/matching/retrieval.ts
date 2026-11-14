@@ -75,7 +75,8 @@ export async function retrieveForSignals(
     const texts = [s.phrase, ...(s.escoUri ? (labelsOf.get(s.escoUri) ?? []) : [])];
     const seen = new Set<string>();
     for (const text of texts.flatMap((t) => [t, bare(t)])) {
-      const q = phraseQuery(text);
+      // Whole words only: phraseQuery adds a prefix match on the last word ("excel" would find "excellent").
+      const q = phraseQuery(text)?.replaceAll(":*", "") ?? null;
       if (q === null || seen.has(q)) continue;
       seen.add(q);
       queryIdx.push(String(i));
@@ -91,7 +92,7 @@ export async function retrieveForSignals(
 
   const result = await db.execute(sql`
     WITH sig AS (
-      SELECT idx::int AS idx, kind, nullif(uri, '') AS uri
+      SELECT idx::int AS idx, kind, nullif(uri, '') AS uri, coalesce(nullif(uri, ''), 'idx:' || idx) AS grp
       FROM unnest(${textArray(signals.map((_, i) => String(i)))}, ${textArray(signals.map((s) => s.kind))}, ${textArray(signals.map((s) => s.escoUri ?? ""))}) AS t(idx, kind, uri)
     ),
     q AS (
@@ -131,16 +132,24 @@ export async function retrieveForSignals(
     spread AS (
       SELECT idx, count(*) AS n FROM best WHERE strength >= ${STRONG_FROM}::int GROUP BY idx
     ),
-    agg AS (
-      SELECT b.job_id,
-             count(*) AS n,
-             count(*) FILTER (WHERE s.kind <> 'tool') + (count(*) FILTER (WHERE s.kind = 'tool') > 0)::int AS n_eff,
-             coalesce(sum(b.strength) FILTER (WHERE s.kind <> 'tool'), 0) + coalesce(max(b.strength) FILTER (WHERE s.kind = 'tool'), 0) AS strength_eff,
-             count(*) FILTER (WHERE b.strength >= ${STRONG_FROM}::int AND s.kind <> 'tool'
-                     AND coalesce(sp.n, 0) <= greatest(${GENERIC_MIN_POSTINGS}::int, ${GENERIC_SHARE}::float8 * (SELECT n FROM pool))) AS n_alone,
-             json_agg(json_build_object('signal', b.idx, 'link', b.link) ORDER BY b.idx) AS links
+    bg AS (
+      SELECT b.job_id, s.grp,
+             bool_and(s.kind = 'tool') AS is_tool,
+             max(b.strength) AS strength,
+             bool_or(b.strength >= ${STRONG_FROM}::int AND s.kind <> 'tool'
+                     AND (coalesce(sp.n, 0) < ${GENERIC_MIN_POSTINGS}::int OR coalesce(sp.n, 0) <= ${GENERIC_SHARE}::float8 * (SELECT n FROM pool))) AS alone
       FROM best b JOIN sig s ON s.idx = b.idx LEFT JOIN spread sp ON sp.idx = b.idx
-      GROUP BY b.job_id
+      GROUP BY b.job_id, s.grp
+    ),
+    agg AS (
+      SELECT g.job_id,
+             count(*) AS n,
+             count(*) FILTER (WHERE NOT g.is_tool) + (count(*) FILTER (WHERE g.is_tool) > 0)::int AS n_eff,
+             coalesce(sum(g.strength) FILTER (WHERE NOT g.is_tool), 0) + coalesce(max(g.strength) FILTER (WHERE g.is_tool), 0) AS strength_eff,
+             count(*) FILTER (WHERE g.alone) AS n_alone,
+             (SELECT json_agg(json_build_object('signal', x.idx, 'link', x.link) ORDER BY x.idx) FROM best x WHERE x.job_id = g.job_id) AS links
+      FROM bg g
+      GROUP BY g.job_id
     ),
     basis AS (
       SELECT job_id, bool_or(link = 'direct') AS direct, bool_or(link IN ('essential', 'optional')) AS occupation,

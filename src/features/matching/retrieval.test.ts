@@ -19,6 +19,8 @@ type Post = {
   ageDays?: number;
   occupations?: string[];
   skills?: string[];
+  expiresAt?: Date;
+  active?: boolean;
 };
 
 async function addJob(p: Post): Promise<string> {
@@ -34,6 +36,8 @@ async function addJob(p: Post): Promise<string> {
     municipalityCode: p.code ?? "049",
     postedAt: new Date(NOW.getTime() - (p.ageDays ?? 1) * DAY),
     escoOccupationUris: p.occupations ?? [],
+    expiresAt: p.expiresAt ?? null,
+    active: p.active ?? true,
   });
   for (const s of p.skills ?? []) await t.db.insert(jobSkill).values({ jobId: id, skillUri: s, origin: "posting" });
   return id;
@@ -81,6 +85,11 @@ describe("text evidence is a whole phrase", () => {
     const py = await addJob({ title: "Koodari", text: "We write Python and ship daily." });
     expect(await ids([own("service to buyers", "skill", sk("cs"))])).toContain(fi);
     expect(await ids([own("scripting", "skill", sk("python"))])).toContain(py);
+  });
+
+  it("the last word is whole too: Excel is not found in 'excellent'", async () => {
+    const id = await addJob({ title: "Perks", text: "We offer excellent benefits. Experience with SAP is needed." });
+    expect(await ids([own("Excel", "tool"), own("SAP", "tool")])).not.toContain(id);
   });
 
   it("a signal without an ESCO label can still be mentioned, and links come back for it", async () => {
@@ -133,6 +142,13 @@ describe("the gate", () => {
     expect(both).toEqual([withOther]);
   });
 
+  it("a signal at exactly the minimum count is generic when the pool is small", async () => {
+    const n = GENERIC_MIN_POSTINGS;
+    for (let i = 0; i < n; i++) await addJob({ title: `Boundary ${i}`, text: "Tehtäviisi kuuluu ompelukoneen huolto.", code: "092" });
+    // The pool here is far below 1,000 postings, so 4 percent of it is under the minimum of 40.
+    expect(await ids([own("ompelukoneen huolto", "skill")])).toEqual([]);
+  });
+
   it("a declared role close to the title still brings a posting in", async () => {
     const id = await addJob({ title: "Lukkoseppä" });
     expect(await ids([own("gardening", "skill")], ["Lukkoseppä"])).toEqual([id]);
@@ -144,6 +160,24 @@ describe("the gate", () => {
     const found = await ids([own("stainless welding", "skill")]);
     expect(found).not.toContain(far);
     expect(found).not.toContain(old);
+  });
+
+  it("expired and inactive postings stay out", async () => {
+    const live = await addJob({ title: "Live brazing", text: "We need brazing of copper." });
+    const expired = await addJob({ title: "Expired brazing", text: "We need brazing of copper.", expiresAt: new Date(NOW.getTime() - DAY) });
+    const inactive = await addJob({ title: "Closed brazing", text: "We need brazing of copper.", active: false });
+    const found = await ids([own("brazing of copper", "skill")]);
+    expect(found).toContain(live);
+    expect(found).not.toContain(expired);
+    expect(found).not.toContain(inactive);
+  });
+
+  it("two signals on one ESCO skill count once at the gate", async () => {
+    const dev = await addJob({ title: "Dev dup", occupations: [occ("dev")] });
+    const found = await ids([own("Python", "tool", sk("python")), own("Python 3", "tool", sk("python"))]);
+    expect(found).not.toContain(dev);
+    const skills = await ids([own("scripting", "skill", sk("python")), own("python work", "skill", sk("python"))]);
+    expect(skills).not.toContain(dev);
   });
 });
 
