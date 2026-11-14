@@ -6,7 +6,9 @@ Role `analyst` (fallback `live`), JSON, `temperature 0.2`, `max_tokens 300`, tim
 
 1. The CV is **untrusted content**. It never becomes a signal by itself, never reaches the extractor or card synthesis, and is never shown to companies or organisers.
 2. Accept PDF, DOCX or pasted text, max 2 MB. Extract text in memory; never write the file or text to disk or to the database.
-3. Run `src/lib/redaction` on the text (emails, phone numbers, URLs, street addresses), collapse whitespace, truncate to 12,000 characters.
+3. Anonymise by code, never by a model: `anonymiseCv` in `src/features/interview/cv-anonymise.ts` removes the name (top line, `Name:` line, and every later use), contacts, links, handles, street addresses and postal codes, Finnish and Swedish identity numbers, IBANs, dates, years and ages, labelled personal lines, the personal-details, references and hobbies sections, sentences about protected attributes, and country names. Then collapse whitespace and truncate to 12,000 characters. Pasted text and PDF text both pass through it in `prepareCvText`.
+   - **PDF upload** (`POST /api/interview/cv`, `cv-pdf.ts`): PDF only (magic bytes), max 2 MB and 10 pages, text layer only (no metadata, images or fonts), 10 s deadline, at most 3 parses at once. The anonymised text goes back to the browser and into the CV box, with a summary of which kinds were removed (counts, never values). The person checks and edits it; only what is in the box when they press start is sent as `cvText`. The upload needs the interview consent ticked first. A scanned PDF (no text layer) is refused with a message to paste instead; there is no OCR.
+   - DOCX is not supported yet.
 4. Call the prompt. Keep only the validated `seeds` in `Interview.state.cvSeeds`. Drop the text and file from memory as soon as the call returns or fails.
 5. Audit `cv.seeded` with `{count}` only.
 6. If the upload, extraction or call fails, start the interview without seeds and show the `cv.failed` copy. Never block the interview on the CV.

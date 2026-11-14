@@ -239,6 +239,24 @@ export const StartInterviewResponse = z.object({
 });
 export type StartInterviewResponse = z.infer<typeof StartInterviewResponse>;
 
+/**
+ * `POST /api/interview/cv`: a PDF in, its text out after anonymisation by code. The file is
+ * read in memory and dropped with the request; nothing is stored. The person sees this text in
+ * the CV box and can change it before starting; only then is it sent as `cvText`.
+ */
+export const CvRemovedKind = z.enum(["name", "contact", "id", "date", "personal", "section", "protected", "country"]);
+export type CvRemovedKind = z.infer<typeof CvRemovedKind>;
+
+export const CvUploadResponse = z.object({
+  text: z.string().max(20000),
+  /** How many things of each kind were removed. Counts only, never what they were. */
+  removed: z.record(CvRemovedKind, z.number().int().min(0)),
+});
+export type CvUploadResponse = z.infer<typeof CvUploadResponse>;
+
+export const CvUploadError = z.enum(["too_large", "not_pdf", "too_many_pages", "no_text", "unreadable", "busy"]);
+export type CvUploadError = z.infer<typeof CvUploadError>;
+
 /** Request body for one participant turn. The response is a server-sent event stream. */
 export const TurnRequest = z.object({
   text: z.string().min(1).max(4000),
