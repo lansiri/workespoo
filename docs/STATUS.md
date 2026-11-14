@@ -36,7 +36,7 @@ Updated by the lead. Times are Helsinki time.
 ### Not done
 
 1. Done at 15:37: the public page `/how-it-works` now limits "does not score" to the conversation and has a section on the job interview, in three languages; deployed; `job-interview`, `golden-path` and `voice` passed on the live site.
-2. The language swap check (`evals/application-swap`, run by hand): [[SWAP-CHECK]].
+2. Done at 16:25: the language swap check (`evals/application-swap`, results in `evals/application-swap/results/2026-11-14-demo-world.json`). 18 applications, 54 versions, all rated. 296 of 324 levels stayed the same: 104 of 108 when the same words were rated again, 192 of 216 in another language, 12 moves up and 12 down. Six levels moved by two, four of them on one requirement about length of experience. Points per application moved by 0.6 on average when rated again, 1.3 in another language, 6 at most. A second rating would have swapped two neighbours in two jobs, both pairs tied on points. Consequence built the same hour: the lists mark neighbours within two points of each other as level. The first run of the check lost 12 of 18 translations to a 30 second limit; the limit was raised and the check run again from the start.
 3. Done at 15:58: the backup video with the job interview in it, `~/junction26/workespoo-demo-backup-v2.mp4` (2:57, 1600x900, captioned, silent; the earlier film is kept beside it). It follows the three minutes of `docs/specs/demo-script.md` and was recorded against a local copy of the deployed version with the real model, because the owner was testing on the live site and a recording resets the demo. The two waits for the model are played eight times faster and their captions say so. It was made before the row of level marks was added to the ranked lists.
 4. **Still not checked by anyone: a real phone and a real voice.**
 5. Done: the line above the organiser's ranked list now says in all three languages that the points are counted from the AI's ratings.
@@ -98,7 +98,7 @@ Checked on the live site at 11:41: spoken answers in English, Finnish and Swedis
 
 ## Running now
 
-Waiting for a result: the language swap check of the job interview, run by hand ([[SWAP-CHECK]]). The evaluation of 20 simulated interviews finished and passed (`evals/2026-11-14-*`).
+Nothing is running. The language swap check of the job interview finished (see above), and the evaluation of 20 simulated interviews finished and passed earlier (`evals/2026-11-14-*`).
 
 ## Next
 
@@ -118,4 +118,4 @@ Waiting for a result: the language swap check of the job interview, run by hand 
 - [x] Gate 1: live URL over HTTPS, deploy and rollback proven, streamed model turn from the server, 1,000+ Espoo postings and ESCO in the database, voice round trip from the server.
 - [x] Gate 2: the full path works end to end with the real model. Evaluation reports in `evals/`.
 - [x] Gate 3: styled product, golden-path test green on the live site, backup video, demo freeze (tag `demo-freeze-2026-11-14`).
-- [ ] Gate 4: the `/how-it-works` sentences limited to the conversation, job interviews live, `job-interview` and `golden-path` green on the live site, the swap check read, the backup video recorded again. Deployed: 15:37, commit `e630836`, both journeys green on the live site; swap check: [[SWAP-CHECK]]; video: recorded 15:58 (`workespoo-demo-backup-v2.mp4`, 2:57).
+- [ ] Gate 4: the `/how-it-works` sentences limited to the conversation, job interviews live, `job-interview` and `golden-path` green on the live site, the swap check read, the backup video recorded again. Deployed: 15:37, commit `e630836`, both journeys green on the live site; swap check: read, 296 of 324 levels the same, neighbours within two points now marked as level; video: recorded 15:58 (`workespoo-demo-backup-v2.mp4`, 2:57).
