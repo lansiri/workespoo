@@ -26,7 +26,7 @@ const en = {
   listNotFound: "This job was not found.",
   tryAgain: "Try again",
   orderLine:
-    "Ordered by points from the AI's ratings of each job interview. You can move a person, with a reason. The company sees the list only after you approve it.",
+    "The order comes from points that are counted from the AI's ratings of each job interview. You can move a person, with a reason. The company sees the list only after you approve it.",
   companyJob: "{company}: {title}",
   requirementsTitle: "Requirements",
   kindMust: "Must-have",
@@ -127,7 +127,7 @@ export const rankedMessages = {
     listNotFound: "Työpaikkaa ei löytynyt.",
     tryAgain: "Yritä uudelleen",
     orderLine:
-      "Järjestys perustuu pisteisiin, jotka tekoäly antoi kunkin työhaastattelun vastauksille. Voit siirtää henkilön perustelun kera. Yritys näkee listan vasta, kun hyväksyt sen.",
+      "Järjestys perustuu pisteisiin, jotka lasketaan tekoälyn kullekin työhaastattelulle antamista arvioista. Voit siirtää henkilön perustelun kera. Yritys näkee listan vasta, kun hyväksyt sen.",
     companyJob: "{company}: {title}",
     requirementsTitle: "Vaatimukset",
     kindMust: "Pakollinen",
@@ -223,7 +223,7 @@ export const rankedMessages = {
     listNotFound: "Jobbet hittades inte.",
     tryAgain: "Försök igen",
     orderLine:
-      "Ordningen bygger på poäng från AI:ns bedömning av varje jobbintervju. Du kan flytta en person, med en motivering. Företaget ser listan först när du godkänner den.",
+      "Ordningen bygger på poäng som räknas från AI:ns bedömning av varje jobbintervju. Du kan flytta en person, med en motivering. Företaget ser listan först när du godkänner den.",
     companyJob: "{company}: {title}",
     requirementsTitle: "Krav",
     kindMust: "Måste-krav",
