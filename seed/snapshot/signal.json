@@ -1865,172 +1865,6 @@
   "updatedAt": "2026-11-14T01:45:40.244Z"
  },
  {
-  "talentId": "tal_mogxo04jdwwl",
-  "id": "s3",
-  "interviewId": "int_y9viihp9qr2k",
-  "phrase": "Flow and strength simulations",
-  "phraseOwn": null,
-  "kind": "skill",
-  "escoUri": "http://data.europa.eu/esco/skill/a432ffcd-b58d-4417-836c-ea3282b626ca",
-  "escoLabelEn": "run simulations",
-  "escoLabelFi": "toteuttaa simulaatioita",
-  "evidence": [
-   {
-    "turnIndex": 1,
-    "sentenceTo": 2,
-    "sentenceFrom": 2
-   }
-  ],
-  "hasExample": false,
-  "status": "approved",
-  "addedBy": "agent",
-  "createdAt": "2026-11-14T01:39:05.457Z",
-  "updatedAt": "2026-11-14T01:39:05.457Z"
- },
- {
-  "talentId": "tal_mogxo04jdwwl",
-  "id": "s4",
-  "interviewId": "int_y9viihp9qr2k",
-  "phrase": "Prototype troubleshooting in workshop",
-  "phraseOwn": null,
-  "kind": "skill",
-  "escoUri": "http://data.europa.eu/esco/skill/334e3e49-fb02-4051-809a-f06adfdc1c40",
-  "escoLabelEn": "troubleshoot",
-  "escoLabelFi": "tunnistaa ongelmia",
-  "evidence": [
-   {
-    "turnIndex": 1,
-    "sentenceTo": 2,
-    "sentenceFrom": 2
-   }
-  ],
-  "hasExample": false,
-  "status": "approved",
-  "addedBy": "agent",
-  "createdAt": "2026-11-14T01:39:05.457Z",
-  "updatedAt": "2026-11-14T01:39:05.457Z"
- },
- {
-  "talentId": "tal_mogxo04jdwwl",
-  "id": "s5",
-  "interviewId": "int_y9viihp9qr2k",
-  "phrase": "Finite element stress analysis",
-  "phraseOwn": null,
-  "kind": "skill",
-  "escoUri": "http://data.europa.eu/esco/skill/632843be-2872-47b4-a92e-352629f9bd88",
-  "escoLabelEn": "analyse stress resistance of products",
-  "escoLabelFi": "analysoida tuotteiden stressinkestävyyttä",
-  "evidence": [
-   {
-    "turnIndex": 3,
-    "sentenceTo": 2,
-    "sentenceFrom": 1
-   }
-  ],
-  "hasExample": true,
-  "status": "approved",
-  "addedBy": "agent",
-  "createdAt": "2026-11-14T01:39:05.457Z",
-  "updatedAt": "2026-11-14T01:39:05.457Z"
- },
- {
-  "talentId": "tal_mogxo04jdwwl",
-  "id": "s6",
-  "interviewId": "int_y9viihp9qr2k",
-  "phrase": "Redesigning cracked pump housings",
-  "phraseOwn": null,
-  "kind": "skill",
-  "escoUri": null,
-  "escoLabelEn": null,
-  "escoLabelFi": null,
-  "evidence": [
-   {
-    "turnIndex": 3,
-    "sentenceTo": 2,
-    "sentenceFrom": 1
-   }
-  ],
-  "hasExample": true,
-  "status": "approved",
-  "addedBy": "agent",
-  "createdAt": "2026-11-14T01:39:05.457Z",
-  "updatedAt": "2026-11-14T01:39:05.457Z"
- },
- {
-  "talentId": "tal_mogxo04jdwwl",
-  "id": "s7",
-  "interviewId": "int_y9viihp9qr2k",
-  "phrase": "Checking flow after design changes",
-  "phraseOwn": null,
-  "kind": "skill",
-  "escoUri": null,
-  "escoLabelEn": null,
-  "escoLabelFi": null,
-  "evidence": [
-   {
-    "turnIndex": 3,
-    "sentenceTo": 3,
-    "sentenceFrom": 3
-   }
-  ],
-  "hasExample": true,
-  "status": "approved",
-  "addedBy": "agent",
-  "createdAt": "2026-11-14T01:39:05.457Z",
-  "updatedAt": "2026-11-14T01:39:05.457Z"
- },
- {
-  "talentId": "tal_mogxo04jdwwl",
-  "id": "s8",
-  "interviewId": "int_y9viihp9qr2k",
-  "phrase": "Prototype pressure testing",
-  "phraseOwn": null,
-  "kind": "skill",
-  "escoUri": null,
-  "escoLabelEn": null,
-  "escoLabelFi": null,
-  "evidence": [
-   {
-    "turnIndex": 3,
-    "sentenceTo": 1,
-    "sentenceFrom": 1
-   },
-   {
-    "turnIndex": 3,
-    "sentenceTo": 4,
-    "sentenceFrom": 4
-   }
-  ],
-  "hasExample": true,
-  "status": "approved",
-  "addedBy": "agent",
-  "createdAt": "2026-11-14T01:39:05.457Z",
-  "updatedAt": "2026-11-14T01:39:05.457Z"
- },
- {
-  "talentId": "tal_mogxo04jdwwl",
-  "id": "s9",
-  "interviewId": "int_y9viihp9qr2k",
-  "phrase": "SolidWorks",
-  "phraseOwn": null,
-  "kind": "tool",
-  "escoUri": null,
-  "escoLabelEn": null,
-  "escoLabelFi": null,
-  "evidence": [
-   {
-    "turnIndex": 5,
-    "sentenceTo": 1,
-    "sentenceFrom": 1
-   }
-  ],
-  "hasExample": false,
-  "status": "approved",
-  "addedBy": "agent",
-  "createdAt": "2026-11-14T01:39:05.457Z",
-  "updatedAt": "2026-11-14T01:39:05.457Z"
- },
- {
   "talentId": "tal_ht9k4vwpbm2x",
   "id": "s12",
   "interviewId": "int_ibgj3thvm7dq",
@@ -2897,144 +2731,6 @@
   "addedBy": "agent",
   "createdAt": "2026-11-14T01:43:11.559Z",
   "updatedAt": "2026-11-14T01:43:11.559Z"
- },
- {
-  "talentId": "tal_mogxo04jdwwl",
-  "id": "s1",
-  "interviewId": "int_y9viihp9qr2k",
-  "phrase": "Mechanical design engineering",
-  "phraseOwn": null,
-  "kind": "domain",
-  "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-  "escoLabelEn": "mechanical engineering",
-  "escoLabelFi": "koneenrakennus",
-  "evidence": [
-   {
-    "turnIndex": 1,
-    "sentenceTo": 1,
-    "sentenceFrom": 1
-   }
-  ],
-  "hasExample": false,
-  "status": "approved",
-  "addedBy": "agent",
-  "createdAt": "2026-11-14T01:39:05.457Z",
-  "updatedAt": "2026-11-14T01:39:05.457Z"
- },
- {
-  "talentId": "tal_mogxo04jdwwl",
-  "id": "s2",
-  "interviewId": "int_y9viihp9qr2k",
-  "phrase": "Component design",
-  "phraseOwn": null,
-  "kind": "skill",
-  "escoUri": "http://data.europa.eu/esco/skill/87434439-c07d-48be-af34-b0cdd03121c4",
-  "escoLabelEn": "design engineering components",
-  "escoLabelFi": "suunnitella teknisiä komponentteja",
-  "evidence": [
-   {
-    "turnIndex": 1,
-    "sentenceTo": 2,
-    "sentenceFrom": 2
-   }
-  ],
-  "hasExample": false,
-  "status": "approved",
-  "addedBy": "agent",
-  "createdAt": "2026-11-14T01:39:05.457Z",
-  "updatedAt": "2026-11-14T01:39:05.457Z"
- },
- {
-  "talentId": "tal_mogxo04jdwwl",
-  "id": "s10",
-  "interviewId": "int_y9viihp9qr2k",
-  "phrase": "Ansys",
-  "phraseOwn": null,
-  "kind": "tool",
-  "escoUri": null,
-  "escoLabelEn": null,
-  "escoLabelFi": null,
-  "evidence": [
-   {
-    "turnIndex": 5,
-    "sentenceTo": 1,
-    "sentenceFrom": 1
-   }
-  ],
-  "hasExample": false,
-  "status": "approved",
-  "addedBy": "agent",
-  "createdAt": "2026-11-14T01:39:05.457Z",
-  "updatedAt": "2026-11-14T01:39:05.457Z"
- },
- {
-  "talentId": "tal_mogxo04jdwwl",
-  "id": "s11",
-  "interviewId": "int_y9viihp9qr2k",
-  "phrase": "MATLAB",
-  "phraseOwn": null,
-  "kind": "tool",
-  "escoUri": "http://data.europa.eu/esco/skill/c3a03c5a-c260-4c26-9b9a-873abb396f4d",
-  "escoLabelEn": "MATLAB",
-  "escoLabelFi": "MATLAB",
-  "evidence": [
-   {
-    "turnIndex": 5,
-    "sentenceTo": 1,
-    "sentenceFrom": 1
-   }
-  ],
-  "hasExample": false,
-  "status": "approved",
-  "addedBy": "agent",
-  "createdAt": "2026-11-14T01:39:05.457Z",
-  "updatedAt": "2026-11-14T01:39:05.457Z"
- },
- {
-  "talentId": "tal_mogxo04jdwwl",
-  "id": "s12",
-  "interviewId": "int_y9viihp9qr2k",
-  "phrase": "PDM revision management",
-  "phraseOwn": null,
-  "kind": "tool",
-  "escoUri": null,
-  "escoLabelEn": null,
-  "escoLabelFi": null,
-  "evidence": [
-   {
-    "turnIndex": 5,
-    "sentenceTo": 2,
-    "sentenceFrom": 2
-   }
-  ],
-  "hasExample": false,
-  "status": "approved",
-  "addedBy": "agent",
-  "createdAt": "2026-11-14T01:39:05.457Z",
-  "updatedAt": "2026-11-14T01:39:05.457Z"
- },
- {
-  "talentId": "tal_mogxo04jdwwl",
-  "id": "s13",
-  "interviewId": "int_y9viihp9qr2k",
-  "phrase": "Dimensional inspection and CNC reading",
-  "phraseOwn": null,
-  "kind": "skill",
-  "escoUri": "http://data.europa.eu/esco/skill/23d7bd85-d8d5-4455-b64d-3b0998f2425d",
-  "escoLabelEn": "measuring dimensions and related properties",
-  "escoLabelFi": "mitata ulottuvuuksia ja niihin liittyviä ominaisuuksia",
-  "evidence": [
-   {
-    "turnIndex": 5,
-    "sentenceTo": 3,
-    "sentenceFrom": 3
-   }
-  ],
-  "hasExample": false,
-  "status": "approved",
-  "addedBy": "agent",
-  "createdAt": "2026-11-14T01:39:05.457Z",
-  "updatedAt": "2026-11-14T01:39:05.457Z"
  },
  {
   "talentId": "tal_sabxh4xaga3o",
@@ -4441,5 +4137,342 @@
   "addedBy": "agent",
   "createdAt": "2026-11-14T01:48:48.254Z",
   "updatedAt": "2026-11-14T01:48:48.254Z"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "id": "s1",
+  "interviewId": "int_pdt5vz6ceosh",
+  "phrase": "Industrial pump manufacturing",
+  "phraseOwn": null,
+  "kind": "domain",
+  "escoUri": "http://data.europa.eu/esco/skill/a6f8dabe-476b-433f-9f89-c0f839a9991c",
+  "escoLabelEn": "manufacturing of pumps and compressors",
+  "escoLabelFi": "pumppujen ja kompressoreiden valmistus",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T04:00:29.065Z",
+  "updatedAt": "2026-11-14T04:00:29.065Z"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "id": "s18",
+  "interviewId": "int_pdt5vz6ceosh",
+  "phrase": "Designing pump components",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/87434439-c07d-48be-af34-b0cdd03121c4",
+  "escoLabelEn": "design engineering components",
+  "escoLabelFi": "suunnitella teknisiä komponentteja",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   },
+   {
+    "turnIndex": 9,
+    "sentenceTo": 4,
+    "sentenceFrom": 4
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T04:00:29.065Z",
+  "updatedAt": "2026-11-14T04:00:29.065Z"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "id": "s19",
+  "interviewId": "int_pdt5vz6ceosh",
+  "phrase": "Running flow and strength simulations",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/a432ffcd-b58d-4417-836c-ea3282b626ca",
+  "escoLabelEn": "run simulations",
+  "escoLabelFi": "toteuttaa simulaatioita",
+  "evidence": [
+   {
+    "turnIndex": 1,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 3,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T04:00:29.065Z",
+  "updatedAt": "2026-11-14T04:00:29.065Z"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "id": "s5",
+  "interviewId": "int_pdt5vz6ceosh",
+  "phrase": "Finite element stress analysis",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/632843be-2872-47b4-a92e-352629f9bd88",
+  "escoLabelEn": "analyse stress resistance of products",
+  "escoLabelFi": "analysoida tuotteiden stressinkestävyyttä",
+  "evidence": [
+   {
+    "turnIndex": 3,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   },
+   {
+    "turnIndex": 7,
+    "sentenceTo": 2,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": true,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T04:00:29.065Z",
+  "updatedAt": "2026-11-14T04:00:29.065Z"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "id": "s9",
+  "interviewId": "int_pdt5vz6ceosh",
+  "phrase": "SolidWorks",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T04:00:29.065Z",
+  "updatedAt": "2026-11-14T04:00:29.065Z"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "id": "s10",
+  "interviewId": "int_pdt5vz6ceosh",
+  "phrase": "Ansys",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T04:00:29.065Z",
+  "updatedAt": "2026-11-14T04:00:29.065Z"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "id": "s20",
+  "interviewId": "int_pdt5vz6ceosh",
+  "phrase": "MATLAB",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": "http://data.europa.eu/esco/skill/c3a03c5a-c260-4c26-9b9a-873abb396f4d",
+  "escoLabelEn": "MATLAB",
+  "escoLabelFi": "MATLAB",
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T04:00:29.065Z",
+  "updatedAt": "2026-11-14T04:00:29.065Z"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "id": "s21",
+  "interviewId": "int_pdt5vz6ceosh",
+  "phrase": "PDM systems",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T04:00:29.065Z",
+  "updatedAt": "2026-11-14T04:00:29.065Z"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "id": "s22",
+  "interviewId": "int_pdt5vz6ceosh",
+  "phrase": "Calipers and coordinate measuring machines",
+  "phraseOwn": null,
+  "kind": "tool",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T04:00:29.065Z",
+  "updatedAt": "2026-11-14T04:00:29.065Z"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "id": "s23",
+  "interviewId": "int_pdt5vz6ceosh",
+  "phrase": "Reading CNC programs",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 5,
+    "sentenceTo": 3,
+    "sentenceFrom": 3
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T04:00:29.065Z",
+  "updatedAt": "2026-11-14T04:00:29.065Z"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "id": "s11",
+  "interviewId": "int_pdt5vz6ceosh",
+  "phrase": "Cross-functional engineering collaboration",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/94b2c46e-6338-4a1d-950a-d44eef018c53",
+  "escoLabelEn": "collaborate with engineers",
+  "escoLabelFi": "tehdä yhteistyötä insinöörien tai teknisten asiantuntijoiden kanssa",
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 3,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T04:00:29.065Z",
+  "updatedAt": "2026-11-14T04:00:29.065Z"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "id": "s12",
+  "interviewId": "int_pdt5vz6ceosh",
+  "phrase": "Reviewing engineering drawings",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": "http://data.europa.eu/esco/skill/b07daddc-8625-4360-946e-ad2b0e56ebf6",
+  "escoLabelEn": "read engineering drawings",
+  "escoLabelFi": "tulkita teknisiä piirustuksia",
+  "evidence": [
+   {
+    "turnIndex": 9,
+    "sentenceTo": 4,
+    "sentenceFrom": 4
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T04:00:29.065Z",
+  "updatedAt": "2026-11-14T04:00:29.065Z"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "id": "s13",
+  "interviewId": "int_pdt5vz6ceosh",
+  "phrase": "Pump cavitation theory",
+  "phraseOwn": null,
+  "kind": "knowledge",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 11,
+    "sentenceTo": 1,
+    "sentenceFrom": 1
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T04:00:29.065Z",
+  "updatedAt": "2026-11-14T04:00:29.065Z"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "id": "s14",
+  "interviewId": "int_pdt5vz6ceosh",
+  "phrase": "Building flow test rigs",
+  "phraseOwn": null,
+  "kind": "skill",
+  "escoUri": null,
+  "escoLabelEn": null,
+  "escoLabelFi": null,
+  "evidence": [
+   {
+    "turnIndex": 11,
+    "sentenceTo": 2,
+    "sentenceFrom": 2
+   }
+  ],
+  "hasExample": false,
+  "status": "approved",
+  "addedBy": "agent",
+  "createdAt": "2026-11-14T04:00:29.065Z",
+  "updatedAt": "2026-11-14T04:00:29.065Z"
  }
 ]

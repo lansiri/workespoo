@@ -6264,96 +6264,6 @@
   "at": "2026-11-14T01:36:45.635Z"
  },
  {
-  "id": 954,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "coverage.updated",
-  "payload": {
-   "type": "coverage.updated",
-   "areas": {
-    "tools": "asked",
-    "beyond": "open",
-    "people": "open",
-    "example": "asked",
-    "open_floor": "open",
-    "looking_for": "open",
-    "recent_work": "asked"
-   }
-  },
-  "at": "2026-11-14T01:37:47.692Z"
- },
- {
-  "id": 955,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "coverage.updated",
-  "payload": {
-   "type": "coverage.updated",
-   "areas": {
-    "tools": "asked",
-    "beyond": "open",
-    "people": "asked",
-    "example": "asked",
-    "open_floor": "open",
-    "looking_for": "open",
-    "recent_work": "asked"
-   }
-  },
-  "at": "2026-11-14T01:37:50.676Z"
- },
- {
-  "id": 962,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "coverage.updated",
-  "payload": {
-   "type": "coverage.updated",
-   "areas": {
-    "tools": "covered",
-    "beyond": "asked",
-    "people": "thin",
-    "example": "asked",
-    "open_floor": "open",
-    "looking_for": "open",
-    "recent_work": "covered"
-   }
-  },
-  "at": "2026-11-14T01:37:53.685Z"
- },
- {
-  "id": 963,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "coverage.updated",
-  "payload": {
-   "type": "coverage.updated",
-   "areas": {
-    "tools": "covered",
-    "beyond": "asked",
-    "people": "thin",
-    "example": "asked",
-    "open_floor": "open",
-    "looking_for": "open",
-    "recent_work": "covered"
-   }
-  },
-  "at": "2026-11-14T01:37:56.729Z"
- },
- {
-  "id": 964,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "coverage.updated",
-  "payload": {
-   "type": "coverage.updated",
-   "areas": {
-    "tools": "covered",
-    "beyond": "asked",
-    "people": "thin",
-    "example": "asked",
-    "open_floor": "open",
-    "looking_for": "asked",
-    "recent_work": "covered"
-   }
-  },
-  "at": "2026-11-14T01:37:59.833Z"
- },
- {
   "id": 1113,
   "interviewId": "int_wq6ggxdm2ndj",
   "type": "signal.updated",
@@ -6711,17 +6621,6 @@
    "interviewId": "int_3x0gy2m73r5q"
   },
   "at": "2026-11-14T01:36:48.235Z"
- },
- {
-  "id": 972,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "interview.completed",
-  "payload": {
-   "type": "interview.completed",
-   "talentId": "tal_mogxo04jdwwl",
-   "interviewId": "int_y9viihp9qr2k"
-  },
-  "at": "2026-11-14T01:38:02.485Z"
  },
  {
   "id": 1132,
@@ -7599,24 +7498,6 @@
   "at": "2026-11-14T01:37:41.315Z"
  },
  {
-  "id": 953,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "coverage.updated",
-  "payload": {
-   "type": "coverage.updated",
-   "areas": {
-    "tools": "open",
-    "beyond": "open",
-    "people": "open",
-    "example": "asked",
-    "open_floor": "open",
-    "looking_for": "open",
-    "recent_work": "asked"
-   }
-  },
-  "at": "2026-11-14T01:37:44.367Z"
- },
- {
   "id": 1157,
   "interviewId": "int_39b3yjlmwqar",
   "type": "coverage.updated",
@@ -7633,469 +7514,6 @@
    }
   },
   "at": "2026-11-14T01:44:07.760Z"
- },
- {
-  "id": 956,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s1",
-    "esco": {
-     "uri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-     "labelEn": "mechanical engineering",
-     "labelFi": "koneenrakennus"
-    },
-    "kind": "domain",
-    "phrase": "Mechanical design engineering",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:37:53.321Z"
- },
- {
-  "id": 957,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s2",
-    "esco": {
-     "uri": "http://data.europa.eu/esco/skill/f6868852-9bf6-4899-a5d6-5f9532fb877d",
-     "labelEn": "design component interfaces",
-     "labelFi": "suunnitella komponenttien käyttöliittymiä"
-    },
-    "kind": "skill",
-    "phrase": "Component design",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 1,
-      "sentenceTo": 2,
-      "sentenceFrom": 2
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:37:53.332Z"
- },
- {
-  "id": 958,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s3",
-    "esco": null,
-    "kind": "skill",
-    "phrase": "Flow and strength simulations",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 1,
-      "sentenceTo": 2,
-      "sentenceFrom": 2
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:37:53.345Z"
- },
- {
-  "id": 959,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s4",
-    "esco": null,
-    "kind": "skill",
-    "phrase": "Prototype troubleshooting in workshop",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 1,
-      "sentenceTo": 2,
-      "sentenceFrom": 2
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:37:53.356Z"
- },
- {
-  "id": 960,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "coverage.updated",
-  "payload": {
-   "type": "coverage.updated",
-   "areas": {
-    "tools": "covered",
-    "beyond": "open",
-    "people": "thin",
-    "example": "asked",
-    "open_floor": "open",
-    "looking_for": "open",
-    "recent_work": "covered"
-   }
-  },
-  "at": "2026-11-14T01:37:53.367Z"
- },
- {
-  "id": 961,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "jobs.lit",
-  "payload": {
-   "type": "jobs.lit",
-   "count": 35,
-   "sample": [
-    {
-     "id": "job_tmt_3d8bf72c14084b1ba8052b4a1c7509e0",
-     "url": "https://www.academicwork.fi/avoimet-tyopaikat/p/tyomarkkinatori/3687KN",
-     "title": "HVAC Design Engineer, Helsinki, Turku",
-     "source": "tmt",
-     "employerName": "Academic Work Finland Oy",
-     "municipality": "Espoo"
-    },
-    {
-     "id": "job_tmt_13e613550bd94c4d97d6066ea45d710c",
-     "url": "http://worker.likeit.fi/apply/127932947",
-     "title": "Avoin hakemus datakeskusrakentamisen projekteihin",
-     "source": "tmt",
-     "employerName": "Worker Etelä-Suomi Oy",
-     "municipality": "Espoo"
-    },
-    {
-     "id": "job_tmt_65cf7122b52d476d83aaf6fd542f6bfc",
-     "url": "https://ats.talentadore.com/apply/huoltopaallikko-rakennusautomaatio-vantaa/ZNv0Qz",
-     "title": "Huoltopäällikkö, rakennusautomaatio, Vantaa",
-     "source": "tmt",
-     "employerName": "Caverion Suomi Oy",
-     "municipality": "Espoo"
-    }
-   ]
-  },
-  "at": "2026-11-14T01:37:53.390Z"
- },
- {
-  "id": 965,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s5",
-    "esco": null,
-    "kind": "skill",
-    "phrase": "Finite element stress analysis",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 3,
-      "sentenceTo": 2,
-      "sentenceFrom": 1
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:37:59.980Z"
- },
- {
-  "id": 966,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s6",
-    "esco": null,
-    "kind": "skill",
-    "phrase": "Redesigning cracked pump housings",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 3,
-      "sentenceTo": 2,
-      "sentenceFrom": 1
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:37:59.994Z"
- },
- {
-  "id": 967,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s7",
-    "esco": null,
-    "kind": "skill",
-    "phrase": "Checking flow after design changes",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 3,
-      "sentenceTo": 3,
-      "sentenceFrom": 3
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:00.013Z"
- },
- {
-  "id": 968,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s8",
-    "esco": null,
-    "kind": "skill",
-    "phrase": "Prototype pressure testing",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 3,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     {
-      "turnIndex": 3,
-      "sentenceTo": 4,
-      "sentenceFrom": 4
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:00.034Z"
- },
- {
-  "id": 969,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "coverage.updated",
-  "payload": {
-   "type": "coverage.updated",
-   "areas": {
-    "tools": "covered",
-    "beyond": "asked",
-    "people": "thin",
-    "example": "covered",
-    "open_floor": "open",
-    "looking_for": "asked",
-    "recent_work": "covered"
-   }
-  },
-  "at": "2026-11-14T01:38:00.048Z"
- },
- {
-  "id": 970,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "jobs.lit",
-  "payload": {
-   "type": "jobs.lit",
-   "count": 35,
-   "sample": [
-    {
-     "id": "job_tmt_3d8bf72c14084b1ba8052b4a1c7509e0",
-     "url": "https://www.academicwork.fi/avoimet-tyopaikat/p/tyomarkkinatori/3687KN",
-     "title": "HVAC Design Engineer, Helsinki, Turku",
-     "source": "tmt",
-     "employerName": "Academic Work Finland Oy",
-     "municipality": "Espoo"
-    },
-    {
-     "id": "job_tmt_13e613550bd94c4d97d6066ea45d710c",
-     "url": "http://worker.likeit.fi/apply/127932947",
-     "title": "Avoin hakemus datakeskusrakentamisen projekteihin",
-     "source": "tmt",
-     "employerName": "Worker Etelä-Suomi Oy",
-     "municipality": "Espoo"
-    },
-    {
-     "id": "job_tmt_65cf7122b52d476d83aaf6fd542f6bfc",
-     "url": "https://ats.talentadore.com/apply/huoltopaallikko-rakennusautomaatio-vantaa/ZNv0Qz",
-     "title": "Huoltopäällikkö, rakennusautomaatio, Vantaa",
-     "source": "tmt",
-     "employerName": "Caverion Suomi Oy",
-     "municipality": "Espoo"
-    }
-   ]
-  },
-  "at": "2026-11-14T01:38:00.088Z"
- },
- {
-  "id": 973,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s9",
-    "esco": null,
-    "kind": "tool",
-    "phrase": "SolidWorks",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 5,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:07.376Z"
- },
- {
-  "id": 974,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s10",
-    "esco": null,
-    "kind": "tool",
-    "phrase": "Ansys",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 5,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:07.395Z"
- },
- {
-  "id": 975,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s11",
-    "esco": {
-     "uri": "http://data.europa.eu/esco/skill/c3a03c5a-c260-4c26-9b9a-873abb396f4d",
-     "labelEn": "MATLAB",
-     "labelFi": "MATLAB"
-    },
-    "kind": "tool",
-    "phrase": "MATLAB",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 5,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:07.409Z"
- },
- {
-  "id": 976,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s12",
-    "esco": null,
-    "kind": "tool",
-    "phrase": "PDM revision management",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 5,
-      "sentenceTo": 2,
-      "sentenceFrom": 2
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:07.421Z"
- },
- {
-  "id": 977,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s13",
-    "esco": null,
-    "kind": "skill",
-    "phrase": "Dimensional inspection and CNC reading",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 5,
-      "sentenceTo": 3,
-      "sentenceFrom": 3
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:07.432Z"
- },
- {
-  "id": 971,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "turn.done",
-  "payload": {
-   "kind": "closing",
-   "text": "Thank you, that's all my questions. Your notes are ready: check them, change or remove anything, and approve only what you're happy with.",
-   "type": "turn.done",
-   "closing": true,
-   "turnIndex": 14
-  },
-  "at": "2026-11-14T01:38:02.429Z"
  },
  {
   "id": 1158,
@@ -8609,403 +8027,6 @@
   "at": "2026-11-14T01:44:44.125Z"
  },
  {
-  "id": 978,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "jobs.lit",
-  "payload": {
-   "type": "jobs.lit",
-   "count": 68,
-   "sample": [
-    {
-     "id": "job_tmt_27fc2b63d0284da2b4312969a6f05903",
-     "url": "http://lokki.likeit.fi/apply/27306906",
-     "title": "Asiantuntija, Oracle Forms pohjaisen järjestelmän ylläpitoon / kehitykseen",
-     "source": "tmt",
-     "employerName": "Lokki Henkilöstöpalvelut Oy",
-     "municipality": "Espoo"
-    },
-    {
-     "id": "job_tmt_b897699de40741158365b20db5dd8d54",
-     "url": "http://lokki.likeit.fi/apply/27306570",
-     "title": "ServiceNow Developer & Administrator",
-     "source": "tmt",
-     "employerName": "Lokki Henkilöstöpalvelut Oy",
-     "municipality": "Espoo"
-    },
-    {
-     "id": "job_tmt_05fd9025114f41e785945e79bd6332fa",
-     "url": "http://lokki.likeit.fi/apply/27306536",
-     "title": "Project / Program Manager, Carve-out",
-     "source": "tmt",
-     "employerName": "Lokki Henkilöstöpalvelut Oy",
-     "municipality": "Espoo"
-    }
-   ]
-  },
-  "at": "2026-11-14T01:38:07.463Z"
- },
- {
-  "id": 979,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s14",
-    "esco": null,
-    "kind": "skill",
-    "phrase": "Design group collaboration",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 7,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:14.120Z"
- },
- {
-  "id": 980,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s15",
-    "esco": null,
-    "kind": "skill",
-    "phrase": "Cross-functional engineering coordination",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 7,
-      "sentenceTo": 3,
-      "sentenceFrom": 2
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:14.130Z"
- },
- {
-  "id": 981,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s16",
-    "esco": null,
-    "kind": "skill",
-    "phrase": "Pump housing and impeller design",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 7,
-      "sentenceTo": 4,
-      "sentenceFrom": 4
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:14.140Z"
- },
- {
-  "id": 982,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s17",
-    "esco": null,
-    "kind": "skill",
-    "phrase": "Drawing review",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 7,
-      "sentenceTo": 4,
-      "sentenceFrom": 4
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:14.151Z"
- },
- {
-  "id": 983,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "coverage.updated",
-  "payload": {
-   "type": "coverage.updated",
-   "areas": {
-    "tools": "covered",
-    "beyond": "asked",
-    "people": "covered",
-    "example": "covered",
-    "open_floor": "open",
-    "looking_for": "asked",
-    "recent_work": "covered"
-   }
-  },
-  "at": "2026-11-14T01:38:14.161Z"
- },
- {
-  "id": 984,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "jobs.lit",
-  "payload": {
-   "type": "jobs.lit",
-   "count": 68,
-   "sample": [
-    {
-     "id": "job_tmt_27fc2b63d0284da2b4312969a6f05903",
-     "url": "http://lokki.likeit.fi/apply/27306906",
-     "title": "Asiantuntija, Oracle Forms pohjaisen järjestelmän ylläpitoon / kehitykseen",
-     "source": "tmt",
-     "employerName": "Lokki Henkilöstöpalvelut Oy",
-     "municipality": "Espoo"
-    },
-    {
-     "id": "job_tmt_b897699de40741158365b20db5dd8d54",
-     "url": "http://lokki.likeit.fi/apply/27306570",
-     "title": "ServiceNow Developer & Administrator",
-     "source": "tmt",
-     "employerName": "Lokki Henkilöstöpalvelut Oy",
-     "municipality": "Espoo"
-    },
-    {
-     "id": "job_tmt_05fd9025114f41e785945e79bd6332fa",
-     "url": "http://lokki.likeit.fi/apply/27306536",
-     "title": "Project / Program Manager, Carve-out",
-     "source": "tmt",
-     "employerName": "Lokki Henkilöstöpalvelut Oy",
-     "municipality": "Espoo"
-    }
-   ]
-  },
-  "at": "2026-11-14T01:38:14.186Z"
- },
- {
-  "id": 985,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s18",
-    "esco": null,
-    "kind": "knowledge",
-    "phrase": "Pump cavitation theory",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 9,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:19.382Z"
- },
- {
-  "id": 986,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s19",
-    "esco": null,
-    "kind": "skill",
-    "phrase": "3D printed flow test rig",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 9,
-      "sentenceTo": 2,
-      "sentenceFrom": 2
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:19.396Z"
- },
- {
-  "id": 987,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.proposed",
-  "payload": {
-   "type": "signal.proposed",
-   "signal": {
-    "id": "s20",
-    "esco": null,
-    "kind": "skill",
-    "phrase": "Guest lecturing on simulation",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 9,
-      "sentenceTo": 3,
-      "sentenceFrom": 2
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:19.410Z"
- },
- {
-  "id": 988,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "coverage.updated",
-  "payload": {
-   "type": "coverage.updated",
-   "areas": {
-    "tools": "covered",
-    "beyond": "covered",
-    "people": "covered",
-    "example": "covered",
-    "open_floor": "open",
-    "looking_for": "asked",
-    "recent_work": "covered"
-   }
-  },
-  "at": "2026-11-14T01:38:19.424Z"
- },
- {
-  "id": 989,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "jobs.lit",
-  "payload": {
-   "type": "jobs.lit",
-   "count": 68,
-   "sample": [
-    {
-     "id": "job_tmt_27fc2b63d0284da2b4312969a6f05903",
-     "url": "http://lokki.likeit.fi/apply/27306906",
-     "title": "Asiantuntija, Oracle Forms pohjaisen järjestelmän ylläpitoon / kehitykseen",
-     "source": "tmt",
-     "employerName": "Lokki Henkilöstöpalvelut Oy",
-     "municipality": "Espoo"
-    },
-    {
-     "id": "job_tmt_b897699de40741158365b20db5dd8d54",
-     "url": "http://lokki.likeit.fi/apply/27306570",
-     "title": "ServiceNow Developer & Administrator",
-     "source": "tmt",
-     "employerName": "Lokki Henkilöstöpalvelut Oy",
-     "municipality": "Espoo"
-    },
-    {
-     "id": "job_tmt_05fd9025114f41e785945e79bd6332fa",
-     "url": "http://lokki.likeit.fi/apply/27306536",
-     "title": "Project / Program Manager, Carve-out",
-     "source": "tmt",
-     "employerName": "Lokki Henkilöstöpalvelut Oy",
-     "municipality": "Espoo"
-    }
-   ]
-  },
-  "at": "2026-11-14T01:38:19.451Z"
- },
- {
-  "id": 990,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.updated",
-  "payload": {
-   "type": "signal.updated",
-   "signal": {
-    "id": "s3",
-    "esco": null,
-    "kind": "skill",
-    "phrase": "Flow and strength simulations",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 1,
-      "sentenceTo": 2,
-      "sentenceFrom": 2
-     },
-     {
-      "turnIndex": 11,
-      "sentenceTo": 2,
-      "sentenceFrom": 1
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:19.518Z"
- },
- {
-  "id": 991,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "signal.updated",
-  "payload": {
-   "type": "signal.updated",
-   "signal": {
-    "id": "s4",
-    "esco": null,
-    "kind": "skill",
-    "phrase": "Prototype troubleshooting in workshop",
-    "status": "proposed",
-    "addedBy": "agent",
-    "evidence": [
-     {
-      "turnIndex": 1,
-      "sentenceTo": 2,
-      "sentenceFrom": 2
-     },
-     {
-      "turnIndex": 11,
-      "sentenceTo": 2,
-      "sentenceFrom": 1
-     }
-    ],
-    "phraseOwn": null
-   }
-  },
-  "at": "2026-11-14T01:38:19.531Z"
- },
- {
-  "id": 992,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "coverage.updated",
-  "payload": {
-   "type": "coverage.updated",
-   "areas": {
-    "tools": "covered",
-    "beyond": "covered",
-    "people": "covered",
-    "example": "covered",
-    "open_floor": "open",
-    "looking_for": "covered",
-    "recent_work": "covered"
-   }
-  },
-  "at": "2026-11-14T01:38:19.584Z"
- },
- {
   "id": 1189,
   "interviewId": "int_ibgj3thvm7dq",
   "type": "signal.proposed",
@@ -9058,16 +8079,6 @@
    }
   },
   "at": "2026-11-14T01:47:11.960Z"
- },
- {
-  "id": 993,
-  "interviewId": "int_y9viihp9qr2k",
-  "type": "card.ready",
-  "payload": {
-   "type": "card.ready",
-   "talentId": "tal_mogxo04jdwwl"
-  },
-  "at": "2026-11-14T01:39:05.388Z"
  },
  {
   "id": 994,
@@ -12654,5 +11665,1275 @@
    "talentId": "tal_8ttxss4rfn1c"
   },
   "at": "2026-11-14T01:48:48.201Z"
+ },
+ {
+  "id": 1310,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "coverage.updated",
+  "payload": {
+   "type": "coverage.updated",
+   "areas": {
+    "tools": "open",
+    "beyond": "open",
+    "people": "open",
+    "example": "asked",
+    "open_floor": "open",
+    "looking_for": "open",
+    "recent_work": "asked"
+   }
+  },
+  "at": "2026-11-14T03:59:32.952Z"
+ },
+ {
+  "id": 1311,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "coverage.updated",
+  "payload": {
+   "type": "coverage.updated",
+   "areas": {
+    "tools": "asked",
+    "beyond": "open",
+    "people": "open",
+    "example": "asked",
+    "open_floor": "open",
+    "looking_for": "open",
+    "recent_work": "asked"
+   }
+  },
+  "at": "2026-11-14T03:59:35.912Z"
+ },
+ {
+  "id": 1312,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s1",
+    "esco": {
+     "uri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "labelEn": "mechanical engineering",
+     "labelFi": "koneenrakennus"
+    },
+    "kind": "domain",
+    "phrase": "Mechanical design engineering",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:37.432Z"
+ },
+ {
+  "id": 1313,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s2",
+    "esco": {
+     "uri": "http://data.europa.eu/esco/skill/f6868852-9bf6-4899-a5d6-5f9532fb877d",
+     "labelEn": "design component interfaces",
+     "labelFi": "suunnitella komponenttien käyttöliittymiä"
+    },
+    "kind": "skill",
+    "phrase": "Component design",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:37.464Z"
+ },
+ {
+  "id": 1314,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s3",
+    "esco": null,
+    "kind": "skill",
+    "phrase": "Flow and strength simulations",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:37.485Z"
+ },
+ {
+  "id": 1315,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s4",
+    "esco": null,
+    "kind": "skill",
+    "phrase": "Prototype troubleshooting",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:37.502Z"
+ },
+ {
+  "id": 1316,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "coverage.updated",
+  "payload": {
+   "type": "coverage.updated",
+   "areas": {
+    "tools": "covered",
+    "beyond": "open",
+    "people": "thin",
+    "example": "asked",
+    "open_floor": "open",
+    "looking_for": "open",
+    "recent_work": "covered"
+   }
+  },
+  "at": "2026-11-14T03:59:37.525Z"
+ },
+ {
+  "id": 1317,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "jobs.lit",
+  "payload": {
+   "type": "jobs.lit",
+   "count": 35,
+   "sample": [
+    {
+     "id": "job_tmt_42a6c07b401d42a994c86884316f10ca",
+     "url": "https://www.academicwork.fi/avoimet-tyopaikat/p/tyomarkkinatori/DLA9E0",
+     "title": "Mechanical Engineer, Eaton Electric Oy, Vantaa",
+     "source": "tmt",
+     "mention": "mechanical engineering",
+     "employerName": "Academic Work Finland Oy",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_483485b21d4e4334823ddd1d5fd4cabd",
+     "url": "https://www.academicwork.fi/avoimet-tyopaikat/p/tyomarkkinatori/9NPDG4",
+     "title": "R&D Project Manager, Bluefors, Helsinki",
+     "source": "tmt",
+     "mention": "mechanical engineering",
+     "employerName": "Academic Work Finland Oy",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_79d4b3596766442199c0b946c09ff25a",
+     "url": "https://www.academicwork.fi/avoimet-tyopaikat/p/tyomarkkinatori/0OZGG5",
+     "title": "Mechanical Engineer, Espoo or Lappeenranta",
+     "source": "tmt",
+     "mention": "mechanical engineering",
+     "employerName": "Academic Work Finland Oy",
+     "municipality": "Espoo"
+    }
+   ]
+  },
+  "at": "2026-11-14T03:59:37.605Z"
+ },
+ {
+  "id": 1318,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "coverage.updated",
+  "payload": {
+   "type": "coverage.updated",
+   "areas": {
+    "tools": "covered",
+    "beyond": "open",
+    "people": "thin",
+    "example": "asked",
+    "open_floor": "open",
+    "looking_for": "open",
+    "recent_work": "covered"
+   }
+  },
+  "at": "2026-11-14T03:59:39.065Z"
+ },
+ {
+  "id": 1319,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s5",
+    "esco": null,
+    "kind": "skill",
+    "phrase": "Finite element stress analysis",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 1
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:40.252Z"
+ },
+ {
+  "id": 1320,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s6",
+    "esco": null,
+    "kind": "skill",
+    "phrase": "Pump housing redesign",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 1
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:40.265Z"
+ },
+ {
+  "id": 1321,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s7",
+    "esco": null,
+    "kind": "skill",
+    "phrase": "Flow efficiency verification",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 3,
+      "sentenceFrom": 3
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:40.278Z"
+ },
+ {
+  "id": 1322,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s8",
+    "esco": null,
+    "kind": "skill",
+    "phrase": "Prototype pressure testing",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:40.291Z"
+ },
+ {
+  "id": 1323,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "coverage.updated",
+  "payload": {
+   "type": "coverage.updated",
+   "areas": {
+    "tools": "covered",
+    "beyond": "open",
+    "people": "thin",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "open",
+    "recent_work": "covered"
+   }
+  },
+  "at": "2026-11-14T03:59:40.302Z"
+ },
+ {
+  "id": 1324,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "jobs.lit",
+  "payload": {
+   "type": "jobs.lit",
+   "count": 35,
+   "sample": [
+    {
+     "id": "job_tmt_42a6c07b401d42a994c86884316f10ca",
+     "url": "https://www.academicwork.fi/avoimet-tyopaikat/p/tyomarkkinatori/DLA9E0",
+     "title": "Mechanical Engineer, Eaton Electric Oy, Vantaa",
+     "source": "tmt",
+     "mention": "mechanical engineering",
+     "employerName": "Academic Work Finland Oy",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_483485b21d4e4334823ddd1d5fd4cabd",
+     "url": "https://www.academicwork.fi/avoimet-tyopaikat/p/tyomarkkinatori/9NPDG4",
+     "title": "R&D Project Manager, Bluefors, Helsinki",
+     "source": "tmt",
+     "mention": "mechanical engineering",
+     "employerName": "Academic Work Finland Oy",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_79d4b3596766442199c0b946c09ff25a",
+     "url": "https://www.academicwork.fi/avoimet-tyopaikat/p/tyomarkkinatori/0OZGG5",
+     "title": "Mechanical Engineer, Espoo or Lappeenranta",
+     "source": "tmt",
+     "mention": "mechanical engineering",
+     "employerName": "Academic Work Finland Oy",
+     "municipality": "Espoo"
+    }
+   ]
+  },
+  "at": "2026-11-14T03:59:40.347Z"
+ },
+ {
+  "id": 1332,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.updated",
+  "payload": {
+   "type": "signal.updated",
+   "signal": {
+    "id": "s5",
+    "esco": null,
+    "kind": "skill",
+    "phrase": "Finite element stress analysis",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 1
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:43.293Z"
+ },
+ {
+  "id": 1333,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.updated",
+  "payload": {
+   "type": "signal.updated",
+   "signal": {
+    "id": "s6",
+    "esco": null,
+    "kind": "skill",
+    "phrase": "Pump housing redesign",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 1
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:43.306Z"
+ },
+ {
+  "id": 1334,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "coverage.updated",
+  "payload": {
+   "type": "coverage.updated",
+   "areas": {
+    "tools": "covered",
+    "beyond": "asked",
+    "people": "asked",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "open",
+    "recent_work": "covered"
+   }
+  },
+  "at": "2026-11-14T03:59:44.414Z"
+ },
+ {
+  "id": 1336,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s11",
+    "esco": null,
+    "kind": "skill",
+    "phrase": "Cross-functional engineering collaboration",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 2
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:48.035Z"
+ },
+ {
+  "id": 1337,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s12",
+    "esco": null,
+    "kind": "skill",
+    "phrase": "Drawing review",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:48.051Z"
+ },
+ {
+  "id": 1338,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.updated",
+  "payload": {
+   "type": "signal.updated",
+   "signal": {
+    "id": "s2",
+    "esco": {
+     "uri": "http://data.europa.eu/esco/skill/f6868852-9bf6-4899-a5d6-5f9532fb877d",
+     "labelEn": "design component interfaces",
+     "labelFi": "suunnitella komponenttien käyttöliittymiä"
+    },
+    "kind": "skill",
+    "phrase": "Component design",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:48.065Z"
+ },
+ {
+  "id": 1339,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "coverage.updated",
+  "payload": {
+   "type": "coverage.updated",
+   "areas": {
+    "tools": "covered",
+    "beyond": "asked",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "asked",
+    "recent_work": "covered"
+   }
+  },
+  "at": "2026-11-14T03:59:48.079Z"
+ },
+ {
+  "id": 1340,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "jobs.lit",
+  "payload": {
+   "type": "jobs.lit",
+   "count": 184,
+   "sample": [
+    {
+     "id": "job_tmt_5dd79975a8854b7fafce12f78d2e165a",
+     "url": "https://www.aplitrak.com/?adid=bWlpYS5zaW5ra28uNTgyMjMuMTM2ODZAbWFucG93ZXJmaS5hcGxpdHJhay5jb20",
+     "title": "Datacenter Electrician Contractors",
+     "source": "tmt",
+     "mention": "troubleshoot",
+     "employerName": "Manpower",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_c3b171a6f49b460896992848f689ab3a",
+     "url": "https://thomsonreuters.wd5.myworkdayjobs.com/External_Career_Site/job/Finland-Espoo/Senior-Implementation-Specialist_JREQ205188",
+     "title": "Senior Implementation Specialist",
+     "source": "tmt",
+     "mention": "troubleshoot",
+     "employerName": "Thomson Reuters Oy",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_3be2d014bf164860b226e9cc9c27c6da",
+     "url": "http://lokki.likeit.fi/apply/27278636",
+     "title": "Verification Lead",
+     "source": "tmt",
+     "mention": "troubleshoot",
+     "employerName": "Lokki Henkilöstöpalvelut Oy",
+     "municipality": "Espoo"
+    }
+   ]
+  },
+  "at": "2026-11-14T03:59:48.167Z"
+ },
+ {
+  "id": 1344,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s13",
+    "esco": null,
+    "kind": "knowledge",
+    "phrase": "Pump cavitation theory",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 11,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:50.858Z"
+ },
+ {
+  "id": 1345,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s14",
+    "esco": null,
+    "kind": "skill",
+    "phrase": "3D printed flow test rig",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 11,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:50.882Z"
+ },
+ {
+  "id": 1325,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s9",
+    "esco": null,
+    "kind": "tool",
+    "phrase": "SolidWorks",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:42.132Z"
+ },
+ {
+  "id": 1326,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s10",
+    "esco": null,
+    "kind": "tool",
+    "phrase": "Ansys",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:42.151Z"
+ },
+ {
+  "id": 1327,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "coverage.updated",
+  "payload": {
+   "type": "coverage.updated",
+   "areas": {
+    "tools": "covered",
+    "beyond": "open",
+    "people": "asked",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "open",
+    "recent_work": "covered"
+   }
+  },
+  "at": "2026-11-14T03:59:42.175Z"
+ },
+ {
+  "id": 1328,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "jobs.lit",
+  "payload": {
+   "type": "jobs.lit",
+   "count": 37,
+   "sample": [
+    {
+     "id": "job_tmt_9c6198a33ade46fa843dd4c61024d15d",
+     "url": "https://www.academicwork.fi/avoimet-tyopaikat/p/tyomarkkinatori/YAOTMA",
+     "title": "Tuotekehitysinsinööri (LVI/ilmanvaihto), Oy Pamon Ab, Hollola",
+     "source": "tmt",
+     "mention": "SolidWorks",
+     "employerName": "Academic Work Finland Oy",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_2274b9952df746528e241d7bd4aef823",
+     "url": "https://www.academicwork.fi/avoimet-tyopaikat/p/tyomarkkinatori/8O90D8",
+     "title": "Mekaniikkasuunnittelija, pääkaupunkiseutu",
+     "source": "tmt",
+     "mention": "SolidWorks",
+     "employerName": "Academic Work Finland Oy",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_42a6c07b401d42a994c86884316f10ca",
+     "url": "https://www.academicwork.fi/avoimet-tyopaikat/p/tyomarkkinatori/DLA9E0",
+     "title": "Mechanical Engineer, Eaton Electric Oy, Vantaa",
+     "source": "tmt",
+     "mention": "mechanical engineering",
+     "employerName": "Academic Work Finland Oy",
+     "municipality": "Espoo"
+    }
+   ]
+  },
+  "at": "2026-11-14T03:59:42.211Z"
+ },
+ {
+  "id": 1335,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "coverage.updated",
+  "payload": {
+   "type": "coverage.updated",
+   "areas": {
+    "tools": "covered",
+    "beyond": "asked",
+    "people": "asked",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "asked",
+    "recent_work": "covered"
+   }
+  },
+  "at": "2026-11-14T03:59:47.559Z"
+ },
+ {
+  "id": 1341,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.updated",
+  "payload": {
+   "type": "signal.updated",
+   "signal": {
+    "id": "s5",
+    "esco": {
+     "uri": "http://data.europa.eu/esco/skill/632843be-2872-47b4-a92e-352629f9bd88",
+     "labelEn": "analyse stress resistance of products",
+     "labelFi": "analysoida tuotteiden stressinkestävyyttä"
+    },
+    "kind": "skill",
+    "phrase": "Finite element stress analysis",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 7,
+      "sentenceTo": 2,
+      "sentenceFrom": 1
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:48.229Z"
+ },
+ {
+  "id": 1342,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.updated",
+  "payload": {
+   "type": "signal.updated",
+   "signal": {
+    "id": "s8",
+    "esco": {
+     "uri": "http://data.europa.eu/esco/skill/e96d625b-8060-4b92-a54f-3c693cbda963",
+     "labelEn": "carry out chimney pressure testing",
+     "labelFi": "testata savupiipun paine"
+    },
+    "kind": "skill",
+    "phrase": "Prototype pressure testing",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 3,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 3,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:48.267Z"
+ },
+ {
+  "id": 1343,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "jobs.lit",
+  "payload": {
+   "type": "jobs.lit",
+   "count": 195,
+   "sample": [
+    {
+     "id": "job_tmt_5dd79975a8854b7fafce12f78d2e165a",
+     "url": "https://www.aplitrak.com/?adid=bWlpYS5zaW5ra28uNTgyMjMuMTM2ODZAbWFucG93ZXJmaS5hcGxpdHJhay5jb20",
+     "title": "Datacenter Electrician Contractors",
+     "source": "tmt",
+     "mention": "troubleshoot",
+     "employerName": "Manpower",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_c3b171a6f49b460896992848f689ab3a",
+     "url": "https://thomsonreuters.wd5.myworkdayjobs.com/External_Career_Site/job/Finland-Espoo/Senior-Implementation-Specialist_JREQ205188",
+     "title": "Senior Implementation Specialist",
+     "source": "tmt",
+     "mention": "troubleshoot",
+     "employerName": "Thomson Reuters Oy",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_3be2d014bf164860b226e9cc9c27c6da",
+     "url": "http://lokki.likeit.fi/apply/27278636",
+     "title": "Verification Lead",
+     "source": "tmt",
+     "mention": "troubleshoot",
+     "employerName": "Lokki Henkilöstöpalvelut Oy",
+     "municipality": "Espoo"
+    }
+   ]
+  },
+  "at": "2026-11-14T03:59:48.374Z"
+ },
+ {
+  "id": 1329,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.updated",
+  "payload": {
+   "type": "signal.updated",
+   "signal": {
+    "id": "s3",
+    "esco": {
+     "uri": "http://data.europa.eu/esco/skill/a432ffcd-b58d-4417-836c-ea3282b626ca",
+     "labelEn": "run simulations",
+     "labelFi": "toteuttaa simulaatioita"
+    },
+    "kind": "skill",
+    "phrase": "Flow and strength simulations",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:42.258Z"
+ },
+ {
+  "id": 1330,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.updated",
+  "payload": {
+   "type": "signal.updated",
+   "signal": {
+    "id": "s4",
+    "esco": {
+     "uri": "http://data.europa.eu/esco/skill/334e3e49-fb02-4051-809a-f06adfdc1c40",
+     "labelEn": "troubleshoot",
+     "labelFi": "tunnistaa ongelmia"
+    },
+    "kind": "skill",
+    "phrase": "Prototype troubleshooting",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:42.282Z"
+ },
+ {
+  "id": 1331,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "jobs.lit",
+  "payload": {
+   "type": "jobs.lit",
+   "count": 184,
+   "sample": [
+    {
+     "id": "job_tmt_5dd79975a8854b7fafce12f78d2e165a",
+     "url": "https://www.aplitrak.com/?adid=bWlpYS5zaW5ra28uNTgyMjMuMTM2ODZAbWFucG93ZXJmaS5hcGxpdHJhay5jb20",
+     "title": "Datacenter Electrician Contractors",
+     "source": "tmt",
+     "mention": "troubleshoot",
+     "employerName": "Manpower",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_c3b171a6f49b460896992848f689ab3a",
+     "url": "https://thomsonreuters.wd5.myworkdayjobs.com/External_Career_Site/job/Finland-Espoo/Senior-Implementation-Specialist_JREQ205188",
+     "title": "Senior Implementation Specialist",
+     "source": "tmt",
+     "mention": "troubleshoot",
+     "employerName": "Thomson Reuters Oy",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_3be2d014bf164860b226e9cc9c27c6da",
+     "url": "http://lokki.likeit.fi/apply/27278636",
+     "title": "Verification Lead",
+     "source": "tmt",
+     "mention": "troubleshoot",
+     "employerName": "Lokki Henkilöstöpalvelut Oy",
+     "municipality": "Espoo"
+    }
+   ]
+  },
+  "at": "2026-11-14T03:59:42.362Z"
+ },
+ {
+  "id": 1346,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s15",
+    "esco": null,
+    "kind": "skill",
+    "phrase": "Guest lecturing on simulation",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 11,
+      "sentenceTo": 3,
+      "sentenceFrom": 2
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:50.904Z"
+ },
+ {
+  "id": 1347,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "turn.done",
+  "payload": {
+   "kind": "closing",
+   "text": "Thank you, that's all my questions. Your notes are ready: check them, change or remove anything, and approve only what you're happy with.",
+   "type": "turn.done",
+   "closing": true,
+   "turnIndex": 14
+  },
+  "at": "2026-11-14T03:59:50.929Z"
+ },
+ {
+  "id": 1348,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "coverage.updated",
+  "payload": {
+   "type": "coverage.updated",
+   "areas": {
+    "tools": "covered",
+    "beyond": "covered",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "asked",
+    "recent_work": "covered"
+   }
+  },
+  "at": "2026-11-14T03:59:50.957Z"
+ },
+ {
+  "id": 1349,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "interview.completed",
+  "payload": {
+   "type": "interview.completed",
+   "talentId": "tal_z63mnny9pugj",
+   "interviewId": "int_pdt5vz6ceosh"
+  },
+  "at": "2026-11-14T03:59:50.971Z"
+ },
+ {
+  "id": 1350,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "jobs.lit",
+  "payload": {
+   "type": "jobs.lit",
+   "count": 195,
+   "sample": [
+    {
+     "id": "job_tmt_5dd79975a8854b7fafce12f78d2e165a",
+     "url": "https://www.aplitrak.com/?adid=bWlpYS5zaW5ra28uNTgyMjMuMTM2ODZAbWFucG93ZXJmaS5hcGxpdHJhay5jb20",
+     "title": "Datacenter Electrician Contractors",
+     "source": "tmt",
+     "mention": "troubleshoot",
+     "employerName": "Manpower",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_c3b171a6f49b460896992848f689ab3a",
+     "url": "https://thomsonreuters.wd5.myworkdayjobs.com/External_Career_Site/job/Finland-Espoo/Senior-Implementation-Specialist_JREQ205188",
+     "title": "Senior Implementation Specialist",
+     "source": "tmt",
+     "mention": "troubleshoot",
+     "employerName": "Thomson Reuters Oy",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_3be2d014bf164860b226e9cc9c27c6da",
+     "url": "http://lokki.likeit.fi/apply/27278636",
+     "title": "Verification Lead",
+     "source": "tmt",
+     "mention": "troubleshoot",
+     "employerName": "Lokki Henkilöstöpalvelut Oy",
+     "municipality": "Espoo"
+    }
+   ]
+  },
+  "at": "2026-11-14T03:59:51.045Z"
+ },
+ {
+  "id": 1351,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s16",
+    "esco": null,
+    "kind": "skill",
+    "phrase": "Product development",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 13,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:54.635Z"
+ },
+ {
+  "id": 1352,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.proposed",
+  "payload": {
+   "type": "signal.proposed",
+   "signal": {
+    "id": "s17",
+    "esco": null,
+    "kind": "domain",
+    "phrase": "Machine and energy industry",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 13,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:54.650Z"
+ },
+ {
+  "id": 1353,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.updated",
+  "payload": {
+   "type": "signal.updated",
+   "signal": {
+    "id": "s1",
+    "esco": {
+     "uri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+     "labelEn": "mechanical engineering",
+     "labelFi": "koneenrakennus"
+    },
+    "kind": "domain",
+    "phrase": "Mechanical design engineering",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     {
+      "turnIndex": 13,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:54.663Z"
+ },
+ {
+  "id": 1354,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "signal.updated",
+  "payload": {
+   "type": "signal.updated",
+   "signal": {
+    "id": "s3",
+    "esco": {
+     "uri": "http://data.europa.eu/esco/skill/a432ffcd-b58d-4417-836c-ea3282b626ca",
+     "labelEn": "run simulations",
+     "labelFi": "toteuttaa simulaatioita"
+    },
+    "kind": "skill",
+    "phrase": "Flow and strength simulations",
+    "status": "proposed",
+    "addedBy": "agent",
+    "evidence": [
+     {
+      "turnIndex": 1,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     {
+      "turnIndex": 13,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     }
+    ],
+    "phraseOwn": null
+   }
+  },
+  "at": "2026-11-14T03:59:54.677Z"
+ },
+ {
+  "id": 1355,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "coverage.updated",
+  "payload": {
+   "type": "coverage.updated",
+   "areas": {
+    "tools": "covered",
+    "beyond": "covered",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   }
+  },
+  "at": "2026-11-14T03:59:54.691Z"
+ },
+ {
+  "id": 1356,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "jobs.lit",
+  "payload": {
+   "type": "jobs.lit",
+   "count": 202,
+   "sample": [
+    {
+     "id": "job_tmt_0d07f1a60e84425184942db7fd002475",
+     "url": "https://beneq.teamtailor.com/jobs/8742478-electrical-engineer/applications/new?promotion=2295399-tyomarkkinatori",
+     "title": "Electrical Engineer",
+     "source": "tmt",
+     "mention": "Product development",
+     "employerName": "Beneq",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_1fec18b400b546c5b286650eb25a6af2",
+     "url": "https://emp.jobylon.com/applications/jobs/397221/create/?utm_source=molfi&utm_medium=promotionserializer",
+     "title": "Lead Specialist, Modularization and mass customization",
+     "source": "tmt",
+     "mention": "Product development",
+     "employerName": "Etteplan",
+     "municipality": "Espoo"
+    },
+    {
+     "id": "job_tmt_5dd79975a8854b7fafce12f78d2e165a",
+     "url": "https://www.aplitrak.com/?adid=bWlpYS5zaW5ra28uNTgyMjMuMTM2ODZAbWFucG93ZXJmaS5hcGxpdHJhay5jb20",
+     "title": "Datacenter Electrician Contractors",
+     "source": "tmt",
+     "mention": "troubleshoot",
+     "employerName": "Manpower",
+     "municipality": "Espoo"
+    }
+   ]
+  },
+  "at": "2026-11-14T03:59:54.784Z"
+ },
+ {
+  "id": 1357,
+  "interviewId": "int_pdt5vz6ceosh",
+  "type": "card.ready",
+  "payload": {
+   "type": "card.ready",
+   "talentId": "tal_z63mnny9pugj"
+  },
+  "at": "2026-11-14T04:00:28.992Z"
  }
 ]

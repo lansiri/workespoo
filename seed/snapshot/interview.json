@@ -112,42 +112,6 @@
   "completedAt": "2026-11-14T01:34:22.563Z"
  },
  {
-  "id": "int_y9viihp9qr2k",
-  "talentId": "tal_mogxo04jdwwl",
-  "mode": "full",
-  "lang": "en",
-  "status": "completed",
-  "state": {
-   "stage": "synthesising",
-   "probed": [
-    "s4"
-   ],
-   "uiLang": "en",
-   "cvSeeds": [],
-   "reasked": [],
-   "coverage": {
-    "tools": "covered",
-    "beyond": "covered",
-    "people": "covered",
-    "example": "covered",
-    "open_floor": "open",
-    "looking_for": "covered",
-    "recent_work": "covered"
-   },
-   "lastNote": "Target role and industries are clear; ask about preferred responsibilities and how hybrid work fits their needs.",
-   "startedAt": "2026-11-14T01:37:42.949Z",
-   "flagCounts": {
-    "protected_info": 1
-   },
-   "probesUsed": 1,
-   "repairsInRow": 0,
-   "lastExtracted": [],
-   "questionsAsked": 7
-  },
-  "startedAt": "2026-11-14T01:37:42.949Z",
-  "completedAt": "2026-11-14T01:38:02.441Z"
- },
- {
   "id": "int_w94ewgaboztp",
   "talentId": "tal_tqhpbpuo02i6",
   "mode": "full",
@@ -520,6 +484,59 @@
   },
   "startedAt": "2026-11-14T01:48:13.940Z",
   "completedAt": "2026-11-14T01:48:20.565Z"
+ },
+ {
+  "id": "int_pdt5vz6ceosh",
+  "talentId": "tal_z63mnny9pugj",
+  "mode": "full",
+  "lang": "en",
+  "status": "completed",
+  "state": {
+   "stage": "synthesising",
+   "probed": [
+    "s4"
+   ],
+   "uiLang": "en",
+   "cvSeeds": [],
+   "reasked": [],
+   "coverage": {
+    "tools": "covered",
+    "beyond": "covered",
+    "people": "covered",
+    "example": "covered",
+    "open_floor": "open",
+    "looking_for": "covered",
+    "recent_work": "covered"
+   },
+   "lastNote": "Target role and industries are clear; ask which design or simulation tasks they most want next.",
+   "escoAsked": [
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12"
+   ],
+   "startedAt": "2026-11-14T03:59:31.460Z",
+   "flagCounts": {
+    "protected_info": 1
+   },
+   "probesUsed": 1,
+   "repairsInRow": 0,
+   "lastExtracted": [
+    "s1",
+    "s3",
+    "s16",
+    "s17"
+   ],
+   "questionsAsked": 7
+  },
+  "startedAt": "2026-11-14T03:59:31.460Z",
+  "completedAt": "2026-11-14T03:59:50.923Z"
  },
  {
   "id": "int_5s6cl21g9ljr",

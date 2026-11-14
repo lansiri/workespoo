@@ -1681,66 +1681,6 @@
   "at": "2026-11-14T01:36:30.286Z"
  },
  {
-  "id": "trn_z24w11n4t700",
-  "interviewId": "int_y9viihp9qr2k",
-  "index": 0,
-  "role": "interviewer",
-  "kind": "opening",
-  "target": "recent_work",
-  "text": "Hi, I'm an AI interviewer for WorkEspoo. I'll ask a few short questions, about four minutes, and take notes. At the end you'll check the notes, change anything and approve them yourself. To start: what kind of work have you been doing recently?",
-  "sentences": [
-   "Hi, I'm an AI interviewer for WorkEspoo.",
-   "I'll ask a few short questions, about four minutes, and take notes.",
-   "At the end you'll check the notes, change anything and approve them yourself.",
-   "To start: what kind of work have you been doing recently?"
-  ],
-  "sentencesOriginal": null,
-  "lang": null,
-  "inputMode": null,
-  "redactedAt": null,
-  "at": "2026-11-14T01:37:42.949Z"
- },
- {
-  "id": "trn_13s40lr3cytn",
-  "interviewId": "int_y9viihp9qr2k",
-  "index": 1,
-  "role": "participant",
-  "kind": "answer",
-  "target": "recent_work",
-  "text": "I'm a mechanical design engineer at a company that makes industrial pumps. I design components, run flow and strength simulations, and go down to the workshop when a prototype doesn't behave. I've been there nine years, after my master's here in Finland. I'm Muslim and fast in Ramadan, so I plan my heavy simulation runs for the evenings that month, and nobody has ever had a problem with it.",
-  "sentences": [
-   "I'm a mechanical design engineer at a company that makes industrial pumps.",
-   "I design components, run flow and strength simulations, and go down to the workshop when a prototype doesn't behave.",
-   "I've been there nine years, after my master's here in Finland.",
-   "I'm Muslim and fast in Ramadan, so I plan my heavy simulation runs for the evenings that month, and nobody has ever had a problem with it."
-  ],
-  "sentencesOriginal": null,
-  "lang": "en",
-  "inputMode": "text",
-  "redactedAt": null,
-  "at": "2026-11-14T01:37:43.075Z"
- },
- {
-  "id": "trn_spa57sbq8w5f",
-  "interviewId": "int_y9viihp9qr2k",
-  "index": 3,
-  "role": "participant",
-  "kind": "answer",
-  "target": "example",
-  "text": "We had a pump housing that kept cracking near the outlet during pressure tests. I built a finite element model, saw a stress peak at a sharp internal corner, and redesigned it with a larger radius and a slightly thicker wall. Then I checked the flow again to make sure the change didn't hurt the efficiency. The new housing passed the pressure test on the first try.",
-  "sentences": [
-   "We had a pump housing that kept cracking near the outlet during pressure tests.",
-   "I built a finite element model, saw a stress peak at a sharp internal corner, and redesigned it with a larger radius and a slightly thicker wall.",
-   "Then I checked the flow again to make sure the change didn't hurt the efficiency.",
-   "The new housing passed the pressure test on the first try."
-  ],
-  "sentencesOriginal": null,
-  "lang": "en",
-  "inputMode": "text",
-  "redactedAt": null,
-  "at": "2026-11-14T01:37:44.391Z"
- },
- {
   "id": "trn_4a90xyo8z0fy",
   "interviewId": "int_5hsabxbuyfp6",
   "index": 0,
@@ -1934,120 +1874,6 @@
   "at": "2026-11-14T01:36:45.864Z"
  },
  {
-  "id": "trn_0ma11oies23p",
-  "interviewId": "int_y9viihp9qr2k",
-  "index": 2,
-  "role": "interviewer",
-  "kind": "question",
-  "target": "example",
-  "text": "Thanks, that's clear. Could you describe one specific prototype problem you handled yourself in the workshop?",
-  "sentences": [
-   "Thanks, that's clear.",
-   "Could you describe one specific prototype problem you handled yourself in the workshop?"
-  ],
-  "sentencesOriginal": null,
-  "lang": null,
-  "inputMode": null,
-  "redactedAt": null,
-  "at": "2026-11-14T01:37:44.329Z"
- },
- {
-  "id": "trn_jnyq4r9y39w3",
-  "interviewId": "int_y9viihp9qr2k",
-  "index": 5,
-  "role": "participant",
-  "kind": "answer",
-  "target": "tools",
-  "text": "SolidWorks for 3D modelling and drawings, Ansys for strength and flow simulations, MATLAB for scripts when I need to process test data. We use a PDM system for revisions. In the workshop I use calipers and a coordinate measuring machine for critical dimensions, and I can read the shop's CNC programs.",
-  "sentences": [
-   "SolidWorks for 3D modelling and drawings, Ansys for strength and flow simulations, MATLAB for scripts when I need to process test data.",
-   "We use a PDM system for revisions.",
-   "In the workshop I use calipers and a coordinate measuring machine for critical dimensions, and I can read the shop's CNC programs."
-  ],
-  "sentencesOriginal": null,
-  "lang": "en",
-  "inputMode": "text",
-  "redactedAt": null,
-  "at": "2026-11-14T01:37:47.724Z"
- },
- {
-  "id": "trn_f9vy5tecxbep",
-  "interviewId": "int_y9viihp9qr2k",
-  "index": 7,
-  "role": "participant",
-  "kind": "answer",
-  "target": "people",
-  "text": "I'm in a design group of seven. I work with the test engineers who run the pressure and performance tests, and with purchasing about suppliers' tolerances. Sales sometimes bring me customer questions directly. I own the design of the housings and impellers, and I review the drawings of the newer people in the group.",
-  "sentences": [
-   "I'm in a design group of seven.",
-   "I work with the test engineers who run the pressure and performance tests, and with purchasing about suppliers' tolerances.",
-   "Sales sometimes bring me customer questions directly.",
-   "I own the design of the housings and impellers, and I review the drawings of the newer people in the group."
-  ],
-  "sentencesOriginal": null,
-  "lang": "en",
-  "inputMode": "text",
-  "redactedAt": null,
-  "at": "2026-11-14T01:37:50.702Z"
- },
- {
-  "id": "trn_gyl0g0qzo1ja",
-  "interviewId": "int_y9viihp9qr2k",
-  "index": 9,
-  "role": "participant",
-  "kind": "answer",
-  "target": "beyond",
-  "text": "I wrote my thesis on cavitation in pumps, so I know the theory well enough to explain it. On the side I've built a small 3D printed test rig at home for flow experiments, and once a year I give a guest lecture on simulation at my old university.",
-  "sentences": [
-   "I wrote my thesis on cavitation in pumps, so I know the theory well enough to explain it.",
-   "On the side I've built a small 3D printed test rig at home for flow experiments, and once a year I give a guest lecture",
-   "on simulation at my old university."
-  ],
-  "sentencesOriginal": null,
-  "lang": "en",
-  "inputMode": "text",
-  "redactedAt": null,
-  "at": "2026-11-14T01:37:53.711Z"
- },
- {
-  "id": "trn_r5f4gv4b759w",
-  "interviewId": "int_y9viihp9qr2k",
-  "index": 11,
-  "role": "participant",
-  "kind": "answer",
-  "target": "example",
-  "text": "The simulation work: I meshed the housing with finer elements around the corner, applied the test pressure, and compared the peak stress to the material's yield limit. The first version was above the limit, and the new radius brought it comfortably under.",
-  "sentences": [
-   "The simulation work: I meshed the housing with finer elements around the corner, applied the test pressure, and compared the peak stress to the material's yield limit.",
-   "The first version was above the limit, and the new radius brought it comfortably under."
-  ],
-  "sentencesOriginal": null,
-  "lang": "en",
-  "inputMode": "text",
-  "redactedAt": null,
-  "at": "2026-11-14T01:37:56.752Z"
- },
- {
-  "id": "trn_d7yfq5fscyxc",
-  "interviewId": "int_y9viihp9qr2k",
-  "index": 13,
-  "role": "participant",
-  "kind": "answer",
-  "target": "looking_for",
-  "text": "Mechanical design or simulation work, product development in the machine or energy industry. English or Finnish both work. I'd prefer hybrid. My notice period is three months.",
-  "sentences": [
-   "Mechanical design or simulation work, product development in the machine or energy industry.",
-   "English or Finnish both work.",
-   "I'd prefer hybrid.",
-   "My notice period is three months."
-  ],
-  "sentencesOriginal": null,
-  "lang": "en",
-  "inputMode": "text",
-  "redactedAt": null,
-  "at": "2026-11-14T01:38:00.085Z"
- },
- {
   "id": "trn_hyfwbqf58lqn",
   "interviewId": "int_5hsabxbuyfp6",
   "index": 2,
@@ -2203,112 +2029,6 @@
   "inputMode": null,
   "redactedAt": null,
   "at": "2026-11-14T01:36:48.174Z"
- },
- {
-  "id": "trn_qoapbr39odf5",
-  "interviewId": "int_y9viihp9qr2k",
-  "index": 4,
-  "role": "interviewer",
-  "kind": "question",
-  "target": "tools",
-  "text": "What tools, software or methods do you use in that work?",
-  "sentences": [
-   "What tools, software or methods do you use in that work?"
-  ],
-  "sentencesOriginal": null,
-  "lang": null,
-  "inputMode": null,
-  "redactedAt": null,
-  "at": "2026-11-14T01:37:47.653Z"
- },
- {
-  "id": "trn_jyzfuo5eh1u3",
-  "interviewId": "int_y9viihp9qr2k",
-  "index": 6,
-  "role": "interviewer",
-  "kind": "question",
-  "target": "people",
-  "text": "Thanks, that's clear. Who did you work with on the pump housing, and what was your own part?",
-  "sentences": [
-   "Thanks, that's clear.",
-   "Who did you work with on the pump housing, and what was your own part?"
-  ],
-  "sentencesOriginal": null,
-  "lang": null,
-  "inputMode": null,
-  "redactedAt": null,
-  "at": "2026-11-14T01:37:50.640Z"
- },
- {
-  "id": "trn_kt6gneq1o45d",
-  "interviewId": "int_y9viihp9qr2k",
-  "index": 8,
-  "role": "interviewer",
-  "kind": "question",
-  "target": "beyond",
-  "text": "What have you done outside your main job, such as studies, volunteering, side projects or different work?",
-  "sentences": [
-   "What have you done outside your main job, such as studies, volunteering, side projects or different work?"
-  ],
-  "sentencesOriginal": null,
-  "lang": null,
-  "inputMode": null,
-  "redactedAt": null,
-  "at": "2026-11-14T01:37:53.656Z"
- },
- {
-  "id": "trn_fjxzi5h3shrz",
-  "interviewId": "int_y9viihp9qr2k",
-  "index": 10,
-  "role": "interviewer",
-  "kind": "probe",
-  "target": "example",
-  "text": "Thanks, that's clear. Which simulation software do you use, and can you describe one prototype problem you solved in the workshop?",
-  "sentences": [
-   "Thanks, that's clear.",
-   "Which simulation software do you use, and can you describe one prototype problem you solved in the workshop?"
-  ],
-  "sentencesOriginal": null,
-  "lang": null,
-  "inputMode": null,
-  "redactedAt": null,
-  "at": "2026-11-14T01:37:56.697Z"
- },
- {
-  "id": "trn_91hesf7o82n2",
-  "interviewId": "int_y9viihp9qr2k",
-  "index": 12,
-  "role": "interviewer",
-  "kind": "question",
-  "target": "looking_for",
-  "text": "Thanks, that's clear. What kind of work are you looking for next?",
-  "sentences": [
-   "Thanks, that's clear.",
-   "What kind of work are you looking for next?"
-  ],
-  "sentencesOriginal": null,
-  "lang": null,
-  "inputMode": null,
-  "redactedAt": null,
-  "at": "2026-11-14T01:37:59.798Z"
- },
- {
-  "id": "trn_pneau773tuie",
-  "interviewId": "int_y9viihp9qr2k",
-  "index": 14,
-  "role": "interviewer",
-  "kind": "closing",
-  "target": null,
-  "text": "Thank you, that's all my questions. Your notes are ready: check them, change or remove anything, and approve only what you're happy with.",
-  "sentences": [
-   "Thank you, that's all my questions.",
-   "Your notes are ready: check them, change or remove anything, and approve only what you're happy with."
-  ],
-  "sentencesOriginal": null,
-  "lang": null,
-  "inputMode": null,
-  "redactedAt": null,
-  "at": "2026-11-14T01:38:02.394Z"
  },
  {
   "id": "trn_e1mfdy7n3dda",
@@ -3656,5 +3376,286 @@
   "inputMode": null,
   "redactedAt": null,
   "at": "2026-11-14T01:48:20.517Z"
+ },
+ {
+  "id": "trn_ub9wxuwlwhfx",
+  "interviewId": "int_pdt5vz6ceosh",
+  "index": 0,
+  "role": "interviewer",
+  "kind": "opening",
+  "target": "recent_work",
+  "text": "Hi, I'm an AI interviewer for WorkEspoo. I'll ask a few short questions, about four minutes, and take notes. At the end you'll check the notes, change anything and approve them yourself. To start: what kind of work have you been doing recently?",
+  "sentences": [
+   "Hi, I'm an AI interviewer for WorkEspoo.",
+   "I'll ask a few short questions, about four minutes, and take notes.",
+   "At the end you'll check the notes, change anything and approve them yourself.",
+   "To start: what kind of work have you been doing recently?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T03:59:31.460Z"
+ },
+ {
+  "id": "trn_9h1w914szkhb",
+  "interviewId": "int_pdt5vz6ceosh",
+  "index": 1,
+  "role": "participant",
+  "kind": "answer",
+  "target": "recent_work",
+  "text": "I'm a mechanical design engineer at a company that makes industrial pumps. I design components, run flow and strength simulations, and go down to the workshop when a prototype doesn't behave. I've been there nine years, after my master's here in Finland. I'm Muslim and fast in Ramadan, so I plan my heavy simulation runs for the evenings that month, and nobody has ever had a problem with it.",
+  "sentences": [
+   "I'm a mechanical design engineer at a company that makes industrial pumps.",
+   "I design components, run flow and strength simulations, and go down to the workshop when a prototype doesn't behave.",
+   "I've been there nine years, after my master's here in Finland.",
+   "I'm Muslim and fast in Ramadan, so I plan my heavy simulation runs for the evenings that month, and nobody has ever had a problem with it."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T03:59:31.607Z"
+ },
+ {
+  "id": "trn_1zhgq9rvxg7c",
+  "interviewId": "int_pdt5vz6ceosh",
+  "index": 2,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "example",
+  "text": "Thanks, that's clear. Could you describe one specific prototype problem you handled yourself in the workshop?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Could you describe one specific prototype problem you handled yourself in the workshop?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T03:59:32.902Z"
+ },
+ {
+  "id": "trn_d9sp8rvd15ng",
+  "interviewId": "int_pdt5vz6ceosh",
+  "index": 3,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "We had a pump housing that kept cracking near the outlet during pressure tests. I built a finite element model, saw a stress peak at a sharp internal corner, and redesigned it with a larger radius and a slightly thicker wall. Then I checked the flow again to make sure the change didn't hurt the efficiency. The new housing passed the pressure test on the first try.",
+  "sentences": [
+   "We had a pump housing that kept cracking near the outlet during pressure tests.",
+   "I built a finite element model, saw a stress peak at a sharp internal corner, and redesigned it with a larger radius and a slightly thicker wall.",
+   "Then I checked the flow again to make sure the change didn't hurt the efficiency.",
+   "The new housing passed the pressure test on the first try."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T03:59:32.976Z"
+ },
+ {
+  "id": "trn_t6p4rz35osjc",
+  "interviewId": "int_pdt5vz6ceosh",
+  "index": 4,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "tools",
+  "text": "What software, tools or methods did you use for the simulations, redesign and pressure testing?",
+  "sentences": [
+   "What software, tools or methods did you use for the simulations, redesign and pressure testing?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T03:59:35.871Z"
+ },
+ {
+  "id": "trn_9apkwkvhqrwu",
+  "interviewId": "int_pdt5vz6ceosh",
+  "index": 7,
+  "role": "participant",
+  "kind": "answer",
+  "target": "example",
+  "text": "The simulation work: I meshed the housing with finer elements around the corner, applied the test pressure, and compared the peak stress to the material's yield limit. The first version was above the limit, and the new radius brought it comfortably under.",
+  "sentences": [
+   "The simulation work: I meshed the housing with finer elements around the corner, applied the test pressure, and compared the peak stress to the material's yield limit.",
+   "The first version was above the limit, and the new radius brought it comfortably under."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T03:59:39.093Z"
+ },
+ {
+  "id": "trn_ejrgzele5cl2",
+  "interviewId": "int_pdt5vz6ceosh",
+  "index": 9,
+  "role": "participant",
+  "kind": "answer",
+  "target": "people",
+  "text": "I'm in a design group of seven. I work with the test engineers who run the pressure and performance tests, and with purchasing about suppliers' tolerances. Sales sometimes bring me customer questions directly. I own the design of the housings and impellers, and I review the drawings of the newer people in the group.",
+  "sentences": [
+   "I'm in a design group of seven.",
+   "I work with the test engineers who run the pressure and performance tests, and with purchasing about suppliers' tolerances.",
+   "Sales sometimes bring me customer questions directly.",
+   "I own the design of the housings and impellers, and I review the drawings of the newer people in the group."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T03:59:42.382Z"
+ },
+ {
+  "id": "trn_b1clp9u1wxad",
+  "interviewId": "int_pdt5vz6ceosh",
+  "index": 11,
+  "role": "participant",
+  "kind": "answer",
+  "target": "beyond",
+  "text": "I wrote my thesis on cavitation in pumps, so I know the theory well enough to explain it. On the side I've built a small 3D printed test rig at home for flow experiments, and once a year I give a guest lecture on simulation at my old university.",
+  "sentences": [
+   "I wrote my thesis on cavitation in pumps, so I know the theory well enough to explain it.",
+   "On the side I've built a small 3D printed test rig at home for flow experiments, and once a year I give a guest lecture",
+   "on simulation at my old university."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T03:59:44.437Z"
+ },
+ {
+  "id": "trn_kot6ifgyprra",
+  "interviewId": "int_pdt5vz6ceosh",
+  "index": 12,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "looking_for",
+  "text": "Thanks. What kind of work are you looking for next?",
+  "sentences": [
+   "Thanks.",
+   "What kind of work are you looking for next?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T03:59:47.515Z"
+ },
+ {
+  "id": "trn_83t8qxrvbzyw",
+  "interviewId": "int_pdt5vz6ceosh",
+  "index": 14,
+  "role": "interviewer",
+  "kind": "closing",
+  "target": null,
+  "text": "Thank you, that's all my questions. Your notes are ready: check them, change or remove anything, and approve only what you're happy with.",
+  "sentences": [
+   "Thank you, that's all my questions.",
+   "Your notes are ready: check them, change or remove anything, and approve only what you're happy with."
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T03:59:50.881Z"
+ },
+ {
+  "id": "trn_lf3i0zk66ljl",
+  "interviewId": "int_pdt5vz6ceosh",
+  "index": 5,
+  "role": "participant",
+  "kind": "answer",
+  "target": "tools",
+  "text": "SolidWorks for 3D modelling and drawings, Ansys for strength and flow simulations, MATLAB for scripts when I need to process test data. We use a PDM system for revisions. In the workshop I use calipers and a coordinate measuring machine for critical dimensions, and I can read the shop's CNC programs.",
+  "sentences": [
+   "SolidWorks for 3D modelling and drawings, Ansys for strength and flow simulations, MATLAB for scripts when I need to process test data.",
+   "We use a PDM system for revisions.",
+   "In the workshop I use calipers and a coordinate measuring machine for critical dimensions, and I can read the shop's CNC programs."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T03:59:35.932Z"
+ },
+ {
+  "id": "trn_1j4yhyl244zs",
+  "interviewId": "int_pdt5vz6ceosh",
+  "index": 6,
+  "role": "interviewer",
+  "kind": "probe",
+  "target": "example",
+  "text": "Thanks, that's clear. Could you describe one specific prototype problem you solved, and which simulation software you used?",
+  "sentences": [
+   "Thanks, that's clear.",
+   "Could you describe one specific prototype problem you solved, and which simulation software you used?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T03:59:39.018Z"
+ },
+ {
+  "id": "trn_6buav1beesim",
+  "interviewId": "int_pdt5vz6ceosh",
+  "index": 8,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "people",
+  "text": "Thanks. Who did you work with on the redesign and pressure testing, and what was your own part?",
+  "sentences": [
+   "Thanks.",
+   "Who did you work with on the redesign and pressure testing, and what was your own part?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T03:59:42.113Z"
+ },
+ {
+  "id": "trn_6tqif2aeyen9",
+  "interviewId": "int_pdt5vz6ceosh",
+  "index": 10,
+  "role": "interviewer",
+  "kind": "question",
+  "target": "beyond",
+  "text": "Thanks. What have you done outside your main job, such as studies, volunteering, side projects or different earlier work?",
+  "sentences": [
+   "Thanks.",
+   "What have you done outside your main job, such as studies, volunteering, side projects or different earlier work?"
+  ],
+  "sentencesOriginal": null,
+  "lang": null,
+  "inputMode": null,
+  "redactedAt": null,
+  "at": "2026-11-14T03:59:44.364Z"
+ },
+ {
+  "id": "trn_8oyuov75hukq",
+  "interviewId": "int_pdt5vz6ceosh",
+  "index": 13,
+  "role": "participant",
+  "kind": "answer",
+  "target": "looking_for",
+  "text": "Mechanical design or simulation work, product development in the machine or energy industry. English or Finnish both work. I'd prefer hybrid. My notice period is three months.",
+  "sentences": [
+   "Mechanical design or simulation work, product development in the machine or energy industry.",
+   "English or Finnish both work.",
+   "I'd prefer hybrid.",
+   "My notice period is three months."
+  ],
+  "sentencesOriginal": null,
+  "lang": "en",
+  "inputMode": "text",
+  "redactedAt": null,
+  "at": "2026-11-14T03:59:48.602Z"
  }
 ]

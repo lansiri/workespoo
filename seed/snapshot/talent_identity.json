@@ -30,12 +30,6 @@
   "createdAt": "2026-11-14T01:37:41.333Z"
  },
  {
-  "talentId": "tal_mogxo04jdwwl",
-  "displayName": "Emre Kaya (synthetic)",
-  "contact": "emre.kaya@example.invalid",
-  "createdAt": "2026-11-14T01:39:05.399Z"
- },
- {
   "talentId": "tal_43fbkeofwipr",
   "displayName": "Sari Koskinen (synthetic)",
   "contact": "sari.koskinen@example.invalid",
@@ -88,5 +82,11 @@
   "displayName": "Linh Nguyen (synthetic)",
   "contact": "linh.nguyen@example.invalid",
   "createdAt": "2026-11-14T01:48:48.211Z"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "displayName": "Emre Kaya (synthetic)",
+  "contact": "emre.kaya@example.invalid",
+  "createdAt": "2026-11-14T04:00:29.006Z"
  }
 ]

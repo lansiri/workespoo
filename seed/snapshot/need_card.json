@@ -20,9 +20,9 @@
      "kind": "must",
      "pool": {
       "scope": "relevant",
-      "speakTo": 2,
-      "relevant": 3,
-      "computedAt": "2026-11-14T01:49:20.072Z",
+      "speakTo": 3,
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:00:42.890Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 1
      },
@@ -44,9 +44,9 @@
      "kind": "must",
      "pool": {
       "scope": "relevant",
-      "speakTo": 0,
-      "relevant": 3,
-      "computedAt": "2026-11-14T01:49:20.072Z",
+      "speakTo": 1,
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:00:42.890Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 3
      },
@@ -68,10 +68,10 @@
      "pool": {
       "scope": "relevant",
       "speakTo": 0,
-      "relevant": 3,
-      "computedAt": "2026-11-14T01:49:20.072Z",
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:00:42.890Z",
       "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 3
+      "hardFilterWouldExclude": 4
      },
      "text": "Self-directed problem-solving approach",
      "source": "agent",
@@ -93,10 +93,10 @@
      "pool": {
       "scope": "relevant",
       "speakTo": 0,
-      "relevant": 3,
-      "computedAt": "2026-11-14T01:49:20.072Z",
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:00:42.890Z",
       "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 3
+      "hardFilterWouldExclude": 4
      },
      "text": "Motivation to see concrete results in production and daily work",
      "source": "agent",
@@ -117,10 +117,10 @@
      "kind": "must",
      "pool": {
       "scope": "relevant",
-      "speakTo": 2,
-      "relevant": 3,
-      "computedAt": "2026-11-14T01:49:20.072Z",
-      "selfDeclaredOnly": 2,
+      "speakTo": 3,
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:00:42.890Z",
+      "selfDeclaredOnly": 3,
       "hardFilterWouldExclude": 1
      },
      "text": "Fluent Finnish",
@@ -142,10 +142,10 @@
      "kind": "must",
      "pool": {
       "scope": "relevant",
-      "speakTo": 3,
-      "relevant": 3,
-      "computedAt": "2026-11-14T01:49:20.072Z",
-      "selfDeclaredOnly": 3,
+      "speakTo": 4,
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:00:42.890Z",
+      "selfDeclaredOnly": 4,
       "hardFilterWouldExclude": 0
      },
      "text": "Ability to work with technical material in English",
@@ -163,10 +163,10 @@
      "pool": {
       "scope": "relevant",
       "speakTo": 1,
-      "relevant": 3,
-      "computedAt": "2026-11-14T01:49:20.072Z",
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:00:42.890Z",
       "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 2
+      "hardFilterWouldExclude": 3
      },
      "text": "Experience in manufacturing or the fixed furniture sector",
      "source": "agent",
@@ -185,10 +185,10 @@
      "pool": {
       "scope": "relevant",
       "speakTo": 1,
-      "relevant": 3,
-      "computedAt": "2026-11-14T01:49:20.072Z",
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:00:42.890Z",
       "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 2
+      "hardFilterWouldExclude": 3
      },
      "text": "Knowledge of Python and SQL",
      "source": "agent",
@@ -207,10 +207,10 @@
      "pool": {
       "scope": "relevant",
       "speakTo": 0,
-      "relevant": 3,
-      "computedAt": "2026-11-14T01:49:20.072Z",
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:00:42.890Z",
       "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 3
+      "hardFilterWouldExclude": 4
      },
      "text": "Knowledge of Fusion 360, SketchUp, or CAD/CAM environments",
      "source": "agent",
@@ -229,10 +229,10 @@
      "pool": {
       "scope": "relevant",
       "speakTo": 0,
-      "relevant": 3,
-      "computedAt": "2026-11-14T01:49:20.072Z",
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:00:42.890Z",
       "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 3
+      "hardFilterWouldExclude": 4
      },
      "text": "Knowledge of Linux server environments and integrations",
      "source": "agent",
@@ -252,10 +252,10 @@
      "pool": {
       "scope": "relevant",
       "speakTo": 0,
-      "relevant": 3,
-      "computedAt": "2026-11-14T01:49:20.072Z",
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:00:42.890Z",
       "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 3
+      "hardFilterWouldExclude": 4
      },
      "text": "Knowledge of Odoo or another suitable program",
      "source": "agent",
@@ -274,7 +274,224 @@
   },
   "status": "draft",
   "createdAt": "2026-11-14T00:39:11.620Z",
-  "updatedAt": "2026-11-14T01:49:20.072Z",
+  "updatedAt": "2026-11-14T04:00:42.890Z",
+  "confirmedAt": null
+ },
+ {
+  "id": "nc_hvpjp4wzxq8s",
+  "jobId": "job_tmt_9a60f81e576f49b69597183bd0095710",
+  "companyId": "co_demo05",
+  "version": 2,
+  "body": {
+   "id": "nc_hvpjp4wzxq8s",
+   "lang": "en",
+   "jobId": "job_tmt_9a60f81e576f49b69597183bd0095710",
+   "title": "Electrical Solutions Engineer, Data Centers",
+   "status": "draft",
+   "summary": "Develop and evaluate electrical solutions for large-scale data center projects, supporting bids, suppliers, and project delivery. The role bridges engineering and construction through design reviews, technical coordination, and issue resolution.",
+   "version": 2,
+   "companyId": "co_demo05",
+   "confirmedAt": null,
+   "requirements": [
+    {
+     "id": "req_7a8nasiy2om0",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T04:00:40.471Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Energetic, solution-oriented, and effective in fast-moving projects",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting seeks an energetic, solution-oriented person who excels in fast-moving projects without a concrete example.",
+      "text": "What does 'excels in dynamic, fast-moving projects' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 23
+    },
+    {
+     "id": "req_4pngjc325jv2",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T04:00:40.471Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "B.Sc. or M.Sc. in Electrical Engineering or a related field",
+     "source": "agent",
+     "category": "education",
+     "question": {
+      "why": "The posting expects applicants to hold a degree in electrical engineering or a related field.",
+      "text": "Would hands-on experience in electrical engineering work instead of the degree?",
+      "type": "degree",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/3e40c7d0-0e36-4b33-bc33-0aa87eda0561"
+     ],
+     "postingSentence": 25
+    },
+    {
+     "id": "req_u90r54ott79c",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 3,
+      "computedAt": "2026-11-14T04:00:40.471Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Understanding of electrical distribution systems and infrastructure projects",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/9bcff7ef-1f9e-4054-b8fa-3c640e491a11",
+      "http://data.europa.eu/esco/skill/3e40c7d0-0e36-4b33-bc33-0aa87eda0561"
+     ],
+     "postingSentence": 26
+    },
+    {
+     "id": "req_40u57xumdyer",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 2,
+      "relevant": 3,
+      "computedAt": "2026-11-14T04:00:40.471Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Ability to review and evaluate technical solutions and documentation",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/f54c10e4-630d-4e50-95e9-4e9e268e8f12",
+      "http://data.europa.eu/esco/skill/209a5498-3449-4689-8ed9-bd08cab4fd78"
+     ],
+     "postingSentence": 27
+    },
+    {
+     "id": "req_nu9bv4o7k8b9",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T04:00:40.471Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Strong analytical and problem-solving skills",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting asks for strong analytical and problem-solving skills without describing a concrete situation.",
+      "text": "What does 'strong analytical and problem-solving skills' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 28
+    },
+    {
+     "id": "req_dkjs0lgbeyux",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 0,
+      "relevant": 3,
+      "computedAt": "2026-11-14T04:00:40.471Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Good communication skills and ability to work with multiple stakeholders",
+     "source": "agent",
+     "category": "other",
+     "question": {
+      "why": "The posting asks for good communication skills and stakeholder collaboration without giving a concrete example.",
+      "text": "What does 'good communication skills' look like in this job? One concrete example helps us find people who have done it.",
+      "type": "vague",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [],
+     "postingSentence": 29
+    },
+    {
+     "id": "req_xtcb9nx9j0u2",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 2,
+      "relevant": 3,
+      "computedAt": "2026-11-14T04:00:40.471Z",
+      "selfDeclaredOnly": 2,
+      "hardFilterWouldExclude": 1
+     },
+     "text": "Fluency in Finnish",
+     "source": "agent",
+     "category": "language",
+     "question": {
+      "why": "The posting requires fluent Finnish while treating English skills as an additional asset.",
+      "text": "Is Finnish needed from day one, or could someone start in English and build up Finnish on the job?",
+      "type": "language",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": "fi",
+     "escoSkillUris": [],
+     "postingSentence": 30
+    },
+    {
+     "id": "req_2nlp9si5i1y5",
+     "kind": "nice",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 3,
+      "relevant": 3,
+      "computedAt": "2026-11-14T04:00:40.471Z",
+      "selfDeclaredOnly": 3,
+      "hardFilterWouldExclude": 0
+     },
+     "text": "English language skills",
+     "source": "agent",
+     "category": "language",
+     "question": null,
+     "statutory": "none",
+     "languageCode": "en",
+     "escoSkillUris": [],
+     "postingSentence": 30
+    }
+   ],
+   "droppedSentences": []
+  },
+  "status": "draft",
+  "createdAt": "2026-11-14T01:51:24.286Z",
+  "updatedAt": "2026-11-14T04:00:40.471Z",
   "confirmedAt": null
  },
  {
@@ -300,7 +517,7 @@
       "scope": "relevant",
       "speakTo": 3,
       "relevant": 3,
-      "computedAt": "2026-11-14T01:49:24.719Z",
+      "computedAt": "2026-11-14T04:00:40.558Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 0
      },
@@ -322,7 +539,7 @@
       "scope": "relevant",
       "speakTo": 3,
       "relevant": 3,
-      "computedAt": "2026-11-14T01:49:24.719Z",
+      "computedAt": "2026-11-14T04:00:40.558Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 0
      },
@@ -349,7 +566,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 3,
-      "computedAt": "2026-11-14T01:49:24.719Z",
+      "computedAt": "2026-11-14T04:00:40.558Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 3
      },
@@ -372,7 +589,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 3,
-      "computedAt": "2026-11-14T01:49:24.719Z",
+      "computedAt": "2026-11-14T04:00:40.558Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 3
      },
@@ -399,7 +616,7 @@
       "scope": "relevant",
       "speakTo": 3,
       "relevant": 3,
-      "computedAt": "2026-11-14T01:49:24.719Z",
+      "computedAt": "2026-11-14T04:00:40.558Z",
       "selfDeclaredOnly": 3,
       "hardFilterWouldExclude": 0
      },
@@ -419,7 +636,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 3,
-      "computedAt": "2026-11-14T01:49:24.719Z",
+      "computedAt": "2026-11-14T04:00:40.558Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 3
      },
@@ -444,7 +661,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 3,
-      "computedAt": "2026-11-14T01:49:24.719Z",
+      "computedAt": "2026-11-14T04:00:40.558Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 3
      },
@@ -467,7 +684,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 3,
-      "computedAt": "2026-11-14T01:49:24.719Z",
+      "computedAt": "2026-11-14T04:00:40.558Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 3
      },
@@ -490,7 +707,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 3,
-      "computedAt": "2026-11-14T01:49:24.719Z",
+      "computedAt": "2026-11-14T04:00:40.558Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": null
      },
@@ -508,527 +725,221 @@
   },
   "status": "draft",
   "createdAt": "2026-11-14T01:34:06.189Z",
-  "updatedAt": "2026-11-14T01:49:24.719Z",
+  "updatedAt": "2026-11-14T04:00:40.558Z",
   "confirmedAt": null
  },
  {
-  "id": "nc_hvpjp4wzxq8s",
-  "jobId": "job_tmt_9a60f81e576f49b69597183bd0095710",
-  "companyId": "co_demo05",
+  "id": "nc_bfn8y6d4liki",
+  "jobId": "job_tmt_8d1407776c3548f3963a6c7bdfb3c3a9",
+  "companyId": "co_demo08",
   "version": 2,
   "body": {
-   "id": "nc_hvpjp4wzxq8s",
+   "id": "nc_bfn8y6d4liki",
    "lang": "en",
-   "jobId": "job_tmt_9a60f81e576f49b69597183bd0095710",
-   "title": "Electrical Solutions Engineer, Data Centers",
+   "jobId": "job_tmt_8d1407776c3548f3963a6c7bdfb3c3a9",
+   "title": "Automation Engineer",
    "status": "draft",
-   "summary": "Develop and evaluate electrical solutions for large-scale data center projects, supporting bids, suppliers, and project delivery. The role bridges engineering and construction through design reviews, technical coordination, and issue resolution.",
+   "summary": "The role owns industrial automation software projects from design through commissioning. It includes PLC and HMI/SCADA work, electrical documentation, testing, and occasional international commissioning.",
    "version": 2,
-   "companyId": "co_demo05",
+   "companyId": "co_demo08",
    "confirmedAt": null,
    "requirements": [
     {
-     "id": "req_7a8nasiy2om0",
+     "id": "req_jtep8j6prptw",
      "kind": "must",
      "pool": {
       "scope": "relevant",
       "speakTo": 0,
-      "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.326Z",
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:03:05.902Z",
       "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 2
+      "hardFilterWouldExclude": 4
      },
-     "text": "Energetic, solution-oriented, and effective in fast-moving projects",
-     "source": "agent",
-     "category": "other",
-     "question": {
-      "why": "The posting seeks an energetic, solution-oriented person who excels in fast-moving projects without a concrete example.",
-      "text": "What does 'excels in dynamic, fast-moving projects' look like in this job? One concrete example helps us find people who have done it.",
-      "type": "vague",
-      "answer": null
-     },
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [],
-     "postingSentence": 23
-    },
-    {
-     "id": "req_4pngjc325jv2",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 0,
-      "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.326Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 2
-     },
-     "text": "B.Sc. or M.Sc. in Electrical Engineering or a related field",
+     "text": "Educational background in a relevant engineering field",
      "source": "agent",
      "category": "education",
      "question": {
-      "why": "The posting expects applicants to hold a degree in electrical engineering or a related field.",
-      "text": "Would hands-on experience in electrical engineering work instead of the degree?",
+      "why": "The posting asks for an educational background in a relevant engineering field.",
+      "text": "Would hands-on experience in automation engineering work instead of the degree?",
       "type": "degree",
       "answer": null
      },
      "statutory": "none",
      "languageCode": null,
      "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/209a5498-3449-4689-8ed9-bd08cab4fd78"
+     ],
+     "postingSentence": 18
+    },
+    {
+     "id": "req_84iuqbj54jo4",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:03:05.902Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Strong experience with Siemens PLCs and TIA Portal",
+     "source": "agent",
+     "category": "experience",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/f4a6e9f7-5cff-46c0-894c-59c20bb78694",
+      "http://data.europa.eu/esco/skill/7229b6dc-e2ef-44fe-b9a1-06b1c1075d8f"
+     ],
+     "postingSentence": 19
+    },
+    {
+     "id": "req_m5h2ekbba540",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 2,
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:03:05.902Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Experience in PLC programming, HMI/SCADA and industrial networks",
+     "source": "agent",
+     "category": "experience",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/f4a6e9f7-5cff-46c0-894c-59c20bb78694",
+      "http://data.europa.eu/esco/skill/7229b6dc-e2ef-44fe-b9a1-06b1c1075d8f",
+      "http://data.europa.eu/esco/skill/bf1f763e-c505-46e7-8af3-e48f13ec5f44"
+     ],
+     "postingSentence": 20
+    },
+    {
+     "id": "req_hw8gko0clqsw",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 2,
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:03:05.902Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Knowledge of EPLAN for electrical and control-system documentation",
+     "source": "agent",
+     "category": "skill",
+     "question": {
+      "why": "The posting specifically asks for knowledge of EPLAN for electrical and control-system documentation.",
+      "text": "Would experience with a comparable tool be enough, if the person learns EPLAN on the job?",
+      "type": "tool",
+      "answer": null
+     },
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/3c333552-8d89-43f5-90bd-856e15bec433",
       "http://data.europa.eu/esco/skill/3e40c7d0-0e36-4b33-bc33-0aa87eda0561"
      ],
+     "postingSentence": 21
+    },
+    {
+     "id": "req_53duznu77uz9",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 1,
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:03:05.902Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 3
+     },
+     "text": "Experience with testing, commissioning, troubleshooting and integration",
+     "source": "agent",
+     "category": "experience",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/0de6bca4-f3aa-452a-8e10-d355b2c1bfc4",
+      "http://data.europa.eu/esco/skill/f4a6e9f7-5cff-46c0-894c-59c20bb78694",
+      "http://data.europa.eu/esco/skill/7229b6dc-e2ef-44fe-b9a1-06b1c1075d8f"
+     ],
+     "postingSentence": 23
+    },
+    {
+     "id": "req_umlxp1gbhc6o",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 2,
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:03:05.902Z",
+      "selfDeclaredOnly": null,
+      "hardFilterWouldExclude": 2
+     },
+     "text": "Knowledge of electrical automation and control systems",
+     "source": "agent",
+     "category": "skill",
+     "question": null,
+     "statutory": "none",
+     "languageCode": null,
+     "escoSkillUris": [
+      "http://data.europa.eu/esco/skill/f4a6e9f7-5cff-46c0-894c-59c20bb78694",
+      "http://data.europa.eu/esco/skill/7229b6dc-e2ef-44fe-b9a1-06b1c1075d8f",
+      "http://data.europa.eu/esco/skill/3e40c7d0-0e36-4b33-bc33-0aa87eda0561"
+     ],
+     "postingSentence": 24
+    },
+    {
+     "id": "req_3yoye2gyk0im",
+     "kind": "must",
+     "pool": {
+      "scope": "relevant",
+      "speakTo": 4,
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:03:05.902Z",
+      "selfDeclaredOnly": 4,
+      "hardFilterWouldExclude": 0
+     },
+     "text": "Working proficiency in English",
+     "source": "agent",
+     "category": "language",
+     "question": null,
+     "statutory": "none",
+     "languageCode": "en",
+     "escoSkillUris": [],
      "postingSentence": 25
     },
     {
-     "id": "req_u90r54ott79c",
-     "kind": "must",
+     "id": "req_2fpyrwsytwvs",
+     "kind": "nice",
      "pool": {
       "scope": "relevant",
-      "speakTo": 0,
-      "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.326Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 2
-     },
-     "text": "Understanding of electrical distribution systems and infrastructure projects",
-     "source": "agent",
-     "category": "skill",
-     "question": null,
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [
-      "http://data.europa.eu/esco/skill/9bcff7ef-1f9e-4054-b8fa-3c640e491a11",
-      "http://data.europa.eu/esco/skill/3e40c7d0-0e36-4b33-bc33-0aa87eda0561"
-     ],
-     "postingSentence": 26
-    },
-    {
-     "id": "req_40u57xumdyer",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 2,
-      "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.326Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 0
-     },
-     "text": "Ability to review and evaluate technical solutions and documentation",
-     "source": "agent",
-     "category": "skill",
-     "question": null,
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [
-      "http://data.europa.eu/esco/skill/f54c10e4-630d-4e50-95e9-4e9e268e8f12",
-      "http://data.europa.eu/esco/skill/209a5498-3449-4689-8ed9-bd08cab4fd78"
-     ],
-     "postingSentence": 27
-    },
-    {
-     "id": "req_nu9bv4o7k8b9",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 0,
-      "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.326Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 2
-     },
-     "text": "Strong analytical and problem-solving skills",
-     "source": "agent",
-     "category": "other",
-     "question": {
-      "why": "The posting asks for strong analytical and problem-solving skills without describing a concrete situation.",
-      "text": "What does 'strong analytical and problem-solving skills' look like in this job? One concrete example helps us find people who have done it.",
-      "type": "vague",
-      "answer": null
-     },
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [],
-     "postingSentence": 28
-    },
-    {
-     "id": "req_dkjs0lgbeyux",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 0,
-      "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.326Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 2
-     },
-     "text": "Good communication skills and ability to work with multiple stakeholders",
-     "source": "agent",
-     "category": "other",
-     "question": {
-      "why": "The posting asks for good communication skills and stakeholder collaboration without giving a concrete example.",
-      "text": "What does 'good communication skills' look like in this job? One concrete example helps us find people who have done it.",
-      "type": "vague",
-      "answer": null
-     },
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [],
-     "postingSentence": 29
-    },
-    {
-     "id": "req_xtcb9nx9j0u2",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 1,
-      "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.326Z",
-      "selfDeclaredOnly": 1,
+      "speakTo": 3,
+      "relevant": 4,
+      "computedAt": "2026-11-14T04:03:05.902Z",
+      "selfDeclaredOnly": 3,
       "hardFilterWouldExclude": 1
      },
-     "text": "Fluency in Finnish",
+     "text": "Proficiency in Finnish",
      "source": "agent",
      "category": "language",
-     "question": {
-      "why": "The posting requires fluent Finnish while treating English skills as an additional asset.",
-      "text": "Is Finnish needed from day one, or could someone start in English and build up Finnish on the job?",
-      "type": "language",
-      "answer": null
-     },
+     "question": null,
      "statutory": "none",
      "languageCode": "fi",
      "escoSkillUris": [],
-     "postingSentence": 30
-    },
-    {
-     "id": "req_2nlp9si5i1y5",
-     "kind": "nice",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 2,
-      "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.326Z",
-      "selfDeclaredOnly": 2,
-      "hardFilterWouldExclude": 0
-     },
-     "text": "English language skills",
-     "source": "agent",
-     "category": "language",
-     "question": null,
-     "statutory": "none",
-     "languageCode": "en",
-     "escoSkillUris": [],
-     "postingSentence": 30
-    }
-   ],
-   "droppedSentences": []
-  },
-  "status": "draft",
-  "createdAt": "2026-11-14T01:51:24.286Z",
-  "updatedAt": "2026-11-14T02:17:08.326Z",
-  "confirmedAt": null
- },
- {
-  "id": "nc_p6pvlvi6fcto",
-  "jobId": "job_tmt_43b541e11aaa48a4a3b68eaad3306ecd",
-  "companyId": "co_demo08",
-  "version": 2,
-  "body": {
-   "id": "nc_p6pvlvi6fcto",
-   "lang": "en",
-   "jobId": "job_tmt_43b541e11aaa48a4a3b68eaad3306ecd",
-   "title": "Verification Engineer – Hardware and Medical Device Testing",
-   "status": "draft",
-   "summary": "Hands-on verification of medical devices and hardware through mechanical, electronic, durability, and environmental testing. The role includes laboratory measurements, test documentation, result analysis, and collaboration with engineering teams.",
-   "version": 2,
-   "companyId": "co_demo08",
-   "confirmedAt": null,
-   "requirements": [
-    {
-     "id": "req_wxiipwayoaaj",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 0,
-      "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.503Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 1
-     },
-     "text": "Hands-on professional experience testing physical devices or hardware",
-     "source": "agent",
-     "category": "experience",
-     "question": null,
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [
-      "http://data.europa.eu/esco/skill/52b38e90-3d05-4042-a9e2-d19dec8dd7c1",
-      "http://data.europa.eu/esco/skill/d512d178-37a6-4eab-a660-412d2bb0824a"
-     ],
      "postingSentence": 28
-    },
-    {
-     "id": "req_16l94k1k9nil",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 0,
-      "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.503Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 1
-     },
-     "text": "Practical knowledge of hardware testing methods and physical test equipment",
-     "source": "agent",
-     "category": "skill",
-     "question": null,
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [
-      "http://data.europa.eu/esco/skill/52b38e90-3d05-4042-a9e2-d19dec8dd7c1",
-      "http://data.europa.eu/esco/skill/d512d178-37a6-4eab-a660-412d2bb0824a"
-     ],
-     "postingSentence": 29
-    },
-    {
-     "id": "req_46fen6708woe",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 0,
-      "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.503Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 1
-     },
-     "text": "Accurately document test results and communicate findings clearly",
-     "source": "agent",
-     "category": "skill",
-     "question": null,
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [
-      "http://data.europa.eu/esco/skill/81a2db2c-7e55-44d0-9cd9-74c25147d7cd",
-      "http://data.europa.eu/esco/skill/20a8fe89-d4eb-4698-8521-8881c13377e0"
-     ],
-     "postingSentence": 30
-    },
-    {
-     "id": "req_oqy21yzos3fk",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 1,
-      "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.503Z",
-      "selfDeclaredOnly": 1,
-      "hardFilterWouldExclude": 0
-     },
-     "text": "Good written and spoken English communication skills",
-     "source": "agent",
-     "category": "language",
-     "question": null,
-     "statutory": "none",
-     "languageCode": "en",
-     "escoSkillUris": [],
-     "postingSentence": 31
-    },
-    {
-     "id": "req_l0if0p5cslxm",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 0,
-      "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.503Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 1
-     },
-     "text": "Ability and willingness to work daily at the Helsinki laboratory",
-     "source": "agent",
-     "category": "other",
-     "question": null,
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [],
-     "postingSentence": 32
-    },
-    {
-     "id": "req_oq4gnui1uc2x",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 1,
-      "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.503Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 0
-     },
-     "text": "Background in mechanical engineering, electronics, or a relevant technical field",
-     "source": "agent",
-     "category": "education",
-     "question": null,
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [
-      "http://data.europa.eu/esco/skill/4134622c-c3fb-4a41-beb6-6d58ba5107db",
-      "http://data.europa.eu/esco/skill/209a5498-3449-4689-8ed9-bd08cab4fd78"
-     ],
-     "postingSentence": 33
-    },
-    {
-     "id": "req_p3imgi3g2l6i",
-     "kind": "nice",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 0,
-      "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.503Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 1
-     },
-     "text": "Experience testing small electronics or compact mechanical components",
-     "source": "agent",
-     "category": "experience",
-     "question": null,
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [
-      "http://data.europa.eu/esco/skill/52b38e90-3d05-4042-a9e2-d19dec8dd7c1"
-     ],
-     "postingSentence": 35
-    },
-    {
-     "id": "req_0hclcv6uu2bb",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 0,
-      "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.503Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 1
-     },
-     "text": "Systematic and detail-oriented working style",
-     "source": "agent",
-     "category": "other",
-     "question": {
-      "why": "The posting asks for a systematic and detail-oriented working style without giving a concrete example.",
-      "text": "What does 'systematic and detail-oriented' look like in this job? One concrete example helps us find people who have done it.",
-      "type": "vague",
-      "answer": null
-     },
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [],
-     "postingSentence": 43
-    },
-    {
-     "id": "req_snt2i53cngmb",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 0,
-      "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.503Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 1
-     },
-     "text": "Responsible and reliable, with ownership of work and reporting",
-     "source": "agent",
-     "category": "other",
-     "question": {
-      "why": "The posting asks for responsibility and reliability without describing how these qualities are demonstrated.",
-      "text": "What does 'responsible and reliable' look like in this job? One concrete example helps us find people who have done it.",
-      "type": "vague",
-      "answer": null
-     },
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [],
-     "postingSentence": 44
-    },
-    {
-     "id": "req_4o6yqxekjn4i",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 0,
-      "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.503Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 1
-     },
-     "text": "Collaborative and service-minded approach to supporting stakeholders",
-     "source": "agent",
-     "category": "other",
-     "question": {
-      "why": "The posting requests a collaborative and service-minded approach without a concrete workplace example.",
-      "text": "What does 'collaborative and service-minded' look like in this job? One concrete example helps us find people who have done it.",
-      "type": "vague",
-      "answer": null
-     },
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [],
-     "postingSentence": 45
-    },
-    {
-     "id": "req_sorutz2s43ye",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 0,
-      "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.503Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 1
-     },
-     "text": "Communicative and proactive in raising questions and issues",
-     "source": "agent",
-     "category": "other",
-     "question": {
-      "why": "The posting asks applicants to be communicative and proactive but does not give a concrete example.",
-      "text": "What does 'communicative and proactive' look like in this job? One concrete example helps us find people who have done it.",
-      "type": "vague",
-      "answer": null
-     },
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [],
-     "postingSentence": 46
-    },
-    {
-     "id": "req_qe2jq7yr69ey",
-     "kind": "must",
-     "pool": {
-      "scope": "relevant",
-      "speakTo": 0,
-      "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.503Z",
-      "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 1
-     },
-     "text": "Resilient and adaptable to changing priorities across projects",
-     "source": "agent",
-     "category": "other",
-     "question": {
-      "why": "The posting asks for resilience and adaptability without describing a specific situation where they are needed.",
-      "text": "What does 'resilient and adaptable' look like in this job? One concrete example helps us find people who have done it.",
-      "type": "vague",
-      "answer": null
-     },
-     "statutory": "none",
-     "languageCode": null,
-     "escoSkillUris": [],
-     "postingSentence": 47
     }
    ],
    "droppedSentences": []
   },
   "status": "draft",
-  "createdAt": "2026-11-14T01:55:54.233Z",
-  "updatedAt": "2026-11-14T02:17:08.503Z",
+  "createdAt": "2026-11-14T01:54:36.729Z",
+  "updatedAt": "2026-11-14T04:03:05.902Z",
   "confirmedAt": null
  },
  {
@@ -1054,7 +965,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.006Z",
+      "computedAt": "2026-11-14T04:00:42.347Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 2
      },
@@ -1079,7 +990,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.006Z",
+      "computedAt": "2026-11-14T04:00:42.347Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 2
      },
@@ -1104,7 +1015,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.006Z",
+      "computedAt": "2026-11-14T04:00:42.347Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 2
      },
@@ -1127,11 +1038,11 @@
      "kind": "must",
      "pool": {
       "scope": "relevant",
-      "speakTo": 1,
+      "speakTo": 0,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.006Z",
+      "computedAt": "2026-11-14T04:00:42.347Z",
       "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 1
+      "hardFilterWouldExclude": 2
      },
      "text": "Suitable technical higher education degree, such as mechanical engineering",
      "source": "agent",
@@ -1156,7 +1067,7 @@
       "scope": "relevant",
       "speakTo": 1,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.006Z",
+      "computedAt": "2026-11-14T04:00:42.347Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 1
      },
@@ -1179,7 +1090,7 @@
       "scope": "relevant",
       "speakTo": 1,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.006Z",
+      "computedAt": "2026-11-14T04:00:42.347Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 1
      },
@@ -1204,11 +1115,11 @@
      "kind": "must",
      "pool": {
       "scope": "relevant",
-      "speakTo": 2,
+      "speakTo": 1,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.006Z",
+      "computedAt": "2026-11-14T04:00:42.347Z",
       "selfDeclaredOnly": null,
-      "hardFilterWouldExclude": 0
+      "hardFilterWouldExclude": 1
      },
      "text": "Knowledge of materials, manufacturing methods and product structures",
      "source": "agent",
@@ -1229,7 +1140,7 @@
       "scope": "relevant",
       "speakTo": 2,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.006Z",
+      "computedAt": "2026-11-14T04:00:42.347Z",
       "selfDeclaredOnly": 2,
       "hardFilterWouldExclude": 0
      },
@@ -1254,7 +1165,7 @@
       "scope": "relevant",
       "speakTo": 2,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.006Z",
+      "computedAt": "2026-11-14T04:00:42.347Z",
       "selfDeclaredOnly": 2,
       "hardFilterWouldExclude": 0
      },
@@ -1274,7 +1185,7 @@
       "scope": "relevant",
       "speakTo": 1,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.006Z",
+      "computedAt": "2026-11-14T04:00:42.347Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 1
      },
@@ -1299,7 +1210,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.006Z",
+      "computedAt": "2026-11-14T04:00:42.347Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 2
      },
@@ -1324,7 +1235,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:08.006Z",
+      "computedAt": "2026-11-14T04:00:42.347Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 2
      },
@@ -1347,7 +1258,7 @@
   },
   "status": "draft",
   "createdAt": "2026-11-14T01:58:42.405Z",
-  "updatedAt": "2026-11-14T02:17:08.006Z",
+  "updatedAt": "2026-11-14T04:00:42.347Z",
   "confirmedAt": null
  },
  {
@@ -1373,7 +1284,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:07.905Z",
+      "computedAt": "2026-11-14T04:00:41.399Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": null
      },
@@ -1393,7 +1304,7 @@
       "scope": "relevant",
       "speakTo": 1,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:07.905Z",
+      "computedAt": "2026-11-14T04:00:41.399Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 1
      },
@@ -1416,7 +1327,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:07.905Z",
+      "computedAt": "2026-11-14T04:00:41.399Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 2
      },
@@ -1441,7 +1352,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:07.905Z",
+      "computedAt": "2026-11-14T04:00:41.399Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 2
      },
@@ -1464,7 +1375,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:07.905Z",
+      "computedAt": "2026-11-14T04:00:41.399Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 2
      },
@@ -1489,7 +1400,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:07.905Z",
+      "computedAt": "2026-11-14T04:00:41.399Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 2
      },
@@ -1511,7 +1422,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:07.905Z",
+      "computedAt": "2026-11-14T04:00:41.399Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 2
      },
@@ -1533,7 +1444,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:07.905Z",
+      "computedAt": "2026-11-14T04:00:41.399Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 2
      },
@@ -1553,7 +1464,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:07.905Z",
+      "computedAt": "2026-11-14T04:00:41.399Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 2
      },
@@ -1573,7 +1484,7 @@
       "scope": "relevant",
       "speakTo": 1,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:07.905Z",
+      "computedAt": "2026-11-14T04:00:41.399Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 1
      },
@@ -1597,7 +1508,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 2,
-      "computedAt": "2026-11-14T02:17:07.905Z",
+      "computedAt": "2026-11-14T04:00:41.399Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 2
      },
@@ -1615,7 +1526,7 @@
   },
   "status": "draft",
   "createdAt": "2026-11-14T02:01:00.608Z",
-  "updatedAt": "2026-11-14T02:17:07.905Z",
+  "updatedAt": "2026-11-14T04:00:41.399Z",
   "confirmedAt": null
  },
  {
@@ -1641,7 +1552,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.419Z",
+      "computedAt": "2026-11-14T04:00:42.816Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 1
      },
@@ -1669,7 +1580,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.419Z",
+      "computedAt": "2026-11-14T04:00:42.816Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 1
      },
@@ -1693,7 +1604,7 @@
       "scope": "relevant",
       "speakTo": 1,
       "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.419Z",
+      "computedAt": "2026-11-14T04:00:42.816Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 0
      },
@@ -1718,7 +1629,7 @@
       "scope": "relevant",
       "speakTo": 1,
       "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.419Z",
+      "computedAt": "2026-11-14T04:00:42.816Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 0
      },
@@ -1742,7 +1653,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.419Z",
+      "computedAt": "2026-11-14T04:00:42.816Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 1
      },
@@ -1767,7 +1678,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.419Z",
+      "computedAt": "2026-11-14T04:00:42.816Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 1
      },
@@ -1790,7 +1701,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.419Z",
+      "computedAt": "2026-11-14T04:00:42.816Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": null
      },
@@ -1810,7 +1721,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 1,
-      "computedAt": "2026-11-14T02:17:08.419Z",
+      "computedAt": "2026-11-14T04:00:42.816Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": null
      },
@@ -1830,7 +1741,7 @@
   },
   "status": "draft",
   "createdAt": "2026-11-14T02:04:51.195Z",
-  "updatedAt": "2026-11-14T02:17:08.419Z",
+  "updatedAt": "2026-11-14T04:00:42.816Z",
   "confirmedAt": null
  },
  {
@@ -1856,7 +1767,7 @@
       "scope": "relevant",
       "speakTo": 1,
       "relevant": 4,
-      "computedAt": "2026-11-14T02:17:07.579Z",
+      "computedAt": "2026-11-14T04:00:41.077Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 3
      },
@@ -1880,7 +1791,7 @@
       "scope": "relevant",
       "speakTo": 1,
       "relevant": 4,
-      "computedAt": "2026-11-14T02:17:07.579Z",
+      "computedAt": "2026-11-14T04:00:41.077Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 3
      },
@@ -1903,7 +1814,7 @@
       "scope": "relevant",
       "speakTo": 3,
       "relevant": 4,
-      "computedAt": "2026-11-14T02:17:07.579Z",
+      "computedAt": "2026-11-14T04:00:41.077Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 1
      },
@@ -1928,7 +1839,7 @@
       "scope": "relevant",
       "speakTo": 1,
       "relevant": 4,
-      "computedAt": "2026-11-14T02:17:07.579Z",
+      "computedAt": "2026-11-14T04:00:41.077Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 3
      },
@@ -1951,7 +1862,7 @@
       "scope": "relevant",
       "speakTo": 1,
       "relevant": 4,
-      "computedAt": "2026-11-14T02:17:07.579Z",
+      "computedAt": "2026-11-14T04:00:41.077Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 3
      },
@@ -1976,7 +1887,7 @@
       "scope": "relevant",
       "speakTo": 1,
       "relevant": 4,
-      "computedAt": "2026-11-14T02:17:07.579Z",
+      "computedAt": "2026-11-14T04:00:41.077Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 3
      },
@@ -2000,7 +1911,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 4,
-      "computedAt": "2026-11-14T02:17:07.579Z",
+      "computedAt": "2026-11-14T04:00:41.077Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 4
      },
@@ -2025,7 +1936,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 4,
-      "computedAt": "2026-11-14T02:17:07.579Z",
+      "computedAt": "2026-11-14T04:00:41.077Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 4
      },
@@ -2050,7 +1961,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 4,
-      "computedAt": "2026-11-14T02:17:07.579Z",
+      "computedAt": "2026-11-14T04:00:41.077Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 4
      },
@@ -2075,7 +1986,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 4,
-      "computedAt": "2026-11-14T02:17:07.579Z",
+      "computedAt": "2026-11-14T04:00:41.077Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 4
      },
@@ -2100,7 +2011,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 4,
-      "computedAt": "2026-11-14T02:17:07.579Z",
+      "computedAt": "2026-11-14T04:00:41.077Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 4
      },
@@ -2125,7 +2036,7 @@
       "scope": "relevant",
       "speakTo": 0,
       "relevant": 4,
-      "computedAt": "2026-11-14T02:17:07.579Z",
+      "computedAt": "2026-11-14T04:00:41.077Z",
       "selfDeclaredOnly": null,
       "hardFilterWouldExclude": 4
      },
@@ -2148,7 +2059,7 @@
   },
   "status": "draft",
   "createdAt": "2026-11-14T02:07:04.509Z",
-  "updatedAt": "2026-11-14T02:17:07.579Z",
+  "updatedAt": "2026-11-14T04:00:41.077Z",
   "confirmedAt": null
  }
 ]

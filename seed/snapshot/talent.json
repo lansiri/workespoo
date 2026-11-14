@@ -1,16 +1,5 @@
 [
  {
-  "id": "tal_mogxo04jdwwl",
-  "handle": "Quartz-73",
-  "synthetic": true,
-  "liveDemo": false,
-  "inPool": true,
-  "purgeAfter": null,
-  "personaKey": "p06",
-  "agendaToken": null,
-  "createdAt": "2026-11-14T01:37:42.952Z"
- },
- {
   "id": "tal_43fbkeofwipr",
   "handle": "Pine-39",
   "synthetic": true,
@@ -141,6 +130,17 @@
   "personaKey": "p03",
   "agendaToken": null,
   "createdAt": "2026-11-14T01:34:06.387Z"
+ },
+ {
+  "id": "tal_z63mnny9pugj",
+  "handle": "Quartz-73",
+  "synthetic": true,
+  "liveDemo": false,
+  "inPool": true,
+  "purgeAfter": null,
+  "personaKey": "p06",
+  "agendaToken": null,
+  "createdAt": "2026-11-14T03:59:31.466Z"
  },
  {
   "id": "tal_78jy75ig6iz8",

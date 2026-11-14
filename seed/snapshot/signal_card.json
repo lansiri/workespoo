@@ -2415,6 +2415,392 @@
   "updatedAt": "2026-11-14T01:47:04.012Z"
  },
  {
+  "talentId": "tal_z63mnny9pugj",
+  "status": "approved",
+  "version": 1,
+  "body": {
+   "handle": "Quartz-73",
+   "status": "approved",
+   "signals": [
+    {
+     "id": "s1",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/a6f8dabe-476b-433f-9f89-c0f839a9991c",
+      "labelEn": "manufacturing of pumps and compressors",
+      "labelFi": "pumppujen ja kompressoreiden valmistus"
+     },
+     "kind": "domain",
+     "phrase": "Industrial pump manufacturing",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s18",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/87434439-c07d-48be-af34-b0cdd03121c4",
+      "labelEn": "design engineering components",
+      "labelFi": "suunnitella teknisiä komponentteja"
+     },
+     "kind": "skill",
+     "phrase": "Designing pump components",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      },
+      {
+       "turnIndex": 9,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s19",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/a432ffcd-b58d-4417-836c-ea3282b626ca",
+      "labelEn": "run simulations",
+      "labelFi": "toteuttaa simulaatioita"
+     },
+     "kind": "skill",
+     "phrase": "Running flow and strength simulations",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 1,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 3,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s5",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/632843be-2872-47b4-a92e-352629f9bd88",
+      "labelEn": "analyse stress resistance of products",
+      "labelFi": "analysoida tuotteiden stressinkestävyyttä"
+     },
+     "kind": "skill",
+     "phrase": "Finite element stress analysis",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 3,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      },
+      {
+       "turnIndex": 7,
+       "sentenceTo": 2,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": true
+    },
+    {
+     "id": "s9",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "SolidWorks",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s10",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Ansys",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s20",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/c3a03c5a-c260-4c26-9b9a-873abb396f4d",
+      "labelEn": "MATLAB",
+      "labelFi": "MATLAB"
+     },
+     "kind": "tool",
+     "phrase": "MATLAB",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s21",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "PDM systems",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s22",
+     "esco": null,
+     "kind": "tool",
+     "phrase": "Calipers and coordinate measuring machines",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s23",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Reading CNC programs",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 5,
+       "sentenceTo": 3,
+       "sentenceFrom": 3
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s11",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/94b2c46e-6338-4a1d-950a-d44eef018c53",
+      "labelEn": "collaborate with engineers",
+      "labelFi": "tehdä yhteistyötä insinöörien tai teknisten asiantuntijoiden kanssa"
+     },
+     "kind": "skill",
+     "phrase": "Cross-functional engineering collaboration",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 3,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s12",
+     "esco": {
+      "uri": "http://data.europa.eu/esco/skill/b07daddc-8625-4360-946e-ad2b0e56ebf6",
+      "labelEn": "read engineering drawings",
+      "labelFi": "tulkita teknisiä piirustuksia"
+     },
+     "kind": "skill",
+     "phrase": "Reviewing engineering drawings",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 9,
+       "sentenceTo": 4,
+       "sentenceFrom": 4
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s13",
+     "esco": null,
+     "kind": "knowledge",
+     "phrase": "Pump cavitation theory",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 11,
+       "sentenceTo": 1,
+       "sentenceFrom": 1
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    },
+    {
+     "id": "s14",
+     "esco": null,
+     "kind": "skill",
+     "phrase": "Building flow test rigs",
+     "status": "approved",
+     "addedBy": "agent",
+     "evidence": [
+      {
+       "turnIndex": 11,
+       "sentenceTo": 2,
+       "sentenceFrom": 2
+      }
+     ],
+     "phraseOwn": null,
+     "hasExample": false
+    }
+   ],
+   "version": 1,
+   "headline": "Industrial pump design, simulation and prototype troubleshooting",
+   "approvedAt": "2026-11-14T04:00:29.073Z",
+   "lookingFor": {
+    "roles": [
+     "Mechanical design",
+     "Engineering simulation",
+     "Product development in machinery or energy"
+    ],
+    "workMode": "hybrid",
+    "startFrom": "within_3_months",
+    "workLanguages": [
+     "English",
+     "Finnish"
+    ]
+   },
+   "companyView": {
+    "items": [
+     {
+      "text": "They list Industrial pump manufacturing as a skill.",
+      "stale": false,
+      "signalId": "s1"
+     },
+     {
+      "text": "They own the design of pump housings and impellers and redesigned a housing to address cracking near the outlet.",
+      "stale": false,
+      "signalId": "s18"
+     },
+     {
+      "text": "They run flow and strength simulations and check whether design changes affect pump efficiency.",
+      "stale": false,
+      "signalId": "s19"
+     },
+     {
+      "text": "They build finite element models, refine meshes around stress concentrations, apply test pressures, and compare peak stress with material yield limits.",
+      "stale": false,
+      "signalId": "s5"
+     },
+     {
+      "text": "They list SolidWorks as a skill.",
+      "stale": false,
+      "signalId": "s9"
+     },
+     {
+      "text": "They list Ansys as a skill.",
+      "stale": false,
+      "signalId": "s10"
+     },
+     {
+      "text": "They write MATLAB scripts to process test data.",
+      "stale": false,
+      "signalId": "s20"
+     },
+     {
+      "text": "They use a PDM system to manage design revisions.",
+      "stale": false,
+      "signalId": "s21"
+     },
+     {
+      "text": "They use calipers and a coordinate measuring machine to check critical dimensions.",
+      "stale": false,
+      "signalId": "s22"
+     },
+     {
+      "text": "They read CNC programs used in the workshop.",
+      "stale": false,
+      "signalId": "s23"
+     },
+     {
+      "text": "They list Cross-functional engineering collaboration as a skill.",
+      "stale": false,
+      "signalId": "s11"
+     },
+     {
+      "text": "They list reviewing engineering drawings as a skill.",
+      "stale": false,
+      "signalId": "s12"
+     },
+     {
+      "text": "They list Pump cavitation theory as a skill.",
+      "stale": false,
+      "signalId": "s13"
+     },
+     {
+      "text": "They list building flow test rigs as a skill.",
+      "stale": false,
+      "signalId": "s14"
+     }
+    ],
+    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
+    "summary": "They design industrial pump components, run flow and structural simulations, and resolve prototype failures. They use SolidWorks, Ansys and MATLAB, work with workshop and test teams, and review design drawings."
+   }
+  },
+  "approvedAt": "2026-11-14T04:00:29.073Z",
+  "updatedAt": "2026-11-14T04:00:29.065Z"
+ },
+ {
   "talentId": "tal_4thrbmb9cwbr",
   "status": "approved",
   "version": 1,
@@ -4351,359 +4737,6 @@
   },
   "approvedAt": "2026-11-14T01:37:42.079Z",
   "updatedAt": "2026-11-14T01:37:41.863Z"
- },
- {
-  "talentId": "tal_mogxo04jdwwl",
-  "status": "approved",
-  "version": 1,
-  "body": {
-   "handle": "Quartz-73",
-   "status": "approved",
-   "signals": [
-    {
-     "id": "s1",
-     "esco": {
-      "uri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-      "labelEn": "mechanical engineering",
-      "labelFi": "koneenrakennus"
-     },
-     "kind": "domain",
-     "phrase": "Mechanical design engineering",
-     "status": "approved",
-     "addedBy": "agent",
-     "evidence": [
-      {
-       "turnIndex": 1,
-       "sentenceTo": 1,
-       "sentenceFrom": 1
-      }
-     ],
-     "phraseOwn": null,
-     "hasExample": false
-    },
-    {
-     "id": "s2",
-     "esco": {
-      "uri": "http://data.europa.eu/esco/skill/87434439-c07d-48be-af34-b0cdd03121c4",
-      "labelEn": "design engineering components",
-      "labelFi": "suunnitella teknisiä komponentteja"
-     },
-     "kind": "skill",
-     "phrase": "Component design",
-     "status": "approved",
-     "addedBy": "agent",
-     "evidence": [
-      {
-       "turnIndex": 1,
-       "sentenceTo": 2,
-       "sentenceFrom": 2
-      }
-     ],
-     "phraseOwn": null,
-     "hasExample": false
-    },
-    {
-     "id": "s3",
-     "esco": {
-      "uri": "http://data.europa.eu/esco/skill/a432ffcd-b58d-4417-836c-ea3282b626ca",
-      "labelEn": "run simulations",
-      "labelFi": "toteuttaa simulaatioita"
-     },
-     "kind": "skill",
-     "phrase": "Flow and strength simulations",
-     "status": "approved",
-     "addedBy": "agent",
-     "evidence": [
-      {
-       "turnIndex": 1,
-       "sentenceTo": 2,
-       "sentenceFrom": 2
-      }
-     ],
-     "phraseOwn": null,
-     "hasExample": false
-    },
-    {
-     "id": "s4",
-     "esco": {
-      "uri": "http://data.europa.eu/esco/skill/334e3e49-fb02-4051-809a-f06adfdc1c40",
-      "labelEn": "troubleshoot",
-      "labelFi": "tunnistaa ongelmia"
-     },
-     "kind": "skill",
-     "phrase": "Prototype troubleshooting in workshop",
-     "status": "approved",
-     "addedBy": "agent",
-     "evidence": [
-      {
-       "turnIndex": 1,
-       "sentenceTo": 2,
-       "sentenceFrom": 2
-      }
-     ],
-     "phraseOwn": null,
-     "hasExample": false
-    },
-    {
-     "id": "s5",
-     "esco": {
-      "uri": "http://data.europa.eu/esco/skill/632843be-2872-47b4-a92e-352629f9bd88",
-      "labelEn": "analyse stress resistance of products",
-      "labelFi": "analysoida tuotteiden stressinkestävyyttä"
-     },
-     "kind": "skill",
-     "phrase": "Finite element stress analysis",
-     "status": "approved",
-     "addedBy": "agent",
-     "evidence": [
-      {
-       "turnIndex": 3,
-       "sentenceTo": 2,
-       "sentenceFrom": 1
-      }
-     ],
-     "phraseOwn": null,
-     "hasExample": true
-    },
-    {
-     "id": "s6",
-     "esco": null,
-     "kind": "skill",
-     "phrase": "Redesigning cracked pump housings",
-     "status": "approved",
-     "addedBy": "agent",
-     "evidence": [
-      {
-       "turnIndex": 3,
-       "sentenceTo": 2,
-       "sentenceFrom": 1
-      }
-     ],
-     "phraseOwn": null,
-     "hasExample": true
-    },
-    {
-     "id": "s7",
-     "esco": null,
-     "kind": "skill",
-     "phrase": "Checking flow after design changes",
-     "status": "approved",
-     "addedBy": "agent",
-     "evidence": [
-      {
-       "turnIndex": 3,
-       "sentenceTo": 3,
-       "sentenceFrom": 3
-      }
-     ],
-     "phraseOwn": null,
-     "hasExample": true
-    },
-    {
-     "id": "s8",
-     "esco": null,
-     "kind": "skill",
-     "phrase": "Prototype pressure testing",
-     "status": "approved",
-     "addedBy": "agent",
-     "evidence": [
-      {
-       "turnIndex": 3,
-       "sentenceTo": 1,
-       "sentenceFrom": 1
-      },
-      {
-       "turnIndex": 3,
-       "sentenceTo": 4,
-       "sentenceFrom": 4
-      }
-     ],
-     "phraseOwn": null,
-     "hasExample": true
-    },
-    {
-     "id": "s9",
-     "esco": null,
-     "kind": "tool",
-     "phrase": "SolidWorks",
-     "status": "approved",
-     "addedBy": "agent",
-     "evidence": [
-      {
-       "turnIndex": 5,
-       "sentenceTo": 1,
-       "sentenceFrom": 1
-      }
-     ],
-     "phraseOwn": null,
-     "hasExample": false
-    },
-    {
-     "id": "s10",
-     "esco": null,
-     "kind": "tool",
-     "phrase": "Ansys",
-     "status": "approved",
-     "addedBy": "agent",
-     "evidence": [
-      {
-       "turnIndex": 5,
-       "sentenceTo": 1,
-       "sentenceFrom": 1
-      }
-     ],
-     "phraseOwn": null,
-     "hasExample": false
-    },
-    {
-     "id": "s11",
-     "esco": {
-      "uri": "http://data.europa.eu/esco/skill/c3a03c5a-c260-4c26-9b9a-873abb396f4d",
-      "labelEn": "MATLAB",
-      "labelFi": "MATLAB"
-     },
-     "kind": "tool",
-     "phrase": "MATLAB",
-     "status": "approved",
-     "addedBy": "agent",
-     "evidence": [
-      {
-       "turnIndex": 5,
-       "sentenceTo": 1,
-       "sentenceFrom": 1
-      }
-     ],
-     "phraseOwn": null,
-     "hasExample": false
-    },
-    {
-     "id": "s12",
-     "esco": null,
-     "kind": "tool",
-     "phrase": "PDM revision management",
-     "status": "approved",
-     "addedBy": "agent",
-     "evidence": [
-      {
-       "turnIndex": 5,
-       "sentenceTo": 2,
-       "sentenceFrom": 2
-      }
-     ],
-     "phraseOwn": null,
-     "hasExample": false
-    },
-    {
-     "id": "s13",
-     "esco": {
-      "uri": "http://data.europa.eu/esco/skill/23d7bd85-d8d5-4455-b64d-3b0998f2425d",
-      "labelEn": "measuring dimensions and related properties",
-      "labelFi": "mitata ulottuvuuksia ja niihin liittyviä ominaisuuksia"
-     },
-     "kind": "skill",
-     "phrase": "Dimensional inspection and CNC reading",
-     "status": "approved",
-     "addedBy": "agent",
-     "evidence": [
-      {
-       "turnIndex": 5,
-       "sentenceTo": 3,
-       "sentenceFrom": 3
-      }
-     ],
-     "phraseOwn": null,
-     "hasExample": false
-    }
-   ],
-   "version": 1,
-   "headline": "Mechanical design engineering, Component design, Flow and strength simulations",
-   "approvedAt": "2026-11-14T01:39:05.464Z",
-   "lookingFor": {
-    "roles": [
-     "mechanical design engineer",
-     "simulation engineer"
-    ],
-    "workMode": "hybrid",
-    "startFrom": "within_3_months",
-    "workLanguages": [
-     "English",
-     "Finnish"
-    ]
-   },
-   "companyView": {
-    "items": [
-     {
-      "text": "They list Mechanical design engineering as a skill.",
-      "stale": false,
-      "signalId": "s1"
-     },
-     {
-      "text": "They list Component design as a skill.",
-      "stale": false,
-      "signalId": "s2"
-     },
-     {
-      "text": "They list Flow and strength simulations as a skill.",
-      "stale": false,
-      "signalId": "s3"
-     },
-     {
-      "text": "They list Prototype troubleshooting in workshop as a skill.",
-      "stale": false,
-      "signalId": "s4"
-     },
-     {
-      "text": "They list Finite element stress analysis as a skill.",
-      "stale": false,
-      "signalId": "s5"
-     },
-     {
-      "text": "They list redesigning cracked pump housings as a skill.",
-      "stale": false,
-      "signalId": "s6"
-     },
-     {
-      "text": "They list checking flow after design changes as a skill.",
-      "stale": false,
-      "signalId": "s7"
-     },
-     {
-      "text": "They list Prototype pressure testing as a skill.",
-      "stale": false,
-      "signalId": "s8"
-     },
-     {
-      "text": "They list SolidWorks as a skill.",
-      "stale": false,
-      "signalId": "s9"
-     },
-     {
-      "text": "They list Ansys as a skill.",
-      "stale": false,
-      "signalId": "s10"
-     },
-     {
-      "text": "They list MATLAB as a skill.",
-      "stale": false,
-      "signalId": "s11"
-     },
-     {
-      "text": "They list PDM revision management as a skill.",
-      "stale": false,
-      "signalId": "s12"
-     },
-     {
-      "text": "They list Dimensional inspection and CNC reading as a skill.",
-      "stale": false,
-      "signalId": "s13"
-     }
-    ],
-    "label": "Written by AI from their words and approved by them. Not a quote or fact.",
-    "summary": "They talked about Mechanical design engineering, Component design and Flow and strength simulations."
-   }
-  },
-  "approvedAt": "2026-11-14T01:39:05.464Z",
-  "updatedAt": "2026-11-14T01:39:05.457Z"
  },
  {
   "talentId": "tal_43fbkeofwipr",

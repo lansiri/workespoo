@@ -2425,488 +2425,6 @@
   "computedAt": "2026-11-14T01:48:59.727Z"
  },
  {
-  "id": "jm_wnw52ekhk6ip",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_3d8bf72c14084b1ba8052b4a1c7509e0",
-  "cardVersion": 1,
-  "feedPosition": 3,
-  "body": {
-   "basis": [
-    "occupation",
-    "role"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
-     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-     "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s1",
-     "postingSentence": null
-    }
-   ],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_6jbbb61p6u1f",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_9a04696cb9cc474a8be776b57d3cb5b0",
-  "cardVersion": 1,
-  "feedPosition": 4,
-  "body": {
-   "basis": [
-    "occupation"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
-     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-     "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s1",
-     "postingSentence": null
-    }
-   ],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_dlu6o8cisi4f",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_31c4dd6e8d0b48a9adaaeff4590fa66f",
-  "cardVersion": 1,
-  "feedPosition": 5,
-  "body": {
-   "basis": [
-    "occupation"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
-     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-     "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s1",
-     "postingSentence": null
-    }
-   ],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_g750yyuo2fa4",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_3b63cd0a0f6148adbaeac3b54f9d9d2b",
-  "cardVersion": 1,
-  "feedPosition": 6,
-  "body": {
-   "basis": [
-    "occupation"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
-     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-     "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s1",
-     "postingSentence": null
-    }
-   ],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_dwfucp1c99r1",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_4ab9f9736b9e466cb7aadedc445b33ab",
-  "cardVersion": 1,
-  "feedPosition": 8,
-  "body": {
-   "basis": [
-    "occupation",
-    "text",
-    "role"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions Mechanical design engineering. This posting mentions mechanical engineering.",
-     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-     "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s1",
-     "postingSentence": 10
-    }
-   ],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_uyfpqoolh73g",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_2274b9952df746528e241d7bd4aef823",
-  "cardVersion": 1,
-  "feedPosition": 10,
-  "body": {
-   "basis": [
-    "occupation",
-    "text"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions SolidWorks. This posting mentions SolidWorks.",
-     "evidence": {
-      "turnIndex": 5,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s9",
-     "postingSentence": 14
-    }
-   ],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_snoz3e8tv55o",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_8d1407776c3548f3963a6c7bdfb3c3a9",
-  "cardVersion": 1,
-  "feedPosition": 7,
-  "body": {
-   "basis": [
-    "occupation",
-    "role"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
-     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-     "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s1",
-     "postingSentence": null
-    }
-   ],
-   "notMentioned": [
-    "Educational background in a relevant engineering field",
-    "Strong experience with Siemens PLCs and TIA Portal",
-    "Experience in PLC programming, HMI/SCADA, and industrial networks",
-    "Knowledge of EPLAN for electrical and control-system documentation",
-    "Experience with testing, commissioning, troubleshooting, and integration"
-   ],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_dplq3b5pmknt",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_42a6c07b401d42a994c86884316f10ca",
-  "cardVersion": 1,
-  "feedPosition": 1,
-  "body": {
-   "basis": [
-    "occupation",
-    "text",
-    "role"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions mechanical design engineering; the posting asks for mechanical engineering and out-of-the-box thinking.",
-     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-     "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s1",
-     "postingSentence": 4
-    }
-   ],
-   "notMentioned": [
-    "Solution-oriented mindset",
-    "Knowledge of stability, center-of-gravity analysis and basic FEA",
-    "Strong creative and out-of-the-box design thinking",
-    "Practical, hands-on mindset and interest in production solutions"
-   ],
-   "reasonsSource": "model"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_6ico45ebd2hx",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_0b6c4283ef2245f7a04f7276138d0544",
-  "cardVersion": 1,
-  "feedPosition": 11,
-  "body": {
-   "basis": [
-    "occupation",
-    "role"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions MATLAB. This kind of work usually involves MATLAB.",
-     "escoUri": "http://data.europa.eu/esco/skill/c3a03c5a-c260-4c26-9b9a-873abb396f4d",
-     "evidence": {
-      "turnIndex": 5,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s11",
-     "postingSentence": null
-    }
-   ],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_c07cd5o447b8",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_65cf7122b52d476d83aaf6fd542f6bfc",
-  "cardVersion": 1,
-  "feedPosition": 12,
-  "body": {
-   "basis": [
-    "occupation"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
-     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-     "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s1",
-     "postingSentence": null
-    }
-   ],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_gigin1p5undm",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_ef1204e177184e9f9f578488863eaba9",
-  "cardVersion": 1,
-  "feedPosition": 13,
-  "body": {
-   "basis": [
-    "occupation"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
-     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-     "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s1",
-     "postingSentence": null
-    }
-   ],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_j8tlg3e6h84w",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_83ddeb3241404dbd92102f8da640ad6c",
-  "cardVersion": 1,
-  "feedPosition": 14,
-  "body": {
-   "basis": [
-    "occupation"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
-     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-     "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s1",
-     "postingSentence": null
-    }
-   ],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_3c1anp7twkwo",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_7b6325fb780147329c94686441f0bb48",
-  "cardVersion": 1,
-  "feedPosition": 15,
-  "body": {
-   "basis": [
-    "occupation"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
-     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-     "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s1",
-     "postingSentence": null
-    }
-   ],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_9c6zz2cmdjhh",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_9d68259eb67349cca5ade08dbb7e48dc",
-  "cardVersion": 1,
-  "feedPosition": 16,
-  "body": {
-   "basis": [
-    "occupation"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
-     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-     "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s1",
-     "postingSentence": null
-    }
-   ],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_c2r0wbglnj31",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_4a2a5f3360cd4ba1ba1d9e4c4d47e4d4",
-  "cardVersion": 1,
-  "feedPosition": 17,
-  "body": {
-   "basis": [
-    "role"
-   ],
-   "reasons": [],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_ni661lv531ao",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_af6bb422c6604c60891647208df8d0f7",
-  "cardVersion": 1,
-  "feedPosition": 18,
-  "body": {
-   "basis": [
-    "occupation"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions Mechanical design engineering. This kind of work usually involves mechanical engineering.",
-     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-     "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s1",
-     "postingSentence": null
-    }
-   ],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
-  "id": "jm_v25291vyscxw",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_cf3685bc5d604f23b038f02633123b93",
-  "cardVersion": 1,
-  "feedPosition": 19,
-  "body": {
-   "basis": [
-    "occupation"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions Flow and strength simulations. This kind of work usually involves run simulations.",
-     "escoUri": "http://data.europa.eu/esco/skill/a432ffcd-b58d-4417-836c-ea3282b626ca",
-     "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 2,
-      "sentenceFrom": 2
-     },
-     "signalId": "s3",
-     "postingSentence": null
-    }
-   ],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
- },
- {
   "id": "jm_qotj5llvatp3",
   "talentId": "tal_43fbkeofwipr",
   "jobId": "job_tmt_c4b5a25f995a4f0e82f3afd1281c4d32",
@@ -4975,34 +4493,6 @@
   "computedAt": "2026-11-14T01:49:14.888Z"
  },
  {
-  "id": "jm_kak4lkr83rau",
-  "talentId": "tal_obsixyk2osql",
-  "jobId": "job_tmt_d9f9b5c63bff4ed7b416449eb96be559",
-  "cardVersion": 1,
-  "feedPosition": 5,
-  "body": {
-   "basis": [
-    "occupation",
-    "text"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions Excel. This posting mentions Excel.",
-     "evidence": {
-      "turnIndex": 5,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s25",
-     "postingSentence": 13
-    }
-   ],
-   "notMentioned": [],
-   "reasonsSource": "code"
-  },
-  "computedAt": "2026-11-14T01:49:14.888Z"
- },
- {
   "id": "jm_btp8g3xrhcj9",
   "talentId": "tal_obsixyk2osql",
   "jobId": "job_tmt_9ed0fcfd3440422c854ba6c54e2cfdf4",
@@ -5250,6 +4740,40 @@
     }
    ],
    "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T01:49:14.888Z"
+ },
+ {
+  "id": "jm_kak4lkr83rau",
+  "talentId": "tal_obsixyk2osql",
+  "jobId": "job_tmt_d9f9b5c63bff4ed7b416449eb96be559",
+  "cardVersion": 1,
+  "feedPosition": 5,
+  "body": {
+   "basis": [
+    "occupation",
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Excel. This posting mentions Excel.",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s25",
+     "postingSentence": 13
+    }
+   ],
+   "notMentioned": [
+    "Master's degree in a technical field or business, management or logistics",
+    "Completed internships or studies abroad",
+    "International mindset and enjoyment of working in diverse teams",
+    "Ambition to lead with empathy and inspire and connect people",
+    "Effective communication skills"
+   ],
    "reasonsSource": "code"
   },
   "computedAt": "2026-11-14T01:49:14.888Z"
@@ -6447,80 +5971,32 @@
   "computedAt": "2026-11-14T01:48:56.470Z"
  },
  {
-  "id": "jm_6w0rc8ecj6kr",
-  "talentId": "tal_78jy75ig6iz8",
-  "jobId": "job_tmt_8d1407776c3548f3963a6c7bdfb3c3a9",
+  "id": "jm_mxesserp8cmp",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_0e53d756ed0c49cb96fdf7bfa9a5861a",
   "cardVersion": 1,
-  "feedPosition": 0,
+  "feedPosition": 14,
   "body": {
    "basis": [
-    "occupation",
-    "role"
+    "occupation"
    ],
    "reasons": [
     {
-     "text": "Your card mentions Plastics manufacturing. This kind of work usually involves manufacturing processes.",
-     "escoUri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+     "text": "Your card mentions Reviewing engineering drawings. This kind of work usually involves read engineering drawings.",
+     "escoUri": "http://data.europa.eu/esco/skill/b07daddc-8625-4360-946e-ad2b0e56ebf6",
      "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
      },
-     "signalId": "s1",
+     "signalId": "s12",
      "postingSentence": null
     }
    ],
-   "notMentioned": [
-    "Educational background in a relevant engineering field"
-   ],
+   "notMentioned": [],
    "reasonsSource": "code"
   },
-  "computedAt": "2026-11-14T01:48:57.744Z"
- },
- {
-  "id": "jm_tnpwv21egyoy",
-  "talentId": "tal_mogxo04jdwwl",
-  "jobId": "job_tmt_79d4b3596766442199c0b946c09ff25a",
-  "cardVersion": 1,
-  "feedPosition": 0,
-  "body": {
-   "basis": [
-    "occupation",
-    "text",
-    "role"
-   ],
-   "reasons": [
-    {
-     "text": "Your card mentions mechanical design engineering; the posting asks for mechanical engineering activities in delivery projects.",
-     "escoUri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-     "evidence": {
-      "turnIndex": 1,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s1",
-     "postingSentence": 11
-    },
-    {
-     "text": "Your card mentions SolidWorks; the posting lists as a plus skills in Solidworks, Inventor and Microstation.",
-     "evidence": {
-      "turnIndex": 5,
-      "sentenceTo": 1,
-      "sentenceFrom": 1
-     },
-     "signalId": "s9",
-     "postingSentence": 23
-    }
-   ],
-   "notMentioned": [
-    "Strong problem-solving skills and a proactive approach to work",
-    "Ability to work independently and collaborate with stakeholders",
-    "Good cooperation skills and productive working relationships",
-    "Willingness to travel occasionally to customer sites"
-   ],
-   "reasonsSource": "model"
-  },
-  "computedAt": "2026-11-14T01:49:02.016Z"
+  "computedAt": "2026-11-14T04:00:29.251Z"
  },
  {
   "id": "jm_vh02nkjn7o53",
@@ -6621,6 +6097,146 @@
    "reasonsSource": "code"
   },
   "computedAt": "2026-11-14T01:49:07.693Z"
+ },
+ {
+  "id": "jm_rtwjouyjmbcx",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_65cf7122b52d476d83aaf6fd542f6bfc",
+  "cardVersion": 1,
+  "feedPosition": 15,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Reviewing engineering drawings. This kind of work usually involves read engineering drawings.",
+     "escoUri": "http://data.europa.eu/esco/skill/b07daddc-8625-4360-946e-ad2b0e56ebf6",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     "signalId": "s12",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_nstducmb6jga",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_3c5b35dcac83405d9923e5352c5d0a6d",
+  "cardVersion": 1,
+  "feedPosition": 16,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Cross-functional engineering collaboration. This kind of work usually involves collaborate with engineers.",
+     "escoUri": "http://data.europa.eu/esco/skill/94b2c46e-6338-4a1d-950a-d44eef018c53",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 2
+     },
+     "signalId": "s11",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_mq6vtemzr812",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_c3908b8046f64fe384419e679ff57596",
+  "cardVersion": 1,
+  "feedPosition": 17,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Cross-functional engineering collaboration. This kind of work usually involves collaborate with engineers.",
+     "escoUri": "http://data.europa.eu/esco/skill/94b2c46e-6338-4a1d-950a-d44eef018c53",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 2
+     },
+     "signalId": "s11",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_og1eo6h1kuit",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_fe4ad014a47a463aaea26cbc7d13b63a",
+  "cardVersion": 1,
+  "feedPosition": 18,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Cross-functional engineering collaboration. This kind of work usually involves collaborate with engineers.",
+     "escoUri": "http://data.europa.eu/esco/skill/94b2c46e-6338-4a1d-950a-d44eef018c53",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 2
+     },
+     "signalId": "s11",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_33x1bcgk24kn",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_16f8715fa6f94a488e476815d6b01c01",
+  "cardVersion": 1,
+  "feedPosition": 19,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Reviewing engineering drawings. This kind of work usually involves read engineering drawings.",
+     "escoUri": "http://data.europa.eu/esco/skill/b07daddc-8625-4360-946e-ad2b0e56ebf6",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     "signalId": "s12",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
  },
  {
   "id": "jm_qovebjsdb35v",
@@ -6859,5 +6475,435 @@
    "reasonsSource": "model"
   },
   "computedAt": "2026-11-14T01:49:17.431Z"
+ },
+ {
+  "id": "jm_vblefcv71o3u",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_79d4b3596766442199c0b946c09ff25a",
+  "cardVersion": 1,
+  "feedPosition": 0,
+  "body": {
+   "basis": [
+    "occupation",
+    "text",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions SolidWorks; the posting lists as a plus skills in Solidworks, Inventor and Microstation.",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s9",
+     "postingSentence": 23
+    }
+   ],
+   "notMentioned": [
+    "Degree in engineering or another relevant technical field",
+    "Strong problem-solving skills and a proactive approach to work",
+    "Ability to work independently and collaborate with stakeholders",
+    "Good cooperation skills and productive working relationships",
+    "Willingness to travel occasionally to customer sites"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_1uq7hlsd7jen",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_3b63cd0a0f6148adbaeac3b54f9d9d2b",
+  "cardVersion": 1,
+  "feedPosition": 5,
+  "body": {
+   "basis": [
+    "occupation",
+    "text"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Reviewing engineering drawings. This posting mentions tulkita teknisiä piirustuksia.",
+     "escoUri": "http://data.europa.eu/esco/skill/b07daddc-8625-4360-946e-ad2b0e56ebf6",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     "signalId": "s12",
+     "postingSentence": 26
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_vsmgkfullkz7",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_0b6c4283ef2245f7a04f7276138d0544",
+  "cardVersion": 1,
+  "feedPosition": 6,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions MATLAB. This kind of work usually involves MATLAB.",
+     "escoUri": "http://data.europa.eu/esco/skill/c3a03c5a-c260-4c26-9b9a-873abb396f4d",
+     "evidence": {
+      "turnIndex": 5,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s20",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_6nd2ixk60uk4",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_c8877371098b43308ab6897767410b5d",
+  "cardVersion": 1,
+  "feedPosition": 7,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Industrial pump manufacturing. This kind of work usually involves manufacturing of pumps and compressors.",
+     "escoUri": "http://data.europa.eu/esco/skill/a6f8dabe-476b-433f-9f89-c0f839a9991c",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_1v6ln1o4l4b3",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_9a04696cb9cc474a8be776b57d3cb5b0",
+  "cardVersion": 1,
+  "feedPosition": 8,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Reviewing engineering drawings. This kind of work usually involves read engineering drawings.",
+     "escoUri": "http://data.europa.eu/esco/skill/b07daddc-8625-4360-946e-ad2b0e56ebf6",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     "signalId": "s12",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_9ogrzlvfkndx",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_31c4dd6e8d0b48a9adaaeff4590fa66f",
+  "cardVersion": 1,
+  "feedPosition": 9,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Reviewing engineering drawings. This kind of work usually involves read engineering drawings.",
+     "escoUri": "http://data.europa.eu/esco/skill/b07daddc-8625-4360-946e-ad2b0e56ebf6",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     "signalId": "s12",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_jk6k4s2xl5rc",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_104271a0a4df4760bf447e149095d9ee",
+  "cardVersion": 1,
+  "feedPosition": 10,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Finite element stress analysis. This kind of work usually involves analyse stress resistance of products.",
+     "escoUri": "http://data.europa.eu/esco/skill/632843be-2872-47b4-a92e-352629f9bd88",
+     "evidence": {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 2
+     },
+     "signalId": "s5",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_qmkvpqm9t8gn",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_527e695ff35f453fbafb98e5165dd9d6",
+  "cardVersion": 1,
+  "feedPosition": 11,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Cross-functional engineering collaboration. This kind of work usually involves collaborate with engineers.",
+     "escoUri": "http://data.europa.eu/esco/skill/94b2c46e-6338-4a1d-950a-d44eef018c53",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 2
+     },
+     "signalId": "s11",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_upyaj79lprtf",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_4bfaeca26a3d49ff910113e1bc4097fb",
+  "cardVersion": 1,
+  "feedPosition": 12,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Industrial pump manufacturing. This kind of work usually involves manufacturing of pumps and compressors.",
+     "escoUri": "http://data.europa.eu/esco/skill/a6f8dabe-476b-433f-9f89-c0f839a9991c",
+     "evidence": {
+      "turnIndex": 1,
+      "sentenceTo": 1,
+      "sentenceFrom": 1
+     },
+     "signalId": "s1",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_zgz0ogbizj6u",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_abea8d17db114edd8edd995d930376f2",
+  "cardVersion": 1,
+  "feedPosition": 13,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Reviewing engineering drawings. This posting lists read engineering drawings.",
+     "escoUri": "http://data.europa.eu/esco/skill/b07daddc-8625-4360-946e-ad2b0e56ebf6",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     "signalId": "s12",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_lv0hz1j5dh0f",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_2a6190b68b024e9591523d80483361a3",
+  "cardVersion": 1,
+  "feedPosition": 3,
+  "body": {
+   "basis": [
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Reviewing engineering drawings. This kind of work usually involves read engineering drawings.",
+     "escoUri": "http://data.europa.eu/esco/skill/b07daddc-8625-4360-946e-ad2b0e56ebf6",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 4,
+      "sentenceFrom": 4
+     },
+     "signalId": "s12",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Hands-on experience installing large generators, industrial engines or heavy",
+    "Experience with precision alignment and torque tools",
+    "Valid Occupational Safety Card (checked by the employer at hiring)",
+    "Ability to pass a standard site background check (checked by the employer at hiring)"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_zun312rtgjqk",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_d9f9b5c63bff4ed7b416449eb96be559",
+  "cardVersion": 1,
+  "feedPosition": 4,
+  "body": {
+   "basis": [
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions Cross-functional engineering collaboration. This kind of work usually involves collaborate with engineers.",
+     "escoUri": "http://data.europa.eu/esco/skill/94b2c46e-6338-4a1d-950a-d44eef018c53",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 2
+     },
+     "signalId": "s11",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Master's degree in a technical field or business, management or logistics",
+    "Completed internships or studies abroad",
+    "International mindset and enjoyment of working in diverse teams",
+    "Ambition to lead with empathy and inspire and connect people",
+    "Effective communication skills"
+   ],
+   "reasonsSource": "code"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_2f0qlja0jyl2",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_42a6c07b401d42a994c86884316f10ca",
+  "cardVersion": 1,
+  "feedPosition": 1,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation",
+    "role"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions designing pump components; the posting asks for practical knowledge and experience of 3D mechanical design.",
+     "escoUri": "http://data.europa.eu/esco/skill/87434439-c07d-48be-af34-b0cdd03121c4",
+     "evidence": {
+      "turnIndex": 3,
+      "sentenceTo": 2,
+      "sentenceFrom": 1
+     },
+     "signalId": "s18",
+     "postingSentence": 17
+    }
+   ],
+   "notMentioned": [
+    "Excellent understanding of mechanical engineering",
+    "Solution-oriented mindset",
+    "Relevant studies in Mechanical Engineering or a related field",
+    "Knowledge of stability, center-of-gravity analysis and basic FEA",
+    "Strong creative and out-of-the-box design thinking"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
+ },
+ {
+  "id": "jm_kd7clrpa735s",
+  "talentId": "tal_z63mnny9pugj",
+  "jobId": "job_tmt_80319879b9a149e7a41f83c60be98f58",
+  "cardVersion": 1,
+  "feedPosition": 2,
+  "body": {
+   "basis": [
+    "direct",
+    "occupation"
+   ],
+   "reasons": [
+    {
+     "text": "Your card mentions cross-functional engineering collaboration; the posting lists collaborate with engineers.",
+     "escoUri": "http://data.europa.eu/esco/skill/94b2c46e-6338-4a1d-950a-d44eef018c53",
+     "evidence": {
+      "turnIndex": 9,
+      "sentenceTo": 3,
+      "sentenceFrom": 2
+     },
+     "signalId": "s11",
+     "postingSentence": null
+    }
+   ],
+   "notMentioned": [
+    "Builder mindset in an environment where little is fixed",
+    "Growth attitude and openness to personal and professional development",
+    "Hands-on approach, willingness to act and carry responsibility",
+    "Initiative, independent responsibility and delivery of results",
+    "Broad technical understanding of mechanics and electronics"
+   ],
+   "reasonsSource": "model"
+  },
+  "computedAt": "2026-11-14T04:00:29.251Z"
  }
 ]

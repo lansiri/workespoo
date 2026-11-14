@@ -45,16 +45,6 @@
   "basis": "declared"
  },
  {
-  "talentId": "tal_mogxo04jdwwl",
-  "code": "en",
-  "basis": "declared"
- },
- {
-  "talentId": "tal_mogxo04jdwwl",
-  "code": "fi",
-  "basis": "declared"
- },
- {
   "talentId": "tal_43fbkeofwipr",
   "code": "fi",
   "basis": "declared"
@@ -131,6 +121,16 @@
  },
  {
   "talentId": "tal_8ttxss4rfn1c",
+  "code": "fi",
+  "basis": "declared"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
+  "code": "en",
+  "basis": "declared"
+ },
+ {
+  "talentId": "tal_z63mnny9pugj",
   "code": "fi",
   "basis": "declared"
  }

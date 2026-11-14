@@ -1,5 +1,16 @@
 [
  {
+  "id": "co_demo03",
+  "displayName": "Demo company 03",
+  "realName": "Handy Hand Oy",
+  "businessId": "2769797-9",
+  "source": "posting",
+  "masked": true,
+  "participating": true,
+  "digestToken": "made-again-on-restore",
+  "createdAt": "2026-11-14T00:37:37.344Z"
+ },
+ {
   "id": "co_demo06",
   "displayName": "Demo company 06",
   "realName": "Academic Work Finland Oy",
@@ -75,16 +86,5 @@
   "participating": true,
   "digestToken": "made-again-on-restore",
   "createdAt": "2026-11-14T00:37:37.437Z"
- },
- {
-  "id": "co_demo03",
-  "displayName": "Demo company 03",
-  "realName": "Handy Hand Oy",
-  "businessId": "2769797-9",
-  "source": "posting",
-  "masked": true,
-  "participating": true,
-  "digestToken": "made-again-on-restore",
-  "createdAt": "2026-11-14T00:37:37.344Z"
  }
 ]
