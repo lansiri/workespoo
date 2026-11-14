@@ -2,9 +2,48 @@
 
 Updated by the lead. Times are Helsinki time.
 
-## Now (Sat 14 Nov, 11:45)
+## Now (Sat 14 Nov, afternoon)
 
-**The designed product is live and demo-ready. The three-minute demo runs as an automated test against the live site with the real model, and passes. A captioned backup video of it exists.**
+**Job interviews and ranked applicants are built, reviewed and merged on main. Deployed: [[DEPLOYED-AT]].** The owner decided at 12:50 that applicants to a job are rated and ranked (`docs/LEAD-DECISIONS.md`, the newest entry; `docs/specs/job-interview.md`). Everything else stays as it was: the general interview is not scored, the Signal Card has no levels, the job feed has no match percentages, Daily Picks are in no particular order and approved one by one.
+
+### What was built
+
+| Item | State |
+|---|---|
+| Choosing a job | `/apply`: the eight demo companies' jobs, each with what its ad asks for. Needs an approved card; being in the pool is not needed |
+| Start screen | Says that an AI rates the answers against the ad, that applicants are put in order, that an organiser reads the answers and checks the order, and that the company sees no name and none of the person's words until both agree to meet. A separate consent (`job_assessment`); nothing starts without it |
+| The job interview | One question per requirement of the ad, at most six, chosen by code (must-haves first; statutory and permit requirements are never asked). The questions are worded once per job and language and every applicant gets the same ones. At most one follow-up per requirement, only when the answer had no concrete example. Skip, stop, remove an answer; review before sending. English, Finnish and Swedish, typed or spoken |
+| Assessment | After sending: a level from 0 to 3 per requirement, with a written anchor for each level and a reason in three languages that points at the person's own sentences. Code drops references that do not resolve, replaces reasons that judge the person or name a protected detail, and leaves out of the assessor's input any sentence in which the person says something protected about themselves |
+| Points and order | Code: level times weight (must-have 2, nice-to-have 1); order by points, then must-haves at level 2 or 3, then who sent earlier. Nobody is removed by a rating |
+| The person's result | Levels, reasons, the sentences they rest on, points, and after an approval "You are number N of M on the list the company sees". Withdraw deletes the application everywhere, the approved list included |
+| Organiser | **Applicants** in the organiser's menu: per job the ranked list, the answers behind each rating, a move that needs a written reason, approval of the exact list seen (refused if it changed meanwhile), and a link to the company's page |
+| Company | `/c/[token]/applicants`: the approved order with levels and reasons, "Position set by the organiser" on a moved person, no name and no own words until both agree to meet; **Ask to meet** uses the existing introduction flow |
+| Demo world | Simulated people have applied through the real feature with the real model ([[APPLICATIONS-COUNT]]). The pitch company (03) has four simulated applicants, so the person on stage becomes the fifth. "Reset demo" restores them without a model |
+| Audit | `application.started`, `application.submitted`, `application.assessed`, `application.withdrawn`, `ranking.moved`, `ranking.unpinned`, `ranking.approved`; ids, counts, positions and the organiser's reason, never answers, levels or reasons |
+
+### What was verified, and how
+
+| Check | Result |
+|---|---|
+| Prompt lab before the build was accepted | 84 real model calls over the three prompts (`evals/prompt-lab/application-*`). Assessment: 12 runs over 6 cases, all valid; 60 of 60 ratings at the level the scale's anchors call for; both runs of every case gave identical levels (temperature 0); broken English got the same levels as the same content in clean English (2 of 2 cases, both runs); Finnish the same as English (1 case, both runs); a sentence that was left out was never cited (6 of 6) |
+| Timing in the lab | Rating one job interview 12 to 18 s; deciding on a follow-up about 1 s; wording a job's questions 4 to 12 s, once per job and language |
+| Unit tests | `npm run check` on main: 1,816 passing, 3 skipped |
+| Reviews | Found and fixed before merging: the protected check now works in three languages and leaves a sentence out only when the person speaks about themselves, while a country or nationality word in a work sentence is hidden and the sentence kept; reasons are checked for remarks about the person and how they came across; a failed assessment stores nothing; the organiser approves the list that was on screen and is refused if it moved on; withdrawal, "delete my data" and the 24-hour purge take the person out of the approved list and the pins |
+| The journey as a test | `e2e/job-interview.spec.ts`: choose a job, consent, job interview, review and send, own ratings, the organiser's list with the answers behind a rating, a move with a reason, approval, the company's list without names, ask to meet, the person's place and yes, the name only after that, the audit trail. On the live site: [[DEPLOYED-AT]] |
+
+### Not done
+
+1. Deploy, then run `golden-path` and `job-interview` on the live site: [[DEPLOYED-AT]].
+2. The language swap check (`evals/application-swap`, run by hand): [[SWAP-CHECK]].
+3. The backup video again, with the job interview in it: [[VIDEO]].
+4. **Still not checked by anyone: a real phone and a real voice.**
+5. The public page `/how-it-works` and the consent page do not mention the job interview yet; the job interview's own start screen says what is rated.
+
+Known limits, also in the README and the pitch notes: the protected-detail screening is word lists in three languages and can miss an unusual phrasing; reasons are model-written and checked by word lists, with an organiser as the last check; the simulated applicants are played by a model from persona sheets; the level scale and the weights are a first version nobody has validated with employers; an EU AI Act high-risk system needs a conformity assessment, a fundamental rights impact assessment and validation on real applicants, none of which this prototype has.
+
+## Saturday 11:45: the designed product live and demo-ready
+
+**The designed product is live and demo-ready. The three-minute demo runs as an automated test against the live site with the real model, and passes. A captioned backup video of it exists.** (As it stood before the job interview. The demo script now leads with the job interview; the backup video does not show it yet.)
 
 | Item | State |
 |---|---|
@@ -12,7 +51,7 @@ Updated by the lead. Times are Helsinki time.
 | Demo world on the live site | 15 simulated people (each interviewed by the real interviewer), 8 demo companies built from real open Espoo postings, 19 picks waiting for the organiser across seven companies; the pitch company (03) is left for the live run. "Reset demo" on the organiser's overview restores it in a few seconds without a model |
 | Golden path | `e2e/golden-path.spec.ts`: reset, interview, card, picks, organiser decisions, company page, the Finnish question, ask to meet, mutual yes, audit trail. Passed on the live site in 1.5 minutes at 11:42, after the voice deploy |
 | Backup video | `~/junction26/workespoo-demo-backup.mp4` on the build machine: 3 minutes, silent, captioned, recorded from the live site (`e2e/record-demo.mjs`, `e2e/make-video.mjs`) |
-| Demo script and pitch notes | `docs/specs/demo-script.md`, `docs/PITCH.md` |
+| Demo script and pitch notes | `docs/specs/demo-script.md`, `docs/PITCH.md` (rewritten in the afternoon for the job interview) |
 | Server | hardened, key-only SSH, firewall, TLS, push-to-deploy with rollback; 2 cores, 4 GB. Five containers: caddy, web, worker, db and `stt` (the speech model: about 1 GB held, read-only, no route to the internet) |
 | Model | `kimi-k3-1-pro` on Verda for all three roles. **Limit: 40 requests a minute for the whole key, one provider** |
 | Voice | Listening and speaking both run on our own server. Hold to talk in any current browser, phones included: the audio is turned into text by an open speech model in its own container (6 s of speech in about 0.7 s) and dropped; words appear while the person is still talking. The server speaks with Piper. English, Finnish and Swedish, no key, no outside speech service (`docs/research/voice-stt.md`) |
@@ -56,11 +95,11 @@ Checked on the live site at 11:41: spoken answers in English, Finnish and Swedis
 
 ## Running now
 
-Nothing. The evaluation of 20 simulated interviews finished and passed (`evals/2026-11-14-*`).
+Waiting for a result: the language swap check of the job interview, run by hand ([[SWAP-CHECK]]). The evaluation of 20 simulated interviews finished and passed (`evals/2026-11-14-*`).
 
 ## Next
 
-1. Whatever the owner decides after trying it: wording, the order of the demo, anything that feels off.
+1. Whatever the owner decides after trying it: wording, the order of the demo, anything that feels off. That now includes the job interview and the new three-minute demo.
 2. If time allows: the open question shown on the company's main page (it is on the Need Card page today), names instead of ids in the audit log, a second model provider once a key exists.
 
 ## Waiting on the owner
@@ -76,3 +115,4 @@ Nothing. The evaluation of 20 simulated interviews finished and passed (`evals/2
 - [x] Gate 1: live URL over HTTPS, deploy and rollback proven, streamed model turn from the server, 1,000+ Espoo postings and ESCO in the database, voice round trip from the server.
 - [x] Gate 2: the full path works end to end with the real model. Evaluation reports in `evals/`.
 - [x] Gate 3: styled product, golden-path test green on the live site, backup video, demo freeze (tag `demo-freeze-2026-11-14`).
+- [ ] Gate 4: job interviews live, `job-interview` and `golden-path` green on the live site, the swap check read, the backup video recorded again. Deployed: [[DEPLOYED-AT]]; swap check: [[SWAP-CHECK]]; video: [[VIDEO]].
