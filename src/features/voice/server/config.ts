@@ -32,3 +32,90 @@ export const FALLBACK_VOICE_ID = "21m00Tcm4TlvDq8ikWAM";
 export function json(body: unknown, status: number): Response {
   return Response.json(body, { status, headers: { "Cache-Control": "no-store" } });
 }
+
+const CONSENT_MEMORY_MS = 60_000;
+const MEMORY_LIMIT = 1000;
+
+/**
+ * Remembers a yes to "has this person agreed to voice" for a minute, so every spoken piece does
+ * not ask the database. A no is never remembered. Bounded.
+ */
+export class ConsentMemory {
+  private readonly yes = new Map<string, number>();
+  constructor(
+    private readonly now: () => number = Date.now,
+    private readonly ttlMs = CONSENT_MEMORY_MS,
+    private readonly limit = MEMORY_LIMIT,
+  ) {}
+
+  has(id: string): boolean {
+    const until = this.yes.get(id);
+    if (until === undefined) return false;
+    if (this.now() >= until) {
+      this.yes.delete(id);
+      return false;
+    }
+    return true;
+  }
+
+  remember(id: string): void {
+    this.yes.delete(id);
+    this.yes.set(id, this.now() + this.ttlMs);
+    while (this.yes.size > this.limit) {
+      const oldest = this.yes.keys().next();
+      if (oldest.done) break;
+      this.yes.delete(oldest.value);
+    }
+  }
+
+  clear(): void {
+    this.yes.clear();
+  }
+}
+
+/** At most `maxSeconds` of audio per caller in any `windowMs`, in memory only. Bounded. */
+export class AudioBudget {
+  private readonly callers = new Map<string, Array<{ at: number; seconds: number }>>();
+  constructor(
+    private readonly now: () => number = Date.now,
+    private readonly maxSeconds = 90,
+    private readonly windowMs = 60_000,
+    private readonly limit = MEMORY_LIMIT,
+  ) {}
+
+  /** Charges `seconds` and returns 0, or charges nothing and returns the seconds to wait. */
+  take(caller: string, seconds: number): number {
+    const now = this.now();
+    const entries = (this.callers.get(caller) ?? []).filter((e) => now - e.at < this.windowMs);
+    let used = entries.reduce((sum, e) => sum + e.seconds, 0);
+    if (used + seconds > this.maxSeconds) {
+      let wait = this.windowMs;
+      for (const e of entries) {
+        used -= e.seconds;
+        if (used + seconds <= this.maxSeconds) {
+          wait = e.at + this.windowMs - now;
+          break;
+        }
+      }
+      this.callers.delete(caller);
+      if (entries.length) this.callers.set(caller, entries);
+      return Math.max(1, Math.ceil(wait / 1000));
+    }
+    entries.push({ at: now, seconds });
+    this.callers.delete(caller);
+    this.callers.set(caller, entries);
+    while (this.callers.size > this.limit) {
+      const oldest = this.callers.keys().next();
+      if (oldest.done) break;
+      this.callers.delete(oldest.value);
+    }
+    return 0;
+  }
+
+  clear(): void {
+    this.callers.clear();
+  }
+}
+
+export const sttConsentMemory = new ConsentMemory();
+export const sttAudioBudget = new AudioBudget();
