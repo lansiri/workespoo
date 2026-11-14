@@ -1037,6 +1037,12 @@ button.we-chip { cursor: pointer; }
   .we-aud-organiser .we-menu { display: block; }
   .we-aud-organiser .we-menu-btn { display: grid; }
 }
+/* Every other bar: four links, the language switcher and the logo need about 1000 px in Finnish. Below that the links go behind Menu, so the bar never runs past the window. */
+@media (min-width: 761px) and (max-width: 1000px) {
+  .we-mainnav { display: none; }
+  .we-menu { display: block; }
+  .we-menu-btn { display: grid; }
+}
 @media (max-width: 760px) {
   .we-topbar .we-langs-nophone { display: none; }
 }
