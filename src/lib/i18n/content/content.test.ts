@@ -230,4 +230,19 @@ describe("placeholders", () => {
       expect(consentCopy[lang].checkLiveDemo).toContain("24");
     }
   });
+
+  it("the own-server voice consent exists in three languages, has no placeholder and names WorkEspoo", () => {
+    for (const lang of UI_LANGS) {
+      const text = consentCopy[lang].checkVoiceServer;
+      expect(text.length, lang).toBeGreaterThan(40);
+      expect(text, lang).not.toMatch(/\{\w+\}/);
+      expect(text, lang).toMatch(/WorkEspoo/);
+    }
+  });
+
+  it("the credit names the speech model and the voice", () => {
+    for (const lang of UI_LANGS) {
+      expect(howItWorks[lang].credit, lang).toMatch(/Parakeet TDT 0\.6b v3.*CC BY 4\.0.*sherpa-onnx.*Piper/);
+    }
+  });
 });

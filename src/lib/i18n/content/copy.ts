@@ -20,6 +20,8 @@ const consentEn = {
   checkInterview: "I agree to the interview and to my notes being stored so I can review them.",
   checkVoice:
     "Use my voice. Audio is turned into text by {processor}, which may keep it under its own terms. WorkEspoo does not store audio.",
+  checkVoiceServer:
+    "Use my voice. Audio goes to WorkEspoo's own server, is turned into text there and is deleted straight away. It is not stored and no other company receives it.",
   checkVoiceHelp: "Leave this unticked to type instead.",
   checkLiveDemo: "I understand this is a live demo. Everything from this session is deleted after 24 hours.",
   language: "Language for the interview",
@@ -46,6 +48,8 @@ export const consentCopy = {
     checkInterview: "Hyväksyn haastattelun ja sen, että muistiinpanoni tallennetaan, jotta voin tarkistaa ne.",
     checkVoice:
       "Haluan vastata puhumalla. Puheen muuttaa tekstiksi {processor}, joka voi säilyttää sen omien ehtojensa mukaan. WorkEspoo ei tallenna ääntä.",
+    checkVoiceServer:
+      "Haluan vastata puhumalla. Ääni lähetetään WorkEspoon omalle palvelimelle, muutetaan siellä tekstiksi ja poistetaan heti. Ääntä ei tallenneta, eikä mikään muu yritys saa sitä.",
     checkVoiceHelp: "Jätä tämä valitsematta, jos haluat mieluummin kirjoittaa.",
     checkLiveDemo: "Ymmärrän, että tämä on livedemo. Kaikki tämän istunnon tiedot poistetaan 24 tunnin kuluttua.",
     language: "Haastattelun kieli",
@@ -70,6 +74,8 @@ export const consentCopy = {
     checkInterview: "Jag godkänner intervjun och att mina anteckningar sparas så att jag kan gå igenom dem.",
     checkVoice:
       "Jag vill svara med rösten. Talet görs om till text av {processor}, som kan spara det enligt sina egna villkor. WorkEspoo sparar inte ljud.",
+    checkVoiceServer:
+      "Jag vill svara med rösten. Ljudet skickas till WorkEspoos egen server, görs om till text där och raderas direkt. Ljudet sparas inte, och inget annat företag får det.",
     checkVoiceHelp: "Lämna rutan tom om du hellre vill skriva.",
     checkLiveDemo: "Jag förstår att det här är en livedemo. Allt från den här sessionen raderas efter 24 timmar.",
     language: "Språk för intervjun",

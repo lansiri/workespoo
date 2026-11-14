@@ -5,7 +5,7 @@ import { consent } from "@/db/schema";
 import { newId } from "@/lib/ids";
 
 /** Bump when the wording shown to people changes. Stored with every grant. */
-export const CONSENT_TEXT_VERSION = "2026-11-v1";
+export const CONSENT_TEXT_VERSION = "2026-11-v2";
 
 type ConsentRef = { subjectType: "talent" | "company"; subjectId: string; kind: ConsentKind };
 

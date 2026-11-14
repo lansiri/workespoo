@@ -7,7 +7,7 @@ import { howItWorks, type HowItWorksSection } from "@/lib/i18n/content/how-it-wo
  * file fills the two placeholders, `{voice}` and `{model}`, and holds the numbers section.
  */
 
-export type VoiceProcessor = "elevenlabs" | "browser" | "none";
+export type VoiceProcessor = "elevenlabs" | "browser" | "server" | "none";
 
 interface PageTexts {
   metaDescription: string;
@@ -15,6 +15,7 @@ interface PageTexts {
   voiceBrowser: string;
   voiceElevenlabs: string;
   voiceNone: string;
+  voiceServer: string;
   /** Model line, placed after "Your text is processed by". */
   modelLine: string;
   notOfficial: string;
@@ -40,6 +41,8 @@ const texts: Record<UiLang, PageTexts> = {
     voiceElevenlabs:
       "Your voice is turned into text by ElevenLabs, which may keep it under its own terms; you can type instead.",
     voiceNone: "Voice is switched off in this deployment, so you type your answers.",
+    voiceServer:
+      "When you answer by voice, the audio goes to WorkEspoo's own server, where an open speech model turns it into text, and it is deleted as soon as that is done. No outside speech service hears it, and you can type instead. Where this server has it, the interviewer's voice is made on our own server.",
     modelLine: "an open-weight AI model (Kimi K3.1) run by Verda on servers in Finland",
     notOfficial: "Not an official City of Espoo service",
     numbersHeading: "What this system has done so far",
@@ -64,6 +67,8 @@ const texts: Record<UiLang, PageTexts> = {
     voiceElevenlabs:
       "Puheesi muuttaa tekstiksi ElevenLabs, joka voi säilyttää sen omien ehtojensa mukaan. Voit myös kirjoittaa.",
     voiceNone: "Puhe on tässä palvelussa pois käytöstä, joten kirjoitat vastauksesi.",
+    voiceServer:
+      "Kun vastaat puhumalla, ääni lähetetään WorkEspoon omalle palvelimelle, jossa avoin puheentunnistusmalli muuttaa sen tekstiksi, ja ääni poistetaan heti sen jälkeen. Mikään ulkopuolinen puhepalvelu ei kuule sitä, ja voit myös kirjoittaa. Siellä, missä palvelimella on se käytössä, haastattelijan äänen tuottaa oma palvelimemme.",
     modelLine: "avoimin painoin julkaistu tekoälymalli (Kimi K3.1), jota Verda ajaa palvelimilla Suomessa",
     notOfficial: "Ei Espoon kaupungin virallinen palvelu",
     numbersHeading: "Mitä järjestelmä on tehnyt tähän mennessä",
@@ -88,6 +93,8 @@ const texts: Record<UiLang, PageTexts> = {
     voiceElevenlabs:
       "Ditt tal görs om till text av ElevenLabs, som kan spara det enligt sina egna villkor. Du kan också skriva.",
     voiceNone: "Tal är avstängt i den här tjänsten, så du skriver dina svar.",
+    voiceServer:
+      "När du svarar med rösten skickas ljudet till WorkEspoos egen server, där en öppen taligenkänningsmodell gör om det till text, och ljudet raderas så snart det är gjort. Ingen utomstående taltjänst hör det, och du kan också skriva. Där servern har det görs intervjuarens röst på vår egen server.",
     modelLine: "en AI-modell med öppna vikter (Kimi K3.1) som Verda kör på servrar i Finland",
     notOfficial: "Inte en officiell tjänst från Esbo stad",
     numbersHeading: "Vad systemet har gjort hittills",
@@ -110,7 +117,16 @@ export const howTexts = texts;
 
 export function voiceSentence(lang: UiLang, voice: VoiceProcessor): string {
   const t = texts[lang];
-  return voice === "elevenlabs" ? t.voiceElevenlabs : voice === "none" ? t.voiceNone : t.voiceBrowser;
+  switch (voice) {
+    case "elevenlabs":
+      return t.voiceElevenlabs;
+    case "server":
+      return t.voiceServer;
+    case "none":
+      return t.voiceNone;
+    default:
+      return t.voiceBrowser;
+  }
 }
 
 /** The page text for one language, with the voice and model lines filled in. */

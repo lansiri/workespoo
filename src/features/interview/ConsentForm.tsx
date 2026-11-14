@@ -24,6 +24,16 @@ export function voiceServiceName(voice: VoiceConfig | null, browserName: string)
   return voice.adapter === "browser" ? browserName : voice.processor;
 }
 
+/** The voice consent line: the own-server text for the `server` adapter, else the `{processor}` text. */
+export function voiceConsentText(
+  voice: VoiceConfig | null,
+  copy: { checkVoice: string; checkVoiceServer: string },
+  browserName: string,
+): string {
+  if (voice?.adapter === "server") return copy.checkVoiceServer;
+  return fmt(copy.checkVoice, { processor: voiceServiceName(voice, browserName) });
+}
+
 /** Consent, mode choice and start. No name is asked for here. */
 export function ConsentForm() {
   const m = useMessages(interviewMessages);
@@ -56,7 +66,7 @@ export function ConsentForm() {
 
   const voiceAvailable = voice !== null && voice.adapter !== "none";
   // The configured service, named in the page's language (the server's processor text is English).
-  const voiceService = voiceServiceName(voice, m.voiceProcessorBrowser);
+  const voiceText = voiceConsentText(voice, c, m.voiceProcessorBrowser);
   const canStart = canStartInterview({ interview: consentInterview, liveDemo: consentLiveDemo, busy });
 
   async function start() {
@@ -124,7 +134,7 @@ export function ConsentForm() {
             {voiceAvailable ? (
               <ChoiceCard
                 type="checkbox"
-                title={fmt(c.checkVoice, { processor: voiceService })}
+                title={voiceText}
                 help={c.checkVoiceHelp}
                 data-testid="consent-voice"
                 checked={consentVoice}

@@ -66,7 +66,8 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
         body: "Ask the organisers at the event.",
       },
     ],
-    credit: "Skills taxonomy: ESCO, European Commission.",
+    credit:
+      "Skills taxonomy: ESCO, European Commission. Speech recognition: Parakeet TDT 0.6b v3 by NVIDIA (CC BY 4.0), run with sherpa-onnx. The interviewer's voice: Piper.",
   },
   fi: {
     title: "Näin WorkEspoo toimii",
@@ -114,7 +115,8 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
         body: "Kysy tapahtuman järjestäjiltä.",
       },
     ],
-    credit: "Osaamisluokitus: ESCO, Euroopan komissio.",
+    credit:
+      "Osaamisluokitus: ESCO, Euroopan komissio. Puheentunnistus: NVIDIAn Parakeet TDT 0.6b v3 (CC BY 4.0), ajossa sherpa-onnx-ohjelmistolla. Haastattelijan ääni: Piper.",
   },
   sv: {
     title: "Så fungerar WorkEspoo",
@@ -162,6 +164,7 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
         body: "Fråga arrangörerna på plats.",
       },
     ],
-    credit: "Klassificering av färdigheter: ESCO, Europeiska kommissionen.",
+    credit:
+      "Klassificering av färdigheter: ESCO, Europeiska kommissionen. Taligenkänning: Parakeet TDT 0.6b v3 från NVIDIA (CC BY 4.0), körs med sherpa-onnx. Intervjuarens röst: Piper.",
   },
 };
