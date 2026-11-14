@@ -50,19 +50,30 @@ describe("How this works: text", () => {
     }
   });
 
-  it("the replaced paragraphs keep the shared headings and leave out claims the code does not back", () => {
+  it("claims what the product does and leaves out what it does not do", () => {
     for (const lang of ["en", "fi", "sv"] as const) {
       const c = pageContent(lang, "browser");
       const body = c.sections.map((s) => s.body).join(" ");
-      expect(c.sections[6].body).toContain("24");
-      expect(c.sections[6].body).not.toContain("{");
-      expect(body).not.toMatch(/download|delete everything|ladata tietosi|ladda ner|different names|eri nimillä|olika namn|two questions|kahden kysymyksen|högst två frågor|correct any sentence|add your own|voit korjata|lisätä omasi|rätta vilken|lägga till egna/i);
+      const data = c.sections[6].body;
+      expect(data).toContain("24");
+      expect(data).not.toMatch(/\{\w+\}/);
+      // not built: correcting one transcribed sentence, adding a note of one's own, testing under other names
+      expect(body).not.toMatch(/correct any sentence|add your own|voit korjata|lisätä omasi|rätta vilken|lägga till egna|different names|eri nimillä|olika namn/i);
+      // built and claimed: the CV is used for up to two questions and not kept
+      expect(data).toMatch(/two questions|kahden kysymyksen|högst två frågor/);
     }
     expect(pageContent("en", "browser").sections[6].heading).toBe("Your data");
-    expect(pageContent("en", "browser").sections[2].heading).toBe("Your words are the evidence");
-    expect(pageContent("en", "browser").sections[3].heading).toBe("You decide");
+    expect(pageContent("en", "browser").sections[6].body).toContain("download your data or delete it");
+    expect(pageContent("en", "browser").sections[2].body).toContain("remove any answer");
+    expect(pageContent("en", "browser").sections[3].body).toContain("change or remove any note");
     expect(pageContent("fi", "browser").sections[6].body).toContain("avoimin painoin");
     expect(pageContent("en", "browser").sections[7].heading).toBe("Limits we know about");
+  });
+
+  it("says the interviewer's voice is made on our own server where there is one", () => {
+    expect(pageContent("en", "browser").sections[6].body).toContain("made on our own server");
+    expect(pageContent("fi", "browser").sections[6].body).toContain("oma palvelimemme");
+    expect(pageContent("sv", "browser").sections[6].body).toContain("vår egen server");
   });
 
   it("names the model as configured and the voice service from the voice configuration", () => {

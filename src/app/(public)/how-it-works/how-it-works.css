@@ -1,0 +1,18 @@
+/* "How this works": one calm column. Every class is prefixed hw-. Tokens from globals.css. */
+.hw-page { max-width: 760px; margin: 0 auto; padding: 32px 16px 56px; color: var(--ink); }
+.hw-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 18px; margin-bottom: 18px; }
+.hw-title { flex: 0 1 auto; font-family: var(--font-display); font-weight: 600; font-size: clamp(32px, 7vw, 44px); line-height: 1.1; letter-spacing: -0.01em; margin: 0; }
+.hw-intro { font-size: 18px; line-height: 1.5; color: var(--muted-ink); margin: 0 0 8px; }
+.hw-section { margin-top: 28px; }
+.hw-section p { margin: 0; font-size: 16px; line-height: 1.55; }
+.hw-h { font-family: var(--font-display); font-weight: 500; font-size: 20px; line-height: 1.2; margin: 0 0 6px; }
+.hw-key { padding: 20px 22px 22px; background: var(--sun-soft); border: 2.5px solid var(--ink); border-radius: var(--r-md); box-shadow: var(--shadow-ink-sm); }
+.hw-key .hw-h { font-size: clamp(24px, 5vw, 30px); font-weight: 600; margin-bottom: 8px; }
+.hw-numbers { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 16px 0 12px; }
+.hw-number { background: var(--paper); border: 1.5px solid var(--line-strong); border-radius: var(--r-sm); padding: 12px 16px; display: flex; flex-direction: column-reverse; gap: 2px; }
+.hw-number dt { font-size: 14px; color: var(--muted-ink); }
+.hw-number dd { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 28px; line-height: 1.1; }
+.hw-note { font-size: 14px !important; color: var(--muted-ink); }
+.hw-credit { margin: 36px 0 0; font-size: 14px; color: var(--muted-ink); }
+@media (min-width: 640px) { .hw-numbers { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 640px) { .hw-head { flex-wrap: nowrap; } .hw-title { font-size: clamp(32px, 4.6vw, 40px); } }

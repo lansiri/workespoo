@@ -24,6 +24,10 @@ export const siteMessages = {
     logoLabel: "WorkEspoo, front page",
     prototypePill: "Prototype: synthetic people, masked companies",
     footerOrganisers: "For organisers",
+    notFoundTitle: "This page is not here",
+    notFoundBody: "The address may have changed, or it may have been typed a little differently. Nothing you did caused this.",
+    notFoundHome: "Back to the front page",
+    notFoundHow: "How this works",
   },
   fi: {
     navInterview: "Haastattelu",
@@ -47,6 +51,10 @@ export const siteMessages = {
     logoLabel: "WorkEspoo, etusivu",
     prototypePill: "Prototyyppi: synteettiset henkilöt, peitetyt yritykset",
     footerOrganisers: "Järjestäjille",
+    notFoundTitle: "Tätä sivua ei löydy",
+    notFoundBody: "Osoite on ehkä muuttunut tai se on kirjoitettu hieman eri tavalla. Sinä et tehnyt mitään väärin.",
+    notFoundHome: "Takaisin etusivulle",
+    notFoundHow: "Näin tämä toimii",
   },
   sv: {
     navInterview: "Intervju",
@@ -70,6 +78,10 @@ export const siteMessages = {
     logoLabel: "WorkEspoo, startsida",
     prototypePill: "Prototyp: syntetiska personer, maskerade företag",
     footerOrganisers: "För arrangörer",
+    notFoundTitle: "Den här sidan finns inte",
+    notFoundBody: "Adressen kan ha ändrats eller skrivits lite annorlunda. Du har inte gjort något fel.",
+    notFoundHome: "Tillbaka till startsidan",
+    notFoundHow: "Så fungerar det här",
   },
 } satisfies Messages<{
   navInterview: string;
@@ -92,4 +104,8 @@ export const siteMessages = {
   logoLabel: string;
   prototypePill: string;
   footerOrganisers: string;
+  notFoundTitle: string;
+  notFoundBody: string;
+  notFoundHome: string;
+  notFoundHow: string;
 }>;

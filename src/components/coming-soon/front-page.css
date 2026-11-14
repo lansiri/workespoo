@@ -1,0 +1,44 @@
+/* Front page sections (below the owner's hero). Every class is prefixed sp-. Tokens from globals.css. */
+
+.sp-page { font-family: var(--font-body); }
+.sp-page :where(h2, h3, p) { margin-block: 0; }
+
+.sp-cta { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.sp-ctaNote { font-size: 15px; color: var(--muted-ink); max-width: 40em; }
+
+.sp-section { padding: 48px 16px; max-width: 1400px; margin: 0 auto; }
+.sp-sectionTint { background: var(--pine-50); border-block: 1px solid var(--pine-100); }
+.sp-sectionTint { max-width: none; }
+.sp-sectionTint > * { max-width: 1320px; margin-inline: auto; }
+.sp-h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(26px, 5vw, 36px); line-height: 1.12; color: var(--ink); margin-bottom: 22px; text-wrap: balance; }
+.sp-h3 { font-family: var(--font-display); font-weight: 500; font-size: 20px; line-height: 1.2; margin-bottom: 8px; }
+.sp-section p { font-size: 16px; line-height: 1.5; color: var(--ink); }
+
+.sp-steps, .sp-nots { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; grid-template-columns: 1fr; }
+.sp-step, .sp-not, .sp-panel {
+  position: relative; background: var(--paper); border: 2.5px solid var(--ink); border-radius: var(--r-md);
+  box-shadow: var(--shadow-ink-sm); padding: 20px 20px 22px;
+}
+.sp-step { padding-top: 30px; }
+.sp-stepNum {
+  position: absolute; top: -18px; left: 16px; width: 38px; height: 38px; display: grid; place-items: center;
+  font: 600 20px/1 var(--font-display); color: var(--ink); background: var(--sun); border: 2.5px solid var(--ink); border-radius: 50%;
+}
+.sp-not { border-left-width: 6px; border-left-color: var(--pine); }
+.sp-two { display: grid; gap: 18px; grid-template-columns: 1fr; }
+.sp-notHead { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-bottom: 22px; }
+.sp-notHead .sp-h2 { margin-bottom: 0; }
+.sp-end { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+.sp-proto { margin-top: 28px; font-size: 14px; color: var(--muted-ink); }
+.sp-section p.sp-proto { font-size: 14px; color: var(--muted-ink); }
+
+@media (min-width: 760px) {
+  .sp-section { padding: 64px 40px; }
+  .sp-steps, .sp-nots { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .sp-two { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+
+/* not found */
+.sp-lost { max-width: 640px; margin: 0 auto; padding: 64px 16px 80px; color: var(--ink); }
+.sp-lost p { margin: 0; font-size: 18px; line-height: 1.5; color: var(--muted-ink); }
+.sp-lostTitle { font-family: var(--font-display); font-weight: 600; font-size: clamp(32px, 7vw, 44px); line-height: 1.1; margin: 0 0 14px; }

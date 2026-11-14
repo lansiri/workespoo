@@ -61,3 +61,6 @@ npm-debug.log*
 
 # local world dumps for page work (link tokens, local passcode)
 .dev/
+
+# Review screenshots of built screens: kept in the worktree that made them, never committed
+/design/product/screens/

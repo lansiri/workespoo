@@ -3,7 +3,7 @@ import { pick } from "@/lib/i18n";
 import { getUiLang } from "@/lib/i18n/server";
 import { siteMessages } from "@/components/site/messages";
 
-const DEV_LINKS = ["/dev/voice", "/dev/s1", "/dev/s2", "/dev/s3"];
+const DEV_LINKS = ["/dev/voice", "/dev/s1", "/dev/s2", "/dev/s3", "/coming-soon"];
 
 export default async function DevIndex() {
   const m = pick(siteMessages, await getUiLang());

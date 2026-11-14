@@ -1,7 +1,8 @@
 /**
  * The public "How this works" page, from docs/specs/responsible-ai.md section 7, with one
  * added section that states the EU AI Act timing as cautiously as section 5 of that spec does.
- * Placeholders: `{processor}` (the speech service in use) and `{modelProviders}`.
+ * Placeholders: `{voice}` (the sentence about the speech service in use) and `{model}` (the model
+ * line). Every sentence is true of the product as built (docs/LEAD-DECISIONS.md, 14 Nov 01:30).
  */
 import type { UiLang } from "@/contracts";
 
@@ -34,11 +35,11 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
       },
       {
         heading: "Your words are the evidence",
-        body: "Each note on your Signal Card points to sentences you said. The computer shows your sentences exactly as they were transcribed; the AI cannot invent a quote. Speech recognition makes mistakes, especially with accents, so you can correct any sentence.",
+        body: "Each note on your Signal Card points to sentences you said. The computer shows your sentences exactly as they were transcribed; the AI cannot invent a quote. Speech recognition makes mistakes, especially with accents, so you can type instead of speaking, and during the conversation you can remove any answer.",
       },
       {
         heading: "You decide",
-        body: "You can change any note, remove it, add your own, and approve the card only when you are happy with it. Nothing is used before you approve it.",
+        body: "You can change or remove any note, and approve the card only when you are happy with it. Nothing is used before you approve it.",
       },
       {
         heading: "What companies see",
@@ -50,11 +51,11 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
       },
       {
         heading: "Your data",
-        body: "We do not store audio. Your voice is turned into text by {processor}, which may keep it under its own terms; you can type instead. Your text is processed by AI models from {modelProviders}. A CV, if you add one, is only used to suggest up to two questions and is not stored. Live demo sessions are deleted after 24 hours. You can download your data or delete everything at any time.",
+        body: "We do not store audio. {voice} Your text is processed by {model}. A CV, if you paste one, is only used to choose up to two questions and is not kept. Live demo sessions are deleted after 24 hours. You can download your data or delete it at any time.",
       },
       {
         heading: "Limits we know about",
-        body: "Speech recognition is less accurate for some accents. AI models can miss things or describe them differently for different people; that is why you review everything, and why we test the same answers in different languages and with different names. Some skills have no match in the European ESCO skills list; they stay on your card anyway.",
+        body: "Speech recognition is less accurate for some accents. AI models can miss things or describe them differently for different people; that is why you review everything. Some skills have no match in the European ESCO skills list; they stay on your card anyway.",
       },
       {
         heading: "The EU AI Act",
@@ -82,11 +83,11 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
       },
       {
         heading: "Omat sanasi ovat näyttö",
-        body: "Jokainen Signal Card -korttisi muistiinpano viittaa lauseisiin, jotka sanoit. Lauseesi näytetään täsmälleen niin kuin ne litteroitiin, eikä tekoäly voi keksiä lainausta. Puheentunnistus tekee virheitä, varsinkin aksenttien kanssa, joten voit korjata minkä tahansa lauseen.",
+        body: "Jokainen Signaalikorttisi muistiinpano viittaa lauseisiin, jotka sanoit. Lauseesi näytetään täsmälleen niin kuin ne litteroitiin, eikä tekoäly voi keksiä lainausta. Puheentunnistus tekee virheitä, varsinkin aksenttien kanssa, joten voit kirjoittaa puhumisen sijaan, ja keskustelun aikana voit poistaa minkä tahansa vastauksen.",
       },
       {
         heading: "Sinä päätät",
-        body: "Voit muuttaa minkä tahansa muistiinpanon, poistaa sen tai lisätä omasi. Hyväksyt kortin vasta, kun olet siihen tyytyväinen. Mitään ei käytetä ennen kuin hyväksyt sen.",
+        body: "Voit muuttaa tai poistaa minkä tahansa muistiinpanon. Hyväksyt kortin vasta, kun olet siihen tyytyväinen. Mitään ei käytetä ennen kuin hyväksyt sen.",
       },
       {
         heading: "Mitä yritykset näkevät",
@@ -98,11 +99,11 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
       },
       {
         heading: "Tietosi",
-        body: "Emme tallenna ääntä. Puheesi muuttaa tekstiksi {processor}, joka voi säilyttää sen omien ehtojensa mukaan. Voit myös kirjoittaa. Tekstiäsi käsittelevät tekoälymallit, joita tarjoaa {modelProviders}. Jos lisäät CV:n, sitä käytetään vain enintään kahden kysymyksen ehdottamiseen, eikä sitä tallenneta. Livedemon istunnot poistetaan 24 tunnin kuluttua. Voit ladata tietosi tai poistaa kaiken milloin tahansa.",
+        body: "Emme tallenna ääntä. {voice} Tekstiäsi käsittelee {model}. Jos liität mukaan CV:n, sitä käytetään vain enintään kahden kysymyksen valitsemiseen, eikä sitä säilytetä. Livedemon istunnot poistetaan 24 tunnin kuluttua. Voit ladata tietosi tai poistaa ne milloin tahansa.",
       },
       {
         heading: "Rajoitukset, jotka tiedämme",
-        body: "Puheentunnistus toimii joillakin aksenteilla huonommin. Tekoälymallit voivat jättää asioita huomaamatta tai kuvata niitä eri ihmisille eri tavoin. Siksi tarkistat kaiken itse, ja siksi testaamme samoja vastauksia eri kielillä ja eri nimillä. Kaikille taidoille ei löydy vastinetta eurooppalaisesta ESCO-luokituksesta. Ne pysyvät silti kortillasi.",
+        body: "Puheentunnistus toimii joillakin aksenteilla huonommin. Tekoälymallit voivat jättää asioita huomaamatta tai kuvata niitä eri ihmisille eri tavoin. Siksi tarkistat kaiken itse. Kaikille taidoille ei löydy vastinetta eurooppalaisesta ESCO-luokituksesta. Ne pysyvät silti kortillasi.",
       },
       {
         heading: "EU:n tekoälysäädös",
@@ -130,11 +131,11 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
       },
       {
         heading: "Dina egna ord är grunden",
-        body: "Varje anteckning på ditt Signal Card hänvisar till meningar som du sa. Dina meningar visas exakt som de skrevs ut, och AI:n kan inte hitta på ett citat. Taligenkänningen gör misstag, särskilt när man har brytning, så du kan rätta vilken mening som helst.",
+        body: "Varje anteckning på ditt Signalkort hänvisar till meningar som du sa. Dina meningar visas exakt som de skrevs ut, och AI:n kan inte hitta på ett citat. Taligenkänningen gör misstag, särskilt när man har brytning, så du kan skriva i stället för att tala, och under samtalet kan du ta bort vilket svar som helst.",
       },
       {
         heading: "Du bestämmer",
-        body: "Du kan ändra vilken anteckning som helst, ta bort den eller lägga till egna. Du godkänner kortet först när du är nöjd med det. Ingenting används innan du har godkänt det.",
+        body: "Du kan ändra eller ta bort vilken anteckning som helst. Du godkänner kortet först när du är nöjd med det. Ingenting används innan du har godkänt det.",
       },
       {
         heading: "Vad företagen ser",
@@ -146,11 +147,11 @@ export const howItWorks: Record<UiLang, HowItWorksContent> = {
       },
       {
         heading: "Dina uppgifter",
-        body: "Vi sparar inte ljud. Ditt tal görs om till text av {processor}, som kan spara det enligt sina egna villkor. Du kan också skriva. Din text behandlas av AI-modeller från {modelProviders}. Om du lägger till ett CV används det bara för att föreslå högst två frågor, och det sparas inte. Sessioner i livedemon raderas efter 24 timmar. Du kan ladda ner dina uppgifter eller radera allt när som helst.",
+        body: "Vi sparar inte ljud. {voice} Din text behandlas av {model}. Om du klistrar in ett CV används det bara för att välja högst två frågor, och det sparas inte. Sessioner i livedemon raderas efter 24 timmar. Du kan ladda ner dina uppgifter eller radera dem när som helst.",
       },
       {
         heading: "Begränsningar vi känner till",
-        body: "Taligenkänningen fungerar sämre med vissa brytningar. AI-modeller kan missa saker eller beskriva dem olika för olika personer. Därför går du själv igenom allt, och därför testar vi samma svar på olika språk och med olika namn. Vissa färdigheter saknar motsvarighet i den europeiska ESCO-klassificeringen. De står ändå kvar på ditt kort.",
+        body: "Taligenkänningen fungerar sämre med vissa brytningar. AI-modeller kan missa saker eller beskriva dem olika för olika personer. Därför går du själv igenom allt. Vissa färdigheter saknar motsvarighet i den europeiska ESCO-klassificeringen. De står ändå kvar på ditt kort.",
       },
       {
         heading: "EU:s AI-förordning",

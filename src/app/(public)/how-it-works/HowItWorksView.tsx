@@ -1,9 +1,11 @@
 import type { UiLang } from "@/contracts";
 import { UI_LANG_LOCALES } from "@/lib/i18n";
 import { howTexts, pageContent, type VoiceProcessor } from "./messages";
+import { Sticker } from "@/components/we/Sticker";
 import type { HowStats } from "./stats";
+import "./how-it-works.css";
 
-/** Plain structure for the restyle: one h1, one h2 per section, a dl for the numbers. */
+/** One h1, one h2 per section, a dl for the numbers. Single column, 760 px. */
 export function HowItWorksView({
   lang,
   voice,
@@ -38,22 +40,28 @@ export function HowItWorksView({
     : [];
 
   return (
-    <main lang={lang} style={{ maxWidth: "46rem", margin: "0 auto", padding: "1.5rem 1rem" }}>
-      <h1 data-testid="how-title">{c.title}</h1>
-      <p>{c.intro}</p>
-      {c.sections.map((s) => (
-        <section key={s.heading} data-testid="how-section" style={{ marginTop: "1.5rem" }}>
-          <h2>{s.heading}</h2>
+    <article lang={lang} className="hw-page" data-testid="how-it-works">
+      <header className="hw-head">
+        <h1 data-testid="how-title" className="hw-title">
+          {c.title}
+        </h1>
+        <Sticker>{t.notOfficial}</Sticker>
+      </header>
+      <p className="hw-intro">{c.intro}</p>
+      {c.sections.map((s, i) => (
+        // The second shared section is "The AI takes notes. It does not judge.": the page's loudest line.
+        <section key={s.heading} data-testid="how-section" className={i === 1 ? "hw-section hw-key" : "hw-section"}>
+          <h2 className="hw-h">{s.heading}</h2>
           <p>{s.body}</p>
         </section>
       ))}
       {stats ? (
-        <section data-testid="how-section" style={{ marginTop: "1.5rem" }}>
-          <h2>{t.numbersHeading}</h2>
+        <section data-testid="how-section" className="hw-section">
+          <h2 className="hw-h">{t.numbersHeading}</h2>
           <p>{t.numbersIntro}</p>
-          <dl data-testid="how-numbers">
+          <dl data-testid="how-numbers" className="hw-numbers">
             {rows.map((r) => (
-              <div key={r.key} style={{ marginTop: "0.5rem" }}>
+              <div key={r.key} className="hw-number">
                 <dt>{r.label}</dt>
                 <dd data-testid="how-number" data-key={r.key}>
                   {r.value}
@@ -61,10 +69,10 @@ export function HowItWorksView({
               </div>
             ))}
           </dl>
-          <p>{t.noHumanNote}</p>
+          <p className="hw-note">{t.noHumanNote}</p>
         </section>
       ) : null}
-      <p style={{ marginTop: "1.5rem" }}>{c.credit}</p>
-    </main>
+      <p className="hw-credit">{c.credit}</p>
+    </article>
   );
 }

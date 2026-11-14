@@ -40,9 +40,9 @@
   grid-template-areas:
     "badge lul"
     "h1 h1"
-    "scene scene"
     "sub sub"
-    "cta cta";
+    "cta cta"
+    "scene scene";
   align-items: center;
   column-gap: 12px;
   row-gap: 8px;
