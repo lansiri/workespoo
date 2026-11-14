@@ -16,6 +16,8 @@ export default defineConfig({
         ...devices["Desktop Chrome"],
         launchOptions: {
           args: ["--use-fake-ui-for-media-stream", "--use-fake-device-for-media-stream"],
+          // A machine whose Playwright browser download does not match the installed package can point at its own Chromium.
+          ...(process.env.E2E_CHROMIUM_PATH ? { executablePath: process.env.E2E_CHROMIUM_PATH } : {}),
         },
       },
     },

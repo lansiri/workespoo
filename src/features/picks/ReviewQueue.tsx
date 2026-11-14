@@ -172,6 +172,8 @@ export function ReviewQueue() {
                 key={d.id}
                 type="button"
                 className="we-co"
+                data-testid="review-company"
+                data-digest-id={d.id}
                 aria-current={d.id === current?.id ? "true" : undefined}
                 onClick={() => showDigest(d)}
               >
@@ -458,7 +460,7 @@ function PickItem(props: {
         summary={pick.card ? pick.card.headline : m.cardMissing}
         whyToday={why}
         origin={origin}
-        syntheticLabel={pick.card?.synthetic ? m.synthetic : undefined}
+        syntheticLabel={pick.card ? (pick.card.synthetic ? m.synthetic : m.liveDemoPerson) : undefined}
         status={status}
         selected={selected}
         outOfDate={pick.outOfDate ? m.outOfDate : undefined}

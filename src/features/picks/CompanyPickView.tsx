@@ -55,7 +55,8 @@ export function CompanyPickView({ pick, token, needTitle, lang }: { pick: Compan
         pickId={pick.id}
         handle={pick.card.handle}
         handleAria={fmt(m.handleAria, { handle: pick.card.handle })}
-        syntheticLabel={m.synthetic}
+        // The tag says what kind of person this is: one of the simulated people, or someone in a live demo session.
+        syntheticLabel={pick.card.synthetic ? m.synthetic : m.liveDemoPerson}
         summary={pick.card.headline}
         askedToMeet={pick.askedByPerson ? m.originTalent : undefined}
         aiLabel={m.aiLabel}

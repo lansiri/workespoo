@@ -69,6 +69,6 @@ Lead-owned. Streams implement exactly these paths. Phase 2 pages are unstyled bu
 | `/organiser` | `passcode-input`, `passcode-submit`, `reset-demo`, `reset-demo-confirm` |
 | `/organiser/audit` | `audit-row` (with `data-action`), `audit-filter` |
 | `/organiser/exposure` | `exposure-band` (with `data-band`), `exposure-handle` |
-| `/organiser/review` | `run-daily`, `review-digest` (with `data-digest-id`), `review-pick` (with `data-pick-id`), `pick-reason`, `pick-approve`, `pick-remove`, `pick-remove-reason`, `publish-digest`, `digest-link` |
+| `/organiser/review` | `run-daily`, `review-company` (one per company in the rail, with `data-digest-id`; the queue shows one company at a time), `review-digest` (with `data-digest-id`), `review-pick` (with `data-pick-id`), `pick-reason`, `pick-approve`, `pick-remove`, `pick-remove-reason`, `publish-digest`, `digest-link` |
 | `/c/[token]` | `masked-banner`, `need-link`, `pick-card`, `pick-reason`, `pick-not-mentioned`, `ask-to-meet`, `intro-status`, `revealed-name`, `revealed-quote` |
 | `/c/[token]/need/[needCardId]` | `need-title`, `requirement` (with `data-requirement-id`), `requirement-question`, `question-answer-keep`, `question-answer-make_nice`, `pool-evidence`, `confirm-need` |

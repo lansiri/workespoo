@@ -27,6 +27,21 @@ async function call<T>(path: string, init?: RequestInit): Promise<T> {
 
 export type FlatPick = { pick: QueuePick; digest: QueueDigest };
 
+/**
+ * Where the selection goes after a decision: to the next person still waiting on the same
+ * company's list, in the order on screen and wrapping round. When nobody on that list is
+ * waiting any more it stays on the person just decided, so the company stays on screen and
+ * publishing its list is the next step. It never moves to another company by itself.
+ */
+export function nextAfterDecision(queue: ReviewQueue, decidedId: string): string | null {
+  const digest = queue.digests.find((d) => d.needs.some((n) => n.picks.some((p) => p.id === decidedId)));
+  if (!digest) return null;
+  const list = digest.needs.flatMap((n) => n.picks);
+  const at = list.findIndex((p) => p.id === decidedId);
+  const after = [...list.slice(at + 1), ...list.slice(0, at)];
+  return after.find((p) => p.status === "suggested")?.id ?? decidedId;
+}
+
 /** The handle a pick is listed under. */
 export function pickHandle(p: QueuePick): string {
   return p.card?.handle ?? p.id;
@@ -157,13 +172,10 @@ export function useReviewQueue(messages: (typeof organiserMessages)["en"]) {
     async (decidedId: string) => {
       const fresh = await load();
       if (!fresh) return;
-      const list = fresh.digests.flatMap((d) => d.needs.flatMap((n) => n.picks));
-      const at = list.findIndex((p) => p.id === decidedId);
-      const after = [...list.slice(at + 1), ...list.slice(0, Math.max(at, 0))];
-      const next = after.find((p) => p.status === "suggested");
+      const next = nextAfterDecision(fresh, decidedId);
       if (next) {
-        setSelectedId(next.id);
-        setScrollToId(next.id);
+        setSelectedId(next);
+        if (next !== decidedId) setScrollToId(next);
       }
     },
     [load],

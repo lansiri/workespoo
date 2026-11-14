@@ -58,6 +58,17 @@ describe("CompanyDigestView", () => {
     expect(html).toContain('href="/c/tok-1/need/nc_1"');
   });
 
+  it("tags a simulated person as synthetic and a live demo participant as a real person, never the other way round", () => {
+    const simulated = basePick();
+    const live = basePick({ id: "pick_2", card: { ...companyCard("tal_002"), synthetic: false } });
+    const cards = render(data([simulated, live])).split('data-testid="pick-card"').slice(1).map(text);
+    expect(cards).toHaveLength(2);
+    expect(cards[0]).toContain("Synthetic person");
+    expect(cards[0]).not.toContain("a real person");
+    expect(cards[1]).toContain("Live demo: a real person");
+    expect(cards[1]).not.toContain("Synthetic person");
+  });
+
   it("says that not mentioned does not mean missing, and flags statutory requirements", () => {
     const t = text(render(data([basePick()])));
     expect(t).toContain("Not mentioned does not mean missing. Ask about it when you meet.");
